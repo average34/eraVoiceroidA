@@ -1,0 +1,526 @@
+﻿@ARRANGE_CHARANAME
+;名前の表示の後の文字を揃えるための空白調整、Str.csvにて処理している
+C = NO:COUNT + 200
+PRINTS STR:C
+
+@SHOW_RACE
+;能力を見る選択のとき、各キャラの横で種族が表示される
+R = NO:RESULT
+PRINT 種族：
+SIF R >= 0 && R <= 49
+	PRINTS "VOICEROID"
+SIF R >= 50 && R <= 54
+	PRINTS "CeVIO"
+SIF R >= 80 && R <= 81
+	PRINTS "AITalk"
+
+PRINTL 
+
+@SHOW_INFO_PALAM
+REPEAT 15
+
+;パラメータを表示する順番を並べ替える
+
+IF COUNT == 0
+;快Ｃ
+	A = 0
+ELSEIF COUNT == 1
+;快Ｖ
+	A = 1
+ELSEIF COUNT == 2
+;快Ａ
+	A = 2
+ELSEIF COUNT == 3
+;快Ｂ
+	A = 3
+ELSEIF COUNT == 4
+;潤滑
+	A = 4
+ELSEIF COUNT == 5
+;恭順
+	A = 5
+ELSEIF COUNT == 6
+;欲情
+	A = 6
+ELSEIF COUNT == 7
+;屈服
+	A = 7
+ELSEIF COUNT == 8
+;習得
+	A = 8
+ELSEIF COUNT == 9
+;恥情
+	A = 9
+ELSEIF COUNT == 10
+;苦痛
+	A = 10
+ELSEIF COUNT == 11
+;恐怖
+	A = 11
+ELSEIF COUNT == 12
+;反感
+	A = 12
+ELSEIF COUNT == 13
+;不快
+	A = 13
+ELSEIF COUNT == 14
+;抑鬱
+	A = 14
+ENDIF
+
+
+;現在のパラメータレベルをBに代入
+IF PALAM:A < PALAMLV:1
+	B = 0
+ELSEIF PALAM:A < PALAMLV:2
+	B = 1
+ELSEIF PALAM:A < PALAMLV:3
+	B = 2
+ELSEIF PALAM:A < PALAMLV:4
+	B = 3
+ELSEIF PALAM:A < PALAMLV:5
+	B = 4
+ELSEIF PALAM:A < PALAMLV:6
+	B = 5
+ELSEIF PALAM:A < PALAMLV:7
+	B = 6
+ELSEIF PALAM:A < PALAMLV:8
+	B = 7
+ELSEIF PALAM:A < PALAMLV:9
+	B = 8
+ELSE
+	B = 9
+ENDIF
+
+;パラメータの名前・パラメータレベル・ゲージを表示
+PRINTFORM 　%PALAMNAME:A%Lv{B}[
+
+;パラメータレベルが9以上なら余計な処理は飛ばす
+IF B >= 9
+	PRINT ********
+	GOTO SHOW_INFO_PALAM_END
+ENDIF
+
+;パラメータレベルごとの閾値の8分の1を1メモリとする
+;C = PALAM:A/(PALAMLV:(B+1)/8)
+E = B+1
+C = PALAM:A/(PALAMLV:E/8)
+
+;↓のコメントアウトした部分を戻すと、パラメータ表示のゲージが
+;↓パラメータの総量を基準にしたものから、
+;↓現在のレベル→次のレベルに必要な量を基準としたものになります。
+;↓例えば、パラメータが5000（レベル３）のときはこんな感じに。
+;↓　従来 [****>>>>] Now:5000 / Next:10000 （総量として必要な10000が基準）
+;↓　これ [**>>>>>>] Now:2000 / Next: 7000 （LV3→LV4に必要な7000が基準）
+
+;C = (PALAM:A-PALAMLV:B)/((PALAMLV:E-PALAMLV:B)/8)
+
+D = 8-C
+
+;パラメータレベルに応じて溜まっている部分に記号を表示
+$SHOW_INFO_PALAM_C
+SIF C == 0
+	GOTO SHOW_INFO_PALAM_D
+SIF B >= 0
+	PRINT *
+C -= 1
+GOTO SHOW_INFO_PALAM_C
+
+;溜まっていない部分に1Lv下の記号を表示
+$SHOW_INFO_PALAM_D
+SIF D == 0
+	GOTO SHOW_INFO_PALAM_END
+SIF B >= 0
+	PRINT .
+D -= 1
+GOTO SHOW_INFO_PALAM_D
+
+$SHOW_INFO_PALAM_END
+PRINT ]
+
+;これだけ特殊
+IF A == 3 && PALAM:A >= 20000
+	PRINT 摩擦 0
+	GOTO SHOW_INFO_PALAM_NUM_END
+ENDIF
+
+;↓↓↓↓kMGT表示↓↓↓↓
+A = PALAM:A
+B = 0
+;6桁までノーマル
+IF A > 999999
+	;kキロ(1000)
+	A /= 1000
+	B += 1
+	IF A > 99999
+		;Mメガ(百万)
+		A /= 1000
+		B += 1
+		;2^31 ≒ 21億 = 2100M = 2.1G
+		;eramakerの32ビット整数ならメガまでで十分
+		IF A > 99999
+			;Gギガ(十億)
+			A /= 1000
+			B += 1
+			IF A > 99999
+				;Tテラ(兆)
+				A /= 1000
+				B += 1
+				IF A > 99999
+					;Pペタ(千兆)
+					A /= 1000
+					B += 1
+					;2^63 ≒ 920京 = 9200P = 9.2E
+					;Emueraの64ビット整数でもペタまでで十分
+				ENDIF
+			ENDIF
+		ENDIF
+	ENDIF
+ENDIF
+
+;数値の桁数に応じて間隔を調整
+SIF A < 10
+	PRINT  
+SIF A < 100
+	PRINT  
+SIF A < 1000
+	PRINT  
+SIF A < 10000
+	PRINT  
+;接尾語が入るなら1つ減らす
+SIF A < 100000 && B == 0
+	PRINT  
+
+PRINTFORM {A}
+IF B == 1
+	PRINT k
+ELSEIF B == 2
+	PRINT M
+ELSEIF B == 3
+	PRINT G
+ELSEIF B == 4
+	PRINT T
+ELSEIF B == 5
+	PRINT P
+ENDIF
+;↑↑↑↑kMGT表示↑↑↑↑
+
+;↓↓↓↓通常表示↓↓↓↓
+;
+;	;数値の桁数に応じて間隔を調整
+;	SIF PALAM:A < 10
+;		PRINT  
+;	SIF PALAM:A < 100
+;		PRINT  
+;	SIF PALAM:A < 1000
+;		PRINT  
+;	SIF PALAM:A < 10000
+;		PRINT  
+;	SIF PALAM:A < 100000
+;		PRINT  
+;	;数値を表示・999999を超えたら999999
+;	IF PALAM:A > 999999
+;		PRINT 999999
+;	ELSE
+;		PRINTFORM {PALAM:A}
+;	ENDIF
+;
+;↑↑↑↑通常表示↑↑↑↑
+
+$SHOW_INFO_PALAM_NUM_END
+
+;3回ごとに改行
+SIF COUNT%3 == 2
+	PRINTL 
+
+REND
+
+@SHOW_INFO_ABL
+S = 0
+REPEAT 20
+	;表示概要
+	;　　　　 0,従順 　　　　 1,欲望 　　　　 2,技巧 　　　 3,Ｃ感覚
+	;　　　 4,Ｖ感覚 　　　 5,Ａ感覚 　　　 6,Ｂ感覚 　　 7,奉仕精神
+	;　　　 8,露出癖 　　 9,マゾっ気 　　10,サドっ気 　　11,レズっ気
+	;　　12,料理技能 　　13,撮影技能 　　14,歌唱技能 　　15,自慰中毒
+	;　　16,精液中毒 　　17,レズ中毒 18,セックス中毒 　　19,噴乳中毒
+	;　　20,ホモっ気 　　21,ゲイ中毒
+	
+	IF ABL:T:COUNT > 0
+		;表示位置あわせ
+		IF COUNT == 7 || COUNT == 9 || COUNT == 10 || COUNT == 11 || COUNT == 12 || COUNT == 13 || COUNT == 14 || COUNT == 15 || COUNT == 16 || COUNT == 17 || COUNT == 19 || COUNT == 20 || COUNT == 21
+			PRINT 　　
+		ELSEIF COUNT == 3 || COUNT == 4 || COUNT == 5 || COUNT == 6 || COUNT == 8
+			PRINT 　　　
+		ELSEIF COUNT == 0 || COUNT == 1 || COUNT == 2
+			PRINT 　　　　
+		ENDIF
+		
+		;表示
+		PRINTFORM %ABLNAME:COUNT%:LV
+		;数字の表示位置をそろえる
+		SIF ABL:T:COUNT < 10
+			PRINT  
+		PRINTFORM {ABL:T:COUNT}
+		S += 1
+		;改行するのか？ 続けて出力するのか？
+		IF S == 4
+			PRINTL 
+			S = 0
+		ELSE
+			PRINT 　
+		ENDIF
+	ENDIF
+REND
+PRINTL 
+
+;=============================================================================
+;PRINT_TALENT （素質）との入れ替え
+@SHOW_INFO_TALENT
+U = 0
+;リピート回数-1 の番号までの素質が表示される
+;リピート回数をあらかじめ大きめに設定（最大1000）しておくと、
+;素質の最大番号が増えたときに書き換える手間が減るが、
+;増やしすぎると処理速度に影響するので要注意
+REPEAT 200
+	IF TALENT:T:COUNT
+		PRINTFORM [%TALENTNAME:COUNT%] 
+		
+		;改行するのか？ 続けて出力するのか？
+		U += 1
+		SIF U%6 == 0
+			PRINTL 
+	ENDIF
+REND
+;最後のループで改行してなかったら、ここで改行しておく
+SIF U%6 != 0
+	PRINTL 
+
+
+;=============================================================================
+;PRINT_MARK （刻印）との入れ替え
+@SHOW_INFO_MARK
+REPEAT 4
+	PRINTFORM %MARKNAME:COUNT%:LV{MARK:T:COUNT} 
+	BAR MARK:T:COUNT, 3, 3
+	
+	;最後のループ以外では間隔をあける
+	SIF COUNT < 3
+		PRINT 　
+REND
+PRINTL 
+
+;=============================================================================
+;PRINT_EXP （経験）との入れ替え
+@SHOW_INFO_EXP
+X = 0
+S = 0
+REPEAT 30
+	;表示概要
+	;　　　 0.Ｖ経験　　　 1.Ａ経験　　 2.絶頂経験　　 3.射精経験
+	;　　 4.性交経験　　 5.膣射経験　　10.自慰経験11.調教自慰経験
+	;　　20.精液経験21.奉仕快楽経験　22.フェラ経験　　23.愛情経験
+	;30.苦痛快楽経験　　31.放尿経験32.嗜虐快楽経験　　40.レズ経験
+	;　　41.ゲイ経験　　50.異常経験　　51.緊縛経験　52.Ｖ拡張経験
+	;　53.Ａ拡張経験　　54.噴乳経験　　55.触手経験　　56.吸血経験
+	;　　60.出産経験　　61.家事経験　　62.撮影経験　　63.被写経験
+	;　　64.歌唱経験　　70.調教経験
+	
+	IF COUNT == 0
+		X = 0
+	ELSEIF COUNT == 1
+		X = 1
+	ELSEIF COUNT == 2
+		X = 2
+	ELSEIF COUNT == 3
+		X = 3
+		
+	ELSEIF COUNT == 4
+		X = 4
+	ELSEIF COUNT == 5
+		X = 5
+	ELSEIF COUNT == 6
+		X = 10
+	ELSEIF COUNT == 7
+		X = 11
+		
+	ELSEIF COUNT == 8
+		X = 20
+	ELSEIF COUNT == 9
+		X = 21
+	ELSEIF COUNT == 10
+		X = 22
+	ELSEIF COUNT == 11
+		X = 23
+		
+	ELSEIF COUNT == 12
+		X = 30
+	ELSEIF COUNT == 13
+		X = 31
+	ELSEIF COUNT == 14
+		X = 32
+		
+	ELSEIF COUNT == 15
+		X = 40
+	ELSEIF COUNT == 16
+		X = 41
+		
+	ELSEIF COUNT == 17
+		X = 50
+	ELSEIF COUNT == 18
+		X = 51
+	ELSEIF COUNT == 19
+		X = 52
+	ELSEIF COUNT == 20
+		X = 53
+		
+	ELSEIF COUNT == 21
+		X = 54
+	ELSEIF COUNT == 22
+		X = 55
+	ELSEIF COUNT == 23
+		X = 56
+	ELSEIF COUNT == 24
+		X = 60
+		
+	ELSEIF COUNT == 25
+		X = 61
+	ELSEIF COUNT == 26
+		X = 62
+	ELSEIF COUNT == 27
+		X = 63
+	ELSEIF COUNT == 28
+		X = 64
+		
+	ELSEIF COUNT == 29
+		X = 70
+	ENDIF
+	
+	IF EXP:T:X > 0
+		;表示位置あわせ
+		IF X == 22 || X == 52 || X == 53
+			PRINT 　
+		ELSEIF X == 2 || X == 3 || X == 4 || X == 5 || X == 10 || X == 20 || X == 23 || X == 31 || X == 40 || X == 41 || X == 50 || X == 51 || X == 52 || X == 53 || X == 54 || X == 55 || X == 56 || X == 60 || X == 61 || X == 63 || X == 64 || X == 70
+			PRINT 　　
+		ELSEIF X == 0 || X == 1
+			PRINT 　　　
+		ENDIF
+		
+		PRINTFORM %EXPNAME:X%:
+		;表示位置そろえる
+		IF EXP:T:X < 10
+			PRINT    
+		ELSEIF EXP:T:X < 100
+			PRINT   
+		ELSEIF EXP:T:X < 1000
+			PRINT  
+		ENDIF
+		PRINTFORM {EXP:T:X}
+		S += 1
+		
+		;改行するのか？ 続けて出力するのか？
+		IF S == 4
+			PRINTL 
+			S = 0
+		ELSE
+			PRINT 　
+		ENDIF
+	ENDIF
+REND
+PRINTL 
+;=============================================================================
+;SHOW_JUEL の珠表示部分を独立した関数に
+@SHOW_INFO_JUEL
+U = 0
+X = 0
+REPEAT 12
+	;表示順
+	; 0,快Ｃ　 1,快Ｖ　 2,快Ａ　 3,快Ｂ
+	; 5,恭順　 6,欲情　 7,屈服　 8,習得
+	; 9,恥情　10,苦痛　11,恐怖 100,否定
+	IF COUNT == 0
+		X = 0
+	ELSEIF COUNT == 1
+		X = 1
+	ELSEIF COUNT == 2
+		X = 2
+	ELSEIF COUNT == 3
+		X = 3
+		
+	ELSEIF COUNT == 4
+		X = 5
+	ELSEIF COUNT == 5
+		X = 6
+	ELSEIF COUNT == 6
+		X = 7
+	ELSEIF COUNT == 7
+		X = 8
+		
+	ELSEIF COUNT == 8
+		X = 9
+	ELSEIF COUNT == 9
+		X = 10
+	ELSEIF COUNT == 10
+		X = 11
+	ELSEIF COUNT == 11
+		X = 100
+		
+	ENDIF
+	
+	PRINTFORM 　%PALAMNAME:X%の珠:
+	
+	;表示位置そろえる
+	IF JUEL:T:X < 10
+		PRINT      
+	ELSEIF JUEL:T:X < 100
+		PRINT     
+	ELSEIF JUEL:T:X < 1000
+		PRINT    
+	ELSEIF JUEL:T:X < 10000
+		PRINT   
+	ELSEIF JUEL:T:X < 100000
+		PRINT  
+	ENDIF
+	PRINTV JUEL:T:X
+	
+	;改行or表示位置あけ
+	U += 1
+	IF U%4 == 0
+		PRINTL 
+	ELSE
+		PRINT  
+	ENDIF
+REND
+
+;最後のループで改行してなかったら、ここで改行しておく
+SIF U%4 != 0
+	PRINTL 
+
+@SHOW_INFO_CLOTHES
+T:10 = TARGET
+TARGET = T
+REPEAT 7
+	B = 46-COUNT
+	SIF COUNT == 0 && CFLAG:B
+		PRINT 全身上着　:
+	SIF COUNT == 1 && CFLAG:B
+		PRINT 上半身上着:
+	SIF COUNT == 2 && CFLAG:B
+		PRINT 下半身上着:
+	SIF COUNT == 3 && CFLAG:B
+		PRINT 上半身下着:
+	SIF COUNT == 4 && CFLAG:B
+		PRINT 下半身下着:
+	SIF COUNT == 5 && CFLAG:B
+		PRINT 足元　　　:
+	SIF COUNT == 6 && CFLAG:B
+		PRINT その他　　:
+	A = 6-COUNT
+	CALL CLOTHES_NAME
+	SIF CFLAG:B
+		PRINTL 
+REND
+T = TARGET
+TARGET = T:10
+
+

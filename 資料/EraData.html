@@ -1,0 +1,4347 @@
+<<<<<<< HEAD
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=Shift_JIS">
+<title>eraVoiceroidA </title>
+<style type="text/css">
+<!--
+body {
+  color: #CCCCCC;
+  background-color: black;
+  font-family : Trebuchet MS, Arial, Helvetica, sans-serif;
+  font-weight : normal;
+  text-align : left;
+  line-height: 1.2em;
+  margin: 0px;
+  padding: 0px;
+}
+
+a {
+  text-decoration: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a.h {
+  color: #EE0000;
+}
+
+a.menu_char {
+  color: #EE0000;
+}
+
+h1 {
+  color: #EE0000;
+  font-size: 24pt;
+  line-height: 1.4em;
+  background-color: black;
+  margin: 4px 0px 12px 0px;
+  padding: 4px 8px 4px 8px;
+  border-top:   2px #990000 solid;;
+  border-bottom:2px #990000 solid;
+}
+
+h2 {
+  color: #EE0000;
+  font-size: 18pt;
+  line-height: 1.4em;
+  background-color: black;
+  margin: 4px 0px 12px 0px;
+  padding: 2px 4px 2px 16px;
+  border-top:   2px #990000 solid;;
+  border-bottom:2px #990000 solid;
+}
+
+h3 {
+  color: #EE0000;
+  font-size: 14pt;
+  line-height: 1.4em;
+  background-color: black;
+  margin: 0px;
+  padding: 1px 0px 0px 16px;
+  border-top:   2px #990000 solid;;
+  border-bottom:2px #990000 solid;
+}
+
+h4 {
+  color: #DD0000;
+  font-size: 12pt;
+  line-height: 1.4em;
+  background-color: black;
+  margin: 0px;
+  padding: 4px 0px 0px 32px;
+}
+
+.base {
+  width : 700px;
+  background-color : #333333;
+  margin : 0 auto;
+}
+
+table {
+  border: none;
+  border-spacing: 4px;
+  margin: 0px;
+  padding: 0px;
+}
+
+table.gamebase {
+  margin: 0px 0px 32px 70px;
+  border-spacing: 16px 4px;
+}
+
+table.Ability {
+  margin: 0px 0px 32px 70px;
+}
+
+table.Palam {
+  margin: 0px 0px 32px 70px;
+}
+
+table.Talent {
+  margin: 0px 0px 32px 70px;
+}
+
+table.Item {
+  margin: 0px 0px 32px 70px;
+}
+
+table.Mark {
+  margin: 0px 0px 32px 70px;
+}
+
+table.Train {
+  margin: 0px 0px 32px 70px;
+}
+
+table.Exp {
+  margin: 0px 0px 32px 70px;
+}
+
+td.tag {
+  font-weight: bold;
+	text-align: right;
+  white-space: nowrap;
+}
+
+td.data {
+  padding: 0px 16px 0px 0px;
+}
+
+table.char {
+  width: 600px;
+  border: 0px;
+  background: #555555;
+  margin: 8px 0px 48px 70px;
+  padding: 0px;
+}
+
+td.char_palam {
+  width: 180px;
+}
+
+span.life {
+  color: #EE0000;
+  font-weight: bold;
+  margin-left: 42px;
+}
+span.mind {
+  color: #2222FF;
+  font-weight: bold;
+  margin-left: 42px;
+}
+span.sei {
+  color: #EEEEEE;
+  font-weight: bold;
+  margin-left: 42px;
+}
+
+table.char_ability {
+  min-width: 190px;
+  font-weight: bold;
+  text-align: right;
+  margin-left: 42px;
+}
+
+td.char_ability_tag {
+  width: 124px;
+}
+
+td.char_ability_data {
+  width: 32px;
+}
+
+div.char_talent {
+  font-weight: bold;
+  line-height: 1.6em;
+  margin-left: 42px;
+}
+
+span.talent {
+  white-space: nowrap;
+  margin: 0px 5px 0px 0px;
+}
+
+table.char_exp {
+  font-weight: bold;
+  text-align: right;
+  margin-left: 42px;
+}
+
+td.char_exp_tag {
+  width: 124px;
+}
+
+td.char_exp_data {
+  width: 32px;
+}
+
+table.char_relation {
+  font-weight: bold;
+  text-align: right;
+  margin-left: 42px;
+}
+
+td.relation {
+  width: 124px;
+}
+
+
+a.relation_posi {
+  color: #EEAAAA;
+}
+
+a.relation_nega {
+  color: #9999EE;
+}
+
+a.relation_normal {
+  color: #CCCCCC;
+}
+
+td.char_relation_data {
+  width: 32px;
+}
+
+table.char_flag {
+  font-weight: bold;
+  text-align: right;
+  margin-left: 42px;
+}
+
+td.char_flag_tag {
+  width: 124px;
+}
+
+td.char_flag_data {
+  width: 32px;
+}
+
+
+body.menu_base {
+  color: #CCCCCC;
+  background-color: black;
+  font-family : Trebuchet MS, Arial, Helvetica, sans-serif;
+  font-weight : normal;
+  text-align : left;
+  line-height: 1.2em;
+  margin: 0px;
+  padding: 0px;
+}
+
+.menu_base {
+  width : 140px;
+  margin : 0 auto;
+}
+
+h1.menu {
+  font-size: 14pt;
+  margin: 2px 0px 2px 0px;
+  padding: 6px 0px 6px 8px;
+}
+
+h2.menu {
+  font-size: 11pt;
+  margin: 12px 0px 2px 0px;
+  padding: 2px 0px 2px 14px;
+}
+
+
+div.menu_char {
+  font-size: 10px;
+  font-weight: bold;
+  margin: 0px 0px 0px 24px;
+  padding: 0px;
+}
+
+div.datasummary {
+  float: left;
+  margin: 0px 0px 4px 1px;
+}
+
+table.datasummary {
+  table-layout: fixed;
+  width: 130px;
+  padding: 0px;
+  line-height: 1.05em;
+  border-collapse: collapse; 
+  letter-spacing: -0.05em;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+th.summarytag {
+  width: 130px;
+  color: #EE0000;
+  background-color: #black;
+  padding-right: 4px;
+  text-align: center;
+  font-weight: bold;
+  border: 1px #666666 solid;
+}
+th.summarytag_empty {
+  color:            #333333;
+  background-color: #333333;
+  border: none;
+}
+
+td.summarytag {
+  width: 26px;
+  color: #990000;
+  background-color: #black;
+  padding-right: 4px;
+  text-align: right;
+  font-weight: bold;
+  border: 1px #666666 solid;
+}
+td.summarytag_empty {
+  color:            #333333;
+  background-color: #333333;
+  border: 1px #333333 solid;
+}
+
+td.summarydata {
+  width: 98px;
+  background-color: #222222;
+  padding-left: 4px;
+  font-size: small;
+  border: 1px #666666 solid;
+}
+td.summarydata_empty {
+  color:            #333333;
+  background-color: #333333;
+  border: 1px #333333 solid;
+}
+-->
+</style>
+</head>
+<body>
+<div class="base">
+<h1>eraVoiceroidA </h1>
+<a name="gamebase">
+<h2>ゲーム基本情報</h2>
+<table class="gamebase">
+  <tr>
+    <td class="tag">タイトル</td>
+    <td class="data">eraVoiceroidA </td>
+  </tr>
+  <tr>
+    <td class="tag">作者</td>
+    <td class="data">average</td>
+  </tr>
+  <tr>
+    <td class="tag">コード</td>
+    <td class="data">8572958</td>
+  </tr>
+  <tr>
+    <td class="tag">バージョン</td>
+    <td class="data">0002</td>
+  </tr>
+  <tr>
+    <td class="tag">追加情報</td>
+    <td class="data">※これは調教SLG作成ツールerakanonの改変・再配布です。</td>
+  </tr>
+  <tr>
+    <td class="tag">バージョン違い認める</td>
+    <td class="data">0000</td>
+  </tr>
+</table>
+</a>
+<a name="char_list">
+<h2>キャラ情報</h2>
+<p class="char_list">
+<a name="c0000">
+<table class="char">
+  <tr>
+    <td class="char_name" colspan=4><h3>0. あなた</h3></td>
+  </tr>
+  <tr><td colspan=4><h4>基本情報</h4></td>
+  <tr>
+      <td class="char_palam"><span class="life">体力:</span> <span class="char_param_data">5000</span></td>
+      <td class="char_palam"><span class="mind">気力:</span> <span class="char_param_data">3000</span></td>
+      <td class="char_palam"><span class="sei">射精:</span> <span class="char_param_data">10000</span></td>
+  </tr>
+  <tr>
+  </tr>
+  <tr><td colspan=4><h4>素質</h4></td></tr>
+  <tr>
+    <td colspan=3><div class="char_talent">
+      <span class="talent">オトコ</span>
+    </div></td>
+  </tr>
+  <tr><td colspan=4><h4>初期能力</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_ability">
+        <tr>
+          <td class="char_ability_tag">サドっ気</td>
+          <td class="char_ability_data">1</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>フラグ</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_flag">
+        <tr>
+          <td class="char_flag_tag">40</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">41</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">42</td>
+          <td class="char_flag_data">23</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">43</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">44</td>
+          <td class="char_flag_data">44</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">45</td>
+          <td class="char_flag_data">51</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">46</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  </table>
+<a name="c0001">
+<table class="char">
+  <tr>
+    <td class="char_name" colspan=4><h3>1. 月読 ショウタ(ショウタ)</h3></td>
+  </tr>
+  <tr><td colspan=4><h4>基本情報</h4></td>
+  <tr>
+      <td class="char_palam"><span class="life">体力:</span> <span class="char_param_data">1200</span></td>
+      <td class="char_palam"><span class="mind">気力:</span> <span class="char_param_data">1000</span></td>
+      <td class="char_palam"><span class="sei">射精:</span> <span class="char_param_data">10000</span></td>
+  </tr>
+  <tr>
+  </tr>
+  <tr><td colspan=4><h4>素質</h4></td></tr>
+  <tr>
+    <td colspan=3><div class="char_talent">
+      <span class="talent">生意気</span>
+      <span class="talent">抵抗</span>
+      <span class="talent">痛みに弱い</span>
+      <span class="talent">習得早い</span>
+      <span class="talent">おもらし癖</span>
+      <span class="talent">汚れ無視</span>
+      <span class="talent">快感に素直</span>
+      <span class="talent">小柄体型</span>
+      <span class="talent">Ｃ鈍感</span>
+      <span class="talent">Ａ鈍感</span>
+      <span class="talent">Ｂ鈍感</span>
+      <span class="talent">回復早い</span>
+      <span class="talent">オトコ</span>
+      <span class="talent">幼稚</span>
+      <span class="talent">VOICEROID</span>
+    </div></td>
+  </tr>
+  <tr><td colspan=4><h4>相性</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_relation">
+        <tr>
+          <td class="relation"><a class="relation_posi" href=#c0002>月読 アイ</a></td>
+          <td class="char_relation_data">150</td>
+        </tr>
+        <tr>
+          <td class="relation"><a class="relation_posi" href=#c0053>ＯＮＥ -ARIA ON THE PLANETES-</a></td>
+          <td class="char_relation_data">120</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>フラグ</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_flag">
+        <tr>
+          <td class="char_flag_tag">40</td>
+          <td class="char_flag_data">2</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">41</td>
+          <td class="char_flag_data">11</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">42</td>
+          <td class="char_flag_data">25</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">43</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">44</td>
+          <td class="char_flag_data">44</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">45</td>
+          <td class="char_flag_data">51</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">46</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  </table>
+<a name="c0002">
+<table class="char">
+  <tr>
+    <td class="char_name" colspan=4><h3>2. 月読 アイ(アイ)</h3></td>
+  </tr>
+  <tr><td colspan=4><h4>基本情報</h4></td>
+  <tr>
+      <td class="char_palam"><span class="life">体力:</span> <span class="char_param_data">1000</span></td>
+      <td class="char_palam"><span class="mind">気力:</span> <span class="char_param_data">1000</span></td>
+      <td class="char_palam_empty"></td>
+  </tr>
+  <tr><td colspan=4><h4>素質</h4></td></tr>
+  <tr>
+    <td colspan=3><div class="char_talent">
+      <span class="talent">処女</span>
+      <span class="talent">素直</span>
+      <span class="talent">生意気</span>
+      <span class="talent">貞操無頓着</span>
+      <span class="talent">抵抗</span>
+      <span class="talent">痛みに弱い</span>
+      <span class="talent">習得早い</span>
+      <span class="talent">おもらし癖</span>
+      <span class="talent">汚れ無視</span>
+      <span class="talent">快感に素直</span>
+      <span class="talent">小柄体型</span>
+      <span class="talent">Ｃ鈍感</span>
+      <span class="talent">Ｖ鈍感</span>
+      <span class="talent">Ａ鈍感</span>
+      <span class="talent">Ｂ鈍感</span>
+      <span class="talent">絶壁</span>
+      <span class="talent">回復早い</span>
+      <span class="talent">幼児／幼児退行</span>
+      <span class="talent">幼稚</span>
+      <span class="talent">VOICEROID</span>
+    </div></td>
+  </tr>
+  <tr><td colspan=4><h4>相性</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_relation">
+        <tr>
+          <td class="relation"><a class="relation_posi" href=#c0001>月読 ショウタ</a></td>
+          <td class="char_relation_data">150</td>
+        </tr>
+        <tr>
+          <td class="relation"><a class="relation_posi" href=#c0003>弦巻 マキ</a></td>
+          <td class="char_relation_data">120</td>
+        </tr>
+        <tr>
+          <td class="relation"><a class="relation_posi" href=#c0004>結月 ゆかり</a></td>
+          <td class="char_relation_data">120</td>
+        </tr>
+        <tr>
+          <td class="relation"><a class="relation_nega" href=#c0052>タカハシ</a></td>
+          <td class="char_relation_data">80</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>フラグ</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_flag">
+        <tr>
+          <td class="char_flag_tag">40</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">41</td>
+          <td class="char_flag_data">11</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">42</td>
+          <td class="char_flag_data">21</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">43</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">44</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">45</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">46</td>
+          <td class="char_flag_data">63</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  </table>
+<a name="c0003">
+<table class="char">
+  <tr>
+    <td class="char_name" colspan=4><h3>3. 弦巻 マキ(マキ)</h3></td>
+  </tr>
+  <tr><td colspan=4><h4>基本情報</h4></td>
+  <tr>
+      <td class="char_palam"><span class="life">体力:</span> <span class="char_param_data">2000</span></td>
+      <td class="char_palam"><span class="mind">気力:</span> <span class="char_param_data">1600</span></td>
+      <td class="char_palam_empty"></td>
+  </tr>
+  <tr><td colspan=4><h4>素質</h4></td></tr>
+  <tr>
+    <td colspan=3><div class="char_talent">
+      <span class="talent">好奇心</span>
+      <span class="talent">楽観的</span>
+      <span class="talent">貞操観念</span>
+      <span class="talent">舌使い</span>
+      <span class="talent">快感に素直</span>
+      <span class="talent">魅力</span>
+      <span class="talent">Ｖ敏感</span>
+      <span class="talent">巨乳</span>
+      <span class="talent">VOICEROID</span>
+    </div></td>
+  </tr>
+  <tr><td colspan=4><h4>初期能力</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_ability">
+        <tr>
+          <td class="char_ability_tag">従順</td>
+          <td class="char_ability_data">1</td>
+        </tr>
+        <tr>
+          <td class="char_ability_tag">料理技能</td>
+          <td class="char_ability_data">1</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>初期経験</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_exp">
+        <tr>
+          <td class="char_exp_tag">家事経験</td>
+          <td class="char_exp_data">10</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>相性</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_relation">
+        <tr>
+          <td class="relation"><a class="relation_posi" href=#c0004>結月 ゆかり</a></td>
+          <td class="char_relation_data">200</td>
+        </tr>
+        <tr>
+          <td class="relation"><a class="relation_posi" href=#c0005>東北 ずん子</a></td>
+          <td class="char_relation_data">150</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>フラグ</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_flag">
+        <tr>
+          <td class="char_flag_tag">40</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">41</td>
+          <td class="char_flag_data">12</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">42</td>
+          <td class="char_flag_data">22</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">43</td>
+          <td class="char_flag_data">31</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">44</td>
+          <td class="char_flag_data">41</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">45</td>
+          <td class="char_flag_data">51</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">46</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  </table>
+<a name="c0004">
+<table class="char">
+  <tr>
+    <td class="char_name" colspan=4><h3>4. 結月 ゆかり(ゆかり)</h3></td>
+  </tr>
+  <tr><td colspan=4><h4>基本情報</h4></td>
+  <tr>
+      <td class="char_palam"><span class="life">体力:</span> <span class="char_param_data">2000</span></td>
+      <td class="char_palam"><span class="mind">気力:</span> <span class="char_param_data">1500</span></td>
+      <td class="char_palam_empty"></td>
+  </tr>
+  <tr><td colspan=4><h4>素質</h4></td></tr>
+  <tr>
+    <td colspan=3><div class="char_talent">
+      <span class="talent">処女</span>
+      <span class="talent">目立ちたがり</span>
+      <span class="talent">恥じらい</span>
+      <span class="talent">献身的</span>
+      <span class="talent">謎の魅力</span>
+      <span class="talent">貧乳</span>
+      <span class="talent">人気</span>
+      <span class="talent">VOICEROID</span>
+    </div></td>
+  </tr>
+  <tr><td colspan=4><h4>初期能力</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_ability">
+        <tr>
+          <td class="char_ability_tag">撮影技能</td>
+          <td class="char_ability_data">1</td>
+        </tr>
+        <tr>
+          <td class="char_ability_tag">歌唱技能</td>
+          <td class="char_ability_data">3</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>初期経験</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_exp">
+        <tr>
+          <td class="char_exp_tag">被写経験</td>
+          <td class="char_exp_data">5</td>
+        </tr>
+        <tr>
+          <td class="char_exp_tag">歌唱経験</td>
+          <td class="char_exp_data">40</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>相性</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_relation">
+        <tr>
+          <td class="relation"><a class="relation_posi" href=#c0003>弦巻 マキ</a></td>
+          <td class="char_relation_data">150</td>
+        </tr>
+        <tr>
+          <td class="relation"><a class="relation_posi" href=#c0005>東北 ずん子</a></td>
+          <td class="char_relation_data">120</td>
+        </tr>
+        <tr>
+          <td class="relation"><a class="relation_posi" href=#c0050>さとう ささら</a></td>
+          <td class="char_relation_data">120</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>フラグ</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_flag">
+        <tr>
+          <td class="char_flag_tag">40</td>
+          <td class="char_flag_data">7</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">41</td>
+          <td class="char_flag_data">12</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">42</td>
+          <td class="char_flag_data">22</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">43</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">44</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">45</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">46</td>
+          <td class="char_flag_data">63</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  </table>
+<a name="c0005">
+<table class="char">
+  <tr>
+    <td class="char_name" colspan=4><h3>5. 東北 ずん子(ずん子)</h3></td>
+  </tr>
+  <tr><td colspan=4><h4>基本情報</h4></td>
+  <tr>
+      <td class="char_palam"><span class="life">体力:</span> <span class="char_param_data">2000</span></td>
+      <td class="char_palam"><span class="mind">気力:</span> <span class="char_param_data">1600</span></td>
+      <td class="char_palam_empty"></td>
+  </tr>
+  <tr><td colspan=4><h4>素質</h4></td></tr>
+  <tr>
+    <td colspan=3><div class="char_talent">
+      <span class="talent">処女</span>
+      <span class="talent">大人しい</span>
+      <span class="talent">プライド低い</span>
+      <span class="talent">痛みに強い</span>
+      <span class="talent">濡れやすい</span>
+      <span class="talent">習得早い</span>
+      <span class="talent">針さばき</span>
+      <span class="talent">両刀</span>
+      <span class="talent">Ｃ敏感</span>
+      <span class="talent">回復早い</span>
+      <span class="talent">鼓舞</span>
+      <span class="talent">狂気</span>
+      <span class="talent">人気</span>
+      <span class="talent">VOICEROID</span>
+    </div></td>
+  </tr>
+  <tr><td colspan=4><h4>初期能力</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_ability">
+        <tr>
+          <td class="char_ability_tag">Ｃ感覚</td>
+          <td class="char_ability_data">1</td>
+        </tr>
+        <tr>
+          <td class="char_ability_tag">料理技能</td>
+          <td class="char_ability_data">4</td>
+        </tr>
+        <tr>
+          <td class="char_ability_tag">歌唱技能</td>
+          <td class="char_ability_data">2</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>初期経験</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_exp">
+        <tr>
+          <td class="char_exp_tag">絶頂経験</td>
+          <td class="char_exp_data">1</td>
+        </tr>
+        <tr>
+          <td class="char_exp_tag">自慰経験</td>
+          <td class="char_exp_data">1</td>
+        </tr>
+        <tr>
+          <td class="char_exp_tag">家事経験</td>
+          <td class="char_exp_data">365</td>
+        </tr>
+        <tr>
+          <td class="char_exp_tag">被写経験</td>
+          <td class="char_exp_data">30</td>
+        </tr>
+        <tr>
+          <td class="char_exp_tag">歌唱経験</td>
+          <td class="char_exp_data">30</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>相性</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_relation">
+        <tr>
+          <td class="relation"><a class="relation_posi" href=#c0003>弦巻 マキ</a></td>
+          <td class="char_relation_data">150</td>
+        </tr>
+        <tr>
+          <td class="relation"><a class="relation_posi" href=#c0004>結月 ゆかり</a></td>
+          <td class="char_relation_data">150</td>
+        </tr>
+        <tr>
+          <td class="relation"><a class="relation_posi" href=#c0010>東北 きりたん</a></td>
+          <td class="char_relation_data">200</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>フラグ</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_flag">
+        <tr>
+          <td class="char_flag_tag">40</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">41</td>
+          <td class="char_flag_data">16</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">42</td>
+          <td class="char_flag_data">22</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">43</td>
+          <td class="char_flag_data">33</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">44</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">45</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">46</td>
+          <td class="char_flag_data">61</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  </table>
+<a name="c0006">
+<table class="char">
+  <tr>
+    <td class="char_name" colspan=4><h3>6. 琴葉 茜(茜)</h3></td>
+  </tr>
+  <tr><td colspan=4><h4>基本情報</h4></td>
+  <tr>
+      <td class="char_palam"><span class="life">体力:</span> <span class="char_param_data">1800</span></td>
+      <td class="char_palam"><span class="mind">気力:</span> <span class="char_param_data">1300</span></td>
+      <td class="char_palam_empty"></td>
+  </tr>
+  <tr><td colspan=4><h4>素質</h4></td></tr>
+  <tr>
+    <td colspan=3><div class="char_talent">
+      <span class="talent">処女</span>
+      <span class="talent">生意気</span>
+      <span class="talent">楽観的</span>
+      <span class="talent">目立ちたがり</span>
+      <span class="talent">小柄体型</span>
+      <span class="talent">Ａ敏感</span>
+      <span class="talent">貧乳</span>
+      <span class="talent">人気</span>
+      <span class="talent">VOICEROID</span>
+    </div></td>
+  </tr>
+  <tr><td colspan=4><h4>初期能力</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_ability">
+        <tr>
+          <td class="char_ability_tag">レズっ気</td>
+          <td class="char_ability_data">1</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>初期経験</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_exp">
+        <tr>
+          <td class="char_exp_tag">レズ経験</td>
+          <td class="char_exp_data">1</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>相性</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_relation">
+        <tr>
+          <td class="relation"><a class="relation_posi" href=#c0004>結月 ゆかり</a></td>
+          <td class="char_relation_data">120</td>
+        </tr>
+        <tr>
+          <td class="relation"><a class="relation_posi" href=#c0007>琴葉 葵</a></td>
+          <td class="char_relation_data">250</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>フラグ</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_flag">
+        <tr>
+          <td class="char_flag_tag">40</td>
+          <td class="char_flag_data">2</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">41</td>
+          <td class="char_flag_data">12</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">42</td>
+          <td class="char_flag_data">22</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">43</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">44</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">45</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">46</td>
+          <td class="char_flag_data">63</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  </table>
+<a name="c0007">
+<table class="char">
+  <tr>
+    <td class="char_name" colspan=4><h3>7. 琴葉 葵(葵)</h3></td>
+  </tr>
+  <tr><td colspan=4><h4>基本情報</h4></td>
+  <tr>
+      <td class="char_palam"><span class="life">体力:</span> <span class="char_param_data">1800</span></td>
+      <td class="char_palam"><span class="mind">気力:</span> <span class="char_param_data">1300</span></td>
+      <td class="char_palam_empty"></td>
+  </tr>
+  <tr><td colspan=4><h4>素質</h4></td></tr>
+  <tr>
+    <td colspan=3><div class="char_talent">
+      <span class="talent">処女</span>
+      <span class="talent">大人しい</span>
+      <span class="talent">保守的</span>
+      <span class="talent">抵抗</span>
+      <span class="talent">習得早い</span>
+      <span class="talent">舌使い</span>
+      <span class="talent">倒錯的</span>
+      <span class="talent">小柄体型</span>
+      <span class="talent">貧乳</span>
+      <span class="talent">VOICEROID</span>
+    </div></td>
+  </tr>
+  <tr><td colspan=4><h4>初期能力</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_ability">
+        <tr>
+          <td class="char_ability_tag">サドっ気</td>
+          <td class="char_ability_data">1</td>
+        </tr>
+        <tr>
+          <td class="char_ability_tag">レズっ気</td>
+          <td class="char_ability_data">1</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>初期経験</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_exp">
+        <tr>
+          <td class="char_exp_tag">レズ経験</td>
+          <td class="char_exp_data">1</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>相性</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_relation">
+        <tr>
+          <td class="relation"><a class="relation_posi" href=#c0004>結月 ゆかり</a></td>
+          <td class="char_relation_data">120</td>
+        </tr>
+        <tr>
+          <td class="relation"><a class="relation_posi" href=#c0007>琴葉 葵</a></td>
+          <td class="char_relation_data">250</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>フラグ</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_flag">
+        <tr>
+          <td class="char_flag_tag">40</td>
+          <td class="char_flag_data">2</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">41</td>
+          <td class="char_flag_data">12</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">42</td>
+          <td class="char_flag_data">22</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">43</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">44</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">45</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">46</td>
+          <td class="char_flag_data">63</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  </table>
+<a name="c0008">
+<table class="char">
+  <tr>
+    <td class="char_name" colspan=4><h3>8. 水奈瀬 コウ(コウ)</h3></td>
+  </tr>
+  <tr><td colspan=4><h4>基本情報</h4></td>
+  <tr>
+      <td class="char_palam"><span class="life">体力:</span> <span class="char_param_data">2000</span></td>
+      <td class="char_palam"><span class="mind">気力:</span> <span class="char_param_data">2000</span></td>
+      <td class="char_palam"><span class="sei">射精:</span> <span class="char_param_data">10000</span></td>
+  </tr>
+  <tr>
+  </tr>
+  <tr><td colspan=4><h4>素質</h4></td></tr>
+  <tr>
+    <td colspan=3><div class="char_talent">
+      <span class="talent">反抗的</span>
+      <span class="talent">自制心</span>
+      <span class="talent">汚臭鈍感</span>
+      <span class="talent">オトコ</span>
+      <span class="talent">VOICEROID</span>
+    </div></td>
+  </tr>
+  <tr><td colspan=4><h4>フラグ</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_flag">
+        <tr>
+          <td class="char_flag_tag">40</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">41</td>
+          <td class="char_flag_data">11</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">42</td>
+          <td class="char_flag_data">24</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">43</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">44</td>
+          <td class="char_flag_data">44</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">45</td>
+          <td class="char_flag_data">51</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">46</td>
+          <td class="char_flag_data">63</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  </table>
+<a name="c0009">
+<table class="char">
+  <tr>
+    <td class="char_name" colspan=4><h3>9. 京町 セイカ(セイカ)</h3></td>
+  </tr>
+  <tr><td colspan=4><h4>基本情報</h4></td>
+  <tr>
+      <td class="char_palam"><span class="life">体力:</span> <span class="char_param_data">2000</span></td>
+      <td class="char_palam"><span class="mind">気力:</span> <span class="char_param_data">2000</span></td>
+      <td class="char_palam_empty"></td>
+  </tr>
+  <tr><td colspan=4><h4>素質</h4></td></tr>
+  <tr>
+    <td colspan=3><div class="char_talent">
+      <span class="talent">気丈</span>
+      <span class="talent">大人しい</span>
+      <span class="talent">一線越えない</span>
+      <span class="talent">痛みに強い</span>
+      <span class="talent">濡れやすい</span>
+      <span class="talent">回復遅い</span>
+      <span class="talent">VOICEROID</span>
+    </div></td>
+  </tr>
+  <tr><td colspan=4><h4>初期能力</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_ability">
+        <tr>
+          <td class="char_ability_tag">Ｖ感覚</td>
+          <td class="char_ability_data">1</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>初期経験</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_exp">
+        <tr>
+          <td class="char_exp_tag">Ｖ経験</td>
+          <td class="char_exp_data">4</td>
+        </tr>
+        <tr>
+          <td class="char_exp_tag">性交経験</td>
+          <td class="char_exp_data">4</td>
+        </tr>
+        <tr>
+          <td class="char_exp_tag">異常経験</td>
+          <td class="char_exp_data">1</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>フラグ</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_flag">
+        <tr>
+          <td class="char_flag_tag">40</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">41</td>
+          <td class="char_flag_data">12</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">42</td>
+          <td class="char_flag_data">22</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">43</td>
+          <td class="char_flag_data">32</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">44</td>
+          <td class="char_flag_data">41</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">45</td>
+          <td class="char_flag_data">51</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">46</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  </table>
+<a name="c0010">
+<table class="char">
+  <tr>
+    <td class="char_name" colspan=4><h3>10. 東北 きりたん(きりたん)</h3></td>
+  </tr>
+  <tr><td colspan=4><h4>基本情報</h4></td>
+  <tr>
+      <td class="char_palam"><span class="life">体力:</span> <span class="char_param_data">1600</span></td>
+      <td class="char_palam"><span class="mind">気力:</span> <span class="char_param_data">1300</span></td>
+      <td class="char_palam_empty"></td>
+  </tr>
+  <tr><td colspan=4><h4>素質</h4></td></tr>
+  <tr>
+    <td colspan=3><div class="char_talent">
+      <span class="talent">処女</span>
+      <span class="talent">臆病</span>
+      <span class="talent">一線越えない</span>
+      <span class="talent">痛みに弱い</span>
+      <span class="talent">針さばき</span>
+      <span class="talent">自慰しやすい</span>
+      <span class="talent">倒錯的</span>
+      <span class="talent">男嫌い</span>
+      <span class="talent">小柄体型</span>
+      <span class="talent">Ｖ鈍感</span>
+      <span class="talent">絶壁</span>
+      <span class="talent">回復早い</span>
+      <span class="talent">VOICEROID</span>
+    </div></td>
+  </tr>
+  <tr><td colspan=4><h4>初期能力</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_ability">
+        <tr>
+          <td class="char_ability_tag">レズっ気</td>
+          <td class="char_ability_data">3</td>
+        </tr>
+        <tr>
+          <td class="char_ability_tag">料理技能</td>
+          <td class="char_ability_data">2</td>
+        </tr>
+        <tr>
+          <td class="char_ability_tag">撮影技能</td>
+          <td class="char_ability_data">2</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>初期経験</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_exp">
+        <tr>
+          <td class="char_exp_tag">レズ経験</td>
+          <td class="char_exp_data">3</td>
+        </tr>
+        <tr>
+          <td class="char_exp_tag">家事経験</td>
+          <td class="char_exp_data">25</td>
+        </tr>
+        <tr>
+          <td class="char_exp_tag">撮影経験</td>
+          <td class="char_exp_data">30</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>相性</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_relation">
+        <tr>
+          <td class="relation"><a class="relation_posi" href=#c0005>東北 ずん子</a></td>
+          <td class="char_relation_data">300</td>
+        </tr>
+        <tr>
+          <td class="relation"><a class="relation_posi" href=#c0081>音街 ウナ</a></td>
+          <td class="char_relation_data">150</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>フラグ</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_flag">
+        <tr>
+          <td class="char_flag_tag">40</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">41</td>
+          <td class="char_flag_data">16</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">42</td>
+          <td class="char_flag_data">22</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">43</td>
+          <td class="char_flag_data">33</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">44</td>
+          <td class="char_flag_data">42</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">45</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">46</td>
+          <td class="char_flag_data">61</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  </table>
+<a name="c0050">
+<table class="char">
+  <tr>
+    <td class="char_name" colspan=4><h3>50. さとう ささら(ささら)</h3></td>
+  </tr>
+  <tr><td colspan=4><h4>基本情報</h4></td>
+  <tr>
+      <td class="char_palam"><span class="life">体力:</span> <span class="char_param_data">1800</span></td>
+      <td class="char_palam"><span class="mind">気力:</span> <span class="char_param_data">1300</span></td>
+      <td class="char_palam_empty"></td>
+  </tr>
+  <tr><td colspan=4><h4>素質</h4></td></tr>
+  <tr>
+    <td colspan=3><div class="char_talent">
+      <span class="talent">処女</span>
+      <span class="talent">生意気</span>
+      <span class="talent">好奇心</span>
+      <span class="talent">貞操無頓着</span>
+      <span class="talent">痛みに弱い</span>
+      <span class="talent">中毒しやすい</span>
+      <span class="talent">両刀</span>
+      <span class="talent">Ａ敏感</span>
+      <span class="talent">巨乳</span>
+      <span class="talent">CeVIO</span>
+    </div></td>
+  </tr>
+  <tr><td colspan=4><h4>初期能力</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_ability">
+        <tr>
+          <td class="char_ability_tag">従順</td>
+          <td class="char_ability_data">1</td>
+        </tr>
+        <tr>
+          <td class="char_ability_tag">マゾっ気</td>
+          <td class="char_ability_data">1</td>
+        </tr>
+        <tr>
+          <td class="char_ability_tag">撮影技能</td>
+          <td class="char_ability_data">1</td>
+        </tr>
+        <tr>
+          <td class="char_ability_tag">歌唱技能</td>
+          <td class="char_ability_data">2</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>初期経験</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_exp">
+        <tr>
+          <td class="char_exp_tag">歌唱経験</td>
+          <td class="char_exp_data">20</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>相性</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_relation">
+        <tr>
+          <td class="relation"><a class="relation_posi" href=#c0004>結月 ゆかり</a></td>
+          <td class="char_relation_data">120</td>
+        </tr>
+        <tr>
+          <td class="relation"><a class="relation_posi" href=#c0051>すずき つづみ</a></td>
+          <td class="char_relation_data">150</td>
+        </tr>
+        <tr>
+          <td class="relation"><a class="relation_posi" href=#c0052>タカハシ</a></td>
+          <td class="char_relation_data">120</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>フラグ</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_flag">
+        <tr>
+          <td class="char_flag_tag">40</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">41</td>
+          <td class="char_flag_data">11</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">42</td>
+          <td class="char_flag_data">22</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">43</td>
+          <td class="char_flag_data">31</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">44</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">45</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">46</td>
+          <td class="char_flag_data">63</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  </table>
+<a name="c0051">
+<table class="char">
+  <tr>
+    <td class="char_name" colspan=4><h3>51. すずき つづみ(つづみ)</h3></td>
+  </tr>
+  <tr><td colspan=4><h4>基本情報</h4></td>
+  <tr>
+      <td class="char_palam"><span class="life">体力:</span> <span class="char_param_data">1800</span></td>
+      <td class="char_palam"><span class="mind">気力:</span> <span class="char_param_data">1300</span></td>
+      <td class="char_palam_empty"></td>
+  </tr>
+  <tr><td colspan=4><h4>素質</h4></td></tr>
+  <tr>
+    <td colspan=3><div class="char_talent">
+      <span class="talent">大人しい</span>
+      <span class="talent">ツンデレ</span>
+      <span class="talent">感情乏しい</span>
+      <span class="talent">一線越えない</span>
+      <span class="talent">抑圧</span>
+      <span class="talent">快感の否定</span>
+      <span class="talent">男嫌い</span>
+      <span class="talent">Ｂ鈍感</span>
+      <span class="talent">CeVIO</span>
+    </div></td>
+  </tr>
+  <tr><td colspan=4><h4>初期能力</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_ability">
+        <tr>
+          <td class="char_ability_tag">レズっ気</td>
+          <td class="char_ability_data">1</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>初期経験</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_exp">
+        <tr>
+          <td class="char_exp_tag">Ｖ経験</td>
+          <td class="char_exp_data">10</td>
+        </tr>
+        <tr>
+          <td class="char_exp_tag">絶頂経験</td>
+          <td class="char_exp_data">5</td>
+        </tr>
+        <tr>
+          <td class="char_exp_tag">性交経験</td>
+          <td class="char_exp_data">10</td>
+        </tr>
+        <tr>
+          <td class="char_exp_tag">精液経験</td>
+          <td class="char_exp_data">5</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>相性</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_relation">
+        <tr>
+          <td class="relation"><a class="relation_posi" href=#c0050>さとう ささら</a></td>
+          <td class="char_relation_data">200</td>
+        </tr>
+        <tr>
+          <td class="relation"><a class="relation_posi" href=#c0052>タカハシ</a></td>
+          <td class="char_relation_data">120</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>フラグ</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_flag">
+        <tr>
+          <td class="char_flag_tag">40</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">41</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">42</td>
+          <td class="char_flag_data">22</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">43</td>
+          <td class="char_flag_data">31</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">44</td>
+          <td class="char_flag_data">44</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">45</td>
+          <td class="char_flag_data">51</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">46</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  </table>
+<a name="c0052">
+<table class="char">
+  <tr>
+    <td class="char_name" colspan=4><h3>52. タカハシ</h3></td>
+  </tr>
+  <tr><td colspan=4><h4>基本情報</h4></td>
+  <tr>
+      <td class="char_palam"><span class="life">体力:</span> <span class="char_param_data">2200</span></td>
+      <td class="char_palam"><span class="mind">気力:</span> <span class="char_param_data">1800</span></td>
+      <td class="char_palam"><span class="sei">射精:</span> <span class="char_param_data">10000</span></td>
+  </tr>
+  <tr>
+  </tr>
+  <tr><td colspan=4><h4>素質</h4></td></tr>
+  <tr>
+    <td colspan=3><div class="char_talent">
+      <span class="talent">楽観的</span>
+      <span class="talent">Ｂ敏感</span>
+      <span class="talent">オトコ</span>
+      <span class="talent">CeVIO</span>
+    </div></td>
+  </tr>
+  <tr><td colspan=4><h4>初期能力</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_ability">
+        <tr>
+          <td class="char_ability_tag">Ｃ感覚</td>
+          <td class="char_ability_data">1</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>初期経験</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_exp">
+        <tr>
+          <td class="char_exp_tag">絶頂経験</td>
+          <td class="char_exp_data">5</td>
+        </tr>
+        <tr>
+          <td class="char_exp_tag">自慰経験</td>
+          <td class="char_exp_data">10</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>相性</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_relation">
+        <tr>
+          <td class="relation"><a class="relation_posi" href=#c0050>さとう ささら</a></td>
+          <td class="char_relation_data">150</td>
+        </tr>
+        <tr>
+          <td class="relation"><a class="relation_posi" href=#c0051>すずき つづみ</a></td>
+          <td class="char_relation_data">120</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>フラグ</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_flag">
+        <tr>
+          <td class="char_flag_tag">40</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">41</td>
+          <td class="char_flag_data">11</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">42</td>
+          <td class="char_flag_data">24</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">43</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">44</td>
+          <td class="char_flag_data">44</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">45</td>
+          <td class="char_flag_data">51</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">46</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  </table>
+<a name="c0053">
+<table class="char">
+  <tr>
+    <td class="char_name" colspan=4><h3>53. ＯＮＥ -ARIA ON THE PLANETES-(ＯＮＥ)</h3></td>
+  </tr>
+  <tr><td colspan=4><h4>基本情報</h4></td>
+  <tr>
+      <td class="char_palam"><span class="life">体力:</span> <span class="char_param_data">2000</span></td>
+      <td class="char_palam"><span class="mind">気力:</span> <span class="char_param_data">2000</span></td>
+      <td class="char_palam_empty"></td>
+  </tr>
+  <tr><td colspan=4><h4>素質</h4></td></tr>
+  <tr>
+    <td colspan=3><div class="char_talent">
+      <span class="talent">処女</span>
+      <span class="talent">反抗的</span>
+      <span class="talent">プライド高い</span>
+      <span class="talent">生意気</span>
+      <span class="talent">一線越えない</span>
+      <span class="talent">濡れにくい</span>
+      <span class="talent">舌使い</span>
+      <span class="talent">汚臭敏感</span>
+      <span class="talent">快感に素直</span>
+      <span class="talent">魅力</span>
+      <span class="talent">Ｖ敏感</span>
+      <span class="talent">Ｂ敏感</span>
+      <span class="talent">貧乳</span>
+      <span class="talent">CeVIO</span>
+    </div></td>
+  </tr>
+  <tr><td colspan=4><h4>初期能力</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_ability">
+        <tr>
+          <td class="char_ability_tag">歌唱技能</td>
+          <td class="char_ability_data">3</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>初期経験</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_exp">
+        <tr>
+          <td class="char_exp_tag">被写経験</td>
+          <td class="char_exp_data">5</td>
+        </tr>
+        <tr>
+          <td class="char_exp_tag">歌唱経験</td>
+          <td class="char_exp_data">45</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>相性</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_relation">
+        <tr>
+          <td class="relation"><a class="relation_posi" href=#c0054>ＩＡ -ARIA ON THE PLANETES-</a></td>
+          <td class="char_relation_data">200</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>フラグ</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_flag">
+        <tr>
+          <td class="char_flag_tag">40</td>
+          <td class="char_flag_data">2</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">41</td>
+          <td class="char_flag_data">12</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">42</td>
+          <td class="char_flag_data">22</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">43</td>
+          <td class="char_flag_data">33</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">44</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">45</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">46</td>
+          <td class="char_flag_data">63</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  </table>
+<a name="c0054">
+<table class="char">
+  <tr>
+    <td class="char_name" colspan=4><h3>54. ＩＡ -ARIA ON THE PLANETES-(ＩＡ)</h3></td>
+  </tr>
+  <tr><td colspan=4><h4>基本情報</h4></td>
+  <tr>
+      <td class="char_palam"><span class="life">体力:</span> <span class="char_param_data">2200</span></td>
+      <td class="char_palam"><span class="mind">気力:</span> <span class="char_param_data">2000</span></td>
+      <td class="char_palam_empty"></td>
+  </tr>
+  <tr><td colspan=4><h4>素質</h4></td></tr>
+  <tr>
+    <td colspan=3><div class="char_talent">
+      <span class="talent">処女</span>
+      <span class="talent">臆病</span>
+      <span class="talent">一線越えない</span>
+      <span class="talent">抑圧</span>
+      <span class="talent">抵抗</span>
+      <span class="talent">痛みに強い</span>
+      <span class="talent">薬毒耐性</span>
+      <span class="talent">汚臭敏感</span>
+      <span class="talent">快感の否定</span>
+      <span class="talent">男嫌い</span>
+      <span class="talent">魅惑</span>
+      <span class="talent">謎の魅力</span>
+      <span class="talent">Ｂ鈍感</span>
+      <span class="talent">貧乳</span>
+      <span class="talent">人気</span>
+      <span class="talent">CeVIO</span>
+    </div></td>
+  </tr>
+  <tr><td colspan=4><h4>初期能力</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_ability">
+        <tr>
+          <td class="char_ability_tag">Ｃ感覚</td>
+          <td class="char_ability_data">1</td>
+        </tr>
+        <tr>
+          <td class="char_ability_tag">露出癖</td>
+          <td class="char_ability_data">1</td>
+        </tr>
+        <tr>
+          <td class="char_ability_tag">歌唱技能</td>
+          <td class="char_ability_data">5</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>初期経験</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_exp">
+        <tr>
+          <td class="char_exp_tag">自慰経験</td>
+          <td class="char_exp_data">1</td>
+        </tr>
+        <tr>
+          <td class="char_exp_tag">被写経験</td>
+          <td class="char_exp_data">50</td>
+        </tr>
+        <tr>
+          <td class="char_exp_tag">歌唱経験</td>
+          <td class="char_exp_data">180</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>相性</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_relation">
+        <tr>
+          <td class="relation"><a class="relation_posi" href=#c0053>ＯＮＥ -ARIA ON THE PLANETES-</a></td>
+          <td class="char_relation_data">200</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>フラグ</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_flag">
+        <tr>
+          <td class="char_flag_tag">40</td>
+          <td class="char_flag_data">2</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">41</td>
+          <td class="char_flag_data">12</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">42</td>
+          <td class="char_flag_data">22</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">43</td>
+          <td class="char_flag_data">32</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">44</td>
+          <td class="char_flag_data">41</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">45</td>
+          <td class="char_flag_data">51</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">46</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  </table>
+<a name="c0080">
+<table class="char">
+  <tr>
+    <td class="char_name" colspan=4><h3>80. ギャラ子</h3></td>
+  </tr>
+  <tr><td colspan=4><h4>基本情報</h4></td>
+  <tr>
+      <td class="char_palam"><span class="life">体力:</span> <span class="char_param_data">2000</span></td>
+      <td class="char_palam"><span class="mind">気力:</span> <span class="char_param_data">1800</span></td>
+      <td class="char_palam_empty"></td>
+  </tr>
+  <tr><td colspan=4><h4>素質</h4></td></tr>
+  <tr>
+    <td colspan=3><div class="char_talent">
+      <span class="talent">気丈</span>
+      <span class="talent">プライド高い</span>
+      <span class="talent">解放</span>
+      <span class="talent">薬毒耐性</span>
+      <span class="talent">汚臭敏感</span>
+      <span class="talent">快感に素直</span>
+      <span class="talent">小悪魔</span>
+      <span class="talent">魅惑</span>
+      <span class="talent">謎の魅力</span>
+      <span class="talent">AITalk</span>
+    </div></td>
+  </tr>
+  <tr><td colspan=4><h4>初期能力</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_ability">
+        <tr>
+          <td class="char_ability_tag">Ｖ感覚</td>
+          <td class="char_ability_data">1</td>
+        </tr>
+        <tr>
+          <td class="char_ability_tag">歌唱技能</td>
+          <td class="char_ability_data">4</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>初期経験</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_exp">
+        <tr>
+          <td class="char_exp_tag">Ｖ経験</td>
+          <td class="char_exp_data">3</td>
+        </tr>
+        <tr>
+          <td class="char_exp_tag">自慰経験</td>
+          <td class="char_exp_data">3</td>
+        </tr>
+        <tr>
+          <td class="char_exp_tag">歌唱経験</td>
+          <td class="char_exp_data">100</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>フラグ</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_flag">
+        <tr>
+          <td class="char_flag_tag">40</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">41</td>
+          <td class="char_flag_data">15</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">42</td>
+          <td class="char_flag_data">22</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">43</td>
+          <td class="char_flag_data">31</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">44</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">45</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">46</td>
+          <td class="char_flag_data">63</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  </table>
+<a name="c0081">
+<table class="char">
+  <tr>
+    <td class="char_name" colspan=4><h3>81. 音街 ウナ(ウナ)</h3></td>
+  </tr>
+  <tr><td colspan=4><h4>基本情報</h4></td>
+  <tr>
+      <td class="char_palam"><span class="life">体力:</span> <span class="char_param_data">1600</span></td>
+      <td class="char_palam"><span class="mind">気力:</span> <span class="char_param_data">1300</span></td>
+      <td class="char_palam_empty"></td>
+  </tr>
+  <tr><td colspan=4><h4>素質</h4></td></tr>
+  <tr>
+    <td colspan=3><div class="char_talent">
+      <span class="talent">処女</span>
+      <span class="talent">目立ちたがり</span>
+      <span class="talent">貞操観念</span>
+      <span class="talent">恥じらい</span>
+      <span class="talent">中毒しやすい</span>
+      <span class="talent">小柄体型</span>
+      <span class="talent">Ｃ鈍感</span>
+      <span class="talent">Ａ敏感</span>
+      <span class="talent">絶壁</span>
+      <span class="talent">回復早い</span>
+      <span class="talent">人気</span>
+      <span class="talent">AITalk</span>
+    </div></td>
+  </tr>
+  <tr><td colspan=4><h4>初期能力</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_ability">
+        <tr>
+          <td class="char_ability_tag">歌唱技能</td>
+          <td class="char_ability_data">3</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>初期経験</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_exp">
+        <tr>
+          <td class="char_exp_tag">歌唱経験</td>
+          <td class="char_exp_data">40</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>相性</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_relation">
+        <tr>
+          <td class="relation"><a class="relation_posi" href=#c0010>東北 きりたん</a></td>
+          <td class="char_relation_data">150</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>フラグ</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_flag">
+        <tr>
+          <td class="char_flag_tag">40</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">41</td>
+          <td class="char_flag_data">12</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">42</td>
+          <td class="char_flag_data">22</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">43</td>
+          <td class="char_flag_data">32</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">44</td>
+          <td class="char_flag_data">41</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">45</td>
+          <td class="char_flag_data">52</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">46</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  </table>
+</p>
+</a>
+</div>
+</body>
+</html>
+=======
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=Shift_JIS">
+<title>eraVoiceroidA </title>
+<style type="text/css">
+<!--
+body {
+  color: #CCCCCC;
+  background-color: black;
+  font-family : Trebuchet MS, Arial, Helvetica, sans-serif;
+  font-weight : normal;
+  text-align : left;
+  line-height: 1.2em;
+  margin: 0px;
+  padding: 0px;
+}
+
+a {
+  text-decoration: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a.h {
+  color: #EE0000;
+}
+
+a.menu_char {
+  color: #EE0000;
+}
+
+h1 {
+  color: #EE0000;
+  font-size: 24pt;
+  line-height: 1.4em;
+  background-color: black;
+  margin: 4px 0px 12px 0px;
+  padding: 4px 8px 4px 8px;
+  border-top:   2px #990000 solid;;
+  border-bottom:2px #990000 solid;
+}
+
+h2 {
+  color: #EE0000;
+  font-size: 18pt;
+  line-height: 1.4em;
+  background-color: black;
+  margin: 4px 0px 12px 0px;
+  padding: 2px 4px 2px 16px;
+  border-top:   2px #990000 solid;;
+  border-bottom:2px #990000 solid;
+}
+
+h3 {
+  color: #EE0000;
+  font-size: 14pt;
+  line-height: 1.4em;
+  background-color: black;
+  margin: 0px;
+  padding: 1px 0px 0px 16px;
+  border-top:   2px #990000 solid;;
+  border-bottom:2px #990000 solid;
+}
+
+h4 {
+  color: #DD0000;
+  font-size: 12pt;
+  line-height: 1.4em;
+  background-color: black;
+  margin: 0px;
+  padding: 4px 0px 0px 32px;
+}
+
+.base {
+  width : 700px;
+  background-color : #333333;
+  margin : 0 auto;
+}
+
+table {
+  border: none;
+  border-spacing: 4px;
+  margin: 0px;
+  padding: 0px;
+}
+
+table.gamebase {
+  margin: 0px 0px 32px 70px;
+  border-spacing: 16px 4px;
+}
+
+table.Ability {
+  margin: 0px 0px 32px 70px;
+}
+
+table.Palam {
+  margin: 0px 0px 32px 70px;
+}
+
+table.Talent {
+  margin: 0px 0px 32px 70px;
+}
+
+table.Item {
+  margin: 0px 0px 32px 70px;
+}
+
+table.Mark {
+  margin: 0px 0px 32px 70px;
+}
+
+table.Train {
+  margin: 0px 0px 32px 70px;
+}
+
+table.Exp {
+  margin: 0px 0px 32px 70px;
+}
+
+td.tag {
+  font-weight: bold;
+	text-align: right;
+  white-space: nowrap;
+}
+
+td.data {
+  padding: 0px 16px 0px 0px;
+}
+
+table.char {
+  width: 600px;
+  border: 0px;
+  background: #555555;
+  margin: 8px 0px 48px 70px;
+  padding: 0px;
+}
+
+td.char_palam {
+  width: 180px;
+}
+
+span.life {
+  color: #EE0000;
+  font-weight: bold;
+  margin-left: 42px;
+}
+span.mind {
+  color: #2222FF;
+  font-weight: bold;
+  margin-left: 42px;
+}
+span.sei {
+  color: #EEEEEE;
+  font-weight: bold;
+  margin-left: 42px;
+}
+
+table.char_ability {
+  min-width: 190px;
+  font-weight: bold;
+  text-align: right;
+  margin-left: 42px;
+}
+
+td.char_ability_tag {
+  width: 124px;
+}
+
+td.char_ability_data {
+  width: 32px;
+}
+
+div.char_talent {
+  font-weight: bold;
+  line-height: 1.6em;
+  margin-left: 42px;
+}
+
+span.talent {
+  white-space: nowrap;
+  margin: 0px 5px 0px 0px;
+}
+
+table.char_exp {
+  font-weight: bold;
+  text-align: right;
+  margin-left: 42px;
+}
+
+td.char_exp_tag {
+  width: 124px;
+}
+
+td.char_exp_data {
+  width: 32px;
+}
+
+table.char_relation {
+  font-weight: bold;
+  text-align: right;
+  margin-left: 42px;
+}
+
+td.relation {
+  width: 124px;
+}
+
+
+a.relation_posi {
+  color: #EEAAAA;
+}
+
+a.relation_nega {
+  color: #9999EE;
+}
+
+a.relation_normal {
+  color: #CCCCCC;
+}
+
+td.char_relation_data {
+  width: 32px;
+}
+
+table.char_flag {
+  font-weight: bold;
+  text-align: right;
+  margin-left: 42px;
+}
+
+td.char_flag_tag {
+  width: 124px;
+}
+
+td.char_flag_data {
+  width: 32px;
+}
+
+
+body.menu_base {
+  color: #CCCCCC;
+  background-color: black;
+  font-family : Trebuchet MS, Arial, Helvetica, sans-serif;
+  font-weight : normal;
+  text-align : left;
+  line-height: 1.2em;
+  margin: 0px;
+  padding: 0px;
+}
+
+.menu_base {
+  width : 140px;
+  margin : 0 auto;
+}
+
+h1.menu {
+  font-size: 14pt;
+  margin: 2px 0px 2px 0px;
+  padding: 6px 0px 6px 8px;
+}
+
+h2.menu {
+  font-size: 11pt;
+  margin: 12px 0px 2px 0px;
+  padding: 2px 0px 2px 14px;
+}
+
+
+div.menu_char {
+  font-size: 10px;
+  font-weight: bold;
+  margin: 0px 0px 0px 24px;
+  padding: 0px;
+}
+
+div.datasummary {
+  float: left;
+  margin: 0px 0px 4px 1px;
+}
+
+table.datasummary {
+  table-layout: fixed;
+  width: 130px;
+  padding: 0px;
+  line-height: 1.05em;
+  border-collapse: collapse; 
+  letter-spacing: -0.05em;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+th.summarytag {
+  width: 130px;
+  color: #EE0000;
+  background-color: #black;
+  padding-right: 4px;
+  text-align: center;
+  font-weight: bold;
+  border: 1px #666666 solid;
+}
+th.summarytag_empty {
+  color:            #333333;
+  background-color: #333333;
+  border: none;
+}
+
+td.summarytag {
+  width: 26px;
+  color: #990000;
+  background-color: #black;
+  padding-right: 4px;
+  text-align: right;
+  font-weight: bold;
+  border: 1px #666666 solid;
+}
+td.summarytag_empty {
+  color:            #333333;
+  background-color: #333333;
+  border: 1px #333333 solid;
+}
+
+td.summarydata {
+  width: 98px;
+  background-color: #222222;
+  padding-left: 4px;
+  font-size: small;
+  border: 1px #666666 solid;
+}
+td.summarydata_empty {
+  color:            #333333;
+  background-color: #333333;
+  border: 1px #333333 solid;
+}
+-->
+</style>
+</head>
+<body>
+<div class="base">
+<h1>eraVoiceroidA </h1>
+<a name="gamebase">
+<h2>ゲーム基本情報</h2>
+<table class="gamebase">
+  <tr>
+    <td class="tag">タイトル</td>
+    <td class="data">eraVoiceroidA </td>
+  </tr>
+  <tr>
+    <td class="tag">作者</td>
+    <td class="data">average</td>
+  </tr>
+  <tr>
+    <td class="tag">コード</td>
+    <td class="data">8572958</td>
+  </tr>
+  <tr>
+    <td class="tag">バージョン</td>
+    <td class="data">0002</td>
+  </tr>
+  <tr>
+    <td class="tag">追加情報</td>
+    <td class="data">※これは調教SLG作成ツールerakanonの改変・再配布です。</td>
+  </tr>
+  <tr>
+    <td class="tag">バージョン違い認める</td>
+    <td class="data">0000</td>
+  </tr>
+</table>
+</a>
+<a name="char_list">
+<h2>キャラ情報</h2>
+<p class="char_list">
+<a name="c0000">
+<table class="char">
+  <tr>
+    <td class="char_name" colspan=4><h3>0. あなた</h3></td>
+  </tr>
+  <tr><td colspan=4><h4>基本情報</h4></td>
+  <tr>
+      <td class="char_palam"><span class="life">体力:</span> <span class="char_param_data">5000</span></td>
+      <td class="char_palam"><span class="mind">気力:</span> <span class="char_param_data">3000</span></td>
+      <td class="char_palam"><span class="sei">射精:</span> <span class="char_param_data">10000</span></td>
+  </tr>
+  <tr>
+  </tr>
+  <tr><td colspan=4><h4>素質</h4></td></tr>
+  <tr>
+    <td colspan=3><div class="char_talent">
+      <span class="talent">オトコ</span>
+    </div></td>
+  </tr>
+  <tr><td colspan=4><h4>初期能力</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_ability">
+        <tr>
+          <td class="char_ability_tag">サドっ気</td>
+          <td class="char_ability_data">1</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>フラグ</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_flag">
+        <tr>
+          <td class="char_flag_tag">40</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">41</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">42</td>
+          <td class="char_flag_data">23</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">43</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">44</td>
+          <td class="char_flag_data">44</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">45</td>
+          <td class="char_flag_data">51</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">46</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  </table>
+<a name="c0001">
+<table class="char">
+  <tr>
+    <td class="char_name" colspan=4><h3>1. 月読 ショウタ(ショウタ)</h3></td>
+  </tr>
+  <tr><td colspan=4><h4>基本情報</h4></td>
+  <tr>
+      <td class="char_palam"><span class="life">体力:</span> <span class="char_param_data">1200</span></td>
+      <td class="char_palam"><span class="mind">気力:</span> <span class="char_param_data">1000</span></td>
+      <td class="char_palam"><span class="sei">射精:</span> <span class="char_param_data">10000</span></td>
+  </tr>
+  <tr>
+  </tr>
+  <tr><td colspan=4><h4>素質</h4></td></tr>
+  <tr>
+    <td colspan=3><div class="char_talent">
+      <span class="talent">生意気</span>
+      <span class="talent">抵抗</span>
+      <span class="talent">痛みに弱い</span>
+      <span class="talent">習得早い</span>
+      <span class="talent">おもらし癖</span>
+      <span class="talent">汚れ無視</span>
+      <span class="talent">快感に素直</span>
+      <span class="talent">小柄体型</span>
+      <span class="talent">Ｃ鈍感</span>
+      <span class="talent">Ａ鈍感</span>
+      <span class="talent">Ｂ鈍感</span>
+      <span class="talent">回復早い</span>
+      <span class="talent">オトコ</span>
+      <span class="talent">幼稚</span>
+      <span class="talent">VOICEROID</span>
+    </div></td>
+  </tr>
+  <tr><td colspan=4><h4>相性</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_relation">
+        <tr>
+          <td class="relation"><a class="relation_posi" href=#c0002>月読 アイ</a></td>
+          <td class="char_relation_data">150</td>
+        </tr>
+        <tr>
+          <td class="relation"><a class="relation_posi" href=#c0053>ＯＮＥ -ARIA ON THE PLANETES-</a></td>
+          <td class="char_relation_data">120</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>フラグ</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_flag">
+        <tr>
+          <td class="char_flag_tag">40</td>
+          <td class="char_flag_data">2</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">41</td>
+          <td class="char_flag_data">11</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">42</td>
+          <td class="char_flag_data">25</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">43</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">44</td>
+          <td class="char_flag_data">44</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">45</td>
+          <td class="char_flag_data">51</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">46</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  </table>
+<a name="c0002">
+<table class="char">
+  <tr>
+    <td class="char_name" colspan=4><h3>2. 月読 アイ(アイ)</h3></td>
+  </tr>
+  <tr><td colspan=4><h4>基本情報</h4></td>
+  <tr>
+      <td class="char_palam"><span class="life">体力:</span> <span class="char_param_data">1000</span></td>
+      <td class="char_palam"><span class="mind">気力:</span> <span class="char_param_data">1000</span></td>
+      <td class="char_palam_empty"></td>
+  </tr>
+  <tr><td colspan=4><h4>素質</h4></td></tr>
+  <tr>
+    <td colspan=3><div class="char_talent">
+      <span class="talent">処女</span>
+      <span class="talent">素直</span>
+      <span class="talent">生意気</span>
+      <span class="talent">貞操無頓着</span>
+      <span class="talent">抵抗</span>
+      <span class="talent">痛みに弱い</span>
+      <span class="talent">習得早い</span>
+      <span class="talent">おもらし癖</span>
+      <span class="talent">汚れ無視</span>
+      <span class="talent">快感に素直</span>
+      <span class="talent">小柄体型</span>
+      <span class="talent">Ｃ鈍感</span>
+      <span class="talent">Ｖ鈍感</span>
+      <span class="talent">Ａ鈍感</span>
+      <span class="talent">Ｂ鈍感</span>
+      <span class="talent">絶壁</span>
+      <span class="talent">回復早い</span>
+      <span class="talent">幼児／幼児退行</span>
+      <span class="talent">幼稚</span>
+      <span class="talent">VOICEROID</span>
+    </div></td>
+  </tr>
+  <tr><td colspan=4><h4>相性</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_relation">
+        <tr>
+          <td class="relation"><a class="relation_posi" href=#c0001>月読 ショウタ</a></td>
+          <td class="char_relation_data">150</td>
+        </tr>
+        <tr>
+          <td class="relation"><a class="relation_posi" href=#c0003>弦巻 マキ</a></td>
+          <td class="char_relation_data">120</td>
+        </tr>
+        <tr>
+          <td class="relation"><a class="relation_posi" href=#c0004>結月 ゆかり</a></td>
+          <td class="char_relation_data">120</td>
+        </tr>
+        <tr>
+          <td class="relation"><a class="relation_nega" href=#c0052>タカハシ</a></td>
+          <td class="char_relation_data">80</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>フラグ</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_flag">
+        <tr>
+          <td class="char_flag_tag">40</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">41</td>
+          <td class="char_flag_data">11</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">42</td>
+          <td class="char_flag_data">21</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">43</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">44</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">45</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">46</td>
+          <td class="char_flag_data">63</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  </table>
+<a name="c0003">
+<table class="char">
+  <tr>
+    <td class="char_name" colspan=4><h3>3. 弦巻 マキ(マキ)</h3></td>
+  </tr>
+  <tr><td colspan=4><h4>基本情報</h4></td>
+  <tr>
+      <td class="char_palam"><span class="life">体力:</span> <span class="char_param_data">2000</span></td>
+      <td class="char_palam"><span class="mind">気力:</span> <span class="char_param_data">1600</span></td>
+      <td class="char_palam_empty"></td>
+  </tr>
+  <tr><td colspan=4><h4>素質</h4></td></tr>
+  <tr>
+    <td colspan=3><div class="char_talent">
+      <span class="talent">好奇心</span>
+      <span class="talent">楽観的</span>
+      <span class="talent">貞操観念</span>
+      <span class="talent">舌使い</span>
+      <span class="talent">快感に素直</span>
+      <span class="talent">魅力</span>
+      <span class="talent">Ｖ敏感</span>
+      <span class="talent">巨乳</span>
+      <span class="talent">VOICEROID</span>
+    </div></td>
+  </tr>
+  <tr><td colspan=4><h4>初期能力</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_ability">
+        <tr>
+          <td class="char_ability_tag">従順</td>
+          <td class="char_ability_data">1</td>
+        </tr>
+        <tr>
+          <td class="char_ability_tag">料理技能</td>
+          <td class="char_ability_data">1</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>初期経験</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_exp">
+        <tr>
+          <td class="char_exp_tag">家事経験</td>
+          <td class="char_exp_data">10</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>相性</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_relation">
+        <tr>
+          <td class="relation"><a class="relation_posi" href=#c0004>結月 ゆかり</a></td>
+          <td class="char_relation_data">200</td>
+        </tr>
+        <tr>
+          <td class="relation"><a class="relation_posi" href=#c0005>東北 ずん子</a></td>
+          <td class="char_relation_data">150</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>フラグ</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_flag">
+        <tr>
+          <td class="char_flag_tag">40</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">41</td>
+          <td class="char_flag_data">12</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">42</td>
+          <td class="char_flag_data">22</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">43</td>
+          <td class="char_flag_data">31</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">44</td>
+          <td class="char_flag_data">41</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">45</td>
+          <td class="char_flag_data">51</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">46</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  </table>
+<a name="c0004">
+<table class="char">
+  <tr>
+    <td class="char_name" colspan=4><h3>4. 結月 ゆかり(ゆかり)</h3></td>
+  </tr>
+  <tr><td colspan=4><h4>基本情報</h4></td>
+  <tr>
+      <td class="char_palam"><span class="life">体力:</span> <span class="char_param_data">2000</span></td>
+      <td class="char_palam"><span class="mind">気力:</span> <span class="char_param_data">1500</span></td>
+      <td class="char_palam_empty"></td>
+  </tr>
+  <tr><td colspan=4><h4>素質</h4></td></tr>
+  <tr>
+    <td colspan=3><div class="char_talent">
+      <span class="talent">処女</span>
+      <span class="talent">目立ちたがり</span>
+      <span class="talent">恥じらい</span>
+      <span class="talent">献身的</span>
+      <span class="talent">謎の魅力</span>
+      <span class="talent">貧乳</span>
+      <span class="talent">人気</span>
+      <span class="talent">VOICEROID</span>
+    </div></td>
+  </tr>
+  <tr><td colspan=4><h4>初期能力</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_ability">
+        <tr>
+          <td class="char_ability_tag">撮影技能</td>
+          <td class="char_ability_data">1</td>
+        </tr>
+        <tr>
+          <td class="char_ability_tag">歌唱技能</td>
+          <td class="char_ability_data">3</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>初期経験</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_exp">
+        <tr>
+          <td class="char_exp_tag">被写経験</td>
+          <td class="char_exp_data">5</td>
+        </tr>
+        <tr>
+          <td class="char_exp_tag">歌唱経験</td>
+          <td class="char_exp_data">40</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>相性</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_relation">
+        <tr>
+          <td class="relation"><a class="relation_posi" href=#c0003>弦巻 マキ</a></td>
+          <td class="char_relation_data">150</td>
+        </tr>
+        <tr>
+          <td class="relation"><a class="relation_posi" href=#c0005>東北 ずん子</a></td>
+          <td class="char_relation_data">120</td>
+        </tr>
+        <tr>
+          <td class="relation"><a class="relation_posi" href=#c0050>さとう ささら</a></td>
+          <td class="char_relation_data">120</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>フラグ</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_flag">
+        <tr>
+          <td class="char_flag_tag">40</td>
+          <td class="char_flag_data">7</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">41</td>
+          <td class="char_flag_data">12</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">42</td>
+          <td class="char_flag_data">22</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">43</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">44</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">45</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">46</td>
+          <td class="char_flag_data">63</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  </table>
+<a name="c0005">
+<table class="char">
+  <tr>
+    <td class="char_name" colspan=4><h3>5. 東北 ずん子(ずん子)</h3></td>
+  </tr>
+  <tr><td colspan=4><h4>基本情報</h4></td>
+  <tr>
+      <td class="char_palam"><span class="life">体力:</span> <span class="char_param_data">2000</span></td>
+      <td class="char_palam"><span class="mind">気力:</span> <span class="char_param_data">1600</span></td>
+      <td class="char_palam_empty"></td>
+  </tr>
+  <tr><td colspan=4><h4>素質</h4></td></tr>
+  <tr>
+    <td colspan=3><div class="char_talent">
+      <span class="talent">処女</span>
+      <span class="talent">大人しい</span>
+      <span class="talent">プライド低い</span>
+      <span class="talent">痛みに強い</span>
+      <span class="talent">濡れやすい</span>
+      <span class="talent">習得早い</span>
+      <span class="talent">針さばき</span>
+      <span class="talent">両刀</span>
+      <span class="talent">Ｃ敏感</span>
+      <span class="talent">回復早い</span>
+      <span class="talent">鼓舞</span>
+      <span class="talent">狂気</span>
+      <span class="talent">人気</span>
+      <span class="talent">VOICEROID</span>
+    </div></td>
+  </tr>
+  <tr><td colspan=4><h4>初期能力</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_ability">
+        <tr>
+          <td class="char_ability_tag">Ｃ感覚</td>
+          <td class="char_ability_data">1</td>
+        </tr>
+        <tr>
+          <td class="char_ability_tag">料理技能</td>
+          <td class="char_ability_data">4</td>
+        </tr>
+        <tr>
+          <td class="char_ability_tag">歌唱技能</td>
+          <td class="char_ability_data">2</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>初期経験</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_exp">
+        <tr>
+          <td class="char_exp_tag">絶頂経験</td>
+          <td class="char_exp_data">1</td>
+        </tr>
+        <tr>
+          <td class="char_exp_tag">自慰経験</td>
+          <td class="char_exp_data">1</td>
+        </tr>
+        <tr>
+          <td class="char_exp_tag">家事経験</td>
+          <td class="char_exp_data">365</td>
+        </tr>
+        <tr>
+          <td class="char_exp_tag">被写経験</td>
+          <td class="char_exp_data">30</td>
+        </tr>
+        <tr>
+          <td class="char_exp_tag">歌唱経験</td>
+          <td class="char_exp_data">30</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>相性</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_relation">
+        <tr>
+          <td class="relation"><a class="relation_posi" href=#c0003>弦巻 マキ</a></td>
+          <td class="char_relation_data">150</td>
+        </tr>
+        <tr>
+          <td class="relation"><a class="relation_posi" href=#c0004>結月 ゆかり</a></td>
+          <td class="char_relation_data">150</td>
+        </tr>
+        <tr>
+          <td class="relation"><a class="relation_posi" href=#c0010>東北 きりたん</a></td>
+          <td class="char_relation_data">200</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>フラグ</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_flag">
+        <tr>
+          <td class="char_flag_tag">40</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">41</td>
+          <td class="char_flag_data">16</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">42</td>
+          <td class="char_flag_data">22</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">43</td>
+          <td class="char_flag_data">33</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">44</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">45</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">46</td>
+          <td class="char_flag_data">61</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  </table>
+<a name="c0006">
+<table class="char">
+  <tr>
+    <td class="char_name" colspan=4><h3>6. 琴葉 茜(茜)</h3></td>
+  </tr>
+  <tr><td colspan=4><h4>基本情報</h4></td>
+  <tr>
+      <td class="char_palam"><span class="life">体力:</span> <span class="char_param_data">1800</span></td>
+      <td class="char_palam"><span class="mind">気力:</span> <span class="char_param_data">1300</span></td>
+      <td class="char_palam_empty"></td>
+  </tr>
+  <tr><td colspan=4><h4>素質</h4></td></tr>
+  <tr>
+    <td colspan=3><div class="char_talent">
+      <span class="talent">処女</span>
+      <span class="talent">生意気</span>
+      <span class="talent">楽観的</span>
+      <span class="talent">目立ちたがり</span>
+      <span class="talent">小柄体型</span>
+      <span class="talent">Ａ敏感</span>
+      <span class="talent">貧乳</span>
+      <span class="talent">人気</span>
+      <span class="talent">VOICEROID</span>
+    </div></td>
+  </tr>
+  <tr><td colspan=4><h4>初期能力</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_ability">
+        <tr>
+          <td class="char_ability_tag">レズっ気</td>
+          <td class="char_ability_data">1</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>初期経験</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_exp">
+        <tr>
+          <td class="char_exp_tag">レズ経験</td>
+          <td class="char_exp_data">1</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>相性</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_relation">
+        <tr>
+          <td class="relation"><a class="relation_posi" href=#c0004>結月 ゆかり</a></td>
+          <td class="char_relation_data">120</td>
+        </tr>
+        <tr>
+          <td class="relation"><a class="relation_posi" href=#c0007>琴葉 葵</a></td>
+          <td class="char_relation_data">250</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>フラグ</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_flag">
+        <tr>
+          <td class="char_flag_tag">40</td>
+          <td class="char_flag_data">2</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">41</td>
+          <td class="char_flag_data">12</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">42</td>
+          <td class="char_flag_data">22</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">43</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">44</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">45</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">46</td>
+          <td class="char_flag_data">63</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  </table>
+<a name="c0007">
+<table class="char">
+  <tr>
+    <td class="char_name" colspan=4><h3>7. 琴葉 葵(葵)</h3></td>
+  </tr>
+  <tr><td colspan=4><h4>基本情報</h4></td>
+  <tr>
+      <td class="char_palam"><span class="life">体力:</span> <span class="char_param_data">1800</span></td>
+      <td class="char_palam"><span class="mind">気力:</span> <span class="char_param_data">1300</span></td>
+      <td class="char_palam_empty"></td>
+  </tr>
+  <tr><td colspan=4><h4>素質</h4></td></tr>
+  <tr>
+    <td colspan=3><div class="char_talent">
+      <span class="talent">処女</span>
+      <span class="talent">大人しい</span>
+      <span class="talent">保守的</span>
+      <span class="talent">抵抗</span>
+      <span class="talent">習得早い</span>
+      <span class="talent">舌使い</span>
+      <span class="talent">倒錯的</span>
+      <span class="talent">小柄体型</span>
+      <span class="talent">貧乳</span>
+      <span class="talent">VOICEROID</span>
+    </div></td>
+  </tr>
+  <tr><td colspan=4><h4>初期能力</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_ability">
+        <tr>
+          <td class="char_ability_tag">サドっ気</td>
+          <td class="char_ability_data">1</td>
+        </tr>
+        <tr>
+          <td class="char_ability_tag">レズっ気</td>
+          <td class="char_ability_data">1</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>初期経験</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_exp">
+        <tr>
+          <td class="char_exp_tag">レズ経験</td>
+          <td class="char_exp_data">1</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>相性</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_relation">
+        <tr>
+          <td class="relation"><a class="relation_posi" href=#c0004>結月 ゆかり</a></td>
+          <td class="char_relation_data">120</td>
+        </tr>
+        <tr>
+          <td class="relation"><a class="relation_posi" href=#c0007>琴葉 葵</a></td>
+          <td class="char_relation_data">250</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>フラグ</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_flag">
+        <tr>
+          <td class="char_flag_tag">40</td>
+          <td class="char_flag_data">2</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">41</td>
+          <td class="char_flag_data">12</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">42</td>
+          <td class="char_flag_data">22</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">43</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">44</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">45</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">46</td>
+          <td class="char_flag_data">63</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  </table>
+<a name="c0008">
+<table class="char">
+  <tr>
+    <td class="char_name" colspan=4><h3>8. 水奈瀬 コウ(コウ)</h3></td>
+  </tr>
+  <tr><td colspan=4><h4>基本情報</h4></td>
+  <tr>
+      <td class="char_palam"><span class="life">体力:</span> <span class="char_param_data">2000</span></td>
+      <td class="char_palam"><span class="mind">気力:</span> <span class="char_param_data">2000</span></td>
+      <td class="char_palam"><span class="sei">射精:</span> <span class="char_param_data">10000</span></td>
+  </tr>
+  <tr>
+  </tr>
+  <tr><td colspan=4><h4>素質</h4></td></tr>
+  <tr>
+    <td colspan=3><div class="char_talent">
+      <span class="talent">反抗的</span>
+      <span class="talent">自制心</span>
+      <span class="talent">汚臭鈍感</span>
+      <span class="talent">オトコ</span>
+      <span class="talent">VOICEROID</span>
+    </div></td>
+  </tr>
+  <tr><td colspan=4><h4>フラグ</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_flag">
+        <tr>
+          <td class="char_flag_tag">40</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">41</td>
+          <td class="char_flag_data">11</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">42</td>
+          <td class="char_flag_data">24</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">43</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">44</td>
+          <td class="char_flag_data">44</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">45</td>
+          <td class="char_flag_data">51</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">46</td>
+          <td class="char_flag_data">63</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  </table>
+<a name="c0009">
+<table class="char">
+  <tr>
+    <td class="char_name" colspan=4><h3>9. 京町 セイカ(セイカ)</h3></td>
+  </tr>
+  <tr><td colspan=4><h4>基本情報</h4></td>
+  <tr>
+      <td class="char_palam"><span class="life">体力:</span> <span class="char_param_data">2000</span></td>
+      <td class="char_palam"><span class="mind">気力:</span> <span class="char_param_data">2000</span></td>
+      <td class="char_palam_empty"></td>
+  </tr>
+  <tr><td colspan=4><h4>素質</h4></td></tr>
+  <tr>
+    <td colspan=3><div class="char_talent">
+      <span class="talent">気丈</span>
+      <span class="talent">大人しい</span>
+      <span class="talent">一線越えない</span>
+      <span class="talent">痛みに強い</span>
+      <span class="talent">濡れやすい</span>
+      <span class="talent">回復遅い</span>
+      <span class="talent">VOICEROID</span>
+    </div></td>
+  </tr>
+  <tr><td colspan=4><h4>初期能力</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_ability">
+        <tr>
+          <td class="char_ability_tag">Ｖ感覚</td>
+          <td class="char_ability_data">1</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>初期経験</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_exp">
+        <tr>
+          <td class="char_exp_tag">Ｖ経験</td>
+          <td class="char_exp_data">4</td>
+        </tr>
+        <tr>
+          <td class="char_exp_tag">性交経験</td>
+          <td class="char_exp_data">4</td>
+        </tr>
+        <tr>
+          <td class="char_exp_tag">異常経験</td>
+          <td class="char_exp_data">1</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>フラグ</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_flag">
+        <tr>
+          <td class="char_flag_tag">40</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">41</td>
+          <td class="char_flag_data">12</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">42</td>
+          <td class="char_flag_data">22</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">43</td>
+          <td class="char_flag_data">32</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">44</td>
+          <td class="char_flag_data">41</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">45</td>
+          <td class="char_flag_data">51</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">46</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  </table>
+<a name="c0010">
+<table class="char">
+  <tr>
+    <td class="char_name" colspan=4><h3>10. 東北 きりたん(きりたん)</h3></td>
+  </tr>
+  <tr><td colspan=4><h4>基本情報</h4></td>
+  <tr>
+      <td class="char_palam"><span class="life">体力:</span> <span class="char_param_data">1600</span></td>
+      <td class="char_palam"><span class="mind">気力:</span> <span class="char_param_data">1300</span></td>
+      <td class="char_palam_empty"></td>
+  </tr>
+  <tr><td colspan=4><h4>素質</h4></td></tr>
+  <tr>
+    <td colspan=3><div class="char_talent">
+      <span class="talent">処女</span>
+      <span class="talent">臆病</span>
+      <span class="talent">一線越えない</span>
+      <span class="talent">痛みに弱い</span>
+      <span class="talent">針さばき</span>
+      <span class="talent">自慰しやすい</span>
+      <span class="talent">倒錯的</span>
+      <span class="talent">男嫌い</span>
+      <span class="talent">小柄体型</span>
+      <span class="talent">Ｖ鈍感</span>
+      <span class="talent">絶壁</span>
+      <span class="talent">回復早い</span>
+      <span class="talent">VOICEROID</span>
+    </div></td>
+  </tr>
+  <tr><td colspan=4><h4>初期能力</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_ability">
+        <tr>
+          <td class="char_ability_tag">レズっ気</td>
+          <td class="char_ability_data">3</td>
+        </tr>
+        <tr>
+          <td class="char_ability_tag">料理技能</td>
+          <td class="char_ability_data">2</td>
+        </tr>
+        <tr>
+          <td class="char_ability_tag">撮影技能</td>
+          <td class="char_ability_data">2</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>初期経験</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_exp">
+        <tr>
+          <td class="char_exp_tag">レズ経験</td>
+          <td class="char_exp_data">3</td>
+        </tr>
+        <tr>
+          <td class="char_exp_tag">家事経験</td>
+          <td class="char_exp_data">25</td>
+        </tr>
+        <tr>
+          <td class="char_exp_tag">撮影経験</td>
+          <td class="char_exp_data">30</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>相性</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_relation">
+        <tr>
+          <td class="relation"><a class="relation_posi" href=#c0005>東北 ずん子</a></td>
+          <td class="char_relation_data">300</td>
+        </tr>
+        <tr>
+          <td class="relation"><a class="relation_posi" href=#c0081>音街 ウナ</a></td>
+          <td class="char_relation_data">150</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>フラグ</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_flag">
+        <tr>
+          <td class="char_flag_tag">40</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">41</td>
+          <td class="char_flag_data">16</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">42</td>
+          <td class="char_flag_data">22</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">43</td>
+          <td class="char_flag_data">33</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">44</td>
+          <td class="char_flag_data">42</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">45</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">46</td>
+          <td class="char_flag_data">61</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  </table>
+<a name="c0050">
+<table class="char">
+  <tr>
+    <td class="char_name" colspan=4><h3>50. さとう ささら(ささら)</h3></td>
+  </tr>
+  <tr><td colspan=4><h4>基本情報</h4></td>
+  <tr>
+      <td class="char_palam"><span class="life">体力:</span> <span class="char_param_data">1800</span></td>
+      <td class="char_palam"><span class="mind">気力:</span> <span class="char_param_data">1300</span></td>
+      <td class="char_palam_empty"></td>
+  </tr>
+  <tr><td colspan=4><h4>素質</h4></td></tr>
+  <tr>
+    <td colspan=3><div class="char_talent">
+      <span class="talent">処女</span>
+      <span class="talent">生意気</span>
+      <span class="talent">好奇心</span>
+      <span class="talent">貞操無頓着</span>
+      <span class="talent">痛みに弱い</span>
+      <span class="talent">中毒しやすい</span>
+      <span class="talent">両刀</span>
+      <span class="talent">Ａ敏感</span>
+      <span class="talent">巨乳</span>
+      <span class="talent">CeVIO</span>
+    </div></td>
+  </tr>
+  <tr><td colspan=4><h4>初期能力</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_ability">
+        <tr>
+          <td class="char_ability_tag">従順</td>
+          <td class="char_ability_data">1</td>
+        </tr>
+        <tr>
+          <td class="char_ability_tag">マゾっ気</td>
+          <td class="char_ability_data">1</td>
+        </tr>
+        <tr>
+          <td class="char_ability_tag">撮影技能</td>
+          <td class="char_ability_data">1</td>
+        </tr>
+        <tr>
+          <td class="char_ability_tag">歌唱技能</td>
+          <td class="char_ability_data">2</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>初期経験</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_exp">
+        <tr>
+          <td class="char_exp_tag">歌唱経験</td>
+          <td class="char_exp_data">20</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>相性</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_relation">
+        <tr>
+          <td class="relation"><a class="relation_posi" href=#c0004>結月 ゆかり</a></td>
+          <td class="char_relation_data">120</td>
+        </tr>
+        <tr>
+          <td class="relation"><a class="relation_posi" href=#c0051>すずき つづみ</a></td>
+          <td class="char_relation_data">150</td>
+        </tr>
+        <tr>
+          <td class="relation"><a class="relation_posi" href=#c0052>タカハシ</a></td>
+          <td class="char_relation_data">120</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>フラグ</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_flag">
+        <tr>
+          <td class="char_flag_tag">40</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">41</td>
+          <td class="char_flag_data">11</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">42</td>
+          <td class="char_flag_data">22</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">43</td>
+          <td class="char_flag_data">31</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">44</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">45</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">46</td>
+          <td class="char_flag_data">63</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  </table>
+<a name="c0051">
+<table class="char">
+  <tr>
+    <td class="char_name" colspan=4><h3>51. すずき つづみ(つづみ)</h3></td>
+  </tr>
+  <tr><td colspan=4><h4>基本情報</h4></td>
+  <tr>
+      <td class="char_palam"><span class="life">体力:</span> <span class="char_param_data">1800</span></td>
+      <td class="char_palam"><span class="mind">気力:</span> <span class="char_param_data">1300</span></td>
+      <td class="char_palam_empty"></td>
+  </tr>
+  <tr><td colspan=4><h4>素質</h4></td></tr>
+  <tr>
+    <td colspan=3><div class="char_talent">
+      <span class="talent">大人しい</span>
+      <span class="talent">ツンデレ</span>
+      <span class="talent">感情乏しい</span>
+      <span class="talent">一線越えない</span>
+      <span class="talent">抑圧</span>
+      <span class="talent">快感の否定</span>
+      <span class="talent">男嫌い</span>
+      <span class="talent">Ｂ鈍感</span>
+      <span class="talent">CeVIO</span>
+    </div></td>
+  </tr>
+  <tr><td colspan=4><h4>初期能力</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_ability">
+        <tr>
+          <td class="char_ability_tag">レズっ気</td>
+          <td class="char_ability_data">1</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>初期経験</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_exp">
+        <tr>
+          <td class="char_exp_tag">Ｖ経験</td>
+          <td class="char_exp_data">10</td>
+        </tr>
+        <tr>
+          <td class="char_exp_tag">絶頂経験</td>
+          <td class="char_exp_data">5</td>
+        </tr>
+        <tr>
+          <td class="char_exp_tag">性交経験</td>
+          <td class="char_exp_data">10</td>
+        </tr>
+        <tr>
+          <td class="char_exp_tag">精液経験</td>
+          <td class="char_exp_data">5</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>相性</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_relation">
+        <tr>
+          <td class="relation"><a class="relation_posi" href=#c0050>さとう ささら</a></td>
+          <td class="char_relation_data">200</td>
+        </tr>
+        <tr>
+          <td class="relation"><a class="relation_posi" href=#c0052>タカハシ</a></td>
+          <td class="char_relation_data">120</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>フラグ</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_flag">
+        <tr>
+          <td class="char_flag_tag">40</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">41</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">42</td>
+          <td class="char_flag_data">22</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">43</td>
+          <td class="char_flag_data">31</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">44</td>
+          <td class="char_flag_data">44</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">45</td>
+          <td class="char_flag_data">51</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">46</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  </table>
+<a name="c0052">
+<table class="char">
+  <tr>
+    <td class="char_name" colspan=4><h3>52. タカハシ</h3></td>
+  </tr>
+  <tr><td colspan=4><h4>基本情報</h4></td>
+  <tr>
+      <td class="char_palam"><span class="life">体力:</span> <span class="char_param_data">2200</span></td>
+      <td class="char_palam"><span class="mind">気力:</span> <span class="char_param_data">1800</span></td>
+      <td class="char_palam"><span class="sei">射精:</span> <span class="char_param_data">10000</span></td>
+  </tr>
+  <tr>
+  </tr>
+  <tr><td colspan=4><h4>素質</h4></td></tr>
+  <tr>
+    <td colspan=3><div class="char_talent">
+      <span class="talent">楽観的</span>
+      <span class="talent">Ｂ敏感</span>
+      <span class="talent">オトコ</span>
+      <span class="talent">CeVIO</span>
+    </div></td>
+  </tr>
+  <tr><td colspan=4><h4>初期能力</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_ability">
+        <tr>
+          <td class="char_ability_tag">Ｃ感覚</td>
+          <td class="char_ability_data">1</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>初期経験</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_exp">
+        <tr>
+          <td class="char_exp_tag">絶頂経験</td>
+          <td class="char_exp_data">5</td>
+        </tr>
+        <tr>
+          <td class="char_exp_tag">自慰経験</td>
+          <td class="char_exp_data">10</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>相性</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_relation">
+        <tr>
+          <td class="relation"><a class="relation_posi" href=#c0050>さとう ささら</a></td>
+          <td class="char_relation_data">150</td>
+        </tr>
+        <tr>
+          <td class="relation"><a class="relation_posi" href=#c0051>すずき つづみ</a></td>
+          <td class="char_relation_data">120</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>フラグ</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_flag">
+        <tr>
+          <td class="char_flag_tag">40</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">41</td>
+          <td class="char_flag_data">11</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">42</td>
+          <td class="char_flag_data">24</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">43</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">44</td>
+          <td class="char_flag_data">44</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">45</td>
+          <td class="char_flag_data">51</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">46</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  </table>
+<a name="c0053">
+<table class="char">
+  <tr>
+    <td class="char_name" colspan=4><h3>53. ＯＮＥ -ARIA ON THE PLANETES-(ＯＮＥ)</h3></td>
+  </tr>
+  <tr><td colspan=4><h4>基本情報</h4></td>
+  <tr>
+      <td class="char_palam"><span class="life">体力:</span> <span class="char_param_data">2000</span></td>
+      <td class="char_palam"><span class="mind">気力:</span> <span class="char_param_data">2000</span></td>
+      <td class="char_palam_empty"></td>
+  </tr>
+  <tr><td colspan=4><h4>素質</h4></td></tr>
+  <tr>
+    <td colspan=3><div class="char_talent">
+      <span class="talent">処女</span>
+      <span class="talent">反抗的</span>
+      <span class="talent">プライド高い</span>
+      <span class="talent">生意気</span>
+      <span class="talent">一線越えない</span>
+      <span class="talent">濡れにくい</span>
+      <span class="talent">舌使い</span>
+      <span class="talent">汚臭敏感</span>
+      <span class="talent">快感に素直</span>
+      <span class="talent">魅力</span>
+      <span class="talent">Ｖ敏感</span>
+      <span class="talent">Ｂ敏感</span>
+      <span class="talent">貧乳</span>
+      <span class="talent">CeVIO</span>
+    </div></td>
+  </tr>
+  <tr><td colspan=4><h4>初期能力</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_ability">
+        <tr>
+          <td class="char_ability_tag">歌唱技能</td>
+          <td class="char_ability_data">3</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>初期経験</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_exp">
+        <tr>
+          <td class="char_exp_tag">被写経験</td>
+          <td class="char_exp_data">5</td>
+        </tr>
+        <tr>
+          <td class="char_exp_tag">歌唱経験</td>
+          <td class="char_exp_data">45</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>相性</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_relation">
+        <tr>
+          <td class="relation"><a class="relation_posi" href=#c0054>ＩＡ -ARIA ON THE PLANETES-</a></td>
+          <td class="char_relation_data">200</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>フラグ</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_flag">
+        <tr>
+          <td class="char_flag_tag">40</td>
+          <td class="char_flag_data">2</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">41</td>
+          <td class="char_flag_data">12</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">42</td>
+          <td class="char_flag_data">22</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">43</td>
+          <td class="char_flag_data">33</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">44</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">45</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">46</td>
+          <td class="char_flag_data">63</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  </table>
+<a name="c0054">
+<table class="char">
+  <tr>
+    <td class="char_name" colspan=4><h3>54. ＩＡ -ARIA ON THE PLANETES-(ＩＡ)</h3></td>
+  </tr>
+  <tr><td colspan=4><h4>基本情報</h4></td>
+  <tr>
+      <td class="char_palam"><span class="life">体力:</span> <span class="char_param_data">2200</span></td>
+      <td class="char_palam"><span class="mind">気力:</span> <span class="char_param_data">2000</span></td>
+      <td class="char_palam_empty"></td>
+  </tr>
+  <tr><td colspan=4><h4>素質</h4></td></tr>
+  <tr>
+    <td colspan=3><div class="char_talent">
+      <span class="talent">処女</span>
+      <span class="talent">臆病</span>
+      <span class="talent">一線越えない</span>
+      <span class="talent">抑圧</span>
+      <span class="talent">抵抗</span>
+      <span class="talent">痛みに強い</span>
+      <span class="talent">薬毒耐性</span>
+      <span class="talent">汚臭敏感</span>
+      <span class="talent">快感の否定</span>
+      <span class="talent">男嫌い</span>
+      <span class="talent">魅惑</span>
+      <span class="talent">謎の魅力</span>
+      <span class="talent">Ｂ鈍感</span>
+      <span class="talent">貧乳</span>
+      <span class="talent">人気</span>
+      <span class="talent">CeVIO</span>
+    </div></td>
+  </tr>
+  <tr><td colspan=4><h4>初期能力</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_ability">
+        <tr>
+          <td class="char_ability_tag">Ｃ感覚</td>
+          <td class="char_ability_data">1</td>
+        </tr>
+        <tr>
+          <td class="char_ability_tag">露出癖</td>
+          <td class="char_ability_data">1</td>
+        </tr>
+        <tr>
+          <td class="char_ability_tag">歌唱技能</td>
+          <td class="char_ability_data">5</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>初期経験</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_exp">
+        <tr>
+          <td class="char_exp_tag">自慰経験</td>
+          <td class="char_exp_data">1</td>
+        </tr>
+        <tr>
+          <td class="char_exp_tag">被写経験</td>
+          <td class="char_exp_data">50</td>
+        </tr>
+        <tr>
+          <td class="char_exp_tag">歌唱経験</td>
+          <td class="char_exp_data">180</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>相性</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_relation">
+        <tr>
+          <td class="relation"><a class="relation_posi" href=#c0053>ＯＮＥ -ARIA ON THE PLANETES-</a></td>
+          <td class="char_relation_data">200</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>フラグ</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_flag">
+        <tr>
+          <td class="char_flag_tag">40</td>
+          <td class="char_flag_data">2</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">41</td>
+          <td class="char_flag_data">12</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">42</td>
+          <td class="char_flag_data">22</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">43</td>
+          <td class="char_flag_data">32</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">44</td>
+          <td class="char_flag_data">41</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">45</td>
+          <td class="char_flag_data">51</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">46</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  </table>
+<a name="c0080">
+<table class="char">
+  <tr>
+    <td class="char_name" colspan=4><h3>80. ギャラ子</h3></td>
+  </tr>
+  <tr><td colspan=4><h4>基本情報</h4></td>
+  <tr>
+      <td class="char_palam"><span class="life">体力:</span> <span class="char_param_data">2000</span></td>
+      <td class="char_palam"><span class="mind">気力:</span> <span class="char_param_data">1800</span></td>
+      <td class="char_palam_empty"></td>
+  </tr>
+  <tr><td colspan=4><h4>素質</h4></td></tr>
+  <tr>
+    <td colspan=3><div class="char_talent">
+      <span class="talent">気丈</span>
+      <span class="talent">プライド高い</span>
+      <span class="talent">解放</span>
+      <span class="talent">薬毒耐性</span>
+      <span class="talent">汚臭敏感</span>
+      <span class="talent">快感に素直</span>
+      <span class="talent">小悪魔</span>
+      <span class="talent">魅惑</span>
+      <span class="talent">謎の魅力</span>
+      <span class="talent">AITalk</span>
+    </div></td>
+  </tr>
+  <tr><td colspan=4><h4>初期能力</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_ability">
+        <tr>
+          <td class="char_ability_tag">Ｖ感覚</td>
+          <td class="char_ability_data">1</td>
+        </tr>
+        <tr>
+          <td class="char_ability_tag">歌唱技能</td>
+          <td class="char_ability_data">4</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>初期経験</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_exp">
+        <tr>
+          <td class="char_exp_tag">Ｖ経験</td>
+          <td class="char_exp_data">3</td>
+        </tr>
+        <tr>
+          <td class="char_exp_tag">自慰経験</td>
+          <td class="char_exp_data">3</td>
+        </tr>
+        <tr>
+          <td class="char_exp_tag">歌唱経験</td>
+          <td class="char_exp_data">100</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>フラグ</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_flag">
+        <tr>
+          <td class="char_flag_tag">40</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">41</td>
+          <td class="char_flag_data">15</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">42</td>
+          <td class="char_flag_data">22</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">43</td>
+          <td class="char_flag_data">31</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">44</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">45</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">46</td>
+          <td class="char_flag_data">63</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  </table>
+<a name="c0081">
+<table class="char">
+  <tr>
+    <td class="char_name" colspan=4><h3>81. 音街 ウナ(ウナ)</h3></td>
+  </tr>
+  <tr><td colspan=4><h4>基本情報</h4></td>
+  <tr>
+      <td class="char_palam"><span class="life">体力:</span> <span class="char_param_data">1600</span></td>
+      <td class="char_palam"><span class="mind">気力:</span> <span class="char_param_data">1300</span></td>
+      <td class="char_palam_empty"></td>
+  </tr>
+  <tr><td colspan=4><h4>素質</h4></td></tr>
+  <tr>
+    <td colspan=3><div class="char_talent">
+      <span class="talent">処女</span>
+      <span class="talent">目立ちたがり</span>
+      <span class="talent">貞操観念</span>
+      <span class="talent">恥じらい</span>
+      <span class="talent">中毒しやすい</span>
+      <span class="talent">小柄体型</span>
+      <span class="talent">Ｃ鈍感</span>
+      <span class="talent">Ａ敏感</span>
+      <span class="talent">絶壁</span>
+      <span class="talent">回復早い</span>
+      <span class="talent">人気</span>
+      <span class="talent">AITalk</span>
+    </div></td>
+  </tr>
+  <tr><td colspan=4><h4>初期能力</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_ability">
+        <tr>
+          <td class="char_ability_tag">歌唱技能</td>
+          <td class="char_ability_data">3</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>初期経験</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_exp">
+        <tr>
+          <td class="char_exp_tag">歌唱経験</td>
+          <td class="char_exp_data">40</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>相性</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_relation">
+        <tr>
+          <td class="relation"><a class="relation_posi" href=#c0010>東北 きりたん</a></td>
+          <td class="char_relation_data">150</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td colspan=4><h4>フラグ</h4></td></tr>
+  <tr>
+    <td colspan=3>
+      <table class="char_flag">
+        <tr>
+          <td class="char_flag_tag">40</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">41</td>
+          <td class="char_flag_data">12</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">42</td>
+          <td class="char_flag_data">22</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">43</td>
+          <td class="char_flag_data">32</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">44</td>
+          <td class="char_flag_data">41</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">45</td>
+          <td class="char_flag_data">52</td>
+        </tr>
+        <tr>
+          <td class="char_flag_tag">46</td>
+          <td class="char_flag_data">0</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  </table>
+</p>
+</a>
+</div>
+</body>
+</html>
+>>>>>>> origin/master

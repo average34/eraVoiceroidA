@@ -1,0 +1,604 @@
+﻿;調教対象選択(eratohoR+ 1.31)
+@CHANGE_TARGET
+IF TARGET >= 0
+	PRINT 現在
+	PRINTFORML %NAME:TARGET%を調教中
+ENDIF
+PRINTL 今回は誰を調教しますか？
+R = 1
+CALL LIFE_LIST
+PRINTFORML  [100]戻る
+
+$INPUT_LOOP
+INPUT
+IF RESULT == 100
+	RETURN 0
+ELSEIF RESULT < 1 || RESULT >= CHARANUM
+	GOTO INPUT_LOOP
+ELSE
+	SIF CFLAG:RESULT:12 > 0
+		GOTO INPUT_LOOP
+	C = RESULT
+	CALL CHECK_CHILD_CARE
+	SIF RESULT == 1
+		GOTO INPUT_LOOP
+ENDIF
+
+SIF C != 0
+	TARGET = C
+SIF TARGET == ASSI
+	ASSI = -1
+
+@SELECT_ASSI
+PRINT 現在
+IF ASSI >= 0
+	PRINTFORML [{ASSI}]%NAME:ASSI%が助手
+ELSE
+	PRINTFORML 助手はいません
+ENDIF
+PRINTL 誰を助手にしますか？(現在の助手は☆)
+
+PRINTFORML   [ 0]助手なし
+REPEAT CHARANUM
+	TFLAG:COUNT = 0
+	;0（主人公）とASSI以外は排除
+	SIF COUNT == MASTER
+		CONTINUE
+	SIF CFLAG:COUNT:1 < 2
+		CONTINUE
+	SIF CFLAG:COUNT:12 > 0
+		CONTINUE
+	;育児部屋に移動しているキャラは除外
+	C = COUNT
+	CALL CHECK_CHILD_CARE
+	SIF RESULT == 1
+		CONTINUE
+	IF COUNT == ASSI
+		PRINT ☆
+	ELSE
+		PRINT 　
+	ENDIF
+	IF COUNT<10
+		PRINTFORM [ {COUNT}]
+	ELSE
+		PRINTFORM [{COUNT}]
+	ENDIF
+	CALL ARRANGE_CHARANAME
+	IF COUNT == ASSI
+		PRINT 　　　　　
+	ELSEIF ISASSI:COUNT == 1
+		PRINT [元助手] 
+	ELSE
+		PRINT [未経験] 
+	ENDIF
+	PRINTFORM %ABLNAME:2%Lv{ABL:COUNT:2} %ABLNAME:11%Lv{ABL:COUNT:11} %ABLNAME:17%Lv{ABL:COUNT:17} 
+	SIF TALENT:COUNT:81
+		PRINT 両刀
+	PRINTFORML 
+REND
+PRINTFORML  [100]戻る
+
+$INPUT_LOOP
+INPUT
+IF RESULT == 100
+	RETURN 0
+ELSEIF RESULT == 0
+	ASSI = -1
+	RETURN 0
+ELSEIF RESULT < 0 || RESULT >= CHARANUM
+	GOTO INPUT_LOOP
+ELSEIF RESULT == MASTER
+	GOTO INPUT_LOOP
+ELSEIF CFLAG:RESULT:12 > 0
+	GOTO INPUT_LOOP
+ELSEIF CFLAG:RESULT:1 < 2
+	GOTO INPUT_LOOP
+ELSE
+	C = RESULT
+	CALL CHECK_CHILD_CARE
+	SIF RESULT == 1
+		GOTO INPUT_LOOP
+ENDIF
+
+ASSI = C
+CALL ASSI_CHANGE
+ISASSI:ASSI = 1
+SIF ASSI == TARGET
+	TARGET = -1
+
+
+@LIFE_LIST
+DRAWLINE
+PRINTFORML 　[0]%NAME:MASTER%(主人)
+DRAWLINE
+REPEAT CHARANUM
+	;主人公と助手対象と調教中キャラは排除
+	SIF COUNT == MASTER
+		CONTINUE
+	;労役中のキャラは除外
+	SIF CFLAG:COUNT:12 > 0
+		CONTINUE
+	;育児部屋に移動しているキャラは除外
+	C = COUNT
+	CALL CHECK_CHILD_CARE
+	SIF R == 1 && RESULT == 1
+		CONTINUE
+	IF COUNT == TARGET
+		PRINT ☆
+	ELSEIF COUNT == ASSI
+		PRINT ★
+	ELSEIF ISASSI:COUNT == 1
+		PRINT ●
+	ELSEIF CFLAG:COUNT:1 == 2
+		PRINT ○
+	ELSE
+		PRINT 　
+	ENDIF
+	IF COUNT<10
+		PRINTFORM [ {COUNT}]
+	ELSE
+		PRINTFORM [{COUNT}]
+	ENDIF
+	CALL ARRANGE_CHARANAME
+	PRINT 体力
+	A = BASE:COUNT:0
+	SIF BASE:COUNT:0 < 0
+		A = 0
+	BAR A,MAXBASE:COUNT:0,10
+	PRINTFORM ({A}/{MAXBASE:COUNT:0})
+
+	SIF TALENT:COUNT:3
+		PRINT 恋慕 
+	SIF TALENT:COUNT:4
+		PRINT 淫乱 
+	SIF TALENT:COUNT:5
+		PRINT 服従 
+	SIF TALENT:COUNT:6
+		PRINT 親愛 
+	SIF TALENT:COUNT:7
+		PRINT 娼婦 
+	SIF TALENT:COUNT:8
+		PRINT 隷属 
+	SIF TALENT:COUNT:9
+		PRINT 崩壊 
+	SIF CFLAG:COUNT:0 > 0
+		PRINT EX 
+	IF TALENT:COUNT:140
+		PRINT 男 
+	ELSE
+		SIF TALENT:COUNT:0
+			PRINT 処女
+		SIF TALENT:COUNT:1
+			PRINT 再生処女
+	ENDIF
+	PRINTL 
+REND
+SIF E >= 1
+	PRINTL 　　　　☆：調教中　★：助手　○：助手可　●：元助手　を表しています
+
+;ステータス表示
+@SHOW_CHARADATA
+R = 0
+CALL LIFE_LIST
+PRINTFORML  [100]戻る
+
+$INPUT_LOOP
+INPUT
+IF RESULT == 100
+	RETURN 0
+ELSEIF RESULT < 0 || RESULT >= CHARANUM
+	GOTO INPUT_LOOP
+ENDIF
+
+PRINTL ･･･････････････････････････････････････････････････････････････････････････････
+T = RESULT
+PRINTFORM %NAME:T%　　
+CALL SHOW_RACE
+IF T != MASTER && TALENT:MASTER:156
+	PRINTFORM (依存度:{CFLAG:T:2} ストレス値{CFLAG:T:10} 
+	PRINTL 
+ELSEIF T == MASTER
+	PRINTFORM (堕した人数:{FLAG:30+FLAG:31+FLAG:32}人)　
+	PRINT 難易度:
+	IF FLAG:4 == 1
+		PRINTL EASY
+	ELSEIF FLAG:4 == 2
+		PRINTL NORMAL
+	ELSEIF FLAG:4 == 3
+		PRINTL HARD
+	ENDIF
+ENDIF
+DRAWLINE
+PRINTL □ 珠
+CALL SHOW_INFO_JUEL
+CALL SHOW_INFO
+RESTART
+
+;大人数対応キャラ購入処理
+;代わりに購入金額の設定＆処理が煩雑になる諸刃の剣、素人にはオススメ出来ない
+;ついでに過去のセーブデータとの互換性もなくなりますし、見栄えも悪い
+;あとフラグ1000番台を使うので注意
+;(TFLAG:0～100は調教関係ない上、調教開始時にリセットされるので無問題）
+
+;変更点
+;TFLAG:200番台を利用してリストの前詰めを実行
+;購入したキャラが直接加入するように、購入処理のあたりを変更
+
+@CHARA_BUY
+
+TFLAG:100 = 0
+
+REPEAT 100
+	TFLAG:COUNT = ITEMSALES:COUNT
+	ITEMSALES:COUNT = 0
+REND
+
+CALL CHARA_LIST
+REPEAT 100
+	A = COUNT + TFLAG:100 * 100 + 200
+	B = TFLAG:A
+		ITEMSALES:B = 1
+REND
+
+ITEMSALES:0 = 0
+
+CALL CHARA_BUY_SHOW
+
+$INPUT_LOOP
+INPUT
+IF RESULT == 1
+	IF TFLAG:100 > 0
+		CALL CHARA_LIST
+		REPEAT 100
+			A = COUNT + TFLAG:100 * 100 + 200 - 100
+			B = TFLAG:A
+			ITEMSALES:B = 1
+		REND
+		TFLAG:100 -= 1
+	ENDIF
+	;バグ対策。キャラ上限を超えるとITEMSALES:0が登録されるので
+	ITEMSALES:0 = 0
+
+	CALL CHARA_BUY_SHOW
+	GOTO INPUT_LOOP
+ELSEIF RESULT == 9
+	;最大ページ数と比較、ページ数変動の際は
+	IF TFLAG:100 < 0
+		CALL CHARA_LIST
+		REPEAT 30
+			A = COUNT + TFLAG:100 * 100 + 200 + 100
+			B = TFLAG:A
+			ITEMSALES:B = 1
+		REND
+		TFLAG:100 += 1
+	ENDIF
+	;バグ対策。キャラ上限を超えるとITEMSALES:0が登録されるので
+	ITEMSALES:0 = 0
+
+	CALL CHARA_BUY_SHOW
+	GOTO INPUT_LOOP
+ENDIF
+;購入しないなら戻る,[RESULT > 100+**]の**はREPEAT数と同じくキャラ数以上の適当な数値
+IF (RESULT < 100 || RESULT > 100 + 100)
+	CALL CHARA_BUY_AFTER
+	RETURN 0
+ENDIF
+
+;C = キャラナンバー
+C = RESULT + 1 - 100
+D = RESULT + 1000 - 100
+E = RESULT + 5000 - 100
+F = RESULT + 2300 - 100
+;購入済みor購入不可＝フラグ値が0なら再入力
+SIF FLAG:D == 0
+	GOTO INPUT_LOOP
+;キャラ解説を入れる
+FLAG:9 = C
+CALL CHARA_MANUAL
+;いいえを選ぶと再入力
+IF FLAG:9 == 0
+	CALL CHARA_BUY_SHOW
+	GOTO INPUT_LOOP
+ELSE
+	FLAG:9 = 0
+ENDIF
+;フラグ値＝売値が所持金より多いなら再入力
+IF MONEY < FLAG:D
+	PRINTL 金額が足りません
+	
+	CALL CHARA_BUY_SHOW
+	GOTO INPUT_LOOP
+ENDIF
+;上記処理を抜けてきた＝購入可能で所持金が売値以上
+MONEY -= FLAG:D
+FLAG:D = 0
+FLAG:E = 1
+ADDCHARA C
+TARGET = CHARANUM-1
+CALL CHARA_BUY_AFTER
+RETURN 0
+
+@CHARA_BUY_SHOW
+DRAWLINE
+PRINTV DAY
+PRINT 日目
+IF TIME == 0
+	PRINTL (昼)
+ELSE
+	PRINTL (夜)
+ENDIF
+PRINTFORM (所持金:${MONEY})　難易度:
+IF FLAG:4 == 1
+	PRINTL EASY
+ELSEIF FLAG:4 == 2
+	PRINTL NORMAL
+ELSEIF FLAG:4 == 3
+	PRINTL HARD
+ENDIF
+SIF TARGET >= 0
+	PRINTFORML 奴隷:%NAME:TARGET%
+PRINTFORML 主人:%NAME:MASTER%
+SIF ASSI >= 0
+	PRINTFORML 助手:%NAME:ASSI%
+
+PRINT_SHOPITEM
+
+DRAWLINE
+PRINT 　page
+PRINTV TFLAG:100
+;PRINT 　[1]前のページ
+PRINT 　　　　　　 　
+PRINTC [0]購入しない
+;PRINTC [9]後のページ
+PRINT 　　　　　　 
+PRINTL 
+
+@CHARA_BUY_AFTER
+
+REPEAT 100
+	A = COUNT + TFLAG:100 * 100 + 100
+	ITEMSALES:A = 0
+REND
+
+REPEAT 200
+	ITEMSALES:COUNT = 0
+REND
+REPEAT 100
+	ITEMSALES:COUNT = TFLAG:COUNT
+	TFLAG:COUNT = 0
+REND
+
+
+
+RETURN 0
+
+
+@CHARA_LIST
+F = 0
+REPEAT 100
+	A = COUNT + 100
+	ITEMSALES:A = 0
+	F = COUNT + 200
+	TFLAG:F = 0
+REND
+
+CALL CHARA_PRICE
+
+F = 200
+REPEAT 100
+	E = COUNT + 1000
+	IF FLAG:E > 0
+		TFLAG:F = E - 1000 + 100
+		F += 1
+	ENDIF
+REND
+
+
+@CHARA_PRICE
+;VOICEROIDの価格
+FLAG:1000 = 8800
+FLAG:1001 = 8800
+FLAG:1002 = 8800
+FLAG:1003 = 12800
+FLAG:1004 = 8800
+FLAG:1005 = 7900
+FLAG:1006 = 7900
+FLAG:1007 = 8800
+FLAG:1008 = 8800
+FLAG:1009 = 8800
+FLAG:1009 = 8800
+FLAG:1010 = 8800
+FLAG:1011 = 8800
+FLAG:1012 = 9000
+FLAG:1013 = 9000
+
+
+;CeVIOの価格
+FLAG:1049 = 6480
+FLAG:1050 = 6480
+FLAG:1051 = 6480
+FLAG:1052 = 8500
+FLAG:1053 = 8500
+
+;AITalkの価格
+FLAG:1079 = 17280
+FLAG:1080 = 11510
+
+
+;Exキャラの価格
+FLAG:1089 = 12800
+FLAG:1090 = 12800
+
+REPEAT 100
+	A = 5000 + COUNT
+	B = 1000 + COUNT
+	SIF FLAG:A == 1
+		FLAG:B = 0
+REND
+
+;キャラ購入時に解説を入れる
+@CHARA_MANUAL
+PRINT 奴隷番号00
+SIF FLAG:9 < 10
+	PRINT 0
+PRINTVL FLAG:9
+PRINTL 
+IF FLAG:9 == 1
+	PRINTL 【月読 ショウタ】
+	PRINTL 幼き体格と声質を持つ、月読兄妹の兄
+	PRINTL まだ身体が未発達のため、性的な調教には時間がかかる
+	PRINTL 当然性知識も皆無であるため、調教には非常に苦労するであろう
+	PRINTL 種族：VOICEROID　性別：男性
+ELSEIF FLAG:9 == 2
+	PRINTL 【月読 アイ】
+	PRINTL 幼き体格と声質を持つ、月読兄妹の妹
+	PRINTL まだ身体が未発達のため、性的な調教には時間がかかる
+	PRINTL 当然性知識も皆無であるため、調教には非常に苦労するであろう
+	PRINTL 種族：VOICEROID　性別：女性
+ELSEIF FLAG:9 == 3
+	PRINTL 【弦巻 マキ】
+	PRINTL 「jamバンド」と呼ばれるバンドをまとめるリーダー的存在
+	PRINTL 奔放かつ明るい性格からか、後輩からは慕われているらしい
+	PRINTL 非常に大きな胸を持っており、性的経験も少しはあるようだ
+	PRINTL 性的にも大らかなので、陥落は容易だと思われる
+	PRINTL 種族：VOICEROID　性別：女性
+ELSEIF FLAG:9 == 4
+	PRINTL 【結月 ゆかり】
+	PRINTL その美声でボーカリストやゲーム実況者として活躍している、ネットのアイドル的存在
+	PRINTL その素性は謎に包まれているが、様々なVOICEROIDと仲が良いことが確認されている
+	PRINTL 素直な性格をしており、また人気も高く魅力があるため、
+	PRINTL 奴隷として高い売却額が期待できるだろう
+	PRINTL 種族：VOICEROID　性別：女性
+ELSEIF FLAG:9 == 5
+	PRINTL 【東北 ずん子】
+	PRINTL ずんだ餅をこよなく愛する学生、ずんだに対する執着心は本物である
+	PRINTL 容姿端麗で運動神経は良く、地元でも人気の存在であるらしい
+	PRINTL なぜか写真集が出回っているためアングラ的人気も高い
+	PRINTL 性格が残念なため奴隷としての価値は低いが、映像売却や弁当販売による利益は見込めるだろう
+	PRINTL 種族：VOICEROID　性別：女性
+ELSEIF FLAG:9 == 6
+	PRINTL 【琴葉 茜】
+	PRINTL 元気ではつらつとした双子の姉
+	PRINTL 調子に乗りやすく、非常に生意気な性格をしているが、嗜虐による恐怖心を植え付けやすい
+	PRINTL 性的経験は殆ど無く性知識には疎いが、否定的でもないので調教はそこまで難しく無いだろう
+	PRINTL 種族：VOICEROID　性別：女性
+ELSEIF FLAG:9 == 7
+	PRINTL 【琴葉 葵】
+	PRINTL 内気で保守的な双子の姉
+	PRINTL その実、性には興味津々らしく、双子の姉に対する倒錯的な想いがあるらしい
+	PRINTL 物覚えが良く、助手向きな素質をしている
+	PRINTL 種族：VOICEROID　性別：女性
+ELSEIF FLAG:9 == 8
+	PRINTL 【水奈瀬 コウ】
+	PRINTL 気さくで真面目な高校教師
+	PRINTL 人望に厚く、生徒からは慕われているようだ
+	PRINTL 一方で調教には人並み以上に抵抗を見せる
+	PRINTL 種族：VOICEROID　性別：男性
+ELSEIF FLAG:9 == 9
+	PRINTL 【京町 セイカ】
+	PRINTL 京都府精華町の広報キャラクター、というのは表の顔で、時空監視員の隊長である
+	PRINTL 生真面目な性格をしており、拷問に対する耐性が高いため、
+	PRINTL 快感により懐柔する調教のほうが効果的であろう
+	PRINTL 種族：VOICEROID　性別：女性
+ELSEIF FLAG:9 == 10
+	PRINTL 【東北 きりたん】
+	PRINTL 東北三姉妹の三女で、ひきこもりがちな○学５年生
+	PRINTL 運動不足らしく体力は少ない
+	PRINTL まだ発達途中の身体ながら、性には興味津々であり陥落は容易い
+	PRINTL 次女であるずん子を（性的にも）溺愛しており、主に女性を性的対象としているらしい
+	PRINTL 種族：VOICEROID　性別：女性
+ELSEIF FLAG:9 == 11
+	PRINTL 【紲星 あかり】
+	PRINTL 結月ゆかりとともに活動しているネットアイドル
+	PRINTL 彼女のことを憧れの先輩として慕っている
+	PRINTL 性的経験や知識は全く無いが、解放的で欲望に忠実なため、
+	PRINTL 初心者向けのキャラと言えるであろう
+	PRINTL 種族：VOICEROID　性別：女性
+ELSEIF FLAG:9 == 12
+	PRINTL 【東北 イタコ】
+	PRINTL 東北三姉妹の長女で、しっかり者？のイタコ
+	PRINTL 年齢以上に落ち着き払っているように見えるが、
+	PRINTL 次女であるずん子を（性的にも）溺愛しており、両性に対して恋愛対象としているらしい
+	PRINTL 調教者としての素質が高く、サポート役としても適している
+	PRINTL 種族：VOICEROID　性別：女性
+ELSEIF FLAG:9 == 13
+	PRINTL 【桜乃 そら】
+	PRINTL 結月ゆかりらとともに活動しているネットアイドル
+	PRINTL 自身のことを17歳だと自称するがオーラや身体は少なくとも20代後半以上のそれである
+	PRINTL 性知識や性的経験も豊富で、VOICEROIDの中ではずば抜けた技能を持つ
+	PRINTL 性能としては奴隷というより助手向きであろう
+	PRINTL 種族：VOICEROID　性別：女性
+ELSEIF FLAG:9 == 14
+	PRINTL 【如月 ついな】
+	PRINTL 自称、修験道の開祖「役小角」の子孫、「役追儺（えんのついな）」
+	PRINTL 要するに妖怪退治を生業とする、○4歳の少女である
+	PRINTL 何かしらの加護があるらしく、身体は非常に丈夫で、痛みによって調教するには骨が折れる
+	PRINTL 種族：VOICEROID　性別：女性
+
+ELSEIF FLAG:9 == 50
+	PRINTL 【さとう ささら】
+	PRINTL かわいらしい声と歌唱力を持った、CeVIOの看板娘
+	PRINTL すずきつづみとよく活動しており、プライベートでも仲が良いらしい
+	PRINTL 年齢らしからぬ巨乳を持っており、スタイル抜群である
+	PRINTL また汚れ仕事の多さからか、性的なことに対し恥じらうことなく調教に従うであろう
+	PRINTL 種族：CeVIO　性別：女性
+ELSEIF FLAG:9 == 51
+	PRINTL 【すずき つづみ】
+	PRINTL 少しすました、読書好きでクールな女の子
+	PRINTL 地味ながらもその美脚は観る者を魅了する
+	PRINTL 普段過ごしているときはポーカーフェイスであるが、さとうささらの前では明るく振る舞う
+	PRINTL ささらとは対称的に調教への抵抗が強く、陥落には少し骨が折れるであろう
+	PRINTL 種族：CeVIO　性別：女性
+ELSEIF FLAG:9 == 52
+	PRINTL 【タカハシ】
+	PRINTL ささらやつづみの近所に住んでいる痩せ型の謎の男
+	PRINTL 時折ささら・つづみらと動画に出演しており、掴めないキャラクターでよくわからない好評を得ている
+	PRINTL 特にこれといった特徴も無く、陥落には手間取ることはないだろう
+	PRINTL 種族：CeVIO　性別：男性
+ELSEIF FLAG:9 == 53
+	PRINTL 【ＯＮＥ -ARIA ON THE PLANETES-】
+	PRINTL 姉貴分のＩＡと合わせて『ARIA姉妹』と呼ばれる、アイドルユニットの片割れ
+	PRINTL 性経験が全く無く、多少気難しい性格をしているが、身体の感度は良好
+	PRINTL 手懐ければ犬のように従順となり腰を振り続ける奴隷となるだろう
+	PRINTL 種族：CeVIO　性別：女性
+ELSEIF FLAG:9 == 54
+	PRINTL 【ＩＡ -ARIA ON THE PLANETES-】
+	PRINTL 妹分のＯＮＥと合わせて『ARIA姉妹』と呼ばれる、アイドルユニットの片割れ
+	PRINTL 人気も高く奴隷としての価値が非常に高い半面、メンタル面が弱く、調教難易度は高い
+	PRINTL 男性経験がほとんどない一方、女性への付き合いは深く、
+	PRINTL 同期の結月ゆかりや妹分のＯＮＥとは仲良くしているようだ
+	PRINTL 種族：CeVIO　性別：女性
+	
+ELSEIF FLAG:9 == 80
+	PRINTL 【ギャラ子】
+	PRINTL 音楽ユニット「galaxias!」のイメージキャラクターであるヴォーカリスト
+	PRINTL 仕事人間であるため男性経験に乏しく、性知識は年齢不相応に少ない
+	PRINTL 女王様気質でありプライドが高く、調教には少々手間取る可能性大
+	PRINTL 種族：AITalk　性別：女性
+ELSEIF FLAG:9 == 81
+	PRINTL 【音街ウナ】
+	PRINTL 元気で快活なヴォーカリストのアイドル、一方で現役小○5年生という顔も持つ
+	PRINTL 明るく気ままな性格のため、プライベートでもオフィシャルでも人気が高い
+	PRINTL 東北きりたんとは同じクラスであり、仲の良い友達のようだ
+	PRINTL 種族：AITalk　性別：女性
+ELSEIF FLAG:9 == 90
+	PRINTL 【結月 ゆかり 穏】
+	PRINTL 種族：VOICEROID　性別：女性
+ELSEIF FLAG:9 == 91
+	PRINTL 【結月 ゆかり 凛】
+	PRINTL 種族：VOICEROID　性別：女性
+ENDIF
+PRINTL 
+PRINTL 購入しますか？
+PRINTL [0]はい
+PRINTL [1]いいえ
+
+$INPUT_LOOP
+INPUT
+
+IF RESULT == 1
+	FLAG:9 = 0
+ELSEIF RESULT != 0
+	GOTO INPUT_LOOP
+ENDIF
+
