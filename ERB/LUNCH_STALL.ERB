@@ -1040,7 +1040,12 @@ ELSEIF NO:TARGET == 52
 	PRINT 角煮定食
 ELSEIF NO:TARGET == 53
 	;ONE
-	PRINT オレンジシャーベット
+	P = RAND:2
+	IF P == 0
+		PRINT オレンジシャーベット
+	ELSEIF P == 1
+		PRINT チャーハン
+	ENDIF
 ELSEIF NO:TARGET == 54
 	;IA
 	PRINT オレンジゼリー
@@ -1050,6 +1055,12 @@ ELSEIF NO:TARGET == 80
 ELSEIF NO:TARGET == 81
 	;ウナ
 	PRINT うなぎの蒲焼き
+ELSEIF NO:TARGET == 82
+	;ヒメ
+	PRINT 日の丸弁当
+ELSEIF NO:TARGET == 83
+	;ミコト
+	PRINT 日の丸弁当
 ;テンプレ用
 ;ELSEIF NO:TARGET == 
 ;キャラ
