@@ -8,6 +8,7 @@
 *.elf
 
 # Linker output
+*.lnk
 *.ilk
 *.map
 *.exp
@@ -29,7 +30,6 @@
 *.dylib
 
 # Executables
-*.exe
 *.out
 *.app
 *.i*86
