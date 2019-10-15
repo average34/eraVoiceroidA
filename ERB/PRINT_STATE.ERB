@@ -7,7 +7,9 @@ PRINTS STR:C
 ;能力を見る選択のとき、各キャラの横で種族が表示される
 R = NO:RESULT
 PRINT 種族：
-SIF R >= 0 && R <= 49
+SIF R == 0
+	PRINTS "あなた"
+SIF R >= 1 && R <= 49
 	PRINTS "VOICEROID"
 SIF R >= 50 && R <= 79
 	PRINTS "CeVIO"
