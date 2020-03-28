@@ -395,49 +395,26 @@ REND
 
 
 @CHARA_PRICE
-;VOICEROIDの価格
-FLAG:1000 = 8800
-FLAG:1001 = 8800
-FLAG:1002 = 8800
-FLAG:1003 = 12800
-FLAG:1004 = 8800
-FLAG:1005 = 7900
-FLAG:1006 = 7900
-FLAG:1007 = 8800
-FLAG:1008 = 8800
-FLAG:1009 = 8800
-FLAG:1009 = 8800
-FLAG:1010 = 8800
-FLAG:1011 = 8800
-FLAG:1012 = 9000
-FLAG:1013 = 9000
+;っていうか代入を自動化すべきだったんだよね。
 
-
-;CeVIOの価格
-FLAG:1049 = 6480
-FLAG:1050 = 6480
-FLAG:1051 = 6480
-FLAG:1052 = 8500
-FLAG:1053 = 8500
-
-;AITalkの価格
-FLAG:1079 = 17280
-FLAG:1080 = 11510
-FLAG:1081 = 10000
-FLAG:1082 = 10000
-FLAG:1083 = 10000
-
-
-;Exキャラの価格
-FLAG:1089 = 12800
-FLAG:1090 = 12800
+;VOICEROIDの価格だったもの
+; FLAG:1000 = 8800
+; FLAG:1001 = 8800
+; 以下略
 
 REPEAT 100
-	A = 5000 + COUNT
+	A = 100 + COUNT
 	B = 1000 + COUNT
-	SIF FLAG:A == 1
+	C = 5000 + COUNT
+	;価格が設定されているキャラクターのみ表示
+	SIF ITEMPRICE:A != 0
+		FLAG:B = ITEMPRICE:A
+	SIF FLAG:C == 1
 		FLAG:B = 0
 REND
+A = 0
+B = 0
+C = 0
 
 ;キャラ購入時に解説を入れる
 @CHARA_MANUAL
@@ -532,11 +509,17 @@ ELSEIF FLAG:9 == 13
 	PRINTL 性能としては奴隷というより助手向きであろう
 	PRINTL 種族：VOICEROID　性別：女性
 ELSEIF FLAG:9 == 14
-	PRINTL 【如月 ついな】
+	PRINTL 【役 ついな】
 	PRINTL 自称、修験道の開祖「役小角」の子孫、「役追儺（えんのついな）」
 	PRINTL 要するに妖怪退治を生業とする、○4歳の少女である
-	PRINTL 何かしらの加護があるらしく、身体は非常に丈夫で、痛みによって調教するには骨が折れる
+	PRINTL 何かしらの加護があるらしく、身体は非常に丈夫で、痛みによって調教するには骨が折れるだろう
 	PRINTL 種族：VOICEROID　性別：女性
+ELSEIF FLAG:9 == 15
+	PRINTL 【伊織弓鶴】
+	PRINTL 甘いマスクと低音ボイスが光る男性ボイスロイド
+	PRINTL 童顔だが身体つきは男らしくがっしりとしている
+	PRINTL 琴葉姉妹とは以前からの顔馴染みらしい
+	PRINTL 種族：VOICEROID　性別：男性
 
 ELSEIF FLAG:9 == 50
 	PRINTL 【さとう ささら】
@@ -586,12 +569,21 @@ ELSEIF FLAG:9 == 81
 	PRINTL 種族：AITalk　性別：女性
 ELSEIF FLAG:9 == 82
 	PRINTL 【鳴花ヒメ】
+	PRINTL 底抜けに明るい、梅の精霊の赤いほう
+	PRINTL 一方で腹黒さも兼ね備えた、小悪魔的な面も強い
+	PRINTL 人外なだけあって非常に回復が早く、調教にはさほど困らないだろう
 	PRINTL 種族：AITalk　性別：女性
 ELSEIF FLAG:9 == 83
 	PRINTL 【鳴花ミコト】
+	PRINTL クールで落ち着いた、梅の精霊の青いほう
+	PRINTL 内向的な性格が災いして、何かとトラブルに巻き込まれやすいらしい
+	PRINTL 人外なだけあって非常に回復が早く、調教にはさほど困らないだろう
 	PRINTL 種族：AITalk　性別：女性
 ELSEIF FLAG:9 == 84
 	PRINTL 【flower】
+	PRINTL ボーイッシュでクールな歌声を披露するヴォーカリストなアイドル
+	PRINTL 鳴花ヒメ・ミコトの事務所「ガイノイド」における先輩でもある
+	PRINTL 面食いな一面もあり、相手が女性でも男性でも構わないらしい
 	PRINTL 種族：AITalk　性別：女性
 ELSEIF FLAG:9 == 90
 	PRINTL 【結月 ゆかり 穏】
