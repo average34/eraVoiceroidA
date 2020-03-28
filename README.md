@@ -24,7 +24,6 @@ Windows7,8.1,10
 
 # 概要
 ・eraVoiceroidAは、佐藤敏氏の作成された「erakanon」を改変した「eratohoA」を更に改造したものです。  
-・eratohoA同様、純愛がコンセプトのバリアントです。  
 ・オリジナルのゲーム同様、テキストのみで進むSLGです。（パラメータ変化を主眼としたSLGです）   
 ・18才未満の方、自己の行動に責任を持てない方のプレイはご遠慮ください。 
 
@@ -36,7 +35,7 @@ dreamy.phantasm@gmail.com
 
 eraVoiceroid総合スレ  
 https://jbbs.shitaraba.net/bbs/read.cgi/otaku/16783/1509965059/  
-バグ報告などは上記にお願いします。  
+バグ報告などは上記スレにお願いします。  
 すぐには反応できないので気長に返信をお待ちください。
 
 また eraVoiceroidは当然ながら非公式の二次創作物ですので、
