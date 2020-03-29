@@ -313,7 +313,7 @@ IF ABL:0 < 3
 	;反抗的
 	SIF TALENT:11
 		PRINT 反抗的な態度で
-	PRINT 睨んできたが再度の命令に渋々
+	PRINTL 睨んできたが再度の命令に渋々
 ;従順LV5未満
 ELSEIF ABL:0 < 5
 	PRINTFORM 調教の成果が出たか、%CALLNAME:TARGET%は命令に従って、
@@ -335,6 +335,11 @@ ELSEIF TEQUIP:13
 ;アナルバイブ
 ELSEIF TEQUIP:14
 	PRINT 突っ込まれているアナルバイブを自ら抜き挿ししながら
+;オナホール
+ELSEIF TEQUIP:12
+	PRINT イチモツを突っ込んでいるオナホールを自ら抜き挿ししながら
+ELSEIF TALENT:オトコ
+	PRINT 陰茎を自らの指で弄りながら
 ELSE
 	PRINT 秘所を自らの指で弄りながら
 ENDIF
@@ -2166,7 +2171,12 @@ ELSEIF ABL:16 >= 1
 ELSE
 	PRINTFORMW %CALLNAME:TARGET%は涙目で逃れようとするが、%CALLNAME:PLAYER%はそれを許さず、両手で頭を掴み、舌で唇をこじ開けた……
 ENDIF
-
+;-------------------------------------------------
+;逆レイプ系コマンド
+;200,犯させる
+;-------------------------------------------------
+@MESSAGE_COM200
+PRINTFORMW %CALLNAME:PLAYER%は%CALLNAME:TARGET%を誘い、%CALLNAME:TARGET%に自分を抱かせた……
 
 ;-------------------------------------------------
 ;派生コマンド郡
@@ -2869,7 +2879,7 @@ IF TFLAG:2 > 0
 ENDIF
 
 ;逆レイプで射精
-IF SELECTCOM == 64 && TFLAG:10 > 0
+IF (SELECTCOM == 64 || SELECTCOM == 200) && TFLAG:10 > 0
 	PRINTFORM %CALLNAME:PLAYER%の肉襞は、
 	SIF ABL:1 >= 3
 		PRINT 恍惚の表情を浮かべる

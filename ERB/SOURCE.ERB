@@ -1800,7 +1800,7 @@ CALL EXP_GOT_CHECK
 ;セックス時の挿入継続フラグ
 ;-------------------------------------------------
 TFLAG:60 = 0
-SIF (SELECTCOM == 60 || SELECTCOM == 61 || SELECTCOM == 62 || SELECTCOM == 63 || SELECTCOM == 64 || SELECTCOM == 65 || SELECTCOM == 66 || SELECTCOM == 67 || SELECTCOM == 68 || SELECTCOM == 69 || SELECTCOM == 70 || SELECTCOM == 71) && (TFLAG:2 == 0 || PALAM:6 >= PALAMLV:4) && CFLAG:TARGET:106 == 0
+SIF (SELECTCOM == 60 || SELECTCOM == 61 || SELECTCOM == 62 || SELECTCOM == 63 || SELECTCOM == 64 || SELECTCOM == 200 || SELECTCOM == 65 || SELECTCOM == 66 || SELECTCOM == 67 || SELECTCOM == 68 || SELECTCOM == 69 || SELECTCOM == 70 || SELECTCOM == 71) && (TFLAG:2 == 0 || PALAM:6 >= PALAMLV:4) && CFLAG:TARGET:106 == 0
 		TFLAG:60 = 1
 ;-------------------------------------------------
 ;調教者の射精時の口上

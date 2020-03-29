@@ -13,7 +13,7 @@ CALL KOJO_MESSAGE_COM
 ;挿入部位管理
 ;-------------------------------------------------
 ;直接コマンドを指定した場合
-IF SELECTCOM == 64
+IF SELECTCOM == 64 || SELECTCOM == 200
 	TFLAG:40 = 1
 	TFLAG:41 = 2
 ELSE

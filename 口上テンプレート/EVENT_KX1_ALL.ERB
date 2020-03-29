@@ -4150,6 +4150,47 @@ IF SELECTCOM == 194
 ENDIF
 
 ;=================================================
+;200番台,逆レイプ系コマンド
+;=================================================
+;-------------------------------------------------
+;200,犯させる
+;-------------------------------------------------
+IF SELECTCOM == 200
+	CALL TRAIN_MESSAGE
+	;初めて
+	IF CFLAG:336 == 0
+		PRINTFORMW 
+		CFLAG:336 = 1
+	;二回目以降
+	ELSE
+		;陥落済み
+		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:336 < 4 || FLAG:7 == 2)
+			;恋慕、親愛
+			IF TALENT:3 || TALENT:6
+				PRINTFORMW 
+			;淫乱、娼婦
+			ELSEIF TALENT:4 || TALENT:7
+				PRINTFORMW 
+			;服従、隷属
+			ELSEIF TALENT:5 || TALENT:8
+				PRINTFORMW 
+			ENDIF
+			CFLAG:336 = 4
+		;屈服刻印Lv3
+		ELSEIF MARK:2 == 3 && (CFLAG:336 < 3 || FLAG:7 == 2)
+			PRINTFORMW 
+			CFLAG:336 = 3
+		;それ以外
+		ELSEIF CFLAG:336 < 2 || FLAG:7 == 2
+			PRINTFORMW 
+			CFLAG:336 = 2
+		ENDIF
+	ENDIF
+ENDIF
+
+
+
+;=================================================
 ;500番台,派生コマンド
 ;=================================================
 ;-------------------------------------------------
@@ -4961,7 +5002,7 @@ ENDIF
 ;-------------------------------------------------
 ;逆レイプで射精させた
 ;-------------------------------------------------
-IF SELECTCOM == 64 && TFLAG:10 > 0
+IF (SELECTCOM == 64 || SELECTCOM == 200) && TFLAG:10 > 0
 	CALL PALAM_MESSAGE_A
 	;陥落済み
 	IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:239 < 3 || FLAG:7 == 2)

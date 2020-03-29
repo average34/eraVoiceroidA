@@ -402,6 +402,9 @@ REND
 ; FLAG:1001 = 8800
 ; 以下略
 
+
+
+
 REPEAT 100
 	A = 100 + COUNT
 	B = 1000 + COUNT
@@ -411,6 +414,12 @@ REPEAT 100
 		FLAG:B = ITEMPRICE:A
 	SIF FLAG:C == 1
 		FLAG:B = 0
+;デバッグモードでない場合、EXキャラを削除
+[IF_NDEBUG]
+	SIF A >= 189 && A <= 199
+		FLAG:B = 0
+[ENDIF]
+
 REND
 A = 0
 B = 0

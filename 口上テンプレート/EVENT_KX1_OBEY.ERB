@@ -3708,7 +3708,7 @@ ENDIF
 ;-------------------------------------------------
 ;逆レイプで射精させた
 ;-------------------------------------------------
-IF SELECTCOM == 64 && TFLAG:10 > 0
+IF (SELECTCOM == 64 || SELECTCOM == 200) && TFLAG:10 > 0
 	CALL PALAM_MESSAGE_A
 	;服従、隷属
 	IF (TALENT:5 || TALENT:8) && (CFLAG:239 < 2 || FLAG:7 == 2)

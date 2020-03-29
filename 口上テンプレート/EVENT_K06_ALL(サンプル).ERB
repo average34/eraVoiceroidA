@@ -5200,7 +5200,7 @@ ENDIF
 ;-------------------------------------------------
 ;逆レイプで射精させた
 ;-------------------------------------------------
-IF SELECTCOM == 64 && TFLAG:10 > 0
+IF (SELECTCOM == 64 || SELECTCOM == 200) && TFLAG:10 > 0
 	CALL PALAM_MESSAGE_A
 	;陥落済み
 	IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:239 < 3 || FLAG:7 == 2)
