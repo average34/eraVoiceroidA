@@ -2,7 +2,7 @@
 ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 
 eraVoiceroidA Q＆A
-更新日：2020.3.27
+更新日：2020.3.29
 
 ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 
@@ -74,17 +74,15 @@ A.どうぞどうぞ
 Q.キャラクターの追加をしたい！どうやればいい？
 A.以下の6つの変更を適用します。
 
-1.eraVoiceroidA>CSV>CHARA フォルダにChara○○.csvを追加してください。変数の仕様はeraVoiceroidA>資料>EraIndex.html や、CSV を参考にして下さい。
+1.eraVoiceroidA>CSV>CHARA フォルダにChara○○.csvを追加してください。変数の仕様は eraVoiceroidA>資料>EraIndex.html や、CSV を参考にして下さい。
 2.Item.csv に名前と価格を追加してください。
 3.Str.csv の200番以降に 呼び名＋空白 を追加してください。
 
 ※これらのcsvはExcelではなく、「メモ帳」や「VSCode」などのテキストエディタで編集してください。
 
-eraVoiceroidA>ERBフォルダの
+eraVoiceroidA>ERB フォルダの
 4. SHOP2.ERB の @CHARA_MANUAL に解説を追加してください。
-5. PRINT_STATE.ERB の @SHOW_RACE に種族を追加してください。
-※現段階では埋まってるのでいじらなくてもいいかも
-6. LUNCH_STALL.ERB の @LUNCH_NAME_VOICEROID に得意料理名を追加して下さい。
+5. LUNCH_STALL.ERB の @LUNCH_NAME_VOICEROID に得意料理名を追加して下さい。
 ※ERBデータもテキストエディタで開けます。
 
 改造方法がわからない場合は以下のURLを参考にしてください。

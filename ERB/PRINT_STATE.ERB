@@ -6,19 +6,82 @@ PRINTS STR:C
 @SHOW_RACE
 ;能力を見る選択のとき、各キャラの横で種族が表示される
 R = NO:RESULT
+LOCALS = %GET_RACE(R)%
+
+
 PRINT 種族：
-SIF R == 0
-	PRINTS "あなた"
-SIF R >= 1 && R <= 49
-	PRINTS "VOICEROID"
-SIF R >= 50 && R <= 79
-	PRINTS "CeVIO"
-SIF R >= 80 && R <= 89
-	PRINTS "AITalk"
-SIF R >= 90 && R <= 99
-	PRINTS "VOCALOID"
+
+IF LOCALS == ""
+	PRINTS "不明（エラー）"
+ELSEIF LOCALS != ""
+	PRINTFORMS LOCALS
+
+;昔の処理。ここまで来るとおかしいと思う
+ELSE 
+	IF R == 0
+		PRINTS "あなた（エラー）"
+	ELSEIF R >= 1 && R <= 49
+		PRINTS "VOICEROID（エラー）"
+	ELSEIF R >= 50 && R <= 79
+		PRINTS "CeVIO（エラー）"
+	ELSEIF R >= 80 && R <= 89
+		PRINTS "AITalk（エラー）"
+	ELSEIF R >= 90 && R <= 99
+		PRINTS "VOCALOID（エラー）"
+	ELSE
+		PRINTS "不明（エラー）"
+	ENDIF
+ENDIF
 
 PRINTL 
+
+;変数初期化
+R = 0
+LOCALS = ""
+
+@GET_RACE(ARG:0)
+#FUNCTIONS
+;CSVから種族を得る関数。種族があればRESULTSに文字列を入力、なければ文字列なしを返す
+;ARG:0 キャラの番号。NO:RESULT
+
+[IF_DEBUG]
+;PRINTL GET_RACE を実行
+;PRINT ARG:0 = 
+;PRINTFORML {ARG:0}
+[ENDIF]
+
+;あなたは読み込むまでもない
+SIF ARG:0 == 0
+	RETURNF "あなた"
+;EXキャラ固有
+SIF ARG:0 == 90 || ARG:0 == 91
+	RETURNF "VOCALOID"
+
+EXISTCSV ARG:0
+IF RESULT == 0
+	RESULTS = ""
+	RETURNF ""
+ENDIF
+
+;VOICEROIDの種族かどうか
+CSVTALENT ARG:0,160
+SIF RESULT == 1
+	RETURNF "VOICEROID"
+;CeVIOの種族かどうか
+CSVTALENT ARG:0,161
+SIF RESULT == 1
+	RETURNF "CeVIO"
+;AITalkの種族かどうか
+CSVTALENT ARG:0,162
+SIF RESULT == 1
+	RETURNF "AITalk"
+
+
+;何もヒットしなかった
+RETURNF ""
+
+
+
 
 @SHOW_INFO_PALAM
 REPEAT 15
