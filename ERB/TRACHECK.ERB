@@ -173,9 +173,9 @@ ENDIF
 ;処女喪失時の処理
 ;-------------------------------------------------
 @LOST_VIRGIN
-IF TALENT:0 && TFLAG:19
+IF TALENT:処女 && TFLAG:19
 	PRINTW 処女喪失
-	TALENT:0 = 0
+	TALENT:処女 = 0
 	;処女喪失フラグ(今回のコマンド)
 	TFLAG:3 = 1
 	;処女喪失フラグ(今回の調教)

@@ -284,7 +284,7 @@ SIF TALENT:30 && (TALENT:3 == 0 && TALENT:6 == 0)
 ;Vに挿入している場合
 IF TFLAG:40 == 1 || TFLAG:41 == 1
 	;処女だった場合は、苦痛のソースと反発のソースを追加する
-	IF TALENT:0 == 1
+	IF TALENT:処女 == 1
 		SOURCE:7 += 5500
 		SOURCE:18 += 3000
 	ENDIF
@@ -433,7 +433,7 @@ ENDIF
 ;-------------------------------------------------
 IF TFLAG:40 == 1
 	;膣内に破瓜の血の汚れを付加
-	SIF TALENT:0 == 1 || TALENT:1 == 1
+	SIF TALENT:処女 == 1 || TALENT:1 == 1
 		STAIN:6 |= 64
 	;奴隷の膣内⇔主人のＰの汚れが移動
 	IF TALENT:MASTER:137 || TALENT:MASTER:139 || TALENT:MASTER:140
@@ -456,7 +456,7 @@ ENDIF
 
 IF TFLAG:41 == 1
 	;膣内に破瓜の血の汚れを付加
-	SIF TALENT:0 == 1 || TALENT:1 == 1
+	SIF TALENT:処女 == 1 || TALENT:1 == 1
 		STAIN:6 |= 64
 	;奴隷の膣内⇔助手のＰの汚れが移動
 	IF TALENT:ASSI:139 || TALENT:ASSI:140
@@ -506,7 +506,7 @@ ELSE
 ENDIF
 
 ;異常経験
-IF (TFLAG:40 == 1 || TFLAG:41 == 1) && TALENT:0 == 1
+IF (TFLAG:40 == 1 || TFLAG:41 == 1) && TALENT:処女 == 1
 	EXP:50 += 2
 	PRINTFORML %EXPNAME:50%＋２
 ENDIF

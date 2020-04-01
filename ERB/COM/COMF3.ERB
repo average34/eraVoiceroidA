@@ -7,14 +7,14 @@
 ;特殊派生処理
 ;-------------------------------------------------
 ;非処女で前回の調教が指挿入れかつプレイヤの技巧３以上だとＧスポット刺激に
-IF PREVCOM == 3 && ABL:PLAYER:2 >= 3 && TALENT:0 == 0 && TALENT:1 == 0
+IF PREVCOM == 3 && ABL:PLAYER:2 >= 3 && TALENT:処女 == 0 && TALENT:1 == 0
 	CALL COM_ABLE503
 	SIF RESULT == 1
 		JUMP COM503
 ENDIF
 
 ;非処女で前回の調教がGスポットならさらにＧスポット刺激に
-IF PREVCOM == 503 && TALENT:0 == 0 && TALENT:1 == 0
+IF PREVCOM == 503 && TALENT:処女 == 0 && TALENT:1 == 0
 	CALL COM_ABLE503
 	SIF RESULT == 1
 		JUMP COM503
@@ -26,7 +26,7 @@ STR:0 = 指挿入れ
 CALL KOJO_MESSAGE_COM
 
 ;V経験を伴うコマンドのフラグ(処女膜再生対応)
-SIF TALENT:0 == 0 && TALENT:1 == 0
+SIF TALENT:処女 == 0 && TALENT:1 == 0
 	TFLAG:19 = 1
 
 ;-------------------------------------------------
@@ -37,7 +37,7 @@ LOSEBASE:0 += 30
 LOSEBASE:1 += 80
 
 
-IF TALENT:0 == 0 && TALENT:1 == 0
+IF TALENT:処女 == 0 && TALENT:1 == 0
 	SOURCE:1 = 120
 	SOURCE:7 = 15
 	SOURCE:13 = 10
@@ -62,7 +62,7 @@ ENDIF
 IF TALENT:32 || TALENT:34
 	SOURCE:16 += 20
 	;処女
-	SIF TALENT:0
+	SIF TALENT:処女
 		SOURCE:16 += 10
 ENDIF
 
@@ -109,7 +109,7 @@ ENDIF
 ;経験の処理
 ;-------------------------------------------------
 ;V経験
-IF TALENT:0 == 0 && TALENT:1 == 0
+IF TALENT:処女 == 0 && TALENT:1 == 0
 	EXP:0 += 1
 	PRINTL Ｖ経験＋１
 ENDIF
@@ -128,7 +128,7 @@ ELSEIF TALENT:140 && TALENT:PLAYER:140
 ENDIF
 
 ;依存度ベクトル
-IF TALENT:0
+IF TALENT:処女
 	TFLAG:33 = 3
 ELSE
 	TFLAG:33 = 1

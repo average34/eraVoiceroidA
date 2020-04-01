@@ -186,7 +186,7 @@ SIF TALENT:30 && (TALENT:3 == 0 && TALENT:6 == 0)
 	SOURCE:18 += 1000
 
 ;処女だった場合は、苦痛のソースと反発のソースを追加する
-IF TALENT:0 == 1
+IF TALENT:処女 == 1
 	SOURCE:7 += 2000
 	SOURCE:18 += 3000
 ENDIF
@@ -274,7 +274,7 @@ ENDIF
 ;-------------------------------------------------
 ;射精に関係なく行われる処理はここから
 ;膣内に破瓜の血の汚れを付加
-SIF TALENT:0 == 1 || TALENT:1 == 1
+SIF TALENT:処女 == 1 || TALENT:1 == 1
 	STAIN:6 |= 64
 ;奴隷の膣内⇔調教者のＰの汚れが移動
 STAIN:6 |= STAIN:PLAYER:2
@@ -293,10 +293,10 @@ PRINTS EXPNAME:4
 PRINTL +1
 
 ;異常経験
-IF TALENT:0 == 1 && ASSIPLAY && TALENT:PLAYER:140 == 0
+IF TALENT:処女 == 1 && ASSIPLAY && TALENT:PLAYER:140 == 0
 	EXP:50 += 3
 	PRINTFORML %EXPNAME:50%＋３
-ELSEIF TALENT:0 == 1
+ELSEIF TALENT:処女 == 1
 	EXP:50 += 2
 	PRINTFORML %EXPNAME:50%＋２
 ENDIF
@@ -472,7 +472,7 @@ ENDIF
 
 
 ;処女
-IF TALENT:0
+IF TALENT:処女
 	PRINT  - 
 	A -= 40
 	PRINTS TALENTNAME:0

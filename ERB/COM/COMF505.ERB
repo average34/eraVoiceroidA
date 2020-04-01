@@ -207,7 +207,7 @@ SIF TALENT:30 && (TALENT:3 == 0 && TALENT:6 == 0) && TFLAG:40 == 1
 	SOURCE:18 += 1000
 
 ;処女だった場合は、苦痛のソースと反発のソースを追加する
-IF TALENT:0 == 1 && TFLAG:40 == 1
+IF TALENT:処女 == 1 && TFLAG:40 == 1
 	SOURCE:7 += 2000
 	SOURCE:18 += 3000
 ENDIF
@@ -366,7 +366,7 @@ ENDIF
 ;騎乗位からの派生の場合
 IF TFLAG:40 == 1
 	;膣内に破瓜の血の汚れを付加
-	SIF TALENT:0 == 1 || TALENT:1 == 1
+	SIF TALENT:処女 == 1 || TALENT:1 == 1
 		STAIN:6 |= 64
 	;奴隷の膣内⇔調教者のＰの汚れが移動
 	STAIN:6 |= STAIN:PLAYER:2
@@ -397,7 +397,7 @@ ELSE
 	PRINTL 調教自慰経験＋１
 ENDIF
 ;騎乗位からの派生で処女の場合は、後で一括処理する
-IF TEQUIP:28 && CFLAG:3 == 0 && TALENT:0 == 0 && TFLAG:40 != 1
+IF TEQUIP:28 && CFLAG:3 == 0 && TALENT:処女 == 0 && TFLAG:40 != 1
 	EXP:50 += 1
 	PRINTL 異常経験＋１
 	CFLAG:3 = 1
@@ -409,19 +409,19 @@ IF TFLAG:40 == 1
 	;異常経験
 	;公開による異常経験と合わせて処理する
 	IF TEQUIP:28 && CFLAG:3 == 0
-		IF TALENT:0 == 1 && ASSIPLAY && TALENT:PLAYER:140 == 0
+		IF TALENT:処女 == 1 && ASSIPLAY && TALENT:PLAYER:140 == 0
 			EXP:50 += 4
 			PRINTFORML %EXPNAME:50%＋４
-		ELSEIF TALENT:0 == 1
+		ELSEIF TALENT:処女 == 1
 			EXP:50 += 3
 			PRINTFORML %EXPNAME:50%＋３
 		ENDIF
 		CFLAG:3 += 1
 	ELSE
-		IF TALENT:0 == 1 && ASSIPLAY && TALENT:PLAYER:140 == 0
+		IF TALENT:処女 == 1 && ASSIPLAY && TALENT:PLAYER:140 == 0
 			EXP:50 += 3
 			PRINTFORML %EXPNAME:50%＋３
-		ELSEIF TALENT:0 == 1
+		ELSEIF TALENT:処女 == 1
 			EXP:50 += 2
 			PRINTFORML %EXPNAME:50%＋２
 		ENDIF
@@ -673,7 +673,7 @@ ENDIF
 
 
 ;処女
-IF TALENT:0
+IF TALENT:処女
 	PRINT  - 
 	A -= 40
 	PRINTS TALENTNAME:0

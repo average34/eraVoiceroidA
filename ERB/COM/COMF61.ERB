@@ -173,7 +173,7 @@ SIF TALENT:30 && (TALENT:3 == 0 && TALENT:6 == 0)
 	SOURCE:18 += 1000
 
 ;処女だった場合は、苦痛のソースと反発のソースを追加する
-IF TALENT:0 == 1
+IF TALENT:処女 == 1
 	SOURCE:7 += 1500
 	SOURCE:18 += 3000
 ENDIF
@@ -260,7 +260,7 @@ ENDIF
 ;汚れの処理
 ;-------------------------------------------------
 ;射精に関係なく行われる処理はここから
-SIF TALENT:0 == 1 || TALENT:1 == 1
+SIF TALENT:処女 == 1 || TALENT:1 == 1
 	STAIN:6 |= 64
 ;奴隷の膣内⇔調教者のＰの汚れが移動
 STAIN:6 |= STAIN:PLAYER:2
@@ -436,7 +436,7 @@ IF TEQUIP:19 == 0
 		S = 20
 	ENDIF
 	;処女
-	IF TALENT:0
+	IF TALENT:処女
 		PRINT  - 
 		A -= 40
 		PRINTS TALENTNAME:0

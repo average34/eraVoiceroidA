@@ -550,7 +550,7 @@ IF SELECTCOM == 3
 	CALL TRAIN_MESSAGE
 	;初めて
 	IF CFLAG:303 == 0
-		IF TALENT:0 == 1
+		IF TALENT:処女 == 1
 			PRINTFORMW 「条件文を使うことで、『処女のときと非処女のときで反応を変える』なんてのもできるで」
 			PRINTFORMW 「ちなみにこれは処女の状態のときに出てくる文章やで」
 		ELSE
@@ -1323,7 +1323,7 @@ IF SELECTCOM == 44 && TEQUIP:13 == 0
 	;初めて
 	IF CFLAG:326 == 0
 		;処女
-		IF TALENT:0
+		IF TALENT:処女
 			PRINTFORMW 「ちょっと！ウチ、そんなの入んない！無理やって！」
 			PRINTFORMW 「あああああああああああああああああ」
 		;それ以外
@@ -1580,10 +1580,10 @@ IF SELECTCOM == 60
 	;初めて
 	IF CFLAG:332 == 0
 		;処女
-		IF TALENT:0 && (TALENT:3 || TALENT:6)
+		IF TALENT:処女 && (TALENT:3 || TALENT:6)
 			PRINTFORMW 「待ってたんやで……ウチ、この時をずっと」
 			PRINTFORMW 「嬉しいなあ……マスターにウチの初めて、あげられるなんて」
-		ELSEIF TALENT:0
+		ELSEIF TALENT:処女
 			PRINTFORMW 「処女貫通口上はじっくり書いてくれると中の人が喜びます」
 			PRINTFORMW 「ちなみにこの口上は恋慕時処女貫通のときに分岐するようできてます」
 		;それ以外
@@ -1626,10 +1626,10 @@ IF SELECTCOM == 61
 	;初めて
 	IF CFLAG:333 == 0
 		;処女
-		IF TALENT:0 && (TALENT:3 || TALENT:6)
+		IF TALENT:処女 && (TALENT:3 || TALENT:6)
 			PRINTFORMW 「待ってたんやで……ウチ、この時をずっと」
 			PRINTFORMW 「嬉しいなあ……マスターにウチの初めて、あげられるなんて」
-		ELSEIF TALENT:0
+		ELSEIF TALENT:処女
 			PRINTFORMW 「処女貫通口上はじっくり書いてくれると中の人が喜びます」
 			PRINTFORMW 「ちなみにこの口上は恋慕時処女貫通のときに分岐するようできてます」
 		;それ以外
@@ -1819,10 +1819,10 @@ IF SELECTCOM == 66
 	;初めて
 	IF CFLAG:338 == 0
 		;処女
-		IF TALENT:0 && (TALENT:3 || TALENT:6)
+		IF TALENT:処女 && (TALENT:3 || TALENT:6)
 			PRINTFORMW 「待ってたんやで……ウチ、この時をずっと」
 			PRINTFORMW 「嬉しいなあ……マスターにウチの初めて、あげられるなんて」
-		ELSEIF TALENT:0
+		ELSEIF TALENT:処女
 			PRINTFORMW 「処女貫通口上はじっくり書いてくれると中の人が喜びます」
 			PRINTFORMW 「……って、え？なに？ウチが自分で処女捧げるの？」
 			PRINTFORMW 「ほんとにやるんか？」
@@ -1909,10 +1909,10 @@ IF SELECTCOM == 68
 	;初めて
 	IF CFLAG:340 == 0
 		;処女
-		IF TALENT:0 && (TALENT:3 || TALENT:6)
+		IF TALENT:処女 && (TALENT:3 || TALENT:6)
 			PRINTFORMW 「待ってたんやで……ウチ、この時をずっと」
 			PRINTFORMW 「嬉しいなあ……マスターにウチの初めて、あげられるなんて」
-		ELSEIF TALENT:0
+		ELSEIF TALENT:処女
 			PRINTFORMW 「処女貫通口上はじっくり書いてくれると中の人が喜びます」
 			PRINTFORMW 「ちなみにこの口上は恋慕時処女貫通のときに分岐するようできてます」
 		;それ以外
@@ -1955,10 +1955,10 @@ IF SELECTCOM == 69
 	;初めて
 	IF CFLAG:340 == 0
 		;処女
-		IF TALENT:0 && (TALENT:3 || TALENT:6)
+		IF TALENT:処女 && (TALENT:3 || TALENT:6)
 			PRINTFORMW 「待ってたんやで……ウチ、この時をずっと」
 			PRINTFORMW 「嬉しいなあ……マスターにウチの初めて、あげられるなんて」
-		ELSEIF TALENT:0
+		ELSEIF TALENT:処女
 			PRINTFORMW 「処女貫通口上はじっくり書いてくれると中の人が喜びます」
 			PRINTFORMW 「ちなみにこの口上は恋慕時処女貫通のときに分岐するようできてます」
 		;それ以外
@@ -2073,7 +2073,7 @@ IF SELECTCOM == 72
 	;初めて
 	IF CFLAG:420 == 0
 		;処女
-		IF TALENT:0
+		IF TALENT:処女
 			PRINTFORMW 
 		;それ以外
 		ELSE
@@ -3418,7 +3418,7 @@ IF SELECTCOM == 151
 	;初めて
 	IF CFLAG:380 == 0
 		;処女
-		IF TALENT:0
+		IF TALENT:処女
 			PRINTFORMW 
 		;それ以外
 		ELSE
@@ -3500,7 +3500,7 @@ IF SELECTCOM == 161
 	;初めて
 	IF CFLAG:383 == 0
 		;処女
-		IF TALENT:0
+		IF TALENT:処女
 			PRINTFORMW 
 		;それ以外
 		ELSE
@@ -4391,7 +4391,7 @@ IF SELECTCOM == 500
 	;初めて
 	IF CFLAG:407 == 0
 		;処女
-		IF TALENT:0
+		IF TALENT:処女
 			PRINTFORMW 
 		;それ以外
 		ELSE
@@ -4537,7 +4537,7 @@ IF SELECTCOM == 504
 	;初めて
 	IF CFLAG:411 == 0
 		;処女
-		IF TALENT:0
+		IF TALENT:処女
 			PRINTFORMW 
 		;それ以外
 		ELSE
@@ -4579,7 +4579,7 @@ IF SELECTCOM == 505 && TFLAG:40 == 1
 	;初めて
 	IF CFLAG:412 == 0
 		;処女
-		IF TALENT:0
+		IF TALENT:処女
 			PRINTFORMW 
 		;それ以外
 		ELSE

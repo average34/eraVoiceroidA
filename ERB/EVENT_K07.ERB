@@ -745,7 +745,7 @@ IF SELECTCOM == 3
 	CALL TRAIN_MESSAGE
 	;初めて
 	IF CFLAG:303 == 0
-		IF TALENT:0 == 1
+		IF TALENT:処女 == 1
 			PRINTFORMW 「いやっ！そんなところかき回さないで！」
 			PRINTFORMW 「痛い！やめて！やめてっ！」
 		ELSE
@@ -1897,7 +1897,7 @@ IF SELECTCOM == 44 && TEQUIP:13 == 0
 	;初めて
 	IF CFLAG:326 == 0
 		;処女
-		IF TALENT:0
+		IF TALENT:処女
 		;陥落済み
 			IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:326 < 4 || FLAG:7 == 2)
 				;恋慕、親愛
@@ -2237,7 +2237,7 @@ IF SELECTCOM == 60
 	;初めて
 	IF CFLAG:332 == 0
 		;処女
-		IF TALENT:0 && (TALENT:3 || TALENT:6)
+		IF TALENT:処女 && (TALENT:3 || TALENT:6)
 			PRINTFORMW 「嬉しい…私の初めて、貰ってくれるんだ…♪」
 			PRINTFORMW 「ねえ、手さ、ぎゅーって、しててよ」
 			PRINTFORMW 「そしたら、初めてで痛くっても、耐えられると思うから…♡」
@@ -2251,7 +2251,7 @@ IF SELECTCOM == 60
 			PRINTFORMW 「私のこと、幸せにしてよね？」
 			PRINTFORMW 「あなたのことも、いっぱいいっぱい、幸せにしちゃうから」
 			PRINTFORMW ――死ぬまで、離さないからね……♡♡
-		ELSEIF TALENT:0 && (TALENT:4 || TALENT:7)
+		ELSEIF TALENT:処女 && (TALENT:4 || TALENT:7)
 			PRINTFORMW 「正常位で初めて奪ってくれるなんて、優しいところもあるんだね♡」
 			PRINTFORMW 「初めてってさ、私のここ、もうとろとろのぐちょぐちょだけど、それでも痛いのかな？」
 			PRINTFORMW 「……あのね、ぎゅーって抱きしめて欲しいな…」
@@ -2266,7 +2266,7 @@ IF SELECTCOM == 60
 			PRINTFORMW 「だって、あなたが入って来てくれると思ったら、おまんこきゅんってなっちゃったんだよ？」
 			PRINTFORMW 「二人でいっぱいいっぱい、気持ちよくなっちゃおうね♡」
 			PRINTFORMW ――一緒に天国、イっちゃお♡
-		ELSEIF TALENT:0 && (TALENT:5 || TALENT:8)
+		ELSEIF TALENT:処女 && (TALENT:5 || TALENT:8)
 			PRINTFORMW 「えっ…私の初めて、奪ってくれるんですか…？」
 			PRINTFORMW 「あ、ありがとうございますっ！私、いっぱい気持ちよくしてあげますからっ！！」
 			PRINTFORMW 「愛液溢れてて準備万端な私のおまんこ、あなたのおちんちんで思いっきり犯して、気持ちよくなっちゃって下さいっ！」
@@ -2291,7 +2291,7 @@ IF SELECTCOM == 60
 			PRINTFORMW （でも、この人が奪ってくれたから…我慢してきた甲斐はあった、かな？）
 			PRINTFORMW （あはは、泣くほど、痛かったんだなぁ…目元、ちょっぴり濡れちゃってるな…）
 			PRINTFORMW ――目元、拭って、欲しい、な…
-		ELSEIF TALENT:0
+		ELSEIF TALENT:処女
 			PRINTFORMW 「やだっ！やだやだやだっ！大っ嫌いな人とせ、セックスするなんてっ！！」
 			PRINTFORMW 「何やってるか解ってるのっ！！レイプでしょっ！！」
 			PRINTFORMW 「今まで散々我慢してきたけど、そ、それだけはいやあああああああっっっ！！！」
@@ -2459,7 +2459,7 @@ IF SELECTCOM == 61
 	;初めて
 	IF CFLAG:333 == 0
 		;処女
-		IF TALENT:0 && (TALENT:3 || TALENT:6)
+		IF TALENT:処女 && (TALENT:3 || TALENT:6)
 			PRINTFORMW 「ねえ、出来たらあなたの顔を見ながらしたいんだけど」
 			PRINTFORMW 「そう、そんなに私のこと、後ろから犯したいんだ…」
 			PRINTFORMW 「……やっぱり、怖いな……あなたの顔、見えないし…」
@@ -2472,7 +2472,7 @@ IF SELECTCOM == 61
 			PRINTFORMW 「……私のおまんこにあなたのおちんちんが入っていくところ、目に焼き付けてね…♡」
 			PRINTFORMW 「……うん、葵の初めて、あなたに捧げるね…♡」
 			PRINTFORMW ――あなただけの、葵に、して♡♡
-		ELSEIF TALENT:0 && (TALENT:4 || TALENT:7)
+		ELSEIF TALENT:処女 && (TALENT:4 || TALENT:7)
 			PRINTFORMW 「初めてなのに後ろからしたいだなんて…ケダモノだねっ♡」
 			PRINTFORMW 「ほら、私のここ、あなたのが欲しくって、愛液でどろどろになっちゃってるよ？」
 			PRINTFORMW 「おちんちん欲しいよって、お尻振って、ねだっちゃってるよ？」
@@ -2482,7 +2482,7 @@ IF SELECTCOM == 61
 			PRINTFORMW 「あなたのおちんちん見ただけで、発情してお尻振っちゃうような…」
 			PRINTFORMW 「あなたのおちんちん挿れられただけで、おまんこきゅうってイっちゃうような、雌犬になっちゃうよ？」
 			PRINTFORMW ――けものになって、こーび、しようねっ♡♡
-		ELSEIF TALENT:0 && (TALENT:5 || TALENT:8)
+		ELSEIF TALENT:処女 && (TALENT:5 || TALENT:8)
 			PRINTFORMW 「えっ、後ろからするんですか…」
 			PRINTFORMW 「い、いえっ！私の初めてを奪ってくださるなんて、それだけで光栄ですからっ！」
 			PRINTFORMW （ちゃんと初めてをおちんちんで奪ってくれるだけでも、しあわせ、なんだから…）
@@ -2497,7 +2497,7 @@ IF SELECTCOM == 61
 			PRINTFORMW （解らない、解らないよっ！いつもあんなに酷いことするのに！）
 			PRINTFORMW （……でも、今だけは、こうして幸せに浸っちゃっても…）
 			PRINTFORMW ――いい、よね？
-		ELSEIF TALENT:0
+		ELSEIF TALENT:処女
 			PRINTFORMW 「やだっ！やだやだやだっ！大っ嫌いな人とせ、セックスするなんてっ！！」
 			PRINTFORMW 「何やってるか解ってるのっ！！レイプでしょっ！！」
 			PRINTFORMW 「今まで散々我慢してきたけど、そ、それだけはいやあああああああっっっ！！！」
@@ -2689,7 +2689,7 @@ IF SELECTCOM == 66
 	;初めて
 	IF CFLAG:338 == 0
 		;処女
-		IF TALENT:0 && (TALENT:3 || TALENT:6)
+		IF TALENT:処女 && (TALENT:3 || TALENT:6)
 			PRINTFORMW 「え、自分から挿れろって…？」
 			PRINTFORMW 「じ、冗談でしょ？本気で言ってるのっ！！」
 			PRINTFORMW 「……私だって、女の子なんだよ？あなたが初めてを奪ってくれるの、ずっと待ってたんだよ？」
@@ -2703,7 +2703,7 @@ IF SELECTCOM == 66
 			PRINTFORMW 「…………」
 			PRINTFORMW 「……わたしの…こと…ぜったいに…はなさ…ないで…ね…」
 			PRINTFORMW ――しあわせに…なろうね♡
-		ELSEIF TALENT:0 && (TALENT:4 || TALENT:7)
+		ELSEIF TALENT:処女 && (TALENT:4 || TALENT:7)
 			PRINTFORMW 「初めての私に騎乗位でしてほしいなんて…」
 			PRINTFORMW 「私のこと、どれだけ淫らにしたいの？」
 			PRINTFORMW 「嫌かって？ううん…してあげるよ？」
@@ -2717,7 +2717,7 @@ IF SELECTCOM == 66
 			PRINTFORMW 「それにね、私の膣内に入ったら、あなたも私のおまんこに夢中になっちゃうよ？」
 			PRINTFORMW 「そうやって、あなたのことも、私のおまんこのことしか考えられないように、調教し返してあげるね♡」
 			PRINTFORMW ――両想いに、してあげる♡♡
-		ELSEIF TALENT:0 && (TALENT:5 || TALENT:8)
+		ELSEIF TALENT:処女 && (TALENT:5 || TALENT:8)
 			PRINTFORMW 「自分から挿れるんですか…はいっ、わかりました！」
 			PRINTFORMW （私の初めて、自分の意思であなたに捧げていいだなんて…♪）
 			PRINTFORMW 「あのっ、私頑張りますからっ！！」
@@ -2735,7 +2735,7 @@ IF SELECTCOM == 66
 			PRINTFORMW （……逆に、入ってるのが心地よくなってきちゃって…）
 			PRINTFORMW （おまんこの中まで、この人専用にされちゃう…♡）
 			PRINTFORMW ――そうなったら…嬉しいな…♡
-		ELSEIF TALENT:0
+		ELSEIF TALENT:処女
 			PRINTFORMW 「やだっ！やだやだやだっ！大っ嫌いな人とせ、セックスするなんてっ！！」
 			PRINTFORMW 「何やってるか解ってるのっ！！レイプでしょっ！！」
 			PRINTFORMW 「今まで散々我慢してきたけど、そ、それだけはいやあああああああっっっ！！！」
@@ -2818,7 +2818,7 @@ IF SELECTCOM == 68
 	;初めて
 	IF CFLAG:340 == 0
 		;処女
-		IF TALENT:0 && (TALENT:3 || TALENT:6)
+		IF TALENT:処女 && (TALENT:3 || TALENT:6)
 			PRINTFORMW 「嬉しい…あなたとこうして向き合って、初めて貰ってもらえるなんて…♡」
 			PRINTFORMW 「怖かったんだよ？いつか、無理やり初めて奪われちゃうかもって…」
 			PRINTFORMW 「色んなこと、無理やりされて、人前では出来ないような、恥ずかしいこともいっぱいさせられちゃったし…」
@@ -2833,7 +2833,7 @@ IF SELECTCOM == 68
 			PRINTFORMW 「心でも、身体でも、一番近くで、あなたと繋がって…♡」
 			PRINTFORMW 「あなたの、一番近くに、私のこと、置いてほしいから…♡」
 			PRINTFORMW ――あなたのこと、ずーっと大好きだよ♡♡♡
-		ELSEIF TALENT:0 && (TALENT:4 || TALENT:7)
+		ELSEIF TALENT:処女 && (TALENT:4 || TALENT:7)
 			PRINTFORMW 「ふふっ…抱き合いながらしたいんだ…良いよ、しよっか♡」
 			PRINTFORMW 「ぎゅーってされたら、あなたのこと全身で感じて、初めてなのに気持ちよくなっちゃうよ…」
 			PRINTFORMW 「背中に手を回して、膨らみかけのおっぱい、思いっきり押し付けちゃって…」
@@ -2845,7 +2845,7 @@ IF SELECTCOM == 68
 			PRINTFORMW 「膣内に精液びゅーって、注いで、欲しいから…♪」
 			PRINTFORMW 「ほら、おいでよっ♡抱き合いながら、えっちしよっ♡」
 			PRINTFORMW ――パパに、なっちゃえ♡
-		ELSEIF TALENT:0 && (TALENT:5 || TALENT:8)
+		ELSEIF TALENT:処女 && (TALENT:5 || TALENT:8)
 			PRINTFORMW 「えっ！抱き合いながら貰ってくれるんですか…！！」
 			PRINTFORMW （ゆ、夢みたいっ♡この人と、密着して繋がっていいなんて！！）
 			PRINTFORMW 「その代わりにお願いがあるって？もう、あなたがして欲しいなら命令してくれれば何でもしてあげるのに…」
@@ -2862,7 +2862,7 @@ IF SELECTCOM == 68
 
 			PRINTFORMW （ねえ、私のこと、少しでも好いてくれているなら、あなたからも――）
 			PRINTFORMW ――ぎゅってして、欲しい、な…
-		ELSEIF TALENT:0
+		ELSEIF TALENT:処女
 			PRINTFORMW 「やだっ！やだやだやだっ！大っ嫌いな人とせ、セックスするなんてっ！！」
 			PRINTFORMW 「何やってるか解ってるのっ！！レイプでしょっ！！」
 			PRINTFORMW 「今まで散々我慢してきたけど、そ、それだけはいやあああああああっっっ！！！」
@@ -2909,7 +2909,7 @@ IF SELECTCOM == 69
 	;初めて
 	IF CFLAG:340 == 0
 		;処女
-		IF TALENT:0 && (TALENT:3 || TALENT:6)
+		IF TALENT:処女 && (TALENT:3 || TALENT:6)
 			PRINTFORMW 「へへっ、あなたに抱っこされてるの、嬉しいな♡」
 			PRINTFORMW 「…あっ、お尻に大きいの、当たっちゃってるよ♪」
 			PRINTFORMW 「お尻すりすりってされて、興奮しちゃった？」
@@ -2924,7 +2924,7 @@ IF SELECTCOM == 69
 			PRINTFORMW 「おっぱいも、お尻も、アソコも、好きにして、いいんだよ…♡」
 			PRINTFORMW 「まだ誰も知らない、私だけの身体……」
 			PRINTFORMW ――あなた色に、染めて♡♡
-		ELSEIF TALENT:0 && (TALENT:4 || TALENT:7)
+		ELSEIF TALENT:処女 && (TALENT:4 || TALENT:7)
 			PRINTFORMW 「もう、おちんちん大きくなっちゃってるじゃない♪」
 			PRINTFORMW 「お尻を押し付けるだけで固くしちゃって…わかりやすいんだから♡」
 			PRINTFORMW 「ここに挿れたいんでしょ？あなたからは見えないだろうけど、くぱあって広げて挿れてくれるの待ってるんだよ♡」
@@ -2934,7 +2934,7 @@ IF SELECTCOM == 69
 			PRINTFORMW 「おちんちんハメちゃえ、ハメちゃいなよ♡」
 			PRINTFORMW 「後ろからおっぱい弄りながら、おまんこにおちんちん突き入れちゃえ♡」
 			PRINTFORMW ――私の身体、好きにしていいよ♡
-		ELSEIF TALENT:0 && (TALENT:5 || TALENT:8)
+		ELSEIF TALENT:処女 && (TALENT:5 || TALENT:8)
 			PRINTFORMW 「あっ…後ろからするんですか…」
 			PRINTFORMW 「はい、私の初めて、もらってください…」
 			PRINTFORMW （初めては向き合いながらが良かったな…でも、この人にもらってもらえるなら…）
@@ -2947,7 +2947,7 @@ IF SELECTCOM == 69
 			PRINTFORMW （……もっと熱いの、注ぎ込まれちゃうんだ…）
 			PRINTFORMW （一番奥で、この人の熱を感じたいな…♡）
 			PRINTFORMW ――私の心も、暖めてください♡
-		ELSEIF TALENT:0
+		ELSEIF TALENT:処女
 			PRINTFORMW 「やだっ！やだやだやだっ！大っ嫌いな人とせ、セックスするなんてっ！！」
 			PRINTFORMW 「何やってるか解ってるのっ！！レイプでしょっ！！」
 			PRINTFORMW 「今まで散々我慢してきたけど、そ、それだけはいやあああああああっっっ！！！」
@@ -3066,7 +3066,7 @@ IF SELECTCOM == 72
 	;初めて
 	IF CFLAG:420 == 0
 		;処女
-		IF TALENT:0
+		IF TALENT:処女
 			PRINTFORMW 
 		;それ以外
 		ELSE
@@ -4771,7 +4771,7 @@ IF SELECTCOM == 151
 	;初めて
 	IF CFLAG:380 == 0
 		;処女
-		IF TALENT:0
+		IF TALENT:処女
 			PRINTFORMW 
 		;それ以外
 		ELSE
@@ -4861,7 +4861,7 @@ IF SELECTCOM == 161
 	;初めて
 	IF CFLAG:383 == 0
 		;処女
-		IF TALENT:0
+		IF TALENT:処女
 		;陥落済み
 			IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:326 < 4 || FLAG:7 == 2)
 				;恋慕、親愛
@@ -5872,7 +5872,7 @@ IF SELECTCOM == 500
 	;初めて
 	IF CFLAG:407 == 0
 		;処女
-		IF TALENT:0
+		IF TALENT:処女
 			PRINTFORMW 
 		;それ以外
 		ELSE
@@ -6057,7 +6057,7 @@ IF SELECTCOM == 504
 	;初めて
 	IF CFLAG:411 == 0
 		;処女
-		IF TALENT:0
+		IF TALENT:処女
 			PRINTFORMW 
 		;それ以外
 		ELSE
@@ -6099,7 +6099,7 @@ IF SELECTCOM == 505 && TFLAG:40 == 1
 	;初めて
 	IF CFLAG:412 == 0
 		;処女
-		IF TALENT:0
+		IF TALENT:処女
 			PRINTFORMW 
 		;それ以外
 		ELSE

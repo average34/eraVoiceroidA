@@ -766,7 +766,7 @@ S += V
 V = 100
 ;素質による売却額補正値計算
 ;TALENT:処女をみる
-IF TALENT:0
+IF TALENT:処女
 	C = 100
 	V += 100
 	PRINTFORML %TALENTNAME:0% ＋{C}％
@@ -1765,8 +1765,8 @@ IF TFLAG:39
 ENDIF
 
 O = 100
-;素質:処女を見る
-SIF TALENT:0
+;TALENT:処女を見る
+SIF TALENT:処女
 	O += 20
 ;素質:無関心を見る
 SIF TALENT:21

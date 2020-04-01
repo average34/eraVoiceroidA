@@ -47,7 +47,7 @@ PRINTW ペニスを口に咥えて舐めまわした……
 @MESSAGE_COM3
 PRINTFORM %CALLNAME:TARGET%の
 ;処女
-IF TALENT:0
+IF TALENT:処女
 	PRINT 男を知らない
 ;潤滑LV4以上
 ELSEIF PALAM:4 >= PALAMLV:4
@@ -628,19 +628,19 @@ ELSE
 
 	PRINTFORM %CALLNAME:TARGET%は
 	;処女＋淫乱か娼婦
-	IF TALENT:0 && (TALENT:4 || TALENT:7)
+	IF TALENT:処女 && (TALENT:4 || TALENT:7)
 		PRINT 自分が処女である事を忘れているかのような笑みを見せ
 	;処女＋恋慕か親愛
-	ELSEIF TALENT:0 && (TALENT:3 || TALENT:6)
+	ELSEIF TALENT:処女 && (TALENT:3 || TALENT:6)
 		PRINTFORM 少し寂しそうな目で%CALLNAME:PLAYER%を見
 	;処女＋淫乱
-	ELSEIF TALENT:0 && TALENT:4
+	ELSEIF TALENT:処女 && TALENT:4
 		PRINT 処女である事もお構いなしに、腰を揺らしておねだりをし
 	;処女＋一線越えない
-	ELSEIF TALENT:0 && TALENT:27
+	ELSEIF TALENT:処女 && TALENT:27
 		PRINT 何かを諦めた表情で目にうっすら涙を浮かべ
 	;処女
-	ELSEIF TALENT:0
+	ELSEIF TALENT:処女
 		PRINT ガタガタと震え、喪失の恐怖に怯え
 
 	;Ｖ経験200以上＋淫乱か娼婦
@@ -794,7 +794,7 @@ ELSEIF TFLAG:60 && (PREVCOM == 61 || PREVCOM == 66 || PREVCOM == 68 || PREVCOM =
 ELSE
 	PRINTFORM %CALLNAME:TARGET%の
 	;処女
-	IF TALENT:0
+	IF TALENT:処女
 		PRINT 男を知らない
 	;潤滑LV4以上
 	ELSEIF PALAM:4 >= PALAMLV:4
@@ -836,7 +836,7 @@ ELSEIF TFLAG:60 && (PREVCOM == 66 || PREVCOM == 68 || PREVCOM == 69) && ((ASSIPL
 ELSE
 	PRINTFORM 後ろから%CALLNAME:TARGET%の
 	;処女
-	IF TALENT:0
+	IF TALENT:処女
 		PRINT 男を知らない
 	;潤滑LV4以上
 	ELSEIF PALAM:4 >= PALAMLV:4
@@ -956,10 +956,10 @@ ELSEIF TFLAG:60 && (PREVCOM == 68 || PREVCOM == 69) && ((ASSIPLAY && TFLAG:50) |
 ELSE
 	PRINTFORM %CALLNAME:TARGET%は%CALLNAME:PLAYER%の上にまたがり、ゆっくりと腰を下ろし
 	;処女＋小柄体型
-	IF TALENT:100 && TALENT:0
+	IF TALENT:100 && TALENT:処女
 		PRINTL 、男を知らない幼いワレメでペニスを飲み込んでいった……
 	;処女
-	ELSEIF TALENT:0
+	ELSEIF TALENT:処女
 		PRINTL 、男を知らない秘裂でペニスを飲み込んでいった……
 	ELSE
 		PRINTL てきた……
@@ -1049,7 +1049,7 @@ ELSE
 	SIF PALAM:4 >= PALAMLV:4
 		PRINT 濡れそぼった
 	;処女
-	SIF TALENT:0
+	SIF TALENT:処女
 		PRINT 男を知らない
 	;小柄体型
 	IF TALENT:100
@@ -1105,7 +1105,7 @@ ELSE
 	SIF PALAM:4 >= PALAMLV:4
 		PRINT 濡れそぼった
 	;処女
-	SIF TALENT:0
+	SIF TALENT:処女
 		PRINT 男を知らない
 	;小柄体型
 	IF TALENT:100
@@ -1235,7 +1235,7 @@ ELSEIF TEQUIP:6 == 12
 ENDIF
 PRINT その露になった
 ;処女
-IF TALENT:0
+IF TALENT:処女
 	PRINT 男を知らない
 ;潤滑LV4以上
 ELSEIF PALAM:4 >= PALAMLV:4
@@ -1823,7 +1823,7 @@ ENDIF
 IF F > 0
 	PRINTFORML 数匹の鰻は%CALLNAME:TARGET%の膣口が無防備であると気づくと、中へ潜り込んでいった
 	;処女
-	IF TALENT:0
+	IF TALENT:処女
 		PRINTFORML %CALLNAME:TARGET%は目に涙を浮かべ、半狂乱になりながら懸命に鰻を掴んでは膣内から引きずり出そうとするが、
 		PRINTFORML 鰻たちが分泌する粘液によって大した抵抗もできぬまま処女の証を食い破られてしまった……
 	ELSE
@@ -2574,7 +2574,7 @@ IF CFLAG:106
 			ELSE
 				PRINT 股間にペニスをあてがうと、
 				;処女（挿入かと思って焦る）
-				SIF TALENT:0
+				SIF TALENT:処女
 					PRINTFORML %CALLNAME:TARGET%はペニスを挿入されるのかと思って身を強張らせた
 				PRINTFORML %CALLNAME:PLAYER%は%CALLNAME:TARGET%の腿と股間で亀頭を扱いて、精液を吐き出した
 				;小柄体型
