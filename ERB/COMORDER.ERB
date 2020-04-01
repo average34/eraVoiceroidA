@@ -349,7 +349,6 @@ IF TALENT:86
 	S = 1
 ENDIF
 
-;ToDO:このへんマジでおかしい。調教者と助手の区別がついてない
 ;調教者の能力、素質
 ;ABL:サドっ気
 IF ABL:PLAYER:10
@@ -403,14 +402,16 @@ ENDIF
 
 ;助手の素質
 ;鼓舞
-IF TALENT:PLAYER:136
-	SIF S
-		PRINT  + 
-	A += 1
-	PRINT 助手が
-	PRINTS TALENTNAME:136
-	PRINTV '(,1,')
-	S = 1
+IF ASSI > 0
+	IF TALENT:ASSI:鼓舞
+		SIF S
+			PRINT  + 
+		A += 1
+		PRINT 助手が
+		PRINTS TALENTNAME:鼓舞
+		PRINTV '(,1,')
+		S = 1
+	ENDIF
 ENDIF
 
 
