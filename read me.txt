@@ -72,7 +72,7 @@ http://jbbs.shitaraba.net/bbs/read.cgi/otaku/16783/1509965059/
 〇SHOOT.ERB
 　・@SAMEN_SHOOT でTARGETの射精判定代入を削除
 〇Chara.csv
-　・デバッグ用キャラクターを追加
+　・デバッグ用キャラクター「葵くん」「淫魔あかり」を追加
 　　起動時のコマンドに -Debug コマンドを入力することでショップ等に表示されます
 　　https://ja.osdn.net/projects/emuera/wiki/debug
 
