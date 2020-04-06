@@ -94,6 +94,33 @@ ENDIF
 ;コマンド実行時に出力されます
 ;--------------------------------------------------
 @KOJO_MESSAGE_COM
+
+;画像表示
+REDRAW 0
+;STR:0は調教コマンド
+STR:2 = %CALLNAME:TARGET%
+SPRITECREATED @"%STR:2%_%STR:0%"
+IF RESULT && TARGET > 0
+	SPRITECREATED @"%STR:2%_%STR:0%"
+	IF RESULT
+		HTML_PRINT @"<img src='%STR:2+"_"+STR:0%' height='1000'>"
+	ENDIF
+	
+	FOR LOCAL , 0 , 12
+		PRINTL 
+	NEXT
+	PRINTW 
+ELSEIF TARGET > 0
+	SPRITECREATED @"XXX_%STR:0%"
+	IF RESULT
+		HTML_PRINT @"<img src='%"XXX_"+STR:0%' height='1000'>"
+		FOR LOCAL , 0 , 12
+			PRINTL 
+		NEXT
+		PRINTW 
+	ENDIF
+ENDIF
+	
 IF FLAG:7 <= 0
 	SIF FLAG:6 > 0
 		CALL TRAIN_MESSAGE

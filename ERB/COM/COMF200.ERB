@@ -121,7 +121,7 @@ SIF CFLAG:PLAYER:24 > 0
 	B /= 20
 
 
-SIF TALENT:PLAYER:137 || TALENT:PLAYER:139 || TALENT:PLAYER:140
+SIF TALENT:PLAYER:137 || TALENT:PLAYER:139 || TALENT:PLAYER:オトコ
 	BASE:PLAYER:2 += B
 
 ;-------------------------------------------------
@@ -149,10 +149,10 @@ SIF TALENT:32 || TALENT:34
 	SOURCE:16 += 700
 
 ;調教者が処女か再生処女（一回のみ）
-IF (TALENT:PLAYER:0 == 1 || TALENT:PLAYER:1 == 1) && CFLAG:8 == 0
+IF (TALENT:PLAYER:処女 == 1 || TALENT:PLAYER:1 == 1) && CFLAG:8 == 0
 	TIMES SOURCE:13 , 20.00
 	TIMES SOURCE:14 , 3.00
-	TALENT:PLAYER:0 = 0
+	TALENT:PLAYER:処女 = 0
 	PRINTFORML ＜%CALLNAME:PLAYER%は処女を失いました＞
 	;異常経験追加
 	EXP:50 += 1
@@ -180,7 +180,7 @@ ENDIF
 ;-------------------------------------------------
 ;汚れの処理
 ;-------------------------------------------------
-IF TALENT:137 || TALENT:139 || TALENT:140
+IF TALENT:137 || TALENT:139 || TALENT:オトコ
 	;奴隷のＰ⇔調教者の膣内の汚れが移動
 	STAIN:2 |= STAIN:PLAYER:6
 	STAIN:PLAYER:6 |= STAIN:2
@@ -195,11 +195,11 @@ EXP:PLAYER:0 += 1
 ;レズ経験
 A = 4
 B = NO:PLAYER + 899
-IF TALENT:140 == 0 && TALENT:PLAYER:140 == 0
+IF TALENT:オトコ == 0 && TALENT:PLAYER:オトコ == 0
 	PRINTFORML %EXPNAME:40%+{A}
 	EXP:40 += A
 	CFLAG:B += A
-ELSEIF TALENT:140 && TALENT:PLAYER:140
+ELSEIF TALENT:オトコ && TALENT:PLAYER:オトコ
 	PRINTFORML %EXPNAME:41%+{A}
 	EXP:41 += A
 	CFLAG:B += A

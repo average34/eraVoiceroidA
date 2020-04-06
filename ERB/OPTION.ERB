@@ -649,7 +649,7 @@ REPEAT 7
 	SIF COUNT == 6 && (TEQUIP:4 == 1 || TEQUIP:5 == 1)
 		CONTINUE
 	;男は上半身下着に関する計算はしない
-	SIF COUNT == 3 && TALENT:140
+	SIF COUNT == 3 && TALENT:オトコ
 		CONTINUE
 	IF TEQUIP:COUNT == 0
 		SOURCE:13 += 10

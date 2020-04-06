@@ -120,7 +120,7 @@ IF TALENT:7 && ASSIPLAY == 0
 ENDIF
 
 ;助手が処女
-IF TALENT:PLAYER:0 == 1
+IF TALENT:PLAYER:処女 == 1
 	PRINT  - 
 	A -= 15
 	PRINT 助手が処女
@@ -227,7 +227,7 @@ SIF CFLAG:PLAYER:24 > 0
 	B /= 20
 
 
-SIF TALENT:PLAYER:137 || TALENT:PLAYER:139 || TALENT:PLAYER:140
+SIF TALENT:PLAYER:137 || TALENT:PLAYER:139 || TALENT:PLAYER:オトコ
 	BASE:PLAYER:2 += B
 
 ;-------------------------------------------------
@@ -253,10 +253,10 @@ SIF TALENT:32 || TALENT:34
 	SOURCE:16 += 500
 
 ;助手が処女の場合、屈服逸脱が倍化し、従順が2になる。ただし一度きり
-IF TALENT:PLAYER:0 == 1 && CFLAG:99 == 0
+IF TALENT:PLAYER:処女 == 1 && CFLAG:99 == 0
 	TIMES SOURCE:14 , 5.00
 	TIMES SOURCE:17 , 3.00
-	TALENT:PLAYER:0 = 0
+	TALENT:PLAYER:処女 = 0
 	PRINTL ＜助手が処女＞
 	;異常経験追加（一回きり）
 	EXP:50 += 1
@@ -290,7 +290,7 @@ ENDIF
 ;汚れの処理
 ;-------------------------------------------------
 ;射精に関係なく行われる処理はここから
-IF TALENT:137 || TALENT:139 || TALENT:140
+IF TALENT:137 || TALENT:139 || TALENT:オトコ
 	;奴隷のＰ⇔調教者のＶの汚れが移動
 	STAIN:2 |= STAIN:PLAYER:3
 	STAIN:PLAYER:3 |= STAIN:2
@@ -302,11 +302,11 @@ ENDIF
 ;レズ経験
 A = 10
 B = NO:PLAYER + 899
-IF TALENT:140 == 0 && TALENT:PLAYER:140 == 0
+IF TALENT:オトコ == 0 && TALENT:PLAYER:オトコ == 0
 	PRINTFORML %EXPNAME:40%+{A}
 	EXP:40 += A
 	CFLAG:B += A
-ELSEIF TALENT:140 && TALENT:PLAYER:140
+ELSEIF TALENT:オトコ && TALENT:PLAYER:オトコ
 	PRINTFORML %EXPNAME:41%+{A}
 	EXP:41 += A
 	CFLAG:B += A

@@ -103,7 +103,7 @@ ELSE
 ENDIF
 
 
-SIF TALENT:MASTER:137 || TALENT:MASTER:139 || TALENT:MASTER:140
+SIF TALENT:MASTER:137 || TALENT:MASTER:139 || TALENT:MASTER:オトコ
 	BASE:MASTER:2 += B
 
 ;-------------------------------------------------
@@ -163,7 +163,7 @@ STAIN:MASTER:2 |= STAIN:ASSI:5
 ;-------------------------------------------------
 ;経験の処理
 ;-------------------------------------------------
-IF TALENT:140 == 0 && TALENT:MASTER:140 == 0
+IF TALENT:オトコ == 0 && TALENT:MASTER:オトコ == 0
 	PRINTS EXPNAME:40
 	PRINTL +7
 	EXP:40 += 7
@@ -171,7 +171,7 @@ IF TALENT:140 == 0 && TALENT:MASTER:140 == 0
 	CFLAG:A += 7
 ENDIF
 
-IF TALENT:140 == 0 && TALENT:ASSI:140 == 0
+IF TALENT:オトコ == 0 && TALENT:ASSI:オトコ == 0
 	PRINTS EXPNAME:40
 	PRINTL +7
 	EXP:40 += 7
@@ -316,7 +316,7 @@ IF TALENT:71 && (TALENT:4 == 0 && TALENT:7 == 0)
 	S = 1
 ENDIF
 ;男嫌い（恋慕、親愛で無効）
-IF TALENT:82 && TALENT:PLAYER:140 && ((TALENT:3 == 0 && TALENT:6 == 0) || PLAYER != MASTER)
+IF TALENT:82 && TALENT:PLAYER:オトコ && ((TALENT:3 == 0 && TALENT:6 == 0) || PLAYER != MASTER)
 	PRINT  - 
 	A -= 12
 	PRINTS TALENTNAME:82

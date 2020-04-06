@@ -41,11 +41,11 @@ ENDIF
 ;-------------------------------------------------
 A = 2
 B = NO:PLAYER + 899
-IF TALENT:140 == 0 && TALENT:PLAYER:140 == 0
+IF TALENT:オトコ == 0 && TALENT:PLAYER:オトコ == 0
 	PRINTFORML %EXPNAME:40%+{A}
 	EXP:40 += A
 	CFLAG:B += A
-ELSEIF TALENT:140 && TALENT:PLAYER:140
+ELSEIF TALENT:オトコ && TALENT:PLAYER:オトコ
 	PRINTFORML %EXPNAME:41%+{A}
 	EXP:41 += A
 	CFLAG:B += A

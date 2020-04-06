@@ -106,7 +106,7 @@ ELSE
 ENDIF
 
 
-SIF TALENT:MASTER:137 || TALENT:MASTER:139 || TALENT:MASTER:140
+SIF TALENT:MASTER:137 || TALENT:MASTER:139 || TALENT:MASTER:オトコ
 	BASE:MASTER:2 += B
 
 ;-------------------------------------------------
@@ -169,7 +169,7 @@ IF ABL:7 >= 2 && ABL:2 >= 2 && TEQUIP:20 == 0
 ENDIF
 
 ;奴隷と助手が共に女性でどちらかが精液中毒を持っているとき、奴隷の口⇔助手の口の汚れが移動
-IF TALENT:140 == 0 && TALENT:ASSI:140 == 0 && (ABL:16 >= 1 || ABL:ASSI:16 >= 1)
+IF TALENT:オトコ == 0 && TALENT:ASSI:オトコ == 0 && (ABL:16 >= 1 || ABL:ASSI:16 >= 1)
 	STAIN:0 |= STAIN:ASSI:2
 	STAIN:ASSI:0 |= STAIN:0
 	SIF E >= 1
@@ -184,7 +184,7 @@ PRINTFORML %EXPNAME:22%＋１
 EXP:22 += 1
 
 ;マスターと奴隷のレズ
-IF TALENT:140 == 0 && TALENT:MASTER:140 == 0
+IF TALENT:オトコ == 0 && TALENT:MASTER:オトコ == 0
 	PRINTS EXPNAME:40
 	PRINTL +7
 	EXP:40 += 7
@@ -193,7 +193,7 @@ IF TALENT:140 == 0 && TALENT:MASTER:140 == 0
 ENDIF
 
 ;助手と奴隷のレズ
-IF TALENT:140 == 0 && TALENT:ASSI:140 == 0
+IF TALENT:オトコ == 0 && TALENT:ASSI:オトコ == 0
 	PRINTS EXPNAME:40
 	PRINTL +7
 	EXP:40 += 7
@@ -344,7 +344,7 @@ IF TALENT:71 && (TALENT:4 == 0 && TALENT:7 == 0)
 	S = 1
 ENDIF
 ;男嫌い（恋慕、親愛で無効）
-IF TALENT:82 && TALENT:PLAYER:140 && ((TALENT:3 == 0 && TALENT:6 == 0) || PLAYER != MASTER)
+IF TALENT:82 && TALENT:PLAYER:オトコ && ((TALENT:3 == 0 && TALENT:6 == 0) || PLAYER != MASTER)
 	PRINT  - 
 	A -= 12
 	PRINTS TALENTNAME:82

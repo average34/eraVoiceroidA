@@ -111,9 +111,9 @@ REPEAT 20
 		CALL ISABLUP21
 	ENDIF
 	
-	SIF (X == 11 || X == 17) && TALENT:140
+	SIF (X == 11 || X == 17) && TALENT:オトコ
 		CONTINUE
-	SIF (X == 20 || X == 21) && TALENT:140 == 0
+	SIF (X == 20 || X == 21) && TALENT:オトコ == 0
 		CONTINUE
 	PRINTFORM [{COUNT}]%ABLNAME:X%-LV{ABL:X}
 	SIF RESULT == 1

@@ -449,7 +449,7 @@ S += V
 V = 100
 ;素質による売却額補正値計算
 ;TALENT:処女をみる
-IF TALENT:A:0
+IF TALENT:A:処女
 	C = 100
 	V += 100
 	PRINTFORML %TALENTNAME:0% ＋{C}％
@@ -1064,7 +1064,7 @@ CFLAG:A:10 += 3
 ;経験、珠の加算処理
 ;VとAのプレイ差
 ;オトコはAのみ
-IF TALENT:A:140
+IF TALENT:A:オトコ
 	D = ABL:A:5
 	E = 0
 	F = B
@@ -1078,7 +1078,7 @@ ELSEIF B > 1
 	F = (B+D/2)*5
 ENDIF
 ;奴隷が処女の場合
-IF EXP:A:0 == 0 && TALENT:A:0 && B > 1
+IF EXP:A:0 == 0 && TALENT:A:処女 && B > 1
 	E += B*3
 	G = 20
 ENDIF
@@ -1090,7 +1090,7 @@ EXP:A:0 += E
 EXP:A:1 += F
 EXP:A:2 += (E+F)/3
 ;ふたなりかオトコ
-SIF TALENT:A:139 || TALENT:A:140
+SIF TALENT:A:139 || TALENT:A:オトコ
 	EXP:A:3 += (E+F)/3
 EXP:A:4 += (E+F)
 ;膣射経験
@@ -1115,7 +1115,7 @@ SIF F > 0
 	PRINTFORML %EXPNAME:1%＋{F}
 SIF E > 0 || F > 0
 	PRINTFORML %EXPNAME:2%＋{(E+F)/3}
-SIF (TALENT:A:139 || TALENT:A:140) && (E > 0 || F > 0)
+SIF (TALENT:A:139 || TALENT:A:オトコ) && (E > 0 || F > 0)
 	PRINTFORML %EXPNAME:3%＋{(E+F)/3}
 SIF E > 0 || F > 0
 	PRINTFORML %EXPNAME:4%＋{(E+F)}
@@ -1123,11 +1123,11 @@ SIF E > 0
 	PRINTFORML %EXPNAME:5%＋{E}
 PRINTFORML %EXPNAME:20%＋{B*5}
 PRINTFORML %EXPNAME:22%＋{B*3}
-IF TALENT:A:0 && B > 1
+IF TALENT:A:処女 && B > 1
 	PRINTFORML 処女喪失
 	PRINTFORML %EXPNAME:50%＋3
 	EXP:A:50 += 3
-	TALENT:A:0 = 0
+	TALENT:A:処女 = 0
 ELSEIF TALENT:A:1 && B > 1
 	PRINTFORML 再生処女喪失
 	TALENT:A:1 = 0

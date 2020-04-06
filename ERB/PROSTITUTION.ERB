@@ -372,8 +372,8 @@ SIF C > 0
 ;セックス系、基本的に大きい。AV感覚、処女、再生処女、セックス中毒、セックス狂、尻穴狂い
 ;オトコが無い場合のみＶでの回数を加算する
 E:0 = 0
-SIF TALENT:A:140 == 0
-	E:0 = ABL:A:4+TALENT:A:0*7+TALENT:A:1*3+TALENT:A:75*5
+SIF TALENT:A:オトコ == 0
+	E:0 = ABL:A:4+TALENT:A:処女*7+TALENT:A:1*3+TALENT:A:75*5
 E:0 += ABL:A:5+ABL:A:18+TALENT:A:76*5
 
 ;奉仕系、奉仕精神と精液中毒が高く、献身的
@@ -525,7 +525,7 @@ F = 0
 V = 100
 ;素質による売却額補正値計算
 ;TALENT:処女をみる
-IF TALENT:A:0
+IF TALENT:A:処女
 	F = 100
 	V += 100
 	PRINTFORML %TALENTNAME:0% ＋{F}％
@@ -1133,7 +1133,7 @@ L = 0
 IF D > 0
 	;VとAのプレイ差
 	;オトコはAのみ
-	IF TALENT:A:140
+	IF TALENT:A:オトコ
 		M = ABL:A:5
 		J = 0
 		K = D
@@ -1147,7 +1147,7 @@ IF D > 0
 		K = D/2+M
 	ENDIF
 	;奴隷が処女の場合
-	IF TALENT:A:0
+	IF TALENT:A:処女
 		J += M/2
 		K -= M/2
 		L = 20
@@ -1160,7 +1160,7 @@ IF D > 0
 	EXP:A:1 += K
 	EXP:A:2 += D/3
 	;ふたなりかオトコ
-	SIF TALENT:A:139 || TALENT:A:140
+	SIF TALENT:A:139 || TALENT:A:オトコ
 		EXP:A:3 += D/3
 	EXP:A:4 += D
 	;膣射経験
@@ -1197,7 +1197,7 @@ ENDIF
 IF I > 0
 	EXP:A:2 += I/3
 	;ふたなりかオトコ
-	SIF TALENT:A:139 || TALENT:A:140
+	SIF TALENT:A:139 || TALENT:A:オトコ
 		EXP:A:3 += I/3
 	EXP:A:40 += I
 	JUEL:A:0 += I*50
@@ -1215,7 +1215,7 @@ SIF K > 0
 PRINTFORML %EXPNAME:1%＋{K}
 SIF (D/3+I/3) > 0
 	PRINTFORML %EXPNAME:2%＋{D/3+I/3}
-SIF (TALENT:A:139 || TALENT:A:140) && (D/3+I/3) > 0
+SIF (TALENT:A:139 || TALENT:A:オトコ) && (D/3+I/3) > 0
 	PRINTFORML %EXPNAME:3%＋{D/3+I/3}
 
 SIF D > 0
@@ -1237,11 +1237,11 @@ ENDIF
 SIF I
 	PRINTFORML %EXPNAME:40%＋{I}
 
-IF TALENT:A:0
+IF TALENT:A:処女
 	PRINTFORML 処女喪失
 	PRINTFORML %EXPNAME:50%＋2
 	EXP:A:50 += 2
-	TALENT:A:0 = 0
+	TALENT:A:処女 = 0
 ELSEIF TALENT:A:1
 	PRINTFORML 再生処女喪失
 	TALENT:A:1 = 0

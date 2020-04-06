@@ -83,7 +83,7 @@ ENDIF
 ;	INPUT
 ;	IF RESULT == 0
 ;		PRINTFORMW ―処女モードに素質、能力を変更します―
-;		TALENT:TARGET:0 = 1
+;		TALENT:TARGET:処女 = 1
 ;		ABL:TARGET:4 = 0
 ;		EXP:TARGET:0 = 0
 ;	ELSEIF RESULT == 1
@@ -109,7 +109,7 @@ IF CFLAG:220 == 0
 	INPUT
 	IF RESULT == 0
 		PRINTFORMW ―処女モードに素質、能力を変更します―
-		TALENT:TARGET:0 = 1
+		TALENT:TARGET:処女 = 1
 		ABL:TARGET:4 = 0
 		EXP:TARGET:0 = 0
 ELSEIF RESULT == 1
@@ -129,7 +129,7 @@ ENDIF
 	INPUT
 	IF RESULT == 0
 		PRINTFORMW ―処女モードに素質、能力を変更します―　←モード、変化の説明など
-		TALENT:TARGET:0 = 1　　 ←
+		TALENT:TARGET:処女 = 1　　 ←
 		ABL:TARGET:4 = 0　　　　←変化処理、資料フォルダにある変数番号差異一覧などが参考になります。
 		EXP:TARGET:0 = 0　　　　←
 

@@ -786,7 +786,7 @@ RETURN 1
 ;調教対象の射精チェック
 ;-------------------------------------------------
 @TARGET_EJAC_CHECK
-SIF TALENT:139 == 0 && TALENT:140 == 0
+SIF TALENT:139 == 0 && TALENT:オトコ == 0
 	RETURN 0
 
 A = UP:0 + UP:1 + UP:2 + UP:3
@@ -868,7 +868,7 @@ IF E == 2
 	PRINTL 大量射精
 	PRINTL 精液経験＋１
 	PRINTL 射精経験＋２
-	IF EXP:3 == 0 && TALENT:140 == 0
+	IF EXP:3 == 0 && TALENT:オトコ == 0
 		EXP:50 += 1
 		PRINTL 異常経験＋1
 	ENDIF
@@ -920,7 +920,7 @@ ELSEIF E == 1
 	PRINTS NAME:TARGET
 	PRINTL 射精
 	PRINTL 射精経験＋１
-	IF EXP:3 == 0 && TALENT:140 == 0
+	IF EXP:3 == 0 && TALENT:オトコ == 0
 		EXP:50 += 1
 		PRINTL 異常経験＋1
 	ENDIF
@@ -1137,11 +1137,11 @@ ENDIF
 ;同性の場合のチェック
 ;-------------------------------------------------
 @SOURCE_SEX_CHECK
-SIF (TALENT:140 == 0 && TALENT:PLAYER:140) || (TALENT:140 && TALENT:PLAYER:140 == 0)
+SIF (TALENT:オトコ == 0 && TALENT:PLAYER:オトコ) || (TALENT:オトコ && TALENT:PLAYER:オトコ == 0)
 	RETURN 0
 
 ;レズ
-IF TALENT:140 == 0 && TALENT:PLAYER:140 == 0
+IF TALENT:オトコ == 0 && TALENT:PLAYER:オトコ == 0
 	;ABL:レズっ気をみる
 	IF ABL:11 == 0
 		TIMES SOURCE:14 , 1.20
@@ -1376,7 +1376,7 @@ IF TALENT:140 == 0 && TALENT:PLAYER:140 == 0
 ENDIF
 
 ;ゲイ
-IF TALENT:140 && TALENT:PLAYER:140
+IF TALENT:オトコ && TALENT:PLAYER:オトコ
 	;ABL:ホモっ気をみる
 	IF ABL:20 == 0
 		TIMES SOURCE:14 , 1.20

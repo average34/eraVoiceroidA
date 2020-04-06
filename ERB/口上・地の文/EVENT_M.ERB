@@ -139,6 +139,23 @@ IF TALENT:149
 	ELSE
 		PRINTW 胸を搾り上げた……
 	ENDIF
+;オトコ
+ELSEIF TALENT:オトコ
+	;欲情のPALAMLV3以上＋恋慕or親愛＋小柄体型
+	IF PALAM:6 > PALAMLV:3 && (TALENT:3 || TALENT:6) && TALENT:100
+		PRINTFORMW 胸板を優しく撫でてやると、%CALLNAME:TARGET%は胸を突き出すようにして激しい愛撫を求めた……
+	;小柄体型
+	ELSEIF TALENT:100
+		PRINTW 胸板を優しく撫でるように触れた……
+	;欲情のPALAMLV3以上＋恋慕or親愛
+	ELSEIF PALAM:6 > PALAMLV:3 && (TALENT:3 || TALENT:6)
+		PRINTFORMW 胸板を強く捏ねてやると、%CALLNAME:TARGET%は嬌声をあげて、より強い愛撫を求めた……
+	;欲情のPALAMLV3以上
+	ELSEIF PALAM:6 > PALAMLV:3
+		PRINTW 胸板を強く捏ね回した……
+	ELSE
+		PRINTW 胸板を捏ね回した……
+	ENDIF
 ELSE
 	;欲情のPALAMLV3以上＋恋慕or親愛＋小柄体型
 	IF PALAM:6 > PALAMLV:3 && (TALENT:3 || TALENT:6) && TALENT:100
@@ -201,15 +218,27 @@ ELSEIF TALENT:112
 ENDIF
 ;触手召喚中
 IF TEQUIP:25
-	PRINTW 胸を絞り上げるように、幾本もの触手が絡みついた……
+	IF TALENT:オトコ
+		PRINTW 薄い胸を絞り上げるように、幾本もの触手が絡みついた……
+	ELSE
+		PRINTW 胸を絞り上げるように、幾本もの触手が絡みついた……
+	ENDIF
 ;欲望のPALAMLV3以上＋
 ELSEIF PALAM:6 >= PALAMLV:3 && TEQUIP:17 == 0 && TEQUIP:16 == 0
 	PRINTW 胸の先端の、すっかり硬くなった突起をつまみあげた……
 ;小柄体型
 ELSEIF TALENT:100
-	PRINTW 胸を優しく撫でるように触れた……
+	IF TALENT:オトコ
+		PRINTW 胸板を優しく撫でるように触れた……
+	ELSE
+		PRINTW 胸を優しく撫でるように触れた……
+	ENDIF
 ELSE
-	PRINTW 胸を揉みしだいた……
+	IF TALENT:オトコ
+		PRINTW 胸板を捏ね回した……
+	ELSE
+		PRINTW 胸を揉みしだいた……
+	ENDIF
 ENDIF
 ;-------------------------------------------------
 ;9,秘貝開帳
@@ -299,7 +328,11 @@ SIF TALENT:112
 ;母乳体質
 SIF TALENT:149
 	PRINT 母乳が滴る
-PRINTW 胸を自らの指で弄りながら快感を味わっている……
+IF TALENT:オトコ
+	PRINTW 胸板を自らの指で捏ね繰り回しながら快感を味わっている……
+ELSE
+	PRINTW 胸を自らの指で弄りながら快感を味わっている……
+ENDIF
 ;-------------------------------------------------
 ;11,自慰
 ;-------------------------------------------------
@@ -313,7 +346,7 @@ IF ABL:0 < 3
 	;反抗的
 	SIF TALENT:11
 		PRINT 反抗的な態度で
-	PRINTL 睨んできたが再度の命令に渋々
+	PRINT 睨んできたが再度の命令に渋々
 ;従順LV5未満
 ELSEIF ABL:0 < 5
 	PRINTFORM 調教の成果が出たか、%CALLNAME:TARGET%は命令に従って、
@@ -367,7 +400,7 @@ ENDIF
 @MESSAGE_COM20
 PRINTFORM %CALLNAME:TARGET%の口腔を隅々まで舐め回
 ;従順LV3以上＋レズ経験1000以上＋調教者がオトコでない
-IF ABL:0 >= 3 && EXP:40 >= 1000 && TALENT:PLAYER:140 == 0
+IF ABL:0 >= 3 && EXP:40 >= 1000 && TALENT:PLAYER:オトコ == 0
 	PRINTFORMW し、ねっとりと舌を絡めあいながら唾液を交換した……
 ;従順LV3以上
 ELSEIF ABL:0 >= 3
@@ -452,7 +485,7 @@ ENDIF
 ;-------------------------------------------------
 @MESSAGE_COM28
 ;調教者がオトコ
-IF TALENT:PLAYER:140 == 1
+IF TALENT:PLAYER:オトコ == 1
 	PRINTFORML %CALLNAME:PLAYER%は思いつく限りの罵詈雑言を%CALLNAME:TARGET%に浴びせた
 ELSE
 	PRINTFORML %CALLNAME:PLAYER%は%CALLNAME:TARGET%を罵倒した
@@ -511,10 +544,10 @@ PRINTFORMW %CALLNAME:TARGET%は画面の向こうで淫らな自身の姿を見�
 @MESSAGE_COM40
 PRINTFORM %CALLNAME:TARGET%の
 ;オトコ＋欲情のPALAMLV3以上
-IF TALENT:140 && (PALAM:6 >= PALAMLV:3)
+IF TALENT:オトコ && (PALAM:6 >= PALAMLV:3)
 	PRINTW 硬くそそり勃ったペニスに震えるローターを押し当てた……
 ;オトコ
-ELSEIF TALENT:140
+ELSEIF TALENT:オトコ
 	PRINTW ペニスに震えるローターを押し当てた……
 ;ふたなり＋欲情のPALAMLV3以上
 ELSEIF TALENT:139 && PALAM:6 >= PALAMLV:3
@@ -782,7 +815,7 @@ ENDIF
 ;前回と今回の調教者が同じで、前回の調教が正常位であり、抜かないフラグがある場合
 IF TFLAG:60 && PREVCOM == 60 && ((ASSIPLAY && TFLAG:50) || (ASSIPLAY == 0 && TFLAG:50 == 0))
 	;調教者がオトコか半人半妖かふたなりである
-	IF TALENT:PLAYER:137 || TALENT:PLAYER:139 || TALENT:PLAYER:140
+	IF TALENT:PLAYER:137 || TALENT:PLAYER:139 || TALENT:PLAYER:オトコ
 		PRINTFORMW %CALLNAME:TARGET%の膣内の感触を味わいながら、再び腰を動かし始めた……
 	;ペニスバンドを使用している場合
 	ELSE
@@ -821,7 +854,7 @@ ENDIF
 ;前回と今回の調教者が同じで、前回の調教が後背位であり、抜かないフラグがある場合
 IF TFLAG:60 && PREVCOM == 61 && ((ASSIPLAY && TFLAG:50) || (ASSIPLAY == 0 && TFLAG:50 == 0))
 	;調教者がオトコか半人半妖かふたなりである
-	IF TALENT:PLAYER:137 || TALENT:PLAYER:139 || TALENT:PLAYER:140
+	IF TALENT:PLAYER:137 || TALENT:PLAYER:139 || TALENT:PLAYER:オトコ
 		PRINTFORMW %CALLNAME:TARGET%の膣内の感触を味わいながら、再び腰を動かし始めた……
 	;ペニスバンドを使用している場合
 	ELSE
@@ -857,7 +890,7 @@ ENDIF
 ;前回と今回の調教者が同じで、前回の調教が正常位アナルであり、抜かないフラグがある場合
 IF TFLAG:60 && PREVCOM == 62 && ((ASSIPLAY && TFLAG:50) || (ASSIPLAY == 0 && TFLAG:50 == 0))
 	;調教者がオトコか半人半妖かふたなりである
-	IF TALENT:PLAYER:137 || TALENT:PLAYER:139 || TALENT:PLAYER:140
+	IF TALENT:PLAYER:137 || TALENT:PLAYER:139 || TALENT:PLAYER:オトコ
 		PRINTFORMW %CALLNAME:TARGET%の菊穴の感触を味わいながら、再び腰を動かし始めた……
 	;ペニスバンドを使用している場合
 	ELSE
@@ -886,7 +919,7 @@ ENDIF
 ;前回と今回の調教者が同じで、前回の調教が後背位アナルであり、抜かないフラグがある場合
 IF TFLAG:60 && PREVCOM == 63 && ((ASSIPLAY && TFLAG:50) || (ASSIPLAY == 0 && TFLAG:50 == 0))
 	;調教者がオトコか半人半妖かふたなりである
-	IF TALENT:PLAYER:137 || TALENT:PLAYER:139 || TALENT:PLAYER:140
+	IF TALENT:PLAYER:137 || TALENT:PLAYER:139 || TALENT:PLAYER:オトコ
 		PRINTFORMW %CALLNAME:TARGET%のアヌスの感触を味わいながら、再び腰を動かし始めた……
 	;ペニスバンドを使用している場合
 	ELSE
@@ -915,7 +948,7 @@ IF TFLAG:60 && PREVCOM == 64 && ((ASSIPLAY && TFLAG:50) || (ASSIPLAY == 0 && TFL
 ELSE
 	PRINTFORM %CALLNAME:PLAYER%は%CALLNAME:TARGET%のペニスを強引に、
 	;調教者が処女
-	SIF TALENT:PLAYER:0
+	SIF TALENT:PLAYER:処女
 		PRINT 男を受け入れた事のない
 	PRINTW ヴァギナの奥まで咥えこんだ……
 ENDIF
@@ -1133,7 +1166,7 @@ IF TFLAG:60 && PREVCOM == 70 && ((ASSIPLAY && TFLAG:50) || (ASSIPLAY == 0 && TFL
 ELSEIF TFLAG:60 && (PREVCOM == 62 || PREVCOM == 67) && ((ASSIPLAY && TFLAG:50) || (ASSIPLAY == 0 && TFLAG:50 == 0))
 	PRINTFORM 腸内から
 	;調教者がオトコか半人半妖かふたなりである
-	IF TALENT:PLAYER:137 || TALENT:PLAYER:139 || TALENT:PLAYER:140
+	IF TALENT:PLAYER:137 || TALENT:PLAYER:139 || TALENT:PLAYER:オトコ
 		PRINTFORM ペニスを
 	ELSE
 		PRINTFORM ディルドを
@@ -1186,7 +1219,7 @@ IF TFLAG:60 && PREVCOM == 71 && ((ASSIPLAY && TFLAG:50) || (ASSIPLAY == 0 && TFL
 ELSEIF TFLAG:60 && (PREVCOM == 63 || PREVCOM == 67) && ((ASSIPLAY && TFLAG:50) || (ASSIPLAY == 0 && TFLAG:50 == 0))
 	PRINTFORM 腸内から
 	;調教者がオトコか半人半妖かふたなりである
-	IF TALENT:PLAYER:137 || TALENT:PLAYER:139 || TALENT:PLAYER:140
+	IF TALENT:PLAYER:137 || TALENT:PLAYER:139 || TALENT:PLAYER:オトコ
 		PRINTFORM ペニスを
 	ELSE
 		PRINTFORM ディルドを
@@ -1313,8 +1346,8 @@ PRINTFORM %CALLNAME:TARGET%は
 ;恋慕か親愛
 SIF (TALENT:3 || TALENT:6)
 	PRINT うっとりとした表情をしながら、
-;貧乳
-IF TALENT:109
+;貧乳+オトコ
+IF (TALENT:109 || TALENT:オトコ)
 	PRINT 薄い胸で懸命にペニスを
 ;巨乳
 ELSEIF TALENT:111
@@ -1441,7 +1474,7 @@ PRINTFORM %CALLNAME:TARGET%は
 SIF (TALENT:3 || TALENT:6)
 	PRINT うっとりとした表情をしながら、
 ;貧乳
-IF TALENT:109
+IF (TALENT:109 || TALENT:オトコ)
 	PRINTW 薄い胸だけでなく舌も使って懸命にペニス全体を刺激していた……
 ;巨乳
 ELSEIF TALENT:111
@@ -1478,7 +1511,11 @@ ELSEIF (TALENT:4 || TALENT:7) && PALAM:6 >= PALAMLV:3
 	PRINTFORMW 胸を絞り込むようにし、先端を強く吸い上げると、%CALLNAME:TARGET%は嬌声をあげ、胸を強調するように%CALLNAME:PLAYER%の顔に押し付けた……
 ;恋慕か親愛
 ELSEIF (TALENT:3 || TALENT:6)
-	PRINTFORMW 胸を揉みしだきながらその先端を吸い上げると、%CALLNAME:TARGET%は優しい笑みを浮かべ、%CALLNAME:PLAYER%を優しく抱きしめた……
+	IF TALENT:オトコ
+		PRINTFORMW 胸を捏ね繰りながらその先端を吸い上げると、%CALLNAME:TARGET%は優しい笑みを浮かべ、%CALLNAME:PLAYER%を優しく抱きしめた……
+	ELSE
+		PRINTFORMW 胸を揉みしだきながらその先端を吸い上げると、%CALLNAME:TARGET%は優しい笑みを浮かべ、%CALLNAME:PLAYER%を優しく抱きしめた……
+	ENDIF
 ELSE
 	PRINTW 胸の先端を吸いあげ母乳を飲んだ……
 ENDIF
@@ -1489,7 +1526,7 @@ ENDIF
 PRINTFORML %CALLNAME:TARGET%の尻を平手で強く叩いた
 PRINTFORM 何度も何度も叩かれている内に、%CALLNAME:TARGET%の
 ;オトコ＋マゾっ気LV2以上
-IF TALENT:140 && (ABL:9 >= 2)
+IF TALENT:オトコ && (ABL:9 >= 2)
 	PRINTW 股間は硬くなっていった……
 ;マゾっ気LV2以上
 ELSEIF ABL:9 >= 2
@@ -1513,7 +1550,6 @@ IF (TALENT:貧乳 || TALENT:絶壁)
 	ENDIF
 	PRINTW 胸の頂点を強く爪弾いた･･･
 ELSEIF TALENT:オトコ
-	;ToDo:地の文書いてくれ
 	;PRINT 
 	PRINTW 胸の頂点を強く爪弾いた･･･
 ELSE
@@ -1524,7 +1560,11 @@ ELSE
 	ELSEIF TALENT:爆乳
 		PRINT 豊か過ぎる乳房を跳ね回らせ
 	ELSE
+		IF TALENT:オトコ
+			PRINT 胸板を
+		ELSE
 		PRINT 乳房を
+			ENDIF
 	ENDIF
 	PRINTW 弾くように平手で叩いた……
 ENDIF
@@ -1558,7 +1598,11 @@ PRINTW 垂らした
 ;104,針
 ;-------------------------------------------------
 @MESSAGE_COM104
-PRINTFORM %CALLNAME:TARGET%の乳首やクリトリスに
+IF TALENT:オトコ
+	PRINTFORM %CALLNAME:TARGET%の乳首や陰茎に
+ELSE
+	PRINTFORM %CALLNAME:TARGET%の乳首やクリトリスに
+ENDIF
 ;調教者が針さばきかサド
 IF TALENT:PLAYER:53 || TALENT:PLAYER:83
 	PRINTW 容赦なく針を突き刺した……
@@ -1654,7 +1698,19 @@ PRINTFORMW %CALLNAME:PLAYER%と%CALLNAME:TARGET%は互いの胸を揉みあっ�
 ;140,イラマチオ
 ;-------------------------------------------------
 @MESSAGE_COM140
-PRINTFORMW %CALLNAME:PLAYER%は乱暴に%CALLNAME:TARGET%の喉まで突き入れた……
+;前回の調教がイラマチオである場合
+IF PREVCOM == 140
+	PRINTFORM 喉内から
+	;調教者がオトコか半人半妖かふたなりである
+	IF TALENT:PLAYER:137 || TALENT:PLAYER:139 || TALENT:PLAYER:オトコ
+		PRINTFORM ペニスを
+	ELSE
+		PRINTFORM ディルドを
+	ENDIF
+	PRINTFORML 抜き去ることなく%CALLNAME:TARGET%の頭をわし掴み、再び乱暴に喉奥まで突き入れ始めた……
+ELSE
+	PRINTFORMW %CALLNAME:PLAYER%は乱暴に%CALLNAME:TARGET%の喉まで突き入れた……
+ENDIF
 ;-------------------------------------------------
 ;141,フィストファック
 ;-------------------------------------------------
@@ -1738,7 +1794,11 @@ IF TEQUIP:21
 		PRINTFORMW %CALLNAME:TARGET%はうっとりした表情を浮かべ、排泄感を愉しんでいる
 	ELSEIF ABL:9 >= 5
 		PRINTFORML %CALLNAME:TARGET%は排泄感と恥辱を心ゆくまで味わっている
-		PRINTFORMW %CALLNAME:TARGET%の表情は快感にだらしなく緩み、肛門から汚物をひりだすと同時に、膣口からも愛液をボタボタと滴らせている
+		IF TALENT:オトコ
+			PRINTFORMW %CALLNAME:TARGET%の表情は快感にだらしなく緩み、肛門から汚物をひりだすと同時に、口からも涎をボタボタと滴らせている
+		ELSE
+			PRINTFORMW %CALLNAME:TARGET%の表情は快感にだらしなく緩み、肛門から汚物をひりだすと同時に、膣口からも愛液をボタボタと滴らせている
+		ENDIF
 	ENDIF
 ELSE
 	PRINTFORML %CALLNAME:TARGET%の菊穴に浣腸液を流し込み、栓をした
@@ -1755,7 +1815,11 @@ ELSE
 		PRINTFORMW %CALLNAME:TARGET%は、うっとりした表情を浮かべ、排泄感と腹痛を愉しんでいる
 	ELSEIF ABL:9 >= 5
 		PRINTFORML %CALLNAME:TARGET%は、排泄感を心ゆくまで味わっている
-		PRINTFORMW %CALLNAME:TARGET%の表情は快感にだらしなく緩み、その口と膣口からはポタポタと涎を滴らせている
+		IF TALENT:オトコ
+			PRINTFORMW %CALLNAME:TARGET%の表情は快感にだらしなく緩み、その口からはポタポタと涎を滴らせている
+		ELSE
+			PRINTFORMW %CALLNAME:TARGET%の表情は快感にだらしなく緩み、その口と膣口からはポタポタと涎を滴らせている
+		ENDIF
 	ENDIF
 ENDIF
 ;-------------------------------------------------
@@ -1814,20 +1878,30 @@ ENDIF
 @MESSAGE_COM151
 PRINTL 鰻達がひしめき合っている風呂桶の中へ突き落とした
 PRINTFORML %CALLNAME:TARGET%は体の上を滑っていく異様な感覚が我慢できず絶叫した
-;Ａに道具を挿入していない
-IF R > 0
-	PRINTFORML 数匹の鰻は%CALLNAME:TARGET%のアナルが空いていると察すると、中へ潜り込んでいった
-	PRINTFORML %CALLNAME:TARGET%は反射的にお尻に力を入れ、異物の侵入に抗おうとするも、結局は無駄に終わってしまう……
-ENDIF
-;Ｖに道具を挿入していない
-IF F > 0
-	PRINTFORML 数匹の鰻は%CALLNAME:TARGET%の膣口が無防備であると気づくと、中へ潜り込んでいった
-	;処女
-	IF TALENT:処女
-		PRINTFORML %CALLNAME:TARGET%は目に涙を浮かべ、半狂乱になりながら懸命に鰻を掴んでは膣内から引きずり出そうとするが、
-		PRINTFORML 鰻たちが分泌する粘液によって大した抵抗もできぬまま処女の証を食い破られてしまった……
-	ELSE
-		PRINTFORML %CALLNAME:TARGET%は鰻が膣壁や子宮口を小突いていく感触に目を白黒させている……
+IF TALENT:オトコ
+	PRINTL 鰻達がひしめき合っている風呂桶の中へ突き落とした
+	PRINTFORML %CALLNAME:TARGET%は体の上を滑っていく異様な感覚が我慢できず絶叫した
+	;Ａに道具を挿入していない
+	IF R > 0
+		PRINTFORML 数匹の鰻は%CALLNAME:TARGET%のアナルが空いていると察すると、中へ潜り込んでいった
+		PRINTFORML %CALLNAME:TARGET%は反射的にお尻に力を入れ、異物の侵入に抗おうとするも、結局は無駄に終わってしまう……
+	ENDIF
+ELSE
+	;Ａに道具を挿入していない
+	IF R > 0
+		PRINTFORML 数匹の鰻は%CALLNAME:TARGET%のアナルが空いていると察すると、中へ潜り込んでいった
+		PRINTFORML %CALLNAME:TARGET%は反射的にお尻に力を入れ、異物の侵入に抗おうとするも、結局は無駄に終わってしまう……
+	ENDIF
+	;Ｖに道具を挿入していない
+	IF F > 0
+		PRINTFORML 数匹の鰻は%CALLNAME:TARGET%の膣口が無防備であると気づくと、中へ潜り込んでいった
+		;処女
+		IF TALENT:処女
+			PRINTFORML %CALLNAME:TARGET%は目に涙を浮かべ、半狂乱になりながら懸命に鰻を掴んでは膣内から引きずり出そうとするが、
+			PRINTFORML 鰻たちが分泌する粘液によって大した抵抗もできぬまま処女の証を食い破られてしまった……
+		ELSE
+			PRINTFORML %CALLNAME:TARGET%は鰻が膣壁や子宮口を小突いていく感触に目を白黒させている……
+		ENDIF
 	ENDIF
 ENDIF
 PRINTFORMW 風呂から引き上げて、しばらくしても%CALLNAME:TARGET%は呆然とした面持ちで身震いしている……
@@ -1934,7 +2008,11 @@ IF TEQUIP:21
 		PRINTFORMW %CALLNAME:TARGET%はうっとりした表情を浮かべ、排泄感を愉しんでいる
 	ELSEIF ABL:9 >= 5
 		PRINTFORML %CALLNAME:TARGET%は排泄感と恥辱を心ゆくまで味わっている
-		PRINTFORMW %CALLNAME:TARGET%の表情は快感にだらしなく緩み、肛門から汚物をひりだすと同時に、膣口からも愛液をボタボタと滴らせている
+		IF TALENT:オトコ
+			PRINTFORMW %CALLNAME:TARGET%の表情は快感にだらしなく緩み、肛門から汚物をひりだすと同時に、口からも涎をボタボタと滴らせている
+		ELSE
+			PRINTFORMW %CALLNAME:TARGET%の表情は快感にだらしなく緩み、肛門から汚物をひりだすと同時に、膣口からも愛液をボタボタと滴らせている
+		ENDIF
 	ENDIF
 ELSE
 	PRINTFORMW 極太の触手が%CALLNAME:TARGET%の菊穴をふさぎ、体液を流し込んだ
@@ -2029,7 +2107,7 @@ IF TFLAG:60 && PREVCOM == 185
 	PRINTFORMW %CALLNAME:TARGET%に見せつけながら、%CALLNAME:ASSI%を犯し続けた……
 ELSE
 	PRINTFORM %CALLNAME:TARGET%に見せつけながら、%CALLNAME:ASSI%の
-	IF TALENT:ASSI:0 == 0
+	IF TALENT:ASSI:処女 == 0
 		PRINT 初めてを
 	ELSE
 		PRINT ヴァギナを
@@ -2362,7 +2440,10 @@ SIF TALENT:112
 ;母乳体質
 SIF TALENT:149
 	PRINT 母乳が滴る
-PRINT 胸を
+PRINT 胸
+SIF TALENT:オトコ
+	PRINT 板
+PRINT を
 ;搾乳機装着中
 IF TEQUIP:17
 	PRINT 搾乳機で搾りながら
@@ -2917,11 +2998,11 @@ IF TFLAG:29 > 0
 	PRINTFORM %CALLNAME:TARGET%は
 	SIF TFLAG:11 > 0
 		PRINT 胸の先端から母乳を垂らし
-	SIF TFLAG:29 >= 5 && TALENT:139 == 0 && TALENT:140 == 0
+	SIF TFLAG:29 >= 5 && TALENT:139 == 0 && TALENT:オトコ == 0
 		PRINT 陰唇から透明な潮を噴き出し
 	SIF TFLAG:10 > 0
 		PRINT ペニスから精液を噴き出し
-	SIF (TFLAG:29 < 5 || TALENT:139 || TALENT:140) && TFLAG:10 == 0 && TFLAG:11 == 0
+	SIF (TFLAG:29 < 5 || TALENT:139 || TALENT:オトコ) && TFLAG:10 == 0 && TFLAG:11 == 0
 		PRINT 背中を大きく反らし
 	PRINTL ながら、全身を震わせて絶頂に達した
 ENDIF
@@ -3105,7 +3186,7 @@ PRINTFORMW %CALLNAME:TARGET%は精液の貼りついた顔で朝の挨拶をし�
 ;朝パイズリ
 @EVENT_MESSAGE_2
 ;貧乳の場合
-IF TALENT:109
+IF (TALENT:109 || TALENT:オトコ)
 	PRINTFORML 朝、目が覚めると同時に下腹部に違和感があるのに気づいた
 	PRINTFORML 気づかれないように目をやると、%CALLNAME:TARGET%が胸でペニスを弄っていた
 	PRINTFORMW どうやらパイズリの練習をしているらしい……

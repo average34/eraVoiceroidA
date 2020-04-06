@@ -47,7 +47,7 @@ SIF TEQUIP:2 || TEQUIP:4 == 2 || TEQUIP:4 == 3 || TEQUIP:4 == 4 || TEQUIP:4 == 1
 
 ・男の乳首攻め
 ;男の場合は、上半身上着か全身上着をつけているとダメ
-SIF (TEQUIP:5 || TEQUIP:6) && TALENT:140
+SIF (TEQUIP:5 || TEQUIP:6) && TALENT:オトコ
 	RETURN 0
 
 ・胸愛撫、パイズリ系統
@@ -138,7 +138,7 @@ SIF TEQUIP:2 || TEQUIP:4 == 2 || TEQUIP:4 == 3 || TEQUIP:4 == 4 || TEQUIP:4 == 1
 
 ・男の乳首攻め
 ;男の場合は、上半身上着か全身上着をつけているとダメ
-SIF (TEQUIP:5 || TEQUIP:6) && TALENT:140
+SIF (TEQUIP:5 || TEQUIP:6) && TALENT:オトコ
 	RETURN 0
 
 ・胸愛撫、パイズリ系統
