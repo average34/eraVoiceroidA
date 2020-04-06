@@ -44,6 +44,7 @@ jobs:
       #    access_token_secret: ${{ secrets.ACCESS_TOKEN_SECRET }}
       #    tweet_body: ${{ env.TWEET_TEXT_TEST }}
 
+      # Github側でsecretsを設定する必要あり
       # DISCORD_WEBHOOKにURIを代入
       - name: Set env DISCORD_WEBHOOK
         run: echo -e ::set-env name=DISCORD_WEBHOOK::${{ secrets.DISCORD_WEBHOOK }}

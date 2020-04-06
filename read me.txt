@@ -69,12 +69,13 @@ http://jbbs.shitaraba.net/bbs/read.cgi/otaku/16783/1509965059/
 　・eraVoiceroidA v1.15に画像を表示させることができるようになるパッチ の導入
 　　偽酒さんに感謝！
 https://jbbs.shitaraba.net/bbs/read.cgi/otaku/16783/1509965059/217
-　・それに伴い本体バージョンが上がりました
-　　
-
+　・それに伴い本体バージョンが上がりました(v8)
 〇EVENT_M.ERB など
 　・[オトコ]に対応させた地の文を加筆修正
 　　パッチ製作者（Twitter:@nattoumaikusai） に感謝！
+〇EVENT_M.ERB
+　・なんか通し番号系の関数がいっぱいIF文で並んでたうえ、実装されていない関数も呼びだしてたので修正。
+　　こういう実装は…やめようね！
 〇ほぼ全部
 　・TALENT:0 → TALENT:処女
 　　TALENT:140 → TALENT:オトコ

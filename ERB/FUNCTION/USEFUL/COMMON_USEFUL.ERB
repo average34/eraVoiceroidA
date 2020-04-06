@@ -1077,6 +1077,37 @@ RETURN RESULT
 
 
 ;-------------------------------------------------
+;口上色設定@KOJO_COLOR
+;口上の色設定を行います。色設定関数が無い場合はやや灰色になります
+;ついでに、フラグ管理のため口上表示の設定を無視する口上をここで判断します
+;Яevから移植
+;-------------------------------------------------
+@KOJO_COLOR(ARG)
+;引数が負なら処理しない
+SIF ARG < 0
+	RETURN 0
+;返り値初期化
+RESULT = 0
+;TARGET待避
+LOCAL = TARGET
+;TARGETに引数を代入
+TARGET = ARG
+;口上から色指定を引き出し、設定する
+;指定がなければデフォルトカラー
+TRYCCALLFORM KOJO_COLOR_K{NO:ARG}
+CATCH
+	SETCOLOR 160, 160, 160
+ENDCATCH
+;TARGET指定を戻す
+TARGET = LOCAL
+;口上強制呼び出しの指定を返す
+TRYCCALLFORM KOJO_ON_K{NO:(ARG)}
+	RETURN RESULT
+CATCH
+	RETURN 0
+ENDCATCH
+
+;-------------------------------------------------
 ;関数名:PRINT_ERRORMESSAGE
 ;概　要:エラーメッセージ関数
 ;戻り値:なし

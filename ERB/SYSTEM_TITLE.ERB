@@ -15,8 +15,10 @@ DO
 		
 		GETFONT
 		;タイトル画像表示
-		HTML_PRINT "<p align='center'><img src='XXX_タイトル'></p>"
-		
+		HTML_PRINT "<p align='center'><img src='XXX_タイトル' height='2500'></p>"
+		FOR LOCAL , 0 , 24
+			PRINTL 
+		NEXT
 		SETFONT RESULTS:0
 		
 		$START
