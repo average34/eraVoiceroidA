@@ -22,7 +22,7 @@ CALL KOJO_MESSAGE_COM
 
 ;V経験を伴うコマンドのフラグ(処女膜再生対応)
 TFLAG:19 = 1
-SIF (TALENT:3 || TALENT:6) && ASSIPLAY == 0 && EXP:0 == 0
+SIF (TALENT:恋慕 || TALENT:6) && ASSIPLAY == 0 && EXP:0 == 0
 	TFLAG:20 = 1
 
 ;実行者が奴隷であるフラグ
@@ -182,7 +182,7 @@ SIF TALENT:32 || TALENT:34
 	SOURCE:16 += 800
 
 ;貞操観念持ちで恋慕、親愛持ち以外には常に反発のソースを追加する（セックス系のみ）
-SIF TALENT:30 && (TALENT:3 == 0 && TALENT:6 == 0)
+SIF TALENT:30 && (TALENT:恋慕 == 0 && TALENT:6 == 0)
 	SOURCE:18 += 1000
 
 ;処女だった場合は、苦痛のソースと反発のソースを追加する
@@ -315,7 +315,7 @@ ELSEIF TALENT:オトコ && TALENT:PLAYER:オトコ
 ENDIF
 
 ;愛情経験
-IF TALENT:3 == 1 && ASSIPLAY == 0
+IF TALENT:恋慕 == 1 && ASSIPLAY == 0
 	PRINTS EXPNAME:23
 	PRINTL +2
 	EXP:23 += 2
@@ -329,7 +329,7 @@ ENDIF
 TFLAG:33 = 1
 
 ;依存度補正値(恋慕で2、親愛で4）
-IF TALENT:3 && ASSIPLAY == 0
+IF TALENT:恋慕 && ASSIPLAY == 0
 	TFLAG:30 += 2
 ELSEIF TALENT:6 && ASSIPLAY == 0
 	TFLAG:30 += 4
@@ -436,7 +436,7 @@ IF TALENT:35
 	S = 1
 ENDIF
 ;快感の否定（淫乱、娼婦で無効）
-IF TALENT:71 && (TALENT:4 == 0 && TALENT:7 == 0)
+IF TALENT:71 && (TALENT:淫乱 == 0 && TALENT:娼婦 == 0)
 	PRINT  - 
 	A -= 5
 	PRINTS TALENTNAME:71
@@ -444,7 +444,7 @@ IF TALENT:71 && (TALENT:4 == 0 && TALENT:7 == 0)
 	S = 1
 ENDIF
 ;男嫌い（恋慕、親愛で無効）
-IF TALENT:82 && TALENT:PLAYER:オトコ && ((TALENT:3 == 0 && TALENT:6 == 0) || PLAYER != MASTER)
+IF TALENT:82 && TALENT:PLAYER:オトコ && ((TALENT:恋慕 == 0 && TALENT:6 == 0) || PLAYER != MASTER)
 	PRINT  - 
 	A -= 12
 	PRINTS TALENTNAME:82
@@ -452,7 +452,7 @@ IF TALENT:82 && TALENT:PLAYER:オトコ && ((TALENT:3 == 0 && TALENT:6 == 0) || 
 	S = 1
 ENDIF
 ;恋慕
-IF TALENT:3 && ASSIPLAY == 0
+IF TALENT:恋慕 && ASSIPLAY == 0
 	SIF S
 		PRINT  + 
 	A += 15

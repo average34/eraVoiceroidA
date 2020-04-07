@@ -155,11 +155,11 @@ ELSEIF MARK:2 == 2 && (CFLAG:202 < 3 || FLAG:7 == 2)
 	PRINTFORMW 
 	CFLAG:202 = 3
 ;屈服刻印Lv3＋陥落素質無し
-ELSEIF MARK:2 == 3 && (TALENT:5 == 0 && TALENT:4 == 0 && TALENT:5 == 0 && TALENT:8 == 0 && TALENT:7 == 0 && TALENT:8 == 0) && (CFLAG:202 < 4 || FLAG:7 == 2)
+ELSEIF MARK:2 == 3 && (TALENT:服従 == 0 && TALENT:淫乱 == 0 && TALENT:服従 == 0 && TALENT:隷属 == 0 && TALENT:娼婦 == 0 && TALENT:隷属 == 0) && (CFLAG:202 < 4 || FLAG:7 == 2)
 	PRINTFORMW 
 	CFLAG:202 = 4
 ;服従、隷属
-ELSEIF (TALENT:5 || TALENT:8) && (CFLAG:202 < 5 || FLAG:7 == 2)
+ELSEIF (TALENT:服従 || TALENT:隷属) && (CFLAG:202 < 5 || FLAG:7 == 2)
 	;ランダムで口上が変化する（使わない場合はすべて同じにすればよい）
 	K:1 = RAND:3
 	IF K:1 == 0
@@ -213,11 +213,11 @@ ELSEIF MARK:2 == 2 && (CFLAG:219 < 2 || FLAG:7 == 2)
 	PRINTFORMW 
 	CFLAG:219 = 2
 ;屈服刻印Lv3＋陥落素質無し
-ELSEIF MARK:2 == 3 && (TALENT:5 == 0 && TALENT:8 == 0) && (CFLAG:219 < 3 || FLAG:7 == 2)
+ELSEIF MARK:2 == 3 && (TALENT:服従 == 0 && TALENT:隷属 == 0) && (CFLAG:219 < 3 || FLAG:7 == 2)
 	PRINTFORMW 
 	CFLAG:219 = 3
 ;服従、隷属
-ELSEIF (TALENT:5 || TALENT:8) && (CFLAG:219 < 4 || FLAG:7 == 2)
+ELSEIF (TALENT:服従 || TALENT:隷属) && (CFLAG:219 < 4 || FLAG:7 == 2)
 	PRINTFORMW 
 	CFLAG:219 = 4
 ENDIF
@@ -267,7 +267,7 @@ IF SELECTCOM == 0
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:300 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:300 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:300 = 4
 		;屈服刻印Lv3
@@ -295,7 +295,7 @@ IF SELECTCOM == 1
 	ELSE
 		
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:301 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:301 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:301 = 4
 		;屈服刻印Lv3
@@ -322,7 +322,7 @@ IF SELECTCOM == 2
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:302 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:302 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:302 = 4
 		;屈服刻印Lv3
@@ -349,7 +349,7 @@ IF SELECTCOM == 3
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:303 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:303 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:303 = 4
 		;屈服刻印Lv3
@@ -376,7 +376,7 @@ IF SELECTCOM == 4
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:304 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:304 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:304 = 4
 		;屈服刻印Lv3
@@ -403,7 +403,7 @@ IF SELECTCOM == 5
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:305 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:305 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:305 = 4
 		;屈服刻印Lv3
@@ -430,7 +430,7 @@ IF SELECTCOM == 6
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:306 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:306 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:306 = 4
 		;屈服刻印Lv3
@@ -457,7 +457,7 @@ IF SELECTCOM == 7
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:307 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:307 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:307 = 4
 		;屈服刻印Lv3
@@ -484,7 +484,7 @@ IF SELECTCOM == 8
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:308 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:308 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:308 = 4
 		;屈服刻印Lv3
@@ -511,7 +511,7 @@ IF SELECTCOM == 9
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:309 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:309 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:309 = 4
 		;屈服刻印Lv3
@@ -538,7 +538,7 @@ IF SELECTCOM == 10
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:310 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:310 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:310 = 4
 		;屈服刻印Lv3
@@ -565,7 +565,7 @@ IF SELECTCOM == 11
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:311 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:311 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:311 = 4
 		;従順Lv3以上
@@ -595,7 +595,7 @@ IF SELECTCOM == 20
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:312 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:312 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:312 = 4
 		;従順Lv3以上
@@ -622,7 +622,7 @@ IF SELECTCOM == 21
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:311 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:311 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:313 = 4
 		;屈服刻印Lv3
@@ -649,7 +649,7 @@ IF SELECTCOM == 28
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:320 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:320 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:320 = 4
 		;屈服刻印Lv3
@@ -694,7 +694,7 @@ IF SELECTCOM == 40
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:322 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:322 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:322 = 4
 		;屈服刻印Lv3
@@ -721,7 +721,7 @@ IF SELECTCOM == 41
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:323 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:323 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:323 = 4
 		;屈服刻印Lv3
@@ -748,7 +748,7 @@ IF SELECTCOM == 42 && TEQUIP:11 == 0
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:324 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:324 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:324 = 4
 		;屈服刻印Lv3
@@ -780,7 +780,7 @@ IF SELECTCOM == 43 && TEQUIP:12 == 0
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:325 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:325 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:325 = 4
 		;屈服刻印Lv3
@@ -818,7 +818,7 @@ IF SELECTCOM == 44 && TEQUIP:13 == 0
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:326 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:326 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:326 = 4
 		;屈服刻印Lv3
@@ -850,7 +850,7 @@ IF SELECTCOM == 45 && TEQUIP:14 == 0
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:327 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:327 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:327 = 4
 		;屈服刻印Lv3
@@ -882,7 +882,7 @@ IF SELECTCOM == 46 && TEQUIP:15 == 0
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:328 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:328 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:328 = 4
 		;屈服刻印Lv3
@@ -914,7 +914,7 @@ IF SELECTCOM == 47 && TEQUIP:16 == 0
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:329 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:329 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:329 = 4
 		;屈服刻印Lv3
@@ -946,7 +946,7 @@ IF SELECTCOM == 48
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:330 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:330 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:330 = 4
 		;屈服刻印Lv3
@@ -973,7 +973,7 @@ IF SELECTCOM == 49 && TEQUIP:17 == 0
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:331 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:331 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:331 = 4
 		;屈服刻印Lv3
@@ -1014,7 +1014,7 @@ IF SELECTCOM == 60
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:332 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:332 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:332 = 4
 		;屈服刻印Lv3
@@ -1047,7 +1047,7 @@ IF SELECTCOM == 61
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:333 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:333 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:333 = 4
 		;屈服刻印Lv3
@@ -1074,7 +1074,7 @@ IF SELECTCOM == 62
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:334 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:334 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:334 = 4
 		;屈服刻印Lv3
@@ -1101,7 +1101,7 @@ IF SELECTCOM == 63
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:335 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:335 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:335 = 4
 		;屈服刻印Lv3
@@ -1128,7 +1128,7 @@ IF SELECTCOM == 64
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:336 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:336 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:336 = 4
 		;屈服刻印Lv3
@@ -1155,7 +1155,7 @@ IF SELECTCOM == 65
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:337 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:337 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:337 = 4
 		;屈服刻印Lv3
@@ -1188,7 +1188,7 @@ IF SELECTCOM == 66
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:338 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:338 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:338 = 4
 		;屈服刻印Lv3
@@ -1215,7 +1215,7 @@ IF SELECTCOM == 67
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:339 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:339 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:339 = 4
 		;屈服刻印Lv3
@@ -1248,7 +1248,7 @@ IF SELECTCOM == 68
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:340 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:340 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:340 = 4
 		;屈服刻印Lv3
@@ -1281,7 +1281,7 @@ IF SELECTCOM == 69
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:341 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:341 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:341 = 4
 		;屈服刻印Lv3
@@ -1308,7 +1308,7 @@ IF SELECTCOM == 70
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:342 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:342 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:342 = 4
 		;屈服刻印Lv3
@@ -1335,7 +1335,7 @@ IF SELECTCOM == 71
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:343 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:343 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:343 = 4
 		;屈服刻印Lv3
@@ -1368,7 +1368,7 @@ IF SELECTCOM == 72
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:420 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:420 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:420 = 4
 		;屈服刻印Lv3
@@ -1395,7 +1395,7 @@ IF SELECTCOM == 73
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:421 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:421 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:421 = 4
 		;屈服刻印Lv3
@@ -1425,7 +1425,7 @@ IF SELECTCOM == 80
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:344 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:344 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:344 = 4
 		;屈服刻印Lv3
@@ -1452,7 +1452,7 @@ IF SELECTCOM == 81
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:345 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:345 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:345 = 4
 		;屈服刻印Lv3
@@ -1479,7 +1479,7 @@ IF SELECTCOM == 82
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:346 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:346 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:346 = 4
 		;屈服刻印Lv3
@@ -1506,7 +1506,7 @@ IF SELECTCOM == 83
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:347 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:347 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:347 = 4
 		;屈服刻印Lv3
@@ -1533,7 +1533,7 @@ IF SELECTCOM == 84
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:348 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:348 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:348 = 4
 		;屈服刻印Lv3
@@ -1560,7 +1560,7 @@ IF SELECTCOM == 85
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:349 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:349 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:349 = 4
 		;屈服刻印Lv3
@@ -1587,7 +1587,7 @@ IF SELECTCOM == 86
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:350 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:350 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:350 = 4
 		;屈服刻印Lv3
@@ -1614,7 +1614,7 @@ IF SELECTCOM == 87
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:351 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:351 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:351 = 4
 		;屈服刻印Lv3
@@ -1641,7 +1641,7 @@ IF SELECTCOM == 88
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:352 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:352 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:352 = 4
 		;屈服刻印Lv3
@@ -1671,7 +1671,7 @@ IF SELECTCOM == 100
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:354 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:354 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:354 = 4
 		;屈服刻印Lv3
@@ -1698,7 +1698,7 @@ IF SELECTCOM == 101
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:355 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:355 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:355 = 4
 		;屈服刻印Lv3
@@ -1725,7 +1725,7 @@ IF SELECTCOM == 102
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:356 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:356 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:356 = 4
 		;屈服刻印Lv3
@@ -1752,7 +1752,7 @@ IF SELECTCOM == 103
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:357 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:357 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:357 = 4
 		;屈服刻印Lv3
@@ -1779,7 +1779,7 @@ IF SELECTCOM == 104
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:358 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:358 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:358 = 4
 		;屈服刻印Lv3
@@ -1806,7 +1806,7 @@ IF SELECTCOM == 105 && TEQUIP:18 == 0
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:359 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:359 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:359 = 4
 		;屈服刻印Lv3
@@ -1838,7 +1838,7 @@ IF SELECTCOM == 106 && TEQUIP:19 == 0
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:360 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:360 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:360 = 4
 		;屈服刻印Lv3
@@ -1870,7 +1870,7 @@ IF SELECTCOM == 107 && TEQUIP:20 == 0
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:361 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:361 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:361 = 4
 		;屈服刻印Lv3
@@ -1905,7 +1905,7 @@ IF SELECTCOM == 120
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:362 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:362 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:362 = 4
 		;屈服刻印Lv3
@@ -1932,7 +1932,7 @@ IF SELECTCOM == 121
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:363 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:363 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:363 = 4
 		;屈服刻印Lv3
@@ -1959,7 +1959,7 @@ IF SELECTCOM == 122
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:364 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:364 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:364 = 4
 		;屈服刻印Lv3
@@ -1986,7 +1986,7 @@ IF SELECTCOM == 123
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:365 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:365 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:365 = 4
 		;屈服刻印Lv3
@@ -2013,7 +2013,7 @@ IF SELECTCOM == 124
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:366 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:366 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:366 = 4
 		;屈服刻印Lv3
@@ -2040,7 +2040,7 @@ IF SELECTCOM == 125
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:367 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:367 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:367 = 4
 		;屈服刻印Lv3
@@ -2067,7 +2067,7 @@ IF SELECTCOM == 126
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:368 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:368 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:368 = 4
 		;屈服刻印Lv3
@@ -2097,7 +2097,7 @@ IF SELECTCOM == 140
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:369 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:369 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:369 = 4
 		;屈服刻印Lv3
@@ -2172,7 +2172,7 @@ IF SELECTCOM == 144
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:373 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:373 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:373 = 4
 		;屈服刻印Lv3
@@ -2199,7 +2199,7 @@ IF SELECTCOM == 145
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:374 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:374 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:374 = 4
 		;屈服刻印Lv3
@@ -2226,7 +2226,7 @@ IF SELECTCOM == 146 && TEQUIP:21 == 0
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:375 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:375 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:375 = 4
 		;屈服刻印Lv3
@@ -2258,7 +2258,7 @@ IF SELECTCOM == 147
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:376 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:376 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:376 = 4
 		;屈服刻印Lv3
@@ -2285,7 +2285,7 @@ IF SELECTCOM == 148 && TEQUIP:22 == 0
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:377 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:377 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:377 = 4
 		;屈服刻印Lv3
@@ -2401,7 +2401,7 @@ IF SELECTCOM == 160 && TEQUIP:25 == 0
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:382 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:382 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:382 = 4
 		;屈服刻印Lv3
@@ -2439,7 +2439,7 @@ IF SELECTCOM == 161
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:383 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:383 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:383 = 4
 		;屈服刻印Lv3
@@ -2466,7 +2466,7 @@ IF SELECTCOM == 162
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:384 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:384 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:384 = 4
 		;屈服刻印Lv3
@@ -2493,7 +2493,7 @@ IF SELECTCOM == 163
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:385 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:385 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:385 = 4
 		;屈服刻印Lv3
@@ -2520,7 +2520,7 @@ IF SELECTCOM == 164
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:386 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:386 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:386 = 4
 		;屈服刻印Lv3
@@ -2547,7 +2547,7 @@ IF SELECTCOM == 165
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:387 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:387 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:387 = 4
 		;屈服刻印Lv3
@@ -2574,7 +2574,7 @@ IF SELECTCOM == 166
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:388 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:388 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:388 = 4
 		;屈服刻印Lv3
@@ -2601,7 +2601,7 @@ IF SELECTCOM == 167
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:389 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:389 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:389 = 4
 		;屈服刻印Lv3
@@ -2628,7 +2628,7 @@ IF SELECTCOM == 168 && TEQUIP:36 == 0
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:390 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:390 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:390 = 4
 		;屈服刻印Lv3
@@ -2660,7 +2660,7 @@ IF SELECTCOM == 169
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:391 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:391 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:391 = 4
 		;屈服刻印Lv3
@@ -2690,7 +2690,7 @@ IF SELECTCOM == 180
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:392 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:392 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:392 = 4
 		;屈服刻印Lv3
@@ -2717,7 +2717,7 @@ IF SELECTCOM == 181
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:393 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:393 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:393 = 4
 		;屈服刻印Lv3
@@ -2744,7 +2744,7 @@ IF SELECTCOM == 182
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:394 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:394 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:394 = 4
 		;屈服刻印Lv3
@@ -2771,7 +2771,7 @@ IF SELECTCOM == 183 && TEQUIP:28 == 0
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:395 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:395 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:395 = 4
 		;屈服刻印Lv3
@@ -2803,7 +2803,7 @@ IF SELECTCOM == 184 && TEQUIP:29 == 0
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:396 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:396 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:396 = 4
 		;屈服刻印Lv3
@@ -2835,7 +2835,7 @@ IF SELECTCOM == 185
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:397 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:397 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:397 = 4
 		;屈服刻印Lv3
@@ -2862,7 +2862,7 @@ IF SELECTCOM == 186 && TEQUIP:30 == 0
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:398 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:398 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:398 = 4
 		;屈服刻印Lv3
@@ -2894,7 +2894,7 @@ IF SELECTCOM == 187 && TEQUIP:31 == 0
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:399 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:399 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:399 = 4
 		;屈服刻印Lv3
@@ -2926,7 +2926,7 @@ IF SELECTCOM == 188 && TEQUIP:32 == 0
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:400 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:400 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:400 = 4
 		;屈服刻印Lv3
@@ -2958,7 +2958,7 @@ IF SELECTCOM == 190
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:402 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:402 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:402 = 4
 		;屈服刻印Lv3
@@ -2985,7 +2985,7 @@ IF SELECTCOM == 191
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:403 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:403 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:403 = 4
 		;屈服刻印Lv3
@@ -3012,7 +3012,7 @@ IF SELECTCOM == 192
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:404 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:404 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:404 = 4
 		;屈服刻印Lv3
@@ -3039,7 +3039,7 @@ IF SELECTCOM == 193
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:405 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:405 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:405 = 4
 		;屈服刻印Lv3
@@ -3066,7 +3066,7 @@ IF SELECTCOM == 194
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:406 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:406 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:406 = 4
 		;屈服刻印Lv3
@@ -3102,7 +3102,7 @@ IF SELECTCOM == 500
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:407 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:407 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:407 = 4
 		;屈服刻印Lv3
@@ -3128,7 +3128,7 @@ IF SELECTCOM == 501
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:408 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:408 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:408 = 4
 		;屈服刻印Lv3
@@ -3154,7 +3154,7 @@ IF SELECTCOM == 502
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:409 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:409 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:409 = 4
 		;屈服刻印Lv3
@@ -3180,7 +3180,7 @@ IF SELECTCOM == 503
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:410 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:410 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:410 = 4
 		;屈服刻印Lv3
@@ -3212,7 +3212,7 @@ IF SELECTCOM == 504
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:411 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:411 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:411 = 4
 		;屈服刻印Lv3
@@ -3245,7 +3245,7 @@ IF SELECTCOM == 505 && TFLAG:40 == 1
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:412 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:412 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:412 = 4
 		;屈服刻印Lv3
@@ -3268,7 +3268,7 @@ ELSEIF SELECTCOM == 505 && TFLAG:40 == 2
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:419 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:419 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:419 = 4
 		;屈服刻印Lv3
@@ -3294,7 +3294,7 @@ IF SELECTCOM == 506
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:413 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:413 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:413 = 4
 		;屈服刻印Lv3
@@ -3320,7 +3320,7 @@ IF SELECTCOM == 507
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:414 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:414 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:414 = 4
 		;屈服刻印Lv3
@@ -3346,7 +3346,7 @@ IF SELECTCOM == 508
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:415 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:415 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:415 = 4
 		;屈服刻印Lv3
@@ -3372,7 +3372,7 @@ IF SELECTCOM == 509
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:416 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:416 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:416 = 4
 		;屈服刻印Lv3
@@ -3398,7 +3398,7 @@ IF SELECTCOM == 510
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:417 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:417 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:417 = 4
 		;屈服刻印Lv3
@@ -3424,7 +3424,7 @@ IF SELECTCOM == 511
 	;二回目以降
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:418 < 4 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:418 < 4 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:418 = 4
 		;屈服刻印Lv3
@@ -3481,7 +3481,7 @@ IF CFLAG:106
 	;髪
 	IF CFLAG:106 == 1
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:221 < 2 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:221 < 2 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:221 = 2
 		;それ以外
@@ -3492,7 +3492,7 @@ IF CFLAG:106
 	;顔
 	ELSEIF CFLAG:106 == 2
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:222 < 2 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:222 < 2 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:222 = 2
 		;それ以外
@@ -3503,7 +3503,7 @@ IF CFLAG:106
 	;胸
 	ELSEIF CFLAG:106 == 3
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:223 < 2 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:223 < 2 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:223 = 2
 		;それ以外
@@ -3514,7 +3514,7 @@ IF CFLAG:106
 	;腹
 	ELSEIF CFLAG:106 == 4
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:224 < 2 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:224 < 2 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:224 = 2
 		;それ以外
@@ -3525,7 +3525,7 @@ IF CFLAG:106
 	;腋
 	ELSEIF CFLAG:106 == 5
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:225 < 2 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:225 < 2 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:225 = 2
 		;それ以外
@@ -3536,7 +3536,7 @@ IF CFLAG:106
 	;太腿
 	ELSEIF CFLAG:106 == 6
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:226 < 2 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:226 < 2 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:226 = 2
 		;それ以外
@@ -3547,7 +3547,7 @@ IF CFLAG:106
 	;割れ目
 	ELSEIF CFLAG:106 == 7
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:227 < 2 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:227 < 2 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:227 = 2
 		;それ以外
@@ -3558,7 +3558,7 @@ IF CFLAG:106
 	;尻
 	ELSEIF CFLAG:106 == 8
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:228 < 2 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:228 < 2 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:228 = 2
 		;それ以外
@@ -3571,7 +3571,7 @@ IF CFLAG:106
 		;セックスで射精かつ、アナルセックス以外を実行時
 		IF TFLAG:2 > 0 && SELECTCOM != 62 && SELECTCOM != 63 && SELECTCOM != 67 && SELECTCOM != 70 && SELECTCOM != 71
 			;服従、隷属
-			IF (TALENT:5 || TALENT:8) && (CFLAG:229 < 2 || FLAG:7 == 2)
+			IF (TALENT:服従 || TALENT:隷属) && (CFLAG:229 < 2 || FLAG:7 == 2)
 				PRINTFORMW 
 				CFLAG:229 = 2
 			;それ以外
@@ -3581,7 +3581,7 @@ IF CFLAG:106
 			ENDIF
 		ELSE
 			;服従、隷属
-			IF (TALENT:5 || TALENT:8) && (CFLAG:230 < 2 || FLAG:7 == 2)
+			IF (TALENT:服従 || TALENT:隷属) && (CFLAG:230 < 2 || FLAG:7 == 2)
 				PRINTFORMW 
 				CFLAG:230 = 2
 			;それ以外
@@ -3601,7 +3601,7 @@ ENDIF
 IF TFLAG:9 == 1
 	CALL PALAM_MESSAGE_A
 	;服従、隷属
-	IF (TALENT:5 || TALENT:8) && (CFLAG:231 < 2 || FLAG:7 == 2)
+	IF (TALENT:服従 || TALENT:隷属) && (CFLAG:231 < 2 || FLAG:7 == 2)
 		PRINTFORMW 
 		CFLAG:231 = 2
 	;それ以外
@@ -3617,7 +3617,7 @@ ENDIF
 IF TFLAG:7 > 0
 	CALL PALAM_MESSAGE_A
 	;服従、隷属
-	IF (TALENT:5 || TALENT:8) && (CFLAG:232 < 2 || FLAG:7 == 2)
+	IF (TALENT:服従 || TALENT:隷属) && (CFLAG:232 < 2 || FLAG:7 == 2)
 		PRINTFORMW 
 		CFLAG:232 = 2
 	;それ以外
@@ -3633,7 +3633,7 @@ ENDIF
 IF TFLAG:0 > 0
 	CALL PALAM_MESSAGE_A
 	;服従、隷属
-	IF (TALENT:5 || TALENT:8) && (CFLAG:233 < 2 || FLAG:7 == 2)
+	IF (TALENT:服従 || TALENT:隷属) && (CFLAG:233 < 2 || FLAG:7 == 2)
 		PRINTFORMW 
 		CFLAG:233 = 2
 	;それ以外
@@ -3649,7 +3649,7 @@ ENDIF
 IF TFLAG:1 > 0
 	CALL PALAM_MESSAGE_A
 	;服従、隷属
-	IF (TALENT:5 || TALENT:8) && (CFLAG:234 < 2 || FLAG:7 == 2)
+	IF (TALENT:服従 || TALENT:隷属) && (CFLAG:234 < 2 || FLAG:7 == 2)
 		PRINTFORMW 
 		CFLAG:234 = 2
 	;それ以外
@@ -3665,7 +3665,7 @@ ENDIF
 IF TFLAG:34 > 0
 	CALL PALAM_MESSAGE_A
 	;服従、隷属
-	IF (TALENT:5 || TALENT:8) && (CFLAG:235 < 2 || FLAG:7 == 2)
+	IF (TALENT:服従 || TALENT:隷属) && (CFLAG:235 < 2 || FLAG:7 == 2)
 		PRINTFORMW 
 		CFLAG:235 = 2
 	;それ以外
@@ -3683,7 +3683,7 @@ IF TFLAG:2 > 0
 	;アナルセックス系
 	IF SELECTCOM == 62 || SELECTCOM == 63 || SELECTCOM == 67 || SELECTCOM == 70 || SELECTCOM == 71
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:237 < 2 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:237 < 2 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:237 = 2
 		;それ以外
@@ -3694,7 +3694,7 @@ IF TFLAG:2 > 0
 	;セックス系
 	ELSE
 		;服従、隷属
-		IF (TALENT:5 || TALENT:8) && (CFLAG:238 < 2 || FLAG:7 == 2)
+		IF (TALENT:服従 || TALENT:隷属) && (CFLAG:238 < 2 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:238 = 2
 		;それ以外
@@ -3711,7 +3711,7 @@ ENDIF
 IF (SELECTCOM == 64 || SELECTCOM == 200) && TFLAG:10 > 0
 	CALL PALAM_MESSAGE_A
 	;服従、隷属
-	IF (TALENT:5 || TALENT:8) && (CFLAG:239 < 2 || FLAG:7 == 2)
+	IF (TALENT:服従 || TALENT:隷属) && (CFLAG:239 < 2 || FLAG:7 == 2)
 		PRINTFORMW 
 		CFLAG:239 = 2
 	;それ以外
@@ -3757,7 +3757,7 @@ ENDIF
 IF TFLAG:15 >0
 	CALL PALAM_MESSAGE_E
 	;服従、隷属
-	IF (TALENT:5 || TALENT:8) && (CFLAG:240 < 2 || FLAG:7 == 2)
+	IF (TALENT:服従 || TALENT:隷属) && (CFLAG:240 < 2 || FLAG:7 == 2)
 		PRINTFORMW 
 		CFLAG:240 = 2
 	;それ以外
@@ -3832,7 +3832,7 @@ ELSEIF NOWEX:3 > 0 && CFLAG:244 == 0
 ELSEIF TFLAG:29 > 0
 	CALL PALAM_MESSAGE_B
 	;服従、隷属
-	IF (TALENT:5 || TALENT:8) && (CFLAG:245 < 2 || FLAG:7 == 2)
+	IF (TALENT:服従 || TALENT:隷属) && (CFLAG:245 < 2 || FLAG:7 == 2)
 		PRINTFORMW 
 		CFLAG:245 = 2
 	;それ以外
@@ -3848,7 +3848,7 @@ ENDIF
 ;射精している
 IF TFLAG:10 > 0
 	;服従、隷属
-	IF (TALENT:5 || TALENT:8) && (CFLAG:246 < 2 || FLAG:7 == 2)
+	IF (TALENT:服従 || TALENT:隷属) && (CFLAG:246 < 2 || FLAG:7 == 2)
 		PRINTFORMW 
 		CFLAG:246 = 2
 	;それ以外
@@ -3864,7 +3864,7 @@ ENDIF
 ;噴乳している
 IF TFLAG:11 > 0
 	;服従、隷属
-	IF (TALENT:5 || TALENT:8) && (CFLAG:247 < 2 || FLAG:7 == 2)
+	IF (TALENT:服従 || TALENT:隷属) && (CFLAG:247 < 2 || FLAG:7 == 2)
 		PRINTFORMW 
 		CFLAG:247 = 2
 	;それ以外
@@ -3880,7 +3880,7 @@ ENDIF
 ;放尿している
 IF TFLAG:29 > 0 && (TEQUIP:27 || TALENT:57)
 	;服従、隷属
-	IF (TALENT:5 || TALENT:8) && (CFLAG:248 < 2 || FLAG:7 == 2)
+	IF (TALENT:服従 || TALENT:隷属) && (CFLAG:248 < 2 || FLAG:7 == 2)
 		PRINTFORMW 
 		CFLAG:248 = 2
 	;それ以外
@@ -3926,7 +3926,7 @@ ENDIF
 IF TFLAG:3 > 0
 	CALL PALAM_MESSAGE_C
 	;服従、隷属
-	IF (TALENT:5 || TALENT:8)
+	IF (TALENT:服従 || TALENT:隷属)
 		PRINTFORMW 
 	;それ以外
 	ELSE
@@ -4099,7 +4099,7 @@ ENDIF
 IF TFLAG:21 == 3
 	CALL MARK_MESSAGE_R
 	;服従、隷属
-	IF TALENT:5 || TALENT:8
+	IF TALENT:服従 || TALENT:8
 		PRINTFORMW 
 	ELSE
 		PRINTFORMW 
@@ -4173,7 +4173,7 @@ ENDIF
 IF TFLAG:13 == 4
 	CALL EVENT_MESSAGE
 	;服従、隷属
-	IF (TALENT:5 || TALENT:8) && (CFLAG:264 < 1 || FLAG:7 == 2)
+	IF (TALENT:服従 || TALENT:隷属) && (CFLAG:264 < 1 || FLAG:7 == 2)
 		PRINTFORMW 
 		CFLAG:264 = 2
 	ELSEIF CFLAG:266 < 1 || FLAG:7 == 2
@@ -4204,7 +4204,7 @@ ENDIF
 IF TFLAG:13 == 6
 	CALL EVENT_MESSAGE
 	;服従、隷属
-	IF (TALENT:5 || TALENT:8) && (CFLAG:266 < 1 || FLAG:7 == 2)
+	IF (TALENT:服従 || TALENT:隷属) && (CFLAG:266 < 1 || FLAG:7 == 2)
 		PRINTFORMW 
 		CFLAG:266 = 2
 	ELSEIF CFLAG:266 < 1 || FLAG:7 == 2
@@ -4219,7 +4219,7 @@ ENDIF
 IF TFLAG:13 == 7
 	CALL EVENT_MESSAGE
 	;服従、隷属
-	IF (TALENT:5 || TALENT:8) && (CFLAG:267 < 1 || FLAG:7 == 2)
+	IF (TALENT:服従 || TALENT:隷属) && (CFLAG:267 < 1 || FLAG:7 == 2)
 		PRINTFORMW 
 		CFLAG:267 = 2
 	ELSEIF CFLAG:267 < 1 || FLAG:7 == 2
@@ -4234,7 +4234,7 @@ ENDIF
 IF TFLAG:13 == 8
 	CALL EVENT_MESSAGE
 	;服従、隷属
-	IF (TALENT:5 || TALENT:8) && (CFLAG:268 < 1 || FLAG:7 == 2)
+	IF (TALENT:服従 || TALENT:隷属) && (CFLAG:268 < 1 || FLAG:7 == 2)
 		PRINTFORMW 
 		CFLAG:268 = 2
 	ELSEIF CFLAG:268 < 1 || FLAG:7 == 2
@@ -4265,7 +4265,7 @@ ENDIF
 IF TFLAG:13 == 10
 	CALL EVENT_MESSAGE
 	;服従、隷属
-	IF (TALENT:5 || TALENT:8) && (CFLAG:270 < 1 || FLAG:7 == 2)
+	IF (TALENT:服従 || TALENT:隷属) && (CFLAG:270 < 1 || FLAG:7 == 2)
 		PRINTFORMW 
 		CFLAG:270 = 2
 	ELSEIF CFLAG:270 < 1 || FLAG:7 == 2
@@ -4280,7 +4280,7 @@ ENDIF
 IF TFLAG:13 == 11
 	CALL EVENT_MESSAGE
 	;服従、隷属
-	IF (TALENT:5 || TALENT:8) && (CFLAG:271 < 1 || FLAG:7 == 2)
+	IF (TALENT:服従 || TALENT:隷属) && (CFLAG:271 < 1 || FLAG:7 == 2)
 		PRINTFORMW 
 		CFLAG:271 = 2
 	ELSEIF CFLAG:271 < 1 || FLAG:7 == 2
@@ -4295,7 +4295,7 @@ ENDIF
 IF TFLAG:13 == 12
 	CALL EVENT_MESSAGE
 	;服従、隷属
-	IF (TALENT:5 || TALENT:8) && (CFLAG:272 < 1 || FLAG:7 == 2)
+	IF (TALENT:服従 || TALENT:隷属) && (CFLAG:272 < 1 || FLAG:7 == 2)
 		PRINTFORMW 
 		CFLAG:272 = 2
 	ELSEIF CFLAG:272 < 1 || FLAG:7 == 2
@@ -4330,7 +4330,7 @@ ENDIF
 IF TFLAG:13 == 14
 	CALL EVENT_MESSAGE
 	;服従、隷属
-	IF (TALENT:5 || TALENT:8) && (CFLAG:274 < 1 || FLAG:7 == 2)
+	IF (TALENT:服従 || TALENT:隷属) && (CFLAG:274 < 1 || FLAG:7 == 2)
 		PRINTFORMW 
 		CFLAG:274 = 2
 	ELSEIF CFLAG:274 < 1 || FLAG:7 == 2
@@ -4375,7 +4375,7 @@ ENDIF
 IF TFLAG:13 == 19
 	CALL EVENT_MESSAGE
 	;服従、隷属
-	IF (TALENT:5 || TALENT:8) && (CFLAG:278 < 1 || FLAG:7 == 2)
+	IF (TALENT:服従 || TALENT:隷属) && (CFLAG:278 < 1 || FLAG:7 == 2)
 		PRINTFORMW 
 		CFLAG:278 = 2
 	ELSEIF CFLAG:278 < 1 || FLAG:7 == 2
@@ -4406,7 +4406,7 @@ ENDIF
 IF TFLAG:13 == 23
 	CALL EVENT_MESSAGE
 	;服従、隷属
-	IF (TALENT:5 || TALENT:8) && (CFLAG:282 < 1 || FLAG:7 == 2)
+	IF (TALENT:服従 || TALENT:隷属) && (CFLAG:282 < 1 || FLAG:7 == 2)
 		PRINTFORMW 
 		CFLAG:282 = 2
 	ELSEIF CFLAG:282 < 1 || FLAG:7 == 2
@@ -4435,9 +4435,9 @@ SIF NO:TARGET != X1
 ;B = 0
 ;REPEAT CHARANUM
 ;	IF NO:COUNT == XX || NO:COUNT == XX || NO:COUNT == XX || NO:COUNT == XX || NO:COUNT == XX
-;		SIF TALENT:COUNT:6 || TALENT:COUNT:7 || TALENT:COUNT:8
+;		SIF TALENT:COUNT:6 || TALENT:COUNT:娼婦 || TALENT:COUNT:8
 ;			A += 1
-;		SIF TALENT:COUNT:3 || TALENT:COUNT:4 || TALENT:COUNT:5 || TALENT:COUNT:6 || TALENT:COUNT:7 || TALENT:COUNT:8
+;		SIF TALENT:COUNT:恋慕 || TALENT:COUNT:4 || TALENT:COUNT:服従 || TALENT:COUNT:6 || TALENT:COUNT:娼婦 || TALENT:COUNT:8
 ;			B += 1
 ;	ENDIF
 ;REND
@@ -4459,7 +4459,7 @@ SIF NO:TARGET != X1
 ;ENDIF
 ;--------------------------------------------------
 ;服従単体エンド
-;IF TALENT:8 && CFLAG:21 == 1
+;IF TALENT:隷属 && CFLAG:21 == 1
 	;DRAWLINE
 	;PRINTFORMW …………
 	;PRINTFORMW ………

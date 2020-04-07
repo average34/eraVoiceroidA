@@ -184,7 +184,7 @@ IF TALENT:処女 && TFLAG:19
 	SIF TEQUIP:28
 		TFLAG:39 = 1
 	;貞操観念+恋慕or親愛（主人による処女喪失のみ）
-	IF TALENT:30 && TFLAG:19 && (TALENT:3 == 0 && TALENT:6 == 0)
+	IF TALENT:30 && TFLAG:19 && (TALENT:恋慕 == 0 && TALENT:6 == 0)
 		TIMES SOURCE:4 , 1.20
 		TIMES SOURCE:18 , 0.50
 	;貞操観念
@@ -221,7 +221,7 @@ IF TALENT:処女 && TFLAG:19
 	;陥落素質による処理
 	IF TFLAG:20
 		;恋慕かつ相手が主人
-		IF TALENT:3 && TFLAG:20
+		IF TALENT:恋慕 && TFLAG:20
 			PRINTFORML %CALLNAME:TARGET%は%CALLNAME:MASTER%に処女を捧げられた事に幸福を感じているようだ……
 			TFLAG:150 = 2
 			TIMES SOURCE:4 , 2.00
@@ -800,7 +800,7 @@ SIF TALENT:70
 	TIMES A , 1.20
 
 ;快感の否定（淫乱、娼婦で無効）
-SIF TALENT:71 && (TALENT:4 == 0 && TALENT:7 == 0)
+SIF TALENT:71 && (TALENT:淫乱 == 0 && TALENT:娼婦 == 0)
 	TIMES A , 0.80
 
 ;媚薬
@@ -971,7 +971,7 @@ SIF TALENT:70
 	TIMES A , 1.20
 
 ;快感の否定（淫乱、娼婦で無効）
-SIF TALENT:71 && (TALENT:4 == 0 && TALENT:7 == 0)
+SIF TALENT:71 && (TALENT:淫乱 == 0 && TALENT:娼婦 == 0)
 	TIMES A , 0.80
 
 ;B敏感

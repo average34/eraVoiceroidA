@@ -194,9 +194,9 @@ ENDIF
 
 ;依存度補正値(相性100↑かつ淫乱で2、娼婦で4）
 P = NO:PLAYER
-IF TALENT:4 && RELATION:P > 100
+IF TALENT:淫乱 && RELATION:P > 100
 	TFLAG:30 += 2
-ELSEIF TALENT:7 && RELATION:P > 100
+ELSEIF TALENT:娼婦 && RELATION:P > 100
 	TFLAG:30 += 4
 ENDIF
 
@@ -285,7 +285,7 @@ IF TALENT:35
 	S = 1
 ENDIF
 ;快感の否定（淫乱、娼婦で無効）
-IF TALENT:71 && (TALENT:4 == 0 && TALENT:7 == 0)
+IF TALENT:71 && (TALENT:淫乱 == 0 && TALENT:娼婦 == 0)
 	PRINT  - 
 	A -= 3
 	PRINTS TALENTNAME:71
@@ -293,7 +293,7 @@ IF TALENT:71 && (TALENT:4 == 0 && TALENT:7 == 0)
 	S = 1
 ENDIF
 ;男嫌い（恋慕、親愛で無効）
-IF TALENT:82 && TALENT:PLAYER:オトコ && ((TALENT:3 == 0 && TALENT:6 == 0) || PLAYER != MASTER)
+IF TALENT:82 && TALENT:PLAYER:オトコ && ((TALENT:恋慕 == 0 && TALENT:6 == 0) || PLAYER != MASTER)
 	PRINT  - 
 	A -= 7
 	PRINTS TALENTNAME:82
@@ -301,7 +301,7 @@ IF TALENT:82 && TALENT:PLAYER:オトコ && ((TALENT:3 == 0 && TALENT:6 == 0) || 
 	S = 1
 ENDIF
 ;淫乱
-IF TALENT:4 && ASSIPLAY == 0
+IF TALENT:淫乱 && ASSIPLAY == 0
 	SIF S
 		PRINT  + 
 	A += 3
@@ -310,7 +310,7 @@ IF TALENT:4 && ASSIPLAY == 0
 	S = 3
 ENDIF
 ;娼婦
-IF TALENT:7 && ASSIPLAY == 0
+IF TALENT:娼婦 && ASSIPLAY == 0
 	SIF S
 		PRINT  + 
 	A += 6

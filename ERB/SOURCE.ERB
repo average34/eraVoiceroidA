@@ -448,7 +448,7 @@ ENDIF
 ;-------------------------------------------------
 ;快感の否定は、快ソースの数値に応じて、抑鬱増加（淫乱、娼婦で無効）
 ;-------------------------------------------------
-SIF TALENT:71 && (TALENT:4 == 0 && TALENT:7 == 0)
+SIF TALENT:71 && (TALENT:淫乱 == 0 && TALENT:娼婦 == 0)
 	SOURCE:16 += (UP:0+UP:1+UP:2+UP:3)/10
 
 ;-------------------------------------------------
@@ -1329,12 +1329,12 @@ ENDIF
 ;陥落素質
 ;-------------------------------------------------
 ;恋慕
-IF TALENT:3 && ASSIPLAY == 0
+IF TALENT:恋慕 && ASSIPLAY == 0
 	TIMES UP:5 , 1.50
 	TIMES UP:7 , 2.00
 	TIMES UP:12 , 0.50
 	TIMES UP:13 , 0.50
-ELSEIF TALENT:3 && ASSIPLAY > 0
+ELSEIF TALENT:恋慕 && ASSIPLAY > 0
 	TIMES UP:5 , 0.80
 	TIMES UP:12 , 1.20
 	TIMES UP:13 , 1.20
@@ -1398,7 +1398,7 @@ IF TALENT:10
 	TIMES UP:12 , 1.20
 ENDIF
 ;反抗的（服従、隷属で無効）
-IF TALENT:11 && (TALENT:5 == 0 && TALENT:8 == 0)
+IF TALENT:11 && (TALENT:服従 == 0 && TALENT:隷属 == 0)
 	TIMES UP:5 , 0.80
 	TIMES UP:7 , 0.80
 	TIMES UP:12 , 1.20
@@ -1443,7 +1443,7 @@ ENDIF
 ;ツンデレ
 IF TALENT:18
 	;陥落素質がある場合と無い場合で変化する
-	IF TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8
+	IF TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:8
 		TIMES UP:5 , 1.20
 		TIMES UP:7 , 1.20
 		TIMES UP:12 , 0.80
@@ -1535,7 +1535,7 @@ SIF TALENT:63
 SIF TALENT:70
 	TIMES UP:6 , 1.20
 ;快感の否定（淫乱、娼婦で無効）
-SIF TALENT:71 && (TALENT:4 == 0 && TALENT:7 == 0)
+SIF TALENT:71 && (TALENT:淫乱 == 0 && TALENT:娼婦 == 0)
 	TIMES UP:6 , 0.80
 ;即落ち
 IF TALENT:73
@@ -1568,7 +1568,7 @@ IF TALENT:80
 	TIMES UP:9 , 1.20
 ENDIF
 ;男嫌い（女性のみ恋慕、親愛で無効）
-IF TALENT:82 && TALENT:PLAYER:オトコ && ((TALENT:3 == 0 && TALENT:6 == 0) || PLAYER != MASTER || TALENT:オトコ)
+IF TALENT:82 && TALENT:PLAYER:オトコ && ((TALENT:恋慕 == 0 && TALENT:6 == 0) || PLAYER != MASTER || TALENT:オトコ)
 	TIMES UP:5 , 0.80
 	TIMES UP:6 , 0.80
 	TIMES UP:7 , 0.80
@@ -1593,7 +1593,7 @@ IF TALENT:86
 	TIMES UP:12 , 0.80
 ENDIF
 ;女嫌い（男性のみ恋慕、親愛で無効）
-IF TALENT:88 && TALENT:PLAYER:オトコ == 0 && ((TALENT:3 == 0 && TALENT:6 == 0) || PLAYER != MASTER || TALENT:オトコ == 0)
+IF TALENT:88 && TALENT:PLAYER:オトコ == 0 && ((TALENT:恋慕 == 0 && TALENT:6 == 0) || PLAYER != MASTER || TALENT:オトコ == 0)
 	TIMES UP:5 , 0.80
 	TIMES UP:6 , 0.80
 	TIMES UP:7 , 0.80

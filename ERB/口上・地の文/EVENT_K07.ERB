@@ -108,7 +108,7 @@ ELSEIF CFLAG:201 < 3 && MARK:2 == 2
 	CFLAG:201 = 3
 	RETURN 0
 ;屈服刻印Lv3
-ELSEIF CFLAG:201 < 4 && MARK:2 == 3 && (TALENT:3 == 0 && TALENT:4 == 0 && TALENT:5 == 0 && TALENT:6 == 0 && TALENT:7 == 0 && TALENT:8 == 0)
+ELSEIF CFLAG:201 < 4 && MARK:2 == 3 && (TALENT:恋慕 == 0 && TALENT:淫乱 == 0 && TALENT:服従 == 0 && TALENT:6 == 0 && TALENT:娼婦 == 0 && TALENT:隷属 == 0)
 	PRINTFORMW 「はあ…もう好きにしてください…」
 	PRINTFORMW 「どういう心変わりかって？」
 	PRINTFORMW 「あなたにどうしたって敵わないから、自己防衛してるだけです…」
@@ -116,7 +116,7 @@ ELSEIF CFLAG:201 < 4 && MARK:2 == 3 && (TALENT:3 == 0 && TALENT:4 == 0 && TALENT
 	CFLAG:201 = 4
 	RETURN 0
 ;陥落
-ELSEIF CFLAG:201 < 5 && (TALENT:3 || TALENT:4 || TALENT:5)
+ELSEIF CFLAG:201 < 5 && (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従)
 	;恋慕
 	IF TALENT:3
 		PRINTFORMW あなたが調教のために部屋の中に入ると、葵が困ったような顔でこちらを見つめてきた
@@ -160,7 +160,7 @@ IF ASSI < 0
 	;初めて
 ;	IF CFLAG:203 == 0
 		;陥落済み＋陥落時初口上が発生済み
-;		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && CFLAG:201 >= 5
+;		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && CFLAG:201 >= 5
 ;			PRINTFORMW 
 		;それ以外
 ;		ELSE
@@ -170,7 +170,7 @@ IF ASSI < 0
 	;二回目以降
 ;	ELSEIF CFLAG:203 < 2 || FLAG:7 ==2
 		;陥落済み
-;		IF TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8
+;		IF TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:8
 ;			PRINTFORMW 
 		;それ以外
 ;		ELSE
@@ -242,7 +242,7 @@ ELSEIF MARK:2 == 2 && (CFLAG:202 < 3 || FLAG:7 == 2)
 	ENDIF
 	CFLAG:202 = 3
 ;屈服刻印Lv3＋陥落素質無し
-ELSEIF MARK:2 == 3 && (TALENT:3 == 0 && TALENT:4 == 0 && TALENT:5 == 0 && TALENT:6 == 0 && TALENT:7 == 0 && TALENT:8 == 0) && (CFLAG:202 < 4 || FLAG:7 == 2)
+ELSEIF MARK:2 == 3 && (TALENT:恋慕 == 0 && TALENT:淫乱 == 0 && TALENT:服従 == 0 && TALENT:6 == 0 && TALENT:娼婦 == 0 && TALENT:隷属 == 0) && (CFLAG:202 < 4 || FLAG:7 == 2)
 	IF RAND:3 == 0
 		PRINTFORMW 「もう許して…」
 		PRINTFORMW 「これ以上されたら私、おかしくなっちゃいそうだから！」
@@ -262,7 +262,7 @@ ELSEIF MARK:2 == 3 && (TALENT:3 == 0 && TALENT:4 == 0 && TALENT:5 == 0 && TALENT
 ;陥落済み
 ELSEIF CFLAG:202 < 5 || FLAG:7 == 2
 	;恋慕、親愛
-	IF TALENT:3 || TALENT:6
+	IF TALENT:恋慕 || TALENT:6
 		;ランダムで口上が変化する（使わない場合はすべて同じにすればよい）
 		K:1 = RAND:3
 		IF K:1 == 0
@@ -293,7 +293,7 @@ ELSEIF CFLAG:202 < 5 || FLAG:7 == 2
 			PRINTFORMW 「ダメっ！！自分の事しか見れなくしてやるとか言わないで！！それだけでイッちゃうからああああああああっっ！！」
 		ENDIF
 	;淫乱、娼婦
-	ELSEIF TALENT:4 || TALENT:7
+	ELSEIF TALENT:淫乱 || TALENT:7
 		;ランダムで口上が変化する（使わない場合はすべて同じにすればよい）
 		K:1 = RAND:3
 		IF K:1 == 0
@@ -316,7 +316,7 @@ ELSEIF CFLAG:202 < 5 || FLAG:7 == 2
 			PRINTFORMW 「あなたの立派なおちんちんに、私の身体でご奉仕させてぇ…♪」
 		ENDIF
 	;服従、隷属
-	ELSEIF TALENT:5 || TALENT:8
+	ELSEIF TALENT:服従 || TALENT:8
 		;ランダムで口上が変化する（使わない場合はすべて同じにすればよい）
 		K:1 = RAND:3
 		IF K:1 == 0
@@ -384,7 +384,7 @@ ELSEIF MARK:2 == 2
 	PRINTFORMW 「どうせケアとか言っていやらしく撫で回すつもりなんでしょ！」
 	CFLAG:219 = 2
 ;屈服刻印Lv3＋陥落素質無し
-ELSEIF MARK:2 == 3 && (TALENT:3 == 0 && TALENT:4 == 0 && TALENT:5 == 0 && TALENT:6 == 0 && TALENT:7 == 0 && TALENT:8 == 0)
+ELSEIF MARK:2 == 3 && (TALENT:恋慕 == 0 && TALENT:淫乱 == 0 && TALENT:服従 == 0 && TALENT:6 == 0 && TALENT:娼婦 == 0 && TALENT:隷属 == 0)
 	PRINTFORMW 「マッサージ？好きにすればいいじゃないですか…」
 	PRINTFORMW 「出来ればお尻を撫でたりとかはやめてほしいです」
 	PRINTFORMW （でも、もし撫でられてもそのまま身を任せちゃいそう…）
@@ -393,17 +393,17 @@ ELSEIF MARK:2 == 3 && (TALENT:3 == 0 && TALENT:4 == 0 && TALENT:5 == 0 && TALENT
 ;陥落済み＋体力500未満
 ELSEIF BASE:0 < 500 && (CFLAG:218 < 1 || FLAG:7 == 2)
 	;恋慕、親愛
-	IF TALENT:3 || TALENT:6
+	IF TALENT:恋慕 || TALENT:6
 		PRINTFORMW 「も、もう無理…もっともっと愛してほしいんだけど…」
 		PRINTFORMW 「え、一緒に添い寝してくれるって？」
 		PRINTFORMW 「それなら、寝るまでギュって抱きしめてて欲しいな…♡」
 	;淫乱、娼婦
-	ELSEIF TALENT:4 || TALENT:7
+	ELSEIF TALENT:淫乱 || TALENT:7
 		PRINTFORMW 「気持ちよかったですよ…トンでっちゃうかと思ったよ♪」
 		PRINTFORMW 「このまま寝ちゃうけど、イタズラしたければ好きにしていいよ♡」
 		PRINTFORMW 「何なら寝てる間にハメちゃって膣内出ししてくれても…♪」
 	;服従、隷属
-	ELSEIF TALENT:5 || TALENT:8
+	ELSEIF TALENT:服従 || TALENT:8
 		PRINTFORMW 「……今日も葵をたくさん可愛がってくださってありがとうございました」
 		PRINTFORMW 「絶対に、ぜーったいに、また来てくださいね…」
 		PRINTFORMW （寝てる間に売られちゃったりしないよね…？）
@@ -413,20 +413,20 @@ ELSEIF BASE:0 < 500 && (CFLAG:218 < 1 || FLAG:7 == 2)
 ;陥落済み
 ELSEIF CFLAG:219 < 4 || FLAG:7 == 2
 	;恋慕、親愛
-	IF TALENT:3 || TALENT:6
+	IF TALENT:恋慕 || TALENT:6
 		PRINTFORMW 「調教はもう終わりなの？」
 		PRINTFORMW 「そしたら、今度は恋人タイムにして♪」
 		PRINTFORMW 「唾液が溢れるくらいベロチューして、あなたの匂いが染み付いちゃうくらいまぐわって…」
 		PRINTFORMW 「今夜は寝かせないよっ♪」
 	;淫乱、娼婦
-	ELSEIF TALENT:4 || TALENT:7
+	ELSEIF TALENT:淫乱 || TALENT:7
 		PRINTFORMW 「もう終わりなの？まだまだ物足りないでしょ？」
 		PRINTFORMW 「延長コース、今ならあなたの好きにしてあげるよ？」
 		PRINTFORMW 「朝までハメっぱなしイキ狂いコースなんてどう？」
 		PRINTFORMW 「あなたなら抜かずの10連戦だって朝飯前でしょ？」
 		PRINTFORMW 「一緒に頭バカになってエッチの事しか考えられなくなっちゃおうよ♪」
 	;服従、隷属
-	ELSEIF TALENT:5 || TALENT:8
+	ELSEIF TALENT:服従 || TALENT:8
 		PRINTFORMW 「え、もう終わりなんですか…？いつもなら立ってられない位いじめられちゃうのに…」
 		PRINTFORMW （私に飽きちゃった！？もっともっと頑張るから捨てないでっ！！）
 		PRINTFORMW （好きなだけ、あなたが満足するまで、弄んで…）
@@ -482,9 +482,9 @@ IF SELECTCOM == 0
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:300 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:300 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				IF RAND:3 == 0
 					PRINTFORMW あなたは葵の性感帯に手を伸ばし、優しく刺激するように撫で回している
 					PRINTFORMW 「私の柔らかいワレメも、小ぶりなおっぱいも、好きに弄んでいいよ♪」
@@ -503,7 +503,7 @@ IF SELECTCOM == 0
 					PRINTFORMW 「おっぱいでもおまんこでも、たくさん気持ちよくして、ね♪」
 				ENDIF
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				IF RAND:3 == 0
 					PRINTFORMW あなたは葵と向き合いながら、彼女のおっぱいとワレメの柔らかさを楽しむように揉みしだいている
 					PRINTFORMW 「もう、そんな手付きで触っちゃって、やらしいなあ…♡」
@@ -529,7 +529,7 @@ IF SELECTCOM == 0
 					PRINTFORMW 「ほら、あなたの手で私のおまんこ触って、確かめてみて…♪」
 				ENDIF
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8 
+			ELSEIF TALENT:服従 || TALENT:隷属 
 				IF RAND:2 == 0
 					PRINTFORMW あなたは葵の身体をいたわるように、優しく撫で回している
 					PRINTFORMW 「優しくなんてしないで、もっと激しくしてくれて良いですよ」
@@ -612,9 +612,9 @@ IF SELECTCOM == 1
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:301 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:301 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				IF RAND:2 == 0
 					PRINTFORMW あなたは葵の陰唇に口付けるように唇を重ね、膣内を舐め回している
 					PRINTFORMW 「私のアソコとあなたの口とがキスしちゃってる…」
@@ -628,7 +628,7 @@ IF SELECTCOM == 1
 					PRINTFORMW 「………私より身体の方が素直だったみたいで、恥ずかしいじゃん……♡」
 				ENDIF
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				IF RAND:2 == 0
 					PRINTFORMW 「おまんこからえっちな匂いを発して、愛液たくさん溢れさせて、淫乱だなって？」
 					PRINTFORMW 「当たり前でしょ？あなたのせいでこんなに淫らになっちゃったんだから」
@@ -643,7 +643,7 @@ IF SELECTCOM == 1
 					PRINTFORMW 「やあっ！こ、これ凄いっ！私のおまんこ、あなたのモノだって書き換えられちゃってるのぉっ！」
 				ENDIF
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				IF RAND:2 == 0
 					PRINTFORMW 「その…私のお汁なんか啜って、美味しいですか？」
 					PRINTFORMW 「えっ？葵のだと思うと美味しいからもっと舐めさせろって？」
@@ -714,15 +714,15 @@ IF SELECTCOM == 2
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:302 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:302 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 
 			ENDIF
 			CFLAG:302 = 4
@@ -756,17 +756,17 @@ IF SELECTCOM == 3
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:303 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:303 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 「指なんかより、その…欲しいんだけど♡」
 				PRINTFORMW 「何をって…その…おちんちん…挿れてください……♡」
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 「指なんかじゃなくておちんちん挿れて欲しいな…」
 				PRINTFORMW 「私のおまんこ、じゅぽじゅぽってれいぷしてよ…♪」
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 「指なんかで良いんですか…？」
 				PRINTFORMW （私のここ、たくさん犯して欲しいのに…）
 			ENDIF
@@ -819,17 +819,17 @@ IF SELECTCOM == 4
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:304 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:304 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 「そこは汚いから舐めないでいいのに…」
 				PRINTFORMW 「恥ずかしがる所が見たいからいいって…あなたって、ほんとにバカなんだから…♪」
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 「お尻の穴を舐めたいなんて、マニアックだなぁ、もう♡」
 				PRINTFORMW 「まあ、私は気持ちいいからいいけど、ほら、もっと舐めてよ♪」
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 「えっ…！やめてくださいっ！そんなところ、汚いですから！」
 				PRINTFORMW 「お尻の穴なんか使わなくても、前の穴好きに使っていいですからっ！！」
 			ENDIF
@@ -865,17 +865,17 @@ IF SELECTCOM == 5
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:305 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:305 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 「後ろの穴ばっかりじゃなくて、こっちも可愛がって欲しいんだけど♡」
 				PRINTFORMW 「お尻の穴がぎゅうぎゅう締め付けて指を離してくれないって……は、恥ずかしいからそれ以上言わないでっ！！」
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 「お尻の穴もいいけど、こっちも可愛がってほしいんだけどなあ…♪」
 				PRINTFORMW 「ねえ、空いてる手かおちんちん突っ込んで、前も後ろも塞いじゃおうよ♡」
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 「え？今度はこっちでしたいんですか？解りました…」
 				PRINTFORMW 「あなたを気持ちよくするためだけの肉穴、たくさんほぐして、使ってください…♡」
 			ENDIF
@@ -913,9 +913,9 @@ IF SELECTCOM == 6
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:306 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:306 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				IF RAND:2 == 0
 					PRINTFORMW 「あなたって、私のおっぱいいつも楽しそうに揉むよね…」
 					PRINTFORMW 「こんなの揉んでも、面白くないと思うんだけど」
@@ -931,7 +931,7 @@ IF SELECTCOM == 6
 					PRINTFORMW 「私のおっぱい、大きくしてね、おとーさん♪」
 				ENDIF
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				IF RAND:2 == 0
 					PRINTFORMW 「やぁっ♪、またそんなエッチな揉み方してぇ…」
 					PRINTFORMW 「女の子の大切なところなんだからさ、もっと優しく愛情を込めながら……」
@@ -943,7 +943,7 @@ IF SELECTCOM == 6
 					PRINTFORMW 「あなたに触られるだけでイっちゃう様な、えっちなおっぱいにしちゃおうね♡」
 				ENDIF
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				IF RAND:2 == 0
 					PRINTFORMW 「私の貧相な胸なんか揉んでも、面白くないでしょ…？」
 					PRINTFORMW 「葵の胸だから良いんだって……！！な、何言ってるんですか、もう…」
@@ -992,9 +992,9 @@ IF SELECTCOM == 7
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:307 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:307 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				IF RAND:2 == 0
 					PRINTFORMW 「ひやっ、わ、私のおっぱい吸っても、まだ何も出ないよ…？」
 					PRINTFORMW 「あっ…だからって、口の中で転がさないでぇっ！」
@@ -1005,7 +1005,7 @@ IF SELECTCOM == 7
 					PRINTFORMW 「き、聞こえてたの！？恥ずかしいなぁ…♡」
 				ENDIF
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				IF RAND:2 == 0
 					PRINTFORMW 「おっぱい触られると、じわ～って、気持ちいいのが広がっちゃうよ♪」
 					PRINTFORMW 「ねえ、もっと乱暴にしていいんだよ？、つまんだり…ひねったり…」
@@ -1016,7 +1016,7 @@ IF SELECTCOM == 7
 					PRINTFORMW 「仕返しにあなたの乳首も開発してあげるから、覚悟してね？」
 				ENDIF
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 「ミルクが出ないのに乳首舐めるの、そんなに楽しいですか？」
 				PRINTFORMW 「乳首弱いんだから黙ってイかされてろって……ばか………ひゃんっ♪」
 				PRINTFORMW （一方的に愛されるの…ダメなのに…嬉しくなっちゃう……）
@@ -1052,9 +1052,9 @@ IF SELECTCOM == 8
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:308 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:308 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				IF RAND:3 == 0
 					PRINTFORMW 「あなたの手、あったかくて……とっても気持ちいいよ？」
 					PRINTFORMW 「でもね、乙女の胸に触っていいのは将来の旦那さんだけなんだから♡」
@@ -1068,7 +1068,7 @@ IF SELECTCOM == 8
 					PRINTFORMW 「優しく撫でられて、じわじわとあなたへの好きって気持ちが止まらなくなっちゃうの、大好きだよ…♪」
 				ENDIF
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				IF RAND:2 == 0
 					PRINTFORMW 「あん、ひゃんっ！私のおっぱい、いっぱい揉んじゃって…」
 					PRINTFORMW 「私のおっぱい、そんなに好きなんだ♡」
@@ -1081,7 +1081,7 @@ IF SELECTCOM == 8
 					PRINTFORMW 「……私のおっぱい、もっとぎゅーってして…♡」
 				ENDIF
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 「そんな優しく撫でなくても、思いっきり揉みしだいてくれて良いんですよ？」
 				PRINTFORMW 「優しくしたい気分だって…！わ、私なんかより好きな人にしてあげればいいじゃないですか！！」
 				PRINTFORMW 「自分が優しく撫でたいから、撫でてるだけだって…！」
@@ -1121,9 +1121,9 @@ IF SELECTCOM == 9
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:309 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:309 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				IF RAND:2 == 0
 					PRINTFORMW 「ねえ、早く挿れてよぉ…」
 					PRINTFORMW 「私のここ、あなたと１つになって、トロトロになりたいってお汁を溢れさせちゃってるの…」
@@ -1139,14 +1139,14 @@ IF SELECTCOM == 9
 					PRINTFORMW 「私のおまんこと、いちゃいちゃらぶらぶ新婚生活、しよっ？」
 				ENDIF
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 「ほら…私のおまんこ、あなたのおちんちん欲しくてこんなに濡れちゃってるんだよ？」
 				PRINTFORMW 「おっきいの欲しがって、愛液溢しちゃってるよ…」
 				PRINTFORMW 「私のとろとろおまんこ、挿れたらきっと気持ちいいよ？一瞬でおちんちん気持ちよくなっちゃうよ？」
 				PRINTFORMW 「おちんちん、お尻にぱんぱんって打ち付けて、おまんこの奥にびゅーってして♪」
 				PRINTFORMW 「気持ちよくなるためだけの中出しセックス、しよっ♪」
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 「あなたが気持ちよくなるための私のオナホまんこ、いっぱい見てください…」
 				PRINTFORMW 「どういう機能が付いてるか説明しろって…解りました…」
 				PRINTFORMW 「あなたが気持ちよくなれるように、愛液ローションをはしたなく溢れさせてます…」
@@ -1186,18 +1186,18 @@ IF SELECTCOM == 10
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:310 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:310 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 「ねえ…触ってくれないの…？」
 				PRINTFORMW 「私のおっぱい、好きにしてもいいのに…」
 				PRINTFORMW 「……もうっ！それならあなたの身体におっぱい擦りつけて、勝手に気持ちよくなっちゃいますからっ！」
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 「はあっ…♪私のおっぱいが形を変えるところ、見られちゃってる♪」
 				PRINTFORMW 「ほらっ♪こんなふうにおっぱいこねくり回したいんでしょ？したかったらいつでもしていいんだよ？」
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 「はい、自分でおっぱい慰めますから、見ててください…」
 				PRINTFORMW （あなたに好きなだけ、触ってほしいのに…切ないよぉ…）
 			ENDIF
@@ -1232,20 +1232,20 @@ IF SELECTCOM == 11
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:311 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:311 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 「ねえ、あなたも一緒に自分でしてよ…」
 				PRINTFORMW 「お互いに目の前にいる相手に触りたい、愛してあげたいって思いながら自分を慰めるの♪」
 				PRINTFORMW 「何だか切なくて、たまらなくなっちゃいそうでしょ？」
 				PRINTFORMW 「……この後、いっぱいしようね♪」
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 「誰を思ってしてるのかって？さて、誰の事を思ってしてると思う？」
 				PRINTFORMW 「私のことをこんなにいやらしい女の子にしちゃった、鬼畜さんの事を思ってしてるんだよ♡」
 				PRINTFORMW 「あれれ？なんでおちんちん大きくなってるのかなー♡」
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 「自分でするのを見られて恥ずかしくないのかって？…そんなことないですよ…」
 				PRINTFORMW 「だって、ご主人様がそうやって躾けたんじゃないですか…」
 				PRINTFORMW （ご主人様の前では、どんなにえっちな事しても、恥ずかしく無いって、ね…）
@@ -1278,22 +1278,22 @@ IF SELECTCOM == 20
 	;初めて
 	IF CFLAG:312 == 0
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:312 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:312 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 「やっと、やっとしてくれるんだ…♪」
 				PRINTFORMW 「あなたがしたいって言ってくれるの、ずーーーーーーーっと待ってたんだから♡」
 				PRINTFORMW 「私、嬉しくって…ひくっ……ぐすん……」
 				PRINTFORMW 「…いつまでも、しあわせにしてね……♡」
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 「そういえば、あなたとキスするのは初めてだね♪」
 				PRINTFORMW 「誰かとキスした経験があるのかって？当たり前でしょ…んんっ！…ちゅっ…♡」
 				PRINTFORMW 「……はあっ…♡そんなに貪るみたいに…んんんっ！！」
 				PRINTFORMW 「……はあ…はあ……誰としたのかって？お姉ちゃんと、ちっちゃい時に一度だけだよ♡」
 				PRINTFORMW 「実質ファーストキスだったのに、あんなに激しくして、えっちだなぁ、もう♡」
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 「いまさらキスくらいで嫌がりませんよ？」
 				PRINTFORMW 「おまんこもおっぱいも好き放題されてるのに…」
 				PRINTFORMW 「…えっ…泣いてるからって…！！そ、そんなことっ！！！」
@@ -1307,9 +1307,9 @@ IF SELECTCOM == 20
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:312 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:312 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				IF RAND:4 == 0
 					PRINTFORMW 「ぎゅーって抱き合いながらキスしたいの？」
 					PRINTFORMW 「葵の柔らかい身体に密着すると気持ちいいし」
@@ -1335,7 +1335,7 @@ IF SELECTCOM == 20
 					PRINTFORMW 「わらしの…はあむっ♪おくひ…れろぉっ♪ひゃらませてぇぇ…♪」
 				ENDIF
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				IF RAND:5 == 0
 					PRINTFORMW 「んふ……♡んっ……♡れろっ……♡ちゅ……♡」
 					PRINTFORMW 「…もう…また舌入れて来て…たまには優しいキスもして欲しいんだけど…♡」
@@ -1365,7 +1365,7 @@ IF SELECTCOM == 20
 					PRINTFORMW 「わらしの…はあむっ♪おくひ…れろぉっ♪ひゃらませてぇぇ…♪」
 				ENDIF
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				IF RAND:4 == 0
 					PRINTFORMW 「……恋人にするみたいにキスしてくれるんだなって…！！そ、そんなつもりじゃ…」
 					PRINTFORMW （な、何でそんなこと、いうかなぁ…）
@@ -1414,23 +1414,23 @@ IF SELECTCOM == 21
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:313 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:313 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 「もう止めちゃうの…？」
 				PRINTFORMW 「昔の彼氏ならもっとしてくれたのに…」
 				PRINTFORMW 「嘘だろって？さあ、どう思う？」
 				PRINTFORMW （すぐ解る嘘なのに、嫉妬するような眼になっちゃって…♪）
 				PRINTFORMW （激しくしてもらって、後でいっぱい慰めてあげよっ♡）
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW あなたが葵との淫行を止めると、葵は四つん這いでノーパンの尻を振って誘惑し始めた
 				PRINTFORMW 「私のおまんこ、まだ足りないって泣いちゃってるよ？」
 				PRINTFORMW 「しないなら、外でその辺りのおじさん誘惑して、いっぱいセックスしてもらってきちゃおうかなー？」
 				PRINTFORMW 「今すぐハメてくれないと、葵ちゃん寝取られちゃうよ？」
 				PRINTFORMW 「葵ちゃんえっちだから、大きいおちんちんハメられたら即堕ちしちゃうかもよー？」
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 「隣に来いって…どうしたんですか？」
 				PRINTFORMW 「…こうしてると、恋人同士みたいで…ってそんなことないですよね！！ごめんなさいっ！！」
 				PRINTFORMW 「…………ダメっ…手、離さないで…」
@@ -1626,18 +1626,18 @@ IF SELECTCOM == 28
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:320 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:320 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 「キスするだけで愛液漏らして、えっちだなって…！」
 				PRINTFORMW 「あなただって、キスするだけでそ、それ大きくするじゃない！」
 				PRINTFORMW 「………ねえ、そのさ……しない？」
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 「誰にでも股開くビッチめ！って？」
 				PRINTFORMW 「でも、こんなに濡れちゃうのはあなたの時だけなんだよ？」
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 「えっ、性奴隷と言われて恥ずかしくないのかって…？」
 				PRINTFORMW 「恥ずかしくないですよ、私はあなた専用の性奴隷で、オナホールで、精液便所ですから…」
 				PRINTFORMW 「え、オナホや便所にキスするのはおかしいから、もうキスはいらないなって…？そ、そうですよね！！」
@@ -1669,26 +1669,26 @@ IF SELECTCOM == 29
 	;初めて
 	IF CFLAG:321 == 0
 		;恋慕、親愛
-		IF TALENT:3 || TALENT:6
+		IF TALENT:恋慕 || TALENT:6
 			PRINTFORMW 
 		;淫乱、娼婦
-		ELSEIF TALENT:4 || TALENT:7
+		ELSEIF TALENT:淫乱 || TALENT:7
 			PRINTFORMW 
 		;服従、隷属
-		ELSEIF TALENT:5 || TALENT:8
+		ELSEIF TALENT:服従 || TALENT:8
 			PRINTFORMW 
 		ENDIF
 	CFLAG:321 = 1
 	;二回目以降
 	ELSEIF CFLAG:321 < 2 || FLAG:7 == 2
 		;恋慕、親愛
-		IF TALENT:3 || TALENT:6
+		IF TALENT:恋慕 || TALENT:6
 			PRINTFORMW 
 		;淫乱、娼婦
-		ELSEIF TALENT:4 || TALENT:7
+		ELSEIF TALENT:淫乱 || TALENT:7
 			PRINTFORMW 
 		;服従、隷属
-		ELSEIF TALENT:5 || TALENT:8
+		ELSEIF TALENT:服従 || TALENT:8
 			PRINTFORMW 
 		ENDIF
 	CFLAG:321 = 2
@@ -1711,15 +1711,15 @@ IF SELECTCOM == 40
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:322 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:322 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 「道具なんかよりあなたに直接触ってほしいんだけど…」
 				PRINTFORMW 「それなら耐えってみろって？そ、そんなあ…」
 				PRINTFORMW （この人が直接触ってくれてる訳じゃないのに…この人にされてるって思うと…♡）
 				PRINTFORMW （でも、今度は直接触って欲しいな…）
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 「ローターなんてつけて、どうするつもり？」
 				PRINTFORMW （つけたままデートなんか、楽しそうだよね♪）
 				PRINTFORMW （バレるかバレないかの瀬戸際で、たくさん焦らされちゃって…）
@@ -1727,7 +1727,7 @@ IF SELECTCOM == 40
 				PRINTFORMW （イっちゃったからお仕置きだってトイレに連れ込まれちゃって…）
 				PRINTFORMW （うん、すごくいいよね…♡）
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 「今度はローターで可愛がってくれるんですか？」
 				PRINTFORMW （このまま一日中つけっぱなしにされて、焦らされちゃって…）
 				PRINTFORMW （この人が帰ってきて外してくれるのだけをただただ待ちわびるのも…♪）
@@ -1770,17 +1770,17 @@ IF SELECTCOM == 41
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:323 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:323 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 「えっと、それは強すぎるからあんまり使わないで欲しいかな…」
 				PRINTFORMW 「あなたとゆっくり愛し合いたいんだけどー、ねえっ？」
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 「物欲しそうな顔してるって？だって、それ使われるのすっごく気持ちいいからさー♪」
 				PRINTFORMW 「私のこと、思いっきりイかせちゃってね♪」
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW （ああ、またおかしくなっちゃうくらい、気持ちよくされちゃうんだ…）
 				PRINTFORMW （でも、あなたにならどれだけイかされちゃっても…♪）
 			ENDIF
@@ -1819,15 +1819,15 @@ IF SELECTCOM == 42 && TEQUIP:11 == 0
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:324 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:324 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 
 			ENDIF
 			CFLAG:324 = 4
@@ -1860,15 +1860,15 @@ IF SELECTCOM == 43 && TEQUIP:12 == 0
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:325 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:325 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 
 			ENDIF
 			CFLAG:325 = 4
@@ -1899,9 +1899,9 @@ IF SELECTCOM == 44 && TEQUIP:13 == 0
 		;処女
 		IF TALENT:処女
 		;陥落済み
-			IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:326 < 4 || FLAG:7 == 2)
+			IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:326 < 4 || FLAG:7 == 2)
 				;恋慕、親愛
-				IF TALENT:3 || TALENT:6
+				IF TALENT:恋慕 || TALENT:6
 					PRINTFORMW 「なんでっ！私、あなたになら初めてを捧げてもいいって思ったのに！！」
 					PRINTFORMW 「いやっ！！絶対にいやっ！！お願いだから考え直して！！」
 					PRINTFORMW 「あなたがしたいことなら何でもしてあげるからっ！！初めてはあなたにあげたいのっっ！！」
@@ -1915,7 +1915,7 @@ IF SELECTCOM == 44 && TEQUIP:13 == 0
 					PRINTFORMW 「こんなもんじゃ絶対に嫌いになんてなってやらないっ！！あなた以外を絶対に愛してやらないっ！！！！一生恨んで添い遂げてやるっ！！！！！！」
 					PRINTFORMW 葵はあなたの操作するバイブによって、処女を失った…
 				;淫乱、娼婦
-				ELSEIF TALENT:4 || TALENT:7
+				ELSEIF TALENT:淫乱 || TALENT:7
 					PRINTFORMW 「嘘でしょ！！これだけえっちにしておいて初めてをバイブで奪わせるの！？」
 					PRINTFORMW 「私とセックスしたくて淫らに調教したくせに！！」
 					PRINTFORMW 「…ねえ、考え直してよ、おちんちん挿れてくれたらおまんこできゅうって締め上げてご奉仕してあげるし…」
@@ -1928,7 +1928,7 @@ IF SELECTCOM == 44 && TEQUIP:13 == 0
 					PRINTFORMW 「一緒に、永遠に後悔し続けようね…♡」
 					PRINTFORMW 葵は自分自身でバイブを秘裂へ差し挿れ、処女を失った…
 				;服従、隷属
-				ELSEIF TALENT:5 || TALENT:8
+				ELSEIF TALENT:服従 || TALENT:8
 					PRINTFORMW （そんな…私、あなたのおちんちんで初めて奪って欲しくて、いっぱいいっぱい我慢してきたのに…）
 					PRINTFORMW 「か、考え直さない？………そう、その気はないの…」
 					PRINTFORMW 「……わ、解りました……………私の……処女………バイブで……奪って……くだ…………ひゃいっ……！！」
@@ -1955,21 +1955,21 @@ IF SELECTCOM == 44 && TEQUIP:13 == 0
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:326 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:326 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 「バイブなんかより、あなたのモノが欲しいんだけど♪」
 				PRINTFORMW 「…だって、あなたの事も気持ちよくしてあげたいんだから…♡」
 				PRINTFORMW 「ねえ、バイブなんか捨てて、私の身体好き放題貪っちゃってよ…」
 				PRINTFORMW 「すっごく気持ちよくしてあげるから、ね？」
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 「ねえ、バイブを入れながらアナルセックスするって、なんだかとっても背徳的だと思うんだけど、どうかな？」
 				PRINTFORMW 「子作りのためのおまんこに気持ちよくなるためだけのバイブを挿れて…」
 				PRINTFORMW 「気持ちよくなるためだけのアナルに子種をいっぱい無駄打ちするの♪」
 				PRINTFORMW 「ねえ、こっちにおちんちん入れていいんだよ？快楽だけに溺れるセックス、しよ♡」
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 「バイブでするんですね…」
 				PRINTFORMW 「え、興奮させて見せたら、ご褒美をあげるって…！」
 				PRINTFORMW 「解りましたっ！あなたのおちんちんだと思っていっぱい気持ちよくなりますっ！！」
@@ -2007,9 +2007,9 @@ IF SELECTCOM == 45 && TEQUIP:14 == 0
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:327 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:327 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				IF RAND:2 == 0
 					PRINTFORMW 「私のお尻、こんなのが入っちゃうんだ…」
 					PRINTFORMW 「お尻も良いけどさ…こっちにはあなたのが欲しいな…♡」
@@ -2020,12 +2020,12 @@ IF SELECTCOM == 45 && TEQUIP:14 == 0
 					PRINTFORMW 「ほら、こっちにも大きいの、ちょうだいっ♪」
 				ENDIF
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 「ああっ♡お尻なのに、深い所まで咥え込んじゃってるんだよ？」
 				PRINTFORMW 「お尻の穴でブルブルって震えて…気持ちいいよ♡」
 				PRINTFORMW 「ねえ、あなたも挿れてみない？私のお尻に入ってたので、一緒に開発されちゃおうよ♪」
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 「ああっ♪あなたを気持ちよくするためだけの穴なのに、バイブ挿れられて気持ちよくなっちゃってます…」
 				PRINTFORMW 「お尻が解れたら、おちんちん気持ちよくなるために、使ってください…♡」
 			ENDIF
@@ -2063,19 +2063,19 @@ IF SELECTCOM == 46 && TEQUIP:15 == 0
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:328 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:328 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 「あはは、また尻尾生やされちゃった…」
 				PRINTFORMW 「あなたも付けてさ、一緒にワンちゃんになっちゃおうよ？」
 				PRINTFORMW 「だいじょーぶだよ？あなたもお尻で気持ちよくなれるようにいっぱい解してあげるから…♪」
 				PRINTFORMW 「……あなたとけものこーび、したいな…♪」
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 「挿れられるだけで尻尾振っちゃって、待ての出来ない雌犬だなって？」
 				PRINTFORMW 「えっちな雌犬には、あなたのおちんちんで躾けるのが効果的だと思うなー？」
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 「ちょっと犬みたいに鳴いてみろって…わん♪わん♪わん♪」
 				PRINTFORMW （ペット扱いしてくれるのはあなただけだから…これはこれでいいかっ♪）
 			ENDIF
@@ -2113,15 +2113,15 @@ IF SELECTCOM == 47 && TEQUIP:16 == 0
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:329 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:329 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 
 			ENDIF
 			CFLAG:329 = 4
@@ -2155,18 +2155,18 @@ IF SELECTCOM == 48
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:330 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:330 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 「んあっ！乳首はダメっ！あなたの手でイきたいのに耐えられないっ！！」
 				PRINTFORMW 「イかされちゃう！道具で私の乳首、イかされちゃうっ！！」
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 「道具なんかより、あなたの手で乳首をじっくりといじめて欲しいな♪」
 				PRINTFORMW 「それか、あなたのおちんちんの先っぽで擦って、亀頭と乳首で捏ねくり回されたいな…♪」
 				PRINTFORMW 「たくさん、乳繰り合おうよ？私の乳首、もっと開発しちゃっていいんだよ♡」
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 「えっ、乳首とクリトリスにローター付けたまま放置して、一晩中焦らしてやるのも良いなって…♡」
 				PRINTFORMW （す、素敵すぎっ！！一晩中この人が触りに来てくれることだけを期待して、焦らされ続けちゃうなんてっ！！）
 			ENDIF
@@ -2197,15 +2197,15 @@ IF SELECTCOM == 49 && TEQUIP:17 == 0
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:331 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:331 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 
 			ENDIF
 			CFLAG:331 = 4
@@ -2237,7 +2237,7 @@ IF SELECTCOM == 60
 	;初めて
 	IF CFLAG:332 == 0
 		;処女
-		IF TALENT:処女 && (TALENT:3 || TALENT:6)
+		IF TALENT:処女 && (TALENT:恋慕 || TALENT:6)
 			PRINTFORMW 「嬉しい…私の初めて、貰ってくれるんだ…♪」
 			PRINTFORMW 「ねえ、手さ、ぎゅーって、しててよ」
 			PRINTFORMW 「そしたら、初めてで痛くっても、耐えられると思うから…♡」
@@ -2251,7 +2251,7 @@ IF SELECTCOM == 60
 			PRINTFORMW 「私のこと、幸せにしてよね？」
 			PRINTFORMW 「あなたのことも、いっぱいいっぱい、幸せにしちゃうから」
 			PRINTFORMW ――死ぬまで、離さないからね……♡♡
-		ELSEIF TALENT:処女 && (TALENT:4 || TALENT:7)
+		ELSEIF TALENT:処女 && (TALENT:淫乱 || TALENT:娼婦)
 			PRINTFORMW 「正常位で初めて奪ってくれるなんて、優しいところもあるんだね♡」
 			PRINTFORMW 「初めてってさ、私のここ、もうとろとろのぐちょぐちょだけど、それでも痛いのかな？」
 			PRINTFORMW 「……あのね、ぎゅーって抱きしめて欲しいな…」
@@ -2266,7 +2266,7 @@ IF SELECTCOM == 60
 			PRINTFORMW 「だって、あなたが入って来てくれると思ったら、おまんこきゅんってなっちゃったんだよ？」
 			PRINTFORMW 「二人でいっぱいいっぱい、気持ちよくなっちゃおうね♡」
 			PRINTFORMW ――一緒に天国、イっちゃお♡
-		ELSEIF TALENT:処女 && (TALENT:5 || TALENT:8)
+		ELSEIF TALENT:処女 && (TALENT:服従 || TALENT:隷属)
 			PRINTFORMW 「えっ…私の初めて、奪ってくれるんですか…？」
 			PRINTFORMW 「あ、ありがとうございますっ！私、いっぱい気持ちよくしてあげますからっ！！」
 			PRINTFORMW 「愛液溢れてて準備万端な私のおまんこ、あなたのおちんちんで思いっきり犯して、気持ちよくなっちゃって下さいっ！」
@@ -2300,15 +2300,15 @@ IF SELECTCOM == 60
 			PRINTFORMW （こんなの…こんなのって…）
 		;それ以外
 		ELSE
-			IF (TALENT:3 || TALENT:6)
+			IF (TALENT:恋慕 || TALENT:6)
 				PRINTFORMW 「今度は向き合いながらするの？」
 				PRINTFORMW 「この格好、あなたと向き合いながら出来るし、ぎゅーって抱き合うことも出来るし、ふかーく愛し合えそうですね♪」
 				PRINTFORMW 「……出来れば、初めてはこの形が良かった、な…」
-			ELSEIF (TALENT:4 || TALENT:7)
+			ELSEIF (TALENT:淫乱 || TALENT:娼婦)
 				PRINTFORMW 「今度は正常位がいいって？ほら、おいでっ♪」
 				PRINTFORMW 「…この格好、おっぱいもおまんこも丸出しで誘っちゃうから、凄くえっちでしょ♪」
 				PRINTFORMW 「…あっ、またおっきくなったよ、えっち♪」
-			ELSEIF (TALENT:5 || TALENT:8)
+			ELSEIF (TALENT:服従 || TALENT:隷属)
 				PRINTFORMW 「この姿勢でするってあ、あなたの顔が…！！」
 				PRINTFORMW （このままだと、この人と繋がれて、幸せそうになってる顔見られちゃうっ！！）
 				PRINTFORMW 「……顔隠すなって？い、いやですっ…」
@@ -2323,9 +2323,9 @@ IF SELECTCOM == 60
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:332 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:332 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				IF RAND:5 == 0
 					PRINTFORMW 「んちゅっ♪はあむ……れろれろっ♪……ぷはっ♪…キス、気持ちいいよぉ…♪」
 					PRINTFORMW 「上でも下でもぐちゅぐちゅっってえっちな音出しちゃって…こーふんしちゃって…」
@@ -2369,7 +2369,7 @@ IF SELECTCOM == 60
 					PRINTFORMW 「もっともっと、幸せになろうね…♪」
 				ENDIF
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				IF RAND:5 == 0
 					PRINTFORMW 「んんっ♪ちゅっ♪…キスするのも、セックスするのも、夢中になっちゃうね…♪」
 					PRINTFORMW 「あはは、あなたのおちんちん、二人のお汁でぬるぬるになっちゃってる♡」
@@ -2406,7 +2406,7 @@ IF SELECTCOM == 60
 					PRINTFORMW 「…デキちゃったら、せきにん取って、結婚しようね♡」
 				ENDIF
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				IF RAND:5 == 0
 					PRINTFORMW 「んんっ♪ちゅっ♪…キスしながらしてくれるなんて…」
 					PRINTFORMW 「もっと、もっとキスして欲しいです…」
@@ -2459,7 +2459,7 @@ IF SELECTCOM == 61
 	;初めて
 	IF CFLAG:333 == 0
 		;処女
-		IF TALENT:処女 && (TALENT:3 || TALENT:6)
+		IF TALENT:処女 && (TALENT:恋慕 || TALENT:6)
 			PRINTFORMW 「ねえ、出来たらあなたの顔を見ながらしたいんだけど」
 			PRINTFORMW 「そう、そんなに私のこと、後ろから犯したいんだ…」
 			PRINTFORMW 「……やっぱり、怖いな……あなたの顔、見えないし…」
@@ -2472,7 +2472,7 @@ IF SELECTCOM == 61
 			PRINTFORMW 「……私のおまんこにあなたのおちんちんが入っていくところ、目に焼き付けてね…♡」
 			PRINTFORMW 「……うん、葵の初めて、あなたに捧げるね…♡」
 			PRINTFORMW ――あなただけの、葵に、して♡♡
-		ELSEIF TALENT:処女 && (TALENT:4 || TALENT:7)
+		ELSEIF TALENT:処女 && (TALENT:淫乱 || TALENT:娼婦)
 			PRINTFORMW 「初めてなのに後ろからしたいだなんて…ケダモノだねっ♡」
 			PRINTFORMW 「ほら、私のここ、あなたのが欲しくって、愛液でどろどろになっちゃってるよ？」
 			PRINTFORMW 「おちんちん欲しいよって、お尻振って、ねだっちゃってるよ？」
@@ -2482,7 +2482,7 @@ IF SELECTCOM == 61
 			PRINTFORMW 「あなたのおちんちん見ただけで、発情してお尻振っちゃうような…」
 			PRINTFORMW 「あなたのおちんちん挿れられただけで、おまんこきゅうってイっちゃうような、雌犬になっちゃうよ？」
 			PRINTFORMW ――けものになって、こーび、しようねっ♡♡
-		ELSEIF TALENT:処女 && (TALENT:5 || TALENT:8)
+		ELSEIF TALENT:処女 && (TALENT:服従 || TALENT:隷属)
 			PRINTFORMW 「えっ、後ろからするんですか…」
 			PRINTFORMW 「い、いえっ！私の初めてを奪ってくださるなんて、それだけで光栄ですからっ！」
 			PRINTFORMW （ちゃんと初めてをおちんちんで奪ってくれるだけでも、しあわせ、なんだから…）
@@ -2512,15 +2512,15 @@ IF SELECTCOM == 61
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:333 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:333 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 
 			ENDIF
 			CFLAG:333 = 4
@@ -2549,15 +2549,15 @@ IF SELECTCOM == 62
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:334 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:334 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 
 			ENDIF
 			CFLAG:334 = 4
@@ -2585,15 +2585,15 @@ IF SELECTCOM == 63
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:335 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:335 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 
 			ENDIF
 			CFLAG:335 = 4
@@ -2621,15 +2621,15 @@ IF SELECTCOM == 64
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:336 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:336 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 
 			ENDIF
 			CFLAG:336 = 4
@@ -2657,15 +2657,15 @@ IF SELECTCOM == 65
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:337 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:337 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 
 			ENDIF
 			CFLAG:337 = 4
@@ -2689,7 +2689,7 @@ IF SELECTCOM == 66
 	;初めて
 	IF CFLAG:338 == 0
 		;処女
-		IF TALENT:処女 && (TALENT:3 || TALENT:6)
+		IF TALENT:処女 && (TALENT:恋慕 || TALENT:6)
 			PRINTFORMW 「え、自分から挿れろって…？」
 			PRINTFORMW 「じ、冗談でしょ？本気で言ってるのっ！！」
 			PRINTFORMW 「……私だって、女の子なんだよ？あなたが初めてを奪ってくれるの、ずっと待ってたんだよ？」
@@ -2703,7 +2703,7 @@ IF SELECTCOM == 66
 			PRINTFORMW 「…………」
 			PRINTFORMW 「……わたしの…こと…ぜったいに…はなさ…ないで…ね…」
 			PRINTFORMW ――しあわせに…なろうね♡
-		ELSEIF TALENT:処女 && (TALENT:4 || TALENT:7)
+		ELSEIF TALENT:処女 && (TALENT:淫乱 || TALENT:娼婦)
 			PRINTFORMW 「初めての私に騎乗位でしてほしいなんて…」
 			PRINTFORMW 「私のこと、どれだけ淫らにしたいの？」
 			PRINTFORMW 「嫌かって？ううん…してあげるよ？」
@@ -2717,7 +2717,7 @@ IF SELECTCOM == 66
 			PRINTFORMW 「それにね、私の膣内に入ったら、あなたも私のおまんこに夢中になっちゃうよ？」
 			PRINTFORMW 「そうやって、あなたのことも、私のおまんこのことしか考えられないように、調教し返してあげるね♡」
 			PRINTFORMW ――両想いに、してあげる♡♡
-		ELSEIF TALENT:処女 && (TALENT:5 || TALENT:8)
+		ELSEIF TALENT:処女 && (TALENT:服従 || TALENT:隷属)
 			PRINTFORMW 「自分から挿れるんですか…はいっ、わかりました！」
 			PRINTFORMW （私の初めて、自分の意思であなたに捧げていいだなんて…♪）
 			PRINTFORMW 「あのっ、私頑張りますからっ！！」
@@ -2750,15 +2750,15 @@ IF SELECTCOM == 66
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:338 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:338 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 
 			ENDIF
 			CFLAG:338 = 4
@@ -2786,15 +2786,15 @@ IF SELECTCOM == 67
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:339 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:339 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 
 			ENDIF
 			CFLAG:339 = 4
@@ -2818,7 +2818,7 @@ IF SELECTCOM == 68
 	;初めて
 	IF CFLAG:340 == 0
 		;処女
-		IF TALENT:処女 && (TALENT:3 || TALENT:6)
+		IF TALENT:処女 && (TALENT:恋慕 || TALENT:6)
 			PRINTFORMW 「嬉しい…あなたとこうして向き合って、初めて貰ってもらえるなんて…♡」
 			PRINTFORMW 「怖かったんだよ？いつか、無理やり初めて奪われちゃうかもって…」
 			PRINTFORMW 「色んなこと、無理やりされて、人前では出来ないような、恥ずかしいこともいっぱいさせられちゃったし…」
@@ -2833,7 +2833,7 @@ IF SELECTCOM == 68
 			PRINTFORMW 「心でも、身体でも、一番近くで、あなたと繋がって…♡」
 			PRINTFORMW 「あなたの、一番近くに、私のこと、置いてほしいから…♡」
 			PRINTFORMW ――あなたのこと、ずーっと大好きだよ♡♡♡
-		ELSEIF TALENT:処女 && (TALENT:4 || TALENT:7)
+		ELSEIF TALENT:処女 && (TALENT:淫乱 || TALENT:娼婦)
 			PRINTFORMW 「ふふっ…抱き合いながらしたいんだ…良いよ、しよっか♡」
 			PRINTFORMW 「ぎゅーってされたら、あなたのこと全身で感じて、初めてなのに気持ちよくなっちゃうよ…」
 			PRINTFORMW 「背中に手を回して、膨らみかけのおっぱい、思いっきり押し付けちゃって…」
@@ -2845,7 +2845,7 @@ IF SELECTCOM == 68
 			PRINTFORMW 「膣内に精液びゅーって、注いで、欲しいから…♪」
 			PRINTFORMW 「ほら、おいでよっ♡抱き合いながら、えっちしよっ♡」
 			PRINTFORMW ――パパに、なっちゃえ♡
-		ELSEIF TALENT:処女 && (TALENT:5 || TALENT:8)
+		ELSEIF TALENT:処女 && (TALENT:服従 || TALENT:隷属)
 			PRINTFORMW 「えっ！抱き合いながら貰ってくれるんですか…！！」
 			PRINTFORMW （ゆ、夢みたいっ♡この人と、密着して繋がっていいなんて！！）
 			PRINTFORMW 「その代わりにお願いがあるって？もう、あなたがして欲しいなら命令してくれれば何でもしてあげるのに…」
@@ -2877,15 +2877,15 @@ IF SELECTCOM == 68
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF 0 && (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:340 < 4 || FLAG:7 == 2)
+		IF 0 && (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:340 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 
 			ENDIF
 			CFLAG:340 = 4
@@ -2909,7 +2909,7 @@ IF SELECTCOM == 69
 	;初めて
 	IF CFLAG:340 == 0
 		;処女
-		IF TALENT:処女 && (TALENT:3 || TALENT:6)
+		IF TALENT:処女 && (TALENT:恋慕 || TALENT:6)
 			PRINTFORMW 「へへっ、あなたに抱っこされてるの、嬉しいな♡」
 			PRINTFORMW 「…あっ、お尻に大きいの、当たっちゃってるよ♪」
 			PRINTFORMW 「お尻すりすりってされて、興奮しちゃった？」
@@ -2924,7 +2924,7 @@ IF SELECTCOM == 69
 			PRINTFORMW 「おっぱいも、お尻も、アソコも、好きにして、いいんだよ…♡」
 			PRINTFORMW 「まだ誰も知らない、私だけの身体……」
 			PRINTFORMW ――あなた色に、染めて♡♡
-		ELSEIF TALENT:処女 && (TALENT:4 || TALENT:7)
+		ELSEIF TALENT:処女 && (TALENT:淫乱 || TALENT:娼婦)
 			PRINTFORMW 「もう、おちんちん大きくなっちゃってるじゃない♪」
 			PRINTFORMW 「お尻を押し付けるだけで固くしちゃって…わかりやすいんだから♡」
 			PRINTFORMW 「ここに挿れたいんでしょ？あなたからは見えないだろうけど、くぱあって広げて挿れてくれるの待ってるんだよ♡」
@@ -2934,7 +2934,7 @@ IF SELECTCOM == 69
 			PRINTFORMW 「おちんちんハメちゃえ、ハメちゃいなよ♡」
 			PRINTFORMW 「後ろからおっぱい弄りながら、おまんこにおちんちん突き入れちゃえ♡」
 			PRINTFORMW ――私の身体、好きにしていいよ♡
-		ELSEIF TALENT:処女 && (TALENT:5 || TALENT:8)
+		ELSEIF TALENT:処女 && (TALENT:服従 || TALENT:隷属)
 			PRINTFORMW 「あっ…後ろからするんですか…」
 			PRINTFORMW 「はい、私の初めて、もらってください…」
 			PRINTFORMW （初めては向き合いながらが良かったな…でも、この人にもらってもらえるなら…）
@@ -2962,15 +2962,15 @@ IF SELECTCOM == 69
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:341 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:341 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 
 			ENDIF
 			CFLAG:341 = 4
@@ -2998,15 +2998,15 @@ IF SELECTCOM == 70
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:342 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:342 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 
 			ENDIF
 			CFLAG:342 = 4
@@ -3034,15 +3034,15 @@ IF SELECTCOM == 71
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:343 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:343 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 
 			ENDIF
 			CFLAG:343 = 4
@@ -3076,15 +3076,15 @@ IF SELECTCOM == 72
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:420 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:420 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 
 			ENDIF
 			CFLAG:420 = 4
@@ -3112,15 +3112,15 @@ IF SELECTCOM == 73
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:421 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:421 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 
 			ENDIF
 			CFLAG:421 = 4
@@ -3152,21 +3152,21 @@ IF SELECTCOM == 80
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:344 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:344 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 「私の親指と人差し指で輪っかを作って…」
 				PRINTFORMW 「あなたのカリのところにハメ込んじゃうね♪」
 				PRINTFORMW 「こうすると、あなたのおちんちんと、私の手が結婚しちゃったみたいじゃない？」
 				PRINTFORMW （あっ、また大きくなった…♪）
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 「今日はどんな風にしてあげよっか？」
 				PRINTFORMW 「亀頭だけをひたすらいじめて、悶えさせて欲しい？」
 				PRINTFORMW 「それとも竿のところギュッと握られて、思いっきり搾り取られたいのかな？」
 				PRINTFORMW 「私の手、オナホにしていっぱい汚しちゃって、いいよ♪」
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 「はい、いっぱいご奉仕しますね…」
 				PRINTFORMW 「私の手で気持ちよくなってくださいね…♪」
 			ENDIF
@@ -3206,9 +3206,9 @@ IF SELECTCOM == 81
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:345 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:345 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				IF RAND:5 == 0
 					PRINTFORMW 「兄さん♪わたしのお口にいっぱい出してね？」
 					PRINTFORMW 「…へえ、こういうのに反応しちゃうんだ…♪」
@@ -3246,7 +3246,7 @@ IF SELECTCOM == 81
 					PRINTFORMW （……さ、触っちゃえ…バレないように、自分でしちゃえっ♡）
 				ENDIF
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				IF RAND:5 == 0
 					PRINTFORMW 「精子いっぱい出てくるところ、ぺろぺろってしてあげる♡」
 					PRINTFORMW 「ん、はむ、ちゅ、れろっ、我慢できなくなったら、お口の中にいっぱい射精してね？」
@@ -3269,7 +3269,7 @@ IF SELECTCOM == 81
 					PRINTFORMW 「私のお口に、屈服しちゃえ♪情けなく精液どぴゅどぴゅってしちゃえっ♡」
 				ENDIF
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				IF RAND:4 == 0
 					PRINTFORMW 「あっ、おまんこ弄っちゃ、ダメです…切なくなっちゃうから…♡」
 					PRINTFORMW （アソコをいじめられるのも…しゃぶるのも…好きになっちゃった…）
@@ -3327,9 +3327,9 @@ IF SELECTCOM == 82
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:346 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:346 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				IF RAND:2 == 0
 					PRINTFORMW 「ねえ、手、貸してくれる？」
 					PRINTFORMW 「えいっ♪こうやって、私の手とおっぱいであなたの手を挟み込んじゃうね♪」
@@ -3340,7 +3340,7 @@ IF SELECTCOM == 82
 					PRINTFORMW 「……そんなこと言われたら…もっと頑張っちゃう、よ？」
 				ENDIF
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				IF RAND:2 == 0
 					PRINTFORMW 「んしょ…♪あなたのおちんちんで擦られたところ、じんじん熱くなっちゃってるよ…♪」
 					PRINTFORMW 「こうしてると、あなたのおちんちんの熱さが、私にも伝わっちゃって…」
@@ -3351,7 +3351,7 @@ IF SELECTCOM == 82
 					PRINTFORMW 「私の唾液ローション、おっぱいでいっぱい塗ってあげるね♪」
 				ENDIF
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				IF RAND:2 == 0
 					PRINTFORMW 「私のおっぱい、好きなだけ使ってください…♪」
 					PRINTFORMW 「私の上に馬乗りになって、両手で思いっきりおっぱい寄せて…」
@@ -3392,9 +3392,9 @@ IF SELECTCOM == 83
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:347 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:347 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				IF RAND:3 == 0
 					PRINTFORMW 「あんっ、あんまりおちんちんビクビク震えさせないで…」
 					PRINTFORMW 「私の方が気持ち良くなっちゃうから…♡」
@@ -3412,7 +3412,7 @@ IF SELECTCOM == 83
 					PRINTFORMW 「……私のアソコ、あなたに精液かけられたら、きっと一緒にイっちゃうから…♪」
 				ENDIF
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				IF RAND:4 == 0
 					PRINTFORMW 「股に挟んで、先っぽだけ挿れて擦るだけなんて…おちんちん挿れないの？」
 					PRINTFORMW (……挿入れた方が、気持ち良いのに……)
@@ -3435,7 +3435,7 @@ IF SELECTCOM == 83
 					PRINTFORMW 「もっと、私のここでぐちゅぐちゅって、しよ♡」
 				ENDIF
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				IF RAND:4 == 0
 					PRINTFORMW （あっ、おちんちんどんどんカチカチになってる…）
 					PRINTFORMW （私のおまんこ、そんなに気持ちいいのかな…♪）
@@ -3491,9 +3491,9 @@ IF SELECTCOM == 84
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:348 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:348 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				IF RAND:2 == 0
 					PRINTFORMW 「ねえ、洗ってくれるのは嬉しいけど…」
 					PRINTFORMW 「なんか、触り方えっちじゃない？」
@@ -3505,7 +3505,7 @@ IF SELECTCOM == 84
 					PRINTFORMW （私が欲しがってえっちになっちゃってる所、全部この人に知られちゃってるんだ…♡）
 				ENDIF
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				IF RAND:3 == 0
 					PRINTFORML 「えへへっ、女の子の柔らかいところって、おっぱいだけじゃないんだよ？」
 					PRINTFORMW 「お股のところで、あなたのこと、洗っちゃうね♪」
@@ -3520,7 +3520,7 @@ IF SELECTCOM == 84
 					PRINTFORMW 「……そちらを洗うのは、天然のローションとおまんこで洗う特別コースになりますが、よろしいですか？」
 				ENDIF
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				IF RAND:2 == 0
 					PRINTFORMW （この人の身体に擦りつけてるだけなのに、私、感じちゃってる…）」
 					PRINTFORMW （泡だけじゃなくて、えっちなお汁も擦り付けちゃって…）
@@ -3558,9 +3558,9 @@ IF SELECTCOM == 85
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:349 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:349 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				IF RAND:3 == 0
 					PRINTFORMW 「足コキでイジメるように責めてほしいって…全く、困った人…♪」
 					PRINTFORMW 「……私に顔の上乗られて、おちんちん足蹴にされて勃起するとか、本当に変態だね♪」
@@ -3579,7 +3579,7 @@ IF SELECTCOM == 85
 					PRINTFORMW 「頑張って射精、我慢するんだよー♪がーんばれっ♪がーんばれっ♪」
 				ENDIF
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				IF RAND:3 == 0
 					PRINTFORMW 「足コキでイジメるように責めてほしいって…全く、困った人…♪」
 					PRINTFORMW 「……私に顔の上乗られて、おちんちん足蹴にされて勃起するとか、本当に変態だね♪」
@@ -3598,7 +3598,7 @@ IF SELECTCOM == 85
 					PRINTFORMW 「頑張って射精、我慢するんだよー♪がーんばれっ♪がーんばれっ♪」
 				ENDIF
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 「もっと強くして欲しいって…わ、解りました…失礼します！」
 				PRINTFORMW （もう、本当に困った人、こうやって責められることが贖罪のつもりなのかな…）
 				PRINTFORMW （こんなことっ！させなくてもっ！一言『ごめんね』って言ってくれればっ！許しちゃうくらいっ！堕とされちゃってるのにっ！！）
@@ -3639,15 +3639,15 @@ IF SELECTCOM == 86
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:350 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:350 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 
 			ENDIF
 			CFLAG:350 = 4
@@ -3675,15 +3675,15 @@ IF SELECTCOM == 87
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:351 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:351 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 
 			ENDIF
 			CFLAG:351 = 4
@@ -3713,9 +3713,9 @@ IF SELECTCOM == 88
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:352 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:352 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				IF RAND:2 == 0
 					PRINTFORMW 「おっぱいだけじゃなくてお口でもしてほしいなんて、ぜーたくだよねっ♪」
 					PRINTFORMW 「お口から唾液が溢れちゃうから、おっぱいもぬるぬるしちゃって、気持ちいいでしょ？」
@@ -3726,7 +3726,7 @@ IF SELECTCOM == 88
 					PRINTFORMW 「あなたの先っぽ♪♪たくさんキスして♪♪♪可愛がって♪あげるね♪♪♪♪♪」
 				ENDIF
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				IF RAND:2 == 0
 					PRINTFORMW 「おっぱいだけじゃなくてお口でもしてほしいなんて、ぜーたくだねっ♪」
 					PRINTFORMW 「お口から唾液が溢れちゃうから、おっぱいもぬるぬるしちゃって、気持ちいいかなー？」
@@ -3737,7 +3737,7 @@ IF SELECTCOM == 88
 					PRINTFORMW 「このまま、おっぱいと、おくひで、せーひ、しぼりとられひゃえ♪」
 				ENDIF
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 「もう、これするの難しいんですから…はあむっ♪」
 				PRINTFORMW （でも、この人のをおっぱいとお口で一緒に感じられるの、嬉しいの…♪）
 				PRINTFORMW （…我慢汁舐めながら、おっぱい擦られるの…興奮しちゃう♡）
@@ -3767,15 +3767,15 @@ IF SELECTCOM == 89
 	;初めて
 	IF CFLAG:353 == 0
 		;恋慕、親愛
-		IF TALENT:3 || TALENT:6
+		IF TALENT:恋慕 || TALENT:6
 			PRINTFORMW 「ああっ♪おっぱいミルク出ちゃってる♪」
 			PRINTFORMW 「もっと、好きなだけ飲んでいいよ…♪」
 		;淫乱、娼婦
-		ELSEIF TALENT:4 || TALENT:7
+		ELSEIF TALENT:淫乱 || TALENT:7
 			PRINTFORMW 「ああっ♪おっぱいミルク出ちゃってる♪」
 			PRINTFORMW 「ねえ、私の味、美味しい？」
 		;服従、隷属
-		ELSEIF TALENT:5 || TALENT:8
+		ELSEIF TALENT:服従 || TALENT:8
 			PRINTFORMW 「ほ、本当にミルク出ちゃうなんて……」
 			PRINTFORMW 「喉乾いたら、いつでも飲んでいいですよ♪」
 		ENDIF
@@ -3783,19 +3783,19 @@ IF SELECTCOM == 89
 	;二回目以降
 	ELSEIF CFLAG:353 < 2 || FLAG:7 == 2
 		;恋慕、親愛
-		IF TALENT:3 || TALENT:6
+		IF TALENT:恋慕 || TALENT:6
 			PRINTFORMW 「私のミルク、美味しいですか…？」
 			PRINTFORMW 「美味しいから他の人にもあげたいって！！ダメ！ダメだよっ！！」
 			PRINTFORMW 「私のミルクはあなたとあなたの赤ちゃん以外には絶対あげないからっ！」
 			PRINTFORMW （そんなことされたら、恥ずかしくて外、歩けなくなっちゃう！）
 		;淫乱、娼婦
-		ELSEIF TALENT:4 || TALENT:7
+		ELSEIF TALENT:淫乱 || TALENT:7
 			PRINTFORMW 「私のミルク、美味しいでしょ？」
 			PRINTFORMW 「美味しいから他の人にもあげたいって…♡」
 			PRINTFORMW （この人以外にはあげるのイヤなのに…他の人にも私の味を知られちゃうと思うと…）
 			PRINTFORMW （…………こ、こーふん、しちゃうなぁ…♡）
 		;服従、隷属
-		ELSEIF TALENT:5 || TALENT:8
+		ELSEIF TALENT:服従 || TALENT:8
 			PRINTFORMW 「えっ…『葵の搾りたておっぱいミルク』って売ったら、たくさん売れるだろうなって…！」
 			PRINTFORMW （やだっ！あなた以外に飲まれるのはイヤっ！）
 			PRINTFORMW （でも、私のことミルクサーバーにして、この人にいっぱい絞られちゃうなら…♡）
@@ -3822,18 +3822,18 @@ IF SELECTCOM == 100
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF 0 && (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:354 < 4 || FLAG:7 == 2)
+		IF 0 && (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:354 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 「叩かれるよりはさすってくれる方が嬉しいんだけど？」
 				PRINTFORMW 「手の跡見ると興奮するからって……お、お手柔らかにお願いしますね…」
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 「叩かれるよりは揉んでくれる方が嬉しいんだけどなー？」
 				PRINTFORMW 「いつもお尻叩かれて濡らしてるだろって…！！」
 				PRINTFORMW （叩かれて濡れちゃうの、イヤなはずなのに…）
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 「はい…ちょっと触られるだけでイっちゃう、悪い子の葵にいっぱいいっぱいお仕置きしてください…」
 				PRINTFORMW 「私のお尻に、あなたの手の痕、付けちゃってください…♡」
 			ENDIF
@@ -3864,15 +3864,15 @@ IF SELECTCOM == 101
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:355 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:355 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 
 			ENDIF
 			CFLAG:355 = 4
@@ -3901,18 +3901,18 @@ IF SELECTCOM == 102
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF 0 && (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:356 < 4 || FLAG:7 == 2)
+		IF 0 && (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:356 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 「それ嫌いだからやめてくださいお願いします痛いこと以外なら何でもしてあげますから…」
 				PRINTFORMW 「……そんなことしなくても、私はあなたから絶対に離れてあげるつもりはないんだけど？」
 				PRINTFORMW 「……傷つけた分、後でいっぱい可愛がってよね…」
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 「ざ、斬新なプレイですよねー、私は遠慮したいかなって思うんですよはい…」
 				PRINTFORMW 「その白い肌に傷が残るのもさぞかし映えるだろうなって？さ、流石に嫌なんですけどっ！！」
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 「は、はい…私の身体、鞭でいっぱい傷つけてください…」
 				PRINTFORMW 「あなたの傷痕、つけていいですよ…」
 				PRINTFORMW （この人に跡付けられちゃうの好きになっちゃって…期待しちゃってるの…）
@@ -3944,15 +3944,15 @@ IF SELECTCOM == 103
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:357 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:357 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 
 			ENDIF
 			CFLAG:357 = 4
@@ -3983,20 +3983,20 @@ IF SELECTCOM == 104
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:358 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:358 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 「私、あなたの事大好きだけど、それする時だけは大嫌いになっちゃう…」
 				PRINTFORMW 「大好きと大嫌いを独占できるなんて幸せだなって…何馬鹿なこと言ってるの…」
 				PRINTFORMW （もうとっくに大好きの一番も大嫌いの一番も、あなたのモノなのに…）
 				PRINTFORMW 「ひぎゃああああああああああっっ！！こ、こっ、これ、いたいよおおおおおおおおおっっ！！」
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 「ひっ！！針先が当たってるのっ！！」
 				PRINTFORMW 「それ、死んじゃいそうな位痛いのっ！！死んじゃうっ！！しんじゃうからっ！！！」
 				PRINTFORMW 「やめっっっっっーーーーーーーーー！！！！」
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 「針はいやあ…針はいやあ…」
 				PRINTFORMW 「ねえ…針は痛いだけだから嫌なんです…」
 				PRINTFORMW 「葵の悲鳴に興奮するからって…そっそれならせめて鞭とかにーーーーーーっっ！！！！！」
@@ -4030,22 +4030,22 @@ IF SELECTCOM == 105 && TEQUIP:18 == 0
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:359 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:359 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 「あなたの顔を見ながらがいいんだけど…」
 				PRINTFORMW 「ねえ、このままいなくなったり、し、しないよね…？」
 				PRINTFORMW （あっ…手、繋いでくれてる…♪ぎゅって、抱きしめてくれてる…♪）
 				PRINTFORMW （身体が触れ合ってるの…いつもより安心して…嬉しいっ…♪）
 				PRINTFORMW 「……このまま、離れないで、可愛がって…？」
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 「あはっ…見えないのって興奮しちゃう♪」
 				PRINTFORMW 「すっごく敏感になって、あなたの挙動一つ一つでいっぱい感じちゃうんだよ♪」
 				PRINTFORMW 「……それに、あなたじゃない別の人にされちゃってるかと思うと、余計に濡れちゃうんだよ…♡」
 				PRINTFORMW 「あなたの事しか考えられなくなっちゃうくらい、気持ちよくしてよね？」
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 「…あなたのこと見えないの凄く怖いな…」
 				PRINTFORMW 「何されちゃうか解らないからって？もう、今更何されても驚かないわよ……」
 				PRINTFORMW （……それより、このままあなたがいなくなっちゃったらと思うと、怖いの…）
@@ -4085,22 +4085,22 @@ IF SELECTCOM == 106 && TEQUIP:19 == 0
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:360 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:360 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 「その縄、いつもより長いよね？」
 				PRINTFORMW 「ぎゅーってされるなら、縄よりあなたの腕のほうがいいんだけど…って何か近くない？」
 				PRINTFORMW あなたは葵を抱きしめるように近づくと、そのまま二人を一纏めにするように縄で縛り付けた
 				PRINTFORMW （この人、自分と私を一緒にするみたいに縛っちゃってる…！！）
 				PRINTFORMW （この人の吐息が、鼓動が、熱が、近すぎてすっごく感じちゃうっ！！）
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 「ねえ…私の身体、えっちに見える？」
 				PRINTFORMW 「おっぱいやお尻が強調されちゃって、いつもより卑猥じゃないかな♪」
 				PRINTFORMW 「お股の所、いつもより濡れちゃってるから、えっちな匂いが溢れてるんだよ♪」
 				PRINTFORMW 「縛られて抵抗できない葵の身体、好きにしちゃってね…♡」
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 「縛らなくても、私はあなたから逃げたりなんてしませんよ？」
 				PRINTFORMW （ナマイキな唇も…たくさん痕ついちゃってる白い肌も…あなたに散々叩かれて自分のものだと教え込まれちゃったお尻も…）
 				PRINTFORMW （お姉ちゃん以外に触らせたことなかった髪の毛も…吐息をかけられるだけでビクってなっちゃう耳も…あなたに握られると安心しちゃう両手も…）
@@ -4140,15 +4140,15 @@ IF SELECTCOM == 107 && TEQUIP:20 == 0
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF 0 && (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:361 < 4 || FLAG:7 == 2)
+		IF 0 && (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:361 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 
 			ENDIF
 			CFLAG:361 = 4
@@ -4186,15 +4186,15 @@ IF SELECTCOM == 120
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:362 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:362 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 
 			ENDIF
 			CFLAG:362 = 4
@@ -4222,15 +4222,15 @@ IF SELECTCOM == 121
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:363 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:363 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 
 			ENDIF
 			CFLAG:363 = 4
@@ -4258,15 +4258,15 @@ IF SELECTCOM == 122
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:364 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:364 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 
 			ENDIF
 			CFLAG:364 = 4
@@ -4294,15 +4294,15 @@ IF SELECTCOM == 123
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:365 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:365 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 
 			ENDIF
 			CFLAG:365 = 4
@@ -4330,15 +4330,15 @@ IF SELECTCOM == 124
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:366 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:366 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 
 			ENDIF
 			CFLAG:366 = 4
@@ -4366,15 +4366,15 @@ IF SELECTCOM == 125
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:367 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:367 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 
 			ENDIF
 			CFLAG:367 = 4
@@ -4402,15 +4402,15 @@ IF SELECTCOM == 126
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:368 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:368 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 
 			ENDIF
 			CFLAG:368 = 4
@@ -4442,19 +4442,19 @@ IF SELECTCOM == 140
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:369 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:369 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW （喉苦しくて、気、失っちゃうよぉっ！！）
 				PRINTFORMW （でも、この人の匂いいっぱいに感じて気を失っちゃうのは…幸せかも…♡）
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 「んんーーっっ！！んっっ！！…ぷはーっ！！」
 				PRINTFORMW 「も、もう、窒息しちゃうかもと思ったじゃない…」
 				PRINTFORMW 「き、気持ちよかったからもう一回って！！……し、しょうがないなー、気持ちよかったんなら、許してあげる♪」
 				PRINTFORMW （それに、モノみたいに扱われるのも、案外悪くは…♡）
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 「私のお口まんこ、奥まで自分のものにしたいんですね？」
 				PRINTFORMW 「唾液でぬるぬるにして、喉の奥子宮口みたいにいっぱい突きこんで…」
 				PRINTFORMW 「私のお口、孕ませちゃいたいんですね…♪」
@@ -4543,15 +4543,15 @@ IF SELECTCOM == 144
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:373 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:373 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 
 			ENDIF
 			CFLAG:373 = 4
@@ -4579,15 +4579,15 @@ IF SELECTCOM == 145
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:374 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:374 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 
 			ENDIF
 			CFLAG:374 = 4
@@ -4615,15 +4615,15 @@ IF SELECTCOM == 146 && TEQUIP:21 == 0
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:375 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:375 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 
 			ENDIF
 			CFLAG:375 = 4
@@ -4656,15 +4656,15 @@ IF SELECTCOM == 147
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:376 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:376 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 
 			ENDIF
 			CFLAG:376 = 4
@@ -4692,15 +4692,15 @@ IF SELECTCOM == 148 && TEQUIP:22 == 0
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:377 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:377 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 
 			ENDIF
 			CFLAG:377 = 4
@@ -4817,17 +4817,17 @@ IF SELECTCOM == 160 && TEQUIP:25 == 0
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:382 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:382 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 「やだぁ…そんなの呼ばないでよ…」
 				PRINTFORMW 「触手なんかじゃなくて、あなたにして欲しいのに…」
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 「触手に快楽漬けにされちゃったらどうするつもりなの…？」
 				PRINTFORMW 「これなんか、あなたのおちんちんより立派かも…♡」
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 「いやっ！あなた以外に身体好きにされちゃうのは怖いからっ！！」
 				PRINTFORMW （触手に気持ちよくされるの…もういやぁ…）
 				PRINTFORMW （あなただけに夢中になれなくされちゃう…）
@@ -4863,9 +4863,9 @@ IF SELECTCOM == 161
 		;処女
 		IF TALENT:処女
 		;陥落済み
-			IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:326 < 4 || FLAG:7 == 2)
+			IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:326 < 4 || FLAG:7 == 2)
 				;恋慕、親愛
-				IF TALENT:3 || TALENT:6
+				IF TALENT:恋慕 || TALENT:6
 					PRINTFORMW 「なんでっ！私、あなたになら初めてを捧げてもいいって思ったのに！！」
 					PRINTFORMW 「いやっ！！絶対にいやっ！！お願いだから考え直して！！」
 					PRINTFORMW 「あなたがしたいことなら何でもしてあげるからっ！！初めてはあなたに捧げたいのっっ！！」
@@ -4878,7 +4878,7 @@ IF SELECTCOM == 161
 					PRINTFORMW 「絶対に嫌いになんてなってやらないっ！！あなた以外を絶対に愛してやらないっ！！！！一生恨んで添い遂げてやるっ！！！！！！」
 					PRINTFORMW 葵はあなたの呼び出した触手によって、処女を失った…
 				;淫乱、娼婦
-				ELSEIF TALENT:4 || TALENT:7
+				ELSEIF TALENT:淫乱 || TALENT:7
 					PRINTFORMW 「嘘でしょ！！これだけえっちにしておいて初めてを触手に奪わせるなんて！！」
 					PRINTFORMW 「私とセックスしたくて淫らに調教したくせに！！」
 					PRINTFORMW 「…ねえ、考え直してよ、おちんちん挿れてくれたらおまんこできゅうって締め上げてご奉仕してあげるし…」
@@ -4908,7 +4908,7 @@ IF SELECTCOM == 161
 					PRINTFORMW （そうじゃないと、私、本当にこいつの虜にされちゃうよ…？）
 					PRINTFORMW 葵はあなたの呼び出した触手によって、処女を失った…
 				;服従、隷属
-				ELSEIF TALENT:5 || TALENT:8
+				ELSEIF TALENT:服従 || TALENT:8
 					PRINTFORMW （そんな…私、あなたのおちんちんで初めて奪って欲しくて、いっぱいいっぱい我慢してきたのに…）
 					PRINTFORMW 「か、考え直さない？………そう、その気はないの…」
 					PRINTFORMW 「……わ、解りました……………私の……処女………触手で……奪って……くだ…………ひゃいっ……！！」
@@ -4935,14 +4935,14 @@ IF SELECTCOM == 161
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:383 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:383 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 「やだっ！触手いやっ！！触手いやなのっ！！」
 				PRINTFORMW 「あなたのっ！！あなたのがいいのっ！！あなたのじゃないと嫌なのっ！！あなたのが欲しいのっ！！！！」
 				PRINTFORMW 「……そう、なら触手に何度でもイかせてみればっ！！何回触手にイかされても、何度精液膣内出しされても、触手の幼体産むことになろうと、あなたに愛されるだけで全部チャラにして見せるからっ！！！！」
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 「ふふっ、私、このおちんちん大好きです…♡」
 				PRINTFORMW 「あなたのより太いし、硬いし、大きいし…」
 				PRINTFORMW 「気持ちいいところたくさん擦ってくれるし、スライムみたいにねっとりした精液、いっぱい注ぎ込んでくれるし…」
@@ -4952,7 +4952,7 @@ IF SELECTCOM == 161
 				PRINTFORMW 「私のここに、おちんちんハメてぇ…♪」
 				PRINTFORMW 「調教終わっても、ずっとハメっぱなしでも、いいから、ね？」
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW （こんなのっ！気持ちよくないっ！気持ちよくないからっ！！）
 				PRINTFORMW （ぎゅーって締めちゃうのも愛液溢れちゃってるのも生理現象、生理現象だから！！）
 				PRINTFORMW （触手なんかに、絶対負けたりしないっ！！）
@@ -4980,17 +4980,17 @@ IF SELECTCOM == 162
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:384 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:384 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 「やだっ！！あなた以外のおちんちんが入ってくるなんて…！！」
 				PRINTFORMW 「私のお尻、広げられちゃうよぉ……」
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 「お、お尻でならまだ…」
 				PRINTFORMW 「……やっ！！やっぱりあなた以外とはいやあああああああっっ！！」
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 「そっちは、あなたが気持ちよくなるための穴なのに…」
 				PRINTFORMW 「そんなの挿れられたら、気持ち良くできなくなっちゃう…」
 			ENDIF
@@ -5017,19 +5017,19 @@ IF SELECTCOM == 163
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:385 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:385 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW （気持ち良くなんてない気持ち良くなんてない気持ち良くなんてない気持ち良くなんてない気持ち良くなんてない気持ち良くなんてない気持ち良くなんてないっ！！）
 				PRINTFORMW 「いっぱいっ！！イっちゃっ！！！てるっ！！とかっ！！言うなっ！！！！」
 				PRINTFORMW 「あとでっ！！あなたの手でっ！！わたしのことっ！！さんばいっ！いじょうっ！！イかせるまでっ！！！かいほう！！してやんないっ！！！からっ！！ねっ！！！」
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 「うわっ…そんな触手に弄られちゃたら、絶対に気持ちよくなっちゃう…」
 				PRINTFORMW 「ねえ、私のクリトリス、いっぱい捏ねくり回してよ♪」
 				PRINTFORMW 「…あいつの手より、気持ちよくしてぇ…♡」
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 「お願い…それ気持ち良すぎてダメなやつだから…」
 				PRINTFORMW 「気持ち良くされすぎて、あなたのこと考えられなくなっちゃいそうだからぁ…」
 				PRINTFORMW 「ゆるして…ゆるしてください…」
@@ -5057,18 +5057,18 @@ IF SELECTCOM == 164
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:386 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:386 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 「ちくびっ！乳首いじめちゃだめぇっ！」
 				PRINTFORMW 「このおっぱいは、あなたとあなたとの赤ちゃん専用なのっ！！触手なんかに甘えさせてあげる分はないからっ！！」
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 「ふわっ♪乳首気持ちいいよ…」
 				PRINTFORMW 「もっと、もっと頑張って私のこと、気持ちよくしてっ♪」
 				PRINTFORMW 「あいつの手じゃいけなくなるくらい、イかせちゃって…♡」
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 「わ、私のおっぱいいじめさせたって、面白くないでしょ…？」
 				PRINTFORMW 「ほら、あなたもこんなひんそーなおっぱいじゃいやでしょ？」
 				PRINTFORMW 「ちょっと！なんで楽しそうに吸い付いてきてるのっ！！私のおっぱいなんて触っても楽しくないっ！！楽しくないからっ！！」
@@ -5097,15 +5097,15 @@ IF SELECTCOM == 165
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:387 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:387 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 
 			ENDIF
 			CFLAG:387 = 4
@@ -5133,15 +5133,15 @@ IF SELECTCOM == 166
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:388 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:388 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 
 			ENDIF
 			CFLAG:388 = 4
@@ -5169,15 +5169,15 @@ IF SELECTCOM == 167
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:389 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:389 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 
 			ENDIF
 			CFLAG:389 = 4
@@ -5205,15 +5205,15 @@ IF SELECTCOM == 168 && TEQUIP:36 == 0
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:390 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:390 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 
 			ENDIF
 			CFLAG:390 = 4
@@ -5246,15 +5246,15 @@ IF SELECTCOM == 169
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:391 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:391 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 
 			ENDIF
 			CFLAG:391 = 4
@@ -5285,15 +5285,15 @@ IF SELECTCOM == 180
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:392 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:392 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 
 			ENDIF
 			CFLAG:392 = 4
@@ -5321,15 +5321,15 @@ IF SELECTCOM == 181
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:393 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:393 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 
 			ENDIF
 			CFLAG:393 = 4
@@ -5357,15 +5357,15 @@ IF SELECTCOM == 182
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:394 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:394 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 
 			ENDIF
 			CFLAG:394 = 4
@@ -5393,15 +5393,15 @@ IF SELECTCOM == 183 && TEQUIP:28 == 0
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:395 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:395 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 
 			ENDIF
 			CFLAG:395 = 4
@@ -5435,19 +5435,19 @@ IF SELECTCOM == 184 && TEQUIP:29 == 0
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:396 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:396 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 「あっ、外でするんだ♪」
 				PRINTFORMW 「私たちが愛し合ってるところ、いっぱい見せつけちゃおうね♪」
 				PRINTFORMW （でも、たまには首輪無しで、普通にデートしたいな…♡）
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 「お外で声我慢しながらするのって、いいよね♪」
 				PRINTFORMW 「見つかりそうになると、おまんこぎゅーって締めちゃうもんなって？そ、それは…」
 				PRINTFORMW 「…見つかっちゃうのが怖くて、あなたのおちんちんにぎゅーってしがみついちゃってるんだよ♡」
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 「わんわんわん♪お散歩ですか？お供しますわんっ♪」
 				PRINTFORMW （でも、もし通報されて、この人と離れ離れにされちゃったら…）
 				PRINTFORMW （そうじゃなくても、黙っててもらうために、知らない人に犯されることになっちゃったら…）
@@ -5488,15 +5488,15 @@ IF SELECTCOM == 185
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:397 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:397 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 
 			ENDIF
 			CFLAG:397 = 4
@@ -5525,17 +5525,17 @@ IF SELECTCOM == 186 && TEQUIP:30 == 0
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:398 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:398 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 「こうしてると、恥ずかしいだけじゃなくって、後ろからあなたにされても、お互いの顔が見えるね♪」
 				PRINTFORMW 「…ねえ、せっかくだし後ろから、しよっ？」
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 「これ、後ろからでもどんな時あなたが気持ちよくなってくれてるか、わかっちゃうね♪」
 				PRINTFORMW 「後ろからおっぱい当てられるのはどう？おちんちん扱かれるのは？耳元で囁いちゃうのは…………♪」
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW （これだとされてる時、あなたの顔が見えるから、安心できて、嬉しい…♡）
 				PRINTFORMW 「なんでホッとしてるのかって？内緒ですよっ♪」
 				PRINTFORMW 「隠し事はするなって…？ミステリアスな女は美しいって言うじゃないですか？」
@@ -5576,19 +5576,19 @@ IF SELECTCOM == 187 && TEQUIP:31 == 0
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:399 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:399 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 「こうやってあなたに身体を預けて、お風呂でまったりするの、気持ちいいよ♡」
 				PRINTFORMW 「…私の身体、やわらかいでしょ？」
 				PRINTFORMW 「…あっ、大きくなった…ね♡」
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 「ふふっ、こういうの『せんぼーきょー』って言うんだよね、あむっ」
 				PRINTFORMW 「おひんひん、おふろれあっためられて、すごくあついよ…♪」
 				PRINTFORMW 「れも、さひっぽはもっとあつくなっひゃってるね♪」
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 「あ、温かくて気持ちいいです…♡」
 				PRINTFORMW 「で、出来ればこのままぎゅーっとしててください…」
 			ENDIF
@@ -5624,15 +5624,15 @@ IF SELECTCOM == 188 && TEQUIP:32 == 0
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:400 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:400 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 
 			ENDIF
 			CFLAG:400 = 4
@@ -5693,15 +5693,15 @@ IF SELECTCOM == 190
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:402 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:402 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 
 			ENDIF
 			CFLAG:402 = 4
@@ -5729,15 +5729,15 @@ IF SELECTCOM == 191
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:403 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:403 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 
 			ENDIF
 			CFLAG:403 = 4
@@ -5765,15 +5765,15 @@ IF SELECTCOM == 192
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:404 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:404 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 
 			ENDIF
 			CFLAG:404 = 4
@@ -5801,15 +5801,15 @@ IF SELECTCOM == 193
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:405 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:405 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 
 			ENDIF
 			CFLAG:405 = 4
@@ -5837,15 +5837,15 @@ IF SELECTCOM == 194
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:406 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:406 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 
 			ENDIF
 			CFLAG:406 = 4
@@ -5882,15 +5882,15 @@ IF SELECTCOM == 500
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:407 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:407 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 
 			ENDIF
 			CFLAG:407 = 4
@@ -5918,21 +5918,21 @@ IF SELECTCOM == 501
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:408 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:408 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 「私もご奉仕しながら擦りつけるの、気持ちいいよ♪」
 			PRINTFORMW 「一緒に気持ちよくなろうね？、あなたも気持ちよくしてあげるから♪」
 			PRINTFORMW 「このままどっちが先にイっちゃうか、勝負だよっ♡ちゅるるっ、じゅるっ、はあっ…、くうん…♪」
 				PRINTFORMW （凄満たされるように求めあって、愛しあって…幸せ…♡）
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 「どっちが先に気持ち良くできるか競争だって…？ま、負けないからっ！！」
 				PRINTFORMW 「……ああっ！ダメっ！！イっちゃうっ！！先にイかされちゃうっ！！」
 				PRINTFORMW （恥ずかしいけどっ！口きゅってすぼめて、思いっきり吸い付いてやるっ！！
 				PRINTFORMW （負けないっ！絶対に負けないんだからっ！！イけっ！！無様にイっちゃえっ！！さっ先にイってっっ！！）
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW （ダメっ！あなたに舐められると、気持ち良すぎてご奉仕できないっ！！）
 				PRINTFORMW （おまんこに思いっきり貪りつかれて、お口はおちんちんのえっちな匂いで満たされちゃって…）
 				PRINTFORMW （幸せなの…蕩けちゃうよぉ…♡）
@@ -5967,22 +5967,22 @@ IF SELECTCOM == 502
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:409 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:409 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 「ひゃんっ♪そんなに音立てて一生懸命にお汁吸って…♡」
 				PRINTFORMW 「そんなに私のお汁大好きなの…？」
 				PRINTFORMW 「あなたに舐められたら、簡単に溢れちゃうから…好きなだけ飲んで良いんだよ♪」
 				PRINTFORMW 「…ううん、いっぱい飲んで…♪」
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 「私に乗っかられるの、そんなに嬉しいんだ？」
 				PRINTFORMW 「それなら、おまんこもっとぐりぐり♪って擦りつけちゃうね♪」
 				PRINTFORMW 「鼻息、荒くなっちゃって…そんなにこーふんしちゃったの？」
 				PRINTFORMW 「私の匂い、いっぱい感じて気持ち良くなっちゃえ♪」
 				PRINTFORMW 「私のおまんこに包まれて、みっともなくイっちゃえ！！」
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 「愛液、止めどなく溢れてくるなって？」
 				PRINTFORMW 「だって、あなたに舐められてるの、気持ちいいから…」
 				PRINTFORMW 「ひだひだ、一枚一枚丁寧に舐められて…唾液、塗り込められちゃって…♪」
@@ -6017,18 +6017,18 @@ IF SELECTCOM == 503
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:410 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:410 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 「そこ、私の指じゃ届かないんだよ？」
 				PRINTFORMW 「あなたの手で、しっかり気持ちよくして欲しいな…♪」
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 「腰振っちゃって、えっちだなって…？」
 				PRINTFORMW 「だって、そこ責められるの気持ちいいから…」
 				PRINTFORMW 「もっと、もっとそこてってーてきにいじめてえええええっっ！！」
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW （もうダメっ！そこ！そこ擦って欲しいのにっ！！微妙にずらして焦らしてえっ！！）
 				PRINTFORMW 「ね、ねえ、イイかせてくださいっ！！弱いところ思いっきり擦ってイかせてっ！！」
 				PRINTFORMW 「どこを擦ってほしいんだって…もう、いじわるっ！！」
@@ -6067,15 +6067,15 @@ IF SELECTCOM == 504
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:411 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:411 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 
 			ENDIF
 			CFLAG:411 = 4
@@ -6109,15 +6109,15 @@ IF SELECTCOM == 505 && TFLAG:40 == 1
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:412 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:412 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 
 			ENDIF
 			CFLAG:412 = 4
@@ -6141,15 +6141,15 @@ ELSEIF SELECTCOM == 505 && TFLAG:40 == 2
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:419 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:419 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 
 			ENDIF
 			CFLAG:419 = 4
@@ -6176,15 +6176,15 @@ IF SELECTCOM == 506
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:413 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:413 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 
 			ENDIF
 			CFLAG:413 = 4
@@ -6211,15 +6211,15 @@ IF SELECTCOM == 507
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:414 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:414 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 
 			ENDIF
 			CFLAG:414 = 4
@@ -6248,21 +6248,21 @@ IF SELECTCOM == 508
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:415 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:415 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 「お口とおっぱいだけじゃなくて、おまんこでも愛されたいなんて、欲張りさんだね…♡」
 				PRINTFORMW 「もっとして欲しいって…お、お尻まで揉むの…♡」
 				PRINTFORMW （私のえっちなところ、全部で愛し合っちゃってる…♡）
 				PRINTFORMW （これ、えっちすぎるよぉ…♡）
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 「んしょっ♪これ、難しいな…♡」
 				PRINTFORMW 「でも、おっぱいもおまんこも、ひゃんっ♪、一緒に熱くなっちゃうのっ、いいよ♪♪」
 				PRINTFORMW 「それに…あむっ♪、こうやっへ、おくひもつかって、ひゃあっ♪、あげられひゃうひねっ♪♪」
 				PRINTFORMW 「いっひょに、いっひょにいっへ♪おくひにびゅーって、せーえひ、らひて♪♪」
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 「こんな薄い胸で気持ちよくなっちゃって、まだほとんど毛の生えてないおまんこにむしゃぶりついちゃって…ロリコンさんだったんですか？」
 				PRINTFORMW 「もしそうなら、これ以上手を出しちゃダメですよ…？」
 				PRINTFORMW （あなたの性癖は、私が全部受け止めてあげますから…♡）
@@ -6293,15 +6293,15 @@ IF SELECTCOM == 509
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:416 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:416 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 
 			ENDIF
 			CFLAG:416 = 4
@@ -6328,15 +6328,15 @@ IF SELECTCOM == 510
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:417 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:417 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 
 			ENDIF
 			CFLAG:417 = 4
@@ -6363,15 +6363,15 @@ IF SELECTCOM == 511
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:418 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:418 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 
 			ENDIF
 			CFLAG:418 = 4
@@ -6429,7 +6429,7 @@ IF CFLAG:106
 	;髪
 	IF CFLAG:106 == 1
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:221 < 3 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:221 < 3 || FLAG:7 == 2)
 			PRINTFORMW 「あっ♪髪にせーえき、かかっちゃってる…♪」
 			PRINTFORMW 「もう、そんなに私の髪の毛、汚したかったの…？」
 			PRINTFORMW 「あなたの匂い、染み付いちゃう…♪」
@@ -6449,7 +6449,7 @@ IF CFLAG:106
 	;顔
 	ELSEIF CFLAG:106 == 2
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:222 < 3 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:222 < 3 || FLAG:7 == 2)
 			PRINTFORMW 「これ、目を瞑って受けないといけないから、あなたが射精してるところ見られないのが、もったいないなぁ…」
 			PRINTFORMW 「でも、顔汚されちゃうのって、私、結構好きだよ♪」
 			PRINTFORMW 「どんな格好してても見られちゃうところ、あなたのモノだってマーキングされちゃってるから…」
@@ -6471,7 +6471,7 @@ IF CFLAG:106
 	;胸
 	ELSEIF CFLAG:106 == 3
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:223 < 3 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:223 < 3 || FLAG:7 == 2)
 			PRINTFORMW 「うわぁ、おっぱいにこんなに出ちゃってる…」
 			PRINTFORMW 「これ塗り込んだら、おっぱい大きくなったりして…♪」
 			PRINTFORMW 「それならおまんこに注ぎ込んだ方が良いって…！もう、そればっかり言って！！そんなに私のこと孕ませたいの！？」
@@ -6494,7 +6494,7 @@ IF CFLAG:106
 	;腹
 	ELSEIF CFLAG:106 == 4
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:224 < 3 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:224 < 3 || FLAG:7 == 2)
 			IF RAND:2 == 0
 				PRINTFORMW 「お腹に精液いっぱい、かけられちゃった♪」
 				PRINTFORMW 「これ、お腹の上から精液かけられて、子宮が疼いちゃってる…♡」
@@ -6526,7 +6526,7 @@ IF CFLAG:106
 	;腋
 	ELSEIF CFLAG:106 == 5
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:225 < 3 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:225 < 3 || FLAG:7 == 2)
 			PRINTFORMW 「脇がいいなんて、変わってるよね…」
 			PRINTFORMW 「もっとえっちなところでもいっぱい受け止めてあげるのに…」
 			PRINTFORMW 「えっ、葵の脇から出る汗の匂いと自分の精液の匂いが混ざると思うと、興奮するからって…♡」
@@ -6547,7 +6547,7 @@ IF CFLAG:106
 	;太腿
 	ELSEIF CFLAG:106 == 6
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:226 < 3 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:226 < 3 || FLAG:7 == 2)
 			PRINTFORMW 「太ももから精液流れ落ちるの…ゾクゾクってしちゃう…♪」
 			PRINTFORMW 「精液流れ落ちたところ、熱くなっちゃうっ！！」
 			CFLAG:226 = 3
@@ -6565,7 +6565,7 @@ IF CFLAG:106
 	;割れ目
 	ELSEIF CFLAG:106 == 7
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:227 < 3 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:227 < 3 || FLAG:7 == 2)
 			PRINTFORMW 「おまんこに先っぽが入っちゃって…ああっ…！！」
 			PRINTFORMW 「射精するときだけ膣内に挿れられて、性欲処理用の穴として使われちゃってる…♪」
 			PRINTFORMW 「…それとも、赤ちゃんミルク無駄打ちするのが勿体無かった？」
@@ -6591,7 +6591,7 @@ IF CFLAG:106
 	;尻
 	ELSEIF CFLAG:106 == 8
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:228 < 3 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:228 < 3 || FLAG:7 == 2)
 			IF RAND:2 == 0
 				PRINTFORMW 「私のお尻、獣みたいに掴んで…そんなに私のお尻にぶっかけたいの？」
 				PRINTFORMW 「いいよ♪お尻の谷間におちんちん挟んじゃって…私の尻肉でいっぱい扱いちゃって♪」
@@ -6623,7 +6623,7 @@ IF CFLAG:106
 		;セックスで射精かつ、アナルセックス以外を実行時
 		IF TFLAG:2 > 0 && SELECTCOM != 62 && SELECTCOM != 63 && SELECTCOM != 67 && SELECTCOM != 70 && SELECTCOM != 71
 			;陥落済み
-			IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:229 < 3 || FLAG:7 == 2)
+			IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:229 < 3 || FLAG:7 == 2)
 				PRINTFORMW 「ゴムなんて無しで、直接膣内出しして欲しかったのに…イジワルっ！！」
 				PRINTFORMW 「赤ちゃんできたらえっちなこと、出来なくなるだろって…そ、それはそうだけど…」
 				PRINTFORMW （でも、あなたの赤ちゃん産めるなら、それが一番幸せなんだよ？）
@@ -6641,15 +6641,15 @@ IF CFLAG:106
 			ENDIF
 		ELSE
 			;陥落済み
-			IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:230 < 3 || FLAG:7 == 2)
+			IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:230 < 3 || FLAG:7 == 2)
 				;恋慕、親愛
-				IF TALENT:3 || TALENT:6
+				IF TALENT:恋慕 || TALENT:6
 					PRINTFORMW 
 				;淫乱、娼婦
-				ELSEIF TALENT:4 || TALENT:7
+				ELSEIF TALENT:淫乱 || TALENT:7
 					PRINTFORMW 
 				;服従、隷属
-				ELSEIF TALENT:5 || TALENT:8
+				ELSEIF TALENT:服従 || TALENT:8
 					PRINTFORMW 
 				ENDIF
 				CFLAG:230 = 3
@@ -6674,7 +6674,7 @@ ENDIF
 IF TFLAG:9 == 1
 	CALL PALAM_MESSAGE_A
 	;陥落済み
-	IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:231 < 3 || FLAG:7 == 2)
+	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:231 < 3 || FLAG:7 == 2)
 		PRINTFORMW 「そんなにおちんちんピクピクってさせて…気持ちよかった？精液、止まらないよ？」
 		PRINTFORMW 「私にいっぱい愛されて、幸せになっちゃったんだね…いいこ、いいこ…♡」
 		PRINTFORMW 「わっ、まだ出てくるんだ♡、私の好きって気持ちに答えてくれて、本当にいいこ、だね♪」
@@ -6701,7 +6701,7 @@ ENDIF
 IF TFLAG:7 > 0
 	CALL PALAM_MESSAGE_A
 	;陥落済み
-	IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:232 < 3 || FLAG:7 == 2)
+	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:232 < 3 || FLAG:7 == 2)
 		PRINTFORMW 
 		CFLAG:232 = 3
 	;屈服刻印Lv3
@@ -6721,7 +6721,7 @@ ENDIF
 IF TFLAG:0 > 0
 	CALL PALAM_MESSAGE_A
 	;陥落済み
-	IF 0 && (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:233 < 3 || FLAG:7 == 2)
+	IF 0 && (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:233 < 3 || FLAG:7 == 2)
 		PRINTFORMW 「んんっ！んっ♪んんっ♪んーんっ♪んっく♪」
 		PRINTFORMW 「あむっ♪れろえろっ♪ぢゅうっ♪ぢゅるるるっ♪ぷはっ♪」
 		PRINTFORMW 「えへへ♪…こんなにいっぱいサービスしてくれるなんて…ごちそうさま…ちゅっ♪」
@@ -6750,7 +6750,7 @@ ENDIF
 IF TFLAG:1 > 0
 	CALL PALAM_MESSAGE_A
 	;陥落済み
-	IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:234 < 3 || FLAG:7 == 2)
+	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:234 < 3 || FLAG:7 == 2)
 		PRINTFORMW 「あはっ♪手にいっぱい無駄打ちしちゃったね♪」
 		PRINTFORMW 「ほらっ！イってるところ追い打ちして、限界まで無駄打ちさせてあげるっ！出せっ♪出せっ♪♪」
 		PRINTFORMW 「……もう出ないって？大丈夫、優しく、しこしこってしたら、最後にちょっとだけ残ってるのが、出ちゃうから…♡」
@@ -6776,7 +6776,7 @@ ENDIF
 IF TFLAG:34 > 0
 	CALL PALAM_MESSAGE_A
 	;陥落済み
-	IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:235 < 3 || FLAG:7 == 2)
+	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:235 < 3 || FLAG:7 == 2)
 		PRINTFORMW 「あっ！私のおっぱいで射精しちゃってるんだ…♪」
 		PRINTFORMW （嬉しいっ！もっといっぱい射精してっ…！！）
 		PRINTFORMW （私のおっぱいに、もっと夢中になって…♡）
@@ -6803,7 +6803,7 @@ IF TFLAG:2 > 0
 	;アナルセックス系
 	IF SELECTCOM == 62 || SELECTCOM == 63 || SELECTCOM == 67 || SELECTCOM == 70 || SELECTCOM == 71 || (SELECTCOM == 505 && TFLAG:40 == 2)
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:237 < 3 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:237 < 3 || FLAG:7 == 2)
 			PRINTFORMW 「お尻の穴、そんなに気持ちよかったの？」
 			PRINTFORMW 「次はさ、こっちにも注ぎ込んじゃってよ…♪」
 			PRINTFORMW 「えっちなお汁でとろとろになって、受精する準備、出来ちゃってるから、さ♡」
@@ -6822,9 +6822,9 @@ IF TFLAG:2 > 0
 	;セックス系
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:238 < 3 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:238 < 3 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				IF RAND:4 == 0
 					PRINTFORMW 「私の卵子が、あなたの精子に早く来て、来てって言ってるよ♡」
 					PRINTFORMW 「純白のドレスの代わりに、あなたの白いのかけられちゃって、えっちな花嫁になりたいって待ってるの♡」
@@ -6845,7 +6845,7 @@ IF TFLAG:2 > 0
 					PRINTFORMW 「一緒にお腹なでなでってして、がんばれ♡がんばれ♡って、応援してあげよ？」
 				ENDIF
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				IF RAND:3 == 0
 					PRINTFORMW 「おちんちんぴくぴくってしちゃって…イっちゃうんだ♪」
 					PRINTFORMW 「おまんこの中、我慢すればするだけたくさん気持ちよくなれるのに、諦めちゃって良いの？」
@@ -6873,7 +6873,7 @@ IF TFLAG:2 > 0
 					PRINTFORMW 「ねえ、もう一回注ぎ込み直して欲しいな…♡」
 				ENDIF
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				IF RAND:2 == 0
 					PRINTFORMW 「膣内は、膣内には出さないでくださいっ！」
 					PRINTFORMW 「おまんこが絡みついて離してくれないって…だ、だってほんとは…！！」
@@ -6907,7 +6907,7 @@ ENDIF
 IF SELECTCOM == 64 && TFLAG:10 > 0
 	CALL PALAM_MESSAGE_A
 	;陥落済み
-	IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:239 < 3 || FLAG:7 == 2)
+	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:239 < 3 || FLAG:7 == 2)
 		PRINTFORMW 
 		CFLAG:239 = 3
 	;屈服刻印Lv3
@@ -6957,7 +6957,7 @@ ENDIF
 IF TFLAG:15 >0
 	CALL PALAM_MESSAGE_E
 	;陥落済み
-	IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:240 < 3 || FLAG:7 == 2)
+	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:240 < 3 || FLAG:7 == 2)
 		PRINTFORMW 「やだっ！！やだやだやだっ！！こいつの精液なんていらないっ！！あなたの、あなたのが欲しいのっ！！」
 		PRINTFORMW 「精液注ぎ込むのダメっ！ダメだって……！！！！」
 		PRINTFORMW 「……」
@@ -7054,7 +7054,7 @@ ELSEIF NOWEX:3 > 0 && CFLAG:244 == 0
 ELSEIF TFLAG:29 > 0
 	CALL PALAM_MESSAGE_B
 	;陥落済み
-	IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:245 < 3 || FLAG:7 == 2)
+	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:245 < 3 || FLAG:7 == 2)
 		IF RAND:2 == 0
 			PRINTFORMW 「イっちゃうっ！！イっちゃうのっ！！あなたにイかされちゃうのっ！！」
 			PRINTFORMW 「イかせてっ！！私のことイかせてしあわせにしてえええええええええええっっ！！！！」
@@ -7089,7 +7089,7 @@ ENDIF
 IF TFLAG:10 > 0
 	;陥落済み
 
-	IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:246 < 3 || FLAG:7 == 2)
+	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:246 < 3 || FLAG:7 == 2)
 		PRINTFORMW 
 		CFLAG:246 = 3
 	;屈服刻印Lv3
@@ -7109,7 +7109,7 @@ ENDIF
 ;噴乳している
 IF TFLAG:11 > 0
 	;陥落済み
-	IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:247 < 3 || FLAG:7 == 2)
+	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:247 < 3 || FLAG:7 == 2)
 		PRINTFORMW 
 		CFLAG:247 = 3
 	;屈服刻印Lv3
@@ -7129,7 +7129,7 @@ ENDIF
 ;放尿している
 IF TFLAG:29 > 0 && (TEQUIP:27 || TALENT:57)
 	;陥落済み
-	IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:248 < 3 || FLAG:7 == 2)
+	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:248 < 3 || FLAG:7 == 2)
 		PRINTFORMW 
 		CFLAG:248 = 3
 	;屈服刻印Lv3
@@ -7183,7 +7183,7 @@ IF TFLAG:3 > 0
 	;それ以外の時に処女喪失
 	ELSE
 		;陥落済み
-		IF TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8
+		IF TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:8
 			PRINTFORMW 
 		;屈服刻印Lv3
 		ELSEIF MARK:2 == 3
@@ -7267,7 +7267,7 @@ P = PALAM:7 + UP:7
 IF 0 && P > PALAMLV:3 && CFLAG:247 == 0
 	CALL PALAM_MESSAGE_D
 	;陥落済み
-	IF TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8
+	IF TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:8
 		PRINTFORMW 
 	;それ以外
 	ELSE
@@ -7284,7 +7284,7 @@ P = PALAM:5 + UP:5
 IF 0 && P > PALAMLV:3 && CFLAG:248 == 0
 	CALL PALAM_MESSAGE_D
 	;陥落済み
-	IF TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8
+	IF TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:8
 		PRINTFORMW 
 	;それ以外
 	ELSE
@@ -7301,7 +7301,7 @@ P = PALAM:11 + UP:11
 IF 0 && P > PALAMLV:3 && CFLAG:249 == 0
 	CALL PALAM_MESSAGE_D
 	;陥落済み
-	IF TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8
+	IF TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:8
 		PRINTFORMW 
 	;それ以外
 	ELSE
@@ -7345,15 +7345,15 @@ ENDIF
 IF TFLAG:22 == 3
 	CALL MARK_MESSAGE_A
 	;陥落済み
-	IF 0 && (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8)
+	IF 0 && (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属)
 		;恋慕、親愛
-		IF TALENT:3 || TALENT:6
+		IF TALENT:恋慕 || TALENT:6
 			PRINTFORMW 
 		;淫乱、娼婦
-		ELSEIF TALENT:4 || TALENT:7
+		ELSEIF TALENT:淫乱 || TALENT:7
 			PRINTFORMW 
 		;服従、隷属
-		ELSEIF TALENT:5 || TALENT:8
+		ELSEIF TALENT:服従 || TALENT:8
 			PRINTFORMW 
 		ENDIF
 	ELSE
@@ -7371,15 +7371,15 @@ ENDIF
 IF TFLAG:23 == 3
 	CALL MARK_MESSAGE_P
 	;陥落済み
-	IF 0 && (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8)
+	IF 0 && (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属)
 		;恋慕、親愛
-		IF TALENT:3 || TALENT:6
+		IF TALENT:恋慕 || TALENT:6
 			PRINTFORMW 
 		;淫乱、娼婦
-		ELSEIF TALENT:4 || TALENT:7
+		ELSEIF TALENT:淫乱 || TALENT:7
 			PRINTFORMW 
 		;服従、隷属
-		ELSEIF TALENT:5 || TALENT:8
+		ELSEIF TALENT:服従 || TALENT:8
 			PRINTFORMW 
 		ENDIF
 	ELSE
@@ -7423,15 +7423,15 @@ ENDIF
 IF TFLAG:21 == 3
 	CALL MARK_MESSAGE_R
 	;陥落済み
-	IF TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8
+	IF TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:8
 		;恋慕、親愛
-		IF TALENT:3 || TALENT:6
+		IF TALENT:恋慕 || TALENT:6
 			PRINTFORMW 
 		;淫乱、娼婦
-		ELSEIF TALENT:4 || TALENT:7
+		ELSEIF TALENT:淫乱 || TALENT:7
 			PRINTFORMW 
 		;服従、隷属
-		ELSEIF TALENT:5 || TALENT:8
+		ELSEIF TALENT:服従 || TALENT:8
 			PRINTFORMW 
 		ENDIF
 	ELSE
@@ -7459,17 +7459,17 @@ ENDIF
 IF TFLAG:13 == 1
 	CALL EVENT_MESSAGE
 	;陥落済み
-	IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:261 < 1 || FLAG:7 == 2)
+	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:261 < 1 || FLAG:7 == 2)
 		;恋慕、親愛
-		IF TALENT:3 || TALENT:6
+		IF TALENT:恋慕 || TALENT:6
 			PRINTFORMW 「んくっ♪おはよっ、ごはん、出来てるよ？」
 			PRINTFORMW 「先に葵が食べたいって…♡もう、朝から仕方ないなあー♪」
 		;淫乱、娼婦
-		ELSEIF TALENT:4 || TALENT:7
+		ELSEIF TALENT:淫乱 || TALENT:7
 			PRINTFORMW 「んくっ♪おはよう、今日も朝から元気だったから、一番搾り、もらっちゃったよ♪」
 			PRINTFORMW 「下のお口も欲しがってるだろって？わあ、朝から絶倫さんだねっ…♪」
 		;服従、隷属
-		ELSEIF TALENT:5 || TALENT:8
+		ELSEIF TALENT:服従 || TALENT:8
 			PRINTFORMW 「あっ…おはようございます…朝から苦しそうだったので、小さくしてあげようと…♡」
 			PRINTFORMW 「可愛がってくれたお礼をしなくちゃなって！！い、いえ！結構ですからっ！！ああんっ！！」
 		ENDIF
@@ -7483,18 +7483,18 @@ ENDIF
 IF TFLAG:13 == 2
 	CALL EVENT_MESSAGE
 	;陥落済み
-	IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:262 < 1 || FLAG:7 == 2)
+	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:262 < 1 || FLAG:7 == 2)
 		;恋慕、親愛
-		IF TALENT:3 || TALENT:6
+		IF TALENT:恋慕 || TALENT:6
 			PRINTFORMW 「…私だって…いずれ大きくなるもんっ…んしょっ♪」
 			PRINTFORMW 「えっ、起きてたの！？……大きくなる手伝いをしてやるって…！？ひゃあっ♡」
 			PRINTFORMW 「朝一で葵の搾りたてミルク、飲んでみたいなって…が、頑張ろうねっ！！」
 		;淫乱、娼婦
-		ELSEIF TALENT:4 || TALENT:7
+		ELSEIF TALENT:淫乱 || TALENT:7
 			PRINTFORMW 「おはよう、朝から元気だね♪…ん、どうしたのかって？」
 			PRINTFORMW 「私のおっぱいじゃ上手に挟んであげるの難しいから、あなたの借りて、練習しちゃった♪」
 		;服従、隷属
-		ELSEIF TALENT:5 || TALENT:8
+		ELSEIF TALENT:服従 || TALENT:8
 			PRINTFORMW 「あ、おはようございます…おっぱい、少しは気持ちよくできてますか…？」
 			PRINTFORMW 「どれくらい気持ちいいかお前の身体に教えてやるって…！？ああああああああっっ！！」
 		ENDIF
@@ -7508,15 +7508,15 @@ ENDIF
 IF TFLAG:13 == 3
 	CALL EVENT_MESSAGE
 	;陥落済み
-	IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:263 < 1 || FLAG:7 == 2)
+	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:263 < 1 || FLAG:7 == 2)
 		;恋慕、親愛
-		IF TALENT:3 || TALENT:6
+		IF TALENT:恋慕 || TALENT:6
 			PRINTFORMW 
 		;淫乱、娼婦
-		ELSEIF TALENT:4 || TALENT:7
+		ELSEIF TALENT:淫乱 || TALENT:7
 			PRINTFORMW 
 		;服従、隷属
-		ELSEIF TALENT:5 || TALENT:8
+		ELSEIF TALENT:服従 || TALENT:8
 			PRINTFORMW 
 		ENDIF
 		CFLAG:263 = 1
@@ -7545,15 +7545,15 @@ ENDIF
 IF TFLAG:13 == 5
 	CALL EVENT_MESSAGE
 	;陥落済み
-	IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:265 < 1 || FLAG:7 == 2)
+	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:265 < 1 || FLAG:7 == 2)
 		;恋慕、親愛
-		IF TALENT:3 || TALENT:6
+		IF TALENT:恋慕 || TALENT:6
 			PRINTFORMW 
 		;淫乱、娼婦
-		ELSEIF TALENT:4 || TALENT:7
+		ELSEIF TALENT:淫乱 || TALENT:7
 			PRINTFORMW 
 		;服従、隷属
-		ELSEIF TALENT:5 || TALENT:8
+		ELSEIF TALENT:服従 || TALENT:8
 			PRINTFORMW 
 		ENDIF
 		CFLAG:265 = 1
@@ -7566,15 +7566,15 @@ ENDIF
 IF TFLAG:13 == 6
 	CALL EVENT_MESSAGE
 	;陥落済み
-	IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:266 < 2 || FLAG:7 == 2)
+	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:266 < 2 || FLAG:7 == 2)
 		;恋慕、親愛
-		IF TALENT:3 || TALENT:6
+		IF TALENT:恋慕 || TALENT:6
 			PRINTFORMW 
 		;淫乱、娼婦
-		ELSEIF TALENT:4 || TALENT:7
+		ELSEIF TALENT:淫乱 || TALENT:7
 			PRINTFORMW 
 		;服従、隷属
-		ELSEIF TALENT:5 || TALENT:8
+		ELSEIF TALENT:服従 || TALENT:8
 			PRINTFORMW 
 		ENDIF
 		CFLAG:266 = 2
@@ -7590,15 +7590,15 @@ ENDIF
 IF TFLAG:13 == 7
 	CALL EVENT_MESSAGE
 	;陥落済み
-	IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:267 < 2 || FLAG:7 == 2)
+	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:267 < 2 || FLAG:7 == 2)
 		;恋慕、親愛
-		IF TALENT:3 || TALENT:6
+		IF TALENT:恋慕 || TALENT:6
 			PRINTFORMW 
 		;淫乱、娼婦
-		ELSEIF TALENT:4 || TALENT:7
+		ELSEIF TALENT:淫乱 || TALENT:7
 			PRINTFORMW 
 		;服従、隷属
-		ELSEIF TALENT:5 || TALENT:8
+		ELSEIF TALENT:服従 || TALENT:8
 			PRINTFORMW 
 		ENDIF
 		CFLAG:267 = 2
@@ -7614,15 +7614,15 @@ ENDIF
 IF TFLAG:13 == 8
 	CALL EVENT_MESSAGE
 	;陥落済み
-	IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:268 < 2 || FLAG:7 == 2)
+	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:268 < 2 || FLAG:7 == 2)
 		;恋慕、親愛
-		IF TALENT:3 || TALENT:6
+		IF TALENT:恋慕 || TALENT:6
 			PRINTFORMW 
 		;淫乱、娼婦
-		ELSEIF TALENT:4 || TALENT:7
+		ELSEIF TALENT:淫乱 || TALENT:7
 			PRINTFORMW 
 		;服従、隷属
-		ELSEIF TALENT:5 || TALENT:8
+		ELSEIF TALENT:服従 || TALENT:8
 			PRINTFORMW 
 		ENDIF
 		CFLAG:268 = 2
@@ -7638,15 +7638,15 @@ ENDIF
 IF TFLAG:13 == 9
 	CALL EVENT_MESSAGE
 	;陥落済み
-	IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:269 < 1 || FLAG:7 == 2)
+	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:269 < 1 || FLAG:7 == 2)
 		;恋慕、親愛
-		IF TALENT:3 || TALENT:6
+		IF TALENT:恋慕 || TALENT:6
 			PRINTFORMW 
 		;淫乱、娼婦
-		ELSEIF TALENT:4 || TALENT:7
+		ELSEIF TALENT:淫乱 || TALENT:7
 			PRINTFORMW 
 		;服従、隷属
-		ELSEIF TALENT:5 || TALENT:8
+		ELSEIF TALENT:服従 || TALENT:8
 			PRINTFORMW 
 		ENDIF
 		CFLAG:269 = 1
@@ -7659,15 +7659,15 @@ ENDIF
 IF TFLAG:13 == 10
 	CALL EVENT_MESSAGE
 	;陥落済み
-	IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:270 < 2 || FLAG:7 == 2)
+	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:270 < 2 || FLAG:7 == 2)
 		;恋慕、親愛
-		IF TALENT:3 || TALENT:6
+		IF TALENT:恋慕 || TALENT:6
 			PRINTFORMW 
 		;淫乱、娼婦
-		ELSEIF TALENT:4 || TALENT:7
+		ELSEIF TALENT:淫乱 || TALENT:7
 			PRINTFORMW 
 		;服従、隷属
-		ELSEIF TALENT:5 || TALENT:8
+		ELSEIF TALENT:服従 || TALENT:8
 			PRINTFORMW 
 		ENDIF
 		CFLAG:270 = 2
@@ -7686,13 +7686,13 @@ IF TFLAG:13 == 11
 	CALL EVENT_MESSAGE
 	;妊娠対象をTARGETに格納し、父親は奴隷はV、助手はWとする
 	;崩壊してしまった場合
-	IF TALENT:9 == 1
+	IF TALENT:崩壊 == 1
 		PRINTFORMW 
 	;父親が主人で母親が恋慕か親愛持ち
-	ELSEIF (TALENT:3 || TALENT:6) && CFLAG:102 == 1
+	ELSEIF (TALENT:恋慕 || TALENT:6) && CFLAG:102 == 1
 		PRINTFORMW 
 	;父親が奴隷か助手で母親が淫乱か娼婦持ち
-	ELSEIF (TALENT:4 || TALENT:7) && (CFLAG:102 == 2 || CFLAG:102 == 3)
+	ELSEIF (TALENT:淫乱 || TALENT:娼婦) && (CFLAG:102 == 2 || CFLAG:102 == 3)
 		;父親(助手）との相性が100より大きい場合
 		IF CFLAG:102 == 2 && RELATION:W > 100
 			PRINTFORMW 
@@ -7703,7 +7703,7 @@ IF TFLAG:13 == 11
 			PRINTFORMW 
 		ENDIF
 	;服従か隷属持ち
-	ELSEIF (TALENT:5 || TALENT:8)
+	ELSEIF (TALENT:服従 || TALENT:隷属)
 		PRINTFORMW 
 	ELSE
 		PRINTFORMW 
@@ -7717,15 +7717,15 @@ ENDIF
 IF TFLAG:13 == 12
 	CALL EVENT_MESSAGE
 	;陥落済み
-	IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:272 < 2 || FLAG:7 == 2)
+	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:272 < 2 || FLAG:7 == 2)
 		;恋慕、親愛
-		IF TALENT:3 || TALENT:6
+		IF TALENT:恋慕 || TALENT:6
 			PRINTFORMW 
 		;淫乱、娼婦
-		ELSEIF TALENT:4 || TALENT:7
+		ELSEIF TALENT:淫乱 || TALENT:7
 			PRINTFORMW 
 		;服従、隷属
-		ELSEIF TALENT:5 || TALENT:8
+		ELSEIF TALENT:服従 || TALENT:8
 			PRINTFORMW 
 		ENDIF
 		CFLAG:272 = 2
@@ -7743,15 +7743,15 @@ IF TFLAG:13 == 13
 	;出産前
 	IF TALENT:153
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:273 < 2 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:273 < 2 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 
 			ENDIF
 			CFLAG:273 = 2
@@ -7762,15 +7762,15 @@ IF TFLAG:13 == 13
 	;出産後
 	ELSE
 		;陥落済み
-		IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:273 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:273 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:3 || TALENT:6
+			IF TALENT:恋慕 || TALENT:6
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:4 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:7
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:5 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:8
 				PRINTFORMW 
 			ENDIF
 			CFLAG:273 = 4
@@ -7787,15 +7787,15 @@ ENDIF
 IF TFLAG:13 == 14
 	CALL EVENT_MESSAGE
 	;陥落済み
-	IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:274 < 2 || FLAG:7 == 2)
+	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:274 < 2 || FLAG:7 == 2)
 		;恋慕、親愛
-		IF TALENT:3 || TALENT:6
+		IF TALENT:恋慕 || TALENT:6
 			PRINTFORMW 
 		;淫乱、娼婦
-		ELSEIF TALENT:4 || TALENT:7
+		ELSEIF TALENT:淫乱 || TALENT:7
 			PRINTFORMW 
 		;服従、隷属
-		ELSEIF TALENT:5 || TALENT:8
+		ELSEIF TALENT:服従 || TALENT:8
 			PRINTFORMW 
 		ENDIF
 		CFLAG:274 = 2
@@ -8105,9 +8105,9 @@ ENDIF
 IF TFLAG:13 == 18
 	CALL EVENT_MESSAGE
 	;陥落済み
-	IF TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8
+	IF TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:8
 		;恋慕、親愛+反発刻印Lv3未満
-		IF (TALENT:3 || TALENT:6) && MARK:3 < 3
+		IF (TALENT:恋慕 || TALENT:6) && MARK:3 < 3
 			PRINTFORMW 「ねえっ！私のこと売るって…嘘でしょっ！！嘘って言ってよ！！」
 			PRINTFORMW 「あなたのこと、信じてたのに…酷いよぉっ！！」
 			PRINTFORMW 「バカっ！！大バカっ！！ずっと一緒にいられると思ってたのにっ！！」
@@ -8139,10 +8139,10 @@ IF TFLAG:13 == 18
 			PRINTFORMW ――いつまでも一緒だよ、あ・な・た♪
 			PRINTFORMW …一緒に、幸せに、なろっ？
 		;淫乱、娼婦+反発刻印Lv3未満
-		ELSEIF (TALENT:4 || TALENT:7) && MARK:3 < 3
+		ELSEIF (TALENT:淫乱 || TALENT:娼婦) && MARK:3 < 3
 			PRINTFORMW 
 		;服従、隷属+反発刻印Lv3未満
-		ELSEIF (TALENT:5 || TALENT:8) && MARK:3 < 3
+		ELSEIF (TALENT:服従 || TALENT:隷属) && MARK:3 < 3
 			PRINTFORMW 
 		ENDIF
 	;反発刻印Lv3
@@ -8160,15 +8160,15 @@ ENDIF
 IF TFLAG:13 == 19
 	CALL EVENT_MESSAGE
 	;陥落済み
-	IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:278 < 2 || FLAG:7 == 2)
+	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:278 < 2 || FLAG:7 == 2)
 		;恋慕、親愛
-		IF TALENT:3 || TALENT:6
+		IF TALENT:恋慕 || TALENT:6
 			PRINTFORMW 
 		;淫乱、娼婦
-		ELSEIF TALENT:4 || TALENT:7
+		ELSEIF TALENT:淫乱 || TALENT:7
 			PRINTFORMW 
 		;服従、隷属
-		ELSEIF TALENT:5 || TALENT:8
+		ELSEIF TALENT:服従 || TALENT:8
 			PRINTFORMW 
 		ENDIF
 		CFLAG:278 = 2
@@ -8278,15 +8278,15 @@ ENDIF
 IF TFLAG:13 == 23
 	CALL EVENT_MESSAGE
 	;陥落済み
-	IF (TALENT:3 || TALENT:4 || TALENT:5 || TALENT:6 || TALENT:7 || TALENT:8) && (CFLAG:282 < 2 || FLAG:7 == 2)
+	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:282 < 2 || FLAG:7 == 2)
 		;恋慕、親愛
-		IF TALENT:3 || TALENT:6
+		IF TALENT:恋慕 || TALENT:6
 			PRINTFORMW 
 		;淫乱、娼婦
-		ELSEIF TALENT:4 || TALENT:7
+		ELSEIF TALENT:淫乱 || TALENT:7
 			PRINTFORMW 
 		;服従、隷属
-		ELSEIF TALENT:5 || TALENT:8
+		ELSEIF TALENT:服従 || TALENT:8
 			PRINTFORMW 
 		ENDIF
 		CFLAG:282 = 2
@@ -8316,9 +8316,9 @@ SIF NO:TARGET != 7
 ;B = 0
 ;REPEAT CHARANUM
 ;	IF NO:COUNT == XX || NO:COUNT == XX || NO:COUNT == XX || NO:COUNT == XX || NO:COUNT == XX
-;		SIF TALENT:COUNT:6 || TALENT:COUNT:7 || TALENT:COUNT:8
+;		SIF TALENT:COUNT:6 || TALENT:COUNT:娼婦 || TALENT:COUNT:8
 ;			A += 1
-;		SIF TALENT:COUNT:3 || TALENT:COUNT:4 || TALENT:COUNT:5 || TALENT:COUNT:6 || TALENT:COUNT:7 || TALENT:COUNT:8
+;		SIF TALENT:COUNT:恋慕 || TALENT:COUNT:4 || TALENT:COUNT:服従 || TALENT:COUNT:6 || TALENT:COUNT:娼婦 || TALENT:COUNT:8
 ;			B += 1
 ;	ENDIF
 ;REND
@@ -8352,7 +8352,7 @@ IF TALENT:6 && CFLAG:21 == 1
 	PRINTFORMW 
 	PRINTFORMW 　　　　　　　　―― Ending No.106A (優しくしてくれてありがとうエンド)
 ;淫乱単体エンド
-ELSEIF TALENT:7 && CFLAG:21 == 1
+ELSEIF TALENT:娼婦 && CFLAG:21 == 1
 	DRAWLINE
 	PRINTFORMW …………
 	PRINTFORMW ………
@@ -8360,7 +8360,7 @@ ELSEIF TALENT:7 && CFLAG:21 == 1
 	PRINTFORMW 
 	PRINTFORMW 　　　　　　　　―― Ending No.106B (遊んでくれてありがとうエンド)
 ;服従単体エンド
-ELSEIF TALENT:8 && CFLAG:21 == 1
+ELSEIF TALENT:隷属 && CFLAG:21 == 1
 	DRAWLINE
 	PRINTFORMW …………
 	PRINTFORMW ………

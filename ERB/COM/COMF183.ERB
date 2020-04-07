@@ -159,9 +159,9 @@ SIF TFLAG:33 == 1 || TFLAG:33 == 2
 	TFLAG:33 = 3
 
 ;依存度補正値(服従で1、隷属で2　強制変更なのでリセット）
-IF TALENT:5 && ASSIPLAY == 0
+IF TALENT:服従 && ASSIPLAY == 0
 	TFLAG:30 = 1
-ELSEIF TALENT:8 && ASSIPLAY == 0
+ELSEIF TALENT:隷属 && ASSIPLAY == 0
 	TFLAG:30 = 2
 ENDIF
 

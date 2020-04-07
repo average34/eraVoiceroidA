@@ -92,7 +92,7 @@ ELSEIF TFLAG:17 == 5
 ENDIF
 
 ;愛情経験
-IF (TALENT:3 == 1 || TALENT:6 == 1) && ASSIPLAY == 0 && TFLAG:17 > 0
+IF (TALENT:恋慕 == 1 || TALENT:6 == 1) && ASSIPLAY == 0 && TFLAG:17 > 0
 	A = TFLAG:17
 	PRINTS EXPNAME:23
 	PRINTVL +A
@@ -103,7 +103,7 @@ ENDIF
 TFLAG:33 = 4
 
 ;依存度補正値
-SIF (TALENT:3 == 1 || TALENT:6 == 1) && ASSIPLAY == 0
+SIF (TALENT:恋慕 == 1 || TALENT:6 == 1) && ASSIPLAY == 0
 	TFLAG:30 += TFLAG:17
 
 

@@ -54,12 +54,12 @@ ENDIF
 ;放尿経験３０以上でおもらし癖がつく
 IF TARGET >= 0 
 	IF TALENT:57 == 0
-		IF (TALENT:TARGET:151 && EXP:TARGET:31 >= 10) || (TALENT:TARGET:151 == 0 && EXP:TARGET:31 >= 30)
+		IF (TALENT:TARGET:幼稚 && EXP:TARGET:31 >= 10) || (TALENT:TARGET:幼稚 == 0 && EXP:TARGET:31 >= 30)
 			PRINTFORMW （む･･･なんだこれ？）
 			PRINTFORM %CALLNAME:TARGET%は
-			SIF TALENT:TARGET:151 && EXP:TARGET:31 >= 10
+			SIF TALENT:TARGET:幼稚 && EXP:TARGET:31 >= 10
 			PRINTFORM おねしょを
-			SIF TALENT:TARGET:151 == 0 && EXP:TARGET:31 >= 30 
+			SIF TALENT:TARGET:幼稚 == 0 && EXP:TARGET:31 >= 30 
 			PRINTFORM 粗相を
 			PRINTFORMW してしまったようだ……
 			PRINTFORMW %CALLNAME:TARGET%は[おもらし癖]がついた
@@ -70,12 +70,12 @@ ENDIF
 
 IF TARGET >= 0 
 	;反発刻印３があり、かつ幼稚である時に
-	IF TALENT:TARGET:151 && MARK:3 == 3
+	IF TALENT:TARGET:幼稚 && MARK:3 == 3
 		;欲望が5かつ従順が5かつマゾっ気が5かつ異常経験が７以上になる
 		SIF ABL:TARGET:1 >= 5 && ABL:TARGET:0 >= 5 && ABL:TARGET:9 >= 5 && EXP:TARGET:50 >= 7
 			CALL EVENT_YOUJI
 	;反発刻印３があり、かつ幼稚がない時
-	ELSEIF TALENT:TARGET:151 == 0 && MARK:3 == 3
+	ELSEIF TALENT:TARGET:幼稚 == 0 && MARK:3 == 3
 		;欲望が5かつ従順が5かつマゾっ気が5かつ異常経験が９以上に加え露出５とおもらし癖がある
 		SIF ABL:TARGET:1 >= 5 && ABL:TARGET:0 >= 5 && ABL:TARGET:9 >= 5 && ABL:TARGET:8 >= 5 && EXP:TARGET:50 >= 9 && TALENT:57 == 1
 			CALL EVENT_YOUJI
@@ -107,7 +107,7 @@ ENDIF
 PRINTFORMW %CALLNAME:TARGET%の様子がおかしい……
 PRINTFORMW %CALLNAME:TARGET%は過酷な調教に耐え切れず、【幼児退行】してしまったようだ……
 SIF TALENT:151
-	TALENT:151 = 0
+	TALENT:幼稚 = 0
 TALENT:150 = 1
 MARK:3 = 0
 

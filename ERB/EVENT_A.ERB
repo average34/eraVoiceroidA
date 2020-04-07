@@ -11,7 +11,7 @@ SIF ASSI >= 0
 ;陥落素質
 ;---------------------------------------------------------
 @EVENTCHECK_T
-IF TALENT:3 == 0 && TALENT:4 == 0 && TALENT:5 == 0 && TALENT:6 == 0 && TALENT:7 == 0 && TALENT:8 == 0 && TALENT:9 == 0
+IF TALENT:恋慕 == 0 && TALENT:淫乱 == 0 && TALENT:服従 == 0 && TALENT:6 == 0 && TALENT:娼婦 == 0 && TALENT:隷属 == 0 && TALENT:崩壊 == 0
 
 	;恋慕：従順、奉仕精神3以上+屈服刻印Lv3+反発刻印Lv0+奉仕快楽経験200以上+依存度1000以上+レズ経験もしくはゲイ経験1000未満+異常経験2未満
 	IF ABL:0 >= 3 && ABL:7 >= 3 && MARK:2 == 3 && MARK:3 == 0 && EXP:21 >= 200 && CFLAG:2 >= 1000 && EXP:40 < 1000 && EXP:41 < 1000 && EXP:50 < 2
@@ -19,7 +19,7 @@ IF TALENT:3 == 0 && TALENT:4 == 0 && TALENT:5 == 0 && TALENT:6 == 0 && TALENT:7 
 		PRINTFORML %CALLNAME:TARGET%は%CALLNAME:MASTER%との行為に悦びを感じているようだ
 		PRINTFORMW %NAME:TARGET%は【恋慕】を得た
 		PRINTL 　
-		TALENT:3 = 1
+		TALENT:恋慕 = 1
 		FLAG:30 += 1
 	ENDIF
 
@@ -56,7 +56,7 @@ IF TALENT:3 == 0 && TALENT:4 == 0 && TALENT:5 == 0 && TALENT:6 == 0 && TALENT:7 
 					PRINTFORMW %CALLNAME:TARGET%と%CALLNAME:W%の相性が{RELATION:X}％になりました
 				ENDIF
 			PRINTL 　
-			TALENT:4 = 1
+			TALENT:淫乱 = 1
 			FLAG:31 += 1
 		ENDIF
 	ENDIF
@@ -69,48 +69,48 @@ IF TALENT:3 == 0 && TALENT:4 == 0 && TALENT:5 == 0 && TALENT:6 == 0 && TALENT:7 
 		PRINTFORML %CALLNAME:TARGET%は%CALLNAME:MASTER%に心が平伏しきっているようだ
 		PRINTFORMW %NAME:TARGET%は【服従】を得た
 		PRINTL 　
-		TALENT:5 = 1
+		TALENT:服従 = 1
 		FLAG:32 += 1
 	ENDIF
 
 ENDIF
 
 
-IF TALENT:6 == 0 && TALENT:7 == 0 && TALENT:8 == 0 && TALENT:9 == 0
+IF TALENT:6 == 0 && TALENT:娼婦 == 0 && TALENT:隷属 == 0 && TALENT:崩壊 == 0
 
 	;親愛:恋慕、従順、奉仕精神5以上+反発刻印Lv0+愛情経験200以上+奉仕快楽経験400以上+依存度3000以上+レズ経験もしくはゲイ経験1500未満+異常経験5未満
-	IF TALENT:3 && ABL:0 >= 5 && ABL:7 >= 5 && MARK:3 == 0 && EXP:23 >= 200 && EXP:21 >= 400 && CFLAG:2 >= 3000 && EXP:40 < 1500 && EXP:41 < 1500 && EXP:50 < 5
+	IF TALENT:恋慕 && ABL:0 >= 5 && ABL:7 >= 5 && MARK:3 == 0 && EXP:23 >= 200 && EXP:21 >= 400 && CFLAG:2 >= 3000 && EXP:40 < 1500 && EXP:41 < 1500 && EXP:50 < 5
 		PRINTFORMW %CALLNAME:TARGET%のこちらを見る目がおかしい
 		PRINTFORML %CALLNAME:TARGET%は身も心も%CALLNAME:MASTER%に依存しきっているようだ
 		PRINTFORMW %NAME:TARGET%の【恋慕】は【親愛】になった
 		PRINTL 　
-		TALENT:3 = 0
+		TALENT:恋慕 = 0
 		TALENT:6 = 1
 	ENDIF
 
 	;娼婦：淫乱、欲望5以上+CVAB感覚合計20以上+反発刻印Lv0+絶頂経験200以上+異常経験4以上or異常経験2以上+レズ経験もしくはゲイ経験3000以上
 	;eratohoAよりも異常経験緩和
-	IF TALENT:4 && ABL:1 >= 5 && ABL:3+ABL:4+ABL:5+ABL:6 >= 20 && MARK:3 == 0 && EXP:2 >= 200
+	IF TALENT:淫乱 && ABL:1 >= 5 && ABL:3+ABL:4+ABL:5+ABL:6 >= 20 && MARK:3 == 0 && EXP:2 >= 200
 		IF EXP:50 >= 4 || (EXP:50 >= 2 && (EXP:40 >= 3000 || EXP:41 >= 3000)) 
 			PRINTFORMW %CALLNAME:TARGET%のこちらを見る目がおかしい
 			PRINTFORML %CALLNAME:TARGET%は身も心も%CALLNAME:MASTER%に与えられる快楽に依存しきっているようだ
 			PRINTFORMW %NAME:TARGET%の【淫乱】は【娼婦】になった
 			PRINTL 　
-			TALENT:4 = 0
-			TALENT:7 = 1
+			TALENT:淫乱 = 0
+			TALENT:娼婦 = 1
 		ENDIF
 	ENDIF
 
 	;隷属：服従、従順、マゾっ気5以上+CAVB感覚15未満+反発刻印Lv0+苦痛快楽経験+緊縛経験500以上+依存度-3000以下+レズ経験もしくはゲイ経験1500未満+異常経験5以上
 	;eratohoAよりも異常経験緩和
 	A = CFLAG:2 * -1
-	IF TALENT:5 && ABL:0 >= 5 && ABL:9 >= 5 && ABL:3+ABL:4+ABL:5+ABL:6 < 15 && MARK:3 == 0 && EXP:30+EXP:51 >= 500 && A >= 3000 && EXP:40 < 1500 && EXP:41 < 1500 && EXP:50 >= 5
+	IF TALENT:服従 && ABL:0 >= 5 && ABL:9 >= 5 && ABL:3+ABL:4+ABL:5+ABL:6 < 15 && MARK:3 == 0 && EXP:30+EXP:51 >= 500 && A >= 3000 && EXP:40 < 1500 && EXP:41 < 1500 && EXP:50 >= 5
 		PRINTFORMW %CALLNAME:TARGET%のこちらを見る目がおかしい
 		PRINTFORML %CALLNAME:TARGET%は身も心も%CALLNAME:MASTER%の奴隷となりきっているようだ
 		PRINTFORMW %NAME:TARGET%の【服従】は【隷属】になった
 		PRINTL 　
-		TALENT:5 = 0
-		TALENT:8 = 1
+		TALENT:服従 = 0
+		TALENT:隷属 = 1
 	ENDIF
 
 ENDIF
@@ -251,9 +251,9 @@ ELSEIF EXP:MASTER:62 >= 10 && ABL:MASTER:13 <= 0
 ENDIF
 
 ;主人の絶倫：調教者の射精経験が200以上で取得
-IF EXP:MASTER:3 >= 200 && TALENT:MASTER:152 == 0 && TALENT:MASTER:オトコ == 1
+IF EXP:MASTER:3 >= 200 && TALENT:MASTER:絶倫 == 0 && TALENT:MASTER:オトコ == 1
 	PRINTFORMW %NAME:MASTER%は【絶倫】を身につけた
-	TALENT:MASTER:152 = 1
+	TALENT:MASTER:絶倫 = 1
 ENDIF
 
 ;主人の謎の魅力：恋慕･服従にした奴隷の数が5人以上

@@ -262,7 +262,7 @@ ELSEIF TALENT:オトコ && TALENT:PLAYER:オトコ
 ENDIF
 
 ;愛情経験
-IF TALENT:3 == 1 && ASSIPLAY == 0
+IF TALENT:恋慕 == 1 && ASSIPLAY == 0
 	PRINTS EXPNAME:23
 	PRINTL +1
 	EXP:23 += 1
@@ -276,9 +276,9 @@ ENDIF
 TFLAG:33 = 1
 
 ;依存度補正値(服従で1、隷属で2）
-IF TALENT:5 && ASSIPLAY == 0
+IF TALENT:服従 && ASSIPLAY == 0
 	TFLAG:30 += 1
-ELSEIF TALENT:8 && ASSIPLAY == 0
+ELSEIF TALENT:隷属 && ASSIPLAY == 0
 	TFLAG:30 += 2
 ENDIF
 
@@ -380,7 +380,7 @@ IF TEQUIP:19 == 0
 		S = 1
 	ENDIF
 	;男嫌い（恋慕、親愛で無効）
-	IF TALENT:82 && TALENT:PLAYER:オトコ && ((TALENT:3 == 0 && TALENT:6 == 0) || PLAYER != MASTER)
+	IF TALENT:82 && TALENT:PLAYER:オトコ && ((TALENT:恋慕 == 0 && TALENT:6 == 0) || PLAYER != MASTER)
 		PRINT  - 
 		A -= 12
 		PRINTS TALENTNAME:82
@@ -388,7 +388,7 @@ IF TEQUIP:19 == 0
 		S = 1
 	ENDIF
 	;淫乱
-	IF TALENT:4 && ASSIPLAY == 0
+	IF TALENT:淫乱 && ASSIPLAY == 0
 		SIF S
 			PRINT  + 
 		A += 15
@@ -397,7 +397,7 @@ IF TEQUIP:19 == 0
 		S = 15
 	ENDIF
 	;娼婦
-	IF TALENT:7 && ASSIPLAY == 0
+	IF TALENT:娼婦 && ASSIPLAY == 0
 		SIF S
 			PRINT  + 
 		A += 20

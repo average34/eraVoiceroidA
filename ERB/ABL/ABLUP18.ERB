@@ -3,7 +3,7 @@
 ;恋慕、親愛、淫乱、娼婦はMAXLV10
 IF ABL:18 >= 10
 	RETURN 0
-ELSEIF ABL:18 >= 5 && TALENT:3 == 0 && TALENT:6 == 0 && TALENT:4 == 0 && TALENT:7 == 0
+ELSEIF ABL:18 >= 5 && TALENT:恋慕 == 0 && TALENT:6 == 0 && TALENT:淫乱 == 0 && TALENT:娼婦 == 0
 	RETURN 0
 ENDIF
 
@@ -23,7 +23,7 @@ DRAWLINE
 IF ABL:18 >= 10
 	PRINTW 既にMAXです
 	RETURN 0
-ELSEIF ABL:18 >= 5 && TALENT:3 == 0 && TALENT:6 == 0 && TALENT:4 == 0 && TALENT:7 == 0
+ELSEIF ABL:18 >= 5 && TALENT:恋慕 == 0 && TALENT:6 == 0 && TALENT:淫乱 == 0 && TALENT:娼婦 == 0
 	PRINTW 既にMAXです
 	RETURN 0
 ENDIF
@@ -177,7 +177,7 @@ ELSEIF ABL:18 == 9
 ENDIF
 
 ;一線越えない
-IF TALENT:27 && (TALENT:3 == 0 && TALENT:4 == 0 && TALENT:5 == 0 && TALENT:6 == 0 && TALENT:7 == 0 && TALENT:8 == 0)
+IF TALENT:27 && (TALENT:恋慕 == 0 && TALENT:淫乱 == 0 && TALENT:服従 == 0 && TALENT:6 == 0 && TALENT:娼婦 == 0 && TALENT:隷属 == 0)
 	TIMES A , 2.00
 	TIMES B , 2.00
 	TIMES C , 2.00

@@ -20,7 +20,7 @@ TALENT:3 , 素質:恋慕
 TALENT:4 , 素質:淫乱
 TALENT:5 , 素質:服従
 TALENT:6 , 素質:親愛
-TALENT:7 , 素質:娼婦
+TALENT:娼婦 , 素質:娼婦
 TALENT:8 , 素質:隷属
 TALENT:9 , 素質:崩壊
 TALENT:10 , 素質:臆病
@@ -555,7 +555,7 @@ TALENT:PLAYER:3 , 素質:調教者:恋慕
 TALENT:PLAYER:4 , 素質:調教者:淫乱
 TALENT:PLAYER:5 , 素質:調教者:服従
 TALENT:PLAYER:6 , 素質:調教者:親愛
-TALENT:PLAYER:7 , 素質:調教者:娼婦
+TALENT:PLAYER:娼婦 , 素質:調教者:娼婦
 TALENT:PLAYER:8 , 素質:調教者:隷属
 TALENT:PLAYER:9 , 素質:調教者:崩壊
 TALENT:PLAYER:10 , 素質:調教者:臆病
@@ -673,7 +673,7 @@ TALENT:MASTER:3 , 素質:主人:恋慕
 TALENT:MASTER:4 , 素質:主人:淫乱
 TALENT:MASTER:5 , 素質:主人:服従
 TALENT:MASTER:6 , 素質:主人:親愛
-TALENT:MASTER:7 , 素質:主人:娼婦
+TALENT:MASTER:娼婦 , 素質:主人:娼婦
 TALENT:MASTER:8 , 素質:主人:隷属
 TALENT:MASTER:9 , 素質:主人:崩壊
 TALENT:MASTER:10 , 素質:主人:臆病
@@ -791,7 +791,7 @@ TALENT:ASSI:3 , 素質:助手:恋慕
 TALENT:ASSI:4 , 素質:助手:淫乱
 TALENT:ASSI:5 , 素質:助手:服従
 TALENT:ASSI:6 , 素質:助手:親愛
-TALENT:ASSI:7 , 素質:助手:娼婦
+TALENT:ASSI:娼婦 , 素質:助手:娼婦
 TALENT:ASSI:8 , 素質:助手:隷属
 TALENT:ASSI:9 , 素質:助手:崩壊
 TALENT:ASSI:10 , 素質:助手:臆病
@@ -909,7 +909,7 @@ TALENT:TARGET:3 , 素質:奴隷:恋慕
 TALENT:TARGET:4 , 素質:奴隷:淫乱
 TALENT:TARGET:5 , 素質:奴隷:服従
 TALENT:TARGET:6 , 素質:奴隷:親愛
-TALENT:TARGET:7 , 素質:奴隷:娼婦
+TALENT:TARGET:娼婦 , 素質:奴隷:娼婦
 TALENT:TARGET:8 , 素質:奴隷:隷属
 TALENT:TARGET:9 , 素質:奴隷:崩壊
 TALENT:TARGET:10 , 素質:奴隷:臆病
@@ -1767,7 +1767,7 @@ TALENT:3 , 素質:恋慕
 TALENT:4 , 素質:淫乱
 TALENT:5 , 素質:服従
 TALENT:6 , 素質:親愛
-TALENT:7 , 素質:娼婦
+TALENT:娼婦 , 素質:娼婦
 TALENT:8 , 素質:隷属
 TALENT:9 , 素質:崩壊
 TALENT:10 , 素質:臆病
@@ -2302,7 +2302,7 @@ TALENT:PLAYER:3 , 素質:調教者:恋慕
 TALENT:PLAYER:4 , 素質:調教者:淫乱
 TALENT:PLAYER:5 , 素質:調教者:服従
 TALENT:PLAYER:6 , 素質:調教者:親愛
-TALENT:PLAYER:7 , 素質:調教者:娼婦
+TALENT:PLAYER:娼婦 , 素質:調教者:娼婦
 TALENT:PLAYER:8 , 素質:調教者:隷属
 TALENT:PLAYER:9 , 素質:調教者:崩壊
 TALENT:PLAYER:10 , 素質:調教者:臆病
@@ -2420,7 +2420,7 @@ TALENT:MASTER:3 , 素質:主人:恋慕
 TALENT:MASTER:4 , 素質:主人:淫乱
 TALENT:MASTER:5 , 素質:主人:服従
 TALENT:MASTER:6 , 素質:主人:親愛
-TALENT:MASTER:7 , 素質:主人:娼婦
+TALENT:MASTER:娼婦 , 素質:主人:娼婦
 TALENT:MASTER:8 , 素質:主人:隷属
 TALENT:MASTER:9 , 素質:主人:崩壊
 TALENT:MASTER:10 , 素質:主人:臆病
@@ -2538,7 +2538,7 @@ TALENT:ASSI:3 , 素質:助手:恋慕
 TALENT:ASSI:4 , 素質:助手:淫乱
 TALENT:ASSI:5 , 素質:助手:服従
 TALENT:ASSI:6 , 素質:助手:親愛
-TALENT:ASSI:7 , 素質:助手:娼婦
+TALENT:ASSI:娼婦 , 素質:助手:娼婦
 TALENT:ASSI:8 , 素質:助手:隷属
 TALENT:ASSI:9 , 素質:助手:崩壊
 TALENT:ASSI:10 , 素質:助手:臆病
@@ -2656,7 +2656,7 @@ TALENT:TARGET:3 , 素質:奴隷:恋慕
 TALENT:TARGET:4 , 素質:奴隷:淫乱
 TALENT:TARGET:5 , 素質:奴隷:服従
 TALENT:TARGET:6 , 素質:奴隷:親愛
-TALENT:TARGET:7 , 素質:奴隷:娼婦
+TALENT:TARGET:娼婦 , 素質:奴隷:娼婦
 TALENT:TARGET:8 , 素質:奴隷:隷属
 TALENT:TARGET:9 , 素質:奴隷:崩壊
 TALENT:TARGET:10 , 素質:奴隷:臆病

@@ -295,7 +295,7 @@ IF TFLAG:703 == 1
 				EXP:TARGET:5 += 2
 				CFLAG:TARGET:101 += 2
 				;妊娠していないのであれば中田氏時の恐怖判定等
-				SIF TALENT:T:153 == 0 && T == TARGET
+				SIF TALENT:T:妊娠 == 0 && T == TARGET
 					CALL SAMEN_SHOOT_SOURCE
 			ENDIF
 		ELSEIF TFLAG:2 == 1
@@ -308,7 +308,7 @@ IF TFLAG:703 == 1
 				EXP:TARGET:5 += 1
 				CFLAG:TARGET:101 += 1
 				;妊娠していないのであれば中田氏時の恐怖判定等
-				SIF TALENT:T:153 == 0 && T == TARGET
+				SIF TALENT:T:妊娠 == 0 && T == TARGET
 					CALL SAMEN_SHOOT_SOURCE
 			ENDIF
 		ELSEIF TEQUIP:MASTER:35 == 1
@@ -327,7 +327,7 @@ IF TFLAG:703 == 1
 				EXP:TARGET:5 += 2
 				CFLAG:TARGET:103 += 2
 				;妊娠していないのであれば中田氏時の恐怖判定等
-				SIF TALENT:T:153 == 0 && T == TARGET
+				SIF TALENT:T:妊娠 == 0 && T == TARGET
 					CALL SAMEN_SHOOT_SOURCE
 			ENDIF
 		ELSEIF TFLAG:2 == 1
@@ -340,7 +340,7 @@ IF TFLAG:703 == 1
 				EXP:TARGET:5 += 1
 				CFLAG:TARGET:103 += 1
 				;妊娠していないのであれば中田氏時の恐怖判定等
-				SIF TALENT:T:153 == 0 && T == TARGET
+				SIF TALENT:T:妊娠 == 0 && T == TARGET
 					CALL SAMEN_SHOOT_SOURCE
 			ENDIF
 		ELSEIF TEQUIP:ASSI:35 == 1
@@ -802,7 +802,7 @@ ENDIF
 ;ソースの計算
 ;-------------------------------------------------
 ;恋慕、親愛持ちで射精者が主人の場合は達成感のソースが増加する
-IF (TALENT:3 || TALENT:6) && P == MASTER
+IF (TALENT:恋慕 || TALENT:6) && P == MASTER
 	SOURCE:6 += 1500
 ELSE
 	SOURCE:8 += 1500
@@ -810,7 +810,7 @@ ELSE
 ENDIF
 
 ;陥落素質が無い場合は反発増加
-SIF TALENT:3 == 0 && TALENT:4 == 0 && TALENT:5 == 0 && TALENT:6 == 0 && TALENT:7 == 0 && TALENT:8 == 0
+SIF TALENT:恋慕 == 0 && TALENT:淫乱 == 0 && TALENT:服従 == 0 && TALENT:6 == 0 && TALENT:娼婦 == 0 && TALENT:隷属 == 0
 	SOURCE:18 += 1000
 
 

@@ -61,7 +61,7 @@ ENDIF
 SIF TFLAG:40 == 1 || TFLAG:41 == 1
 	TFLAG:19 = 1
 
-SIF (TALENT:3 || TALENT:6) && ASSIPLAY == 0 && EXP:0 == 0 && TFLAG:40 == 1
+SIF (TALENT:恋慕 || TALENT:6) && ASSIPLAY == 0 && EXP:0 == 0 && TFLAG:40 == 1
 	TFLAG:20 = 1
 
 ;-------------------------------------------------
@@ -278,7 +278,7 @@ SIF TALENT:32 || TALENT:34
 	SOURCE:16 += 500
 
 ;貞操観念持ちで恋慕、親愛持ち以外には常に反発のソースを追加する（セックス系のみ）
-SIF TALENT:30 && (TALENT:3 == 0 && TALENT:6 == 0)
+SIF TALENT:30 && (TALENT:恋慕 == 0 && TALENT:6 == 0)
 	SOURCE:18 += 1000
 
 ;Vに挿入している場合
@@ -561,7 +561,7 @@ ENDIF
 TFLAG:33 = 1
 
 ;依存度補正値(主人かつ恋慕で1、親愛で2）
-IF TALENT:3 && ASSIPLAY == 0
+IF TALENT:恋慕 && ASSIPLAY == 0
 	TFLAG:30 += 1
 ELSEIF TALENT:6 && ASSIPLAY == 0
 	TFLAG:30 += 2
