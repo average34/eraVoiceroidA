@@ -46,19 +46,37 @@ jobs:
 
       # Github側でsecretsを設定する必要あり
       # DISCORD_WEBHOOKにURIを代入
-      - name: Set env DISCORD_WEBHOOK
+      - name: Set env DISCORD_WEBHOOK 1
         run: echo -e ::set-env name=DISCORD_WEBHOOK::${{ secrets.DISCORD_WEBHOOK }}
 
       # Discordで通知する
-      - name: Discord notification1
+      - name: Discord notification1-1
         uses: Ilshidur/action-discord@master
         with:
             args: ${{ env.TWEET_TEXT_1 }}
-      - name: Discord notification2
+      - name: Discord notification1-2
         uses: Ilshidur/action-discord@master
         with:
             args: ${{ env.TWEET_TEXT_2 }}
-      - name: Discord notification3
+      - name: Discord notification1-3
+        uses: Ilshidur/action-discord@master
+        with:
+            args: ${{ env.TWEET_TEXT_3 }}
+
+      # DISCORD_WEBHOOKにURIを代入
+      - name: Set env DISCORD_WEBHOOK 2
+        run: echo -e ::set-env name=DISCORD_WEBHOOK::${{ secrets.DISCORD_WEBHOOK_2 }}
+
+      # Discordで通知する
+      - name: Discord notification2-1
+        uses: Ilshidur/action-discord@master
+        with:
+            args: ${{ env.TWEET_TEXT_1 }}
+      - name: Discord notification2-2
+        uses: Ilshidur/action-discord@master
+        with:
+            args: ${{ env.TWEET_TEXT_2 }}
+      - name: Discord notification2-3
         uses: Ilshidur/action-discord@master
         with:
             args: ${{ env.TWEET_TEXT_3 }}
