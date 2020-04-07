@@ -184,15 +184,15 @@ IF TALENT:処女 && TFLAG:19
 	SIF TEQUIP:28
 		TFLAG:39 = 1
 	;貞操観念+恋慕or親愛（主人による処女喪失のみ）
-	IF TALENT:30 && TFLAG:19 && (TALENT:恋慕 == 0 && TALENT:6 == 0)
+	IF TALENT:貞操観念 && TFLAG:19 && (TALENT:恋慕 == 0 && TALENT:親愛 == 0)
 		TIMES SOURCE:4 , 1.20
 		TIMES SOURCE:18 , 0.50
 	;貞操観念
-	ELSEIF TALENT:30
+	ELSEIF TALENT:貞操観念
 		TIMES SOURCE:4 , 0.60
 		TIMES SOURCE:18 , 10.00
 	;貞操無頓着
-	ELSEIF TALENT:31
+	ELSEIF TALENT:貞操無頓着
 		TIMES SOURCE:4 , 0.60
 		TIMES SOURCE:18 , 0.50
 	ENDIF
@@ -227,7 +227,7 @@ IF TALENT:処女 && TFLAG:19
 			TIMES SOURCE:4 , 2.00
 			TIMES SOURCE:18 , 0.30
 		;親愛かつ相手が主人
-		ELSEIF TALENT:6 && TFLAG:20
+		ELSEIF TALENT:親愛 && TFLAG:20
 			PRINTFORML %CALLNAME:TARGET%は%CALLNAME:MASTER%が初めての相手である事にこの上ない幸せを感じているようだ……
 			TFLAG:150 = 2
 			TIMES SOURCE:4 , 2.00
@@ -711,7 +711,7 @@ SIF (C && B && V) || (C && B && A) || (C && V && A) || (V && A && B)
 SIF C && V && A && B
 	L = 4
 ;自制心があると１下がる
-SIF TALENT:20
+SIF TALENT:自制心
 	L -= 1
 
 IF ABL:1 < L
@@ -786,21 +786,21 @@ RETURN 1
 ;調教対象の射精チェック
 ;-------------------------------------------------
 @TARGET_EJAC_CHECK
-SIF TALENT:139 == 0 && TALENT:オトコ == 0
+SIF TALENT:ふたなり == 0 && TALENT:オトコ == 0
 	RETURN 0
 
 A = UP:0 + UP:1 + UP:2 + UP:3
 
 ;自制心
-SIF TALENT:20
+SIF TALENT:自制心
 	A /= 2
 
 ;快感に素直
-SIF TALENT:70
+SIF TALENT:快感に素直
 	TIMES A , 1.20
 
 ;快感の否定（淫乱、娼婦で無効）
-SIF TALENT:71 && (TALENT:淫乱 == 0 && TALENT:娼婦 == 0)
+SIF TALENT:快感の否定 && (TALENT:淫乱 == 0 && TALENT:娼婦 == 0)
 	TIMES A , 0.80
 
 ;媚薬
@@ -957,25 +957,25 @@ SIF E > 0
 ;調教対象の噴乳チェック
 ;-------------------------------------------------
 @TARGET_MILK_CHECK
-SIF TALENT:149 == 0
+SIF TALENT:母乳体質 == 0
 	RETURN 0
 
 A = UP:0 / 5 + UP:1 / 5 + UP:2 / 5 + UP:3 * 3
 
 ;自制心
-SIF TALENT:20
+SIF TALENT:自制心
 	A /= 2
 
 ;快感に素直
-SIF TALENT:70
+SIF TALENT:快感に素直
 	TIMES A , 1.20
 
 ;快感の否定（淫乱、娼婦で無効）
-SIF TALENT:71 && (TALENT:淫乱 == 0 && TALENT:娼婦 == 0)
+SIF TALENT:快感の否定 && (TALENT:淫乱 == 0 && TALENT:娼婦 == 0)
 	TIMES A , 0.80
 
 ;B敏感
-SIF TALENT:107
+SIF TALENT:Ｂ鈍感
 	TIMES A , 1.20
 
 ;媚薬
@@ -987,15 +987,15 @@ SIF TEQUIP:27
 	A /= 2
 
 ;調教者が幼児退行
-SIF TALENT:PLAYER:150
+SIF TALENT:PLAYER:幼児／幼児退行
 	TIMES A , 1.20
 
 ;調教者が幼稚
-SIF TALENT:PLAYER:151
+SIF TALENT:PLAYER:幼稚
 	TIMES A , 1.20
 
 ;貧乳
-SIF TALENT:109
+SIF TALENT:貧乳
 	TIMES A , 0.50
 
 ;噴乳中毒のレベルを見る
@@ -1369,7 +1369,7 @@ IF TALENT:オトコ == 0 && TALENT:PLAYER:オトコ == 0
 	ENDIF
 
 	;調教者の自制心
-	IF TALENT:PLAYER:20
+	IF TALENT:PLAYER:自制心
 		TIMES SOURCE:5 , 0.50
 		TIMES SOURCE:6 , 0.50
 	ENDIF
@@ -1604,7 +1604,7 @@ IF TALENT:オトコ && TALENT:PLAYER:オトコ
 	ENDIF
 
 	;調教者の自制心
-	IF TALENT:PLAYER:20
+	IF TALENT:PLAYER:自制心
 		TIMES SOURCE:5 , 0.50
 		TIMES SOURCE:6 , 0.50
 	ENDIF
@@ -1614,7 +1614,7 @@ ENDIF
 
 @PLAYER_SKILL_CHECK
 ;調教者のTALENT:解放をみる
-IF TALENT:PLAYER:33
+IF TALENT:PLAYER:解放
 	TIMES SOURCE:0 , 1.20
 	TIMES SOURCE:1 , 1.20
 	TIMES SOURCE:2 , 1.20
@@ -1622,19 +1622,19 @@ IF TALENT:PLAYER:33
 	TIMES SOURCE:4 , 1.20
 ENDIF
 ;調教者のTALENT:両刀をみる
-IF TALENT:PLAYER:81
+IF TALENT:PLAYER:両刀
 	TIMES SOURCE:4 , 1.20
 	TIMES SOURCE:5 , 1.20
 	TIMES SOURCE:6 , 1.20
 ENDIF
 ;調教者のTALENT:サドをみる
-SIF TALENT:PLAYER:83
+SIF TALENT:PLAYER:サド
 	TIMES SOURCE:8 , 1.50
 ;調教者のTALENT:小悪魔をみる
-SIF TALENT:PLAYER:87
+SIF TALENT:PLAYER:小悪魔
 	TIMES SOURCE:13 , 1.50
 ;調教者のTALENT:魅惑をみる
-IF TALENT:PLAYER:93
+IF TALENT:PLAYER:魅惑
 	TIMES SOURCE:15 , 0.50
 	TIMES SOURCE:17 , 0.50
 
@@ -1645,7 +1645,7 @@ IF TALENT:PLAYER:93
 	TIMES SOURCE:5 , 1.20
 ENDIF
 ;調教者のTALENT:謎の魅力をみる
-IF TALENT:PLAYER:94
+IF TALENT:PLAYER:謎の魅力
 	TIMES SOURCE:15 , 0.50
 	TIMES SOURCE:17 , 0.50
 
@@ -1664,41 +1664,41 @@ ENDIF
 SIF TFLAG:29 == 0
 	RETURN 0
 
-IF TFLAG:29 >= 7 && TEQUIP:27 && TALENT:57
+IF TFLAG:29 >= 7 && TEQUIP:27 && TALENT:おもらし癖
 	PRINTFORML %EXPNAME:31%＋５
 	EXP:31 += 5
 ELSEIF TFLAG:29 >= 7 && TEQUIP:27
 	PRINTFORML %EXPNAME:31%＋４
 	EXP:31 += 4
-ELSEIF TFLAG:29 >= 7 && TALENT:57
+ELSEIF TFLAG:29 >= 7 && TALENT:おもらし癖
 	PRINTFORML %EXPNAME:31%＋３
 	EXP:31 += 3
-ELSEIF P >= 5 && TEQUIP:27 && TALENT:57
+ELSEIF P >= 5 && TEQUIP:27 && TALENT:おもらし癖
 	PRINTFORML %EXPNAME:31%＋４
 	EXP:31 += 4
 ELSEIF TFLAG:29 >= 5 && TEQUIP:27
 	PRINTFORML %EXPNAME:31%＋３
 	EXP:31 += 3
-ELSEIF TFLAG:29 >= 5 && TALENT:57
+ELSEIF TFLAG:29 >= 5 && TALENT:おもらし癖
 	PRINTFORML %EXPNAME:31%＋２
 	EXP:31 += 2
-ELSEIF TFLAG:29 >= 3 && TEQUIP:27 && TALENT:57
+ELSEIF TFLAG:29 >= 3 && TEQUIP:27 && TALENT:おもらし癖
 	PRINTFORML %EXPNAME:31%＋３
 	EXP:31 += 3
 ELSEIF TFLAG:29 >= 3 && TEQUIP:27
 	PRINTFORML %EXPNAME:31%＋２
 	EXP:31 += 2
-ELSEIF TFLAG:29 >= 3 && TALENT:57
+ELSEIF TFLAG:29 >= 3 && TALENT:おもらし癖
 	PRINTFORML %EXPNAME:31%＋１
 	EXP:31 += 1
-ELSEIF TFLAG:29 >= 1 && TEQUIP:27 && TALENT:57
+ELSEIF TFLAG:29 >= 1 && TEQUIP:27 && TALENT:おもらし癖
 	PRINTFORML %EXPNAME:31%＋２
 	EXP:31 += 2
 ELSEIF TFLAG:29 >= 1 && TEQUIP:27
 	PRINTFORML %EXPNAME:31%＋１
 	EXP:31 += 1
 ENDIF
-SIF TEQUIP:27 && (TFLAG:29 >= 3 || TALENT:57)
+SIF TEQUIP:27 && (TFLAG:29 >= 3 || TALENT:おもらし癖)
 	TEQUIP:27 = 0
 
 ;-------------------------------------------------
@@ -1713,13 +1713,13 @@ IF UP:10 >= 2000 && UP:10 < 4000 && MARK:0 <= 0
 ELSEIF UP:10 >= 4000 && UP:10 < 8000 && MARK:0 <= 1
 	TFLAG:22 = 2
 	;気丈・感情乏しいの場合は苦痛刻印による従順アップはなし
-	IF ABL:0 == 0 && TALENT:12 == 0 && TALENT:22 == 0
+	IF ABL:0 == 0 && TALENT:気丈 == 0 && TALENT:感情乏しい == 0
 		TFLAG:25 = 1
 	ENDIF
 ELSEIF UP:10 >= 8000 && MARK:0 <= 2
 	TFLAG:22 = 3
 	;気丈・感情乏しいの場合は苦痛刻印による従順アップはなし
-	IF ABL:0 == 0 && TALENT:12 == 0 && TALENT:22 == 0
+	IF ABL:0 == 0 && TALENT:気丈 == 0 && TALENT:感情乏しい == 0
 		TFLAG:25 = 1
 	ENDIF
 ENDIF
@@ -1735,7 +1735,7 @@ ELSEIF TFLAG:200 == 2 && MARK:1 <= 1
 ELSEIF TFLAG:200 == 3 && MARK:1 <= 2
 	TFLAG:23 = 3
 	;自制心・感情乏しいの場合は快楽刻印による従順アップはなし
-	IF ABL:0 == 0 && TALENT:20 == 0 && TALENT:22 == 0
+	IF ABL:0 == 0 && TALENT:自制心 == 0 && TALENT:感情乏しい == 0
 		TFLAG:25 = 1
 	ENDIF
 ENDIF
@@ -1751,13 +1751,13 @@ IF A >= 1000 && A < 2400 && MARK:1 > MARK:2 && MARK:2 <= 0
 ELSEIF A >= 2400 && A < 6000 && MARK:1 > MARK:2 && MARK:2 <= 1
 	TFLAG:24 = 12
 	;感情乏しいの場合は屈服刻印による従順アップはなし
-	IF ABL:0 == 0 && TALENT:22 == 0
+	IF ABL:0 == 0 && TALENT:感情乏しい == 0
 		TFLAG:25 = 1
 	ENDIF
 ELSEIF A >= 6000 && MARK:1 > MARK:2 && MARK:2 <= 2
 	TFLAG:24 = 13
 	;感情乏しいの場合は屈服刻印による従順アップはなし
-	IF ABL:0 <= 1 && TALENT:22 == 0
+	IF ABL:0 <= 1 && TALENT:感情乏しい == 0
 		TFLAG:25 = 1
 	ENDIF
 ENDIF
@@ -1771,13 +1771,13 @@ IF A >= 1000 && A < 2400 && MARK:2 <= 0
 ELSEIF A >= 2400 && A < 6000 && MARK:2 <= 1
 	TFLAG:24 = 22
 	;感情乏しいの場合は屈服刻印による従順アップはなし
-	IF ABL:0 == 0 && TALENT:22 == 0
+	IF ABL:0 == 0 && TALENT:感情乏しい == 0
 		TFLAG:25 = 1
 	ENDIF
 ELSEIF A >= 6000 && MARK:2 <= 2
 	TFLAG:24 = 23
 	;感情乏しいの場合は屈服刻印による従順アップはなし
-	IF ABL:0 <= 1 && TALENT:22 == 0
+	IF ABL:0 <= 1 && TALENT:感情乏しい == 0
 		TFLAG:25 = 1
 	ENDIF
 ENDIF
@@ -1791,13 +1791,13 @@ IF A >= 1000 && A < 2400 && MARK:2 <= 0
 ELSEIF A >= 2400 && A < 6000 && MARK:2 <= 1
 	TFLAG:24 = 32
 	;感情乏しいの場合は屈服刻印による従順アップはなし
-	IF ABL:0 == 0 && TALENT:22 == 0
+	IF ABL:0 == 0 && TALENT:感情乏しい == 0
 		TFLAG:25 = 1
 	ENDIF
 ELSEIF A >= 6000 && MARK:2 <= 2
 	TFLAG:24 = 33
 	;感情乏しいの場合は屈服刻印による従順アップはなし
-	IF ABL:0 <= 1 && TALENT:22 == 0
+	IF ABL:0 <= 1 && TALENT:感情乏しい == 0
 		TFLAG:25 = 1
 	ENDIF
 ENDIF
@@ -1811,17 +1811,17 @@ IF A >= 500 && A < 1200 && MARK:4 <= 0 && TFLAG:150 == 0
 ELSEIF A >= 1200 && A < 3000 && MARK:4 <= 1 && TFLAG:150 == 0
 	TFLAG:21 = 2
 	;感情乏しいの場合は反発刻印による従順ダウンはなし
-	IF ABL:0 == 1 && TALENT:22 == 0
+	IF ABL:0 == 1 && TALENT:感情乏しい == 0
 		TFLAG:25 = 1
-	ELSEIF ABL:0 == 2 && TALENT:22 == 0
+	ELSEIF ABL:0 == 2 && TALENT:感情乏しい == 0
 		TFLAG:25 = 2
 	ENDIF
 ELSEIF A >= 3000 && MARK:4 <= 2 && TFLAG:150 == 0
 	TFLAG:21 = 3
 	;感情乏しいの場合は反発刻印による従順ダウンはなし
-	IF ABL:0 > 0 && ABL:0 <= 2 && TALENT:22 == 0
+	IF ABL:0 > 0 && ABL:0 <= 2 && TALENT:感情乏しい == 0
 		TFLAG:25 = 1
-	ELSEIF ABL:0 == 3 && TALENT:22 == 0
+	ELSEIF ABL:0 == 3 && TALENT:感情乏しい == 0
 		TFLAG:25 = 2
 	ENDIF
 ENDIF
@@ -1854,11 +1854,11 @@ ELSEIF TFLAG:22 == 3
 		PRINTL そして従順がLV1になった
 		ABL:0 = 1
 	ENDIF
-	IF TALENT:PLAYER:83
+	IF TALENT:PLAYER:サド
 		PRINTFORML 【%CALLNAME:PLAYER%がサド】
 		PRINTFORMW %EXPNAME:50%＋２
 		EXP:50 += 2
-	ELSEIF TALENT:PLAYER:53 && SELECTCOM == 104
+	ELSEIF TALENT:PLAYER:針さばき && SELECTCOM == 104
 		PRINTFORML 【%CALLNAME:PLAYER%が針さばき】
 		PRINTFORMW %EXPNAME:50%＋２
 		EXP:50 += 2
@@ -2000,12 +2000,12 @@ ENDIF
 ;従順の上昇による[抵抗]の消滅をチェック
 ;-------------------------------------------------
 @JUJUN_UP_CHECK
-IF ABL:0 >= 3 && TALENT:34
+IF ABL:0 >= 3 && TALENT:抵抗
 	PRINTS NAME:TARGET
 	PRINT は[
 	PRINTS TALENTNAME:34
 	PRINTL ]を失った
-	TALENT:34 = 0
+	TALENT:抵抗 = 0
 	PRINTL 否定の珠が半分になった
 	JUEL:100 /= 2
 ENDIF
@@ -2014,12 +2014,12 @@ ENDIF
 ;欲望の上昇による[抑圧]の消滅をチェック
 ;-------------------------------------------------
 @YOKUBO_UP_CHECK
-IF ABL:1 >= 3 && TALENT:32
+IF ABL:1 >= 3 && TALENT:抑圧
 	PRINTS NAME:TARGET
 	PRINT は[
 	PRINTS TALENTNAME:32
 	PRINTL ]を失った
-	TALENT:32 = 0
+	TALENT:抑圧 = 0
 	PRINTL 否定の珠が半分になった
 	JUEL:100 /= 2
 ENDIF

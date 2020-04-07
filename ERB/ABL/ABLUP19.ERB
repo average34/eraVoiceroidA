@@ -3,7 +3,7 @@
 ;恋慕、親愛、淫乱、娼婦はMAXLV10
 IF ABL:19 >= 10
 	RETURN 0
-ELSEIF ABL:19 >= 5 && TALENT:恋慕 == 0 && TALENT:6 == 0 && TALENT:淫乱 == 0 && TALENT:娼婦 == 0
+ELSEIF ABL:19 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:淫乱 == 0 && TALENT:娼婦 == 0
 	RETURN 0
 ENDIF
 
@@ -23,7 +23,7 @@ DRAWLINE
 IF ABL:19 >= 10
 	PRINTW 既にMAXです
 	RETURN 0
-ELSEIF ABL:19 >= 5 && TALENT:恋慕 == 0 && TALENT:6 == 0 && TALENT:淫乱 == 0 && TALENT:娼婦 == 0
+ELSEIF ABL:19 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:淫乱 == 0 && TALENT:娼婦 == 0
 	PRINTW 既にMAXです
 	RETURN 0
 ENDIF
@@ -32,19 +32,19 @@ CALL DECIDE_ABLUP19
 
 
 ;ＬＶ２から３に上げるときは異常経験必要（素質：[中毒しやすい][淫乳]なら無視できる）
-IF ABL:19 == 2 && TALENT:72 == 0 && TALENT:77 == 0
+IF ABL:19 == 2 && TALENT:中毒しやすい == 0 && TALENT:淫乳 == 0
 	PRINTS EXPNAME:50
 	PRINTL あり、かつ
 ;ＬＶ３から４に上げるときは異常経験2以上必要（素質：[中毒しやすい][淫乳]なら無視できる）
-ELSEIF ABL:19 == 3 && TALENT:72 == 0 && TALENT:77 == 0
+ELSEIF ABL:19 == 3 && TALENT:中毒しやすい == 0 && TALENT:淫乳 == 0
 	PRINTS EXPNAME:50
 	PRINTL 2以上、かつ
 ;ＬＶ４から５に上げるときは異常経験3以上必要（素質：[中毒しやすい][淫乳]なら無視できる）
-ELSEIF ABL:19 == 4 && TALENT:72 == 0 && TALENT:77 == 0
+ELSEIF ABL:19 == 4 && TALENT:中毒しやすい == 0 && TALENT:淫乳 == 0
 	PRINTS EXPNAME:50
 	PRINTL 3以上、かつ
 ;ＬＶ８から９に上げるときは異常経験7以上必要（素質：[中毒しやすい][淫乳]なら無視できる）
-ELSEIF ABL:19 == 8 && TALENT:72 == 0 && TALENT:77 == 0
+ELSEIF ABL:19 == 8 && TALENT:中毒しやすい == 0 && TALENT:淫乳 == 0
 	PRINTS EXPNAME:50
 	PRINTL 7以上、かつ
 ENDIF
@@ -177,59 +177,59 @@ ELSEIF ABL:19 == 9
 ENDIF
 
 ;一線越えない
-IF TALENT:27 && (TALENT:恋慕 == 0 && TALENT:淫乱 == 0 && TALENT:服従 == 0 && TALENT:6 == 0 && TALENT:娼婦 == 0 && TALENT:隷属 == 0)
+IF TALENT:一線越えない && (TALENT:恋慕 == 0 && TALENT:淫乱 == 0 && TALENT:服従 == 0 && TALENT:親愛 == 0 && TALENT:娼婦 == 0 && TALENT:隷属 == 0)
 	TIMES A , 2.00
 	TIMES B , 2.00
 	TIMES C , 2.00
 	TIMES D , 2.00
 ENDIF
 ;中毒しやすい
-IF TALENT:72
+IF TALENT:中毒しやすい
 	TIMES A , 0.50
 	TIMES B , 0.50
 	TIMES C , 0.50
 	TIMES D , 0.50
 ENDIF
 ;貧乳
-IF TALENT:109
+IF TALENT:貧乳
 	TIMES B , 0.90
 ENDIF
 ;絶壁
-IF TALENT:110
+IF TALENT:絶壁
 	TIMES B , 0.70
 ENDIF
 ;巨乳
-IF TALENT:111
+IF TALENT:巨乳
 	TIMES B , 1.10
 ENDIF
 ;爆乳
-IF TALENT:112
+IF TALENT:爆乳
 	TIMES B , 1.30
 ENDIF
 
 ;ＬＶ２から３に上げるときは異常経験必要（素質：[中毒しやすい][淫乳]なら無視できる）
-IF ABL:19 == 2 && TALENT:72 == 0 && TALENT:77 == 0
+IF ABL:19 == 2 && TALENT:中毒しやすい == 0 && TALENT:淫乳 == 0
 	IF EXP:50 == 0
 		;異常経験が不足
 		I |= 2
 		J |= 2
 	ENDIF
 ;ＬＶ３から４に上げるときは異常経験2以上必要（素質：[中毒しやすい][淫乳]なら無視できる）
-ELSEIF ABL:19 == 3 && TALENT:72 == 0 && TALENT:77 == 0
+ELSEIF ABL:19 == 3 && TALENT:中毒しやすい == 0 && TALENT:淫乳 == 0
 	IF EXP:50 < 2
 		;異常経験が不足
 		I |= 2
 		J |= 2
 	ENDIF
 ;ＬＶ４から５に上げるときは異常経験3以上必要（素質：[中毒しやすい][淫乳]なら無視できる）
-ELSEIF ABL:19 == 4 && TALENT:72 == 0 && TALENT:77 == 0
+ELSEIF ABL:19 == 4 && TALENT:中毒しやすい == 0 && TALENT:淫乳 == 0
 	IF EXP:50 < 3
 		;異常経験が不足
 		I |= 2
 		J |= 2
 	ENDIF
 ;ＬＶ８から９に上げるときは異常経験7以上必要（素質：[中毒しやすい][淫乳]なら無視できる）
-ELSEIF ABL:19 == 8 && TALENT:72 == 0 && TALENT:77 == 0
+ELSEIF ABL:19 == 8 && TALENT:中毒しやすい == 0 && TALENT:淫乳 == 0
 	IF EXP:50 < 7
 		;異常経験が不足
 		I |= 2

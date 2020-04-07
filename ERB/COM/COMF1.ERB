@@ -46,15 +46,15 @@ SOURCE:18 = 15
 ;特殊ソース処理
 ;-------------------------------------------------
 ;抑圧、抵抗持ちには、抑鬱ソース追加
-SIF TALENT:32 || TALENT:34
+SIF TALENT:抑圧 || TALENT:抵抗
 	SOURCE:16 += 20
 
 ;舌を使う調教では、調教者の舌使いによって、快感のソース増加
-SIF TALENT:PLAYER:52
+SIF TALENT:PLAYER:舌使い
 	TIMES SOURCE:0 , 1.50
 
 ;猫舌では減少
-SIF TALENT:PLAYER:54
+SIF TALENT:PLAYER:猫舌
 	TIMES SOURCE:0 , 0.75
 
 ;-------------------------------------------------
@@ -80,7 +80,7 @@ ELSEIF TALENT:オトコ && TALENT:PLAYER:オトコ
 ENDIF
 
 ;調教者が猫舌持ちの場合は、調教者に嗜虐快楽経験を追加
-IF TALENT:PLAYER:54
+IF TALENT:PLAYER:猫舌
 	EXP:PLAYER:32 += 1
 	PRINTFORML %CALLNAME:PLAYER%の%EXPNAME:32%＋１
 ENDIF

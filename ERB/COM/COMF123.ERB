@@ -26,7 +26,7 @@ SOURCE:18 = 350
 ;特殊ソース処理
 ;-------------------------------------------------
 ;抑圧、抵抗持ちには、抑鬱ソース追加
-SIF TALENT:32 || TALENT:34
+SIF TALENT:抑圧 || TALENT:抵抗
 	SOURCE:16 += 400
 
 ;苦痛を伴わないマゾっ気及びマゾの処理は先にしておく
@@ -89,7 +89,7 @@ ELSEIF ABL:9 >= 10
 ENDIF
 
 ;マゾを見る
-IF TALENT:84 == 1
+IF TALENT:マゾ == 1
 	TIMES SOURCE:6 , 2.50
 	TIMES SOURCE:14 , 2.50
 	TIMES SOURCE:10 , 1.20
@@ -97,7 +97,7 @@ IF TALENT:84 == 1
 ENDIF
 
 ;倒錯的
-SIF TALENT:80
+SIF TALENT:倒錯的
 	TIMES SOURCE:6 , 1.80
 
 ;-------------------------------------------------

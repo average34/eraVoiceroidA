@@ -40,7 +40,7 @@ SOURCE:18 = 150
 ;特殊ソース処理
 ;-------------------------------------------------
 ;抑圧、抵抗持ちには、抑鬱ソース追加
-SIF TALENT:32 || TALENT:34
+SIF TALENT:抑圧 || TALENT:抵抗
 	SOURCE:16 += 150
 
 ;処女、貞操観念
@@ -49,7 +49,7 @@ IF TALENT:処女
 	TIMES SOURCE:14 , 1.20
 	TIMES SOURCE:18 , 1.20
 	SOURCE:13 += 300
-	IF TALENT:30
+	IF TALENT:貞操観念
 		TIMES SOURCE:13 , 2.00
 		TIMES SOURCE:17 , 2.00
 	ENDIF
@@ -200,7 +200,7 @@ IF L
 ENDIF
 
 ;恥じらい
-IF TALENT:35
+IF TALENT:恥じらい
 	PRINT  - 
 	A -= 2
 	PRINTS TALENTNAME:35
@@ -208,7 +208,7 @@ IF TALENT:35
 	S = 1
 ENDIF
 ;快感の否定（淫乱、娼婦で無効）
-IF TALENT:71 && (TALENT:淫乱 == 0 && TALENT:娼婦 == 0)
+IF TALENT:快感の否定 && (TALENT:淫乱 == 0 && TALENT:娼婦 == 0)
 	PRINT  - 
 	A -= 5
 	PRINTS TALENTNAME:71
@@ -216,7 +216,7 @@ IF TALENT:71 && (TALENT:淫乱 == 0 && TALENT:娼婦 == 0)
 	S = 1
 ENDIF
 ;男嫌い（恋慕、親愛で無効）
-IF TALENT:82 && TALENT:PLAYER:オトコ && ((TALENT:恋慕 == 0 && TALENT:6 == 0) || PLAYER != MASTER)
+IF TALENT:男嫌い && TALENT:PLAYER:オトコ && ((TALENT:恋慕 == 0 && TALENT:親愛 == 0) || PLAYER != MASTER)
 	PRINT  - 
 	A -= 12
 	PRINTS TALENTNAME:82
@@ -241,7 +241,7 @@ ELSEIF EXP:0 < EXPLV:2
 ENDIF
 
 ;調教者がふたなり
-IF TALENT:PLAYER:139
+IF TALENT:PLAYER:ふたなり
 	PRINT  - 
 	A -= 4
 	PRINTS TALENTNAME:139

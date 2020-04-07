@@ -802,7 +802,7 @@ ENDIF
 ;ソースの計算
 ;-------------------------------------------------
 ;恋慕、親愛持ちで射精者が主人の場合は達成感のソースが増加する
-IF (TALENT:恋慕 || TALENT:6) && P == MASTER
+IF (TALENT:恋慕 || TALENT:親愛) && P == MASTER
 	SOURCE:6 += 1500
 ELSE
 	SOURCE:8 += 1500
@@ -810,7 +810,7 @@ ELSE
 ENDIF
 
 ;陥落素質が無い場合は反発増加
-SIF TALENT:恋慕 == 0 && TALENT:淫乱 == 0 && TALENT:服従 == 0 && TALENT:6 == 0 && TALENT:娼婦 == 0 && TALENT:隷属 == 0
+SIF TALENT:恋慕 == 0 && TALENT:淫乱 == 0 && TALENT:服従 == 0 && TALENT:親愛 == 0 && TALENT:娼婦 == 0 && TALENT:隷属 == 0
 	SOURCE:18 += 1000
 
 

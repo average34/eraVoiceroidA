@@ -22,7 +22,7 @@ SOURCE:17 = 100
 ;経験の処理
 ;-------------------------------------------------
 ;愛情経験
-IF (TALENT:恋慕 == 1 || TALENT:6 == 1) && ASSIPLAY == 0
+IF (TALENT:恋慕 == 1 || TALENT:親愛 == 1) && ASSIPLAY == 0
 	PRINTS EXPNAME:23
 	PRINTL +1
 	EXP:23 += 1
@@ -34,7 +34,7 @@ TFLAG:33 = 4
 ;依存度補正値(恋慕で1、親愛で2）
 IF TALENT:恋慕 && ASSIPLAY == 0
 	TFLAG:30 += 1
-ELSEIF TALENT:6 && ASSIPLAY == 0
+ELSEIF TALENT:親愛 && ASSIPLAY == 0
 	TFLAG:30 += 2
 ENDIF
 

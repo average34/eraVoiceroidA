@@ -26,17 +26,17 @@ SOURCE:18 = 200
 ;特殊ソース処理
 ;-------------------------------------------------
 ;抑圧、抵抗持ちには、抑鬱ソース追加
-SIF TALENT:32 || TALENT:34
+SIF TALENT:抑圧 || TALENT:抵抗
 	SOURCE:16 += 100
 
 ;調教者が［幼児退行］
-IF TALENT:PLAYER:150
+IF TALENT:PLAYER:幼児／幼児退行
 	TIMES SOURCE:3 , 1.20
 	TIMES SOURCE:5 , 1.20
 ENDIF
 
 ;調教者が［幼稚］
-IF TALENT:PLAYER:151
+IF TALENT:PLAYER:幼稚
 	TIMES SOURCE:3 , 1.20
 	TIMES SOURCE:5 , 1.20
 ENDIF

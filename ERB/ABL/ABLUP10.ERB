@@ -3,7 +3,7 @@
 ;恋慕、親愛、服従、隷属はMAXLV10
 IF ABL:10 >= 10
 	RETURN 0
-ELSEIF ABL:10 >= 5 && TALENT:恋慕 == 0 && TALENT:6 == 0 && TALENT:服従 == 0 && TALENT:隷属 == 0
+ELSEIF ABL:10 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:服従 == 0 && TALENT:隷属 == 0
 	RETURN 0
 ENDIF
 
@@ -23,7 +23,7 @@ DRAWLINE
 IF ABL:10 >= 10
 	PRINTW 既にMAXです
 	RETURN 0
-ELSEIF ABL:10 >= 5 && TALENT:恋慕 == 0 && TALENT:6 == 0 && TALENT:服従 == 0 && TALENT:隷属 == 0
+ELSEIF ABL:10 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:服従 == 0 && TALENT:隷属 == 0
 	PRINTW 既にMAXです
 	RETURN 0
 ENDIF
@@ -36,15 +36,15 @@ PRINTV ABL:10+1
 PRINTL LV以上、かつ
 
 ;ＬＶ３から４、４から５に上げるときは異常経験必要（素質：[サド]なら無視できる）
-IF ABL:10 == 3 && TALENT:83 == 0
+IF ABL:10 == 3 && TALENT:サド == 0
 	PRINTS EXPNAME:50
 	PRINTL あり、かつ
 ;ＬＶ４から５に上げるときは異常経験3以上必要（素質：[サド]なら無視できる）
-ELSEIF ABL:10 == 4 && TALENT:83 == 0
+ELSEIF ABL:10 == 4 && TALENT:サド == 0
 	PRINTS EXPNAME:50
 	PRINTL 3以上、かつ
 ;ＬＶ８から９に上げるときは異常経験5以上必要（素質：[サド]なら無視できる）
-ELSEIF ABL:10 == 8 && TALENT:83 == 0
+ELSEIF ABL:10 == 8 && TALENT:サド == 0
 	PRINTS EXPNAME:50
 	PRINTL 5以上、かつ
 ENDIF
@@ -141,12 +141,12 @@ ELSEIF ABL:10 == 9
 ENDIF
 
 ;一線越えない
-IF TALENT:27 && (TALENT:恋慕 == 0 && TALENT:淫乱 == 0 && TALENT:服従 == 0 && TALENT:6 == 0 && TALENT:娼婦 == 0 && TALENT:隷属 == 0)
+IF TALENT:一線越えない && (TALENT:恋慕 == 0 && TALENT:淫乱 == 0 && TALENT:服従 == 0 && TALENT:親愛 == 0 && TALENT:娼婦 == 0 && TALENT:隷属 == 0)
 	TIMES A , 2.00
 	TIMES B , 2.00
 ENDIF
 ;サド
-IF TALENT:83
+IF TALENT:サド
 	TIMES A , 0.50
 	TIMES B , 0.50
 ENDIF
@@ -158,19 +158,19 @@ IF ABL:1 < ABL:10+1
 ENDIF
 
 ;ＬＶ３から４、４から５に上げるときは異常経験必要（素質：[サド]なら無視できる）
-IF ABL:10 == 3 && TALENT:83 == 0
+IF ABL:10 == 3 && TALENT:サド == 0
 	IF EXP:50 == 0
 		;異常経験が不足
 		I |= 2
 	ENDIF
 ;ＬＶ４から５に上げるときは異常経験3以上必要（素質：[サド]なら無視できる）
-ELSEIF ABL:10 == 4 && TALENT:83 == 0
+ELSEIF ABL:10 == 4 && TALENT:サド == 0
 	IF EXP:50 < 3
 		;異常経験が不足
 		I |= 2
 	ENDIF
 ;ＬＶ８から９に上げるときは異常経験5以上必要（素質：[サド]なら無視できる）
-ELSEIF ABL:10 == 8 && TALENT:83 == 0
+ELSEIF ABL:10 == 8 && TALENT:サド == 0
 	IF EXP:50 < 5
 		;異常経験が不足
 		I |= 2

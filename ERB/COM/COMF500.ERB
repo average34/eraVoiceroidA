@@ -61,7 +61,7 @@ ENDIF
 SIF TFLAG:40 == 1 || TFLAG:41 == 1
 	TFLAG:19 = 1
 
-SIF (TALENT:恋慕 || TALENT:6) && ASSIPLAY == 0 && EXP:0 == 0 && TFLAG:40 == 1
+SIF (TALENT:恋慕 || TALENT:親愛) && ASSIPLAY == 0 && EXP:0 == 0 && TFLAG:40 == 1
 	TFLAG:20 = 1
 
 ;-------------------------------------------------
@@ -149,7 +149,7 @@ ENDIF
 SIF EXP:0 < EXPLV:1
 	TIMES B , 1.50
 
-SIF TALENT:MASTER:137 || TALENT:MASTER:139 || TALENT:MASTER:オトコ
+SIF TALENT:MASTER:半人半妖 || TALENT:MASTER:ふたなり || TALENT:MASTER:オトコ
 	BASE:MASTER:2 += B
 
 ;-------------------------------------------------
@@ -232,7 +232,7 @@ ELSE
 	TIMES B , 5.00
 ENDIF
 
-SIF TALENT:MASTER:137 || TALENT:MASTER:139 || TALENT:MASTER:オトコ
+SIF TALENT:MASTER:半人半妖 || TALENT:MASTER:ふたなり || TALENT:MASTER:オトコ
 	BASE:ASSI:2 += B
 
 
@@ -274,11 +274,11 @@ ENDIF
 ;特殊ソース処理
 ;-------------------------------------------------
 ;抑圧、抵抗持ちには、抑鬱ソース追加
-SIF TALENT:32 || TALENT:34
+SIF TALENT:抑圧 || TALENT:抵抗
 	SOURCE:16 += 500
 
 ;貞操観念持ちで恋慕、親愛持ち以外には常に反発のソースを追加する（セックス系のみ）
-SIF TALENT:30 && (TALENT:恋慕 == 0 && TALENT:6 == 0)
+SIF TALENT:貞操観念 && (TALENT:恋慕 == 0 && TALENT:親愛 == 0)
 	SOURCE:18 += 1000
 
 ;Vに挿入している場合
@@ -436,19 +436,19 @@ IF TFLAG:40 == 1
 	SIF TALENT:処女 == 1 || TALENT:再生処女 == 1
 		STAIN:6 |= 64
 	;奴隷の膣内⇔主人のＰの汚れが移動
-	IF TALENT:MASTER:137 || TALENT:MASTER:139 || TALENT:MASTER:オトコ
+	IF TALENT:MASTER:半人半妖 || TALENT:MASTER:ふたなり || TALENT:MASTER:オトコ
 		STAIN:6 |= STAIN:MASTER:2
 		STAIN:MASTER:2 |= STAIN:6
 	ENDIF
 ELSEIF TFLAG:40 == 2
 	;奴隷のＡ⇔主人のＰの汚れが移動
-	IF TALENT:MASTER:137 || TALENT:MASTER:139 || TALENT:MASTER:オトコ
+	IF TALENT:MASTER:半人半妖 || TALENT:MASTER:ふたなり || TALENT:MASTER:オトコ
 		STAIN:4 |= STAIN:MASTER:2
 		STAIN:MASTER:2 |= STAIN:4
 	ENDIF
 ELSEIF TFLAG:40 == 3
 	;奴隷の口⇔主人のＰの汚れが移動
-	IF TALENT:MASTER:137 || TALENT:MASTER:139 || TALENT:MASTER:オトコ
+	IF TALENT:MASTER:半人半妖 || TALENT:MASTER:ふたなり || TALENT:MASTER:オトコ
 		STAIN:0 |= STAIN:MASTER:2
 		STAIN:MASTER:2 |= STAIN:0
 	ENDIF
@@ -459,19 +459,19 @@ IF TFLAG:41 == 1
 	SIF TALENT:処女 == 1 || TALENT:再生処女 == 1
 		STAIN:6 |= 64
 	;奴隷の膣内⇔助手のＰの汚れが移動
-	IF TALENT:ASSI:139 || TALENT:ASSI:オトコ
+	IF TALENT:ASSI:ふたなり || TALENT:ASSI:オトコ
 		STAIN:6 |= STAIN:ASSI:2
 		STAIN:ASSI:2 |= STAIN:6
 	ENDIF
 ELSEIF TFLAG:41 == 2
 	;奴隷のＡ⇔助手のＰの汚れが移動
-	IF TALENT:ASSI:139 || TALENT:ASSI:オトコ
+	IF TALENT:ASSI:ふたなり || TALENT:ASSI:オトコ
 		STAIN:4 |= STAIN:ASSI:2
 		STAIN:ASSI:2 |= STAIN:4
 	ENDIF
 ELSEIF TFLAG:41 == 3
 	;奴隷の口⇔助手のＰの汚れが移動
-	IF TALENT:ASSI:139 || TALENT:ASSI:オトコ
+	IF TALENT:ASSI:ふたなり || TALENT:ASSI:オトコ
 		STAIN:0 |= STAIN:ASSI:2
 		STAIN:ASSI:2 |= STAIN:0
 	ENDIF
@@ -563,7 +563,7 @@ TFLAG:33 = 1
 ;依存度補正値(主人かつ恋慕で1、親愛で2）
 IF TALENT:恋慕 && ASSIPLAY == 0
 	TFLAG:30 += 1
-ELSEIF TALENT:6 && ASSIPLAY == 0
+ELSEIF TALENT:親愛 && ASSIPLAY == 0
 	TFLAG:30 += 2
 ENDIF
 

@@ -91,7 +91,7 @@ SIF CFLAG:PLAYER:24 > 0
 	B /= 20
 
 
-SIF TALENT:PLAYER:137 || TALENT:PLAYER:139 || TALENT:PLAYER:オトコ
+SIF TALENT:PLAYER:半人半妖 || TALENT:PLAYER:ふたなり || TALENT:PLAYER:オトコ
 	BASE:PLAYER:2 += B
 
 ;-------------------------------------------------
@@ -114,7 +114,7 @@ SOURCE:15 = Y*10 + 50
 ;特殊ソース処理
 ;-------------------------------------------------
 ;抑圧、抵抗持ちには、抑鬱ソース追加
-SIF TALENT:32 || TALENT:34
+SIF TALENT:抑圧 || TALENT:抵抗
 	SOURCE:16 += 600
 
 ;-------------------------------------------------
@@ -154,7 +154,7 @@ TFLAG:33 = 1
 ;依存度補正値(主人かつ恋慕、淫乱、服従で1。親愛、娼婦、隷属で2）
 IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従) && ASSIPLAY == 0
 	TFLAG:30 += 1
-ELSEIF (TALENT:6 || TALENT:娼婦 || TALENT:隷属) && ASSIPLAY == 0
+ELSEIF (TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && ASSIPLAY == 0
 	TFLAG:30 += 2
 ENDIF
 
@@ -235,7 +235,7 @@ IF L
 ENDIF
 
 ;'恥じらい
-IF TALENT:35
+IF TALENT:恥じらい
 	PRINT  - 
 	A -= 3
 	PRINTS TALENTNAME:35
@@ -243,7 +243,7 @@ IF TALENT:35
 	S = 1
 ENDIF
 ;汚臭鈍感
-IF TALENT:61
+IF TALENT:汚臭鈍感
 	SIF S
 		PRINT  + 
 	A += 1
@@ -252,7 +252,7 @@ IF TALENT:61
 	S = 1
 ENDIF
 ;汚臭敏感
-IF TALENT:62
+IF TALENT:汚臭敏感
 	PRINT  - 
 	A -= 1
 	PRINTS TALENTNAME:62
@@ -260,7 +260,7 @@ IF TALENT:62
 	S = 1
 ENDIF
 ;献身的
-IF TALENT:63
+IF TALENT:献身的
 	SIF S
 		PRINT  + 
 	A += 6
@@ -269,7 +269,7 @@ IF TALENT:63
 	S = 1
 ENDIF
 ;快感の否定（淫乱、娼婦で無効）
-IF TALENT:71 && (TALENT:淫乱 == 0 && TALENT:娼婦 == 0)
+IF TALENT:快感の否定 && (TALENT:淫乱 == 0 && TALENT:娼婦 == 0)
 	PRINT  - 
 	A -= 3
 	PRINTS TALENTNAME:71
@@ -277,7 +277,7 @@ IF TALENT:71 && (TALENT:淫乱 == 0 && TALENT:娼婦 == 0)
 	S = 3
 ENDIF
 ;男嫌い（恋慕、親愛で無効）
-IF TALENT:82 && TALENT:PLAYER:オトコ && ((TALENT:恋慕 == 0 && TALENT:6 == 0) || PLAYER != MASTER)
+IF TALENT:男嫌い && TALENT:PLAYER:オトコ && ((TALENT:恋慕 == 0 && TALENT:親愛 == 0) || PLAYER != MASTER)
 	PRINT  - 
 	A -= 8
 	PRINTS TALENTNAME:82
@@ -294,7 +294,7 @@ IF TALENT:恋慕 && ASSIPLAY == 0
 	S = 5
 ENDIF
 ;親愛
-IF TALENT:6 && ASSIPLAY == 0
+IF TALENT:親愛 && ASSIPLAY == 0
 	SIF S
 		PRINT  + 
 	A += 10
@@ -304,7 +304,7 @@ IF TALENT:6 && ASSIPLAY == 0
 ENDIF
 
 ;倒錯的
-IF TALENT:80
+IF TALENT:倒錯的
 	SIF S
 		PRINT  + 
 	A += 4
@@ -313,7 +313,7 @@ IF TALENT:80
 	S = 4
 ENDIF
 ;サド
-IF TALENT:83
+IF TALENT:サド
 	SIF S
 		PRINT  + 
 	A += 4
@@ -322,7 +322,7 @@ IF TALENT:83
 	S = 4
 ENDIF
 ;小悪魔
-IF TALENT:87
+IF TALENT:小悪魔
 	SIF S
 		PRINT  + 
 	A += 4
@@ -332,7 +332,7 @@ IF TALENT:87
 ENDIF
 
 ;調教者がふたなり
-IF TALENT:PLAYER:139
+IF TALENT:PLAYER:ふたなり
 	SIF S
 		PRINT  + 
 	A += 8
@@ -354,9 +354,9 @@ SIF STAIN:PLAYER:2 & 8
 SIF STAIN:PLAYER:2 & 16
 	Y += 15
 
-SIF TALENT:61
+SIF TALENT:汚臭鈍感
 	Y /= 3
-SIF TALENT:62
+SIF TALENT:汚臭敏感
 	Y *= 2
 
 ;足扱きでは汚れがそれほど影響しない
@@ -367,10 +367,10 @@ IF Y
 	PRINT  - 
 	A -= Y
 	;汚臭鈍感
-	IF TALENT:61
+	IF TALENT:汚臭鈍感
 		PRINT 汚れあり、
 		PRINTS TALENTNAME:61
-	ELSEIF TALENT:62
+	ELSEIF TALENT:汚臭敏感
 		PRINT 汚れあり、
 		PRINTS TALENTNAME:62
 	ELSE

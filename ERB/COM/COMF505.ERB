@@ -27,7 +27,7 @@ IF PREVCOM == 66 || SELECTCOM == 66
 	TFLAG:40 = 1
 	;V経験を伴うコマンドのフラグ(処女膜再生対応)
 	TFLAG:19 = 1
-	SIF (TALENT:恋慕 || TALENT:6) && ASSIPLAY == 0 && EXP:0 == 0
+	SIF (TALENT:恋慕 || TALENT:親愛) && ASSIPLAY == 0 && EXP:0 == 0
 		TFLAG:20 = 1
 ;騎乗位アナルからの派生の場合
 ELSEIF PREVCOM == 67 || SELECTCOM == 67
@@ -163,7 +163,7 @@ SIF CFLAG:PLAYER:24 > 0
 	B /= 20
 
 
-SIF TALENT:PLAYER:137 || TALENT:PLAYER:139 || TALENT:PLAYER:オトコ
+SIF TALENT:PLAYER:半人半妖 || TALENT:PLAYER:ふたなり || TALENT:PLAYER:オトコ
 	BASE:PLAYER:2 += B
 
 ;-------------------------------------------------
@@ -199,11 +199,11 @@ ENDIF
 ;特殊ソース処理
 ;-------------------------------------------------
 ;抑圧、抵抗持ちには、抑鬱ソース追加
-SIF TALENT:32 || TALENT:34
+SIF TALENT:抑圧 || TALENT:抵抗
 	SOURCE:16 += 900
 
 ;貞操観念持ちで恋慕、親愛持ち以外には常に反発のソースを追加する（セックス系のみ）
-SIF TALENT:30 && (TALENT:恋慕 == 0 && TALENT:6 == 0) && TFLAG:40 == 1
+SIF TALENT:貞操観念 && (TALENT:恋慕 == 0 && TALENT:親愛 == 0) && TFLAG:40 == 1
 	SOURCE:18 += 1000
 
 ;処女だった場合は、苦痛のソースと反発のソースを追加する
@@ -461,7 +461,7 @@ IF TALENT:恋慕 == 1 && ASSIPLAY == 0
 	PRINTS EXPNAME:23
 	PRINTL +2
 	EXP:23 += 2
-ELSEIF TALENT:6 == 1 && ASSIPLAY == 0
+ELSEIF TALENT:親愛 == 1 && ASSIPLAY == 0
 	PRINTS EXPNAME:23
 	PRINTL +4
 	EXP:23 += 4
@@ -479,7 +479,7 @@ ENDIF
 ;依存度補正値(恋慕で2、親愛で4）
 IF TALENT:恋慕 && ASSIPLAY == 0 && TFLAG:33 == 2
 	TFLAG:30 += 2
-ELSEIF TALENT:6 && ASSIPLAY == 0 && TFLAG:33 == 2
+ELSEIF TALENT:親愛 && ASSIPLAY == 0 && TFLAG:33 == 2
 	TFLAG:30 += 4
 ENDIF
 
@@ -594,7 +594,7 @@ IF L
 ENDIF
 ;'
 ;自制心
-IF TALENT:20
+IF TALENT:自制心
 	PRINT  - 
 	A -= 5
 	PRINTS TALENTNAME:20
@@ -602,7 +602,7 @@ IF TALENT:20
 	S = 1
 ENDIF
 ;恥じらい
-IF TALENT:35
+IF TALENT:恥じらい
 	PRINT  - 
 	A -= 5
 	PRINTS TALENTNAME:35
@@ -610,7 +610,7 @@ IF TALENT:35
 	S = 1
 ENDIF
 ;恥薄い
-IF TALENT:36
+IF TALENT:恥薄い
 	SIF S
 		PRINT  + 
 	A += 2
@@ -619,7 +619,7 @@ IF TALENT:36
 	S = 1
 ENDIF
 ;自慰しやすい
-IF TALENT:60
+IF TALENT:自慰しやすい
 	SIF S
 		PRINT  + 
 	A += 5
@@ -628,7 +628,7 @@ IF TALENT:60
 	S = 1
 ENDIF
 ;快感に素直
-IF TALENT:70
+IF TALENT:快感に素直
 	SIF S
 		PRINT  + 
 	A += 5
@@ -637,7 +637,7 @@ IF TALENT:70
 	S = 1
 ENDIF
 ;快感の否定（淫乱、娼婦で無効）
-IF TALENT:71 && (TALENT:淫乱 == 0 && TALENT:娼婦 == 0)
+IF TALENT:快感の否定 && (TALENT:淫乱 == 0 && TALENT:娼婦 == 0)
 	PRINT  - 
 	A -= 5
 	PRINTS TALENTNAME:71
@@ -645,7 +645,7 @@ IF TALENT:71 && (TALENT:淫乱 == 0 && TALENT:娼婦 == 0)
 	S = 1
 ENDIF
 ;男嫌い（恋慕、親愛で無効）
-IF TALENT:82 && TALENT:PLAYER:オトコ && ((TALENT:恋慕 == 0 && TALENT:6 == 0) || PLAYER != MASTER)
+IF TALENT:男嫌い && TALENT:PLAYER:オトコ && ((TALENT:恋慕 == 0 && TALENT:親愛 == 0) || PLAYER != MASTER)
 	PRINT  - 
 	A -= 12
 	PRINTS TALENTNAME:82
@@ -662,7 +662,7 @@ IF TALENT:恋慕 && ASSIPLAY == 0
 	S = 5
 ENDIF
 ;親愛
-IF TALENT:6 && ASSIPLAY == 0
+IF TALENT:親愛 && ASSIPLAY == 0
 	SIF S
 		PRINT  + 
 	A += 10
@@ -689,7 +689,7 @@ ELSEIF EXP:0 < EXPLV:2
 ENDIF
 
 ;調教者がふたなり
-IF TALENT:PLAYER:139
+IF TALENT:PLAYER:ふたなり
 	SIF S
 		PRINT  + 
 	A += 4
@@ -721,9 +721,9 @@ SIF STAIN:PLAYER:2 & 8
 SIF STAIN:PLAYER:2 & 16
 	Y += 15
 
-SIF TALENT:61
+SIF TALENT:汚臭鈍感
 	Y /= 3
-SIF TALENT:62
+SIF TALENT:汚臭敏感
 	Y *= 2
 
 ;騎乗位では汚れの影響が少なめ
@@ -734,10 +734,10 @@ IF Y
 	PRINT  - 
 	A -= Y
 	;汚臭鈍感
-	IF TALENT:61
+	IF TALENT:汚臭鈍感
 		PRINT 汚れあり、
 		PRINTS TALENTNAME:61
-	ELSEIF TALENT:62
+	ELSEIF TALENT:汚臭敏感
 		PRINT 汚れあり、
 		PRINTS TALENTNAME:62
 	ELSE

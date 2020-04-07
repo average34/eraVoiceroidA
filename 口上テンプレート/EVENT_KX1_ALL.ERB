@@ -96,20 +96,20 @@ ELSEIF CFLAG:201 < 3 && MARK:2 == 2
 	CFLAG:201 = 3
 	RETURN 0
 ;屈服刻印Lv3
-ELSEIF CFLAG:201 < 4 && MARK:2 == 3 && (TALENT:恋慕 == 0 && TALENT:淫乱 == 0 && TALENT:服従 == 0 && TALENT:6 == 0 && TALENT:娼婦 == 0 && TALENT:隷属 == 0)
+ELSEIF CFLAG:201 < 4 && MARK:2 == 3 && (TALENT:恋慕 == 0 && TALENT:淫乱 == 0 && TALENT:服従 == 0 && TALENT:親愛 == 0 && TALENT:娼婦 == 0 && TALENT:隷属 == 0)
 	PRINTFORMW 
 	CFLAG:201 = 4
 	RETURN 0
 ;陥落
 ELSEIF CFLAG:201 < 5 && (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従)
 	;恋慕
-	IF TALENT:3
+	IF TALENT:恋慕
 		PRINTFORMW 
 	;淫乱
-	ELSEIF TALENT:4
+	ELSEIF TALENT:淫乱
 		PRINTFORMW 
 	;服従
-	ELSEIF TALENT:5
+	ELSEIF TALENT:服従
 		PRINTFORMW 
 	ENDIF
 	CFLAG:201 = 5
@@ -128,7 +128,7 @@ IF ASSI < 0
 	;初めて
 ;	IF CFLAG:203 == 0
 		;陥落済み＋陥落時初口上が発生済み
-;		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && CFLAG:201 >= 5
+;		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && CFLAG:201 >= 5
 ;			PRINTFORMW 
 		;それ以外
 ;		ELSE
@@ -138,7 +138,7 @@ IF ASSI < 0
 	;二回目以降
 ;	ELSEIF CFLAG:203 < 2 || FLAG:7 ==2
 		;陥落済み
-;		IF TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:8
+;		IF TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属
 ;			PRINTFORMW 
 		;それ以外
 ;		ELSE
@@ -172,13 +172,13 @@ ELSEIF MARK:2 == 2 && (CFLAG:202 < 3 || FLAG:7 == 2)
 	PRINTFORMW 
 	CFLAG:202 = 3
 ;屈服刻印Lv3＋陥落素質無し
-ELSEIF MARK:2 == 3 && (TALENT:恋慕 == 0 && TALENT:淫乱 == 0 && TALENT:服従 == 0 && TALENT:6 == 0 && TALENT:娼婦 == 0 && TALENT:隷属 == 0) && (CFLAG:202 < 4 || FLAG:7 == 2)
+ELSEIF MARK:2 == 3 && (TALENT:恋慕 == 0 && TALENT:淫乱 == 0 && TALENT:服従 == 0 && TALENT:親愛 == 0 && TALENT:娼婦 == 0 && TALENT:隷属 == 0) && (CFLAG:202 < 4 || FLAG:7 == 2)
 	PRINTFORMW 
 	CFLAG:202 = 4
 ;陥落済み
 ELSEIF CFLAG:202 < 5 || FLAG:7 == 2
 	;恋慕、親愛
-	IF TALENT:恋慕 || TALENT:6
+	IF TALENT:恋慕 || TALENT:親愛
 		;ランダムで口上が変化する（使わない場合はすべて同じにすればよい）
 		K:1 = RAND:3
 		IF K:1 == 0
@@ -189,7 +189,7 @@ ELSEIF CFLAG:202 < 5 || FLAG:7 == 2
 			PRINTFORMW 
 		ENDIF
 	;淫乱、娼婦
-	ELSEIF TALENT:淫乱 || TALENT:7
+	ELSEIF TALENT:淫乱 || TALENT:娼婦
 		;ランダムで口上が変化する（使わない場合はすべて同じにすればよい）
 		K:1 = RAND:3
 		IF K:1 == 0
@@ -200,7 +200,7 @@ ELSEIF CFLAG:202 < 5 || FLAG:7 == 2
 			PRINTFORMW 
 		ENDIF
 	;服従、隷属
-	ELSEIF TALENT:服従 || TALENT:8
+	ELSEIF TALENT:服従 || TALENT:隷属
 		;ランダムで口上が変化する（使わない場合はすべて同じにすればよい）
 		K:1 = RAND:3
 		IF K:1 == 0
@@ -255,32 +255,32 @@ ELSEIF MARK:2 == 2
 	PRINTFORMW 
 	CFLAG:219 = 2
 ;屈服刻印Lv3＋陥落素質無し
-ELSEIF MARK:2 == 3 && (TALENT:恋慕 == 0 && TALENT:淫乱 == 0 && TALENT:服従 == 0 && TALENT:6 == 0 && TALENT:娼婦 == 0 && TALENT:隷属 == 0)
+ELSEIF MARK:2 == 3 && (TALENT:恋慕 == 0 && TALENT:淫乱 == 0 && TALENT:服従 == 0 && TALENT:親愛 == 0 && TALENT:娼婦 == 0 && TALENT:隷属 == 0)
 	PRINTFORMW 
 	CFLAG:219 = 3
 ;陥落済み＋体力500未満
 ELSEIF BASE:0 < 500 && (CFLAG:218 < 1 || FLAG:7 == 2)
 	;恋慕、親愛
-	IF TALENT:恋慕 || TALENT:6
+	IF TALENT:恋慕 || TALENT:親愛
 		PRINTFORMW 
 	;淫乱、娼婦
-	ELSEIF TALENT:淫乱 || TALENT:7
+	ELSEIF TALENT:淫乱 || TALENT:娼婦
 		PRINTFORMW 
 	;服従、隷属
-	ELSEIF TALENT:服従 || TALENT:8
+	ELSEIF TALENT:服従 || TALENT:隷属
 		PRINTFORMW 
 	ENDIF
 	CFLAG:218 = 1
 ;陥落済み
 ELSEIF CFLAG:219 < 4 || FLAG:7 == 2
 	;恋慕、親愛
-	IF TALENT:恋慕 || TALENT:6
+	IF TALENT:恋慕 || TALENT:親愛
 		PRINTFORMW 
 	;淫乱、娼婦
-	ELSEIF TALENT:淫乱 || TALENT:7
+	ELSEIF TALENT:淫乱 || TALENT:娼婦
 		PRINTFORMW 
 	;服従、隷属
-	ELSEIF TALENT:服従 || TALENT:8
+	ELSEIF TALENT:服従 || TALENT:隷属
 		PRINTFORMW 
 	ENDIF
 	CFLAG:219 = 4
@@ -331,15 +331,15 @@ IF SELECTCOM == 0
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:300 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:300 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:300 = 4
@@ -367,15 +367,15 @@ IF SELECTCOM == 1
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:301 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:301 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:301 = 4
@@ -403,15 +403,15 @@ IF SELECTCOM == 2
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:302 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:302 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:302 = 4
@@ -439,15 +439,15 @@ IF SELECTCOM == 3
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:303 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:303 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:303 = 4
@@ -475,15 +475,15 @@ IF SELECTCOM == 4
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:304 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:304 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:304 = 4
@@ -511,15 +511,15 @@ IF SELECTCOM == 5
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:305 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:305 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:305 = 4
@@ -547,15 +547,15 @@ IF SELECTCOM == 6
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:306 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:306 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:306 = 4
@@ -583,15 +583,15 @@ IF SELECTCOM == 7
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:307 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:307 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:307 = 4
@@ -619,15 +619,15 @@ IF SELECTCOM == 8
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:308 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:308 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:308 = 4
@@ -655,15 +655,15 @@ IF SELECTCOM == 9
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:309 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:309 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:309 = 4
@@ -691,15 +691,15 @@ IF SELECTCOM == 10
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:310 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:310 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:310 = 4
@@ -727,15 +727,15 @@ IF SELECTCOM == 11
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:311 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:311 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:311 = 4
@@ -766,15 +766,15 @@ IF SELECTCOM == 20
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:312 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:312 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:312 = 4
@@ -802,15 +802,15 @@ IF SELECTCOM == 21
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:313 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:313 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:313 = 4
@@ -934,15 +934,15 @@ IF SELECTCOM == 28
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:320 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:320 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:320 = 4
@@ -966,26 +966,26 @@ IF SELECTCOM == 29
 	;初めて
 	IF CFLAG:321 == 0
 		;恋慕、親愛
-		IF TALENT:恋慕 || TALENT:6
+		IF TALENT:恋慕 || TALENT:親愛
 			PRINTFORMW 
 		;淫乱、娼婦
-		ELSEIF TALENT:淫乱 || TALENT:7
+		ELSEIF TALENT:淫乱 || TALENT:娼婦
 			PRINTFORMW 
 		;服従、隷属
-		ELSEIF TALENT:服従 || TALENT:8
+		ELSEIF TALENT:服従 || TALENT:隷属
 			PRINTFORMW 
 		ENDIF
 	CFLAG:321 = 1
 	;二回目以降
 	ELSEIF CFLAG:321 < 2 || FLAG:7 == 2
 		;恋慕、親愛
-		IF TALENT:恋慕 || TALENT:6
+		IF TALENT:恋慕 || TALENT:親愛
 			PRINTFORMW 
 		;淫乱、娼婦
-		ELSEIF TALENT:淫乱 || TALENT:7
+		ELSEIF TALENT:淫乱 || TALENT:娼婦
 			PRINTFORMW 
 		;服従、隷属
-		ELSEIF TALENT:服従 || TALENT:8
+		ELSEIF TALENT:服従 || TALENT:隷属
 			PRINTFORMW 
 		ENDIF
 	CFLAG:321 = 2
@@ -1006,15 +1006,15 @@ IF SELECTCOM == 40
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:322 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:322 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:322 = 4
@@ -1042,15 +1042,15 @@ IF SELECTCOM == 41
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:323 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:323 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:323 = 4
@@ -1078,15 +1078,15 @@ IF SELECTCOM == 42 && TEQUIP:11 == 0
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:324 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:324 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:324 = 4
@@ -1119,15 +1119,15 @@ IF SELECTCOM == 43 && TEQUIP:12 == 0
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:325 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:325 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:325 = 4
@@ -1166,15 +1166,15 @@ IF SELECTCOM == 44 && TEQUIP:13 == 0
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:326 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:326 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:326 = 4
@@ -1207,15 +1207,15 @@ IF SELECTCOM == 45 && TEQUIP:14 == 0
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:327 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:327 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:327 = 4
@@ -1248,15 +1248,15 @@ IF SELECTCOM == 46 && TEQUIP:15 == 0
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:328 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:328 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:328 = 4
@@ -1289,15 +1289,15 @@ IF SELECTCOM == 47 && TEQUIP:16 == 0
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:329 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:329 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:329 = 4
@@ -1330,15 +1330,15 @@ IF SELECTCOM == 48
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:330 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:330 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:330 = 4
@@ -1366,15 +1366,15 @@ IF SELECTCOM == 49 && TEQUIP:17 == 0
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:331 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:331 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:331 = 4
@@ -1416,15 +1416,15 @@ IF SELECTCOM == 60
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:332 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:332 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:332 = 4
@@ -1458,15 +1458,15 @@ IF SELECTCOM == 61
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:333 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:333 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:333 = 4
@@ -1494,15 +1494,15 @@ IF SELECTCOM == 62
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:334 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:334 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:334 = 4
@@ -1530,15 +1530,15 @@ IF SELECTCOM == 63
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:335 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:335 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:335 = 4
@@ -1566,15 +1566,15 @@ IF SELECTCOM == 64
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:336 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:336 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:336 = 4
@@ -1602,15 +1602,15 @@ IF SELECTCOM == 65
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:337 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:337 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:337 = 4
@@ -1644,15 +1644,15 @@ IF SELECTCOM == 66
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:338 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:338 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:338 = 4
@@ -1680,15 +1680,15 @@ IF SELECTCOM == 67
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:339 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:339 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:339 = 4
@@ -1722,15 +1722,15 @@ IF SELECTCOM == 68
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:340 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:340 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:340 = 4
@@ -1764,15 +1764,15 @@ IF SELECTCOM == 69
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:341 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:341 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:341 = 4
@@ -1800,15 +1800,15 @@ IF SELECTCOM == 70
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:342 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:342 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:342 = 4
@@ -1836,15 +1836,15 @@ IF SELECTCOM == 71
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:343 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:343 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:343 = 4
@@ -1878,15 +1878,15 @@ IF SELECTCOM == 72
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:420 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:420 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:420 = 4
@@ -1914,15 +1914,15 @@ IF SELECTCOM == 73
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:421 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:421 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:421 = 4
@@ -1953,15 +1953,15 @@ IF SELECTCOM == 80
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:344 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:344 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:344 = 4
@@ -1989,15 +1989,15 @@ IF SELECTCOM == 81
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:345 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:345 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:345 = 4
@@ -2025,15 +2025,15 @@ IF SELECTCOM == 82
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:346 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:346 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:346 = 4
@@ -2061,15 +2061,15 @@ IF SELECTCOM == 83
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:347 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:347 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:347 = 4
@@ -2097,15 +2097,15 @@ IF SELECTCOM == 84
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:348 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:348 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:348 = 4
@@ -2133,15 +2133,15 @@ IF SELECTCOM == 85
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:349 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:349 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:349 = 4
@@ -2169,15 +2169,15 @@ IF SELECTCOM == 86
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:350 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:350 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:350 = 4
@@ -2205,15 +2205,15 @@ IF SELECTCOM == 87
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:351 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:351 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:351 = 4
@@ -2241,15 +2241,15 @@ IF SELECTCOM == 88
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:352 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:352 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:352 = 4
@@ -2273,26 +2273,26 @@ IF SELECTCOM == 89
 	;初めて
 	IF CFLAG:353 == 0
 		;恋慕、親愛
-		IF TALENT:恋慕 || TALENT:6
+		IF TALENT:恋慕 || TALENT:親愛
 			PRINTFORMW 
 		;淫乱、娼婦
-		ELSEIF TALENT:淫乱 || TALENT:7
+		ELSEIF TALENT:淫乱 || TALENT:娼婦
 			PRINTFORMW 
 		;服従、隷属
-		ELSEIF TALENT:服従 || TALENT:8
+		ELSEIF TALENT:服従 || TALENT:隷属
 			PRINTFORMW 
 		ENDIF
 	CFLAG:353 = 1
 	;二回目以降
 	ELSEIF CFLAG:353 < 2 || FLAG:7 == 2
 		;恋慕、親愛
-		IF TALENT:恋慕 || TALENT:6
+		IF TALENT:恋慕 || TALENT:親愛
 			PRINTFORMW 
 		;淫乱、娼婦
-		ELSEIF TALENT:淫乱 || TALENT:7
+		ELSEIF TALENT:淫乱 || TALENT:娼婦
 			PRINTFORMW 
 		;服従、隷属
-		ELSEIF TALENT:服従 || TALENT:8
+		ELSEIF TALENT:服従 || TALENT:隷属
 			PRINTFORMW 
 		ENDIF
 	CFLAG:353 = 2
@@ -2314,15 +2314,15 @@ IF SELECTCOM == 100
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:354 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:354 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:354 = 4
@@ -2350,15 +2350,15 @@ IF SELECTCOM == 101
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:355 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:355 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:355 = 4
@@ -2386,15 +2386,15 @@ IF SELECTCOM == 102
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:356 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:356 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:356 = 4
@@ -2422,15 +2422,15 @@ IF SELECTCOM == 103
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:357 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:357 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:357 = 4
@@ -2458,15 +2458,15 @@ IF SELECTCOM == 104
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:358 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:358 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:358 = 4
@@ -2494,15 +2494,15 @@ IF SELECTCOM == 105 && TEQUIP:18 == 0
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:359 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:359 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:359 = 4
@@ -2535,15 +2535,15 @@ IF SELECTCOM == 106 && TEQUIP:19 == 0
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:360 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:360 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:360 = 4
@@ -2576,15 +2576,15 @@ IF SELECTCOM == 107 && TEQUIP:20 == 0
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:361 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:361 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:361 = 4
@@ -2620,15 +2620,15 @@ IF SELECTCOM == 120
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:362 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:362 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:362 = 4
@@ -2656,15 +2656,15 @@ IF SELECTCOM == 121
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:363 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:363 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:363 = 4
@@ -2692,15 +2692,15 @@ IF SELECTCOM == 122
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:364 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:364 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:364 = 4
@@ -2728,15 +2728,15 @@ IF SELECTCOM == 123
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:365 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:365 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:365 = 4
@@ -2764,15 +2764,15 @@ IF SELECTCOM == 124
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:366 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:366 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:366 = 4
@@ -2800,15 +2800,15 @@ IF SELECTCOM == 125
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:367 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:367 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:367 = 4
@@ -2836,15 +2836,15 @@ IF SELECTCOM == 126
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:368 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:368 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:368 = 4
@@ -2875,15 +2875,15 @@ IF SELECTCOM == 140
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:369 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:369 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:369 = 4
@@ -2959,15 +2959,15 @@ IF SELECTCOM == 144
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:373 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:373 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:373 = 4
@@ -2995,15 +2995,15 @@ IF SELECTCOM == 145
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:374 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:374 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:374 = 4
@@ -3031,15 +3031,15 @@ IF SELECTCOM == 146 && TEQUIP:21 == 0
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:375 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:375 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:375 = 4
@@ -3072,15 +3072,15 @@ IF SELECTCOM == 147
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:376 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:376 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:376 = 4
@@ -3108,15 +3108,15 @@ IF SELECTCOM == 148 && TEQUIP:22 == 0
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:377 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:377 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:377 = 4
@@ -3232,15 +3232,15 @@ IF SELECTCOM == 160 && TEQUIP:25 == 0
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:382 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:382 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:382 = 4
@@ -3279,15 +3279,15 @@ IF SELECTCOM == 161
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:383 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:383 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:383 = 4
@@ -3315,15 +3315,15 @@ IF SELECTCOM == 162
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:384 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:384 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:384 = 4
@@ -3351,15 +3351,15 @@ IF SELECTCOM == 163
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:385 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:385 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:385 = 4
@@ -3387,15 +3387,15 @@ IF SELECTCOM == 164
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:386 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:386 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:386 = 4
@@ -3423,15 +3423,15 @@ IF SELECTCOM == 165
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:387 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:387 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:387 = 4
@@ -3459,15 +3459,15 @@ IF SELECTCOM == 166
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:388 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:388 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:388 = 4
@@ -3495,15 +3495,15 @@ IF SELECTCOM == 167
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:389 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:389 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:389 = 4
@@ -3531,15 +3531,15 @@ IF SELECTCOM == 168 && TEQUIP:36 == 0
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:390 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:390 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:390 = 4
@@ -3572,15 +3572,15 @@ IF SELECTCOM == 169
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:391 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:391 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:391 = 4
@@ -3611,15 +3611,15 @@ IF SELECTCOM == 180
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:392 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:392 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:392 = 4
@@ -3647,15 +3647,15 @@ IF SELECTCOM == 181
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:393 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:393 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:393 = 4
@@ -3683,15 +3683,15 @@ IF SELECTCOM == 182
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:394 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:394 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:394 = 4
@@ -3719,15 +3719,15 @@ IF SELECTCOM == 183 && TEQUIP:28 == 0
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:395 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:395 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:395 = 4
@@ -3760,15 +3760,15 @@ IF SELECTCOM == 184 && TEQUIP:29 == 0
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:396 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:396 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:396 = 4
@@ -3801,15 +3801,15 @@ IF SELECTCOM == 185
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:397 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:397 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:397 = 4
@@ -3837,15 +3837,15 @@ IF SELECTCOM == 186 && TEQUIP:30 == 0
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:398 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:398 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:398 = 4
@@ -3878,15 +3878,15 @@ IF SELECTCOM == 187 && TEQUIP:31 == 0
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:399 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:399 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:399 = 4
@@ -3919,15 +3919,15 @@ IF SELECTCOM == 188 && TEQUIP:32 == 0
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:400 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:400 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:400 = 4
@@ -3981,15 +3981,15 @@ IF SELECTCOM == 190
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:402 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:402 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:402 = 4
@@ -4017,15 +4017,15 @@ IF SELECTCOM == 191
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:403 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:403 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:403 = 4
@@ -4053,15 +4053,15 @@ IF SELECTCOM == 192
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:404 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:404 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:404 = 4
@@ -4089,15 +4089,15 @@ IF SELECTCOM == 193
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:405 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:405 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:405 = 4
@@ -4125,15 +4125,15 @@ IF SELECTCOM == 194
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:406 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:406 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:406 = 4
@@ -4164,15 +4164,15 @@ IF SELECTCOM == 200
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:336 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:336 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:336 = 4
@@ -4211,15 +4211,15 @@ IF SELECTCOM == 500
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:407 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:407 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:407 = 4
@@ -4246,15 +4246,15 @@ IF SELECTCOM == 501
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:408 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:408 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:408 = 4
@@ -4281,15 +4281,15 @@ IF SELECTCOM == 502
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:409 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:409 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:409 = 4
@@ -4316,15 +4316,15 @@ IF SELECTCOM == 503
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:410 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:410 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:410 = 4
@@ -4357,15 +4357,15 @@ IF SELECTCOM == 504
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:411 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:411 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:411 = 4
@@ -4399,15 +4399,15 @@ IF SELECTCOM == 505 && TFLAG:40 == 1
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:412 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:412 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:412 = 4
@@ -4431,15 +4431,15 @@ ELSEIF SELECTCOM == 505 && TFLAG:40 == 2
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:419 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:419 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:419 = 4
@@ -4466,15 +4466,15 @@ IF SELECTCOM == 506
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:413 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:413 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:413 = 4
@@ -4501,15 +4501,15 @@ IF SELECTCOM == 507
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:414 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:414 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:414 = 4
@@ -4536,15 +4536,15 @@ IF SELECTCOM == 508
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:415 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:415 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:415 = 4
@@ -4571,15 +4571,15 @@ IF SELECTCOM == 509
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:416 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:416 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:416 = 4
@@ -4606,15 +4606,15 @@ IF SELECTCOM == 510
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:417 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:417 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:417 = 4
@@ -4641,15 +4641,15 @@ IF SELECTCOM == 511
 	;二回目以降
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:418 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:418 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:418 = 4
@@ -4707,7 +4707,7 @@ IF CFLAG:106
 	;髪
 	IF CFLAG:106 == 1
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:221 < 3 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:221 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:221 = 3
 		;屈服刻印Lv3
@@ -4722,7 +4722,7 @@ IF CFLAG:106
 	;顔
 	ELSEIF CFLAG:106 == 2
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:222 < 3 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:222 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:222 = 3
 		;屈服刻印Lv3
@@ -4737,7 +4737,7 @@ IF CFLAG:106
 	;胸
 	ELSEIF CFLAG:106 == 3
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:223 < 3 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:223 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:223 = 3
 		;屈服刻印Lv3
@@ -4752,7 +4752,7 @@ IF CFLAG:106
 	;腹
 	ELSEIF CFLAG:106 == 4
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:224 < 3 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:224 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:224 = 3
 		;屈服刻印Lv3
@@ -4767,7 +4767,7 @@ IF CFLAG:106
 	;腋
 	ELSEIF CFLAG:106 == 5
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:225 < 3 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:225 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:225 = 3
 		;屈服刻印Lv3
@@ -4782,7 +4782,7 @@ IF CFLAG:106
 	;太腿
 	ELSEIF CFLAG:106 == 6
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:226 < 3 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:226 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:226 = 3
 		;屈服刻印Lv3
@@ -4797,7 +4797,7 @@ IF CFLAG:106
 	;割れ目
 	ELSEIF CFLAG:106 == 7
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:227 < 3 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:227 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:227 = 3
 		;屈服刻印Lv3
@@ -4812,7 +4812,7 @@ IF CFLAG:106
 	;尻
 	ELSEIF CFLAG:106 == 8
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:228 < 3 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:228 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:228 = 3
 		;屈服刻印Lv3
@@ -4829,7 +4829,7 @@ IF CFLAG:106
 		;セックスで射精かつ、アナルセックス以外を実行時
 		IF TFLAG:2 > 0 && SELECTCOM != 62 && SELECTCOM != 63 && SELECTCOM != 67 && SELECTCOM != 70 && SELECTCOM != 71
 			;陥落済み
-			IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:229 < 3 || FLAG:7 == 2)
+			IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:229 < 3 || FLAG:7 == 2)
 				PRINTFORMW 
 				CFLAG:229 = 3
 			;屈服刻印Lv3
@@ -4843,7 +4843,7 @@ IF CFLAG:106
 			ENDIF
 		ELSE
 			;陥落済み
-			IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:230 < 3 || FLAG:7 == 2)
+			IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:230 < 3 || FLAG:7 == 2)
 				PRINTFORMW 
 				CFLAG:230 = 3
 			;屈服刻印Lv3
@@ -4867,7 +4867,7 @@ ENDIF
 IF TFLAG:9 == 1
 	CALL PALAM_MESSAGE_A
 	;陥落済み
-	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:231 < 3 || FLAG:7 == 2)
+	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:231 < 3 || FLAG:7 == 2)
 		PRINTFORMW 
 		CFLAG:231 = 3
 	;屈服刻印Lv3
@@ -4887,7 +4887,7 @@ ENDIF
 IF TFLAG:7 > 0
 	CALL PALAM_MESSAGE_A
 	;陥落済み
-	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:232 < 3 || FLAG:7 == 2)
+	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:232 < 3 || FLAG:7 == 2)
 		PRINTFORMW 
 		CFLAG:232 = 3
 	;屈服刻印Lv3
@@ -4907,7 +4907,7 @@ ENDIF
 IF TFLAG:0 > 0
 	CALL PALAM_MESSAGE_A
 	;陥落済み
-	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:233 < 3 || FLAG:7 == 2)
+	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:233 < 3 || FLAG:7 == 2)
 		PRINTFORMW 
 		CFLAG:233 = 3
 	;屈服刻印Lv3
@@ -4927,7 +4927,7 @@ ENDIF
 IF TFLAG:1 > 0
 	CALL PALAM_MESSAGE_A
 	;陥落済み
-	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:234 < 3 || FLAG:7 == 2)
+	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:234 < 3 || FLAG:7 == 2)
 		PRINTFORMW 
 		CFLAG:234 = 3
 	;屈服刻印Lv3
@@ -4947,7 +4947,7 @@ ENDIF
 IF TFLAG:34 > 0
 	CALL PALAM_MESSAGE_A
 	;陥落済み
-	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:235 < 3 || FLAG:7 == 2)
+	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:235 < 3 || FLAG:7 == 2)
 		PRINTFORMW 
 		CFLAG:235 = 3
 	;屈服刻印Lv3
@@ -4969,7 +4969,7 @@ IF TFLAG:2 > 0
 	;アナルセックス系
 	IF SELECTCOM == 62 || SELECTCOM == 63 || SELECTCOM == 67 || SELECTCOM == 70 || SELECTCOM == 71 || (SELECTCOM == 505 && TFLAG:40 == 2)
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:237 < 3 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:237 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:237 = 3
 		;屈服刻印Lv3
@@ -4984,7 +4984,7 @@ IF TFLAG:2 > 0
 	;セックス系
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:238 < 3 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:238 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:238 = 3
 		;屈服刻印Lv3
@@ -5005,7 +5005,7 @@ ENDIF
 IF (SELECTCOM == 64 || SELECTCOM == 200) && TFLAG:10 > 0
 	CALL PALAM_MESSAGE_A
 	;陥落済み
-	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:239 < 3 || FLAG:7 == 2)
+	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:239 < 3 || FLAG:7 == 2)
 		PRINTFORMW 
 		CFLAG:239 = 3
 	;屈服刻印Lv3
@@ -5055,7 +5055,7 @@ ENDIF
 IF TFLAG:15 >0
 	CALL PALAM_MESSAGE_E
 	;陥落済み
-	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:240 < 3 || FLAG:7 == 2)
+	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:240 < 3 || FLAG:7 == 2)
 		PRINTFORMW 
 		CFLAG:240 = 3
 	;屈服刻印Lv3
@@ -5134,7 +5134,7 @@ ELSEIF NOWEX:3 > 0 && CFLAG:244 == 0
 ELSEIF TFLAG:29 > 0
 	CALL PALAM_MESSAGE_B
 	;陥落済み
-	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:245 < 3 || FLAG:7 == 2)
+	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:245 < 3 || FLAG:7 == 2)
 		PRINTFORMW 
 		CFLAG:245 = 3
 	;屈服刻印Lv3
@@ -5154,7 +5154,7 @@ ENDIF
 ;射精している
 IF TFLAG:10 > 0
 	;陥落済み
-	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:246 < 3 || FLAG:7 == 2)
+	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:246 < 3 || FLAG:7 == 2)
 		PRINTFORMW 
 		CFLAG:246 = 3
 	;屈服刻印Lv3
@@ -5174,7 +5174,7 @@ ENDIF
 ;噴乳している
 IF TFLAG:11 > 0
 	;陥落済み
-	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:247 < 3 || FLAG:7 == 2)
+	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:247 < 3 || FLAG:7 == 2)
 		PRINTFORMW 
 		CFLAG:247 = 3
 	;屈服刻印Lv3
@@ -5192,9 +5192,9 @@ ENDIF
 ;放尿
 ;-------------------------------------------------
 ;放尿している
-IF TFLAG:29 > 0 && (TEQUIP:27 || TALENT:57)
+IF TFLAG:29 > 0 && (TEQUIP:27 || TALENT:おもらし癖)
 	;陥落済み
-	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:248 < 3 || FLAG:7 == 2)
+	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:248 < 3 || FLAG:7 == 2)
 		PRINTFORMW 
 		CFLAG:248 = 3
 	;屈服刻印Lv3
@@ -5248,7 +5248,7 @@ IF TFLAG:3 > 0
 	;それ以外の時に処女喪失
 	ELSE
 		;陥落済み
-		IF TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:8
+		IF TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属
 			PRINTFORMW 
 		;屈服刻印Lv3
 		ELSEIF MARK:2 == 3
@@ -5329,7 +5329,7 @@ P = PALAM:7 + UP:7
 IF P > PALAMLV:3 && CFLAG:247 == 0
 	CALL PALAM_MESSAGE_D
 	;陥落済み
-	IF TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:8
+	IF TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属
 		PRINTFORMW 
 	;それ以外
 	ELSE
@@ -5345,7 +5345,7 @@ P = PALAM:5 + UP:5
 IF P > PALAMLV:3 && CFLAG:248 == 0
 	CALL PALAM_MESSAGE_D
 	;陥落済み
-	IF TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:8
+	IF TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属
 		PRINTFORMW 
 	;それ以外
 	ELSE
@@ -5361,7 +5361,7 @@ P = PALAM:11 + UP:11
 IF P > PALAMLV:3 && CFLAG:249 == 0
 	CALL PALAM_MESSAGE_D
 	;陥落済み
-	IF TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:8
+	IF TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属
 		PRINTFORMW 
 	;それ以外
 	ELSE
@@ -5404,15 +5404,15 @@ ENDIF
 IF TFLAG:22 == 3
 	CALL MARK_MESSAGE_A
 	;陥落済み
-	IF TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:8
+	IF TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属
 		;恋慕、親愛
-		IF TALENT:恋慕 || TALENT:6
+		IF TALENT:恋慕 || TALENT:親愛
 			PRINTFORMW 
 		;淫乱、娼婦
-		ELSEIF TALENT:淫乱 || TALENT:7
+		ELSEIF TALENT:淫乱 || TALENT:娼婦
 			PRINTFORMW 
 		;服従、隷属
-		ELSEIF TALENT:服従 || TALENT:8
+		ELSEIF TALENT:服従 || TALENT:隷属
 			PRINTFORMW 
 		ENDIF
 	ELSE
@@ -5428,15 +5428,15 @@ ENDIF
 IF TFLAG:23 == 3
 	CALL MARK_MESSAGE_P
 	;陥落済み
-	IF TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:8
+	IF TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属
 		;恋慕、親愛
-		IF TALENT:恋慕 || TALENT:6
+		IF TALENT:恋慕 || TALENT:親愛
 			PRINTFORMW 
 		;淫乱、娼婦
-		ELSEIF TALENT:淫乱 || TALENT:7
+		ELSEIF TALENT:淫乱 || TALENT:娼婦
 			PRINTFORMW 
 		;服従、隷属
-		ELSEIF TALENT:服従 || TALENT:8
+		ELSEIF TALENT:服従 || TALENT:隷属
 			PRINTFORMW 
 		ENDIF
 	ELSE
@@ -5471,15 +5471,15 @@ ENDIF
 IF TFLAG:21 == 3
 	CALL MARK_MESSAGE_R
 	;陥落済み
-	IF TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:8
+	IF TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属
 		;恋慕、親愛
-		IF TALENT:恋慕 || TALENT:6
+		IF TALENT:恋慕 || TALENT:親愛
 			PRINTFORMW 
 		;淫乱、娼婦
-		ELSEIF TALENT:淫乱 || TALENT:7
+		ELSEIF TALENT:淫乱 || TALENT:娼婦
 			PRINTFORMW 
 		;服従、隷属
-		ELSEIF TALENT:服従 || TALENT:8
+		ELSEIF TALENT:服従 || TALENT:隷属
 			PRINTFORMW 
 		ENDIF
 	ELSE
@@ -5506,15 +5506,15 @@ ENDIF
 IF TFLAG:13 == 1
 	CALL EVENT_MESSAGE
 	;陥落済み
-	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:261 < 1 || FLAG:7 == 2)
+	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:261 < 1 || FLAG:7 == 2)
 		;恋慕、親愛
-		IF TALENT:恋慕 || TALENT:6
+		IF TALENT:恋慕 || TALENT:親愛
 			PRINTFORMW 
 		;淫乱、娼婦
-		ELSEIF TALENT:淫乱 || TALENT:7
+		ELSEIF TALENT:淫乱 || TALENT:娼婦
 			PRINTFORMW 
 		;服従、隷属
-		ELSEIF TALENT:服従 || TALENT:8
+		ELSEIF TALENT:服従 || TALENT:隷属
 			PRINTFORMW 
 		ENDIF
 		CFLAG:261 = 1
@@ -5527,15 +5527,15 @@ ENDIF
 IF TFLAG:13 == 2
 	CALL EVENT_MESSAGE
 	;陥落済み
-	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:262 < 1 || FLAG:7 == 2)
+	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:262 < 1 || FLAG:7 == 2)
 		;恋慕、親愛
-		IF TALENT:恋慕 || TALENT:6
+		IF TALENT:恋慕 || TALENT:親愛
 			PRINTFORMW 
 		;淫乱、娼婦
-		ELSEIF TALENT:淫乱 || TALENT:7
+		ELSEIF TALENT:淫乱 || TALENT:娼婦
 			PRINTFORMW 
 		;服従、隷属
-		ELSEIF TALENT:服従 || TALENT:8
+		ELSEIF TALENT:服従 || TALENT:隷属
 			PRINTFORMW 
 		ENDIF
 		CFLAG:262 = 1
@@ -5548,15 +5548,15 @@ ENDIF
 IF TFLAG:13 == 3
 	CALL EVENT_MESSAGE
 	;陥落済み
-	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:263 < 1 || FLAG:7 == 2)
+	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:263 < 1 || FLAG:7 == 2)
 		;恋慕、親愛
-		IF TALENT:恋慕 || TALENT:6
+		IF TALENT:恋慕 || TALENT:親愛
 			PRINTFORMW 
 		;淫乱、娼婦
-		ELSEIF TALENT:淫乱 || TALENT:7
+		ELSEIF TALENT:淫乱 || TALENT:娼婦
 			PRINTFORMW 
 		;服従、隷属
-		ELSEIF TALENT:服従 || TALENT:8
+		ELSEIF TALENT:服従 || TALENT:隷属
 			PRINTFORMW 
 		ENDIF
 		CFLAG:263 = 1
@@ -5585,15 +5585,15 @@ ENDIF
 IF TFLAG:13 == 5
 	CALL EVENT_MESSAGE
 	;陥落済み
-	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:265 < 1 || FLAG:7 == 2)
+	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:265 < 1 || FLAG:7 == 2)
 		;恋慕、親愛
-		IF TALENT:恋慕 || TALENT:6
+		IF TALENT:恋慕 || TALENT:親愛
 			PRINTFORMW 
 		;淫乱、娼婦
-		ELSEIF TALENT:淫乱 || TALENT:7
+		ELSEIF TALENT:淫乱 || TALENT:娼婦
 			PRINTFORMW 
 		;服従、隷属
-		ELSEIF TALENT:服従 || TALENT:8
+		ELSEIF TALENT:服従 || TALENT:隷属
 			PRINTFORMW 
 		ENDIF
 		CFLAG:265 = 1
@@ -5606,15 +5606,15 @@ ENDIF
 IF TFLAG:13 == 6
 	CALL EVENT_MESSAGE
 	;陥落済み
-	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:266 < 2 || FLAG:7 == 2)
+	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:266 < 2 || FLAG:7 == 2)
 		;恋慕、親愛
-		IF TALENT:恋慕 || TALENT:6
+		IF TALENT:恋慕 || TALENT:親愛
 			PRINTFORMW 
 		;淫乱、娼婦
-		ELSEIF TALENT:淫乱 || TALENT:7
+		ELSEIF TALENT:淫乱 || TALENT:娼婦
 			PRINTFORMW 
 		;服従、隷属
-		ELSEIF TALENT:服従 || TALENT:8
+		ELSEIF TALENT:服従 || TALENT:隷属
 			PRINTFORMW 
 		ENDIF
 		CFLAG:266 = 2
@@ -5630,15 +5630,15 @@ ENDIF
 IF TFLAG:13 == 7
 	CALL EVENT_MESSAGE
 	;陥落済み
-	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:267 < 2 || FLAG:7 == 2)
+	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:267 < 2 || FLAG:7 == 2)
 		;恋慕、親愛
-		IF TALENT:恋慕 || TALENT:6
+		IF TALENT:恋慕 || TALENT:親愛
 			PRINTFORMW 
 		;淫乱、娼婦
-		ELSEIF TALENT:淫乱 || TALENT:7
+		ELSEIF TALENT:淫乱 || TALENT:娼婦
 			PRINTFORMW 
 		;服従、隷属
-		ELSEIF TALENT:服従 || TALENT:8
+		ELSEIF TALENT:服従 || TALENT:隷属
 			PRINTFORMW 
 		ENDIF
 		CFLAG:267 = 2
@@ -5654,15 +5654,15 @@ ENDIF
 IF TFLAG:13 == 8
 	CALL EVENT_MESSAGE
 	;陥落済み
-	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:268 < 2 || FLAG:7 == 2)
+	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:268 < 2 || FLAG:7 == 2)
 		;恋慕、親愛
-		IF TALENT:恋慕 || TALENT:6
+		IF TALENT:恋慕 || TALENT:親愛
 			PRINTFORMW 
 		;淫乱、娼婦
-		ELSEIF TALENT:淫乱 || TALENT:7
+		ELSEIF TALENT:淫乱 || TALENT:娼婦
 			PRINTFORMW 
 		;服従、隷属
-		ELSEIF TALENT:服従 || TALENT:8
+		ELSEIF TALENT:服従 || TALENT:隷属
 			PRINTFORMW 
 		ENDIF
 		CFLAG:268 = 2
@@ -5678,15 +5678,15 @@ ENDIF
 IF TFLAG:13 == 9
 	CALL EVENT_MESSAGE
 	;陥落済み
-	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:269 < 1 || FLAG:7 == 2)
+	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:269 < 1 || FLAG:7 == 2)
 		;恋慕、親愛
-		IF TALENT:恋慕 || TALENT:6
+		IF TALENT:恋慕 || TALENT:親愛
 			PRINTFORMW 
 		;淫乱、娼婦
-		ELSEIF TALENT:淫乱 || TALENT:7
+		ELSEIF TALENT:淫乱 || TALENT:娼婦
 			PRINTFORMW 
 		;服従、隷属
-		ELSEIF TALENT:服従 || TALENT:8
+		ELSEIF TALENT:服従 || TALENT:隷属
 			PRINTFORMW 
 		ENDIF
 		CFLAG:269 = 1
@@ -5699,15 +5699,15 @@ ENDIF
 IF TFLAG:13 == 10
 	CALL EVENT_MESSAGE
 	;陥落済み
-	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:270 < 2 || FLAG:7 == 2)
+	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:270 < 2 || FLAG:7 == 2)
 		;恋慕、親愛
-		IF TALENT:恋慕 || TALENT:6
+		IF TALENT:恋慕 || TALENT:親愛
 			PRINTFORMW 
 		;淫乱、娼婦
-		ELSEIF TALENT:淫乱 || TALENT:7
+		ELSEIF TALENT:淫乱 || TALENT:娼婦
 			PRINTFORMW 
 		;服従、隷属
-		ELSEIF TALENT:服従 || TALENT:8
+		ELSEIF TALENT:服従 || TALENT:隷属
 			PRINTFORMW 
 		ENDIF
 		CFLAG:270 = 2
@@ -5729,7 +5729,7 @@ IF TFLAG:13 == 11
 	IF TALENT:崩壊 == 1
 		PRINTFORMW 
 	;父親が主人で母親が恋慕か親愛持ち
-	ELSEIF (TALENT:恋慕 || TALENT:6) && CFLAG:102 == 1
+	ELSEIF (TALENT:恋慕 || TALENT:親愛) && CFLAG:102 == 1
 		PRINTFORMW 
 	;父親が奴隷か助手で母親が淫乱か娼婦持ち
 	ELSEIF (TALENT:淫乱 || TALENT:娼婦) && (CFLAG:102 == 2 || CFLAG:102 == 3)
@@ -5757,15 +5757,15 @@ ENDIF
 IF TFLAG:13 == 12
 	CALL EVENT_MESSAGE
 	;陥落済み
-	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:272 < 2 || FLAG:7 == 2)
+	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:272 < 2 || FLAG:7 == 2)
 		;恋慕、親愛
-		IF TALENT:恋慕 || TALENT:6
+		IF TALENT:恋慕 || TALENT:親愛
 			PRINTFORMW 
 		;淫乱、娼婦
-		ELSEIF TALENT:淫乱 || TALENT:7
+		ELSEIF TALENT:淫乱 || TALENT:娼婦
 			PRINTFORMW 
 		;服従、隷属
-		ELSEIF TALENT:服従 || TALENT:8
+		ELSEIF TALENT:服従 || TALENT:隷属
 			PRINTFORMW 
 		ENDIF
 		CFLAG:272 = 2
@@ -5781,17 +5781,17 @@ ENDIF
 IF TFLAG:13 == 13
 	CALL EVENT_MESSAGE
 	;出産前
-	IF TALENT:153
+	IF TALENT:妊娠
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:273 < 2 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:273 < 2 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:273 = 2
@@ -5802,15 +5802,15 @@ IF TFLAG:13 == 13
 	;出産後
 	ELSE
 		;陥落済み
-		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:273 < 4 || FLAG:7 == 2)
+		IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:273 < 4 || FLAG:7 == 2)
 			;恋慕、親愛
-			IF TALENT:恋慕 || TALENT:6
+			IF TALENT:恋慕 || TALENT:親愛
 				PRINTFORMW 
 			;淫乱、娼婦
-			ELSEIF TALENT:淫乱 || TALENT:7
+			ELSEIF TALENT:淫乱 || TALENT:娼婦
 				PRINTFORMW 
 			;服従、隷属
-			ELSEIF TALENT:服従 || TALENT:8
+			ELSEIF TALENT:服従 || TALENT:隷属
 				PRINTFORMW 
 			ENDIF
 			CFLAG:273 = 4
@@ -5827,15 +5827,15 @@ ENDIF
 IF TFLAG:13 == 14
 	CALL EVENT_MESSAGE
 	;陥落済み
-	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:274 < 2 || FLAG:7 == 2)
+	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:274 < 2 || FLAG:7 == 2)
 		;恋慕、親愛
-		IF TALENT:恋慕 || TALENT:6
+		IF TALENT:恋慕 || TALENT:親愛
 			PRINTFORMW 
 		;淫乱、娼婦
-		ELSEIF TALENT:淫乱 || TALENT:7
+		ELSEIF TALENT:淫乱 || TALENT:娼婦
 			PRINTFORMW 
 		;服従、隷属
-		ELSEIF TALENT:服従 || TALENT:8
+		ELSEIF TALENT:服従 || TALENT:隷属
 			PRINTFORMW 
 		ENDIF
 		CFLAG:274 = 2
@@ -5899,9 +5899,9 @@ ENDIF
 IF TFLAG:13 == 18
 	CALL EVENT_MESSAGE
 	;陥落済み
-	IF TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:8
+	IF TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属
 		;恋慕、親愛+反発刻印Lv3未満
-		IF (TALENT:恋慕 || TALENT:6) && MARK:3 < 3
+		IF (TALENT:恋慕 || TALENT:親愛) && MARK:3 < 3
 			PRINTFORMW 
 		;淫乱、娼婦+反発刻印Lv3未満
 		ELSEIF (TALENT:淫乱 || TALENT:娼婦) && MARK:3 < 3
@@ -5925,15 +5925,15 @@ ENDIF
 IF TFLAG:13 == 19
 	CALL EVENT_MESSAGE
 	;陥落済み
-	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:278 < 2 || FLAG:7 == 2)
+	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:278 < 2 || FLAG:7 == 2)
 		;恋慕、親愛
-		IF TALENT:恋慕 || TALENT:6
+		IF TALENT:恋慕 || TALENT:親愛
 			PRINTFORMW 
 		;淫乱、娼婦
-		ELSEIF TALENT:淫乱 || TALENT:7
+		ELSEIF TALENT:淫乱 || TALENT:娼婦
 			PRINTFORMW 
 		;服従、隷属
-		ELSEIF TALENT:服従 || TALENT:8
+		ELSEIF TALENT:服従 || TALENT:隷属
 			PRINTFORMW 
 		ENDIF
 		CFLAG:278 = 2
@@ -5997,15 +5997,15 @@ ENDIF
 IF TFLAG:13 == 23
 	CALL EVENT_MESSAGE
 	;陥落済み
-	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:282 < 2 || FLAG:7 == 2)
+	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && (CFLAG:282 < 2 || FLAG:7 == 2)
 		;恋慕、親愛
-		IF TALENT:恋慕 || TALENT:6
+		IF TALENT:恋慕 || TALENT:親愛
 			PRINTFORMW 
 		;淫乱、娼婦
-		ELSEIF TALENT:淫乱 || TALENT:7
+		ELSEIF TALENT:淫乱 || TALENT:娼婦
 			PRINTFORMW 
 		;服従、隷属
-		ELSEIF TALENT:服従 || TALENT:8
+		ELSEIF TALENT:服従 || TALENT:隷属
 			PRINTFORMW 
 		ENDIF
 		CFLAG:282 = 2
@@ -6035,20 +6035,20 @@ SIF NO:TARGET != X1
 ;B = 0
 ;REPEAT CHARANUM
 ;	IF NO:COUNT == XX || NO:COUNT == XX || NO:COUNT == XX || NO:COUNT == XX || NO:COUNT == XX
-;		SIF TALENT:COUNT:6 || TALENT:COUNT:娼婦 || TALENT:COUNT:8
+;		SIF TALENT:COUNT:親愛 || TALENT:COUNT:娼婦 || TALENT:COUNT:隷属
 ;			A += 1
-;		SIF TALENT:COUNT:恋慕 || TALENT:COUNT:4 || TALENT:COUNT:服従 || TALENT:COUNT:6 || TALENT:COUNT:娼婦 || TALENT:COUNT:8
+;		SIF TALENT:COUNT:恋慕 || TALENT:COUNT:淫乱 || TALENT:COUNT:服従 || TALENT:COUNT:親愛 || TALENT:COUNT:娼婦 || TALENT:COUNT:隷属
 ;			B += 1
 ;	ENDIF
 ;REND
 ;SIF A && A+B >= XXX
 ;	CFLAG:21 = 2
 ;単体エンド用分岐フラグ、単体エンドのある上位陥落素質のみコメントアウトを解除する
-;SIF TALENT:6
+;SIF TALENT:親愛
 ;	CFLAG:21 = 1
-;SIF TALENT:7
+;SIF TALENT:娼婦
 ;	CFLAG:21 = 1
-;SIF TALENT:8
+;SIF TALENT:隷属
 ;	CFLAG:21 = 1
 ;-------------------------------------------------
 ;エンド本文
@@ -6063,7 +6063,7 @@ SIF NO:TARGET != X1
 ;ENDIF
 ;--------------------------------------------------
 ;恋慕単体エンド
-;IF TALENT:6 && CFLAG:21 == 1
+;IF TALENT:親愛 && CFLAG:21 == 1
 	;DRAWLINE
 	;PRINTFORMW …………
 	;PRINTFORMW ………

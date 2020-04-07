@@ -105,7 +105,7 @@ ELSEIF CFLAG:201 < 4 && MARK:2 == 3
 	CFLAG:201 = 4
 	RETURN 0
 ;陥落
-ELSEIF CFLAG:201 < 5 && TALENT:5
+ELSEIF CFLAG:201 < 5 && TALENT:服従
 	PRINTFORMW 
 	CFLAG:201 = 5
 	RETURN 0
@@ -3878,7 +3878,7 @@ ENDIF
 ;放尿
 ;-------------------------------------------------
 ;放尿している
-IF TFLAG:29 > 0 && (TEQUIP:27 || TALENT:57)
+IF TFLAG:29 > 0 && (TEQUIP:27 || TALENT:おもらし癖)
 	;服従、隷属
 	IF (TALENT:服従 || TALENT:隷属) && (CFLAG:248 < 2 || FLAG:7 == 2)
 		PRINTFORMW 
@@ -4099,7 +4099,7 @@ ENDIF
 IF TFLAG:21 == 3
 	CALL MARK_MESSAGE_R
 	;服従、隷属
-	IF TALENT:服従 || TALENT:8
+	IF TALENT:服従 || TALENT:隷属
 		PRINTFORMW 
 	ELSE
 		PRINTFORMW 
@@ -4310,7 +4310,7 @@ ENDIF
 IF TFLAG:13 == 13
 	CALL EVENT_MESSAGE
 	;出産前
-	IF TALENT:153
+	IF TALENT:妊娠
 		IF CFLAG:273 < 1 || FLAG:7 == 2
 			PRINTFORMW 
 			CFLAG:273 = 1
@@ -4435,16 +4435,16 @@ SIF NO:TARGET != X1
 ;B = 0
 ;REPEAT CHARANUM
 ;	IF NO:COUNT == XX || NO:COUNT == XX || NO:COUNT == XX || NO:COUNT == XX || NO:COUNT == XX
-;		SIF TALENT:COUNT:6 || TALENT:COUNT:娼婦 || TALENT:COUNT:8
+;		SIF TALENT:COUNT:親愛 || TALENT:COUNT:娼婦 || TALENT:COUNT:隷属
 ;			A += 1
-;		SIF TALENT:COUNT:恋慕 || TALENT:COUNT:4 || TALENT:COUNT:服従 || TALENT:COUNT:6 || TALENT:COUNT:娼婦 || TALENT:COUNT:8
+;		SIF TALENT:COUNT:恋慕 || TALENT:COUNT:淫乱 || TALENT:COUNT:服従 || TALENT:COUNT:親愛 || TALENT:COUNT:娼婦 || TALENT:COUNT:隷属
 ;			B += 1
 ;	ENDIF
 ;REND
 ;SIF A && A+B >= XXX
 ;	CFLAG:21 = 2
 ;単体エンド用分岐フラグ、単体エンドのある上位陥落素質のみコメントアウトを解除する
-;SIF TALENT:8
+;SIF TALENT:隷属
 ;	CFLAG:21 = 1
 ;-------------------------------------------------
 ;エンド本文

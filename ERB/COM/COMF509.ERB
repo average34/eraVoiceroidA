@@ -26,11 +26,11 @@ SOURCE:18 = 100
 ;特殊ソース処理
 ;-------------------------------------------------
 ;抑圧、抵抗持ちには、抑鬱ソース追加
-SIF TALENT:32 || TALENT:34
+SIF TALENT:抑圧 || TALENT:抵抗
 	SOURCE:16 += 100
 
 ;調教者が［幼稚］か［幼児退行］
-IF TALENT:PLAYER:150 || TALENT:PLAYER:151
+IF TALENT:PLAYER:幼児／幼児退行 || TALENT:PLAYER:幼稚
 	TIMES SOURCE:3 , 1.20
 	TIMES SOURCE:4 , 1.20
 ENDIF
@@ -59,7 +59,7 @@ ELSEIF TALENT:オトコ && TALENT:PLAYER:オトコ
 ENDIF
 
 ;愛情経験
-IF (TALENT:恋慕 == 1 || TALENT:6 == 1) && ASSIPLAY == 0
+IF (TALENT:恋慕 == 1 || TALENT:親愛 == 1) && ASSIPLAY == 0
 	PRINTS EXPNAME:23
 	PRINTL +1
 	EXP:23 += 1

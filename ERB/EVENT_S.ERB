@@ -6,7 +6,7 @@
 $INPUT_LOOP
 ;不思議の根持ちで精液経験が300以上で生える
 IF TARGET >= 0 
-	IF TALENT:TARGET:138 == 1 && EXP:TARGET:20 >= 300 && TALENT:139 == 0 && TALENT:オトコ == 0
+	IF TALENT:TARGET:不思議な根 == 1 && EXP:TARGET:20 >= 300 && TALENT:ふたなり == 0 && TALENT:オトコ == 0
 		DRAWLINE
 		PRINTFORML ……どうやら[不思議な根]の効果が現れそうだ
 		PRINTFORMW %CALLNAME:TARGET%を[ふたなり]にしますか？
@@ -15,7 +15,7 @@ IF TARGET >= 0
 		INPUT
 		IF RESULT == 0
 			PRINTFORML %NAME:TARGET%の[不思議な根]は[ふたなり]となった
-			TALENT:139 = 1
+			TALENT:ふたなり = 1
 		ELSEIF RESULT == 1
 			PRINTFORML %NAME:TARGET%は[不思議な根]を失った
 		ELSE
@@ -23,14 +23,14 @@ IF TARGET >= 0
 		ENDIF
 		DRAWLINE
 		WAIT
-		TALENT:TARGET:138 = 0
+		TALENT:TARGET:不思議な根 = 0
 	ENDIF
 ENDIF
 
 $INPUT_LOOP_2
 ;具現持ちでレズ経験2500以上で生える
 IF TARGET >= 0 
-	IF TALENT:TARGET:146 == 1 && EXP:TARGET:40 >= 2500 && TALENT:139 == 0 && TALENT:オトコ == 0
+	IF TALENT:TARGET:具現 == 1 && EXP:TARGET:40 >= 2500 && TALENT:ふたなり == 0 && TALENT:オトコ == 0
 		DRAWLINE
 		PRINTFORML ……どうやら[具現]の効果が現れそうだ
 		PRINTFORML %CALLNAME:TARGET%を[ふたなり]にしますか？
@@ -39,7 +39,7 @@ IF TARGET >= 0
 		INPUT
 		IF RESULT == 0
 			PRINTFORML %NAME:TARGET%は[具現]によって[ふたなり]となった
-			TALENT:139 = 1
+			TALENT:ふたなり = 1
 		ELSEIF RESULT == 1
 			PRINTFORML %NAME:TARGET%は[具現]を失った
 		ELSE
@@ -47,13 +47,13 @@ IF TARGET >= 0
 		ENDIF
 		DRAWLINE
 		WAIT
-		TALENT:TARGET:146 = 0
+		TALENT:TARGET:具現 = 0
 	ENDIF
 ENDIF
 
 ;放尿経験３０以上でおもらし癖がつく
 IF TARGET >= 0 
-	IF TALENT:57 == 0
+	IF TALENT:おもらし癖 == 0
 		IF (TALENT:TARGET:幼稚 && EXP:TARGET:31 >= 10) || (TALENT:TARGET:幼稚 == 0 && EXP:TARGET:31 >= 30)
 			PRINTFORMW （む･･･なんだこれ？）
 			PRINTFORM %CALLNAME:TARGET%は
@@ -63,7 +63,7 @@ IF TARGET >= 0
 			PRINTFORM 粗相を
 			PRINTFORMW してしまったようだ……
 			PRINTFORMW %CALLNAME:TARGET%は[おもらし癖]がついた
-			TALENT:TARGET:57 = 1
+			TALENT:TARGET:おもらし癖 = 1
 		ENDIF
 	ENDIF
 ENDIF
@@ -77,7 +77,7 @@ IF TARGET >= 0
 	;反発刻印３があり、かつ幼稚がない時
 	ELSEIF TALENT:TARGET:幼稚 == 0 && MARK:3 == 3
 		;欲望が5かつ従順が5かつマゾっ気が5かつ異常経験が９以上に加え露出５とおもらし癖がある
-		SIF ABL:TARGET:1 >= 5 && ABL:TARGET:0 >= 5 && ABL:TARGET:9 >= 5 && ABL:TARGET:8 >= 5 && EXP:TARGET:50 >= 9 && TALENT:57 == 1
+		SIF ABL:TARGET:1 >= 5 && ABL:TARGET:0 >= 5 && ABL:TARGET:9 >= 5 && ABL:TARGET:8 >= 5 && EXP:TARGET:50 >= 9 && TALENT:おもらし癖 == 1
 			CALL EVENT_YOUJI
 	ENDIF
 ENDIF
@@ -106,9 +106,9 @@ ENDIF
 ;幼児退行
 PRINTFORMW %CALLNAME:TARGET%の様子がおかしい……
 PRINTFORMW %CALLNAME:TARGET%は過酷な調教に耐え切れず、【幼児退行】してしまったようだ……
-SIF TALENT:151
+SIF TALENT:幼稚
 	TALENT:幼稚 = 0
-TALENT:150 = 1
+TALENT:幼児／幼児退行 = 1
 MARK:3 = 0
 
 
@@ -155,7 +155,7 @@ REND
 
 ;出産･育児室関連
 REPEAT CHARANUM
-	IF TALENT:COUNT:153
+	IF TALENT:COUNT:妊娠
 		;出産3日前からは臨月突入で調教不可に
 		IF (CFLAG:COUNT:110 - 3) == DAY
 			DRAWLINE
@@ -173,7 +173,7 @@ REPEAT CHARANUM
 			C = COUNT
 			CALL CHILD_BIRTH
 		ENDIF
-	ELSEIF TALENT:COUNT:154
+	ELSEIF TALENT:COUNT:育児中
 		;出産後翌日には育児室への訪問を問うイベント発生
 		IF (CFLAG:COUNT:110 + 3) == DAY && TFLAG:701 != DAY
 			DRAWLINE
@@ -292,9 +292,9 @@ ELSE
 		INPUT
 		IF RESULT == 0
 			PRINTFORMW ＜%NAME:MASTER%は[ふたなり]になった＞
-			TALENT:MASTER:138 = 0
-			TALENT:MASTER:146 = 0
-			TALENT:MASTER:139 = 1
+			TALENT:MASTER:不思議な根 = 0
+			TALENT:MASTER:具現 = 0
+			TALENT:MASTER:ふたなり = 1
 			CFLAG:MASTER:10 += 2
 		ELSEIF RESULT == 1
 		;何も表示しない

@@ -67,7 +67,7 @@ IF L
 ENDIF
 
 ;恥じらい
-IF TALENT:35
+IF TALENT:恥じらい
 	PRINT  - 
 	A -= 1
 	PRINTS TALENTNAME:35
@@ -75,7 +75,7 @@ IF TALENT:35
 	S = 1
 ENDIF
 ;献身的
-IF TALENT:63
+IF TALENT:献身的
 	SIF S
 		PRINT  + 
 	A += 6
@@ -84,7 +84,7 @@ IF TALENT:63
 	S = 1
 ENDIF
 ;快感に素直
-IF TALENT:70
+IF TALENT:快感に素直
 	SIF S
 		PRINT  + 
 	A += 2
@@ -93,7 +93,7 @@ IF TALENT:70
 	S = 1
 ENDIF
 ;快感の否定（淫乱、娼婦で無効）
-IF TALENT:71 && (TALENT:淫乱 == 0 && TALENT:娼婦 == 0)
+IF TALENT:快感の否定 && (TALENT:淫乱 == 0 && TALENT:娼婦 == 0)
 	PRINT  - 
 	A -= 2
 	PRINTS TALENTNAME:71
@@ -227,7 +227,7 @@ SIF CFLAG:PLAYER:24 > 0
 	B /= 20
 
 
-SIF TALENT:PLAYER:137 || TALENT:PLAYER:139 || TALENT:PLAYER:オトコ
+SIF TALENT:PLAYER:半人半妖 || TALENT:PLAYER:ふたなり || TALENT:PLAYER:オトコ
 	BASE:PLAYER:2 += B
 
 ;-------------------------------------------------
@@ -249,7 +249,7 @@ SOURCE:18 = 500
 ;特殊ソース処理
 ;-------------------------------------------------
 ;抑圧、抵抗持ちには、抑鬱ソース追加
-SIF TALENT:32 || TALENT:34
+SIF TALENT:抑圧 || TALENT:抵抗
 	SOURCE:16 += 500
 
 ;助手が処女の場合、屈服逸脱が倍化し、従順が2になる。ただし一度きり
@@ -290,7 +290,7 @@ ENDIF
 ;汚れの処理
 ;-------------------------------------------------
 ;射精に関係なく行われる処理はここから
-IF TALENT:137 || TALENT:139 || TALENT:オトコ
+IF TALENT:半人半妖 || TALENT:ふたなり || TALENT:オトコ
 	;奴隷のＰ⇔調教者のＶの汚れが移動
 	STAIN:2 |= STAIN:PLAYER:3
 	STAIN:PLAYER:3 |= STAIN:2

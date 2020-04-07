@@ -64,7 +64,7 @@ IF TALENT:PLAYER:オトコ == 0 && TALENT:TARGET:オトコ == 0
 		S = 1
 	ENDIF
 	;TALENT:両刀
-	IF TALENT:81
+	IF TALENT:両刀
 		SIF S
 			PRINT  + 
 		A += 10
@@ -73,7 +73,7 @@ IF TALENT:PLAYER:オトコ == 0 && TALENT:TARGET:オトコ == 0
 		S = 1
 	ENDIF
 	;好奇心
-	IF TALENT:23
+	IF TALENT:好奇心
 		SIF S
 			PRINT  + 
 		A += 7
@@ -82,7 +82,7 @@ IF TALENT:PLAYER:オトコ == 0 && TALENT:TARGET:オトコ == 0
 		S = 1
 	ENDIF
 	;保守的
-	IF TALENT:24
+	IF TALENT:保守的
 		PRINT  - 
 		A -= 13
 		PRINTS TALENTNAME:24
@@ -110,7 +110,7 @@ ELSEIF TALENT:PLAYER:オトコ && TALENT:TARGET:オトコ
 		S = 1
 	ENDIF
 	;TALENT:両刀
-	IF TALENT:81
+	IF TALENT:両刀
 		SIF S
 			PRINT  + 
 		A += 10
@@ -119,7 +119,7 @@ ELSEIF TALENT:PLAYER:オトコ && TALENT:TARGET:オトコ
 		S = 1
 	ENDIF
 	;好奇心
-	IF TALENT:23
+	IF TALENT:好奇心
 		SIF S
 			PRINT  + 
 		A += 7
@@ -128,7 +128,7 @@ ELSEIF TALENT:PLAYER:オトコ && TALENT:TARGET:オトコ
 		S = 1
 	ENDIF
 	;保守的
-	IF TALENT:24
+	IF TALENT:保守的
 		PRINT  - 
 		A -= 13
 		PRINTS TALENTNAME:24
@@ -137,7 +137,7 @@ ELSEIF TALENT:PLAYER:オトコ && TALENT:TARGET:オトコ
 	ENDIF
 ELSE
 	;好奇心
-	IF TALENT:23
+	IF TALENT:好奇心
 		SIF S
 			PRINT  + 
 		A += 5
@@ -146,7 +146,7 @@ ELSE
 		S = 1
 	ENDIF
 	;保守的
-	IF TALENT:24
+	IF TALENT:保守的
 		PRINT  - 
 		A -= 10
 		PRINTS TALENTNAME:24
@@ -165,9 +165,9 @@ IF MARK:0
 	S = 1
 ENDIF
 
-IF TALENT:15
+IF TALENT:プライド高い
 	T = 4
-ELSEIF TALENT:17
+ELSEIF TALENT:プライド低い
 	T = 1
 ELSE
 	T = 2
@@ -237,7 +237,7 @@ IF L
 ENDIF
 ;'(文字色調整用)
 ;服従
-IF TALENT:5
+IF TALENT:服従
 	SIF S
 		PRINT  + 
 	A += 10
@@ -246,7 +246,7 @@ IF TALENT:5
 	S = 1
 ENDIF
 ;隷属
-IF TALENT:8
+IF TALENT:隷属
 	SIF S
 		PRINT  + 
 	A += 20
@@ -255,7 +255,7 @@ IF TALENT:8
 	S = 1
 ENDIF
 ;反抗的（服従、隷属で無効）
-IF TALENT:11 && (TALENT:服従 == 0 && TALENT:隷属 == 0)
+IF TALENT:反抗的 && (TALENT:服従 == 0 && TALENT:隷属 == 0)
 	PRINT  - 
 	A -= 5
 	PRINTS TALENTNAME:11
@@ -263,7 +263,7 @@ IF TALENT:11 && (TALENT:服従 == 0 && TALENT:隷属 == 0)
 	S = 1
 ENDIF
 ;気丈
-IF TALENT:12
+IF TALENT:気丈
 	PRINT  - 
 	A -= 5
 	PRINTS TALENTNAME:12
@@ -271,7 +271,7 @@ IF TALENT:12
 	S = 1
 ENDIF
 ;素直
-IF TALENT:13
+IF TALENT:素直
 	SIF S
 		PRINT  + 
 	A += 5
@@ -280,7 +280,7 @@ IF TALENT:13
 	S = 1
 ENDIF
 ;自尊心
-IF TALENT:15
+IF TALENT:プライド高い
 	PRINT  - 
 	A -= 15
 	PRINTS TALENTNAME:15
@@ -288,7 +288,7 @@ IF TALENT:15
 	S = 1
 ENDIF
 ;プライド低い
-IF TALENT:17
+IF TALENT:プライド低い
 	SIF S
 		PRINT  + 
 	A += 5
@@ -297,7 +297,7 @@ IF TALENT:17
 	S = 1
 ENDIF
 ;目立ちたがり
-IF TALENT:28
+IF TALENT:目立ちたがり
 	SIF S
 		PRINT  + 
 	A += 2
@@ -306,7 +306,7 @@ IF TALENT:28
 	S = 1
 ENDIF
 ;抑圧
-IF TALENT:32
+IF TALENT:抑圧
 	PRINT  - 
 	A -= 10
 	PRINTS TALENTNAME:32
@@ -314,7 +314,7 @@ IF TALENT:32
 	S = 1
 ENDIF
 ;抵抗
-IF TALENT:34
+IF TALENT:抵抗
 	PRINT  - 
 	A -= 10
 	PRINTS TALENTNAME:34
@@ -322,7 +322,7 @@ IF TALENT:34
 	S = 1
 ENDIF
 ;弱味
-IF TALENT:37
+IF TALENT:弱味
 	SIF S
 		PRINT  + 
 	A += 12
@@ -331,7 +331,7 @@ IF TALENT:37
 	S = 1
 ENDIF
 ;即落ち
-IF TALENT:73
+IF TALENT:即落ち
 	SIF S
 		PRINT  + 
 	A += 10
@@ -340,7 +340,7 @@ IF TALENT:73
 	S = 1
 ENDIF
 ;妄信
-IF TALENT:86
+IF TALENT:妄信
 	SIF S
 		PRINT  + 
 	A += 8
@@ -361,7 +361,7 @@ IF ABL:PLAYER:10
 	S = 1
 ENDIF
 ;魅惑
-IF TALENT:PLAYER:93
+IF TALENT:PLAYER:魅惑
 	SIF S
 		PRINT  + 
 	A += 6
@@ -371,7 +371,7 @@ IF TALENT:PLAYER:93
 	S = 1
 ENDIF
 ;謎の魅力
-IF TALENT:PLAYER:94
+IF TALENT:PLAYER:謎の魅力
 	SIF S
 		PRINT  + 
 	A += 8
@@ -381,7 +381,7 @@ IF TALENT:PLAYER:94
 	S = 1
 ENDIF
 ;サド
-IF TALENT:PLAYER:83
+IF TALENT:PLAYER:サド
 	SIF S
 		PRINT  + 
 	A += 3

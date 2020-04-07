@@ -57,7 +57,7 @@ ENDIF
 ;特殊ソース処理
 ;-------------------------------------------------
 ;抑圧、抵抗持ちには、抑鬱ソース追加
-SIF TALENT:32 || TALENT:34
+SIF TALENT:抑圧 || TALENT:抵抗
 	SOURCE:16 += 150
 
 ;中毒による中毒充足のソースは先に処理しておく
@@ -209,7 +209,7 @@ IF L
 ENDIF
 
 ;'自制心
-IF TALENT:20
+IF TALENT:自制心
 	PRINT  - 
 	A -= 5
 	PRINTS TALENTNAME:20
@@ -217,7 +217,7 @@ IF TALENT:20
 	S = 1
 ENDIF
 ;恥じらい
-IF TALENT:35
+IF TALENT:恥じらい
 	PRINT  - 
 	A -= 5
 	PRINTS TALENTNAME:35
@@ -225,7 +225,7 @@ IF TALENT:35
 	S = 1
 ENDIF
 ;恥薄い
-IF TALENT:36
+IF TALENT:恥薄い
 	SIF S
 		PRINT  + 
 	A += 2
@@ -234,7 +234,7 @@ IF TALENT:36
 	S = 1
 ENDIF
 ;自慰しやすい
-IF TALENT:60
+IF TALENT:自慰しやすい
 	SIF S
 		PRINT  + 
 	A += 5
@@ -243,7 +243,7 @@ IF TALENT:60
 	S = 1
 ENDIF
 ;快感に素直
-IF TALENT:70
+IF TALENT:快感に素直
 	SIF S
 		PRINT  + 
 	A += 5
@@ -252,7 +252,7 @@ IF TALENT:70
 	S = 1
 ENDIF
 ;快感の否定（淫乱、娼婦で無効）
-IF TALENT:71 && (TALENT:淫乱 == 0 && TALENT:娼婦 == 0)
+IF TALENT:快感の否定 && (TALENT:淫乱 == 0 && TALENT:娼婦 == 0)
 	PRINT  - 
 	A -= 5
 	PRINTS TALENTNAME:71

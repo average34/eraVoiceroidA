@@ -30,9 +30,9 @@ CALL TECHNIQUE_CHECK
 ;快Ｃのソース
 ;-------------------------------------------------
 ;Ｃ敏感とＣ鈍感はここで処理
-SIF TALENT:101
+SIF TALENT:Ｃ鈍感
 	TIMES SOURCE:0 , 0.50
-SIF TALENT:102
+SIF TALENT:Ｃ敏感
 	TIMES SOURCE:0 , 2.00
 
 ;C感覚
@@ -106,9 +106,9 @@ UP:6 += B
 ;快Ｖのソース
 ;-------------------------------------------------
 ;Ｖ敏感とＶ鈍感はここで処理
-SIF TALENT:103
+SIF TALENT:Ｖ鈍感
 	TIMES SOURCE:1 , 0.50
-SIF TALENT:104
+SIF TALENT:Ｖ敏感
 	TIMES SOURCE:1 , 2.00
 
 ;V感覚
@@ -202,7 +202,7 @@ SIF PALAM:4 >= PALAMLV:4
 	TIMES SOURCE:1 , 1.80
 
 ;小人体型
-IF TALENT:149
+IF TALENT:母乳体質
 	TIMES A , 0.80
 	TIMES B , 1.20
 	UP:8 += B/2
@@ -215,9 +215,9 @@ UP:6 += B
 ;快Ａのソース
 ;-------------------------------------------------
 ;Ａ敏感とＡ鈍感はここで処理
-SIF TALENT:105
+SIF TALENT:Ａ鈍感
 	TIMES SOURCE:2 , 0.50
-SIF TALENT:106
+SIF TALENT:Ａ敏感
 	TIMES SOURCE:2 , 2.00
 
 ;A感覚
@@ -312,13 +312,13 @@ SIF PALAM:4 >= PALAMLV:4
 	TIMES SOURCE:2 , 1.80
 
 ;小人体型
-IF TALENT:149
+IF TALENT:母乳体質
 	TIMES A , 0.50
 	TIMES B , 1.50
 ENDIF
 
 ;快Aのソースが0以上で処女で貞操観念のとき、屈服のソースを三分の一にする
-IF EXP:0 == 0 && TALENT:30 && SOURCE:2 > 0
+IF EXP:0 == 0 && TALENT:貞操観念 && SOURCE:2 > 0
 	SOURCE:14 /= 3
 ENDIF
 
@@ -329,9 +329,9 @@ UP:6 += B
 ;快Ｂのソース
 ;-------------------------------------------------
 ;Ｂ敏感とＢ鈍感はここで処理
-SIF TALENT:107
+SIF TALENT:Ｂ鈍感
 	TIMES SOURCE:3 , 0.50
-SIF TALENT:108
+SIF TALENT:Ｂ敏感
 	TIMES SOURCE:3 , 2.00
 
 ;B感覚
@@ -399,7 +399,7 @@ SIF ABL:1 >= 10
 	TIMES B , 1.40
 
 ;小人体型
-IF TALENT:149
+IF TALENT:母乳体質
 	TIMES A , 1.50
 	TIMES B , 1.20
 	UP:4 += B/2
@@ -448,7 +448,7 @@ ENDIF
 ;-------------------------------------------------
 ;快感の否定は、快ソースの数値に応じて、抑鬱増加（淫乱、娼婦で無効）
 ;-------------------------------------------------
-SIF TALENT:71 && (TALENT:淫乱 == 0 && TALENT:娼婦 == 0)
+SIF TALENT:快感の否定 && (TALENT:淫乱 == 0 && TALENT:娼婦 == 0)
 	SOURCE:16 += (UP:0+UP:1+UP:2+UP:3)/10
 
 ;-------------------------------------------------
@@ -474,7 +474,7 @@ ENDIF
 ;陥落素質
 ;-------------------------------------------------
 ;淫乱
-IF TALENT:4
+IF TALENT:淫乱
 	TIMES UP:0 , 1.20
 	TIMES UP:1 , 1.20
 	TIMES UP:2 , 1.20
@@ -482,7 +482,7 @@ IF TALENT:4
 ENDIF
 
 ;娼婦
-IF TALENT:7
+IF TALENT:娼婦
 	TIMES UP:0 , 1.50
 	TIMES UP:1 , 1.50
 	TIMES UP:2 , 1.50
@@ -493,7 +493,7 @@ ENDIF
 ;素質
 ;-------------------------------------------------
 ;自制心
-IF TALENT:20
+IF TALENT:自制心
 	TIMES UP:0 , 0.70
 	TIMES UP:1 , 0.90
 	TIMES UP:2 , 1.00
@@ -501,23 +501,23 @@ IF TALENT:20
 ENDIF
 
 ;即落ち
-IF TALENT:73
+IF TALENT:即落ち
 	TIMES UP:0 , 2.00
 	TIMES UP:1 , 2.00
 	TIMES UP:2 , 2.00
 	TIMES UP:3 , 2.00
 ENDIF
 ;自慰狂い
-SIF TALENT:74
+SIF TALENT:自慰狂い
 	TIMES UP:0 , 1.20
 ;セックス狂い
-SIF TALENT:75
+SIF TALENT:セックス狂
 	TIMES UP:1 , 1.20
 ;尻穴狂い
-SIF TALENT:76
+SIF TALENT:尻穴狂い
 	TIMES UP:2 , 1.20
 ;淫乳
-SIF TALENT:77
+SIF TALENT:淫乳
 	TIMES UP:3 , 1.20
 
 ;オトコ
@@ -563,9 +563,9 @@ A = UP:0 + UP:1 + UP:2 + UP:3
 ;快Ｃ＋快Ｖ＋快Ａ＋快Ｂが合わせて100以上上昇ならその20%の液体のソースが加わる（オトコはダメ）
 IF A > 100
 	;濡れやすいと濡れにくいはここで処理
-	SIF TALENT:42
+	SIF TALENT:濡れやすい
 		TIMES A , 3.00
-	SIF TALENT:43
+	SIF TALENT:濡れにくい
 		TIMES A , 0.40
 	SOURCE:10 += A / 5
 ENDIF
@@ -790,17 +790,17 @@ SIF ABL:9 >= 10
 	TIMES B , 3.00
 
 ;小人体型
-IF TALENT:149
+IF TALENT:母乳体質
 	TIMES A , 2.00
 	TIMES B , 0.75
 ENDIF
 
 ;調教者が【サド】
-SIF TALENT:PLAYER:83
+SIF TALENT:PLAYER:サド
 	TIMES B , 2.50
 
 ;臆病
-SIF TALENT:10
+SIF TALENT:臆病
 	TIMES C , 2.00
 
 ;マゾっ気があるとPALAM:欲情も上がる
@@ -892,7 +892,7 @@ UP:6 += B
 A = SOURCE:10
 
 ;小人体型
-IF TALENT:149 && TALENT:PLAYER:149 == 0
+IF TALENT:母乳体質 && TALENT:PLAYER:母乳体質 == 0
 	SIF SELECTCOM != 50 && SELECTCOM != 180
 		TIMES A , 0.40
 ENDIF
@@ -965,9 +965,9 @@ UP:5 += A
 ;露出のソース
 ;-------------------------------------------------
 ;恥じらいと恥薄いはここで処理
-SIF TALENT:35
+SIF TALENT:恥じらい
 	TIMES SOURCE:13 , 2.00
-SIF TALENT:36
+SIF TALENT:恥薄い
 	TIMES SOURCE:13 , 0.50
 
 ;潤滑アップの50％を露出のソースに加える
@@ -1166,9 +1166,9 @@ UP:14 += A
 ;逸脱のソース
 ;-------------------------------------------------
 ;好奇心と保守的はここで処理
-SIF TALENT:23
+SIF TALENT:好奇心
 	TIMES SOURCE:17 , 0.80
-SIF TALENT:24
+SIF TALENT:保守的
 	TIMES SOURCE:17 , 2.00
 
 A = SOURCE:17
@@ -1341,7 +1341,7 @@ ELSEIF TALENT:恋慕 && ASSIPLAY > 0
 ENDIF
 
 ;淫乱
-IF TALENT:4
+IF TALENT:淫乱
 	TIMES UP:5 , 1.20
 	TIMES UP:7 , 1.20
 	TIMES UP:12 , 0.80
@@ -1350,7 +1350,7 @@ IF TALENT:4
 ENDIF
 
 ;服従
-IF TALENT:5
+IF TALENT:服従
 	TIMES UP:5 , 0.50
 	TIMES UP:7 , 2.00
 	TIMES UP:11 , 1.50
@@ -1358,20 +1358,20 @@ IF TALENT:5
 ENDIF
 
 ;親愛
-IF TALENT:6 && ASSIPLAY == 0
+IF TALENT:親愛 && ASSIPLAY == 0
 	TIMES UP:5 , 2.00
 	TIMES UP:7 , 3.00
 	TIMES UP:12 , 0.20
 	TIMES UP:13 , 0.20
 	TIMES UP:14 , 0.50
-ELSEIF TALENT:6 && ASSIPLAY > 0
+ELSEIF TALENT:親愛 && ASSIPLAY > 0
 	TIMES UP:5 , 0.80
 	TIMES UP:12 , 1.20
 	TIMES UP:13 , 1.20
 ENDIF
 
 ;娼婦
-IF TALENT:7
+IF TALENT:娼婦
 	TIMES UP:5 , 1.50
 	TIMES UP:7 , 1.50
 	TIMES UP:12 , 0.60
@@ -1380,7 +1380,7 @@ IF TALENT:7
 ENDIF
 
 ;隷属
-IF TALENT:8
+IF TALENT:隷属
 	TIMES UP:5 , 0.20
 	TIMES UP:7 , 2.50
 	TIMES UP:11 , 3.00
@@ -1393,18 +1393,18 @@ ENDIF
 ;素質
 ;-------------------------------------------------
 ;臆病
-IF TALENT:10
+IF TALENT:臆病
 	TIMES UP:11 , 1.20
 	TIMES UP:12 , 1.20
 ENDIF
 ;反抗的（服従、隷属で無効）
-IF TALENT:11 && (TALENT:服従 == 0 && TALENT:隷属 == 0)
+IF TALENT:反抗的 && (TALENT:服従 == 0 && TALENT:隷属 == 0)
 	TIMES UP:5 , 0.80
 	TIMES UP:7 , 0.80
 	TIMES UP:12 , 1.20
 ENDIF
 ;気丈
-IF TALENT:12
+IF TALENT:気丈
 	TIMES UP:5 , 0.80
 	TIMES UP:6 , 0.80
 	TIMES UP:7 , 0.80
@@ -1413,37 +1413,37 @@ IF TALENT:12
 	TIMES UP:14 , 1.20
 ENDIF
 ;素直
-IF TALENT:13
+IF TALENT:素直
 	TIMES UP:5 , 1.20
 	TIMES UP:12 , 0.80
 ENDIF
 ;大人しい
-IF TALENT:14
+IF TALENT:大人しい
 	TIMES UP:5 , 0.80
 	TIMES UP:12 , 0.80
 ENDIF
 ;プライド高い
-IF TALENT:15
+IF TALENT:プライド高い
 	TIMES UP:7 , 0.80
 	TIMES UP:11 , 0.80
 	TIMES UP:12 , 1.20
 ENDIF
 ;生意気
-IF TALENT:16
+IF TALENT:生意気
 	TIMES UP:5 , 0.80
 	TIMES UP:7 , 0.80
 	TIMES UP:12 , 1.20
 ENDIF
 ;プライド低い
-IF TALENT:17
+IF TALENT:プライド低い
 	TIMES UP:7 , 1.20
 	TIMES UP:11 , 1.20
 	TIMES UP:12 , 0.80
 ENDIF
 ;ツンデレ
-IF TALENT:18
+IF TALENT:ツンデレ
 	;陥落素質がある場合と無い場合で変化する
-	IF TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:6 || TALENT:娼婦 || TALENT:8
+	IF TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属
 		TIMES UP:5 , 1.20
 		TIMES UP:7 , 1.20
 		TIMES UP:12 , 0.80
@@ -1455,13 +1455,13 @@ IF TALENT:18
 ENDIF
 
 ;自制心
-IF TALENT:20
+IF TALENT:自制心
 	TIMES UP:7 , 0.80
 	TIMES UP:11 , 0.80
 	TIMES UP:12 , 1.20
 ENDIF
 ;無関心
-IF TALENT:21
+IF TALENT:無関心
 	TIMES UP:5 , 0.80
 	TIMES UP:6 , 0.80
 	TIMES UP:7 , 0.80
@@ -1469,7 +1469,7 @@ IF TALENT:21
 	TIMES UP:12 , 0.80
 ENDIF
 ;感情乏しい
-IF TALENT:22
+IF TALENT:感情乏しい
 	TIMES UP:5 , 0.80
 	TIMES UP:6 , 0.80
 	TIMES UP:7 , 0.80
@@ -1480,65 +1480,65 @@ IF TALENT:22
 	TIMES UP:14 , 0.80
 ENDIF
 ;好奇心
-SIF TALENT:23
+SIF TALENT:好奇心
 	TIMES UP:8 , 1.20
 ;保守的
-SIF TALENT:24
+SIF TALENT:保守的
 	TIMES UP:8 , 0.80
 ;楽観的
-SIF TALENT:25
+SIF TALENT:楽観的
 	TIMES UP:14 , 0.80
 ;悲観的
-SIF TALENT:26
+SIF TALENT:悲観的
 	TIMES UP:14 , 1.20
 ;目立ちたがり
-SIF TALENT:28
+SIF TALENT:目立ちたがり
 	TIMES UP:5 , 1.20
 
 ;抑圧
-IF TALENT:32
+IF TALENT:抑圧
 	TIMES UP:6 , 0.80
 	TIMES UP:12 , 1.20
 	TIMES UP:14 , 1.20
 ENDIF
 ;解放
-IF TALENT:33
+IF TALENT:解放
 	TIMES UP:6 , 1.20
 	TIMES UP:7 , 1.20
 ENDIF
 ;抵抗
-IF TALENT:34
+IF TALENT:抵抗
 	TIMES UP:5 , 0.80
 	TIMES UP:12 , 1.20
 	TIMES UP:14 , 1.20
 ENDIF
 
 ;痛みに弱い
-SIF TALENT:40
+SIF TALENT:痛みに弱い
 	TIMES UP:10 , 1.20
 ;痛みに強い
-SIF TALENT:41
+SIF TALENT:痛みに強い
 	TIMES UP:10 , 0.80
 
 ;習得早い
-SIF TALENT:50
+SIF TALENT:習得早い
 	TIMES UP:8 , 1.20
 ;習得遅い
-SIF TALENT:51
+SIF TALENT:習得遅い
 	TIMES UP:8 , 0.80
 
 ;献身的
-SIF TALENT:63
+SIF TALENT:献身的
 	TIMES UP:7 , 1.20
 
 ;快感に素直
-SIF TALENT:70
+SIF TALENT:快感に素直
 	TIMES UP:6 , 1.20
 ;快感の否定（淫乱、娼婦で無効）
-SIF TALENT:71 && (TALENT:淫乱 == 0 && TALENT:娼婦 == 0)
+SIF TALENT:快感の否定 && (TALENT:淫乱 == 0 && TALENT:娼婦 == 0)
 	TIMES UP:6 , 0.80
 ;即落ち
-IF TALENT:73
+IF TALENT:即落ち
 	TIMES UP:5 , 2.00
 	TIMES UP:6 , 2.00
 	TIMES UP:7 , 2.00
@@ -1550,25 +1550,25 @@ IF TALENT:73
 	TIMES UP:14 , 0.50
 ENDIF
 ;自慰狂い
-SIF TALENT:74
+SIF TALENT:自慰狂い
 	TIMES UP:6 , 1.20
 ;セックス狂い
-SIF TALENT:75
+SIF TALENT:セックス狂
 	TIMES UP:5 , 1.20
 ;尻穴狂い
-SIF TALENT:76
+SIF TALENT:尻穴狂い
 	TIMES UP:7 , 1.20
 ;淫乳
-SIF TALENT:77
+SIF TALENT:淫乳
 	TIMES UP:9 , 1.20
 
 ;倒錯的
-IF TALENT:80
+IF TALENT:倒錯的
 	TIMES UP:7 , 1.20
 	TIMES UP:9 , 1.20
 ENDIF
 ;男嫌い（女性のみ恋慕、親愛で無効）
-IF TALENT:82 && TALENT:PLAYER:オトコ && ((TALENT:恋慕 == 0 && TALENT:6 == 0) || PLAYER != MASTER || TALENT:オトコ)
+IF TALENT:男嫌い && TALENT:PLAYER:オトコ && ((TALENT:恋慕 == 0 && TALENT:親愛 == 0) || PLAYER != MASTER || TALENT:オトコ)
 	TIMES UP:5 , 0.80
 	TIMES UP:6 , 0.80
 	TIMES UP:7 , 0.80
@@ -1577,23 +1577,23 @@ IF TALENT:82 && TALENT:PLAYER:オトコ && ((TALENT:恋慕 == 0 && TALENT:6 == 0
 	TIMES UP:13 , 1.20
 ENDIF
 ;サド
-IF TALENT:83
+IF TALENT:サド
 	TIMES UP:7 , 0.80
 	TIMES UP:11 , 0.80
 ENDIF
 ;マゾ
-IF TALENT:84
+IF TALENT:マゾ
 	TIMES UP:7 , 1.20
 	TIMES UP:11 , 1.20
 	TIMES UP:14 , 0.80
 ENDIF
 ;妄信
-IF TALENT:86
+IF TALENT:妄信
 	TIMES UP:7 , 1.20
 	TIMES UP:12 , 0.80
 ENDIF
 ;女嫌い（男性のみ恋慕、親愛で無効）
-IF TALENT:88 && TALENT:PLAYER:オトコ == 0 && ((TALENT:恋慕 == 0 && TALENT:6 == 0) || PLAYER != MASTER || TALENT:オトコ == 0)
+IF TALENT:女嫌い && TALENT:PLAYER:オトコ == 0 && ((TALENT:恋慕 == 0 && TALENT:親愛 == 0) || PLAYER != MASTER || TALENT:オトコ == 0)
 	TIMES UP:5 , 0.80
 	TIMES UP:6 , 0.80
 	TIMES UP:7 , 0.80
@@ -1766,10 +1766,10 @@ ELSE
 	TIMES D , 0.50
 ENDIF
 ;痛みに弱い
-SIF TALENT:40
+SIF TALENT:痛みに弱い
 	TIMES D , 1.20
 ;痛みに強い
-SIF TALENT:41
+SIF TALENT:痛みに強い
 	TIMES D , 0.80
 
 LOSEBASE:0 += D

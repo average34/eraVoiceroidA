@@ -78,7 +78,7 @@ SIF NO:TARGET != X1
 ;--------------------------------------------------
 ;分割口上ファイルの呼び出し
 ;--------------------------------------------------
-IF CFLAG:214 == 1 && (TALENT:恋慕 || TALENT:6)
+IF CFLAG:214 == 1 && (TALENT:恋慕 || TALENT:親愛)
 	CALL EVENTTRAIN_KX1_LOVE
 	RETURN 0
 ENDIF
@@ -161,7 +161,7 @@ ELSEIF MARK:2 == 2 && (CFLAG:202 < 3 || FLAG:7 == 2)
 	PRINTFORMW 
 	CFLAG:202 = 3
 ;屈服刻印Lv3＋陥落素質無し
-ELSEIF MARK:2 == 3 && (TALENT:恋慕 == 0 && TALENT:淫乱 == 0 && TALENT:服従 == 0 && TALENT:6 == 0 && TALENT:娼婦 == 0 && TALENT:隷属 == 0) && (CFLAG:202 < 4 || FLAG:7 == 2)
+ELSEIF MARK:2 == 3 && (TALENT:恋慕 == 0 && TALENT:淫乱 == 0 && TALENT:服従 == 0 && TALENT:親愛 == 0 && TALENT:娼婦 == 0 && TALENT:隷属 == 0) && (CFLAG:202 < 4 || FLAG:7 == 2)
 	PRINTFORMW 
 	CFLAG:202 = 4
 ENDIF
@@ -205,7 +205,7 @@ ELSEIF MARK:2 == 2
 	PRINTFORMW 
 	CFLAG:219 = 2
 ;屈服刻印Lv3＋陥落素質無し
-ELSEIF MARK:2 == 3 && (TALENT:恋慕 == 0 && TALENT:淫乱 == 0 && TALENT:服従 == 0 && TALENT:6 == 0 && TALENT:娼婦 == 0 && TALENT:隷属 == 0)
+ELSEIF MARK:2 == 3 && (TALENT:恋慕 == 0 && TALENT:淫乱 == 0 && TALENT:服従 == 0 && TALENT:親愛 == 0 && TALENT:娼婦 == 0 && TALENT:隷属 == 0)
 	PRINTFORMW 
 	CFLAG:219 = 3
 ENDIF
@@ -240,7 +240,7 @@ ENDIF
 ;--------------------------------------------------
 ;分割口上ファイルの呼び出し
 ;--------------------------------------------------
-IF CFLAG:214 == 1 && (TALENT:恋慕 || TALENT:6)
+IF CFLAG:214 == 1 && (TALENT:恋慕 || TALENT:親愛)
 	CALL KOJO_MESSAGE_COM_KX1_LOVE
 	RETURN 0
 ENDIF
@@ -2907,7 +2907,7 @@ ENDIF
 ;--------------------------------------------------
 ;分割口上ファイルの呼び出し
 ;--------------------------------------------------
-IF CFLAG:214 == 1 && (TALENT:恋慕 || TALENT:6)
+IF CFLAG:214 == 1 && (TALENT:恋慕 || TALENT:親愛)
 	CALL KOJO_MESSAGE_PALAMCNG_A_KX1_LOVE
 	RETURN 0
 ENDIF
@@ -3203,7 +3203,7 @@ ENDIF
 ;--------------------------------------------------
 ;分割口上ファイルの呼び出し
 ;--------------------------------------------------
-IF CFLAG:214 == 1 && (TALENT:恋慕 || TALENT:6)
+IF CFLAG:214 == 1 && (TALENT:恋慕 || TALENT:親愛)
 	CALL KOJO_MESSAGE_PALAMCNG_E_KX1_LOVE
 	RETURN 0
 ENDIF
@@ -3261,7 +3261,7 @@ ENDIF
 ;--------------------------------------------------
 ;分割口上ファイルの呼び出し
 ;--------------------------------------------------
-IF CFLAG:214 == 1 && (TALENT:恋慕 || TALENT:6)
+IF CFLAG:214 == 1 && (TALENT:恋慕 || TALENT:親愛)
 	CALL KOJO_MESSAGE_PALAMCNG_B_KX1_LOVE
 	RETURN 0
 ENDIF
@@ -3357,7 +3357,7 @@ ENDIF
 ;放尿
 ;-------------------------------------------------
 ;放尿している
-IF TFLAG:29 > 0 && (TEQUIP:27 || TALENT:57)
+IF TFLAG:29 > 0 && (TEQUIP:27 || TALENT:おもらし癖)
 	;屈服刻印Lv3
 	IF MARK:2 == 3 && (CFLAG:248 < 2 || FLAG:7 == 2)
 		PRINTFORMW 
@@ -3399,7 +3399,7 @@ ENDIF
 ;--------------------------------------------------
 ;分割口上ファイルの呼び出し
 ;--------------------------------------------------
-IF CFLAG:214 == 1 && (TALENT:恋慕 || TALENT:6)
+IF CFLAG:214 == 1 && (TALENT:恋慕 || TALENT:親愛)
 	CALL KOJO_MESSAGE_PALAMCNG_C_KX1_LOVE
 	RETURN 0
 ENDIF
@@ -3458,7 +3458,7 @@ ENDIF
 ;--------------------------------------------------
 ;分割口上ファイルの呼び出し
 ;--------------------------------------------------
-IF CFLAG:214 == 1 && (TALENT:恋慕 || TALENT:6)
+IF CFLAG:214 == 1 && (TALENT:恋慕 || TALENT:親愛)
 	CALL KOJO_MESSAGE_PALAMCNG_D_KX1_LOVE
 	RETURN 0
 ENDIF
@@ -3566,7 +3566,7 @@ ENDIF
 ;--------------------------------------------------
 ;分割口上ファイルの呼び出し
 ;--------------------------------------------------
-IF CFLAG:214 == 1 && (TALENT:恋慕 || TALENT:6)
+IF CFLAG:214 == 1 && (TALENT:恋慕 || TALENT:親愛)
 	CALL KOJO_MESSAGE_MARKCNG_KX1_LOVE
 	RETURN 0
 ENDIF
@@ -3626,7 +3626,7 @@ ENDIF
 ;--------------------------------------------------
 ;分割口上ファイルの呼び出し
 ;--------------------------------------------------
-IF CFLAG:214 == 1 && (TALENT:恋慕 || TALENT:6)
+IF CFLAG:214 == 1 && (TALENT:恋慕 || TALENT:親愛)
 	CALL KOJO_MESSAGE_EVENT_KX1_LOVE
 	RETURN 0
 ENDIF
@@ -3726,7 +3726,7 @@ ENDIF
 IF TFLAG:13 == 13
 	CALL EVENT_MESSAGE
 	;出産前
-	IF TALENT:153
+	IF TALENT:妊娠
 		IF CFLAG:273 < 1 || FLAG:7 == 2
 			PRINTFORMW 
 			CFLAG:273 = 1
@@ -3807,9 +3807,9 @@ SIF NO:TARGET != X1
 ;B = 0
 ;REPEAT CHARANUM
 ;	IF NO:COUNT == XX || NO:COUNT == XX || NO:COUNT == XX || NO:COUNT == XX || NO:COUNT == XX
-;		SIF TALENT:COUNT:6 || TALENT:COUNT:娼婦 || TALENT:COUNT:8
+;		SIF TALENT:COUNT:親愛 || TALENT:COUNT:娼婦 || TALENT:COUNT:隷属
 ;			A += 1
-;		SIF TALENT:COUNT:恋慕 || TALENT:COUNT:4 || TALENT:COUNT:服従 || TALENT:COUNT:6 || TALENT:COUNT:娼婦 || TALENT:COUNT:8
+;		SIF TALENT:COUNT:恋慕 || TALENT:COUNT:淫乱 || TALENT:COUNT:服従 || TALENT:COUNT:親愛 || TALENT:COUNT:娼婦 || TALENT:COUNT:隷属
 ;			B += 1
 ;	ENDIF
 ;REND
@@ -3822,7 +3822,7 @@ SIF NO:TARGET != X1
 ;--------------------------------------------------
 ;分割口上ファイルの呼び出し
 ;--------------------------------------------------
-SIF CFLAG:214 == 1 && CFLAG:21 == 1 && (TALENT:恋慕 || TALENT:6)
+SIF CFLAG:214 == 1 && CFLAG:21 == 1 && (TALENT:恋慕 || TALENT:親愛)
 	CALL KOJO_MESSAGE_ENDING_KX1_LOVE
 SIF CFLAG:215 == 1 && CFLAG:21 == 1 && (TALENT:淫乱 || TALENT:娼婦)
 	CALL KOJO_MESSAGE_ENDING_KX1_LEWD

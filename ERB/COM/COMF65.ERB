@@ -84,16 +84,16 @@ ENDIF
 
 ;調教対象のバストサイズを見る
 ;爆乳
-IF TALENT:112
+IF TALENT:爆乳
 	TIMES B , 1.50
 ;巨乳
-ELSEIF TALENT:111
+ELSEIF TALENT:巨乳
 	TIMES B , 1.20
 ;貧乳
-ELSEIF TALENT:109
+ELSEIF TALENT:貧乳
 	TIMES B , 0.90
 ;絶壁
-ELSEIF TALENT:110
+ELSEIF TALENT:絶壁
 	TIMES B , 0.70
 ENDIF
 
@@ -117,7 +117,7 @@ SIF CFLAG:PLAYER:24 > 0
 	B /= 20
 
 
-SIF TALENT:PLAYER:137 || TALENT:PLAYER:139 || TALENT:PLAYER:オトコ
+SIF TALENT:PLAYER:半人半妖 || TALENT:PLAYER:ふたなり || TALENT:PLAYER:オトコ
 	BASE:PLAYER:2 += B
 
 ;-------------------------------------------------
@@ -142,7 +142,7 @@ SOURCE:15 = Y*10 + 60
 ;特殊ソース処理
 ;-------------------------------------------------
 ;抑圧、抵抗持ちには、抑鬱ソース追加
-SIF TALENT:32 || TALENT:34
+SIF TALENT:抑圧 || TALENT:抵抗
 	SOURCE:16 += 300
 
 ;中毒による中毒充足のソースは先に処理しておく
@@ -223,7 +223,7 @@ IF TALENT:恋慕 == 1 && ASSIPLAY == 0
 	PRINTS EXPNAME:23
 	PRINTL +1
 	EXP:23 += 2
-ELSEIF TALENT:6 == 1 && ASSIPLAY == 0
+ELSEIF TALENT:親愛 == 1 && ASSIPLAY == 0
 	PRINTS EXPNAME:23
 	PRINTL +2
 	EXP:23 += 4
@@ -235,7 +235,7 @@ TFLAG:33 = 1
 ;依存度補正値(主人かつ恋慕、淫乱、服従で1。親愛、娼婦、隷属で2）
 IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従) && ASSIPLAY == 0
 	TFLAG:30 += 1
-ELSEIF (TALENT:6 || TALENT:娼婦 || TALENT:隷属) && ASSIPLAY == 0
+ELSEIF (TALENT:親愛 || TALENT:娼婦 || TALENT:隷属) && ASSIPLAY == 0
 	TFLAG:30 += 2
 ENDIF
 
@@ -321,7 +321,7 @@ IF TEQUIP:44 == 0
 		S = 1
 	ENDIF
 	;恥じらい
-	IF TALENT:35
+	IF TALENT:恥じらい
 		PRINT  - 
 		A -= 2
 		PRINTS TALENTNAME:35
@@ -329,7 +329,7 @@ IF TEQUIP:44 == 0
 		S = 1
 	ENDIF
 	;快感の否定
-	IF TALENT:71
+	IF TALENT:快感の否定
 		PRINT  - 
 		A -= 5
 		PRINTS TALENTNAME:71
@@ -337,7 +337,7 @@ IF TEQUIP:44 == 0
 		S = 1
 	ENDIF
 	;男嫌い（恋慕、親愛で無効）
-	IF TALENT:82 && TALENT:PLAYER:オトコ && ((TALENT:恋慕 == 0 && TALENT:6 == 0) || PLAYER != MASTER)
+	IF TALENT:男嫌い && TALENT:PLAYER:オトコ && ((TALENT:恋慕 == 0 && TALENT:親愛 == 0) || PLAYER != MASTER)
 		PRINT  - 
 		A -= 12
 		PRINTS TALENTNAME:82
@@ -354,7 +354,7 @@ IF TEQUIP:44 == 0
 		S = 5
 	ENDIF
 	;親愛
-	IF TALENT:6 && ASSIPLAY == 0
+	IF TALENT:親愛 && ASSIPLAY == 0
 		SIF S
 			PRINT  + 
 		A += 10
@@ -364,7 +364,7 @@ IF TEQUIP:44 == 0
 	ENDIF
 
 	;調教者がふたなり
-	IF TALENT:PLAYER:139
+	IF TALENT:PLAYER:ふたなり
 		SIF S
 			PRINT  + 
 		A += 4
@@ -396,9 +396,9 @@ IF TEQUIP:44 == 0
 	SIF STAIN:PLAYER:2 & 16
 		Y += 15
 
-	SIF TALENT:61
+	SIF TALENT:汚臭鈍感
 		Y /= 3
-	SIF TALENT:62
+	SIF TALENT:汚臭敏感
 		Y *= 2
 
 	;汚れあり
@@ -406,10 +406,10 @@ IF TEQUIP:44 == 0
 		PRINT  - 
 		A -= Y
 		;汚臭鈍感
-		IF TALENT:61
+		IF TALENT:汚臭鈍感
 			PRINT 汚れあり、
 			PRINTS TALENTNAME:61
-		ELSEIF TALENT:62
+		ELSEIF TALENT:汚臭敏感
 			PRINT 汚れあり、
 			PRINTS TALENTNAME:62
 		ELSE

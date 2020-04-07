@@ -10,7 +10,7 @@ CALL KOJO_MESSAGE_COM
 
 ;V経験を伴うコマンドのフラグ(処女膜再生対応)
 TFLAG:19 = 1
-SIF (TALENT:恋慕 || TALENT:6) && ASSIPLAY == 0 && EXP:0 == 0
+SIF (TALENT:恋慕 || TALENT:親愛) && ASSIPLAY == 0 && EXP:0 == 0
 	TFLAG:20 = 1
 
 ;-------------------------------------------------
@@ -101,7 +101,7 @@ SIF CFLAG:PLAYER:24 > 0
 	B /= 20
 
 
-SIF TALENT:PLAYER:137 || TALENT:PLAYER:139 || TALENT:PLAYER:オトコ
+SIF TALENT:PLAYER:半人半妖 || TALENT:PLAYER:ふたなり || TALENT:PLAYER:オトコ
 	BASE:PLAYER:2 += B
 
 
@@ -124,11 +124,11 @@ SOURCE:18 = 500
 ;特殊ソース処理
 ;-------------------------------------------------
 ;抑圧、抵抗持ちには、抑鬱ソース追加
-SIF TALENT:32 || TALENT:34
+SIF TALENT:抑圧 || TALENT:抵抗
 	SOURCE:16 += 500
 
 ;貞操観念持ちで恋慕、親愛持ち以外には常に反発のソースを追加する（セックス系のみ）
-SIF TALENT:30 && (TALENT:恋慕 == 0 && TALENT:6 == 0)
+SIF TALENT:貞操観念 && (TALENT:恋慕 == 0 && TALENT:親愛 == 0)
 	SOURCE:18 += 1000
 
 ;処女だった場合は、苦痛のソースと反発のソースを追加する
@@ -250,7 +250,7 @@ IF TALENT:恋慕 == 1 && ASSIPLAY == 0
 	PRINTS EXPNAME:23
 	PRINTL +1
 	EXP:23 += 1
-ELSEIF TALENT:6 == 1 && ASSIPLAY == 0
+ELSEIF TALENT:親愛 == 1 && ASSIPLAY == 0
 	PRINTS EXPNAME:23
 	PRINTL +2
 	EXP:23 += 2
@@ -262,7 +262,7 @@ TFLAG:33 = 1
 ;依存度補正値(恋慕で1、親愛で2）
 IF TALENT:恋慕 && ASSIPLAY == 0
 	TFLAG:30 += 1
-ELSEIF TALENT:6 && ASSIPLAY == 0
+ELSEIF TALENT:親愛 && ASSIPLAY == 0
 	TFLAG:30 += 2
 ENDIF
 

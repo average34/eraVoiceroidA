@@ -3,7 +3,7 @@
 ;恋慕、親愛、淫乱、娼婦はMAXLV10
 IF ABL:4 >= 10
 	RETURN 0
-ELSEIF ABL:4 >= 5 && TALENT:恋慕 == 0 && TALENT:6 == 0 && TALENT:淫乱 == 0 && TALENT:娼婦 == 0
+ELSEIF ABL:4 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:淫乱 == 0 && TALENT:娼婦 == 0
 	RETURN 0
 ENDIF
 
@@ -22,7 +22,7 @@ DRAWLINE
 IF ABL:4 >= 10
 	PRINTW 既にMAXです
 	RETURN 0
-ELSEIF ABL:4 >= 5 && TALENT:恋慕 == 0 && TALENT:6 == 0 && TALENT:淫乱 == 0 && TALENT:娼婦 == 0
+ELSEIF ABL:4 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:淫乱 == 0 && TALENT:娼婦 == 0
 	PRINTW 既にMAXです
 	RETURN 0
 ENDIF
@@ -98,10 +98,10 @@ ELSEIF ABL:4 == 9
 ENDIF
 
 ;淫乱
-SIF TALENT:4
+SIF TALENT:淫乱
 	TIMES A , 0.80
 ;娼婦
-SIF TALENT:7
+SIF TALENT:娼婦
 	TIMES A , 0.50
 
 ;0になった場合は1にする

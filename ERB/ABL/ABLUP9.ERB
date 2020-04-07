@@ -3,7 +3,7 @@
 ;恋慕、親愛、服従、隷属はMAXLV10
 IF ABL:9 >= 10
 	RETURN 0
-ELSEIF ABL:9 >= 5 && TALENT:恋慕 == 0 && TALENT:6 == 0 && TALENT:服従 == 0 && TALENT:隷属 == 0
+ELSEIF ABL:9 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:服従 == 0 && TALENT:隷属 == 0
 	RETURN 0
 ENDIF
 
@@ -23,7 +23,7 @@ DRAWLINE
 IF ABL:9 >= 10
 	PRINTW 既にMAXです
 	RETURN 0
-ELSEIF ABL:9 >= 5 && TALENT:恋慕 == 0 && TALENT:6 == 0 && TALENT:服従 == 0 && TALENT:隷属 == 0
+ELSEIF ABL:9 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:服従 == 0 && TALENT:隷属 == 0
 	PRINTW 既にMAXです
 	RETURN 0
 ENDIF
@@ -31,15 +31,15 @@ ENDIF
 CALL DECIDE_ABLUP9
 
 ;ＬＶ３から４に上げるときは異常経験必要（素質：[解放]なら無視できる）
-IF ABL:9 == 3 && TALENT:33 == 0
+IF ABL:9 == 3 && TALENT:解放 == 0
 	PRINTS EXPNAME:50
 	PRINTL あり、かつ
 ;ＬＶ４から５に上げるときは異常経験3以上必要（素質：[解放]なら無視できる）
-ELSEIF ABL:9 == 4 && TALENT:33 == 0
+ELSEIF ABL:9 == 4 && TALENT:解放 == 0
 	PRINTS EXPNAME:50
 	PRINTL 3以上、かつ
 ;ＬＶ８から９に上げるときは異常経験5以上必要（素質：[解放]なら無視できる）
-ELSEIF ABL:9 == 4 && TALENT:33 == 0
+ELSEIF ABL:9 == 4 && TALENT:解放 == 0
 	PRINTS EXPNAME:50
 	PRINTL 5以上、かつ
 ENDIF
@@ -216,7 +216,7 @@ ELSEIF ABL:9 == 9
 ENDIF
 
 ;一線越えない
-IF TALENT:27 && (TALENT:恋慕 == 0 && TALENT:淫乱 == 0 && TALENT:服従 == 0 && TALENT:6 == 0 && TALENT:娼婦 == 0 && TALENT:隷属 == 0)
+IF TALENT:一線越えない && (TALENT:恋慕 == 0 && TALENT:淫乱 == 0 && TALENT:服従 == 0 && TALENT:親愛 == 0 && TALENT:娼婦 == 0 && TALENT:隷属 == 0)
 	TIMES A , 2.00
 	TIMES B , 2.00
 	TIMES C , 2.00
@@ -224,7 +224,7 @@ IF TALENT:27 && (TALENT:恋慕 == 0 && TALENT:淫乱 == 0 && TALENT:服従 == 0 
 	TIMES E , 2.00
 ENDIF
 ;マゾ
-IF TALENT:84
+IF TALENT:マゾ
 	TIMES A , 0.50
 	TIMES B , 0.50
 	TIMES C , 0.50
@@ -234,21 +234,21 @@ ENDIF
 
 
 ;ＬＶ３から４に上げるときは異常経験必要（素質：[解放]なら無視できる）
-IF ABL:9 == 3 && TALENT:33 == 0
+IF ABL:9 == 3 && TALENT:解放 == 0
 	IF EXP:50 == 0
 		;異常経験が不足
 		I |= 2
 		J |= 2
 	ENDIF
 ;ＬＶ４から５に上げるときは異常経験3以上必要（素質：[解放]なら無視できる）
-ELSEIF ABL:9 == 4 && TALENT:33 == 0
+ELSEIF ABL:9 == 4 && TALENT:解放 == 0
 	IF EXP:50 < 3
 		;異常経験が不足
 		I |= 2
 		J |= 2
 	ENDIF
 ;ＬＶ８から９に上げるときは異常経験5以上必要（素質：[解放]なら無視できる）
-ELSEIF ABL:9 == 8 && TALENT:33 == 0
+ELSEIF ABL:9 == 8 && TALENT:解放 == 0
 	IF EXP:50 < 5
 		;異常経験が不足
 		I |= 2

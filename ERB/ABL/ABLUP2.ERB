@@ -3,7 +3,7 @@
 ;恋慕、親愛、服従、隷属はMAXLV10
 IF ABL:2 >= 10
 	RETURN 0
-ELSEIF ABL:2 >= 5 && TALENT:恋慕 == 0 && TALENT:6 == 0 && TALENT:服従 == 0 && TALENT:隷属 == 0
+ELSEIF ABL:2 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:服従 == 0 && TALENT:隷属 == 0
 	RETURN 0
 ENDIF
 
@@ -23,7 +23,7 @@ DRAWLINE
 IF ABL:2 >= 10
 	PRINTW 既にMAXです
 	RETURN 0
-ELSEIF ABL:2 >= 5 && TALENT:恋慕 == 0 && TALENT:6 == 0 && TALENT:服従 == 0 && TALENT:隷属 == 0
+ELSEIF ABL:2 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:服従 == 0 && TALENT:隷属 == 0
 	PRINTW 既にMAXです
 	RETURN 0
 ENDIF
@@ -99,11 +99,11 @@ ELSEIF ABL:2 == 9
 ENDIF
 
 ;自尊心
-IF TALENT:15
+IF TALENT:プライド高い
 	TIMES A , 1.50
 ENDIF
 ;一線越えない
-IF TALENT:27 && (TALENT:恋慕 == 0 && TALENT:淫乱 == 0 && TALENT:服従 == 0 && TALENT:6 == 0 && TALENT:娼婦 == 0 && TALENT:隷属 == 0)
+IF TALENT:一線越えない && (TALENT:恋慕 == 0 && TALENT:淫乱 == 0 && TALENT:服従 == 0 && TALENT:親愛 == 0 && TALENT:娼婦 == 0 && TALENT:隷属 == 0)
 	TIMES A , 2.00
 ENDIF
 

@@ -26,7 +26,7 @@ SOURCE:18 = 20
 ;特殊ソース処理
 ;-------------------------------------------------
 ;抑圧、抵抗持ちには、抑鬱ソース追加
-SIF TALENT:32 || TALENT:34
+SIF TALENT:抑圧 || TALENT:抵抗
 	SOURCE:16 += 20
 
 ;-------------------------------------------------
@@ -37,9 +37,9 @@ IF TEQUIP:25
 	STAIN:5 |= 64
 ELSE
 	;奴隷の胸の汚れがなければ口をつかう（愛液と母乳よごれはＯＫ、汚れ無視か助手調教時は問題なし）
-	IF STAIN:5 < 2 || STAIN:5 == 16 || STAIN:5 == 17 || ASSIPLAY == 1 || TALENT:MASTER:64 == 1
+	IF STAIN:5 < 2 || STAIN:5 == 16 || STAIN:5 == 17 || ASSIPLAY == 1 || TALENT:MASTER:汚れ無視 == 1
 		;調教者のTALENT:舌使いをみる
-		IF TALENT:PLAYER:52
+		IF TALENT:PLAYER:舌使い
 			TIMES SOURCE:17 , 1.40
 			SOURCE:16 += SOURCE:17/20
 		ENDIF

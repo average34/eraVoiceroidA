@@ -105,7 +105,7 @@ SIF CFLAG:PLAYER:24 > 0
 	B /= 20
 
 
-SIF TALENT:PLAYER:137 || TALENT:PLAYER:139 || TALENT:PLAYER:オトコ
+SIF TALENT:PLAYER:半人半妖 || TALENT:PLAYER:ふたなり || TALENT:PLAYER:オトコ
 	BASE:PLAYER:2 += B
 
 ;-------------------------------------------------
@@ -125,7 +125,7 @@ SOURCE:18 = 700
 ;特殊ソース処理
 ;-------------------------------------------------
 ;抑圧、抵抗持ちには、抑鬱ソース追加
-SIF TALENT:32 || TALENT:34
+SIF TALENT:抑圧 || TALENT:抵抗
 	SOURCE:16 += 700
 
 ;助手が処女喪失をした場合、屈服と逸脱を増加
@@ -170,7 +170,7 @@ ENDIF
 ;汚れの処理
 ;-------------------------------------------------
 ;射精に関係なく行われる処理はここから
-IF TALENT:PLAYER:137 || TALENT:PLAYER:139 || TALENT:PLAYER:オトコ
+IF TALENT:PLAYER:半人半妖 || TALENT:PLAYER:ふたなり || TALENT:PLAYER:オトコ
 	;主人のＰ⇔助手のＶの汚れが移動
 	STAIN:MASTER:2 |= STAIN:ASSI:3
 	STAIN:ASSI:3 |= STAIN:MASTER:2
@@ -296,7 +296,7 @@ IF TALENT:ASSI:恋慕 && ASSIPLAY == 0
 ENDIF
 
 ;助手が親愛
-IF TALENT:ASSI:6 && ASSIPLAY == 0
+IF TALENT:ASSI:親愛 && ASSIPLAY == 0
 	SIF S
 		PRINT  + 
 	A += 25

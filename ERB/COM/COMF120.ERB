@@ -80,7 +80,7 @@ IF L
 ENDIF
 
 ;恥じらい
-IF TALENT:35
+IF TALENT:恥じらい
 	PRINT  - 
 	A -= 1
 	PRINTS TALENTNAME:35
@@ -88,7 +88,7 @@ IF TALENT:35
 	S = 1
 ENDIF
 ;汚臭鈍感
-IF TALENT:61
+IF TALENT:汚臭鈍感
 	SIF S
 		PRINT  + 
 	A += 3
@@ -97,7 +97,7 @@ IF TALENT:61
 	S = 1
 ENDIF
 ;汚臭敏感
-IF TALENT:62
+IF TALENT:汚臭敏感
 	PRINT  - 
 	A -= 3
 	PRINTS TALENTNAME:62
@@ -105,7 +105,7 @@ IF TALENT:62
 	S = 1
 ENDIF
 ;献身的
-IF TALENT:63
+IF TALENT:献身的
 	SIF S
 		PRINT  + 
 	A += 6
@@ -114,7 +114,7 @@ IF TALENT:63
 	S = 1
 ENDIF
 ;快感の否定（淫乱、娼婦で無効）
-IF TALENT:71 && (TALENT:淫乱 == 0 && TALENT:娼婦 == 0)
+IF TALENT:快感の否定 && (TALENT:淫乱 == 0 && TALENT:娼婦 == 0)
 	PRINT  - 
 	A -= 1
 	PRINTS TALENTNAME:71
@@ -153,9 +153,9 @@ SIF STAIN:PLAYER:3 & 8
 SIF STAIN:PLAYER:3 & 16
 	Y += 15
 
-SIF TALENT:61
+SIF TALENT:汚臭鈍感
 	Y /= 3
-SIF TALENT:62
+SIF TALENT:汚臭敏感
 	Y *= 2
 
 ;汚れあり
@@ -163,10 +163,10 @@ IF Y
 	PRINT  - 
 	A -= Y
 	;汚臭鈍感
-	IF TALENT:61
+	IF TALENT:汚臭鈍感
 		PRINT 汚れあり、
 		PRINTS TALENTNAME:61
-	ELSEIF TALENT:62
+	ELSEIF TALENT:汚臭敏感
 		PRINT 汚れあり、
 		PRINTS TALENTNAME:62
 	ELSE
@@ -257,7 +257,7 @@ ELSE
 ENDIF
 
 ;TALENT:舌使い、猫舌をみる
-SIF TALENT:52 || TALENT:54
+SIF TALENT:舌使い || TALENT:猫舌
 	TIMES B , 2.00
 
 ;プレイヤーのABL:Ｃ感覚をみる
@@ -280,7 +280,7 @@ SIF CFLAG:PLAYER:24 > 0
 	B /= 20
 
 
-SIF TALENT:PLAYER:137 || TALENT:PLAYER:139 || TALENT:PLAYER:オトコ
+SIF TALENT:PLAYER:半人半妖 || TALENT:PLAYER:ふたなり || TALENT:PLAYER:オトコ
 	BASE:PLAYER:2 += B
 
 
@@ -305,7 +305,7 @@ SOURCE:15 = Y*80 + 50
 ;特殊ソース処理
 ;-------------------------------------------------
 ;抑圧、抵抗持ちには、抑鬱ソース追加
-SIF TALENT:32 || TALENT:34
+SIF TALENT:抑圧 || TALENT:抵抗
 	SOURCE:16 += 400
 
 
@@ -348,7 +348,7 @@ ELSEIF TALENT:オトコ && TALENT:PLAYER:オトコ
 ENDIF
 
 ;奴隷が猫舌持ちの場合は、調教者に嗜虐快楽経験を追加
-IF TALENT:TARGET:54
+IF TALENT:TARGET:猫舌
 	EXP:32 += 1
 	PRINTFORML %EXPNAME:32%＋１
 ENDIF
