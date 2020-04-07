@@ -1128,9 +1128,9 @@ IF TALENT:A:処女 && B > 1
 	PRINTFORML %EXPNAME:50%＋3
 	EXP:A:50 += 3
 	TALENT:A:処女 = 0
-ELSEIF TALENT:A:1 && B > 1
+ELSEIF TALENT:A:再生処女 && B > 1
 	PRINTFORML 再生処女喪失
-	TALENT:A:1 = 0
+	TALENT:A:再生処女 = 0
 ENDIF
 ;珠表示も同様
 SIF E > 0

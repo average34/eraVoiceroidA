@@ -290,7 +290,7 @@ IF TFLAG:40 == 1 || TFLAG:41 == 1
 	ENDIF
 
 	;再生処女だった場合は、苦痛のソースと反発のソースを追加する
-	IF TALENT:1 == 1
+	IF TALENT:再生処女 == 1
 		SOURCE:7 += 5500
 		SOURCE:18 += 1000
 	ENDIF
@@ -433,7 +433,7 @@ ENDIF
 ;-------------------------------------------------
 IF TFLAG:40 == 1
 	;膣内に破瓜の血の汚れを付加
-	SIF TALENT:処女 == 1 || TALENT:1 == 1
+	SIF TALENT:処女 == 1 || TALENT:再生処女 == 1
 		STAIN:6 |= 64
 	;奴隷の膣内⇔主人のＰの汚れが移動
 	IF TALENT:MASTER:137 || TALENT:MASTER:139 || TALENT:MASTER:オトコ
@@ -456,7 +456,7 @@ ENDIF
 
 IF TFLAG:41 == 1
 	;膣内に破瓜の血の汚れを付加
-	SIF TALENT:処女 == 1 || TALENT:1 == 1
+	SIF TALENT:処女 == 1 || TALENT:再生処女 == 1
 		STAIN:6 |= 64
 	;奴隷の膣内⇔助手のＰの汚れが移動
 	IF TALENT:ASSI:139 || TALENT:ASSI:オトコ
