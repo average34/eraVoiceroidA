@@ -1078,7 +1078,7 @@ ELSEIF B > 1
 	F = (B+D/2)*5
 ENDIF
 ;奴隷が処女の場合
-IF EXP:A:0 == 0 && TALENT:A:処女 && B > 1
+IF EXP:A:Ｖ経験 == 0 && TALENT:A:処女 && B > 1
 	E += B*3
 	G = 20
 ENDIF
@@ -1086,20 +1086,20 @@ SIF E < 0
 	E = 0
 SIF F < 0
 	F = 0
-EXP:A:0 += E
-EXP:A:1 += F
-EXP:A:2 += (E+F)/3
+EXP:A:Ｖ経験 += E
+EXP:A:Ａ経験 += F
+EXP:A:絶頂経験 += (E+F)/3
 ;ふたなりかオトコ
 SIF TALENT:A:ふたなり || TALENT:A:オトコ
-	EXP:A:3 += (E+F)/3
-EXP:A:4 += (E+F)
+	EXP:A:射精経験 += (E+F)/3
+EXP:A:性交経験 += (E+F)
 ;膣射経験
 IF B > 1 && CFLAG:A:108 == 0
-	EXP:A:5 += E
+	EXP:A:膣射経験 += E
 	CFLAG:A:105 += E
 ENDIF
-EXP:A:20 += B*5
-EXP:A:22 += B*3
+EXP:A:精液経験 += B*5
+EXP:A:フェラ経験 += B*3
 JUEL:A:1 += E*50
 JUEL:A:2 += F*50
 JUEL:A:6 += (E+F)*30
@@ -1126,7 +1126,7 @@ PRINTFORML %EXPNAME:22%＋{B*3}
 IF TALENT:A:処女 && B > 1
 	PRINTFORML 処女喪失
 	PRINTFORML %EXPNAME:50%＋3
-	EXP:A:50 += 3
+	EXP:A:異常経験 += 3
 	TALENT:A:処女 = 0
 ELSEIF TALENT:A:再生処女 && B > 1
 	PRINTFORML 再生処女喪失

@@ -1759,7 +1759,7 @@ REND
 ;処女喪失シーンがあれば加算
 IF TFLAG:39
 	P += 5000
-	EXP:50 += 1
+	EXP:異常経験 += 1
 	PRINTFORML ビデオには%CALLNAME:TARGET%の処女喪失シーンが記録されている
 	PRINTFORML %EXPNAME:50%＋１
 ENDIF
@@ -1804,7 +1804,7 @@ SIF TALENT:魅力
 ;-----------------------------------------------------------
 
 ;奴隷の被写経験を見る
-SIF EXP:TARGET:63 >= EXPLV:3
+SIF EXP:TARGET:被写経験 >= EXPLV:3
 	O += 10
 
 ;撮影者を見る
@@ -2103,15 +2103,15 @@ WAIT
 @SELL_MILK
 O = TFLAG:35 * 100
 IF O > 0
-	IF EXP:54 <= EXPLV:0
+	IF EXP:噴乳経験 <= EXPLV:0
 		O *= 1
-	ELSEIF EXP:54 <= EXPLV:1
+	ELSEIF EXP:噴乳経験 <= EXPLV:1
 		O *= 2
-	ELSEIF EXP:54 <= EXPLV:2
+	ELSEIF EXP:噴乳経験 <= EXPLV:2
 		O *= 3
-	ELSEIF EXP:54 <= EXPLV:3
+	ELSEIF EXP:噴乳経験 <= EXPLV:3
 		O *= 4
-	ELSEIF EXP:54 <= EXPLV:4
+	ELSEIF EXP:噴乳経験 <= EXPLV:4
 		O *= 5
 	ELSE
 		O *= 6

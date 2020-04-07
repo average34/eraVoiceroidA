@@ -10,7 +10,7 @@ CALL KOJO_MESSAGE_COM
 
 ;V経験を伴うコマンドのフラグ(処女膜再生対応)
 TFLAG:19 = 1
-SIF (TALENT:恋慕 || TALENT:親愛) && ASSIPLAY == 0 && EXP:0 == 0
+SIF (TALENT:恋慕 || TALENT:親愛) && ASSIPLAY == 0 && EXP:Ｖ経験 == 0
 	TFLAG:20 = 1
 
 
@@ -94,7 +94,7 @@ ENDIF
 
 ;EXP:Ｖ経験をみる
 ;処女だと増える
-SIF EXP:0 < EXPLV:1
+SIF EXP:Ｖ経験 < EXPLV:1
 	TIMES B , 1.50
 
 ;再装填処理中は射精ゲージは20分の1に
@@ -146,18 +146,18 @@ ENDIF
 
 ;Vへの苦痛は先に処理しておく
 ;EXP:Ｖ経験をみる（処女の反感は別途処理済みなので省略）
-IF EXP:0 < EXPLV:1
+IF EXP:Ｖ経験 < EXPLV:1
 	TIMES SOURCE:7 , 2.50
-ELSEIF EXP:0 < EXPLV:2
+ELSEIF EXP:Ｖ経験 < EXPLV:2
 	TIMES SOURCE:7 , 0.80
 	TIMES SOURCE:18 , 1.20
-ELSEIF EXP:0 < EXPLV:3
+ELSEIF EXP:Ｖ経験 < EXPLV:3
 	TIMES SOURCE:7 , 0.40
-ELSEIF EXP:0 < EXPLV:4
+ELSEIF EXP:Ｖ経験 < EXPLV:4
 	TIMES SOURCE:7 , 0.10
-ELSEIF EXP:0 < EXPLV:5
+ELSEIF EXP:Ｖ経験 < EXPLV:5
 	TIMES SOURCE:7 , 0.00
-ELSEIF EXP:0 >= EXPLV:5
+ELSEIF EXP:Ｖ経験 >= EXPLV:5
 	TIMES SOURCE:7 , 0.00
 ENDIF
 
@@ -231,18 +231,18 @@ STAIN:PLAYER:2 |= STAIN:6
 ;-------------------------------------------------
 ;経験の処理
 ;-------------------------------------------------
-EXP:0 += 1
+EXP:Ｖ経験 += 1
 PRINTL Ｖ経験＋１
 
 A = 4
 B = NO:PLAYER + 899
 IF TALENT:オトコ == 0 && TALENT:PLAYER:オトコ == 0
 	PRINTFORML %EXPNAME:40%+{A}
-	EXP:40 += A
+	EXP:レズ経験 += A
 	CFLAG:B += A
 ELSEIF TALENT:オトコ && TALENT:PLAYER:オトコ
 	PRINTFORML %EXPNAME:41%+{A}
-	EXP:41 += A
+	EXP:ゲイ経験 += A
 	CFLAG:B += A
 ENDIF
 
@@ -250,11 +250,11 @@ ENDIF
 IF TALENT:恋慕 == 1 && ASSIPLAY == 0
 	PRINTS EXPNAME:23
 	PRINTL +1
-	EXP:23 += 1
+	EXP:愛情経験 += 1
 ELSEIF TALENT:親愛 == 1 && ASSIPLAY == 0
 	PRINTS EXPNAME:23
 	PRINTL +2
-	EXP:23 += 2
+	EXP:愛情経験 += 2
 ENDIF
 
 ;依存度ベクトル

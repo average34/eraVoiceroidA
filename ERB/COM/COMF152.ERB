@@ -44,23 +44,23 @@ ENDIF
 ;-------------------------------------------------
 IF F > 0
 	;特にハードなコマンドでは、異常経験に応じて効果を減らす
-	IF EXP:50 < EXPLV:1
+	IF EXP:異常経験 < EXPLV:1
 		TIMES SOURCE:8 , 1.20
 		TIMES SOURCE:17 , 1.20
 		TIMES SOURCE:18 , 1.20
-	ELSEIF EXP:50 < EXPLV:2
+	ELSEIF EXP:異常経験 < EXPLV:2
 		TIMES SOURCE:8 , 0.90
 		TIMES SOURCE:17 , 0.90
 		TIMES SOURCE:18 , 0.90
-	ELSEIF EXP:50 < EXPLV:3
+	ELSEIF EXP:異常経験 < EXPLV:3
 		TIMES SOURCE:8 , 0.80
 		TIMES SOURCE:17 , 0.80
 		TIMES SOURCE:18 , 0.80
-	ELSEIF EXP:50 < EXPLV:4
+	ELSEIF EXP:異常経験 < EXPLV:4
 		TIMES SOURCE:8 , 0.70
 		TIMES SOURCE:17 , 0.70
 		TIMES SOURCE:18 , 0.70
-	ELSEIF EXP:50 < EXPLV:5
+	ELSEIF EXP:異常経験 < EXPLV:5
 		TIMES SOURCE:8 , 0.60
 		TIMES SOURCE:17 , 0.60
 		TIMES SOURCE:18 , 0.60
@@ -86,8 +86,8 @@ STAIN:6 = 32
 ;経験の処理
 ;-------------------------------------------------
 ;異常経験が5未満のとき、異常経験追加
-IF EXP:50 < 5 && F > 0
-	EXP:50 += 2
+IF EXP:異常経験 < 5 && F > 0
+	EXP:異常経験 += 2
 	PRINTL 異常経験＋２
 ENDIF
 

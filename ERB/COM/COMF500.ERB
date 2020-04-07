@@ -61,7 +61,7 @@ ENDIF
 SIF TFLAG:40 == 1 || TFLAG:41 == 1
 	TFLAG:19 = 1
 
-SIF (TALENT:恋慕 || TALENT:親愛) && ASSIPLAY == 0 && EXP:0 == 0 && TFLAG:40 == 1
+SIF (TALENT:恋慕 || TALENT:親愛) && ASSIPLAY == 0 && EXP:Ｖ経験 == 0 && TFLAG:40 == 1
 	TFLAG:20 = 1
 
 ;-------------------------------------------------
@@ -146,7 +146,7 @@ ENDIF
 
 ;EXP:Ｖ経験をみる
 ;処女だと増える
-SIF EXP:0 < EXPLV:1
+SIF EXP:Ｖ経験 < EXPLV:1
 	TIMES B , 1.50
 
 SIF TALENT:MASTER:半人半妖 || TALENT:MASTER:ふたなり || TALENT:MASTER:オトコ
@@ -297,18 +297,18 @@ IF TFLAG:40 == 1 || TFLAG:41 == 1
 
 	;Vへの苦痛は先に処理しておく
 	;EXP:Ｖ経験をみる（処女の反感は別途処理済みなので省略）
-	IF EXP:0 < EXPLV:1
+	IF EXP:Ｖ経験 < EXPLV:1
 		TIMES SOURCE:7 , 2.50
-	ELSEIF EXP:0 < EXPLV:2
+	ELSEIF EXP:Ｖ経験 < EXPLV:2
 		TIMES SOURCE:7 , 0.80
 		TIMES SOURCE:18 , 1.20
-	ELSEIF EXP:0 < EXPLV:3
+	ELSEIF EXP:Ｖ経験 < EXPLV:3
 		TIMES SOURCE:7 , 0.40
-	ELSEIF EXP:0 < EXPLV:4
+	ELSEIF EXP:Ｖ経験 < EXPLV:4
 		TIMES SOURCE:7 , 0.10
-	ELSEIF EXP:0 < EXPLV:5
+	ELSEIF EXP:Ｖ経験 < EXPLV:5
 		TIMES SOURCE:7 , 0.00
-	ELSEIF EXP:0 >= EXPLV:5
+	ELSEIF EXP:Ｖ経験 >= EXPLV:5
 		TIMES SOURCE:7 , 0.00
 	ENDIF
 
@@ -332,21 +332,21 @@ ENDIF
 IF TFLAG:40 == 2 || TFLAG:41 == 2
 	;Aへの苦痛は先に処理しておく
 	;EXP:Ａ経験をみる
-	IF EXP:1 < EXPLV:1
+	IF EXP:Ａ経験 < EXPLV:1
 		TIMES SOURCE:7 , 3.00
 		TIMES SOURCE:18 , 3.00
-	ELSEIF EXP:1 < EXPLV:2
+	ELSEIF EXP:Ａ経験 < EXPLV:2
 		TIMES SOURCE:7 , 1.20
 		TIMES SOURCE:18 , 2.00
-	ELSEIF EXP:1 < EXPLV:3
+	ELSEIF EXP:Ａ経験 < EXPLV:3
 		TIMES SOURCE:7 , 0.80
 		TIMES SOURCE:18 , 1.50
-	ELSEIF EXP:1 < EXPLV:4
+	ELSEIF EXP:Ａ経験 < EXPLV:4
 		TIMES SOURCE:7 , 0.60
 		TIMES SOURCE:18 , 1.20
-	ELSEIF EXP:1 < EXPLV:5
+	ELSEIF EXP:Ａ経験 < EXPLV:5
 		TIMES SOURCE:7 , 0.40
-	ELSEIF EXP:1 >= EXPLV:5
+	ELSEIF EXP:Ａ経験 >= EXPLV:5
 		TIMES SOURCE:7 , 0.20
 	ENDIF
 
@@ -483,31 +483,31 @@ ENDIF
 ;-------------------------------------------------
 ;Vに挿入している場合
 IF TFLAG:40 == 1 || TFLAG:41 == 1
-	EXP:0 += 1
+	EXP:Ｖ経験 += 1
 	PRINTL Ｖ経験＋１
 ENDIF
 
 ;Aに挿入している場合
 IF TFLAG:40 == 2 || TFLAG:41 == 2
-	EXP:1 += 2
+	EXP:Ａ経験 += 2
 	PRINTL Ａ経験＋２
 ENDIF
 
 ;性交経験
 ;VとAに挿入している場合（口に挿入していない場合）
 IF TFLAG:40 != 3 && TFLAG:41 != 3
-	EXP:4 += 2
+	EXP:性交経験 += 2
 	PRINTS EXPNAME:4
 	PRINTL +2
 ELSE
-	EXP:4 += 1
+	EXP:性交経験 += 1
 	PRINTS EXPNAME:4
 	PRINTL +1
 ENDIF
 
 ;異常経験
 IF (TFLAG:40 == 1 || TFLAG:41 == 1) && TALENT:処女 == 1
-	EXP:50 += 2
+	EXP:異常経験 += 2
 	PRINTFORML %EXPNAME:50%＋２
 ENDIF
 
@@ -515,7 +515,7 @@ ENDIF
 IF TALENT:オトコ == 0 && TALENT:MASTER:オトコ == 0 && TALENT:ASSI:オトコ == 0
 	PRINTS EXPNAME:40
 	PRINTL +10
-	EXP:40 += 10
+	EXP:レズ経験 += 10
 	A = NO:MASTER + 899
 	CFLAG:A += 5
 	A = NO:ASSI + 899
@@ -524,35 +524,35 @@ IF TALENT:オトコ == 0 && TALENT:MASTER:オトコ == 0 && TALENT:ASSI:オト�
 ELSEIF TALENT:オトコ == 0 && TALENT:MASTER:オトコ == 0 && TALENT:ASSI:オトコ == 1
 	PRINTS EXPNAME:40
 	PRINTL +5
-	EXP:40 += 5
+	EXP:レズ経験 += 5
 	A = NO:MASTER + 899
 	CFLAG:A += 5
 ;レズ経験
 ELSEIF TALENT:オトコ == 0 && TALENT:MASTER:オトコ == 1 && TALENT:ASSI:オトコ == 0
 	PRINTS EXPNAME:40
 	PRINTL +5
-	EXP:40 += 5
+	EXP:レズ経験 += 5
 	A = NO:ASSI + 899
 	CFLAG:A += 5
 ;ゲイ経験
 ELSEIF TALENT:オトコ == 1 && TALENT:MASTER:オトコ == 0 && TALENT:ASSI:オトコ == 1
 	PRINTS EXPNAME:40
 	PRINTL +5
-	EXP:41 += 5
+	EXP:ゲイ経験 += 5
 	A = NO:MASTER + 899
 	CFLAG:A += 5
 ;ゲイ経験
 ELSEIF TALENT:オトコ == 1 && TALENT:MASTER:オトコ == 1 && TALENT:ASSI:オトコ == 0
 	PRINTS EXPNAME:41
 	PRINTL +5
-	EXP:41 += 5
+	EXP:ゲイ経験 += 5
 	A = NO:ASSI + 899
 	CFLAG:A += 5
 ;ゲイ経験
 ELSEIF TALENT:オトコ == 1 && TALENT:MASTER:オトコ == 1 && TALENT:ASSI:オトコ == 1
 	PRINTS EXPNAME:41
 	PRINTL +5
-	EXP:41 += 5
+	EXP:ゲイ経験 += 5
 	A = NO:ASSI + 899
 	CFLAG:A += 5
 ENDIF

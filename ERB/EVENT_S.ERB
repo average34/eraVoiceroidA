@@ -6,7 +6,7 @@
 $INPUT_LOOP
 ;不思議の根持ちで精液経験が300以上で生える
 IF TARGET >= 0 
-	IF TALENT:TARGET:不思議な根 == 1 && EXP:TARGET:20 >= 300 && TALENT:ふたなり == 0 && TALENT:オトコ == 0
+	IF TALENT:TARGET:不思議な根 == 1 && EXP:TARGET:精液経験 >= 300 && TALENT:ふたなり == 0 && TALENT:オトコ == 0
 		DRAWLINE
 		PRINTFORML ……どうやら[不思議な根]の効果が現れそうだ
 		PRINTFORMW %CALLNAME:TARGET%を[ふたなり]にしますか？
@@ -30,7 +30,7 @@ ENDIF
 $INPUT_LOOP_2
 ;具現持ちでレズ経験2500以上で生える
 IF TARGET >= 0 
-	IF TALENT:TARGET:具現 == 1 && EXP:TARGET:40 >= 2500 && TALENT:ふたなり == 0 && TALENT:オトコ == 0
+	IF TALENT:TARGET:具現 == 1 && EXP:TARGET:レズ経験 >= 2500 && TALENT:ふたなり == 0 && TALENT:オトコ == 0
 		DRAWLINE
 		PRINTFORML ……どうやら[具現]の効果が現れそうだ
 		PRINTFORML %CALLNAME:TARGET%を[ふたなり]にしますか？
@@ -54,12 +54,12 @@ ENDIF
 ;放尿経験３０以上でおもらし癖がつく
 IF TARGET >= 0 
 	IF TALENT:おもらし癖 == 0
-		IF (TALENT:TARGET:幼稚 && EXP:TARGET:31 >= 10) || (TALENT:TARGET:幼稚 == 0 && EXP:TARGET:31 >= 30)
+		IF (TALENT:TARGET:幼稚 && EXP:TARGET:放尿経験 >= 10) || (TALENT:TARGET:幼稚 == 0 && EXP:TARGET:放尿経験 >= 30)
 			PRINTFORMW （む･･･なんだこれ？）
 			PRINTFORM %CALLNAME:TARGET%は
-			SIF TALENT:TARGET:幼稚 && EXP:TARGET:31 >= 10
+			SIF TALENT:TARGET:幼稚 && EXP:TARGET:放尿経験 >= 10
 			PRINTFORM おねしょを
-			SIF TALENT:TARGET:幼稚 == 0 && EXP:TARGET:31 >= 30 
+			SIF TALENT:TARGET:幼稚 == 0 && EXP:TARGET:放尿経験 >= 30 
 			PRINTFORM 粗相を
 			PRINTFORMW してしまったようだ……
 			PRINTFORMW %CALLNAME:TARGET%は[おもらし癖]がついた
@@ -72,12 +72,12 @@ IF TARGET >= 0
 	;反発刻印３があり、かつ幼稚である時に
 	IF TALENT:TARGET:幼稚 && MARK:3 == 3
 		;欲望が5かつ従順が5かつマゾっ気が5かつ異常経験が７以上になる
-		SIF ABL:TARGET:1 >= 5 && ABL:TARGET:0 >= 5 && ABL:TARGET:9 >= 5 && EXP:TARGET:50 >= 7
+		SIF ABL:TARGET:1 >= 5 && ABL:TARGET:0 >= 5 && ABL:TARGET:9 >= 5 && EXP:TARGET:異常経験 >= 7
 			CALL EVENT_YOUJI
 	;反発刻印３があり、かつ幼稚がない時
 	ELSEIF TALENT:TARGET:幼稚 == 0 && MARK:3 == 3
 		;欲望が5かつ従順が5かつマゾっ気が5かつ異常経験が９以上に加え露出５とおもらし癖がある
-		SIF ABL:TARGET:1 >= 5 && ABL:TARGET:0 >= 5 && ABL:TARGET:9 >= 5 && ABL:TARGET:8 >= 5 && EXP:TARGET:50 >= 9 && TALENT:おもらし癖 == 1
+		SIF ABL:TARGET:1 >= 5 && ABL:TARGET:0 >= 5 && ABL:TARGET:9 >= 5 && ABL:TARGET:8 >= 5 && EXP:TARGET:異常経験 >= 9 && TALENT:おもらし癖 == 1
 			CALL EVENT_YOUJI
 	ENDIF
 ENDIF

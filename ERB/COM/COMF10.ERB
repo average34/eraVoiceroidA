@@ -96,18 +96,18 @@ STAIN:5 |= STAIN:1
 ;-------------------------------------------------
 ;ビデオ撮影時は経験にプラス
 IF TEQUIP:28
-	EXP:10 += 2
+	EXP:自慰経験 += 2
 	PRINTL 自慰経験＋２
-	EXP:11 += 2
+	EXP:調教自慰経験 += 2
 	PRINTL 調教自慰経験＋２
 ELSE
-	EXP:10 += 1
+	EXP:自慰経験 += 1
 	PRINTL 自慰経験＋１
-	EXP:11 += 1
+	EXP:調教自慰経験 += 1
 	PRINTL 調教自慰経験＋１
 ENDIF
 IF TEQUIP:28 && CFLAG:3 == 0
-	EXP:50 += 1
+	EXP:異常経験 += 1
 	PRINTL 異常経験＋１
 	CFLAG:3 = 1
 ENDIF
@@ -116,11 +116,11 @@ A = 3
 B = NO:PLAYER + 899
 IF TALENT:オトコ == 0 && TALENT:PLAYER:オトコ == 0
 	PRINTFORML %EXPNAME:40%+{A}
-	EXP:40 += A
+	EXP:レズ経験 += A
 	CFLAG:B += A
 ELSEIF TALENT:オトコ && TALENT:PLAYER:オトコ
 	PRINTFORML %EXPNAME:41%+{A}
-	EXP:41 += A
+	EXP:ゲイ経験 += A
 	CFLAG:B += A
 ENDIF
 

@@ -52,31 +52,31 @@ SOURCE:18 = 2500
 ;特殊ソース処理
 ;-------------------------------------------------
 ;触手経験は先に見ておく
-IF EXP:55 < EXPLV:1
+IF EXP:触手経験 < EXPLV:1
 	TIMES LOSEBASE:0 , 1.20
 	TIMES LOSEBASE:1 , 1.20
 	TIMES SOURCE:8 , 1.20
 	TIMES SOURCE:17 , 1.20
 	TIMES SOURCE:18 , 1.20
-ELSEIF EXP:55 < EXPLV:2
+ELSEIF EXP:触手経験 < EXPLV:2
 	TIMES LOSEBASE:0 , 0.90
 	TIMES LOSEBASE:1 , 0.90
 	TIMES SOURCE:8 , 0.90
 	TIMES SOURCE:17 , 0.90
 	TIMES SOURCE:18 , 0.90
-ELSEIF EXP:55 < EXPLV:3
+ELSEIF EXP:触手経験 < EXPLV:3
 	TIMES LOSEBASE:0 , 0.80
 	TIMES LOSEBASE:1 , 0.80
 	TIMES SOURCE:8 , 0.80
 	TIMES SOURCE:17 , 0.80
 	TIMES SOURCE:18 , 0.80
-ELSEIF EXP:55 < EXPLV:4
+ELSEIF EXP:触手経験 < EXPLV:4
 	TIMES LOSEBASE:0 , 0.70
 	TIMES LOSEBASE:1 , 0.70
 	TIMES SOURCE:8 , 0.70
 	TIMES SOURCE:17 , 0.70
 	TIMES SOURCE:18 , 0.70
-ELSEIF EXP:55 < EXPLV:5
+ELSEIF EXP:触手経験 < EXPLV:5
 	TIMES LOSEBASE:0 , 0.60
 	TIMES LOSEBASE:1 , 0.60
 	TIMES SOURCE:8 , 0.60
@@ -94,12 +94,12 @@ ENDIF
 ;-------------------------------------------------
 ;経験の処理
 ;-------------------------------------------------
-IF EXP:55 == 0
-	EXP:50 += 1
+IF EXP:触手経験 == 0
+	EXP:異常経験 += 1
 	PRINTL 異常経験＋1
 ENDIF
 PRINT 触手経験＋1
-EXP:55 += 1
+EXP:触手経験 += 1
 
 
 RETURN 1
@@ -208,31 +208,31 @@ ENDIF
 ;特殊ソース処理
 ;-------------------------------------------------
 ;触手経験は先に見ておく
-IF EXP:55 < EXPLV:1
+IF EXP:触手経験 < EXPLV:1
 	TIMES LOSEBASE:0 , 1.20
 	TIMES LOSEBASE:1 , 1.20
 	TIMES SOURCE:8 , 1.20
 	TIMES SOURCE:17 , 1.20
 	TIMES SOURCE:18 , 1.20
-ELSEIF EXP:55 < EXPLV:2
+ELSEIF EXP:触手経験 < EXPLV:2
 	TIMES LOSEBASE:0 , 0.90
 	TIMES LOSEBASE:1 , 0.90
 	TIMES SOURCE:8 , 0.90
 	TIMES SOURCE:17 , 0.90
 	TIMES SOURCE:18 , 0.90
-ELSEIF EXP:55 < EXPLV:3
+ELSEIF EXP:触手経験 < EXPLV:3
 	TIMES LOSEBASE:0 , 0.80
 	TIMES LOSEBASE:1 , 0.80
 	TIMES SOURCE:8 , 0.80
 	TIMES SOURCE:17 , 0.80
 	TIMES SOURCE:18 , 0.80
-ELSEIF EXP:55 < EXPLV:4
+ELSEIF EXP:触手経験 < EXPLV:4
 	TIMES LOSEBASE:0 , 0.70
 	TIMES LOSEBASE:1 , 0.70
 	TIMES SOURCE:8 , 0.70
 	TIMES SOURCE:17 , 0.70
 	TIMES SOURCE:18 , 0.70
-ELSEIF EXP:55 < EXPLV:5
+ELSEIF EXP:触手経験 < EXPLV:5
 	TIMES LOSEBASE:0 , 0.60
 	TIMES LOSEBASE:1 , 0.60
 	TIMES SOURCE:8 , 0.60
@@ -299,7 +299,7 @@ SOURCE:9 += A
 ;射精時の処理
 ;大量射精
 IF E == 2
-	EXP:20 += 3
+	EXP:精液経験 += 3
 	PRINTL 触手大量射精
 	PRINTL 精液経験＋３
 	T += 1
@@ -310,7 +310,7 @@ IF E == 2
 
 ;通常の射精
 ELSEIF E == 1
-	EXP:20 += 1
+	EXP:精液経験 += 1
 	PRINTL 触手射精
 	PRINTL 精液経験＋１
 	T += 1
@@ -371,7 +371,7 @@ ENDIF
 T += 1
 PRINT 触手経験＋
 PRINTVL T
-EXP:55 += T
+EXP:触手経験 += T
 T = 0
 
 ;触手装着中は依存度ベクトル強制変更
@@ -473,7 +473,7 @@ ENDIF
 T = 0
 
 ;フェラ経験
-EXP:22 += 1
+EXP:フェラ経験 += 1
 PRINTL フェラ経験＋１
 RETURN 1
 
@@ -496,7 +496,7 @@ SOURCE:17 += 700
 ;経験の処理
 ;-------------------------------------------------
 ;フェラ経験
-EXP:22 += 1
+EXP:フェラ経験 += 1
 PRINTL フェラ経験＋１
 
 ;触手経験加算

@@ -67,7 +67,7 @@ STAIN:1 |= STAIN:3
 ;-------------------------------------------------
 ;露出癖Lv3以上で自慰経験加算
 IF ABL:8 >= 3
-	EXP:10 += 1
+	EXP:自慰経験 += 1
 	PRINTL 自慰経験＋１
 ENDIF
 
@@ -75,11 +75,11 @@ A = 1
 B = NO:PLAYER + 899
 IF TALENT:オトコ == 0 && TALENT:PLAYER:オトコ == 0
 	PRINTFORML %EXPNAME:40%+{A}
-	EXP:40 += A
+	EXP:レズ経験 += A
 	CFLAG:B += A
 ELSEIF TALENT:オトコ && TALENT:PLAYER:オトコ
 	PRINTFORML %EXPNAME:41%+{A}
-	EXP:41 += A
+	EXP:ゲイ経験 += A
 	CFLAG:B += A
 ENDIF
 
@@ -231,7 +231,7 @@ IF TALENT:処女
 	PRINTS TALENTNAME:0
 	PRINTV '(,20,')
 	S = 1
-ELSEIF EXP:0 < EXPLV:2
+ELSEIF EXP:Ｖ経験 < EXPLV:2
 	PRINT  - 
 	A -= 5
 	PRINTS EXPNAME:0

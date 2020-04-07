@@ -1118,7 +1118,7 @@ ELSE
 	F = (B+D/2)*3
 ENDIF
 ;奴隷が処女の場合
-IF EXP:A:0 == 0 && TALENT:A:処女
+IF EXP:A:Ｖ経験 == 0 && TALENT:A:処女
 	E += 3
 	G = 20
 ENDIF
@@ -1126,16 +1126,16 @@ SIF E < 0
 	E = 0
 SIF F < 0
 	F = 0
-EXP:A:0 += E
-EXP:A:1 += F
-EXP:A:2 += (E+F)/3
+EXP:A:Ｖ経験 += E
+EXP:A:Ａ経験 += F
+EXP:A:絶頂経験 += (E+F)/3
 ;ふたなりかオトコ
 SIF TALENT:A:ふたなり || TALENT:A:オトコ
-	EXP:A:3 += (E+F)/3
-EXP:A:4 += (E+F)
+	EXP:A:射精経験 += (E+F)/3
+EXP:A:性交経験 += (E+F)
 ;膣射経験
 IF H == 0
-	EXP:A:5 += E
+	EXP:A:膣射経験 += E
 	CFLAG:A:105 += E/B
 ENDIF
 JUEL:A:1 += E*50
@@ -1145,19 +1145,19 @@ JUEL:A:8 += (E+F)*50
 JUEL:A:100 += (E+F+G)*100/ABL:A:0
 
 ;奉仕系
-EXP:A:20 += B*5
-EXP:A:22 += B*5
+EXP:A:精液経験 += B*5
+EXP:A:フェラ経験 += B*5
 JUEL:A:5 += B*10
 JUEL:A:8 += B*30
 JUEL:A:100 += B*50/ABL:A:0
 
 ;ＳＭ系
 IF ABL:A:9 >= ABL:A:10
-	EXP:A:30 += B
+	EXP:A:苦痛快楽経験 += B
 	JUEL:A:10 += B*5
 ENDIF
 SIF ABL:A:10 > ABL:A:9
-	EXP:A:32 += B
+	EXP:A:嗜虐快楽経験 += B
 JUEL:A:8 += B*4
 JUEL:A:100 += B*10/ABL:A:0
 
@@ -1193,7 +1193,7 @@ SIF ABL:A:10 > ABL:A:9
 IF TALENT:A:処女
 	PRINTFORML 処女喪失
 	PRINTFORML %EXPNAME:50%＋2
-	EXP:A:50 += 2
+	EXP:A:異常経験 += 2
 	TALENT:A:処女 = 0
 ELSEIF TALENT:A:再生処女
 	PRINTFORML 再生処女喪失

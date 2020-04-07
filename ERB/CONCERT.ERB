@@ -70,20 +70,20 @@ SIF S
 	PRINTFORML %ABLNAME:14%{ABL:A:14}LV +{S}
 
 ;歌唱経験による補正
-IF EXP:A:64 < EXPLV:1
+IF EXP:A:歌唱経験 < EXPLV:1
 	D += 10
-ELSEIF EXP:A:64 < EXPLV:2
+ELSEIF EXP:A:歌唱経験 < EXPLV:2
 	D += 200
-ELSEIF EXP:A:64 < EXPLV:3
+ELSEIF EXP:A:歌唱経験 < EXPLV:3
 	D += 800
-ELSEIF EXP:A:64 < EXPLV:4
+ELSEIF EXP:A:歌唱経験 < EXPLV:4
 	D += 1800
-ELSEIF EXP:A:64 < EXPLV:5
+ELSEIF EXP:A:歌唱経験 < EXPLV:5
 	D += 3000
 ELSE
 	D += 5000
 ENDIF
-	PRINTFORML %EXPNAME:64%{EXP:A:64} +{D}
+	PRINTFORML %EXPNAME:64%{EXP:A:歌唱経験} +{D}
 S += D
 
 ;奴隷の能力、素質による倍率計算（歌唱技能は前項で見ているので省略）
@@ -758,8 +758,8 @@ IF RESULT == 0
 		Q = 80
 	ENDIF
 	BASE:A:0 -= 300
-	EXP:A:23 += 5
-	EXP:A:64 += Q
+	EXP:A:愛情経験 += 5
+	EXP:A:歌唱経験 += Q
 	JUEL:A:8 += R
 	CFLAG:A:10 -= 1
 	PRINTFORML %EXPNAME:23%＋5

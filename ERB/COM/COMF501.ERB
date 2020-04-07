@@ -169,7 +169,7 @@ ENDIF
 ;フェラ経験（半人半妖、ふたなり、オトコ限定）
 IF TALENT:MASTER:半人半妖 || TALENT:MASTER:ふたなり || TALENT:MASTER:オトコ
 	PRINTFORML %EXPNAME:22%＋１
-	EXP:22 += 1
+	EXP:フェラ経験 += 1
 ENDIF
 
 ;レズ経験
@@ -177,11 +177,11 @@ A = 8
 B = NO:PLAYER + 899
 IF TALENT:オトコ == 0 && TALENT:PLAYER:オトコ == 0
 	PRINTFORML %EXPNAME:40%+{A}
-	EXP:40 += A
+	EXP:レズ経験 += A
 	CFLAG:B += A
 ELSEIF TALENT:オトコ && TALENT:PLAYER:オトコ
 	PRINTFORML %EXPNAME:41%+{A}
-	EXP:41 += A
+	EXP:ゲイ経験 += A
 	CFLAG:B += A
 ENDIF
 
@@ -189,18 +189,18 @@ ENDIF
 IF (TALENT:恋慕 == 1 || TALENT:親愛 == 1) && ASSIPLAY == 0
 	PRINTS EXPNAME:23
 	PRINTL +1
-	EXP:23 += 1
+	EXP:愛情経験 += 1
 ENDIF
 
 ;奴隷が猫舌持ちの場合は、調教者に嗜虐快楽経験を追加
 IF TALENT:TARGET:猫舌
-	EXP:32 += 1
+	EXP:嗜虐快楽経験 += 1
 	PRINTFORML %EXPNAME:32%＋１
 ENDIF
 
 ;調教者が猫舌持ちの場合は、調教者に嗜虐快楽経験を追加
 IF TALENT:PLAYER:猫舌
-	EXP:PLAYER:32 += 1
+	EXP:PLAYER:嗜虐快楽経験 += 1
 	PRINTFORML %CALLNAME:PLAYER%の%EXPNAME:32%＋１
 ENDIF
 

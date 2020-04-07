@@ -1156,16 +1156,16 @@ IF D > 0
 		J = 0
 	SIF K < 0
 		K = 0
-	EXP:A:0 += J
-	EXP:A:1 += K
-	EXP:A:2 += D/3
+	EXP:A:Ｖ経験 += J
+	EXP:A:Ａ経験 += K
+	EXP:A:絶頂経験 += D/3
 	;ふたなりかオトコ
 	SIF TALENT:A:ふたなり || TALENT:A:オトコ
-		EXP:A:3 += D/3
-	EXP:A:4 += D
+		EXP:A:射精経験 += D/3
+	EXP:A:性交経験 += D
 	;膣射経験
 	IF B == 1
-		EXP:A:5 += J
+		EXP:A:膣射経験 += J
 		CFLAG:A:105 += J
 	ENDIF
 	JUEL:A:1 += J*50
@@ -1176,8 +1176,8 @@ IF D > 0
 ENDIF
 ;奉仕系
 IF G > 0
-	EXP:A:20 += G
-	EXP:A:22 += G
+	EXP:A:精液経験 += G
+	EXP:A:フェラ経験 += G
 	JUEL:A:5 += G*10
 	JUEL:A:8 += G*60
 	JUEL:A:100 += G*100/ABL:A:0
@@ -1185,21 +1185,21 @@ ENDIF
 ;ＳＭ系
 IF H > 0
 	IF ABL:A:9 > ABL:A:10
-		EXP:A:30 += H
+		EXP:A:苦痛快楽経験 += H
 		JUEL:A:10 += H*50
 	ENDIF
 	SIF ABL:A:10 > ABL:A:9
-		EXP:A:32 += H
+		EXP:A:嗜虐快楽経験 += H
 	JUEL:A:8 += H*40
 	JUEL:A:100 += H*100/ABL:A:0
 ENDIF
 ;レズ系
 IF I > 0
-	EXP:A:2 += I/3
+	EXP:A:絶頂経験 += I/3
 	;ふたなりかオトコ
 	SIF TALENT:A:ふたなり || TALENT:A:オトコ
-		EXP:A:3 += I/3
-	EXP:A:40 += I
+		EXP:A:射精経験 += I/3
+	EXP:A:レズ経験 += I
 	JUEL:A:0 += I*50
 	JUEL:A:6 += I*30
 	JUEL:A:8 += I*40
@@ -1240,7 +1240,7 @@ SIF I
 IF TALENT:A:処女
 	PRINTFORML 処女喪失
 	PRINTFORML %EXPNAME:50%＋2
-	EXP:A:50 += 2
+	EXP:A:異常経験 += 2
 	TALENT:A:処女 = 0
 ELSEIF TALENT:A:再生処女
 	PRINTFORML 再生処女喪失

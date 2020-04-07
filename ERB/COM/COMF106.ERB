@@ -43,10 +43,10 @@ SOURCE:18 = 700
 ;特殊ソース処理
 ;-------------------------------------------------
 ;緊縛経験が高いと消費減少
-IF EXP:51 < EXPLV:3
+IF EXP:緊縛経験 < EXPLV:3
 	TIMES LOSEBASE:0 , 1.00
 	TIMES LOSEBASE:1 , 1.00
-ELSEIF EXP:51 < EXPLV:4
+ELSEIF EXP:緊縛経験 < EXPLV:4
 	TIMES LOSEBASE:0 , 0.90
 	TIMES LOSEBASE:1 , 0.90
 ELSE
@@ -57,18 +57,18 @@ ENDIF
 ;-------------------------------------------------
 ;経験の処理
 ;-------------------------------------------------
-EXP:51 += 5
+EXP:緊縛経験 += 5
 PRINTL 緊縛経験＋５
 
 A = 1
 B = NO:PLAYER + 899
 IF TALENT:オトコ == 0 && TALENT:PLAYER:オトコ == 0
 	PRINTFORML %EXPNAME:40%+{A}
-	EXP:40 += A
+	EXP:レズ経験 += A
 	CFLAG:B += A
 ELSEIF TALENT:オトコ && TALENT:PLAYER:オトコ
 	PRINTFORML %EXPNAME:41%+{A}
-	EXP:41 += A
+	EXP:ゲイ経験 += A
 	CFLAG:B += A
 ENDIF
 
@@ -118,9 +118,9 @@ SOURCE:18 += 350
 ;-------------------------------------------------
 ;緊縛経験が高いと消費減少
 A = 60
-IF EXP:51 < EXPLV:3
+IF EXP:緊縛経験 < EXPLV:3
 	TIMES A , 1.00
-ELSEIF EXP:51 < EXPLV:4
+ELSEIF EXP:緊縛経験 < EXPLV:4
 	TIMES A , 0.90
 ELSE
 	TIMES A , 0.70
@@ -131,7 +131,7 @@ LOSEBASE:1 += A
 ;-------------------------------------------------
 ;経験の処理
 ;-------------------------------------------------
-EXP:51 += 1
+EXP:緊縛経験 += 1
 PRINTL 緊縛経験＋１
 
 ;触手経験加算

@@ -181,13 +181,13 @@ ENDIF
 ;-------------------------------------------------
 ;射精に関係なく行われる処理はここから
 PRINTFORML %EXPNAME:22%＋１
-EXP:22 += 1
+EXP:フェラ経験 += 1
 
 ;マスターと奴隷のレズ
 IF TALENT:オトコ == 0 && TALENT:MASTER:オトコ == 0
 	PRINTS EXPNAME:40
 	PRINTL +7
-	EXP:40 += 7
+	EXP:レズ経験 += 7
 	A = NO:MASTER + 900
 	CFLAG:A += 7
 ENDIF
@@ -196,14 +196,14 @@ ENDIF
 IF TALENT:オトコ == 0 && TALENT:ASSI:オトコ == 0
 	PRINTS EXPNAME:40
 	PRINTL +7
-	EXP:40 += 7
+	EXP:レズ経験 += 7
 	A = NO:ASSI + 900
 	CFLAG:A += 7
 ENDIF
 
 ;奴隷が猫舌持ちの場合は、調教者に嗜虐快楽経験を追加
 IF TALENT:TARGET:猫舌
-	EXP:32 += 1
+	EXP:嗜虐快楽経験 += 1
 	PRINTFORML %EXPNAME:32%＋１
 ENDIF
 

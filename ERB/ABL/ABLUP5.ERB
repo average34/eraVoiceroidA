@@ -87,27 +87,27 @@ IF ABL:5 == 0
 ELSEIF ABL:5 == 1
 	A = 50
 	B = 10
-	SIF EXP:1 >= EXPLV:3
+	SIF EXP:Ａ経験 >= EXPLV:3
 		A = 20
 ELSEIF ABL:5 == 2
 	A = 400
 	B = 30
-	SIF EXP:1 >= EXPLV:4
+	SIF EXP:Ａ経験 >= EXPLV:4
 		A = 100
 ELSEIF ABL:5 == 3
 	A = 5000
 	B = 75
-	SIF EXP:1 >= EXPLV:5
+	SIF EXP:Ａ経験 >= EXPLV:5
 		A = 4000
 ELSEIF ABL:5 == 4
 	A = 15000
 	B = 150
-	SIF EXP:1 >= EXPLV:5
+	SIF EXP:Ａ経験 >= EXPLV:5
 		A = 8000
 ELSEIF ABL:5 == 5
 	A = 30000
 	B = 230
-	SIF EXP:1 >= EXPLV:5
+	SIF EXP:Ａ経験 >= EXPLV:5
 		A = 24000
 ELSEIF ABL:5 == 6
 	A = 40000
@@ -142,7 +142,7 @@ SIF A == 0
 SIF JUEL:2 < A
 	I |= 1
 
-SIF EXP:1 < B
+SIF EXP:Ａ経験 < B
 	I |= 2
 
 IF I == 0

@@ -259,7 +259,7 @@ IF TALENT:PLAYER:処女 == 1 && CFLAG:99 == 0
 	TALENT:PLAYER:処女 = 0
 	PRINTL ＜助手が処女＞
 	;異常経験追加（一回きり）
-	EXP:50 += 1
+	EXP:異常経験 += 1
 	PRINTFORML %EXPNAME:50%＋１
 	IF ABL:0 < 2
 		PRINTFORML そして%ABLNAME:0%が2になった
@@ -267,7 +267,7 @@ IF TALENT:PLAYER:処女 == 1 && CFLAG:99 == 0
 	ENDIF
 	CFLAG:99 = 1
 ENDIF
-EXP:PLAYER:0 += 1
+EXP:PLAYER:Ｖ経験 += 1
 
 
 ;-------------------------------------------------
@@ -304,11 +304,11 @@ A = 10
 B = NO:PLAYER + 899
 IF TALENT:オトコ == 0 && TALENT:PLAYER:オトコ == 0
 	PRINTFORML %EXPNAME:40%+{A}
-	EXP:40 += A
+	EXP:レズ経験 += A
 	CFLAG:B += A
 ELSEIF TALENT:オトコ && TALENT:PLAYER:オトコ
 	PRINTFORML %EXPNAME:41%+{A}
-	EXP:41 += A
+	EXP:ゲイ経験 += A
 	CFLAG:B += A
 ENDIF
 

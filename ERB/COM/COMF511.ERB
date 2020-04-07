@@ -258,8 +258,8 @@ SIF E == 2
 ;大量射精
 IF E == 2
 
-	EXP:MASTER:3 += 2
-	EXP:20 += 9
+	EXP:MASTER:射精経験 += 2
+	EXP:精液経験 += 9
 	PRINTL 大量射精
 	PRINTL 精液経験＋９
 	;精液汚れ
@@ -273,8 +273,8 @@ IF E == 2
 	TFLAG:0 = 2
 ;通常の射精
 ELSEIF E == 1
-	EXP:MASTER:3 += 1
-	EXP:20 += 3
+	EXP:MASTER:射精経験 += 1
+	EXP:精液経験 += 3
 	PRINTL 射精
 	PRINTL 精液経験＋３
 	;精液汚れ
@@ -354,8 +354,8 @@ SIF E == 2
 
 ;大量射精
 IF E == 2
-	EXP:ASSI:3 += 2
-	EXP:20 += 3
+	EXP:ASSI:射精経験 += 2
+	EXP:精液経験 += 3
 	PRINTL 大量射精（助手）
 	PRINTL 精液経験＋３
 	;Ｐに精液汚れ
@@ -368,8 +368,8 @@ IF E == 2
 	TFLAG:6 = 2
 ;通常の射精
 ELSEIF E == 1
-	EXP:ASSI:3 += 1
-	EXP:20 += 1
+	EXP:ASSI:射精経験 += 1
+	EXP:精液経験 += 1
 	PRINTL 射精（助手）
 	PRINTL 精液経験＋１
 	;Ｐに精液汚れ
@@ -412,13 +412,13 @@ ENDIF
 ;-------------------------------------------------
 ;フェラ経験
 PRINTFORML %EXPNAME:22%＋２
-EXP:22 += 2
+EXP:フェラ経験 += 2
 
 ;レズ経験
 IF TALENT:オトコ == 0 && TALENT:MASTER:オトコ == 0 && TALENT:ASSI:オトコ == 0
 	PRINTS EXPNAME:40
 	PRINTL +10
-	EXP:40 += 10
+	EXP:レズ経験 += 10
 	A = NO:MASTER + 899
 	CFLAG:A += 5
 	A = NO:ASSI + 899
@@ -426,20 +426,20 @@ IF TALENT:オトコ == 0 && TALENT:MASTER:オトコ == 0 && TALENT:ASSI:オト�
 ELSEIF TALENT:オトコ == 0 && TALENT:MASTER:オトコ == 0 && TALENT:ASSI:オトコ == 1
 	PRINTS EXPNAME:41
 	PRINTL +5
-	EXP:41 += 5
+	EXP:ゲイ経験 += 5
 	A = NO:MASTER + 899
 	CFLAG:A += 5
 ELSEIF TALENT:オトコ == 0 && TALENT:MASTER:オトコ == 1 && TALENT:ASSI:オトコ == 0
 	PRINTS EXPNAME:41
 	PRINTL +5
-	EXP:41 += 5
+	EXP:ゲイ経験 += 5
 	A = NO:ASSI + 899
 	CFLAG:A += 5
 ENDIF
 
 ;奴隷が猫舌持ちの場合は、調教者に嗜虐快楽経験を追加
 IF TALENT:TARGET:猫舌
-	EXP:32 += 1
+	EXP:嗜虐快楽経験 += 1
 	PRINTFORML %EXPNAME:32%＋１
 ENDIF
 

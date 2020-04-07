@@ -292,7 +292,7 @@ IF TFLAG:703 == 1
 				PRINTL <避妊結界>
 			ELSE
 				PRINTL 膣射経験+２
-				EXP:TARGET:5 += 2
+				EXP:TARGET:膣射経験 += 2
 				CFLAG:TARGET:101 += 2
 				;妊娠していないのであれば中田氏時の恐怖判定等
 				SIF TALENT:T:妊娠 == 0 && T == TARGET
@@ -305,7 +305,7 @@ IF TFLAG:703 == 1
 				PRINTL <避妊結界>
 			ELSE
 				PRINTL 膣射経験+１
-				EXP:TARGET:5 += 1
+				EXP:TARGET:膣射経験 += 1
 				CFLAG:TARGET:101 += 1
 				;妊娠していないのであれば中田氏時の恐怖判定等
 				SIF TALENT:T:妊娠 == 0 && T == TARGET
@@ -324,7 +324,7 @@ IF TFLAG:703 == 1
 				PRINTL <避妊結界>
 			ELSE
 				PRINTL 膣射経験+２
-				EXP:TARGET:5 += 2
+				EXP:TARGET:膣射経験 += 2
 				CFLAG:TARGET:103 += 2
 				;妊娠していないのであれば中田氏時の恐怖判定等
 				SIF TALENT:T:妊娠 == 0 && T == TARGET
@@ -337,7 +337,7 @@ IF TFLAG:703 == 1
 				PRINTL <避妊結界>
 			ELSE
 				PRINTL 膣射経験+１
-				EXP:TARGET:5 += 1
+				EXP:TARGET:膣射経験 += 1
 				CFLAG:TARGET:103 += 1
 				;妊娠していないのであれば中田氏時の恐怖判定等
 				SIF TALENT:T:妊娠 == 0 && T == TARGET
@@ -382,7 +382,7 @@ ELSEIF TFLAG:703 == 11 || TFLAG:41 == 1
 			PRINTL <避妊結界>
 		ELSE
 			PRINTL 膣射経験+２
-			EXP:TARGET:5 += 2
+			EXP:TARGET:膣射経験 += 2
 			CFLAG:TARGET:103 += 2
 		ENDIF
 	ELSEIF TFLAG:2 == 1
@@ -391,7 +391,7 @@ ELSEIF TFLAG:703 == 11 || TFLAG:41 == 1
 			PRINTL <避妊結界>
 		ELSE
 			PRINTL 膣射経験+１
-			EXP:TARGET:5 += 1
+			EXP:TARGET:膣射経験 += 1
 			CFLAG:TARGET:103 += 1
 		ENDIF
 	ELSEIF TEQUIP:ASSI:35 == 1
@@ -430,7 +430,7 @@ ELSEIF FLAG:98 < 3 && ASSIPLAY && ((SELECTCOM == 64 || SELECTCOM == 200) || SELE
 				PRINTL <避妊結界>
 			ELSE
 				PRINTL 主人の膣射経験+２
-				EXP:MASTER:5 += 2
+				EXP:MASTER:膣射経験 += 2
 				CFLAG:MASTER:104 += 2
 			ENDIF
 		ELSEIF E == 1
@@ -439,7 +439,7 @@ ELSEIF FLAG:98 < 3 && ASSIPLAY && ((SELECTCOM == 64 || SELECTCOM == 200) || SELE
 				PRINTL <避妊結界>
 			ELSE
 				PRINTL 主人の膣射経験+１
-				EXP:MASTER:5 += 1
+				EXP:MASTER:膣射経験 += 1
 				CFLAG:MASTER:104 += 1
 			ENDIF
 		ENDIF
@@ -450,7 +450,7 @@ ELSEIF FLAG:98 < 3 && ASSIPLAY && ((SELECTCOM == 64 || SELECTCOM == 200) || SELE
 				PRINTL <避妊結界>
 			ELSE
 				PRINTL 助手の膣射経験+２
-				EXP:ASSI:5 += 2
+				EXP:ASSI:膣射経験 += 2
 				CFLAG:ASSI:104 += 2
 			ENDIF
 		ELSEIF E == 1
@@ -459,7 +459,7 @@ ELSEIF FLAG:98 < 3 && ASSIPLAY && ((SELECTCOM == 64 || SELECTCOM == 200) || SELE
 				PRINTL <避妊結界>
 			ELSE
 				PRINTL 助手の膣射経験+１
-				EXP:ASSI:5 += 1
+				EXP:ASSI:膣射経験 += 1
 				CFLAG:ASSI:104 += 1
 			ENDIF
 		ENDIF
@@ -497,7 +497,7 @@ SIF T != TARGET
 
 ;大量射精
 IF E == 2
-	EXP:20 += 1
+	EXP:精液経験 += 1
 	PRINTL 精液経験＋１
 
 	;セックスで射精フラグ
@@ -519,13 +519,13 @@ SIF T != TARGET
 
 ;大量射精
 IF E == 2
-	EXP:20 += 2
+	EXP:精液経験 += 2
 	PRINTL 精液経験＋２
 	;セックスで射精フラグ
 	TFLAG:2 = 2
 ELSEIF E == 1
 	IF SELECTCOM == 67
-		EXP:20 += 1
+		EXP:精液経験 += 1
 		PRINTL 精液経験＋１
 	ENDIF
 	;セックスで射精フラグ
@@ -545,15 +545,15 @@ SIF T != TARGET
 ;大量射精
 IF E == 2
 	IF SELECTCOM == 67
-		EXP:20 += 2
+		EXP:精液経験 += 2
 		PRINTL 精液経験＋２
 	ELSE
-		EXP:20 += 1
+		EXP:精液経験 += 1
 		PRINTL 精液経験＋１
 	ENDIF
 ELSEIF E == 1
 	IF SELECTCOM == 67
-		EXP:20 += 1
+		EXP:精液経験 += 1
 		PRINTL 精液経験＋１
 	ENDIF
 ENDIF
@@ -569,13 +569,13 @@ SIF T != TARGET
 
 ;大量射精
 IF E == 2
-	EXP:20 += 3
+	EXP:精液経験 += 3
 	PRINTL 精液経験＋３
 	;手で射精させたフラグ
 	TFLAG:1 = 2
 ;通常の射精
 ELSEIF E == 1
-	EXP:20 += 1
+	EXP:精液経験 += 1
 	PRINTL 精液経験＋１
 	;手で射精させたフラグ
 	TFLAG:1 = 1
@@ -591,13 +591,13 @@ SIF T != TARGET
 
 ;大量射精
 IF E == 2
-	EXP:20 += 9
+	EXP:精液経験 += 9
 	PRINTL 精液経験＋９
 	;口で射精させたフラグ
 	TFLAG:0 = 2
 ;通常の射精
 ELSEIF E == 1
-	EXP:20 += 3
+	EXP:精液経験 += 3
 	PRINTL 精液経験＋３
 	;口で射精させたフラグ
 	TFLAG:0 = 1
@@ -613,13 +613,13 @@ SIF T != TARGET
 
 ;大量射精
 IF E == 2
-	EXP:20 += 2
+	EXP:精液経験 += 2
 	PRINTL 精液経験＋２
 	;手と口以外（素股など）で射精させたフラグ
 	TFLAG:9 = 2
 ;通常の射精
 ELSEIF E == 1
-	EXP:20 += 1
+	EXP:精液経験 += 1
 	PRINTL 精液経験＋１
 	;手と口以外（素股など）で射精させたフラグ
 	TFLAG:9 = 1
@@ -635,7 +635,7 @@ SIF T != TARGET
 
 ;大量射精
 IF E == 2
-	EXP:20 += 1
+	EXP:精液経験 += 1
 	PRINTL 精液経験＋１
 	;助手を犯すで射精したフラグ
 	TFLAG:7 = 2
@@ -657,13 +657,13 @@ SIF T != TARGET
 
 ;大量射精
 IF E == 2
-	EXP:20 += 4
+	EXP:精液経験 += 4
 	PRINTL 精液経験＋４
 	;クンニで射精させたフラグ
 	TFLAG:5 = 2
 ;通常の射精
 ELSEIF E == 1
-	EXP:20 += 1
+	EXP:精液経験 += 1
 	PRINTL 精液経験＋１
 	;クンニで射精させたフラグ
 	TFLAG:5 = 1
@@ -676,7 +676,7 @@ CALL SAMEN_SHOOT_CALC
 
 ;大量射精
 IF E == 2
-	EXP:20 += 1
+	EXP:精液経験 += 1
 	PRINTL 精液経験＋１
 	;助手が射精フラグ
 	TFLAG:6 = 2
@@ -692,7 +692,7 @@ ENDIF
 CALL SAMEN_SHOOT_CALC
 
 IF E == 2
-	EXP:20 += 1
+	EXP:精液経験 += 1
 	PRINTL 精液経験＋１
 	;逆レイプで射精させたフラグ
 	TFLAG:12 = 2
@@ -709,7 +709,7 @@ CALL SAMEN_SHOOT_CALC
 
 ;大量射精
 IF E == 2
-	EXP:20 += 1
+	EXP:精液経験 += 1
 	PRINTL 精液経験＋1
 	;助手が射精フラグ
 	TFLAG:6 = 2
@@ -726,7 +726,7 @@ STAIN:P:2 |= 4
 
 ;大量射精
 IF E == 2
-	EXP:P:3 += 2
+	EXP:P:射精経験 += 2
 	PRINTL 大量射精
 
 	BASE:P:2 -= EJAC*2
@@ -734,7 +734,7 @@ IF E == 2
 		BASE:P:2 = EJAC-1
 ;通常の射精
 ELSEIF E == 1
-	EXP:P:3 += 1
+	EXP:P:射精経験 += 1
 	PRINTL 射精
 
 	BASE:P:2 -= EJAC

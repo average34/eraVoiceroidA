@@ -24,13 +24,13 @@ SOURCE:18 = 100
 ;-------------------------------------------------
 A = ABL:12 + 1
 PRINTFORML %EXPNAME:61%+{A}
-EXP:61 += A
+EXP:家事経験 += A
 
 ;愛情経験
 IF (TALENT:恋慕 == 1 || TALENT:親愛 == 1) && ASSIPLAY == 0
 	PRINTS EXPNAME:23
 	PRINTL +1
-	EXP:23 += 1
+	EXP:愛情経験 += 1
 ENDIF
 
 ;依存度ベクトル

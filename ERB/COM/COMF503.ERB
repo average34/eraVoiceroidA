@@ -47,18 +47,18 @@ ENDIF
 
 ;Vへの苦痛は先に処理しておく
 ;EXP:Ｖ経験をみる（処女の反感は別途処理済みなので省略）
-IF EXP:0 < EXPLV:1
+IF EXP:Ｖ経験 < EXPLV:1
 	TIMES SOURCE:7 , 2.50
-ELSEIF EXP:0 < EXPLV:2
+ELSEIF EXP:Ｖ経験 < EXPLV:2
 	TIMES SOURCE:7 , 0.80
 	TIMES SOURCE:18 , 1.20
-ELSEIF EXP:0 < EXPLV:3
+ELSEIF EXP:Ｖ経験 < EXPLV:3
 	TIMES SOURCE:7 , 0.40
-ELSEIF EXP:0 < EXPLV:4
+ELSEIF EXP:Ｖ経験 < EXPLV:4
 	TIMES SOURCE:7 , 0.10
-ELSEIF EXP:0 < EXPLV:5
+ELSEIF EXP:Ｖ経験 < EXPLV:5
 	TIMES SOURCE:7 , 0.00
-ELSEIF EXP:0 >= EXPLV:5
+ELSEIF EXP:Ｖ経験 >= EXPLV:5
 	TIMES SOURCE:7 , 0.00
 ENDIF
 
@@ -92,7 +92,7 @@ SIF TALENT:処女 == 1 || TALENT:再生処女 == 1
 ;経験の処理
 ;-------------------------------------------------
 ;V経験
-EXP:0 += 1
+EXP:Ｖ経験 += 1
 PRINTL Ｖ経験＋１
 
 ;レズ経験
@@ -100,11 +100,11 @@ A = 3
 B = NO:PLAYER + 899
 IF TALENT:オトコ == 0 && TALENT:PLAYER:オトコ == 0
 	PRINTFORML %EXPNAME:40%+{A}
-	EXP:40 += A
+	EXP:レズ経験 += A
 	CFLAG:B += A
 ELSEIF TALENT:オトコ && TALENT:PLAYER:オトコ
 	PRINTFORML %EXPNAME:41%+{A}
-	EXP:41 += A
+	EXP:ゲイ経験 += A
 	CFLAG:B += A
 ENDIF
 

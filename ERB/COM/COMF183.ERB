@@ -145,13 +145,13 @@ SOURCE:13 += A
 ;経験の処理
 ;-------------------------------------------------
 IF FLAG:22 == 1
-	EXP:MASTER:62 += 1
+	EXP:MASTER:撮影経験 += 1
 	PRINTL 主人撮影経験＋１
 ELSEIF FLAG:22 == 2
-	EXP:ASSI:62 += 1
+	EXP:ASSI:撮影経験 += 1
 	PRINTL 助手撮影経験＋１
 ENDIF
-EXP:TARGET:63 += 1
+EXP:TARGET:被写経験 += 1
 PRINTL 奴隷被写経験＋１
 
 ;依存度ベクトルを強制的に変更

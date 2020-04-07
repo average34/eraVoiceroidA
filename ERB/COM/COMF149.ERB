@@ -37,22 +37,22 @@ SIF TALENT:抑圧 || TALENT:抵抗
 
 ;フィストなどのAへの大きな苦痛は先に処理しておく
 ;EXP:Ａ経験をみる
-IF EXP:1 < EXPLV:1
+IF EXP:Ａ経験 < EXPLV:1
 	TIMES SOURCE:7 , 3.00
 	TIMES SOURCE:18 , 4.00
-ELSEIF EXP:1 < EXPLV:2
+ELSEIF EXP:Ａ経験 < EXPLV:2
 	TIMES SOURCE:7 , 2.50
 	TIMES SOURCE:18 , 3.50
-ELSEIF EXP:1 < EXPLV:3
+ELSEIF EXP:Ａ経験 < EXPLV:3
 	TIMES SOURCE:7 , 2.40
 	TIMES SOURCE:18 , 3.00
-ELSEIF EXP:1 < EXPLV:4
+ELSEIF EXP:Ａ経験 < EXPLV:4
 	TIMES SOURCE:7 , 2.00
 	TIMES SOURCE:18 , 2.50
-ELSEIF EXP:1 < EXPLV:5
+ELSEIF EXP:Ａ経験 < EXPLV:5
 	TIMES SOURCE:7 , 1.80
 	TIMES SOURCE:18 , 2.00
-ELSEIF EXP:1 >= EXPLV:5
+ELSEIF EXP:Ａ経験 >= EXPLV:5
 	TIMES SOURCE:7 , 1.60
 	TIMES SOURCE:18 , 1.50
 ENDIF
@@ -77,12 +77,12 @@ ENDIF
 ;経験の処理
 ;-------------------------------------------------
 ;Ａ経験
-EXP:1 += 5
+EXP:Ａ経験 += 5
 PRINTL Ａ経験＋５
 
 ;異常経験が5未満のとき、異常経験追加
-IF EXP:50 < 5
-	EXP:50 += 1
+IF EXP:異常経験 < 5
+	EXP:異常経験 += 1
 	PRINTL 異常経験＋１
 ENDIF
 
@@ -91,11 +91,11 @@ A = 1
 B = NO:PLAYER + 899
 IF TALENT:オトコ == 0 && TALENT:PLAYER:オトコ == 0
 	PRINTFORML %EXPNAME:40%+{A}
-	EXP:40 += A
+	EXP:レズ経験 += A
 	CFLAG:B += A
 ELSEIF TALENT:オトコ && TALENT:PLAYER:オトコ
 	PRINTFORML %EXPNAME:41%+{A}
-	EXP:41 += A
+	EXP:ゲイ経験 += A
 	CFLAG:B += A
 ENDIF
 
@@ -140,22 +140,22 @@ SIF TALENT:抑圧 || TALENT:抵抗
 ;EXP:Ａ経験をみる
 A = 750
 B = 600
-IF EXP:1 < EXPLV:1
+IF EXP:Ａ経験 < EXPLV:1
 	TIMES A , 3.00
 	TIMES B , 4.00
-ELSEIF EXP:1 < EXPLV:2
+ELSEIF EXP:Ａ経験 < EXPLV:2
 	TIMES A , 2.50
 	TIMES B , 3.50
-ELSEIF EXP:1 < EXPLV:3
+ELSEIF EXP:Ａ経験 < EXPLV:3
 	TIMES A , 2.40
 	TIMES B , 3.00
-ELSEIF EXP:1 < EXPLV:4
+ELSEIF EXP:Ａ経験 < EXPLV:4
 	TIMES A , 2.00
 	TIMES B , 2.50
-ELSEIF EXP:1 < EXPLV:5
+ELSEIF EXP:Ａ経験 < EXPLV:5
 	TIMES A , 1.80
 	TIMES B , 2.00
-ELSEIF EXP:1 >= EXPLV:5
+ELSEIF EXP:Ａ経験 >= EXPLV:5
 	TIMES A , 1.60
 	TIMES B , 1.50
 ENDIF
@@ -182,7 +182,7 @@ SOURCE:18 += B
 ;経験の処理
 ;-------------------------------------------------
 ;Ａ経験
-EXP:1 += 5
+EXP:Ａ経験 += 5
 PRINTL Ａ経験＋５
 
 

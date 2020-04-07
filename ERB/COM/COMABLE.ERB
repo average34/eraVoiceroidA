@@ -876,7 +876,7 @@ SIF TEQUIP:22
 SIF TEQUIP:23
 	RETURN 0
 ;一定のＡ経験が必要
-SIF EXP:1 < EXPLV:3
+SIF EXP:Ａ経験 < EXPLV:3
 	RETURN 0
 ;小人体型持ちは、双方が調教者と調教対象ならOK
 ;それ以外の場合は主人が禁断の知識持ちじゃないとダメ
@@ -931,7 +931,7 @@ SIF TEQUIP:22
 SIF TEQUIP:23
 	RETURN 0
 ;一定のＡ経験が必要
-SIF EXP:1 < EXPLV:3
+SIF EXP:Ａ経験 < EXPLV:3
 	RETURN 0
 ;小人体型持ちは、双方が調教者と調教対象ならOK
 ;それ以外の場合は主人が禁断の知識持ちじゃないとダメ
@@ -1086,7 +1086,7 @@ SIF TEQUIP:22
 SIF TEQUIP:23
 	RETURN 0
 ;一定のＡ経験が必要
-SIF EXP:1 < EXPLV:3
+SIF EXP:Ａ経験 < EXPLV:3
 	RETURN 0
 ;小人体型持ちは、双方が調教者と調教対象ならOK
 ;それ以外の場合は主人が禁断の知識持ちじゃないとダメ
@@ -1219,7 +1219,7 @@ SIF TEQUIP:22
 SIF TEQUIP:23
 	RETURN 0
 ;一定のＡ経験が必要
-SIF EXP:1 < EXPLV:3
+SIF EXP:Ａ経験 < EXPLV:3
 	RETURN 0
 ;お風呂場プレイ中はプレイマットが無いとダメ
 IF TEQUIP:31
@@ -1273,7 +1273,7 @@ SIF TEQUIP:22
 SIF TEQUIP:23
 	RETURN 0
 ;一定のＡ経験が必要
-SIF EXP:1 < EXPLV:3
+SIF EXP:Ａ経験 < EXPLV:3
 	RETURN 0
 ;お風呂場プレイ中はプレイマットが無いとダメ
 IF TEQUIP:31
@@ -1372,7 +1372,7 @@ SIF TEQUIP:22
 SIF TEQUIP:23
 	RETURN 0
 ;一定のＡ経験が必要
-SIF EXP:1 < EXPLV:3
+SIF EXP:Ａ経験 < EXPLV:3
 	RETURN 0
 ;小人体型持ちは、双方が調教者と調教対象ならOK
 ;それ以外の場合は主人が禁断の知識持ちじゃないとダメ
@@ -2150,7 +2150,7 @@ SIF RESULT == 0
 SIF TALENT:服従 == 0 && TALENT:隷属 == 0
 	RETURN 0
 ;一定のＶ経験が必要
-SIF EXP:0 < 150
+SIF EXP:Ｖ経験 < 150
 	RETURN 0
 ;バイブ使用中は不可
 SIF TEQUIP:13
@@ -2204,7 +2204,7 @@ SIF TALENT:服従 == 0 && TALENT:隷属 == 0
 SIF TEQUIP:14
 	RETURN 0
 ;一定のＡ経験が必要
-SIF EXP:1 < 150
+SIF EXP:Ａ経験 < 150
 	RETURN 0
 ;浣腸＋アナルプラグ使用中は不可
 SIF TEQUIP:21
@@ -2282,7 +2282,7 @@ SIF TEQUIP:23
 SIF TALENT:オトコ
 	RETURN 0
 ;一定のＶ・Ａ経験が必要
-IF EXP:0 < 300 || EXP:1 < 300
+IF EXP:Ｖ経験 < 300 || EXP:Ａ経験 < 300
 	RETURN 0
 	ENDIF
 ;ASSIの場合、従順4以上かサドじゃないとできない。
@@ -2292,7 +2292,7 @@ IF ASSIPLAY
 ENDIF
 ;小柄体型なら従順が4以上かつマゾっ気が4以上かつ拡張経験10以上じゃないと実行できない
 IF TALENT:小柄体型
-	SIF ABL:0 <= 3 || ABL:9 <= 3 || EXP:53 < 10
+	SIF ABL:0 <= 3 || ABL:9 <= 3 || EXP:Ａ拡張経験 < 10
 		RETURN 0
 ENDIF
 ;調教対象が小人体型の場合は主人が禁断の知識持ちじゃないとダメ
@@ -2390,7 +2390,7 @@ SIF TEQUIP:22
 SIF TEQUIP:23
 	RETURN 0
 ;Ａ経験が100未満じゃできない
-SIF EXP:1 < 100
+SIF EXP:Ａ経験 < 100
 	RETURN 0
 ;従順、欲望の合計が6ないとできない
 SIF ABL:0 + ABL:1 < 6
@@ -2432,7 +2432,7 @@ SIF TEQUIP:22
 SIF TEQUIP:23
 	RETURN 0
 ;Ａ経験が50未満じゃできない
-SIF EXP:1 < 50
+SIF EXP:Ａ経験 < 50
 	RETURN 0
 ;露出癖、欲望、従順の合計が10ないとできない
 SIF ABL:0 + ABL:1 + ABL:8 < 10
@@ -3233,7 +3233,7 @@ IF PALAM:4 < PALAMLV:2 && ASSIPLAY
 		RETURN 0
 ENDIF
 ;一定のＡ経験が必要
-SIF EXP:1 < EXPLV:3
+SIF EXP:Ａ経験 < EXPLV:3
 	RETURN 0
 
 ;下半身下着をつけている、スカート以外の下半身上着を履いている、下の空いてない全身上着を着ているとダメ
