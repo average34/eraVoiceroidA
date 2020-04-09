@@ -64,8 +64,8 @@ jobs:
             args: ${{ env.TWEET_TEXT_3 }}
 
       # DISCORD_WEBHOOKにURIを代入
-      - name: Set env DISCORD_WEBHOOK 2
-        run: echo -e ::set-env name=DISCORD_WEBHOOK::${{ secrets.DISCORD_WEBHOOK_2 }}
+      - name: Set env DISCORD_WEBHOOK for BOIRODA
+        run: echo -e ::set-env name=DISCORD_WEBHOOK::${{ secrets.DISCORD_WEBHOOK_BOIRODA }}
 
       # Discordで通知する
       - name: Discord notification2-1
