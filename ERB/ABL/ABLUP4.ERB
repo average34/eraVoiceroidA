@@ -1,9 +1,9 @@
 ﻿;Ｖ感覚の可否
 @ISABLUP4
 ;恋慕、親愛、淫乱、娼婦はMAXLV10
-IF ABL:4 >= 10
+IF ABL:Ｖ感覚 >= 10
 	RETURN 0
-ELSEIF ABL:4 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:淫乱 == 0 && TALENT:娼婦 == 0
+ELSEIF ABL:Ｖ感覚 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:淫乱 == 0 && TALENT:娼婦 == 0
 	RETURN 0
 ENDIF
 
@@ -19,10 +19,10 @@ ENDIF
 @ABLUP4
 DRAWLINE
 ;恋慕、親愛、淫乱、娼婦はMAXLV10
-IF ABL:4 >= 10
+IF ABL:Ｖ感覚 >= 10
 	PRINTW 既にMAXです
 	RETURN 0
-ELSEIF ABL:4 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:淫乱 == 0 && TALENT:娼婦 == 0
+ELSEIF ABL:Ｖ感覚 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:淫乱 == 0 && TALENT:娼婦 == 0
 	PRINTW 既にMAXです
 	RETURN 0
 ENDIF
@@ -57,7 +57,7 @@ ELSEIF RESULT == 100
 	RETURN 0
 ENDIF
 
-ABL:4 += 1
+ABL:Ｖ感覚 += 1
 
 IF RESULT == 0
 	JUEL:1 -= A
@@ -65,7 +65,7 @@ ENDIF
 
 PRINTS ABLNAME:4
 PRINT のレベルが
-PRINTV ABL:4
+PRINTV ABL:Ｖ感覚
 PRINTW になりました
 
 ;Ｖ感覚LvUPの判定
@@ -75,25 +75,25 @@ I = 0
 ;能力アップ可能なら1にする
 Z = 0
 
-IF ABL:4 == 0
+IF ABL:Ｖ感覚 == 0
 	A = 1
-ELSEIF ABL:4 == 1
+ELSEIF ABL:Ｖ感覚 == 1
 	A = 20
-ELSEIF ABL:4 == 2
+ELSEIF ABL:Ｖ感覚 == 2
 	A = 400
-ELSEIF ABL:4 == 3
+ELSEIF ABL:Ｖ感覚 == 3
 	A = 5000
-ELSEIF ABL:4 == 4
+ELSEIF ABL:Ｖ感覚 == 4
 	A = 15000
-ELSEIF ABL:4 == 5
+ELSEIF ABL:Ｖ感覚 == 5
 	A = 30000
-ELSEIF ABL:4 == 6
+ELSEIF ABL:Ｖ感覚 == 6
 	A = 40000
-ELSEIF ABL:4 == 7
+ELSEIF ABL:Ｖ感覚 == 7
 	A = 50000
-ELSEIF ABL:4 == 8
+ELSEIF ABL:Ｖ感覚 == 8
 	A = 60000
-ELSEIF ABL:4 == 9
+ELSEIF ABL:Ｖ感覚 == 9
 	A = 70000
 ENDIF
 

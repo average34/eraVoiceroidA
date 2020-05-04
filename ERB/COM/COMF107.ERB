@@ -18,8 +18,8 @@ ENDIF
 ;ソース追加処理
 ;-------------------------------------------------
 ;消費体力、気力
-LOSEBASE:0 += 0
-LOSEBASE:1 += 50
+LOSEBASE:体力 += 0
+LOSEBASE:気力 += 50
 
 SOURCE:8 = 500
 SOURCE:13 = 200
@@ -32,14 +32,14 @@ SOURCE:18 = 300
 ;-------------------------------------------------
 ;緊縛経験が高いと消費減少
 IF EXP:緊縛経験 < EXPLV:3
-	TIMES LOSEBASE:0 , 1.00
-	TIMES LOSEBASE:1 , 1.00
+	TIMES LOSEBASE:体力 , 1.00
+	TIMES LOSEBASE:気力 , 1.00
 ELSEIF EXP:緊縛経験 < EXPLV:4
-	TIMES LOSEBASE:0 , 0.90
-	TIMES LOSEBASE:1 , 0.90
+	TIMES LOSEBASE:体力 , 0.90
+	TIMES LOSEBASE:気力 , 0.90
 ELSE
-	TIMES LOSEBASE:0 , 0.70
-	TIMES LOSEBASE:1 , 0.70
+	TIMES LOSEBASE:体力 , 0.70
+	TIMES LOSEBASE:気力 , 0.70
 ENDIF
 
 ;-------------------------------------------------
@@ -71,7 +71,7 @@ PRINTL ＜ボールギャグ装備中＞
 ;ソース追加処理
 ;-------------------------------------------------
 ;消費体力、気力
-LOSEBASE:0 += 0
+LOSEBASE:体力 += 0
 
 SOURCE:8 += 250
 SOURCE:13 += 150
@@ -91,7 +91,7 @@ ELSEIF EXP:緊縛経験 < EXPLV:4
 ELSE
 	TIMES A , 0.70
 ENDIF
-LOSEBASE:1 += A
+LOSEBASE:気力 += A
 
 ;-------------------------------------------------
 ;経験の処理

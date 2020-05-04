@@ -1,9 +1,9 @@
 ﻿;歌唱技能アップ可能なら1を、不可能なら0を返す
 @ISABLUP14
 ;恋慕、親愛、服従、隷属はMAXLV10
-IF ABL:14 >= 10
+IF ABL:歌唱技能 >= 10
 	RETURN 0
-ELSEIF ABL:14 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:服従 == 0 && TALENT:隷属 == 0
+ELSEIF ABL:歌唱技能 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:服従 == 0 && TALENT:隷属 == 0
 	RETURN 0
 ENDIF
 
@@ -20,10 +20,10 @@ ENDIF
 @ABLUP14
 DRAWLINE
 ;恋慕、親愛、服従、隷属はMAXLV10
-IF ABL:14 >= 10
+IF ABL:歌唱技能 >= 10
 	PRINTW 既にMAXです
 	RETURN 0
-ELSEIF ABL:14 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:服従 == 0 && TALENT:隷属 == 0
+ELSEIF ABL:歌唱技能 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:服従 == 0 && TALENT:隷属 == 0
 	PRINTW 既にMAXです
 	RETURN 0
 ENDIF
@@ -62,7 +62,7 @@ ELSEIF RESULT == 100
 	RETURN 0
 ENDIF
 
-ABL:14 += 1
+ABL:歌唱技能 += 1
 
 IF RESULT == 0
 	JUEL:8 -= A
@@ -70,7 +70,7 @@ ENDIF
 
 PRINTS ABLNAME:14
 PRINT のレベルが
-PRINTV ABL:14
+PRINTV ABL:歌唱技能
 PRINTW になりました
 
 
@@ -82,34 +82,34 @@ I = 0
 ;能力アップ可能なら1にする
 Z = 0
 
-IF ABL:14 == 0
+IF ABL:歌唱技能 == 0
 	A = 75
 	B = 5
-ELSEIF ABL:14 == 1
+ELSEIF ABL:歌唱技能 == 1
 	A = 500
 	B = 10
-ELSEIF ABL:14 == 2
+ELSEIF ABL:歌唱技能 == 2
 	A = 3000
 	B = 30
-ELSEIF ABL:14 == 3
+ELSEIF ABL:歌唱技能 == 3
 	A = 9000
 	B = 50
-ELSEIF ABL:14 == 4
+ELSEIF ABL:歌唱技能 == 4
 	A = 24000
 	B = 100
-ELSEIF ABL:14 == 5
+ELSEIF ABL:歌唱技能 == 5
 	A = 30000
 	B = 200
-ELSEIF ABL:14 == 6
+ELSEIF ABL:歌唱技能 == 6
 	A = 35000
 	B = 300
-ELSEIF ABL:14 == 7
+ELSEIF ABL:歌唱技能 == 7
 	A = 40000
 	B = 400
-ELSEIF ABL:14 == 8
+ELSEIF ABL:歌唱技能 == 8
 	A = 45000
 	B = 500
-ELSEIF ABL:14 == 9
+ELSEIF ABL:歌唱技能 == 9
 	A = 50000
 	B = 600
 ENDIF

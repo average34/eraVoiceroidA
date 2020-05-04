@@ -8,7 +8,7 @@ STR:0 = 媚薬
 CALL KOJO_MESSAGE_COM
 
 SIF TEQUIP:25 == 0
-	ITEM:41 -= 1
+	ITEM:媚薬 -= 1
 
 TEQUIP:26 = 1
 
@@ -18,11 +18,11 @@ TEQUIP:26 = 1
 ;消費体力、気力
 ;調教者が調合知識を持っていれば消費を抑えられる
 IF TALENT:PLAYER:調合知識
-	LOSEBASE:0 += 150
-	LOSEBASE:1 += 150
+	LOSEBASE:体力 += 150
+	LOSEBASE:気力 += 150
 ELSE
-	LOSEBASE:0 += 300
-	LOSEBASE:1 += 300
+	LOSEBASE:体力 += 300
+	LOSEBASE:気力 += 300
 ENDIF
 
 ;媚薬効果で欲情のアップが2倍になるので実際には+5000

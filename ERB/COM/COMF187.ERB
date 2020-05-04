@@ -21,8 +21,8 @@ ENDIF
 ;ソース追加処理
 ;-------------------------------------------------
 ;消費体力、気力
-LOSEBASE:0 += 0
-LOSEBASE:1 += 30
+LOSEBASE:体力 += 0
+LOSEBASE:気力 += 30
 
 SOURCE:8 = 100
 SOURCE:13 = 200
@@ -64,8 +64,8 @@ RETURN 1
 
 PRINTL ＜お風呂場プレイ中＞
 
-LOSEBASE:0 += 10
-LOSEBASE:1 += 10
+LOSEBASE:体力 += 10
+LOSEBASE:気力 += 10
 
 SOURCE:8 += 50
 SOURCE:12 += 100

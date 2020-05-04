@@ -29,8 +29,8 @@ ENDIF
 ;ソース追加処理
 ;-------------------------------------------------
 ;消費体力、気力
-LOSEBASE:0 += 50
-LOSEBASE:1 += 100
+LOSEBASE:体力 += 50
+LOSEBASE:気力 += 100
 
 SOURCE:3 = 200
 SOURCE:7 = 100
@@ -50,25 +50,25 @@ SIF TALENT:抑圧 || TALENT:抵抗
 
 ;中毒による中毒充足のソースは先に処理しておく
 ;噴乳中毒を見る
-IF ABL:19 == 1
+IF ABL:噴乳中毒 == 1
 	TIMES SOURCE:9 , 0.00
-ELSEIF ABL:19 == 2
+ELSEIF ABL:噴乳中毒 == 2
 	TIMES SOURCE:9 , 0.30
-ELSEIF ABL:19 == 3
+ELSEIF ABL:噴乳中毒 == 3
 	TIMES SOURCE:9 , 0.60
-ELSEIF ABL:19 == 4
+ELSEIF ABL:噴乳中毒 == 4
 	TIMES SOURCE:9 , 0.90
-ELSEIF ABL:19 == 5
+ELSEIF ABL:噴乳中毒 == 5
 	TIMES SOURCE:9 , 1.20
-ELSEIF ABL:19 == 6
+ELSEIF ABL:噴乳中毒 == 6
 	TIMES SOURCE:9 , 1.50
-ELSEIF ABL:19 == 7
+ELSEIF ABL:噴乳中毒 == 7
 	TIMES SOURCE:9 , 1.80
-ELSEIF ABL:19 == 8
+ELSEIF ABL:噴乳中毒 == 8
 	TIMES SOURCE:9 , 2.30
-ELSEIF ABL:19 == 9
+ELSEIF ABL:噴乳中毒 == 9
 	TIMES SOURCE:9 , 3.00
-ELSEIF ABL:19 >= 10
+ELSEIF ABL:噴乳中毒 >= 10
 	TIMES SOURCE:9 , 5.00
 ENDIF
 
@@ -119,8 +119,8 @@ ENDIF
 ;-------------------------------------------------
 ;ソース追加処理
 ;-------------------------------------------------
-LOSEBASE:0 += 25
-LOSEBASE:1 += 50
+LOSEBASE:体力 += 25
+LOSEBASE:気力 += 50
 
 SOURCE:3 += 100
 SOURCE:7 += 50

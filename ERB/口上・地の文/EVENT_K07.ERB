@@ -54,7 +54,7 @@ SIF CFLAG:216 != 4
 ;	IF RESULT == 0
 ;		PRINTFORMW ―処女モードに素質、能力を変更します―
 ;		TALENT:TARGET:処女 = 1
-;		ABL:TARGET:4 = 0
+;		ABL:TARGET:Ｖ感覚 = 0
 ;		EXP:TARGET:Ｖ経験 = 0
 ;	ELSEIF RESULT == 1
 ;		PRINTFORMW ―通常モードで調教を開始します―
@@ -95,20 +95,20 @@ IF CFLAG:201 == 0
 	CFLAG:201 = 1
 	RETURN 0
 ;屈服刻印Lv1
-ELSEIF CFLAG:201 < 2 && MARK:2 == 1
+ELSEIF CFLAG:201 < 2 && MARK:屈服刻印 == 1
 	PRINTFORMW 「き、今日もするの、出来れば放っておいて欲しいんだけど…」
 	PRINTFORMW （このまま調教されたらこいつから逃げ出せなくなっちゃう、早くなんとかしないと…）
 	CFLAG:201 = 2
 	RETURN 0
 ;屈服刻印Lv2
-ELSEIF CFLAG:201 < 3 && MARK:2 == 2
+ELSEIF CFLAG:201 < 3 && MARK:屈服刻印 == 2
 	PRINTFORMW 「や、やめて！こんなこと続けられたら…！」
 	PRINTFORMW 「何を想像したのかって！？だ、黙ってて！！」
 	PRINTFORMW （どうして！？こんな奴の好きにされたくなんて…）
 	CFLAG:201 = 3
 	RETURN 0
 ;屈服刻印Lv3
-ELSEIF CFLAG:201 < 4 && MARK:2 == 3 && (TALENT:恋慕 == 0 && TALENT:淫乱 == 0 && TALENT:服従 == 0 && TALENT:親愛 == 0 && TALENT:娼婦 == 0 && TALENT:隷属 == 0)
+ELSEIF CFLAG:201 < 4 && MARK:屈服刻印 == 3 && (TALENT:恋慕 == 0 && TALENT:淫乱 == 0 && TALENT:服従 == 0 && TALENT:親愛 == 0 && TALENT:娼婦 == 0 && TALENT:隷属 == 0)
 	PRINTFORMW 「はあ…もう好きにしてください…」
 	PRINTFORMW 「どういう心変わりかって？」
 	PRINTFORMW 「あなたにどうしたって敵わないから、自己防衛してるだけです…」
@@ -188,11 +188,11 @@ ENDIF
 ;-------------------------------------------------
 @EVENTTRAIN_SECOND_K7
 ;反発刻印Lv3
-IF MARK:3 == 3 && (CFLAG:202 < 4 || FLAG:7 == 2)
+IF MARK:反発刻印 == 3 && (CFLAG:202 < 4 || FLAG:7 == 2)
 	PRINTFORMW 「来ないで！あなたに触られる位なら舌を噛んで死んだ方がマシです！」
 	CFLAG:202 = 4
 ;屈服刻印Lv0
-ELSEIF MARK:2 == 0 && (CFLAG:202 < 1 || FLAG:7 == 2)
+ELSEIF MARK:屈服刻印 == 0 && (CFLAG:202 < 1 || FLAG:7 == 2)
 	IF RAND:3 == 0
 		PRINTFORMW 「また懲りずに来たの？」
 		PRINTFORMW 「どれだけ弄ばれようと、私は絶対に折れる気はないけど？」」
@@ -209,7 +209,7 @@ ELSEIF MARK:2 == 0 && (CFLAG:202 < 1 || FLAG:7 == 2)
 	ENDIF 
 	CFLAG:202 = 1
 ;屈服刻印Lv1
-ELSEIF MARK:2 == 1 && (CFLAG:202 < 2 || FLAG:7 == 2)
+ELSEIF MARK:屈服刻印 == 1 && (CFLAG:202 < 2 || FLAG:7 == 2)
 	IF RAND:3 == 0
 		PRINTFORMW 「本当に懲りないのね…」
 		PRINTFORMW 「少しイかせた位で調子に乗って…私だって自分で慰める時にイクんですから大したことじゃないんだよ？」
@@ -227,7 +227,7 @@ ELSEIF MARK:2 == 1 && (CFLAG:202 < 2 || FLAG:7 == 2)
 	ENDIF
 	CFLAG:202 = 2
 ;屈服刻印Lv2
-ELSEIF MARK:2 == 2 && (CFLAG:202 < 3 || FLAG:7 == 2)
+ELSEIF MARK:屈服刻印 == 2 && (CFLAG:202 < 3 || FLAG:7 == 2)
 	IF RAND:3 == 0
 		PRINTFORMW 「こ、来ないでください…」
 		PRINTFORMW 「あなたに気持ちよくさせられると、そ、その…」
@@ -242,7 +242,7 @@ ELSEIF MARK:2 == 2 && (CFLAG:202 < 3 || FLAG:7 == 2)
 	ENDIF
 	CFLAG:202 = 3
 ;屈服刻印Lv3＋陥落素質無し
-ELSEIF MARK:2 == 3 && (TALENT:恋慕 == 0 && TALENT:淫乱 == 0 && TALENT:服従 == 0 && TALENT:親愛 == 0 && TALENT:娼婦 == 0 && TALENT:隷属 == 0) && (CFLAG:202 < 4 || FLAG:7 == 2)
+ELSEIF MARK:屈服刻印 == 3 && (TALENT:恋慕 == 0 && TALENT:淫乱 == 0 && TALENT:服従 == 0 && TALENT:親愛 == 0 && TALENT:娼婦 == 0 && TALENT:隷属 == 0) && (CFLAG:202 < 4 || FLAG:7 == 2)
 	IF RAND:3 == 0
 		PRINTFORMW 「もう許して…」
 		PRINTFORMW 「これ以上されたら私、おかしくなっちゃいそうだから！」
@@ -367,31 +367,31 @@ SIF CFLAG:216 != 4
 ;--------------------------------------------------
 DRAWLINE
 ;反発刻印Lv3
-IF MARK:3 == 3 && (CFLAG:217 < 1 || FLAG:7 == 2)
+IF MARK:反発刻印 == 3 && (CFLAG:217 < 1 || FLAG:7 == 2)
 	PRINTFORMW 「終わったならさっさと出ていってくれまい？」
 	PRINTFORMW 「二度と目の前に現れないで」
 	CFLAG:217 = 1
 ;屈服刻印Lv1以下
-ELSEIF MARK:2 <= 1 && (CFLAG:219 < 1 || FLAG:7 == 2)
+ELSEIF MARK:屈服刻印 <= 1 && (CFLAG:219 < 1 || FLAG:7 == 2)
 	PRINTFORMW 「はあ、やっと終わったんだ…」
 	PRINTFORMW 「気持ちよくなんて無かったから、さっさと諦めてくれない？」
 	PRINTFORMW （絶対に、お姉ちゃんの所に帰ってみせるんだから！）
 	CFLAG:219 = 1
 ;屈服刻印Lv2
-ELSEIF MARK:2 == 2
+ELSEIF MARK:屈服刻印 == 2
 	PRINTFORMW 「さ、さっさと帰ってよね！」
 	PRINTFORMW 「アフターケア！？そういうのはいいから！」
 	PRINTFORMW 「どうせケアとか言っていやらしく撫で回すつもりなんでしょ！」
 	CFLAG:219 = 2
 ;屈服刻印Lv3＋陥落素質無し
-ELSEIF MARK:2 == 3 && (TALENT:恋慕 == 0 && TALENT:淫乱 == 0 && TALENT:服従 == 0 && TALENT:親愛 == 0 && TALENT:娼婦 == 0 && TALENT:隷属 == 0)
+ELSEIF MARK:屈服刻印 == 3 && (TALENT:恋慕 == 0 && TALENT:淫乱 == 0 && TALENT:服従 == 0 && TALENT:親愛 == 0 && TALENT:娼婦 == 0 && TALENT:隷属 == 0)
 	PRINTFORMW 「マッサージ？好きにすればいいじゃないですか…」
 	PRINTFORMW 「出来ればお尻を撫でたりとかはやめてほしいです」
 	PRINTFORMW （でも、もし撫でられてもそのまま身を任せちゃいそう…）
 	PRINTFORMW （この人のこと大嫌いなはずなのに、どんどん好きになっていくのが止められない…）
 		CFLAG:219 = 3
 ;陥落済み＋体力500未満
-ELSEIF BASE:0 < 500 && (CFLAG:218 < 1 || FLAG:7 == 2)
+ELSEIF BASE:体力 < 500 && (CFLAG:218 < 1 || FLAG:7 == 2)
 	;恋慕、親愛
 	IF TALENT:恋慕 || TALENT:親愛
 		PRINTFORMW 「も、もう無理…もっともっと愛してほしいんだけど…」
@@ -549,7 +549,7 @@ IF SELECTCOM == 0
 			ENDIF
 			CFLAG:300 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:300 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:300 < 3 || FLAG:7 == 2)
 			IF RAND:2 == 0
 				PRINTFORMW 「ん…もっとしていいですよ…」
 				PRINTFORMW 「あなたに触られると、気持ちいいのが我慢できないんです…」
@@ -563,7 +563,7 @@ IF SELECTCOM == 0
 			ENDIF
 			CFLAG:300 = 3
 		;屈服刻印Lv2
-		ELSEIF MARK:2 == 2 && (CFLAG:300 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 2 && (CFLAG:300 < 3 || FLAG:7 == 2)
 			IF RAND:2 == 0
 				PRINTFORMW 「やあっ！優しくされたって気持ちよくなんて無いから！」
 				PRINTFORMW 「濡れてるって……！嘘つくなあ…！」
@@ -658,7 +658,7 @@ IF SELECTCOM == 1
 			ENDIF
 			CFLAG:301 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:301 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:301 < 3 || FLAG:7 == 2)
 			IF RAND:2 == 0
 				PRINTFORMW 「んんっ！そこ舐められるの、気持ちいいです…」
 				PRINTFORMW 「え？そこじゃなくってもっといやらしい言い方してみろって？……もう…」
@@ -671,7 +671,7 @@ IF SELECTCOM == 1
 				ENDIF
 			CFLAG:301 = 3
 		;屈服刻印Lv2
-		ELSEIF MARK:2 == 2 && (CFLAG:300 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 2 && (CFLAG:300 < 3 || FLAG:7 == 2)
 			IF RAND:3 == 0
 				PRINTFORMW 「だめっ！そんなところ舐めないで！」
 				PRINTFORMW 「ぐちゅぐちゅって音立てて舐めるのダメぇ！」
@@ -727,7 +727,7 @@ IF SELECTCOM == 2
 			ENDIF
 			CFLAG:302 = 4
 		;屈服刻印Lv3
-		ELSEIF 0 && MARK:2 == 3 && (CFLAG:302 < 3 || FLAG:7 == 2)
+		ELSEIF 0 && MARK:屈服刻印 == 3 && (CFLAG:302 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:302 = 3
 		;それ以外
@@ -772,7 +772,7 @@ IF SELECTCOM == 3
 			ENDIF
 			CFLAG:303 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:303 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:303 < 3 || FLAG:7 == 2)
 			IF CFLAG:303 < 2 || FLAG:7 == 2
 				PRINTFORMW 「やめて！これ以上奥まで指挿れないで！！」
 				PRINTFORMW 「これだけ濡れてれば平気って…初めては好きな人がいいの！」
@@ -782,7 +782,7 @@ IF SELECTCOM == 3
 			ENDIF
 			CFLAG:303 = 3
 		;屈服刻印Lv2
-		ELSEIF MARK:2 == 2 && (CFLAG:300 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 2 && (CFLAG:300 < 3 || FLAG:7 == 2)
 			IF CFLAG:303 < 2 || FLAG:7 == 2
 				PRINTFORMW 「やめて！これ以上奥まで指挿れないで！！」
 				PRINTFORMW 「これだけ濡れてれば平気って…初めては好きな人がいいの！」
@@ -835,12 +835,12 @@ IF SELECTCOM == 4
 			ENDIF
 			CFLAG:304 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:304 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:304 < 3 || FLAG:7 == 2)
 			PRINTFORMW 「んっ、お尻の穴でも気持ちよくなれるようになっちゃいました…」
 			PRINTFORMW 「…こんなの、物凄く恥ずかしいのに…」
 			CFLAG:304 = 3
 		;屈服刻印Lv2
-		ELSEIF MARK:2 == 2 && (CFLAG:300 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 2 && (CFLAG:300 < 3 || FLAG:7 == 2)
 			PRINTFORMW 「変態！気持ち悪い！汚い！やめっ！！」
 			PRINTFORMW 「お尻の穴がヒクヒクしてるって…そんなことないっ！！」
 		;それ以外
@@ -881,13 +881,13 @@ IF SELECTCOM == 5
 			ENDIF
 			CFLAG:305 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:305 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:305 < 3 || FLAG:7 == 2)
 			PRINTFORMW 「お尻の穴ぐりぐりってされるの、気持ちいいです…」
 			PRINTFORMW （この人にお尻の穴弄られると、気持ちよくなっちゃう…）
 			PRINTFORMW （お尻の穴、バカになっちゃった…）
 			CFLAG:305 = 3
 		;屈服刻印Lv2
-		ELSEIF MARK:2 == 2 && (CFLAG:300 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 2 && (CFLAG:300 < 3 || FLAG:7 == 2)
 			PRINTFORMW 「そこ穿られたって気持ちよくないから！」
 			PRINTFORMW 「1、2、3って何数えてるの…？」
 			PRINTFORMW 「皺の数を数えてるって…！！そ、そんなこと知らなくていいから！！許してえええええええええ！！」
@@ -957,12 +957,12 @@ IF SELECTCOM == 6
 			ENDIF
 			CFLAG:306 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:306 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:306 < 3 || FLAG:7 == 2)
 			PRINTFORMW 「私の胸を揉むの、そんなに楽しいんですか？」
 			PRINTFORMW 「それなら、もっと好きにしていいですよ…♪」
 			CFLAG:306 = 3
 		;屈服刻印Lv2
-		ELSEIF MARK:2 == 2 && (CFLAG:300 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 2 && (CFLAG:300 < 3 || FLAG:7 == 2)
 			PRINTFORMW もみもみ
 			PRINTFORMW もみもみもみもみ
 			PRINTFORMW もみもみもみもみもみもみもみもみ
@@ -1023,7 +1023,7 @@ IF SELECTCOM == 7
 			ENDIF
 			CFLAG:307 = 4
 		;B感覚Lv4以上
-		ELSEIF ABL:6 >= 4 && (CFLAG:307 < 3 || FLAG:7 == 2)
+		ELSEIF ABL:Ｂ感覚 >= 4 && (CFLAG:307 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 				PRINTFORMW 「ち、乳首は弱いから、お手柔らかにお願いしますね…？」
 				PRINTFORMW 「やあっ！そこばっかりコリコリしないで！イっちゃう！イっちゃうからあああああ！！」
@@ -1089,12 +1089,12 @@ IF SELECTCOM == 8
 			ENDIF
 			CFLAG:308 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:308 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:308 < 3 || FLAG:7 == 2)
 			PRINTFORMW 「あなたに胸を撫でられると、熱くなって、じんじんして、疼いちゃって…」
 			PRINTFORMW 「もっと、もっと続けてっ…！」
 			CFLAG:308 = 3
 		;屈服刻印Lv2
-		ELSEIF MARK:2 == 2 && (CFLAG:300 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 2 && (CFLAG:300 < 3 || FLAG:7 == 2)
 			PRINTFORMW 「ああ…そこ、気持ちいいよ…」
 			PRINTFORMW （優しく撫でられると、力が抜けちゃって…気持ちよくされちゃう…）
 			PRINTFORMW 「……もっと、もっとしてぇ…」
@@ -1159,7 +1159,7 @@ IF SELECTCOM == 9
 			ENDIF
 			CFLAG:309 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:309 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:309 < 3 || FLAG:7 == 2)
 			PRINTFORMW 「はい…私のアソコ、好きなだけ見てください…」
 			PRINTFORMW 「ここに挿れたいって…？ま、まだ挿れるのは怖いからやめて欲しいです…」
 			PRINTFORMW （でも、いずれこの人に初めて、あげちゃうんだろうな……）
@@ -1203,7 +1203,7 @@ IF SELECTCOM == 10
 			ENDIF
 			CFLAG:310 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:310 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:310 < 3 || FLAG:7 == 2)
 			PRINTFORMW 「おっぱいだけじゃなくてこっちも弄ったらダメですか…？」
 			PRINTFORMW 「あなたの好きにまさぐってくれてもいいですからぁ…むちゃくちゃにしてぇ…」
 			CFLAG:310 = 3
@@ -1252,7 +1252,7 @@ IF SELECTCOM == 11
 			ENDIF
 			CFLAG:311 = 4
 		;従順Lv3以上
-		ELSEIF ABL:0 >= 3 && (CFLAG:311 < 3 || FLAG:7 == 2)
+		ELSEIF ABL:従順 >= 3 && (CFLAG:311 < 3 || FLAG:7 == 2)
 			PRINTFORMW 「自分でしろって？まああなたに散々鳴かされちゃうよりはいいですけど…」
 				PRINTFORMW （でも、自分でするのもこの人にされる時の事を考えてしちゃってて…）
 				PRINTFORMW （そうしないと、イけなくなっちゃってる…）
@@ -1387,7 +1387,7 @@ IF SELECTCOM == 20
 			ENDIF
 			CFLAG:312 = 4
 		;従順Lv3以上
-		ELSEIF ABL:0 >= 3 && (CFLAG:312 < 3 || FLAG:7 == 2)
+		ELSEIF ABL:従順 >= 3 && (CFLAG:312 < 3 || FLAG:7 == 2)
 			PRINTFORMW 「舌を絡ませてみろって？こ、こう？」
 			PRINTFORMW （私、自分からこの人とえっちなキスしちゃってる…）
 			PRINTFORMW （舌、絡ませ合うたび、なんだか凄く嬉しくなっちゃってる…）
@@ -1438,7 +1438,7 @@ IF SELECTCOM == 21
 			ENDIF
 			CFLAG:313 = 4
 		;屈服刻印Lv3
-		ELSEIF 0 && MARK:2 == 3 && (CFLAG:313 < 3 || FLAG:7 == 2)
+		ELSEIF 0 && MARK:屈服刻印 == 3 && (CFLAG:313 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:313 = 3
 		;それ以外
@@ -1648,7 +1648,7 @@ IF SELECTCOM == 28
 			ENDIF
 			CFLAG:320 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:320 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:320 < 3 || FLAG:7 == 2)
 			PRINTFORMW 「少し触られただけで濡らして、下の口は正直だなって…！」
 			PRINTFORMW 「だ、誰のせいでこんなことになったと思ってるの！！……もう…♡」
 			CFLAG:320 = 3
@@ -1734,7 +1734,7 @@ IF SELECTCOM == 40
 			ENDIF
 			CFLAG:322 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:322 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:322 < 3 || FLAG:7 == 2)
 			PRINTFORMW 「あっ、今度はローターでするんですね？」
 			PRINTFORMW （またいっぱいイかされちゃう…♡）
 			CFLAG:322 = 3
@@ -1785,7 +1785,7 @@ IF SELECTCOM == 41
 				PRINTFORMW （でも、あなたにならどれだけイかされちゃっても…♪）
 			ENDIF
 			CFLAG:323 = 4
-		ELSEIF ABL:3 < 3 && PALAM:6 >= PALAMLV:3 && (CFLAG:323 < 3 || FLAG:7 == 2)
+		ELSEIF ABL:Ｃ感覚 < 3 && PALAM:欲情 >= PALAMLV:3 && (CFLAG:323 < 3 || FLAG:7 == 2)
 			PRINTFORMW 「ひゃうっ！く、クリちゃんもう十分解れたからあああああっっ！」
 			PRINTFORMW 「壊れちゃう！！これ以上されたら気持ちよすぎて壊れちゃうからああああっっ！！」
 			CFLAG:323 = 3
@@ -1832,7 +1832,7 @@ IF SELECTCOM == 42 && TEQUIP:11 == 0
 			ENDIF
 			CFLAG:324 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:324 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:324 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:324 = 3
 		;それ以外
@@ -1873,7 +1873,7 @@ IF SELECTCOM == 43 && TEQUIP:12 == 0
 			ENDIF
 			CFLAG:325 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:325 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:325 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:325 = 3
 		;それ以外
@@ -1976,7 +1976,7 @@ IF SELECTCOM == 44 && TEQUIP:13 == 0
 			ENDIF
 			CFLAG:326 = 4
 		;屈服刻印Lv3
-		ELSEIF 0 && MARK:2 == 3 && (CFLAG:326 < 3 || FLAG:7 == 2)
+		ELSEIF 0 && MARK:屈服刻印 == 3 && (CFLAG:326 < 3 || FLAG:7 == 2)
 			PRINTFORMW 「バイブなんて入れられるくらいならお、おちんちんの方が……」
 			PRINTFORMW 「ちがっ！おちんちんが欲しいなんて言ってないっ！！」
 			CFLAG:326 = 3
@@ -2031,7 +2031,7 @@ IF SELECTCOM == 45 && TEQUIP:14 == 0
 			ENDIF
 			CFLAG:327 = 4
 		;屈服刻印Lv3
-		ELSEIF 0 && MARK:2 == 3 && (CFLAG:327 < 3 || FLAG:7 == 2)
+		ELSEIF 0 && MARK:屈服刻印 == 3 && (CFLAG:327 < 3 || FLAG:7 == 2)
 			PRINTFORMW 「お、お尻はまだちょっと辛いです…」
 			PRINTFORMW 「お尻の穴がキュって締まると、おまんこも一緒に締まってるって…！！そ、そんなところ見るなっ！！」
 				PRINTFORMW 「……は、恥ずかしいでしょ…」
@@ -2081,7 +2081,7 @@ IF SELECTCOM == 46 && TEQUIP:15 == 0
 			ENDIF
 			CFLAG:328 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:328 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:328 < 3 || FLAG:7 == 2)
 			PRINTFORMW 「これつけられると、自分が犬になっちゃったみたいで…」
 			PRINTFORMW 「この人の言うことに逆らえなくなっちゃう…」
 			PRINTFORMW 「うえっ！こ、声出てたの…？」
@@ -2126,7 +2126,7 @@ IF SELECTCOM == 47 && TEQUIP:16 == 0
 			ENDIF
 			CFLAG:329 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:329 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:329 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:329 = 3
 		;それ以外
@@ -2172,7 +2172,7 @@ IF SELECTCOM == 48
 			ENDIF
 			CFLAG:330 = 4
 		;屈服刻印Lv3
-		ELSEIF 0 && MARK:2 == 3 && (CFLAG:330 < 3 || FLAG:7 == 2)
+		ELSEIF 0 && MARK:屈服刻印 == 3 && (CFLAG:330 < 3 || FLAG:7 == 2)
 			PRINTFORMW 「ち、乳首はきもちよすぎっ…ひゃんっ！てっ…ふあっ！！」
 			PRINTFORMW 「ああっ…弱めるの止めてください…思いっ切りイかせて欲しいです…♪」
 			CFLAG:330 = 3
@@ -2210,7 +2210,7 @@ IF SELECTCOM == 49 && TEQUIP:17 == 0
 			ENDIF
 			CFLAG:331 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:331 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:331 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:331 = 3
 		;それ以外
@@ -2440,7 +2440,7 @@ IF SELECTCOM == 60
 			ENDIF
 			CFLAG:332 = 4
 		;屈服刻印Lv3
-		ELSEIF 0 && MARK:2 == 3 && (CFLAG:332 < 3 || FLAG:7 == 2)
+		ELSEIF 0 && MARK:屈服刻印 == 3 && (CFLAG:332 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:332 = 3
 		;それ以外
@@ -2525,7 +2525,7 @@ IF SELECTCOM == 61
 			ENDIF
 			CFLAG:333 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:333 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:333 < 3 || FLAG:7 == 2)
 			PRINTFORMW 「あそうそう、後背位は連続でやると『挿入子宮口責め』にコマンド分岐するから」
 			PRINTFORMW 「口上書く人はよかったらそっちのコマンドも書いてってや」
 			CFLAG:333 = 3
@@ -2562,7 +2562,7 @@ IF SELECTCOM == 62
 			ENDIF
 			CFLAG:334 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:334 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:334 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:334 = 3
 		;それ以外
@@ -2598,7 +2598,7 @@ IF SELECTCOM == 63
 			ENDIF
 			CFLAG:335 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:335 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:335 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:335 = 3
 		;それ以外
@@ -2634,7 +2634,7 @@ IF SELECTCOM == 64
 			ENDIF
 			CFLAG:336 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:336 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:336 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:336 = 3
 		;それ以外
@@ -2670,7 +2670,7 @@ IF SELECTCOM == 65
 			ENDIF
 			CFLAG:337 = 4
 		;屈服刻印Lv3
-		ELSEIF 0 && MARK:2 == 3 && (CFLAG:337 < 3 || FLAG:7 == 2)
+		ELSEIF 0 && MARK:屈服刻印 == 3 && (CFLAG:337 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:337 = 3
 		;それ以外
@@ -2763,7 +2763,7 @@ IF SELECTCOM == 66
 			ENDIF
 			CFLAG:338 = 4
 		;屈服刻印Lv3
-		ELSEIF 0 && MARK:2 == 3 && (CFLAG:338 < 3 || FLAG:7 == 2)
+		ELSEIF 0 && MARK:屈服刻印 == 3 && (CFLAG:338 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:338 = 3
 		;それ以外
@@ -2799,7 +2799,7 @@ IF SELECTCOM == 67
 			ENDIF
 			CFLAG:339 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:339 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:339 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:339 = 3
 		;それ以外
@@ -2890,7 +2890,7 @@ IF SELECTCOM == 68
 			ENDIF
 			CFLAG:340 = 4
 		;屈服刻印Lv3
-		ELSEIF 0 && MARK:2 == 3 && (CFLAG:340 < 3 || FLAG:7 == 2)
+		ELSEIF 0 && MARK:屈服刻印 == 3 && (CFLAG:340 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:340 = 3
 		;それ以外
@@ -2975,7 +2975,7 @@ IF SELECTCOM == 69
 			ENDIF
 			CFLAG:341 = 4
 		;屈服刻印Lv3
-		ELSEIF 0 && MARK:2 == 3 && (CFLAG:341 < 3 || FLAG:7 == 2)
+		ELSEIF 0 && MARK:屈服刻印 == 3 && (CFLAG:341 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:341 = 3
 		;それ以外
@@ -3011,7 +3011,7 @@ IF SELECTCOM == 70
 			ENDIF
 			CFLAG:342 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:342 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:342 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:342 = 3
 		;それ以外
@@ -3047,7 +3047,7 @@ IF SELECTCOM == 71
 			ENDIF
 			CFLAG:343 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:343 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:343 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:343 = 3
 		;それ以外
@@ -3089,7 +3089,7 @@ IF SELECTCOM == 72
 			ENDIF
 			CFLAG:420 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:420 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:420 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:420 = 3
 		;それ以外
@@ -3125,7 +3125,7 @@ IF SELECTCOM == 73
 			ENDIF
 			CFLAG:421 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:421 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:421 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:421 = 3
 		;それ以外
@@ -3172,13 +3172,13 @@ IF SELECTCOM == 80
 			ENDIF
 			CFLAG:344 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:344 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:344 < 3 || FLAG:7 == 2)
 			PRINTFORMW 「ふふっ、先っぽだけをいじめてあげますね…」
 			PRINTFORMW 「やめろって？あなただって私がやめてって言ってもやめてくれなかったじゃないですか」
 			PRINTFORMW （ほら、もっと私に夢中になれっ！）
 			CFLAG:344 = 3
 		;屈服刻印Lv2
-		ELSEIF MARK:2 == 2 && (CFLAG:344 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 2 && (CFLAG:344 < 3 || FLAG:7 == 2)
 			PRINTFORMW 「…はあ…さすってるだけでこんなに熱くなるなんて…」
 			PRINTFORMW 「熱心に擦ってるなって！！うるさい！黙って感じてろっ！！」
 			PRINTFORMW 「ここがいいんでしょ！！イけっ！イっちゃえ！！」
@@ -3291,14 +3291,14 @@ IF SELECTCOM == 81
 			ENDIF
 			CFLAG:345 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:345 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:345 < 3 || FLAG:7 == 2)
 			PRINTFORMW 「………あむっ♪ちゅぱ♪ちゅっ♪…ほんなにおおひふひて…じゅるるっ♪れるっ♪れろれろっ♪…わたひのこと…じゅぷっ♪じゅぽっ♪じゅぽっ♪…おかひたいの？……はあむっ♪……はあっ…どうしたの…？」
 			PRINTFORMW 「抵抗しなくなったなって？あなたの味、覚えさせられちゃいましたから…」
 			PRINTFORMW 「おちんちんの匂いを嗅ぐだけで、蕩かされちゃうくらい、おかしくされちゃったんですよ」
 			PRINTFORMW 「ほら、早く出してください…♪」
 			CFLAG:345 = 3
 		;屈服刻印Lv2
-		ELSEIF MARK:2 == 2 && (CFLAG:344 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 2 && (CFLAG:344 < 3 || FLAG:7 == 2)
 			PRINTFORMW 「………あむっ♪ちゅぱ♪ちゅっ♪…ほんなにおおひふひて…じゅるるっ♪れるっ♪れろれろっ♪…わたひのこと…じゅぷっ♪じゅぽっ♪じゅぽっ♪…ろうひたいの！……はあむっ♪……はあっ…どうしたの…？」
 			PRINTFORMW 「…髪をかきあげてまでしゃぶって、熱心にしてくれるんだなって…！！」
 			PRINTFORMW 「そ、そんなことないっ！早く出せって思ってやってるだけですっ！」
@@ -3365,7 +3365,7 @@ IF SELECTCOM == 82
 			ENDIF
 			CFLAG:346 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:346 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:346 < 3 || FLAG:7 == 2)
 			PRINTFORMW 「先っぽから透明なお汁が出ちゃってますね…♪」
 			PRINTFORMW 「れろっ♪えへへ、先っぽちょっと舐めちゃいました♪」
 			CFLAG:346 = 3
@@ -3458,7 +3458,7 @@ IF SELECTCOM == 83
 			ENDIF
 			CFLAG:347 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:347 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:347 < 3 || FLAG:7 == 2)
 			IF RAND:2 == 0
 				PRINTFORMW 「おちんちん、どんどん大きくなってます…私のお股、気持ちいいんですね…」
 				PRINTFORMW （擦れたところが熱くなって…えっちなお汁が溢れちゃってる…）
@@ -3532,7 +3532,7 @@ IF SELECTCOM == 84
 			ENDIF
 			CFLAG:348 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:348 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:348 < 3 || FLAG:7 == 2)
 			PRINTFORMW 「おっぱいで背中擦られたり、アソコで太もも擦られるのが、そんなに気持ちいいんですか？」
 			PRINTFORMW 「葵の身体は柔らかいから気持ち良いって…♡は、恥ずかしいなぁ、もう…」
 			CFLAG:348 = 3
@@ -3607,13 +3607,13 @@ IF SELECTCOM == 85
 			ENDIF
 			CFLAG:349 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:349 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:349 < 3 || FLAG:7 == 2)
 			PRINTFORMW 「こんなことされて気持ちよくなるのは、理解できそうに無いです…」
 			PRINTFORMW 「もっと楽しそうにやってくれって？イヤですよ…」
 			PRINTFORMW （私はいくらやっても、これでは気持ちよくなれないし…）
 			CFLAG:349 = 3
 		;屈服刻印Lv2
-		ELSEIF MARK:2 == 2 && (CFLAG:349 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 2 && (CFLAG:349 < 3 || FLAG:7 == 2)
 			PRINTFORMW 「……ちょっと待って、どこ見てるの…！！」
 			PRINTFORMW 「やだっ……ず、ずっとスカートの中、見てたんだ…？」
 			PRINTFORMW 「ね、ねえ、下着の中も、見たくない…？」
@@ -3652,7 +3652,7 @@ IF SELECTCOM == 86
 			ENDIF
 			CFLAG:350 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:350 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:350 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:350 = 3
 		;それ以外
@@ -3688,7 +3688,7 @@ IF SELECTCOM == 87
 			ENDIF
 			CFLAG:351 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:351 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:351 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:351 = 3
 		;それ以外
@@ -3744,7 +3744,7 @@ IF SELECTCOM == 88
 			ENDIF
 			CFLAG:352 = 4
 		;屈服刻印Lv3
-		ELSEIF 0 && MARK:2 == 3 && (CFLAG:352 < 3 || FLAG:7 == 2)
+		ELSEIF 0 && MARK:屈服刻印 == 3 && (CFLAG:352 < 3 || FLAG:7 == 2)
 			PRINTFORMW 「れろっ♪おちんちん、どんどん硬くなっちゃってますね…ちゅっ♪」
 			PRINTFORMW （おちんちんからえっちな匂いがして…目、離せなくなっちゃう！）
 			PRINTFORMW （このおちんちんにご奉仕することしか考えられなくなっちゃうっ！！）
@@ -3839,7 +3839,7 @@ IF SELECTCOM == 100
 			ENDIF
 			CFLAG:354 = 4
 		;屈服刻印Lv3
-		ELSEIF 0 && MARK:2 == 3 && (CFLAG:354 < 3 || FLAG:7 == 2)
+		ELSEIF 0 && MARK:屈服刻印 == 3 && (CFLAG:354 < 3 || FLAG:7 == 2)
 			PRINTFORMW 「ひゃんっ！やっ、やだよぉ…痛いし、恥ずかしいよぉ…」
 			PRINTFORMW （…でも、恥ずかしくて濡れちゃってる…）
 			CFLAG:354 = 3
@@ -3877,7 +3877,7 @@ IF SELECTCOM == 101
 			ENDIF
 			CFLAG:355 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:355 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:355 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:355 = 3
 		;それ以外
@@ -3919,7 +3919,7 @@ IF SELECTCOM == 102
 			ENDIF
 			CFLAG:356 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:356 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:356 < 3 || FLAG:7 == 2)
 			PRINTFORMW 「いたああああっ！！その痛みは耐えられないって言ってるでしょうがっ！！」
 			PRINTFORMW 「やめろっ！！痛いだけだから！！キラいっ！！大嫌いっ！！」
 			CFLAG:356 = 3
@@ -3957,7 +3957,7 @@ IF SELECTCOM == 103
 			ENDIF
 			CFLAG:357 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:357 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:357 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:357 = 3
 		;それ以外
@@ -4004,7 +4004,7 @@ IF SELECTCOM == 104
 			ENDIF
 			CFLAG:358 = 4
 		;屈服刻印Lv3
-		ELSEIF 0 && MARK:2 == 3 && (CFLAG:358 < 3 || FLAG:7 == 2)
+		ELSEIF 0 && MARK:屈服刻印 == 3 && (CFLAG:358 < 3 || FLAG:7 == 2)
 			PRINTFORMW 「こわいこわいこわいこわいこわいこわいこわいこわいこわいこわいこわいこわいこわいこわいこわいこわいっ！！」
 			PRINTFORMW 「何でこんなことしようとするのっ！！死ねっ！！死んじゃえ！！」
 			CFLAG:358 = 3
@@ -4054,7 +4054,7 @@ IF SELECTCOM == 105 && TEQUIP:18 == 0
 			ENDIF
 			CFLAG:359 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:359 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:359 < 3 || FLAG:7 == 2)
 			PRINTFORMW 「見えないの、怖いです…いつもより感覚が敏感になっちゃって…」
 			PRINTFORMW 「ひゃっ！お、お腹撫でられただけなのに…♡」
 			CFLAG:359 = 3
@@ -4109,7 +4109,7 @@ IF SELECTCOM == 106 && TEQUIP:19 == 0
 			ENDIF
 			CFLAG:360 = 4
 		;屈服刻印Lv3
-		ELSEIF 0 && MARK:2 == 3 && (CFLAG:360 < 3 || FLAG:7 == 2)
+		ELSEIF 0 && MARK:屈服刻印 == 3 && (CFLAG:360 < 3 || FLAG:7 == 2)
 			PRINTFORMW 「どうですか？葵の身体で興奮してくれてますか…？」
 			PRINTFORMW 「私も…あなたに支配されちゃったみたいで…興奮、してますっ♪」
 			CFLAG:360 = 3
@@ -4153,7 +4153,7 @@ IF SELECTCOM == 107 && TEQUIP:20 == 0
 			ENDIF
 			CFLAG:361 = 4
 		;屈服刻印Lv3
-		ELSEIF 0 && MARK:2 == 3 && (CFLAG:361 < 3 || FLAG:7 == 2)
+		ELSEIF 0 && MARK:屈服刻印 == 3 && (CFLAG:361 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			PRINTFORMW 
 			CFLAG:361 = 3
@@ -4199,7 +4199,7 @@ IF SELECTCOM == 120
 			ENDIF
 			CFLAG:362 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:362 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:362 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:362 = 3
 		;それ以外
@@ -4235,7 +4235,7 @@ IF SELECTCOM == 121
 			ENDIF
 			CFLAG:363 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:363 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:363 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:363 = 3
 		;それ以外
@@ -4271,7 +4271,7 @@ IF SELECTCOM == 122
 			ENDIF
 			CFLAG:364 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:364 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:364 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:364 = 3
 		;それ以外
@@ -4307,7 +4307,7 @@ IF SELECTCOM == 123
 			ENDIF
 			CFLAG:365 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:365 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:365 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:365 = 3
 		;それ以外
@@ -4343,7 +4343,7 @@ IF SELECTCOM == 124
 			ENDIF
 			CFLAG:366 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:366 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:366 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:366 = 3
 		;それ以外
@@ -4379,7 +4379,7 @@ IF SELECTCOM == 125
 			ENDIF
 			CFLAG:367 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:367 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:367 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:367 = 3
 		;それ以外
@@ -4415,7 +4415,7 @@ IF SELECTCOM == 126
 			ENDIF
 			CFLAG:368 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:368 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:368 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:368 = 3
 		;それ以外
@@ -4462,7 +4462,7 @@ IF SELECTCOM == 140
 			ENDIF
 			CFLAG:369 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:369 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:369 < 3 || FLAG:7 == 2)
 			PRINTFORMW 「お口でして欲しいなら、フェラじゃダメなんですか…？」
 			PRINTFORMW 「それ、苦しいからあまり好きじゃないんですよね…」
 			CFLAG:369 = 3
@@ -4556,7 +4556,7 @@ IF SELECTCOM == 144
 			ENDIF
 			CFLAG:373 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:373 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:373 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:373 = 3
 		;それ以外
@@ -4592,7 +4592,7 @@ IF SELECTCOM == 145
 			ENDIF
 			CFLAG:374 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:374 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:374 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:374 = 3
 		;それ以外
@@ -4628,7 +4628,7 @@ IF SELECTCOM == 146 && TEQUIP:21 == 0
 			ENDIF
 			CFLAG:375 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:375 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:375 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:375 = 3
 		;それ以外
@@ -4669,7 +4669,7 @@ IF SELECTCOM == 147
 			ENDIF
 			CFLAG:376 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:376 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:376 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:376 = 3
 		;それ以外
@@ -4705,7 +4705,7 @@ IF SELECTCOM == 148 && TEQUIP:22 == 0
 			ENDIF
 			CFLAG:377 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:377 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:377 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:377 = 3
 		;それ以外
@@ -4834,7 +4834,7 @@ IF SELECTCOM == 160 && TEQUIP:25 == 0
 			ENDIF
 			CFLAG:382 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:382 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:382 < 3 || FLAG:7 == 2)
 			PRINTFORMW 「ねえっ！もう呼ばないでって言ったでしょっ！！」
 			PRINTFORMW 「いやあああああああっっ！！」
 			CFLAG:382 = 3
@@ -5110,7 +5110,7 @@ IF SELECTCOM == 165
 			ENDIF
 			CFLAG:387 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:387 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:387 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:387 = 3
 		;それ以外
@@ -5146,7 +5146,7 @@ IF SELECTCOM == 166
 			ENDIF
 			CFLAG:388 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:388 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:388 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:388 = 3
 		;それ以外
@@ -5182,7 +5182,7 @@ IF SELECTCOM == 167
 			ENDIF
 			CFLAG:389 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:389 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:389 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:389 = 3
 		;それ以外
@@ -5218,7 +5218,7 @@ IF SELECTCOM == 168 && TEQUIP:36 == 0
 			ENDIF
 			CFLAG:390 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:390 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:390 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:390 = 3
 		;それ以外
@@ -5259,7 +5259,7 @@ IF SELECTCOM == 169
 			ENDIF
 			CFLAG:391 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:391 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:391 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:391 = 3
 		;それ以外
@@ -5298,7 +5298,7 @@ IF SELECTCOM == 180
 			ENDIF
 			CFLAG:392 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:392 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:392 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:392 = 3
 		;それ以外
@@ -5334,7 +5334,7 @@ IF SELECTCOM == 181
 			ENDIF
 			CFLAG:393 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:393 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:393 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:393 = 3
 		;それ以外
@@ -5370,7 +5370,7 @@ IF SELECTCOM == 182
 			ENDIF
 			CFLAG:394 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:394 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:394 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:394 = 3
 		;それ以外
@@ -5406,7 +5406,7 @@ IF SELECTCOM == 183 && TEQUIP:28 == 0
 			ENDIF
 			CFLAG:395 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:395 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:395 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:395 = 3
 		;それ以外
@@ -5456,7 +5456,7 @@ IF SELECTCOM == 184 && TEQUIP:29 == 0
 			ENDIF
 			CFLAG:396 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:396 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:396 < 3 || FLAG:7 == 2)
 			PRINTFORMW 「の、ノーパンで出かけるんですかっ！？」
 			PRINTFORMW 「もっと恥ずかしいことするだろって…？そ、それはそうですけど…」
 			PRINTFORMW （やだっ！すーすーするし、風が吹きでもしたら、痴女って思われちゃう…！！）
@@ -5501,7 +5501,7 @@ IF SELECTCOM == 185
 			ENDIF
 			CFLAG:397 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:397 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:397 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:397 = 3
 		;それ以外
@@ -5544,7 +5544,7 @@ IF SELECTCOM == 186 && TEQUIP:30 == 0
 			ENDIF
 			CFLAG:398 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:398 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:398 < 3 || FLAG:7 == 2)
 			PRINTFORMW 「じ、自分がえっちにされていくところ見るのって、すっごく恥ずかしいんですよ…？」
 			PRINTFORMW （あっ！ニヤッと笑って…これ、イかされ続けちゃうやつだ…♡）
 			CFLAG:398 = 3
@@ -5594,7 +5594,7 @@ IF SELECTCOM == 187 && TEQUIP:31 == 0
 			ENDIF
 			CFLAG:399 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:399 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:399 < 3 || FLAG:7 == 2)
 			PRINTFORMW 「お風呂ですか？はい、ゆっくりと癒やされたいです…」
 			PRINTFORMW （出来れば何もしないで欲しいけど…まあ、無理だろうなあ…）
 			CFLAG:399 = 3
@@ -5637,7 +5637,7 @@ IF SELECTCOM == 188 && TEQUIP:32 == 0
 			ENDIF
 			CFLAG:400 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:400 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:400 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:400 = 3
 		;それ以外
@@ -5706,7 +5706,7 @@ IF SELECTCOM == 190
 			ENDIF
 			CFLAG:402 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:402 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:402 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:402 = 3
 		;それ以外
@@ -5742,7 +5742,7 @@ IF SELECTCOM == 191
 			ENDIF
 			CFLAG:403 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:403 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:403 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:403 = 3
 		;それ以外
@@ -5778,7 +5778,7 @@ IF SELECTCOM == 192
 			ENDIF
 			CFLAG:404 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:404 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:404 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:404 = 3
 		;それ以外
@@ -5814,7 +5814,7 @@ IF SELECTCOM == 193
 			ENDIF
 			CFLAG:405 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:405 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:405 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:405 = 3
 		;それ以外
@@ -5850,7 +5850,7 @@ IF SELECTCOM == 194
 			ENDIF
 			CFLAG:406 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:406 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:406 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:406 = 3
 		;それ以外
@@ -5895,7 +5895,7 @@ IF SELECTCOM == 500
 			ENDIF
 			CFLAG:407 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:407 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:407 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:407 = 3
 		;それ以外
@@ -5939,7 +5939,7 @@ IF SELECTCOM == 501
 			ENDIF
 			CFLAG:408 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:408 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:408 < 3 || FLAG:7 == 2)
 			PRINTFORMW 「おちんちん舐めて、思いっきり濡らしちゃってるって…？」
 			PRINTFORMW 「そうなんです…私のアソコ、あなたのにごほーしするだけではしたなく濡れちゃうんです…」
 			PRINTFORMW 「私のアソコ、お口とおちんちんの両方から、えっちになれって鳴かされちゃってます…♡」
@@ -5991,7 +5991,7 @@ IF SELECTCOM == 502
 			ENDIF
 			CFLAG:409 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:409 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:409 < 3 || FLAG:7 == 2)
 			PRINTFORMW （愛液、じゅるじゅるって音立てて、思いっきり啜られちゃってるんだ…）
 			PRINTFORMW （これ、恥ずかしいっ、恥ずかしくてお汁止まらないよおっ♡）
 			PRINTFORMW （そしたらまたお汁啜られちゃって…もう止められないっ！！）
@@ -6037,7 +6037,7 @@ IF SELECTCOM == 503
 			ENDIF
 			CFLAG:410 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:410 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:410 < 3 || FLAG:7 == 2)
 			PRINTFORMW 「そこっ！もうダメなんですっ！！イかせないでっ！！」
 			PRINTFORMW 「これ以上そこイジメられたら、おかしくなっちゃうからあああああああっっ！！」
 			CFLAG:410 = 3
@@ -6080,7 +6080,7 @@ IF SELECTCOM == 504
 			ENDIF
 			CFLAG:411 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:411 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:411 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:411 = 3
 		;それ以外
@@ -6122,7 +6122,7 @@ IF SELECTCOM == 505 && TFLAG:40 == 1
 			ENDIF
 			CFLAG:412 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:412 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:412 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:412 = 3
 		;それ以外
@@ -6154,7 +6154,7 @@ ELSEIF SELECTCOM == 505 && TFLAG:40 == 2
 			ENDIF
 			CFLAG:419 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:419 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:419 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:419 = 3
 		;それ以外
@@ -6189,7 +6189,7 @@ IF SELECTCOM == 506
 			ENDIF
 			CFLAG:413 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:413 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:413 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:413 = 3
 		;それ以外
@@ -6224,7 +6224,7 @@ IF SELECTCOM == 507
 			ENDIF
 			CFLAG:414 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:414 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:414 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:414 = 3
 		;それ以外
@@ -6269,7 +6269,7 @@ IF SELECTCOM == 508
 			ENDIF
 			CFLAG:415 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:415 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:415 < 3 || FLAG:7 == 2)
 			PRINTFORMW 「服着たままですると、えっちなところだけを肌蹴させたみたいで…恥ずかしいです…♡」
 			PRINTFORMW （でも、やっぱり裸でする方が、暖かさと柔らかさが伝わって…気持ちいいかも…♡）
 			CFLAG:415 = 3
@@ -6306,7 +6306,7 @@ IF SELECTCOM == 509
 			ENDIF
 			CFLAG:416 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:416 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:416 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:416 = 3
 		;それ以外
@@ -6341,7 +6341,7 @@ IF SELECTCOM == 510
 			ENDIF
 			CFLAG:417 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:417 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:417 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:417 = 3
 		;それ以外
@@ -6376,7 +6376,7 @@ IF SELECTCOM == 511
 			ENDIF
 			CFLAG:418 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:418 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:418 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:418 = 3
 		;それ以外
@@ -6435,7 +6435,7 @@ IF CFLAG:106
 			PRINTFORMW 「あなたの匂い、染み付いちゃう…♪」
 			CFLAG:221 = 3
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:221 < 2 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:221 < 2 || FLAG:7 == 2)
 			PRINTFORMW 「か、髪の毛にかけるなんて…」
 			PRINTFORMW 「葵のキレイな髪を汚して、征服した気分だって…もうっ！！」
 			PRINTFORMW （でも、そう言われるの、わるくない、かも…♡）
@@ -6457,7 +6457,7 @@ IF CFLAG:106
 			PRINTFORMW 「それに、一番近くであなたの精液の匂いを感じられちゃうし、ね？」
 			CFLAG:222 = 3
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:222 < 2 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:222 < 2 || FLAG:7 == 2)
 			PRINTFORMW 「顔に精液、かけられちゃってます…」
 			PRINTFORMW （この人の香りがいっぱいにしちゃって…ぬ、濡れちゃうっ！）
 			PRINTFORMW 「ぺろっ♪んんっ、せーし、舐めちゃった…♪」
@@ -6480,7 +6480,7 @@ IF CFLAG:106
 			PRINTFORMW 「あなたの赤ちゃん、欲しいな…♡」
 			CFLAG:223 = 3
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:223 < 2 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:223 < 2 || FLAG:7 == 2)
 			PRINTFORMW 「ひゃっ！胸にいっぱいかかっちゃってる…」
 			PRINTFORMW 「ただでさえ熱いのに、こんなのかけられちゃったら、火傷しちゃいますよ…♡」
 			CFLAG:223 = 2
@@ -6509,7 +6509,7 @@ IF CFLAG:106
 			ENDIF
 			CFLAG:224 = 3
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:224 < 2 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:224 < 2 || FLAG:7 == 2)
 			PRINTFORMW 「精液、いっぱい出たんですね…お腹が熱いです…」
 			PRINTFORMW 「えっと、私の手を取って、どうするつもりなんですか？」
 			PRINTFORMW （私の手の上からお腹の上撫でられて…あっ…そこは♡）
@@ -6534,7 +6534,7 @@ IF CFLAG:106
 			PRINTFORMW （今度、ノースリーブで一緒に出掛けてあげようかな…？）
 			CFLAG:225 = 3
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:225 < 2 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:225 < 2 || FLAG:7 == 2)
 			PRINTFORMW 「んっ、私の脇で、ぎゅーって締め付けてあげますね？」
 			PRINTFORMW （うわ…どくどくってするの、すごく近く感じられちゃう…♡）
 			CFLAG:225 = 2
@@ -6552,7 +6552,7 @@ IF CFLAG:106
 			PRINTFORMW 「精液流れ落ちたところ、熱くなっちゃうっ！！」
 			CFLAG:226 = 3
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:226 < 2 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:226 < 2 || FLAG:7 == 2)
 			PRINTFORMW 「ひゃっ！つ、付け根の所で出すのはやめて！！」
 			PRINTFORMW 「だ、だって…膣内に出されちゃったみたいに、流れ落ちてきちゃうから…♡」
 			CFLAG:226 = 2
@@ -6573,7 +6573,7 @@ IF CFLAG:106
 			PRINTFORMW 「……精子、ぜーんぶ膣内に注ぎ込んじゃって、いいよ♡」
 			CFLAG:227 = 3
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:227 < 2 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:227 < 2 || FLAG:7 == 2)
 			PRINTFORMW 「さ、先っぽ入って来ちゃってる！！」
 			PRINTFORMW 「このまま射精したいって…もう…困った人ですね……」
 			PRINTFORMW 「良いですよ、いっぱいびゅーってしてください♡」
@@ -6607,7 +6607,7 @@ IF CFLAG:106
 			ENDIF
 			CFLAG:228 = 3
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:228 < 2 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:228 < 2 || FLAG:7 == 2)
 			PRINTFORMW 「ひゃんっ！お尻、熱いよぉ…♡」
 			PRINTFORMW 「あなたの精液がいっぱいかかっちゃってる、ま、まだ出るの…♡」
 			PRINTFORMW 「えっ、四つん這いになって、お尻突き出して、おねだりしてるみたいでエロすぎるからって…もう…♡」
@@ -6629,7 +6629,7 @@ IF CFLAG:106
 				PRINTFORMW （でも、あなたの赤ちゃん産めるなら、それが一番幸せなんだよ？）
 				CFLAG:229 = 3
 			;屈服刻印Lv3
-			ELSEIF MARK:2 == 3 && (CFLAG:229 < 2 || FLAG:7 == 2)
+			ELSEIF MARK:屈服刻印 == 3 && (CFLAG:229 < 2 || FLAG:7 == 2)
 				PRINTFORMW 「わっ！そんなに出ちゃってたんだ…私のここ、そんなに気持ち良かったんですか？」
 				PRINTFORMW （あんなの、直接出されちゃってたら…♡）
 				CFLAG:229 = 2
@@ -6654,7 +6654,7 @@ IF CFLAG:106
 				ENDIF
 				CFLAG:230 = 3
 			;屈服刻印Lv3
-			ELSEIF MARK:2 == 3 && (CFLAG:230 < 2 || FLAG:7 == 2)
+			ELSEIF MARK:屈服刻印 == 3 && (CFLAG:230 < 2 || FLAG:7 == 2)
 				PRINTFORMW 
 				CFLAG:230 = 2
 			;それ以外
@@ -6682,7 +6682,7 @@ IF TFLAG:9 == 1
 		PRINTFORMW 「おちんちん、どうやって気持ち良くしてほしいか、教えて…♡」
 		CFLAG:231 = 3
 	;屈服刻印Lv3
-	ELSEIF 0 && MARK:2 == 3 && (CFLAG:231 < 2 || FLAG:7 == 2)
+	ELSEIF 0 && MARK:屈服刻印 == 3 && (CFLAG:231 < 2 || FLAG:7 == 2)
 		PRINTFORMW 「ひゃんっ！白いのいっぱい、かけられちゃってる…♡」
 		PRINTFORMW 「私の身体、そんなに気持ち良かったですか？」
 		PRINTFORMW 「……おねだり出来たら、もっとしてあげても、いいんですよ…？」
@@ -6705,7 +6705,7 @@ IF TFLAG:7 > 0
 		PRINTFORMW 
 		CFLAG:232 = 3
 	;屈服刻印Lv3
-	ELSEIF MARK:2 == 3 && (CFLAG:232 < 2 || FLAG:7 == 2)
+	ELSEIF MARK:屈服刻印 == 3 && (CFLAG:232 < 2 || FLAG:7 == 2)
 		PRINTFORMW 
 		CFLAG:232 = 2
 	;それ以外
@@ -6728,7 +6728,7 @@ IF TFLAG:0 > 0
 		PRINTFORMW 「…下のお口にも、お代わり、欲しいな…♡」
 		CFLAG:233 = 3
 	;屈服刻印Lv3
-	ELSEIF MARK:2 == 3 && (CFLAG:233 < 2 || FLAG:7 == 2)
+	ELSEIF MARK:屈服刻印 == 3 && (CFLAG:233 < 2 || FLAG:7 == 2)
 		PRINTFORMW 「むぐぅ！んぐっ！んんーーっ！はあっ！」
 		PRINTFORMW 「ぬろぉ…ふふっ、こんなにいっぱい出しちゃったんですよ…？お口じゃ赤ちゃんできないのに、ね？」
 		PRINTFORMW 「それじゃあ、これ、飲んじゃいますね…んくっ！んんんっ！…れろっ…んんーーーーっっ！んっ！！」
@@ -6757,7 +6757,7 @@ IF TFLAG:1 > 0
 		PRINTFORMW 「…せーし、限界までぴゅっぴゅしちゃおう、ね？」
 		CFLAG:234 = 3
 	;屈服刻印Lv3
-	ELSEIF MARK:2 == 3 && (CFLAG:234 < 2 || FLAG:7 == 2)
+	ELSEIF MARK:屈服刻印 == 3 && (CFLAG:234 < 2 || FLAG:7 == 2)
 		PRINTFORMW 「私の手、気持ち良かったですか？」
 		PRINTFORMW 「ぷにぷにしてて凄くよかったって…そ、そうなの…♡」
 		PRINTFORMW 「……ふふっ♪私にも柔らかい所はあるんだって、このおちんちんにもっと教えてあげます♪」
@@ -6782,7 +6782,7 @@ IF TFLAG:34 > 0
 		PRINTFORMW （私のおっぱいに、もっと夢中になって…♡）
 		CFLAG:235 = 3
 	;屈服刻印Lv3
-	ELSEIF MARK:2 == 3 && (CFLAG:235 < 2 || FLAG:7 == 2)
+	ELSEIF MARK:屈服刻印 == 3 && (CFLAG:235 < 2 || FLAG:7 == 2)
 		PRINTFORMW 「あっ！ちゃんとイってくれたんですね…♡」
 		PRINTFORMW 「足りないかもしれないけど、もっとぎゅーってしてあげますね♪」
 		CFLAG:235 = 2
@@ -6809,7 +6809,7 @@ IF TFLAG:2 > 0
 			PRINTFORMW 「えっちなお汁でとろとろになって、受精する準備、出来ちゃってるから、さ♡」
 			CFLAG:237 = 3
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:237 < 2 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:237 < 2 || FLAG:7 == 2)
 			PRINTFORMW 「お、お尻の中、熱いです…」
 			PRINTFORMW （お尻の中の精液の熱さがおまんこにも伝わって、精子欲しいって疼いちゃう…♡）
 			CFLAG:237 = 2
@@ -6888,7 +6888,7 @@ IF TFLAG:2 > 0
 			ENDIF
 			CFLAG:238 = 3
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:238 < 2 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:238 < 2 || FLAG:7 == 2)
 			PRINTFORMW 「な、中には出さないでくださいっ！」
 			PRINTFORMW 「まだあなたと赤ちゃん、作る準備できてないからっ！」
 			CFLAG:238 = 2
@@ -6911,7 +6911,7 @@ IF SELECTCOM == 64 && TFLAG:10 > 0
 		PRINTFORMW 
 		CFLAG:239 = 3
 	;屈服刻印Lv3
-	ELSEIF MARK:2 == 3 && (CFLAG:239 < 2 || FLAG:7 == 2)
+	ELSEIF MARK:屈服刻印 == 3 && (CFLAG:239 < 2 || FLAG:7 == 2)
 		PRINTFORMW 
 		CFLAG:239 = 2
 	;それ以外
@@ -6966,7 +6966,7 @@ IF TFLAG:15 >0
 		PRINTFORMW （ダメっ！！このままじゃ触手の赤ちゃん孕んじゃう！！孕まされちゃうっ！！！！）
 		CFLAG:240 = 3
 	;屈服刻印Lv3
-	ELSEIF MARK:2 == 3 && (CFLAG:240 < 2 || FLAG:7 == 2)
+	ELSEIF MARK:屈服刻印 == 3 && (CFLAG:240 < 2 || FLAG:7 == 2)
 		PRINTFORMW 「いやああああああっっ！！熱いの！入ってきてるっ！！」
 		PRINTFORMW 「いやだよぉ…触手の赤ちゃんなんていやああああああっっ！！」
 		CFLAG:240 = 2
@@ -7067,7 +7067,7 @@ ELSEIF TFLAG:29 > 0
 		ENDIF
 		CFLAG:245 = 3
 	;屈服刻印Lv3
-	ELSEIF 0 && MARK:2 == 3 && (CFLAG:245 < 2 || FLAG:7 == 2)
+	ELSEIF 0 && MARK:屈服刻印 == 3 && (CFLAG:245 < 2 || FLAG:7 == 2)
 		PRINTFORMW 「ああっ！！、イくっ！！イっちゃう！！あああああああああっっ！！」
 		PRINTFORMW 「待ってっ！！イっちゃってるからああああああっっ！いじるのやめてええええええっっ！！」
 		PRINTFORMW （…この人にされるの気持ち良すぎて…蕩けちゃう…♡）
@@ -7093,7 +7093,7 @@ IF TFLAG:10 > 0
 		PRINTFORMW 
 		CFLAG:246 = 3
 	;屈服刻印Lv3
-	ELSEIF MARK:2 == 3 && (CFLAG:246 < 2 || FLAG:7 == 2)
+	ELSEIF MARK:屈服刻印 == 3 && (CFLAG:246 < 2 || FLAG:7 == 2)
 		PRINTFORMW 
 		CFLAG:246 = 2
 	;それ以外
@@ -7113,7 +7113,7 @@ IF TFLAG:11 > 0
 		PRINTFORMW 
 		CFLAG:247 = 3
 	;屈服刻印Lv3
-	ELSEIF MARK:2 == 3 && (CFLAG:247 < 2 || FLAG:7 == 2)
+	ELSEIF MARK:屈服刻印 == 3 && (CFLAG:247 < 2 || FLAG:7 == 2)
 		PRINTFORMW 
 		CFLAG:247 = 2
 	;それ以外
@@ -7133,7 +7133,7 @@ IF TFLAG:29 > 0 && (TEQUIP:27 || TALENT:おもらし癖)
 		PRINTFORMW 
 		CFLAG:248 = 3
 	;屈服刻印Lv3
-	ELSEIF MARK:2 == 3 && (CFLAG:248 < 2 || FLAG:7 == 2)
+	ELSEIF MARK:屈服刻印 == 3 && (CFLAG:248 < 2 || FLAG:7 == 2)
 		PRINTFORMW 
 		CFLAG:248 = 2
 	;それ以外
@@ -7186,7 +7186,7 @@ IF TFLAG:3 > 0
 		IF TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属
 			PRINTFORMW 
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3
+		ELSEIF MARK:屈服刻印 == 3
 			PRINTFORMW 
 		;それ以外
 		ELSE
@@ -7228,7 +7228,7 @@ ENDIF
 ;-------------------------------------------------
 ;初めて潤滑がLV3超えた
 ;-------------------------------------------------
-P = PALAM:4 + UP:4
+P = PALAM:潤滑 + UP:4
 IF 0 && P > PALAMLV:4 && CFLAG:245 == 0
 	CALL PALAM_MESSAGE_D
 	;ローションを使った場合
@@ -7245,7 +7245,7 @@ ENDIF
 ;-------------------------------------------------
 ;初めて欲情がLV2超えた
 ;-------------------------------------------------
-P = PALAM:6 + UP:6
+P = PALAM:欲情 + UP:6
 IF 0 && P > PALAMLV:3 && CFLAG:246 == 0
 	CALL PALAM_MESSAGE_D
 	;媚薬を使った場合
@@ -7263,7 +7263,7 @@ ENDIF
 ;-------------------------------------------------
 ;初めて屈服がLV3超えた
 ;-------------------------------------------------
-P = PALAM:7 + UP:7
+P = PALAM:屈服 + UP:7
 IF 0 && P > PALAMLV:3 && CFLAG:247 == 0
 	CALL PALAM_MESSAGE_D
 	;陥落済み
@@ -7280,7 +7280,7 @@ ENDIF
 ;-------------------------------------------------
 ;初めて恭順がLV3超えた
 ;-------------------------------------------------
-P = PALAM:5 + UP:5
+P = PALAM:恭順 + UP:5
 IF 0 && P > PALAMLV:3 && CFLAG:248 == 0
 	CALL PALAM_MESSAGE_D
 	;陥落済み
@@ -7297,7 +7297,7 @@ ENDIF
 ;-------------------------------------------------
 ;初めて恐怖がLV3超えた
 ;-------------------------------------------------
-P = PALAM:11 + UP:11
+P = PALAM:恐怖 + UP:11
 IF 0 && P > PALAMLV:3 && CFLAG:249 == 0
 	CALL PALAM_MESSAGE_D
 	;陥落済み
@@ -7820,7 +7820,7 @@ IF TFLAG:13 == 15
 	;それ以外
 	ELSEIF CFLAG:275 < 1 || FLAG:7 == 2
 		;料理技能Lv3以下
-		IF ABL:12 <= 3
+		IF ABL:料理技能 <= 3
 			IF F == 1
 				PRINTFORMW 「今日は割と満足そうに帰ってくれた人が多かったね♪」
 				PRINTFORMW 「ねえ…頑張ったご褒美、欲しいな…♡」
@@ -8107,7 +8107,7 @@ IF TFLAG:13 == 18
 	;陥落済み
 	IF TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属
 		;恋慕、親愛+反発刻印Lv3未満
-		IF (TALENT:恋慕 || TALENT:親愛) && MARK:3 < 3
+		IF (TALENT:恋慕 || TALENT:親愛) && MARK:反発刻印 < 3
 			PRINTFORMW 「ねえっ！私のこと売るって…嘘でしょっ！！嘘って言ってよ！！」
 			PRINTFORMW 「あなたのこと、信じてたのに…酷いよぉっ！！」
 			PRINTFORMW 「バカっ！！大バカっ！！ずっと一緒にいられると思ってたのにっ！！」
@@ -8139,14 +8139,14 @@ IF TFLAG:13 == 18
 			PRINTFORMW ――いつまでも一緒だよ、あ・な・た♪
 			PRINTFORMW …一緒に、幸せに、なろっ？
 		;淫乱、娼婦+反発刻印Lv3未満
-		ELSEIF (TALENT:淫乱 || TALENT:娼婦) && MARK:3 < 3
+		ELSEIF (TALENT:淫乱 || TALENT:娼婦) && MARK:反発刻印 < 3
 			PRINTFORMW 
 		;服従、隷属+反発刻印Lv3未満
-		ELSEIF (TALENT:服従 || TALENT:隷属) && MARK:3 < 3
+		ELSEIF (TALENT:服従 || TALENT:隷属) && MARK:反発刻印 < 3
 			PRINTFORMW 
 		ENDIF
 	;反発刻印Lv3
-	ELSEIF MARK:3 == 3
+	ELSEIF MARK:反発刻印 == 3
 		PRINTFORMW 
 	;それ以外
 	ELSE

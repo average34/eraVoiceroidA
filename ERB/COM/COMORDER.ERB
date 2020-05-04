@@ -27,40 +27,40 @@ RETURN 1
 @COM_ORDER
 
 ;ABL:従順
-IF ABL:0
-	A += ABL:0 * 4
+IF ABL:従順
+	A += ABL:従順 * 4
 	PRINTS ABLNAME:0
-	PRINTV 'LV,ABL:0,'(,ABL:0 * 4,')
+	PRINTV 'LV,ABL:従順,'(,ABL:従順 * 4,')
 	S = 1
 ENDIF
 ;ABL:マゾっ気
-IF ABL:9
+IF ABL:マゾっ気
 	SIF S
 		PRINT  + 
-	A += ABL:9*2
+	A += ABL:マゾっ気*2
 	PRINTS ABLNAME:9
-	PRINTV 'LV,ABL:9,'(,ABL:9*2,')
+	PRINTV 'LV,ABL:マゾっ気,'(,ABL:マゾっ気*2,')
 	S = 1
 ENDIF
 
 ;レズ調教
 IF TALENT:PLAYER:オトコ == 0 && TALENT:TARGET:オトコ == 0
 	;ABL:レズっ気
-	IF ABL:11
+	IF ABL:レズっ気
 		SIF S
 			PRINT  + 
-		A += ABL:11*3
+		A += ABL:レズっ気*3
 		PRINTS ABLNAME:11
-		PRINTV 'LV,ABL:11,'(,ABL:11*3,')
+		PRINTV 'LV,ABL:レズっ気,'(,ABL:レズっ気*3,')
 		S = 1
 	ENDIF
 	;ABL:レズ中毒
-	IF ABL:17
+	IF ABL:レズ中毒
 		SIF S
 			PRINT  + 
-		A += ABL:17*3
+		A += ABL:レズ中毒*3
 		PRINTS ABLNAME:17
-		PRINTV 'LV,ABL:17,'(,ABL:17*3,')
+		PRINTV 'LV,ABL:レズ中毒,'(,ABL:レズ中毒*3,')
 		S = 1
 	ENDIF
 	;TALENT:両刀
@@ -92,21 +92,21 @@ IF TALENT:PLAYER:オトコ == 0 && TALENT:TARGET:オトコ == 0
 ;ゲイ調教
 ELSEIF TALENT:PLAYER:オトコ && TALENT:TARGET:オトコ
 	;ABL:ホモっ気
-	IF ABL:20
+	IF ABL:ホモっ気
 		SIF S
 			PRINT  + 
-		A += ABL:20*3
+		A += ABL:ホモっ気*3
 		PRINTS ABLNAME:20
-		PRINTV 'LV,ABL:20,'(,ABL:20*3,')
+		PRINTV 'LV,ABL:ホモっ気,'(,ABL:ホモっ気*3,')
 		S = 1
 	ENDIF
 	;ABL:ゲイ中毒
-	IF ABL:21
+	IF ABL:ゲイ中毒
 		SIF S
 			PRINT  + 
-		A += ABL:21*3
+		A += ABL:ゲイ中毒*3
 		PRINTS ABLNAME:21
-		PRINTV 'LV,ABL:21,'(,ABL:21*3,')
+		PRINTV 'LV,ABL:ゲイ中毒,'(,ABL:ゲイ中毒*3,')
 		S = 1
 	ENDIF
 	;TALENT:両刀
@@ -156,12 +156,12 @@ ELSE
 ENDIF
 
 ;刻印チェック
-IF MARK:0
+IF MARK:苦痛刻印
 	SIF S
 		PRINT  + 
-	A += MARK:0 * 5
+	A += MARK:苦痛刻印 * 5
 	PRINTS MARKNAME:0
-	PRINTV 'LV,MARK:0,'(,MARK:0 * 5,')
+	PRINTV 'LV,MARK:苦痛刻印,'(,MARK:苦痛刻印 * 5,')
 	S = 1
 ENDIF
 
@@ -174,32 +174,32 @@ ELSE
 ENDIF
 
 ;屈服刻印および反発刻印
-IF MARK:2
+IF MARK:屈服刻印
 	SIF S
 		PRINT  + 
-	A += MARK:2 * 3 * T
+	A += MARK:屈服刻印 * 3 * T
 	PRINTS MARKNAME:2
-	PRINTV 'LV,MARK:2,'(,MARK:2 * 3 * T,')
+	PRINTV 'LV,MARK:屈服刻印,'(,MARK:屈服刻印 * 3 * T,')
 	S = 1
 ENDIF
-IF MARK:3
+IF MARK:反発刻印
 	PRINT  - 
-	A -= MARK:3 * 2 * T
+	A -= MARK:反発刻印 * 2 * T
 	PRINTS MARKNAME:3
-	PRINTV 'LV,MARK:3,'(,MARK:3 * 2 * T,')
+	PRINTV 'LV,MARK:反発刻印,'(,MARK:反発刻印 * 2 * T,')
 	S = 1
 ENDIF
 
 ;PALAM:恭順
-IF PALAM:5 < PALAMLV:1
+IF PALAM:恭順 < PALAMLV:1
 	L = 0
-ELSEIF PALAM:5 < PALAMLV:2
+ELSEIF PALAM:恭順 < PALAMLV:2
 	L = 1
-ELSEIF PALAM:5 < PALAMLV:3
+ELSEIF PALAM:恭順 < PALAMLV:3
 	L = 2
-ELSEIF PALAM:5 < PALAMLV:4
+ELSEIF PALAM:恭順 < PALAMLV:4
 	L = 3
-ELSEIF PALAM:5 < PALAMLV:5
+ELSEIF PALAM:恭順 < PALAMLV:5
 	L = 4
 ELSE
 	L = 5
@@ -214,15 +214,15 @@ IF L
 ENDIF
 
 ;PALAM:恐怖
-IF PALAM:11 < PALAMLV:1
+IF PALAM:恐怖 < PALAMLV:1
 	L = 0
-ELSEIF PALAM:11 < PALAMLV:2
+ELSEIF PALAM:恐怖 < PALAMLV:2
 	L = 1
-ELSEIF PALAM:11 < PALAMLV:3
+ELSEIF PALAM:恐怖 < PALAMLV:3
 	L = 2
-ELSEIF PALAM:11 < PALAMLV:4
+ELSEIF PALAM:恐怖 < PALAMLV:4
 	L = 3
-ELSEIF PALAM:11 < PALAMLV:5
+ELSEIF PALAM:恐怖 < PALAMLV:5
 	L = 4
 ELSE
 	L = 5
@@ -351,13 +351,13 @@ ENDIF
 
 ;調教者の能力、素質
 ;ABL:サドっ気
-IF ABL:PLAYER:10
+IF ABL:PLAYER:サドっ気
 	SIF S
 		PRINT  + 
-	A += ABL:PLAYER:10*2
+	A += ABL:PLAYER:サドっ気*2
 	PRINT 調教者の
 	PRINTS ABLNAME:10
-	PRINTV 'LV,ABL:PLAYER:10,'(,ABL:PLAYER:10*2,')
+	PRINTV 'LV,ABL:PLAYER:サドっ気,'(,ABL:PLAYER:サドっ気*2,')
 	S = 1
 ENDIF
 ;魅惑

@@ -36,8 +36,7 @@ Windows7,8.1,10
 ※このバリアントはまだまだ改造しきれていない部分が多いです。バグ・不具合等多々あるかと思いますが、それでもよろしければプレイをお願いします。  
 
 ## 共有ボタン
-[<img src="https://help.twitter.com/content/dam/help-twitter/brand/logo.png" width="40" alt="Twitterで共有">](https://twitter.com/share?url=https://github.com/average34/eraVoiceroidA/blob/master/README.md&hashtags=eraVoiceroid&text=eraVoiceroidA%0D%0Aテキストのみで進める、ボイロを監禁調教するゲーム。%0D%0A "Twitterで共有")
-<a href="https://b.hatena.ne.jp/entry/s/github.com/average34/for_test/blob/master/README.md" class="hatena-bookmark-button" data-hatena-bookmark-layout="touch-counter" title="このエントリーをはてなブックマークに追加"><img src="https://b.st-hatena.com/images/v4/public/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="40" height="40" style="border: none;" /></a>  
+[<img src="https://help.twitter.com/content/dam/help-twitter/brand/logo.png" width="40" alt="Twitterで共有">](https://twitter.com/share?url=https://github.com/average34/eraVoiceroidA/blob/master/README.md&hashtags=eraVoiceroid&text=eraVoiceroidA%0D%0Aテキストのみで進める、ボイロを監禁調教するゲーム。%0D%0A "Twitterで共有")  
 ※R-18,R-18Gな投稿が可能な場でのみの共有をお願いします。
 
 ## 連絡先

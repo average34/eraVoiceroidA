@@ -1,9 +1,9 @@
 ﻿;レズ中毒の可否
 @ISABLUP21
 ;恋慕、親愛、淫乱、娼婦はMAXLV10
-IF ABL:21 >= 10
+IF ABL:ゲイ中毒 >= 10
 	RETURN 0
-ELSEIF ABL:21 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:淫乱 == 0 && TALENT:娼婦 == 0
+ELSEIF ABL:ゲイ中毒 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:淫乱 == 0 && TALENT:娼婦 == 0
 	RETURN 0
 ENDIF
 
@@ -19,10 +19,10 @@ ENDIF
 @ABLUP21
 DRAWLINE
 ;恋慕、親愛、淫乱、娼婦はMAXLV10
-IF ABL:21 >= 10
+IF ABL:ゲイ中毒 >= 10
 	PRINTW 既にMAXです
 	RETURN 0
-ELSEIF ABL:21 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:淫乱 == 0 && TALENT:娼婦 == 0
+ELSEIF ABL:ゲイ中毒 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:淫乱 == 0 && TALENT:娼婦 == 0
 	PRINTW 既にMAXです
 	RETURN 0
 ENDIF
@@ -30,26 +30,26 @@ ENDIF
 CALL DECIDE_ABLUP21
 
 ;ＬＶ２から３に上げるときは異常経験必要（素質：[両刀][中毒しやすい]なら無視できる）
-IF ABL:21 == 2 && TALENT:両刀 == 0 && TALENT:中毒しやすい == 0
+IF ABL:ゲイ中毒 == 2 && TALENT:両刀 == 0 && TALENT:中毒しやすい == 0
 	PRINTS EXPNAME:50
 	PRINTL あり、かつ
 ;ＬＶ３から４に上げるときは異常経験2以上必要（素質：[両刀][中毒しやすい]なら無視できる）
-ELSEIF ABL:21 == 3 && TALENT:両刀 == 0 && TALENT:中毒しやすい == 0
+ELSEIF ABL:ゲイ中毒 == 3 && TALENT:両刀 == 0 && TALENT:中毒しやすい == 0
 	PRINTS EXPNAME:50
 	PRINTL 2以上、かつ
 ;ＬＶ４から５に上げるときは異常経験3以上必要（素質：[両刀][中毒しやすい]なら無視できる）
-ELSEIF ABL:21 == 4 && TALENT:両刀 == 0 && TALENT:中毒しやすい == 0
+ELSEIF ABL:ゲイ中毒 == 4 && TALENT:両刀 == 0 && TALENT:中毒しやすい == 0
 	PRINTS EXPNAME:50
 	PRINTL 3以上、かつ
 ;ＬＶ８から９に上げるときは異常経験7以上必要（素質：[両刀][中毒しやすい]なら無視できる）
-ELSEIF ABL:21 == 8 && TALENT:両刀 == 0 && TALENT:中毒しやすい == 0
+ELSEIF ABL:ゲイ中毒 == 8 && TALENT:両刀 == 0 && TALENT:中毒しやすい == 0
 	PRINTS EXPNAME:50
 	PRINTL 7以上、かつ
 ENDIF
 
 ;奉仕精神が必要
 PRINTS ABLNAME:7
-PRINTV ABL:21 + 1
+PRINTV ABL:ゲイ中毒 + 1
 PRINTL LV以上、かつ
 
 
@@ -98,7 +98,7 @@ ELSEIF RESULT == 100
 	RETURN 0
 ENDIF
 
-ABL:21 += 1
+ABL:ゲイ中毒 += 1
 
 IF RESULT == 0
 	JUEL:0 -= B
@@ -108,7 +108,7 @@ ENDIF
 
 PRINTS ABLNAME:21
 PRINT のレベルが
-PRINTV ABL:21
+PRINTV ABL:ゲイ中毒
 PRINTW になりました
 
 
@@ -119,43 +119,43 @@ I = 0
 ;能力アップ可能なら1にする
 Z = 0
 
-IF ABL:21 == 0
+IF ABL:ゲイ中毒 == 0
 	A = 3000
 	B = 10000
 	C = 1000
-ELSEIF ABL:21 == 1
+ELSEIF ABL:ゲイ中毒 == 1
 	A = 8000
 	B = 25000
 	C = 1500
-ELSEIF ABL:21 == 2
+ELSEIF ABL:ゲイ中毒 == 2
 	A = 15000
 	B = 50000
 	C = 2000
-ELSEIF ABL:21 == 3
+ELSEIF ABL:ゲイ中毒 == 3
 	A = 30000
 	B = 100000
 	C = 4500
-ELSEIF ABL:21 == 4
+ELSEIF ABL:ゲイ中毒 == 4
 	A = 55000
 	B = 300000
 	C = 6000
-ELSEIF ABL:21 == 5
+ELSEIF ABL:ゲイ中毒 == 5
 	A = 60000
 	B = 350000
 	C = 6500
-ELSEIF ABL:21 == 6
+ELSEIF ABL:ゲイ中毒 == 6
 	A = 65000
 	B = 400000
 	C = 7000
-ELSEIF ABL:21 == 7
+ELSEIF ABL:ゲイ中毒 == 7
 	A = 70000
 	B = 450000
 	C = 7500
-ELSEIF ABL:21 == 8
+ELSEIF ABL:ゲイ中毒 == 8
 	A = 75000
 	B = 500000
 	C = 8000
-ELSEIF ABL:21 == 9
+ELSEIF ABL:ゲイ中毒 == 9
 	A = 80000
 	B = 550000
 	C = 9000
@@ -175,28 +175,28 @@ IF TALENT:中毒しやすい
 ENDIF
 
 ;ＬＶ２から３に上げるときは異常経験必要（素質：[両刀][中毒しやすい]なら無視できる）
-IF ABL:21 == 2 && TALENT:両刀 == 0 && TALENT:中毒しやすい == 0
+IF ABL:ゲイ中毒 == 2 && TALENT:両刀 == 0 && TALENT:中毒しやすい == 0
 	IF EXP:異常経験 == 0
 		;異常経験が不足
 		I |= 2
 		J |= 2
 	ENDIF
 ;ＬＶ３から４に上げるときは異常経験2以上必要（素質：[両刀][中毒しやすい]なら無視できる）
-ELSEIF ABL:21 == 3 && TALENT:両刀 == 0 && TALENT:中毒しやすい == 0
+ELSEIF ABL:ゲイ中毒 == 3 && TALENT:両刀 == 0 && TALENT:中毒しやすい == 0
 	IF EXP:異常経験 < 2
 		;異常経験が不足
 		I |= 2
 		J |= 2
 	ENDIF
 ;ＬＶ４から５に上げるときは異常経験3以上必要（素質：[両刀][中毒しやすい]なら無視できる）
-ELSEIF ABL:21 == 4 && TALENT:両刀 == 0 && TALENT:中毒しやすい == 0
+ELSEIF ABL:ゲイ中毒 == 4 && TALENT:両刀 == 0 && TALENT:中毒しやすい == 0
 	IF EXP:異常経験 < 3
 		;異常経験が不足
 		I |= 2
 		J |= 2
 	ENDIF
 ;ＬＶ８から９に上げるときは異常経験7以上必要（素質：[両刀][中毒しやすい]なら無視できる）
-ELSEIF ABL:21 == 8 && TALENT:両刀 == 0 && TALENT:中毒しやすい == 0
+ELSEIF ABL:ゲイ中毒 == 8 && TALENT:両刀 == 0 && TALENT:中毒しやすい == 0
 	IF EXP:異常経験 < 7
 		;異常経験が不足
 		I |= 2
@@ -205,7 +205,7 @@ ELSEIF ABL:21 == 8 && TALENT:両刀 == 0 && TALENT:中毒しやすい == 0
 ENDIF
 
 ;奉仕精神が必要
-IF ABL:7 < ABL:21 + 1
+IF ABL:奉仕精神 < ABL:ゲイ中毒 + 1
 	I |= 4
 	J |= 4
 ENDIF

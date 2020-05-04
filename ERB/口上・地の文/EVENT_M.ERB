@@ -22,13 +22,13 @@ ENDIF
 @MESSAGE_COM1
 PRINTFORM %CALLNAME:TARGET%の秘唇を丁寧に舐めほぐし
 ;ふたなり＋欲情のPLAMLV3以上
-IF TALENT:ふたなり && PALAM:6 >= PALAMLV:3
+IF TALENT:ふたなり && PALAM:欲情 >= PALAMLV:3
 	PRINT 、そそり勃ったペニスに舌を這わせて舐め上げ
 ;ふたなり
 ELSEIF TALENT:ふたなり
 	PRINT 、ペニスの付け根を舌で舐め上げ
 ;欲情のPALAMLV3以上
-ELSEIF PALAM:6 >= PALAMLV:3
+ELSEIF PALAM:欲情 >= PALAMLV:3
 	PRINT 、尖りきったクリトリスを舌で吸い上げ
 ENDIF
 PRINTW た……
@@ -38,7 +38,7 @@ PRINTW た……
 @MESSAGE_COM2
 PRINTFORM %CALLNAME:TARGET%の
 ;欲情のPALAMLV3以上
-SIF PALAM:6 >= PALAMLV:3
+SIF PALAM:欲情 >= PALAMLV:3
 	PRINT 硬くそそり勃った
 PRINTW ペニスを口に咥えて舐めまわした……
 ;-------------------------------------------------
@@ -50,7 +50,7 @@ PRINTFORM %CALLNAME:TARGET%の
 IF TALENT:処女
 	PRINT 男を知らない
 ;潤滑LV4以上
-ELSEIF PALAM:4 >= PALAMLV:4
+ELSEIF PALAM:潤滑 >= PALAMLV:4
 	PRINT 濡れそぼった
 ENDIF
 ;小柄体型の有無で分岐
@@ -75,7 +75,7 @@ SIF EXP:Ａ経験 <= 10
 	PRINT 硬く閉ざされた
 PRINT アヌスを丁寧に舐めほぐし
 ;Ａ経験100以上＋欲望のPALAMLV3以上
-SIF EXP:Ａ経験 >= 100 && PALAM:6 >= PALAMLV:3
+SIF EXP:Ａ経験 >= 100 && PALAM:欲情 >= PALAMLV:3
 	PRINT 、舌先を突き入れて穴の中までかきまわしてやっ
 PRINTW た……
 ;-------------------------------------------------
@@ -103,7 +103,7 @@ ELSEIF TEQUIP:23
 ELSE
 	PRINTFORM %CALLNAME:TARGET%のアナルを弄っ
 	;Ａ経験100以上＋欲望のPALAMLV3以上
-	SIF PALAM:6 >= PALAMLV:3 && ABL:5 >= 3
+	SIF PALAM:欲情 >= PALAMLV:3 && ABL:Ａ感覚 >= 3
 		PRINT て、指先で直腸までかきまわし
 PRINTW た……
 ENDIF
@@ -113,7 +113,7 @@ ENDIF
 @MESSAGE_COM6
 PRINTFORM %CALLNAME:TARGET%の
 ;欲情のPALAMLV3以上
-SIF PALAM:6 > PALAMLV:3
+SIF PALAM:欲情 > PALAMLV:3
 	PRINT 期待に震える
 ;小柄体型＋貧乳、絶壁
 IF (TALENT:小柄体型 && TALENT:貧乳) || TALENT:絶壁
@@ -131,10 +131,10 @@ ENDIF
 ;母乳体質
 IF TALENT:母乳体質
 	;欲情のPALAMLV3以上＋恋慕or親愛
-	IF PALAM:6 > PALAMLV:3 && (TALENT:恋慕 || TALENT:親愛)
+	IF PALAM:欲情 > PALAMLV:3 && (TALENT:恋慕 || TALENT:親愛)
 		PRINTFORMW 胸を強く搾り上げてやると、%CALLNAME:TARGET%は嬌声をあげて、より強い刺激を求めた……
 	;欲情のPALAMLV3以上
-	ELSEIF PALAM:6 > PALAMLV:3
+	ELSEIF PALAM:欲情 > PALAMLV:3
 		PRINTW 胸を強く搾り上げた……
 	ELSE
 		PRINTW 胸を搾り上げた……
@@ -142,32 +142,32 @@ IF TALENT:母乳体質
 ;オトコ
 ELSEIF TALENT:オトコ
 	;欲情のPALAMLV3以上＋恋慕or親愛＋小柄体型
-	IF PALAM:6 > PALAMLV:3 && (TALENT:恋慕 || TALENT:親愛) && TALENT:小柄体型
+	IF PALAM:欲情 > PALAMLV:3 && (TALENT:恋慕 || TALENT:親愛) && TALENT:小柄体型
 		PRINTFORMW 胸板を優しく撫でてやると、%CALLNAME:TARGET%は胸を突き出すようにして激しい愛撫を求めた……
 	;小柄体型
 	ELSEIF TALENT:小柄体型
 		PRINTW 胸板を優しく撫でるように触れた……
 	;欲情のPALAMLV3以上＋恋慕or親愛
-	ELSEIF PALAM:6 > PALAMLV:3 && (TALENT:恋慕 || TALENT:親愛)
+	ELSEIF PALAM:欲情 > PALAMLV:3 && (TALENT:恋慕 || TALENT:親愛)
 		PRINTFORMW 胸板を強く捏ねてやると、%CALLNAME:TARGET%は嬌声をあげて、より強い愛撫を求めた……
 	;欲情のPALAMLV3以上
-	ELSEIF PALAM:6 > PALAMLV:3
+	ELSEIF PALAM:欲情 > PALAMLV:3
 		PRINTW 胸板を強く捏ね回した……
 	ELSE
 		PRINTW 胸板を捏ね回した……
 	ENDIF
 ELSE
 	;欲情のPALAMLV3以上＋恋慕or親愛＋小柄体型
-	IF PALAM:6 > PALAMLV:3 && (TALENT:恋慕 || TALENT:親愛) && TALENT:小柄体型
+	IF PALAM:欲情 > PALAMLV:3 && (TALENT:恋慕 || TALENT:親愛) && TALENT:小柄体型
 		PRINTFORMW 胸を優しく撫でてやると、%CALLNAME:TARGET%は胸を突き出すようにして激しい愛撫を求めた……
 	;小柄体型
 	ELSEIF TALENT:小柄体型
 		PRINTW 胸を優しく撫でるように触れた……
 	;欲情のPALAMLV3以上＋恋慕or親愛
-	ELSEIF PALAM:6 > PALAMLV:3 && (TALENT:恋慕 || TALENT:親愛)
+	ELSEIF PALAM:欲情 > PALAMLV:3 && (TALENT:恋慕 || TALENT:親愛)
 		PRINTFORMW 胸を強く揉みしだいてやると、%CALLNAME:TARGET%は嬌声をあげて、より強い愛撫を求めた……
 	;欲情のPALAMLV3以上
-	ELSEIF PALAM:6 > PALAMLV:3
+	ELSEIF PALAM:欲情 > PALAMLV:3
 		PRINTW 胸を強く揉みしだいた……
 	ELSE
 		PRINTW 胸を揉みしだいた……
@@ -192,7 +192,7 @@ ELSEIF TALENT:爆乳
 	PRINT 手に余るほど大きな
 ENDIF
 ;欲情のPALAMLV3以上
-IF PALAM:6 >= PALAMLV:3
+IF PALAM:欲情 >= PALAMLV:3
 	PRINTW 胸の先端の、すっかり硬くなった突起をつまみあげた……
 ELSE
 	PRINTW 胸の先端の、まだ柔らかい突起をつまみあげた……
@@ -224,7 +224,7 @@ IF TEQUIP:25
 		PRINTW 胸を絞り上げるように、幾本もの触手が絡みついた……
 	ENDIF
 ;欲望のPALAMLV3以上＋
-ELSEIF PALAM:6 >= PALAMLV:3 && TEQUIP:17 == 0 && TEQUIP:16 == 0
+ELSEIF PALAM:欲情 >= PALAMLV:3 && TEQUIP:17 == 0 && TEQUIP:16 == 0
 	PRINTW 胸の先端の、すっかり硬くなった突起をつまみあげた……
 ;小柄体型
 ELSEIF TALENT:小柄体型
@@ -246,7 +246,7 @@ ENDIF
 @MESSAGE_COM9
 PRINTFORM %CALLNAME:PLAYER%に命令され、%CALLNAME:TARGET%は
 ;露出癖
-IF ABL:8 == 0
+IF ABL:露出癖 == 0
 	PRINTFORM 涙を浮かべてこちらを睨んだが、再度命令されると、しぶしぶといった様子で自分の
 	;小柄体型
 	IF TALENT:小柄体型
@@ -255,30 +255,30 @@ IF ABL:8 == 0
 		PRINT クレヴァスに
 	ENDIF
 	PRINT 指を挿し入れ、左右に拡げて見せた
-ELSEIF ABL:8 == 1
+ELSEIF ABL:露出癖 == 1
 	PRINTFORM 顔を真っ赤にしながらも、おずおずと、性器をはっきり拡げて見せた
-ELSEIF ABL:8 == 2
+ELSEIF ABL:露出癖 == 2
 	PRINTFORML 下腹部に手を置き、人差し指と中指でサインを作るように、%CALLNAME:PLAYER%に自分の秘所を曝した
 	IF TFLAG:38 > 0
 		PRINTFORM さらけ出された膣口からは、さきほど射精した精液が、こぽこぽとこぼれてくる……
 	ELSE
 		PRINTFORM 広がった女陰からこちらを覗く膣口は、収めるべきモノを待ち望むかのように、愛液に濡れ、淫らに蠢いてる……
 	ENDIF
-ELSEIF ABL:8 == 3
+ELSEIF ABL:露出癖 == 3
 	PRINTFORML 嬉々とした表情で、片手で陰唇を拡げ、空いた手で陰核を弄り始めた
 	IF TFLAG:38 > 0
 		PRINTFORM さらけ出された膣口は、さきほど射精したばかりの精液を、淫らに垂れ流している……
 	ELSE
 		PRINTFORM %CALLNAME:TARGET%の手が陰核を刺激するたびに、膣口から愛液を滴らせている……
 	ENDIF
-ELSEIF ABL:8 == 4
+ELSEIF ABL:露出癖 == 4
 	PRINTFORML 両手の指を使って陰唇だけでなく、膣口も同時に拡げた
 	IF TFLAG:38 > 0
 		PRINTFORM %CALLNAME:TARGET%の手が膣口をさらに左右に拡げると、さきほど射精した精液を垂れ流している……
 	ELSE
 		PRINTFORM 膣内を見られることに感じているのか、%CALLNAME:TARGET%の頬は仄かに紅く染まっている
 	ENDIF
-ELSEIF ABL:8 >= 5 && TALENT:淫乱 == 0 && TALENT:娼婦 == 0
+ELSEIF ABL:露出癖 >= 5 && TALENT:淫乱 == 0 && TALENT:娼婦 == 0
 	PRINTFORML 両手の指を陰唇にひっかけ、膣口ごと%CALLNAME:PLAYER%に見せつけるように大きく拡げた
 	IF TFLAG:38 > 0
 		PRINTFORM 大きく拡げられた膣口は、さきほど射精した精液を垂れ流している……
@@ -286,7 +286,7 @@ ELSEIF ABL:8 >= 5 && TALENT:淫乱 == 0 && TALENT:娼婦 == 0
 		PRINTFORM %CALLNAME:TARGET%の手が膣内部まで拡げて見せると、膣壁がぱくぱくと動き、愛液をとめどなく溢れさせている……
 	ENDIF
 ;露出癖LV5以上＋淫乱or娼婦
-ELSEIF ABL:8 >= 5 && (TALENT:淫乱 || TALENT:娼婦)
+ELSEIF ABL:露出癖 >= 5 && (TALENT:淫乱 || TALENT:娼婦)
 	PRINTFORML 両手の指を陰唇にひっかけ、膣口ごと%CALLNAME:PLAYER%に見せつけるように大きく拡げた
 	IF TFLAG:38  > 0
 		PRINTFORM うごめく膣内からは、さきほど射精した精液が、どろりと、だらしなくこぼれてきた……
@@ -307,13 +307,13 @@ ENDIF
 @MESSAGE_COM10
 PRINTFORM %CALLNAME:TARGET%は
 ;ビデオカメラ撮影中＋露出癖LV3以上
-IF TEQUIP:28 && ABL:8 >= 3
+IF TEQUIP:28 && ABL:露出癖 >= 3
 	PRINTL カメラに見せつけるようにして、
 ;ビデオカメラ撮影中
 ELSEIF TEQUIP:28
 	PRINTL カメラの前で、
 ;露出癖LV3以上
-ELSEIF ABL:8 >= 3
+ELSEIF ABL:露出癖 >= 3
 	PRINTL 見せつけるようにして、
 ENDIF
 ;貧乳
@@ -338,7 +338,7 @@ ENDIF
 ;-------------------------------------------------
 @MESSAGE_COM11
 ;従順LV3未満
-IF ABL:0 < 3
+IF ABL:従順 < 3
 	PRINTFORM 自慰を命令すると%CALLNAME:TARGET%は
 	;プライド高い
 	SIF TALENT:プライド高い
@@ -348,7 +348,7 @@ IF ABL:0 < 3
 		PRINT 反抗的な態度で
 	PRINT 睨んできたが再度の命令に渋々
 ;従順LV5未満
-ELSEIF ABL:0 < 5
+ELSEIF ABL:従順 < 5
 	PRINTFORM 調教の成果が出たか、%CALLNAME:TARGET%は命令に従って、
 ELSE
 	PRINTFORM %CALLNAME:TARGET%は自慰の命令にも嫌がるそぶりを見せず、
@@ -357,7 +357,7 @@ ENDIF
 SIF TEQUIP:28
 	PRINT ビデオカメラの前で
 ;露出癖LV3以上
-SIF ABL:8 >= 3
+SIF ABL:露出癖 >= 3
 	PRINT 見せつけるようにして、
 ;バイブ＋アナルバイブ
 IF TEQUIP:13 && TEQUIP:14
@@ -378,19 +378,19 @@ ELSE
 ENDIF
 PRINTW 快感を味わっている……
 ;バイブ＋アナルバイブ＋Ｖ感覚LV5以上＋Ａ感覚LV5以上＋Ｃ感覚LV5以上＋Ｂ感覚LV5以上＋欲情のPALAMLV4以上
-IF TEQUIP:13 && TEQUIP:14 && ABL:4 >= 5 && ABL:5 >= 5 && ABL:3 >= 5 && ABL:6 >= 5 && PALAM:6 >= PALAMLV:4
+IF TEQUIP:13 && TEQUIP:14 && ABL:Ｖ感覚 >= 5 && ABL:Ａ感覚 >= 5 && ABL:Ｃ感覚 >= 5 && ABL:Ｂ感覚 >= 5 && PALAM:欲情 >= PALAMLV:4
 	PRINTFORML %CALLNAME:TARGET%はよだれをふきこぼし、ビクビクと身体を痙攣させながら鳴き叫んでいる
 	PRINTFORMW どうやら絶頂から降りられず、イキっぱなしになっているようだ……
 ;バイブ＋Ｖ感覚LV5以上＋Ｃ感覚LV5以上＋Ｂ感覚LV5以上＋欲情のPALAMLV4以上
-ELSEIF TEQUIP:13 && ABL:4 >= 5 && ABL:3 >= 5 && ABL:6 >= 5 && PALAM:6 >= PALAMLV:4
+ELSEIF TEQUIP:13 && ABL:Ｖ感覚 >= 5 && ABL:Ｃ感覚 >= 5 && ABL:Ｂ感覚 >= 5 && PALAM:欲情 >= PALAMLV:4
 	PRINTFORML %CALLNAME:TARGET%は愛液が飛び散るのもお構いなしに、バイブを激しく出し入れしている
 	PRINTFORMW どうやらもうほかの事を気にする余裕も無いようだ……
 ;アナルバイブ＋Ａ感覚LV5以上＋Ｃ感覚LV5以上＋Ｂ感覚LV5以上＋欲情のPALAMLV4以上
-ELSEIF TEQUIP:14 && ABL:5 >= 5 && ABL:3 >= 5 && ABL:6 >= 5 && PALAM:6 >= PALAMLV:4
+ELSEIF TEQUIP:14 && ABL:Ａ感覚 >= 5 && ABL:Ｃ感覚 >= 5 && ABL:Ｂ感覚 >= 5 && PALAM:欲情 >= PALAMLV:4
 	PRINTFORML %CALLNAME:TARGET%はガクガク身体を震わせながら、アヌスにバイブを突きこんでいる
 	PRINTFORMW どうやら襞をえぐられるたびに何度も絶頂してしまっているようだ……
 ;自慰中毒LV3以上＋Ｃ感覚LV5以上＋Ｂ感覚LV5以上＋欲情のPALAMLV4以上
-ELSEIF ABL:15 >= 3 && ABL:3 >= 5 && ABL:6 >= 5 && PALAM:6 >= PALAMLV:4
+ELSEIF ABL:自慰中毒 >= 3 && ABL:Ｃ感覚 >= 5 && ABL:Ｂ感覚 >= 5 && PALAM:欲情 >= PALAMLV:4
 	PRINTFORML %CALLNAME:TARGET%は嬌声をあげながら一心不乱に自らの秘部をまさぐり続けている
 	PRINTFORMW どうやら止めたくても手が勝手に動いて止まらないようだ……
 ENDIF
@@ -400,10 +400,10 @@ ENDIF
 @MESSAGE_COM20
 PRINTFORM %CALLNAME:TARGET%の口腔を隅々まで舐め回
 ;従順LV3以上＋レズ経験1000以上＋調教者がオトコでない
-IF ABL:0 >= 3 && EXP:レズ経験 >= 1000 && TALENT:PLAYER:オトコ == 0
+IF ABL:従順 >= 3 && EXP:レズ経験 >= 1000 && TALENT:PLAYER:オトコ == 0
 	PRINTFORMW し、ねっとりと舌を絡めあいながら唾液を交換した……
 ;従順LV3以上
-ELSEIF ABL:0 >= 3
+ELSEIF ABL:従順 >= 3
 	PRINTFORMW すと、%CALLNAME:TARGET%も積極的に舌を絡めてきた……
 ELSE
 	PRINTW した……
@@ -467,15 +467,15 @@ PRINTFORMW %CALLNAME:PLAYER%は%CALLNAME:TARGET%と一緒に家事を済ませ�
 @MESSAGE_COM27
 PRINTFORML %CALLNAME:PLAYER%は%CALLNAME:TARGET%に歌の練習をさせた
 ;歌唱技能
-IF ABL:14 == 0
+IF ABL:歌唱技能 == 0
 	PRINTFORMW 聞くに堪えない歌声が響いていた……
-ELSEIF ABL:14 == 1
+ELSEIF ABL:歌唱技能 == 1
 	PRINTFORMW %CALLNAME:TARGET%の歌声が響いていた……
-ELSEIF ABL:14 == 2
+ELSEIF ABL:歌唱技能 == 2
 	PRINTFORMW そこそこ聞き心地のよい歌声が響いていた……
-ELSEIF ABL:14 == 3
+ELSEIF ABL:歌唱技能 == 3
 	PRINTFORMW かなり上手い歌声が響いていた……
-ELSEIF ABL:14 == 4
+ELSEIF ABL:歌唱技能 == 4
 	PRINTFORMW 思わず聞き惚れる歌声が響いていた……
 ELSE
 	PRINTFORMW 心奪われる歌声が響き渡っていた……
@@ -494,11 +494,11 @@ PRINTFORM %CALLNAME:TARGET%は
 ;ボールギャグの有無
 IF TEQUIP:20 == 1
 	;マゾっ気
-	IF ABL:9 == 0
+	IF ABL:マゾっ気 == 0
 		PRINTW 何か言い返そうとしているが口枷によって言葉は封じられている
-	ELSEIF ABL:9 < 3
+	ELSEIF ABL:マゾっ気 < 3
 		PRINTW 一瞬何か言い返したいような仕草を見せるが自分の口が塞がっているのを思い出したのかおとなしくなった
-	ELSEIF ABL:9 < 5
+	ELSEIF ABL:マゾっ気 < 5
 		PRINTW 罵られることに快感を感じているようだ……
 	ELSE
 		PRINTL 顔を紅潮させて鼻息を荒げている、どうやら罵られることにすっかり快感を感じているようだ
@@ -506,7 +506,7 @@ IF TEQUIP:20 == 1
 	ENDIF
 ELSE
 	;マゾっ気
-	IF ABL:9 == 0
+	IF ABL:マゾっ気 == 0
 		;反抗的、プライド高い、生意気がない
 		IF TALENT:反抗的 == 0 && TALENT:プライド高い == 0 && TALENT:生意気 == 0
 			PRINTFORMW 目にうっすらと涙を浮かべながら%CALLNAME:PLAYER%の罵詈雑言を堪えている
@@ -516,9 +516,9 @@ ELSE
 		ELSE
 			PRINTFORMW 怒りと屈辱に満ちた顔で%CALLNAME:PLAYER%を睨んだ
 		ENDIF
-	ELSEIF ABL:9 < 3
+	ELSEIF ABL:マゾっ気 < 3
 		PRINTFORMW %CALLNAME:PLAYER%を睨んでいるもののその表情には僅かな快感がちらついている
-	ELSEIF ABL:9 < 5
+	ELSEIF ABL:マゾっ気 < 5
 		PRINTW 罵られることに快感を感じているようだ……
 	ELSE
 		PRINTL 罵られることにすっかり快感を感じているようだ
@@ -544,19 +544,19 @@ PRINTFORMW %CALLNAME:TARGET%は画面の向こうで淫らな自身の姿を見�
 @MESSAGE_COM40
 PRINTFORM %CALLNAME:TARGET%の
 ;オトコ＋欲情のPALAMLV3以上
-IF TALENT:オトコ && (PALAM:6 >= PALAMLV:3)
+IF TALENT:オトコ && (PALAM:欲情 >= PALAMLV:3)
 	PRINTW 硬くそそり勃ったペニスに震えるローターを押し当てた……
 ;オトコ
 ELSEIF TALENT:オトコ
 	PRINTW ペニスに震えるローターを押し当てた……
 ;ふたなり＋欲情のPALAMLV3以上
-ELSEIF TALENT:ふたなり && PALAM:6 >= PALAMLV:3
+ELSEIF TALENT:ふたなり && PALAM:欲情 >= PALAMLV:3
 	PRINTW ぬかるんだ秘唇に震えるローターを押し当てた……
 ;ふたなり
 ELSEIF TALENT:ふたなり
 	PRINTW 秘唇に震えるローターを押し当てた……
 ;欲情のPALAMLV3以上
-ELSEIF PALAM:6 >= PALAMLV:3
+ELSEIF PALAM:欲情 >= PALAMLV:3
 	PRINTW 硬く尖ったクリトリスに震えるローターを押し当てた……
 ELSE
 	PRINTW クリトリスに震えるローターを押し当てた……
@@ -568,28 +568,28 @@ ENDIF
 PRINTFORML %CALLNAME:TARGET%の秘所に振動している電気あんまを押しつけた
 PRINTFORM %CALLNAME:TARGET%は
 ;Ｃ感覚LV3未満＋欲情のPALAMLV3未満
-IF ABL:3 < 3 && PALAM:6 < PALAMLV:3
+IF ABL:Ｃ感覚 < 3 && PALAM:欲情 < PALAMLV:3
 	PRINT とてもくすぐったがっているよう
 ;Ｃ感覚LV3未満＋欲情のPALAMLV3以上
-ELSEIF ABL:3 < 3 && PALAM:6 >= PALAMLV:3
+ELSEIF ABL:Ｃ感覚 < 3 && PALAM:欲情 >= PALAMLV:3
 	PRINT 、……何も言えなくなっているよう
 ;恋慕か親愛＋Ｃ感覚LV4以上＋欲情のPALAMLV3未満
-ELSEIF (TALENT:恋慕 || TALENT:親愛) && ABL:3 >= 4 && PALAM:6 < PALAMLV:3
+ELSEIF (TALENT:恋慕 || TALENT:親愛) && ABL:Ｃ感覚 >= 4 && PALAM:欲情 < PALAMLV:3
 	PRINT 待ちわびたように足を開き、受け入れているよう
 ;恋慕か親愛＋Ｃ感覚LV4以上＋欲情のPALAMLV3以上＋欲情のPALAMLV5未満
-ELSEIF (TALENT:恋慕 || TALENT:親愛) && ABL:3 >= 4 && PALAM:6 >= PALAMLV:3 && PALAM:6 < PALAMLV:5
+ELSEIF (TALENT:恋慕 || TALENT:親愛) && ABL:Ｃ感覚 >= 4 && PALAM:欲情 >= PALAMLV:3 && PALAM:欲情 < PALAMLV:5
 	PRINTFORM 快楽に涎をたらしながら、何度も%CALLNAME:PLAYER%の名を呼ん
 ;恋慕か親愛＋Ｃ感覚LV4以上＋欲情のPALAMLV5以上
-ELSEIF (TALENT:恋慕 || TALENT:親愛) && ABL:3 >= 4 && PALAM:6 >= PALAMLV:5
+ELSEIF (TALENT:恋慕 || TALENT:親愛) && ABL:Ｃ感覚 >= 4 && PALAM:欲情 >= PALAMLV:5
 	PRINTFORM %CALLNAME:PLAYER%を掻き抱きながら絶頂の恍惚感に浸っているよう
 ;Ｃ感覚LV3以上＋欲情のPALAMLV3未満
-ELSEIF ABL:3 >= 3 && PALAM:6 < PALAMLV:3
+ELSEIF ABL:Ｃ感覚 >= 3 && PALAM:欲情 < PALAMLV:3
 	PRINT 強い快感に顔を赤らめているよう
 ;Ｃ感覚LV3以上＋欲情のPALAMLV3以上＋欲情のPALAMLV5未満
-ELSEIF ABL:3 >= 3 && PALAM:6 >= PALAMLV:3 && PALAM:6 < PALAMLV:5
+ELSEIF ABL:Ｃ感覚 >= 3 && PALAM:欲情 >= PALAMLV:3 && PALAM:欲情 < PALAMLV:5
 	PRINT 惚けた目で快楽を貪っているよう
 ;Ｃ感覚LV3以上＋欲情のPALAMLV5以上
-ELSEIF ABL:3 >= 3 && PALAM:6 >= PALAMLV:5
+ELSEIF ABL:Ｃ感覚 >= 3 && PALAM:欲情 >= PALAMLV:5
 	PRINT 今にも絶頂に達してしまいそうな様子
 ENDIF
 PRINTW だ……
@@ -646,10 +646,10 @@ IF TEQUIP:13
 ELSE
 	PRINTFORM %CALLNAME:TARGET%の
 	;潤滑LV5以上でさらに追加
-	SIF PALAM:4 >= PALAMLV:5
+	SIF PALAM:潤滑 >= PALAMLV:5
 		PRINT たっぷりと
 	;潤滑LV3以上でさらに追加
-	SIF PALAM:4 >= PALAMLV:3
+	SIF PALAM:潤滑 >= PALAMLV:3
 		PRINT 粘液をたたえた
 	;小柄体型
 	IF TALENT:小柄体型
@@ -701,7 +701,7 @@ ELSE
 	PRINTL ている……
 	PRINTFORM %CALLNAME:TARGET%の
 	;潤滑LV4以上
-	SIF PALAM:4 >= PALAMLV:4
+	SIF PALAM:潤滑 >= PALAMLV:4
 		PRINT 濡れそぼった
 	PRINTFORMW 性器にバイブを挿し込んだ
 ENDIF
@@ -764,7 +764,7 @@ ELSE
 	PRINTL ている……
 	PRINTFORM %CALLNAME:TARGET%の
 	;潤滑LV4以上
-	SIF PALAM:4 >= PALAMLV:4
+	SIF PALAM:潤滑 >= PALAMLV:4
 		PRINT 粘液にまみれた
 	PRINTFORMW アヌスにバイブを挿し込んだ
 ENDIF
@@ -795,7 +795,7 @@ PRINTFORM %CALLNAME:TARGET%の
 SIF TALENT:母乳体質
 	PRINT 母乳が滴る
 ;欲情のPLAMLV3以上
-SIF PALAM:6 >= PALAMLV:3
+SIF PALAM:欲情 >= PALAMLV:3
 	PRINT 期待に硬く尖った
 PRINTW 乳首に震えるローターを押し当てた……
 ;-------------------------------------------------
@@ -830,7 +830,7 @@ ELSE
 	IF TALENT:処女
 		PRINT 男を知らない
 	;潤滑LV4以上
-	ELSEIF PALAM:4 >= PALAMLV:4
+	ELSEIF PALAM:潤滑 >= PALAMLV:4
 		PRINT 濡れそぼった
 	ENDIF
 	;小柄体型
@@ -872,7 +872,7 @@ ELSE
 	IF TALENT:処女
 		PRINT 男を知らない
 	;潤滑LV4以上
-	ELSEIF PALAM:4 >= PALAMLV:4
+	ELSEIF PALAM:潤滑 >= PALAMLV:4
 		PRINT 濡れそぼった
 	ENDIF
 	;小柄体型
@@ -902,7 +902,7 @@ ELSEIF TFLAG:60 && (PREVCOM == 63 || PREVCOM == 67 || PREVCOM == 70 || PREVCOM =
 ELSE
 	PRINTFORM %CALLNAME:TARGET%の
 	;潤滑LV4以上
-	SIF PALAM:4 >= PALAMLV:4
+	SIF PALAM:潤滑 >= PALAMLV:4
 		PRINT 粘液にまみれた
 	;陥落済み
 	IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属)
@@ -934,7 +934,7 @@ ELSEIF TFLAG:60 && (PREVCOM == 67 || PREVCOM == 70 || PREVCOM == 71) && ((ASSIPL
 ELSE
 	PRINTFORM 後ろから%CALLNAME:TARGET%の
 	;潤滑LV4以上
-	SIF PALAM:4 >= PALAMLV:4
+	SIF PALAM:潤滑 >= PALAMLV:4
 		PRINT 粘液にまみれた
 	PRINTFORMW アヌスの最奥まで突き入れた……
 ENDIF
@@ -1030,7 +1030,7 @@ ELSEIF TFLAG:60 && (PREVCOM == 70 || PREVCOM == 71) && ((ASSIPLAY && TFLAG:50) |
 ELSE
 	PRINTFORM %CALLNAME:TARGET%は%CALLNAME:PLAYER%の上にまたがると、
 	;潤滑LV4以上
-	SIF PALAM:4 >= PALAMLV:4
+	SIF PALAM:潤滑 >= PALAMLV:4
 		PRINT 粘液にまみれた
 	PRINTL アヌスでゆっくりとモノを飲み込んでいった……
 ENDIF
@@ -1079,7 +1079,7 @@ ELSEIF TFLAG:60 && (PREVCOM == 61 || PREVCOM == 66) && ((ASSIPLAY && TFLAG:50) |
 ELSE
 	PRINTFORM %CALLNAME:TARGET%の身体を抱き上げ、ゆっくりと降ろしながら
 	;潤滑LV4以上
-	SIF PALAM:4 >= PALAMLV:4
+	SIF PALAM:潤滑 >= PALAMLV:4
 		PRINT 濡れそぼった
 	;処女
 	SIF TALENT:処女
@@ -1135,7 +1135,7 @@ ELSEIF TFLAG:60 && (PREVCOM == 60 || PREVCOM == 68) && ((ASSIPLAY && TFLAG:50) |
 ELSE
 	PRINTFORM %CALLNAME:TARGET%の身体を抱き上げ、
 	;潤滑LV4以上
-	SIF PALAM:4 >= PALAMLV:4
+	SIF PALAM:潤滑 >= PALAMLV:4
 		PRINT 濡れそぼった
 	;処女
 	SIF TALENT:処女
@@ -1184,7 +1184,7 @@ ELSEIF TFLAG:60 && (PREVCOM == 63 || PREVCOM == 71) && ((ASSIPLAY && TFLAG:50) |
 ELSE
 	PRINTFORM %CALLNAME:TARGET%の身体を抱き上げ、ゆっくりと降ろしながら
 	;潤滑LV4以上
-	SIF PALAM:4 >= PALAMLV:4
+	SIF PALAM:潤滑 >= PALAMLV:4
 		PRINT 粘液にまみれた
 	PRINTFORM アヌスへと挿入すると、
 ENDIF
@@ -1238,7 +1238,7 @@ ELSEIF TFLAG:60 && (PREVCOM == 62 || PREVCOM == 70) && ((ASSIPLAY && TFLAG:50) |
 ELSE
 	PRINTFORML %CALLNAME:TARGET%の身体を抱き上げ、
 	;潤滑LV4以上
-	SIF PALAM:4 >= PALAMLV:4
+	SIF PALAM:潤滑 >= PALAMLV:4
 		PRINT 粘液にまみれた
 	PRINTFORML アヌスを待ち構えていたモノでゆっくり貫いた……
 ENDIF
@@ -1271,7 +1271,7 @@ PRINT その露になった
 IF TALENT:処女
 	PRINT 男を知らない
 ;潤滑LV4以上
-ELSEIF PALAM:4 >= PALAMLV:4
+ELSEIF PALAM:潤滑 >= PALAMLV:4
 	PRINT 愛液の滴る
 ENDIF
 ;小柄体型
@@ -1304,7 +1304,7 @@ ELSEIF TEQUIP:6 == 10
 ENDIF
 PRINT その露になった
 ;潤滑LV4以上
-SIF PALAM:4 >= PALAMLV:4
+SIF PALAM:潤滑 >= PALAMLV:4
 	PRINT 粘液の滴る
 ;陥落済み
 IF (TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属)
@@ -1365,13 +1365,13 @@ PRINTW 擦りあげている……
 @MESSAGE_COM83
 PRINTFORM %CALLNAME:TARGET%は%CALLNAME:PLAYER%のペニスを股にはさみ、
 ;淫乱か娼婦＋欲情のPALAMLV5以上
-IF (TALENT:淫乱 || TALENT:娼婦) && PALAM:6 >= PALAMLV:5
+IF (TALENT:淫乱 || TALENT:娼婦) && PALAM:欲情 >= PALAMLV:5
 	PRINTFORM 快楽に溺れきった表情で%CALLNAME:PLAYER%を見つめながら
 ;恋慕か親愛＋欲情のPALAMLV5以上
-ELSEIF (TALENT:恋慕 || TALENT:親愛) && PALAM:6 >= PALAMLV:5
+ELSEIF (TALENT:恋慕 || TALENT:親愛) && PALAM:欲情 >= PALAMLV:5
 	PRINT 今にもとろけそうな表情を浮かべながら
 ;欲情のPALAMLV4以上
-ELSEIF PALAM:6 >= PALAMLV:4
+ELSEIF PALAM:欲情 >= PALAMLV:4
 	PRINT 口の端からよだれをこぼしながら
 ;恋慕か親愛
 ELSEIF (TALENT:恋慕 || TALENT:親愛)
@@ -1504,10 +1504,10 @@ ELSEIF TALENT:爆乳
 	PRINT 手に余るほど大きな
 ENDIF
 ;恋慕か親愛＋欲情のPALAMLV3以上
-IF (TALENT:恋慕 || TALENT:親愛) && PALAM:6 >= PALAMLV:3
+IF (TALENT:恋慕 || TALENT:親愛) && PALAM:欲情 >= PALAMLV:3
 	PRINTFORMW 胸を絞り込むようにし、先端を強く吸い上げると、%CALLNAME:TARGET%は嬌声をあげ、%CALLNAME:PLAYER%の頭を寄せ、強く抱きしめ圧迫した……
 ;淫乱か娼婦＋欲情のPALAMLV3以上
-ELSEIF (TALENT:淫乱 || TALENT:娼婦) && PALAM:6 >= PALAMLV:3
+ELSEIF (TALENT:淫乱 || TALENT:娼婦) && PALAM:欲情 >= PALAMLV:3
 	PRINTFORMW 胸を絞り込むようにし、先端を強く吸い上げると、%CALLNAME:TARGET%は嬌声をあげ、胸を強調するように%CALLNAME:PLAYER%の顔に押し付けた……
 ;恋慕か親愛
 ELSEIF (TALENT:恋慕 || TALENT:親愛)
@@ -1526,10 +1526,10 @@ ENDIF
 PRINTFORML %CALLNAME:TARGET%の尻を平手で強く叩いた
 PRINTFORM 何度も何度も叩かれている内に、%CALLNAME:TARGET%の
 ;オトコ＋マゾっ気LV2以上
-IF TALENT:オトコ && (ABL:9 >= 2)
+IF TALENT:オトコ && (ABL:マゾっ気 >= 2)
 	PRINTW 股間は硬くなっていった……
 ;マゾっ気LV2以上
-ELSEIF ABL:9 >= 2
+ELSEIF ABL:マゾっ気 >= 2
 	PRINTW 股間は自身の愛液で濡れはじめていた……
 ELSE
 	PRINTW 尻は真っ赤に腫れていった……
@@ -1717,13 +1717,13 @@ ENDIF
 @MESSAGE_COM141
 PRINTFORML %CALLNAME:TARGET%の膣は%CALLNAME:PLAYER%の拳でかき回された
 ;Ｖ感覚
-IF ABL:4 >= 0
+IF ABL:Ｖ感覚 >= 0
 	PRINTFORMW %CALLNAME:TARGET%の膣はぽっかり口を開いている
-ELSEIF ABL:4 == 3
+ELSEIF ABL:Ｖ感覚 == 3
 	PRINTFORMW %CALLNAME:TARGET%の膣は拡がったままなかなか戻らない
-ELSEIF ABL:4 == 4
+ELSEIF ABL:Ｖ感覚 == 4
 	PRINTFORMW %CALLNAME:TARGET%の性器からは肉ビラがはみ出し、ぽっかり開いた膣口のおくには子宮口が見えている
-ELSEIF ABL:4 == 5
+ELSEIF ABL:Ｖ感覚 == 5
 	PRINTFORMW %CALLNAME:TARGET%は、自分の膣口を指で拡げ、恍惚としている
 ENDIF
 ;-------------------------------------------------
@@ -1732,13 +1732,13 @@ ENDIF
 @MESSAGE_COM142
 PRINTFORML %CALLNAME:TARGET%の肛門は%CALLNAME:PLAYER%の拳でかき回された
 ;Ａ感覚
-IF ABL:5 >= 0
+IF ABL:Ａ感覚 >= 0
 	PRINTFORMW %CALLNAME:TARGET%の肛門はぽっかり口を開いている
-ELSEIF ABL:5 == 3
+ELSEIF ABL:Ａ感覚 == 3
 	PRINTFORMW %CALLNAME:TARGET%の肛門は拡がったままなかなか戻らない
-ELSEIF ABL:5 == 4
+ELSEIF ABL:Ａ感覚 == 4
 	PRINTFORMW %CALLNAME:TARGET%の肛門からは肉ビラがはみ出し、腸の中が丸見えになっている
-ELSEIF ABL:5 >= 5
+ELSEIF ABL:Ａ感覚 >= 5
 	PRINTFORMW %CALLNAME:TARGET%は、自分の肛門を指で拡げ、恍惚としている
 ENDIF
 ;-------------------------------------------------
@@ -1747,10 +1747,10 @@ ENDIF
 @MESSAGE_COM143
 PRINTFORML %CALLNAME:TARGET%の膣と肛門は%CALLNAME:PLAYER%の拳でかき回された
 ;Ｖ感覚かＡ感覚がLV4以下
-IF ABL:4 <= 4 || ABL:5 <= 4
+IF ABL:Ｖ感覚 <= 4 || ABL:Ａ感覚 <= 4
 	PRINTFORMW %CALLNAME:TARGET%は両足を広げぐったりしており、拡がりきった膣口と肛門から粘液が垂れ流されていた……
 ;Ｖ感覚かＡ感覚がLV5以上
-ELSEIF ABL:4 >= 5 && ABL:5 >= 5
+ELSEIF ABL:Ｖ感覚 >= 5 && ABL:Ａ感覚 >= 5
 	PRINTFORMW %CALLNAME:TARGET%は、すっかり拡がった膣口と肛門の周りを両手の指で撫で回している
 ENDIF
 ;-------------------------------------------------
@@ -1782,17 +1782,17 @@ PRINTFORMW %CALLNAME:PLAYER%は、%CALLNAME:TARGET%にアナルを舐めさせ�
 IF TEQUIP:21
 	PRINTFORML %CALLNAME:TARGET%は肛門栓を抜かれ、腸内の汚物を肛門から撒き散らした
 	;マゾっ気
-	IF ABL:9 == 0
+	IF ABL:マゾっ気 == 0
 		PRINTFORMW %CALLNAME:TARGET%は苦悶と恥辱の表情を浮かべている
-	ELSEIF ABL:9 == 1
+	ELSEIF ABL:マゾっ気 == 1
 		PRINTFORMW %CALLNAME:TARGET%は脂汗を浮かべ、いまだ下腹に残る排泄感に堪えている
-	ELSEIF ABL:9 == 2
+	ELSEIF ABL:マゾっ気 == 2
 		PRINTFORMW %CALLNAME:TARGET%は恥ずかしがりながらも、開放感にほっとした表情を浮かべている
-	ELSEIF ABL:9 == 3
+	ELSEIF ABL:マゾっ気 == 3
 		PRINTFORMW %CALLNAME:TARGET%は肛門を通り過ぎる排泄物の感覚に時折艶っぽい喘ぎ声を上げている
-	ELSEIF ABL:9 == 4
+	ELSEIF ABL:マゾっ気 == 4
 		PRINTFORMW %CALLNAME:TARGET%はうっとりした表情を浮かべ、排泄感を愉しんでいる
-	ELSEIF ABL:9 >= 5
+	ELSEIF ABL:マゾっ気 >= 5
 		PRINTFORML %CALLNAME:TARGET%は排泄感と恥辱を心ゆくまで味わっている
 		IF TALENT:オトコ
 			PRINTFORMW %CALLNAME:TARGET%の表情は快感にだらしなく緩み、肛門から汚物をひりだすと同時に、口からも涎をボタボタと滴らせている
@@ -1803,17 +1803,17 @@ IF TEQUIP:21
 ELSE
 	PRINTFORML %CALLNAME:TARGET%の菊穴に浣腸液を流し込み、栓をした
 	;マゾっ気
-	IF ABL:9 == 0
+	IF ABL:マゾっ気 == 0
 		PRINTFORMW %CALLNAME:TARGET%は苦悶の表情を浮かべている
-	ELSEIF ABL:9 == 1
+	ELSEIF ABL:マゾっ気 == 1
 		PRINTFORMW %CALLNAME:TARGET%は脂汗を浮かべ、排泄感に堪えている
-	ELSEIF ABL:9 == 2
+	ELSEIF ABL:マゾっ気 == 2
 		PRINTFORMW %CALLNAME:TARGET%は苦しそうな表情をしながらも、顔を紅潮させもじもじとお尻を振っている
-	ELSEIF ABL:9 == 3
+	ELSEIF ABL:マゾっ気 == 3
 		PRINTFORMW %CALLNAME:TARGET%は、排泄感に苛まれながらも、時折恍惚とした表情を浮かべている
-	ELSEIF ABL:9 == 4
+	ELSEIF ABL:マゾっ気 == 4
 		PRINTFORMW %CALLNAME:TARGET%は、うっとりした表情を浮かべ、排泄感と腹痛を愉しんでいる
-	ELSEIF ABL:9 >= 5
+	ELSEIF ABL:マゾっ気 >= 5
 		PRINTFORML %CALLNAME:TARGET%は、排泄感を心ゆくまで味わっている
 		IF TALENT:オトコ
 			PRINTFORMW %CALLNAME:TARGET%の表情は快感にだらしなく緩み、その口からはポタポタと涎を滴らせている
@@ -1836,17 +1836,17 @@ PRINTFORMW しばらくしてから栓を抜くと、%CALLNAME:TARGET%の菊穴�
 IF TEQUIP:22
 	PRINTFORML %CALLNAME:TARGET%の広がりきった菊穴からバルーンを抜いてやった……
 	;Ａ感覚
-	IF ABL:5 == 0
+	IF ABL:Ａ感覚 == 0
 		PRINTFORMW %CALLNAME:TARGET%の肛門はゆっくりと閉じていった
-	ELSEIF ABL:5 == 1
+	ELSEIF ABL:Ａ感覚 == 1
 		PRINTFORMW %CALLNAME:TARGET%の肛門はひくつきながらゆるゆると閉じていった
-	ELSEIF ABL:5 == 2
+	ELSEIF ABL:Ａ感覚 == 2
 		PRINTFORMW %CALLNAME:TARGET%の肛門はぽっかり口を開いている
-	ELSEIF ABL:5 == 3
+	ELSEIF ABL:Ａ感覚 == 3
 		PRINTFORMW %CALLNAME:TARGET%の肛門は拡がったままなかなか戻らないようだ
-	ELSEIF ABL:5 == 4
+	ELSEIF ABL:Ａ感覚 == 4
 		PRINTFORMW %CALLNAME:TARGET%の肛門から腸の中が丸見えになっている
-	ELSEIF ABL:5 >= 5
+	ELSEIF ABL:Ａ感覚 >= 5
 		PRINTFORMW %CALLNAME:TARGET%は、自分の肛門を指で拡げ、恍惚としている
 	ENDIF
 ELSE
@@ -1996,17 +1996,17 @@ ENDIF
 IF TEQUIP:21
 	PRINTFORML %CALLNAME:TARGET%は触手を抜かれ、腸内の汚物を肛門から撒き散らした
 	;マゾっ気
-	IF ABL:9 == 0
+	IF ABL:マゾっ気 == 0
 		PRINTFORMW %CALLNAME:TARGET%は苦悶と恥辱の表情を浮かべている
-	ELSEIF ABL:9 == 1
+	ELSEIF ABL:マゾっ気 == 1
 		PRINTFORMW %CALLNAME:TARGET%は脂汗を浮かべ、いまだ下腹に残る排泄感に堪えている
-	ELSEIF ABL:9 == 2
+	ELSEIF ABL:マゾっ気 == 2
 		PRINTFORMW %CALLNAME:TARGET%は恥ずかしがりながらも、開放感にほっとした表情を浮かべている
-	ELSEIF ABL:9 == 3
+	ELSEIF ABL:マゾっ気 == 3
 		PRINTFORMW %CALLNAME:TARGET%は肛門を通り過ぎる排泄物の感覚に時折艶っぽい喘ぎ声を上げている
-	ELSEIF ABL:9 == 4
+	ELSEIF ABL:マゾっ気 == 4
 		PRINTFORMW %CALLNAME:TARGET%はうっとりした表情を浮かべ、排泄感を愉しんでいる
-	ELSEIF ABL:9 >= 5
+	ELSEIF ABL:マゾっ気 >= 5
 		PRINTFORML %CALLNAME:TARGET%は排泄感と恥辱を心ゆくまで味わっている
 		IF TALENT:オトコ
 			PRINTFORMW %CALLNAME:TARGET%の表情は快感にだらしなく緩み、肛門から汚物をひりだすと同時に、口からも涎をボタボタと滴らせている
@@ -2052,10 +2052,10 @@ IF TEQUIP:25
 ELSE
 	PRINTFORM %CALLNAME:TARGET%に
 ;調教者の技巧LV3以上
-SIF ABL:PLAYER:2 >= 3
+SIF ABL:PLAYER:技巧 >= 3
 	PRINT 口移しで
 ;従順LV2以下
-SIF ABL:0 <= 2
+SIF ABL:従順 <= 2
 	PRINT 無理やり
 PRINTFORML 媚薬を飲ませた
 ENDIF
@@ -2070,10 +2070,10 @@ IF TEQUIP:25
 ELSE
 	PRINTFORM %CALLNAME:TARGET%に
 ;調教者の技巧LV3以上
-SIF ABL:PLAYER:2 >= 3
+SIF ABL:PLAYER:技巧 >= 3
 	PRINT 口移しで
 ;従順LV2以下
-SIF ABL:0 <= 2
+SIF ABL:従順 <= 2
 	PRINT 無理やり
 PRINTFORML 利尿剤を飲ませた
 ENDIF
@@ -2158,7 +2158,7 @@ ENDIF
 @MESSAGE_COM190
 PRINTFORML %CALLNAME:PLAYER%は%CALLNAME:TARGET%の痴態をフィルムに収めた
 ;感情乏しいが無い＋淫乱か娼婦でない＋露出癖LV3未満
-IF TALENT:感情乏しい == 0 && (TALENT:淫乱 || TALENT:娼婦) == 0 && ABL:8 < 3
+IF TALENT:感情乏しい == 0 && (TALENT:淫乱 || TALENT:娼婦) == 0 && ABL:露出癖 < 3
 	PRINTFORMW %CALLNAME:TARGET%は恥ずかしい格好のまま写真を撮られたことに気づいたのか僅かに顔をこわばらせている……
 ;感情乏しいか淫乱か娼婦
 ELSEIF TALENT:感情乏しい || TALENT:淫乱 || TALENT:娼婦
@@ -2170,18 +2170,18 @@ ENDIF
 @MESSAGE_COM191
 PRINTFORM %CALLNAME:PLAYER%は%CALLNAME:TARGET%に
 ;調教者の技巧がLV3以上
-SIF ABL:PLAYER:2 >= 3
+SIF ABL:PLAYER:技巧 >= 3
 	PRINT 口移しで
 ;従順LV2以下
-SIF ABL:0 <= 2
+SIF ABL:従順 <= 2
 	PRINT 無理やり
 PRINTL 強精神剤を飲ませた
 PRINTFORM %CALLNAME:TARGET%は
 ;従順LV3以上かつ反発刻印LV3未満
-IF ABL:0 >= 3 && MARK:3 < 3
+IF ABL:従順 >= 3 && MARK:反発刻印 < 3
 	PRINTFORMW 困惑した表情を浮かべ、ニヤニヤと笑う%CALLNAME:MASTER%を見つめている……
 ;反発刻印LV1以上
-ELSEIF MARK:3 >= 1
+ELSEIF MARK:反発刻印 >= 1
 	PRINTFORMW 警戒心を露わにしてニヤニヤと笑う%CALLNAME:MASTER%を睨んでいる……
 ELSE
 	PRINTFORMW 一瞬驚いたような表情をしたがニヤニヤと笑う%CALLNAME:MASTER%を見て探るような眼で睨んでいる……
@@ -2192,13 +2192,13 @@ ENDIF
 @MESSAGE_COM192
 PRINTFORML %CALLNAME:TARGET%の頬に、生暖かい使用済みコンドームを押し当てた……
 ;精液中毒5以上
-IF ABL:16 >= 5
+IF ABL:精液中毒 >= 5
 	PRINTFORMW %CALLNAME:TARGET%はコンドームを裏返し、名残惜しそうに残り汁までもしゃぶっている……
 ;精液中毒3以上
-ELSEIF ABL:16 >= 3
+ELSEIF ABL:精液中毒 >= 3
 	PRINTFORMW %CALLNAME:TARGET%は恍惚とした顔で、口内に流し込まれたゴム臭い精液を味わっている……
 ;精液中毒1以上
-ELSEIF ABL:16 >= 1
+ELSEIF ABL:精液中毒 >= 1
 	PRINTFORMW %CALLNAME:TARGET%は微かに嫌がるような素振りをしつつも、舌を出して精液を甘受した……
 ;精液中毒なし
 ELSE
@@ -2216,17 +2216,17 @@ ELSE
 	PRINTFORM %CALLNAME:ASSI%は%CALLNAME:TARGET%に見せびらかすように
 ENDIF
 ;助手の精液中毒がLV5以上
-IF ABL:ASSI:16 >= 5
+IF ABL:ASSI:精液中毒 >= 5
 	PRINTL 恍惚の表情で精液を味わっている……
 ELSE
 	PRINTL おいしそうに精液を味わっている……
 ENDIF
 PRINTFORM %CALLNAME:TARGET%は
-IF ABL:16 >= 5
+IF ABL:精液中毒 >= 5
 	PRINTW 我慢できないのか、涎を垂らしながらその光景を見ている……
-ELSEIF ABL:16 >= 3
+ELSEIF ABL:精液中毒 >= 3
 	PRINTW 物欲しげな表情でじっとその光景を見ている……
-ELSEIF ABL:16 >= 1
+ELSEIF ABL:精液中毒 >= 1
 	PRINTW 必死に目をそらそうとしているが、その目は目の前の光景に釘付けになっている……
 ELSE
 	PRINTW その光景に呆れた顔をしている……
@@ -2237,13 +2237,13 @@ ENDIF
 @MESSAGE_COM194
 PRINTFORML %CALLNAME:PLAYER%は口に含んだ精液を唾液と混ぜ、キスで口移しした……
 ;精液中毒5以上
-IF ABL:16 >= 5
+IF ABL:精液中毒 >= 5
 	PRINTFORMW %CALLNAME:TARGET%は%CALLNAME:PLAYER%の唾液ごと貪欲に吸引し、さらに%CALLNAME:PLAYER%の口内を舐め回して残り香を愉しんでいる……
 ;精液中毒3以上
-ELSEIF ABL:16 >= 3
+ELSEIF ABL:精液中毒 >= 3
 	PRINTFORMW %CALLNAME:TARGET%は恍惚としながら、己の子種を%CALLNAME:PLAYER%の舌と絡め合っている……
 ;精液中毒1以上
-ELSEIF ABL:16 >= 1
+ELSEIF ABL:精液中毒 >= 1
 	PRINTFORMW %CALLNAME:TARGET%は自分の精液を飲まされ、屈辱に満ちた表情をしている……
 ;精液中毒なし
 ELSE
@@ -2344,16 +2344,16 @@ IF PREVCOM == 503
 		PRINTFORMW %CALLNAME:TARGET%は膣内の異物感に怯えている……
 	ENDIF
 ;バイブ挿入中＋欲情のPALAMLV3以上＋Ｖ感覚LV3以上
-ELSEIF TEQUIP:13 && PALAM:6 >= PALAMLV:3 && ABL:4 >= 3
+ELSEIF TEQUIP:13 && PALAM:欲情 >= PALAMLV:3 && ABL:Ｖ感覚 >= 3
 	PRINTFORMW %CALLNAME:TARGET%の膣は、蜜に濡れたバイブにねっとりと絡み付いている……
 ;バイブ挿入中＋欲情のPALAMLV3未満＋Ｖ感覚LV3以上
-ELSEIF TEQUIP:13 && PALAM:6 < PALAMLV:3 && ABL:4 >= 3
+ELSEIF TEQUIP:13 && PALAM:欲情 < PALAMLV:3 && ABL:Ｖ感覚 >= 3
 	PRINTFORMW %CALLNAME:TARGET%はバイブの刺激に悶えている……
 ;バイブ挿入中＋欲情のPALAMLV3以上＋Ｖ感覚LV3未満
-ELSEIF TEQUIP:13 && PALAM:6 >= PALAMLV:3 && ABL:4 < 3
+ELSEIF TEQUIP:13 && PALAM:欲情 >= PALAMLV:3 && ABL:Ｖ感覚 < 3
 	PRINTFORMW %CALLNAME:TARGET%は頬を染めて時折声を上げている……
 ;バイブ挿入中＋欲情のPALAMLV3未満＋Ｖ感覚LV3未満
-ELSEIF TEQUIP:13 && PALAM:6 < PALAMLV:3 && ABL:4 < 3
+ELSEIF TEQUIP:13 && PALAM:欲情 < PALAMLV:3 && ABL:Ｖ感覚 < 3
 	PRINTFORMW %CALLNAME:TARGET%は少し苦しそうな表情をしている……
 ;バイブ挿入中
 ELSEIF TEQUIP:13
@@ -2383,7 +2383,7 @@ ELSEIF TFLAG:60 && (PREVCOM == 60 || PREVCOM == 68) && ((ASSIPLAY && TFLAG:50) |
 	PRINTFORML 脚を大きく開かせる
 	PRINTFORM %CALLNAME:TARGET%の身体を抱き上げ、ゆっくりと
 	;潤滑LV4以上
-	SIF PALAM:4 >= PALAMLV:4
+	SIF PALAM:潤滑 >= PALAMLV:4
 		PRINT 濡れそぼった
 	;小柄体型
 	IF TALENT:小柄体型
@@ -2393,13 +2393,13 @@ ELSEIF TFLAG:60 && (PREVCOM == 60 || PREVCOM == 68) && ((ASSIPLAY && TFLAG:50) |
 	ENDIF
 	PRINTFORML に挿入すると、脚を大きく開かせた……
 	;露出癖
-	IF ABL:8 >= 5
+	IF ABL:露出癖 >= 5
 		PRINTFORMW %CALLNAME:TARGET%は鏡に映る痴態を蕩けた目で見つめながら歓喜の声を上げている……
-	ELSEIF ABL:8 >= 4
+	ELSEIF ABL:露出癖 >= 4
 		PRINTFORMW %CALLNAME:TARGET%は羞恥と快楽に溺れたような表情で鏡の中の痴態を凝視している……
-	ELSEIF ABL:8 >= 2
+	ELSEIF ABL:露出癖 >= 2
 		PRINTFORMW %CALLNAME:TARGET%は顔を羞恥に染めながら時折艶っぽい声を上げている……
-	ELSEIF ABL:8 >= 1
+	ELSEIF ABL:露出癖 >= 1
 		PRINTFORMW %CALLNAME:TARGET%は手で顔を覆い隠しながら羞恥に身体を震わせている……
 	ENDIF
 ENDIF
@@ -2485,7 +2485,7 @@ PRINTFORMW %CALLNAME:PLAYER%の舌がもたらす快感に翻弄されながら�
 @MESSAGE_COM509
 PRINTFORM %CALLNAME:TARGET%の
 ;欲情のPALAMLV3以上
-SIF PALAM:6 >= PALAMLV:3
+SIF PALAM:欲情 >= PALAMLV:3
 	PRINT 期待に震える
 ;小柄体型＋貧乳、絶壁
 IF (TALENT:小柄体型 && TALENT:貧乳) || TALENT:絶壁
@@ -2501,7 +2501,7 @@ ELSEIF TALENT:爆乳
 	PRINT 手に余るほど大きな
 ENDIF
 ;欲情のPALAMLV3以上＋恋慕か親愛
-IF PALAM:6 >= PALAMLV:3 && (TALENT:恋慕 || TALENT:親愛)
+IF PALAM:欲情 >= PALAMLV:3 && (TALENT:恋慕 || TALENT:親愛)
 	PRINT 胸を強く搾り上げてやると、
 	PRINTFORM %CALLNAME:TARGET%は嬌声をあげて
 	;母乳体質
@@ -2509,7 +2509,7 @@ IF PALAM:6 >= PALAMLV:3 && (TALENT:恋慕 || TALENT:親愛)
 		PRINT 母乳が滴る
 	PRINTW 胸を強調するように突き出し、より強い刺激を求めた……
 ;欲情のPALAMLV3以上
-ELSEIF PALAM:6 > PALAMLV:3
+ELSEIF PALAM:欲情 > PALAMLV:3
 	PRINTW 胸を強く搾り上げた……
 ELSE
 	PRINTW 胸を搾り上げた……
@@ -2553,7 +2553,7 @@ IF CFLAG:106
 	ELSEIF CFLAG:106 == 2
 		PRINTFORML %CALLNAME:TARGET%の頭を持ち上げ、精液をほとばしらせた……
 		;従順3以上
-		IF ABL:0 >= 3
+		IF ABL:従順 >= 3
 			PRINTFORML %CALLNAME:TARGET%は目を閉じ、顔に精液を受けている……
 		ELSE
 			PRINTFORML 嫌悪感をむき出しに暴れる%CALLNAME:TARGET%の頭を掴み、その顔を白濁で汚した……
@@ -2582,13 +2582,13 @@ IF CFLAG:106
 			IF TALENT:貧乳 || TALENT:絶壁
 				PRINTFORML 起伏の少ない胸を精液が流れ落ちていく……
 				;従順3以上
-				IF ABL:0 >= 3
+				IF ABL:従順 >= 3
 					PRINTFORML %CALLNAME:TARGET%は嬉しそうに、精液を指ですくって、硬くしこった乳首に塗りつけている……
 				ENDIF
 			;巨乳、爆乳
 			ELSEIF TALENT:巨乳 || TALENT:爆乳
 				PRINTFORML ふくよかな胸の谷間に白濁液が溜まっている
-				IF ABL:0 >= 3
+				IF ABL:従順 >= 3
 					PRINTFORML %CALLNAME:TARGET%は精液を胸全体に引き伸ばしていた……
 				ELSE
 					PRINTFORML ……
@@ -2596,12 +2596,12 @@ IF CFLAG:106
 			ELSEIF TALENT:オトコ
 				PRINTFORML 胸板に熱い精液が降りかかっていくく……
 				;従順3以上
-				IF ABL:0 >= 3
+				IF ABL:従順 >= 3
 					PRINTFORML %CALLNAME:TARGET%は嬉しそうに、精液を指ですくって、硬くしこった乳首に塗りつけている……
 				ENDIF
 			ELSE
 				PRINTFORML 乳房に熱い精液が降りかかっていく
-				SIF ABL:0 >= 3
+				SIF ABL:従順 >= 3
 					PRINTFORML %CALLNAME:TARGET%は、胸を寄せて精液を受け止めている……
 			ENDIF
 		ENDIF
@@ -2785,7 +2785,7 @@ IF TFLAG:7 > 0
 		PRINTFORML %CALLNAME:TARGET%の目の前で、%CALLNAME:ASSI%の奥に精液を吐き出した……
 	SIF TFLAG:7 == 2
 		PRINTFORML %CALLNAME:TARGET%の目の前で、%CALLNAME:ASSI%の奥に溢れるほどの精液を吐き出した……
-	SIF ABL:1 > 3 || ABL:16 > 2
+	SIF ABL:欲望 > 3 || ABL:精液中毒 > 2
 		PRINTFORML %CALLNAME:TARGET%はその姿を羨ましそうに見つめている……
 ENDIF
 
@@ -2793,7 +2793,7 @@ ENDIF
 IF TFLAG:0 == 1
 	;フェラチオ
 	IF SELECTCOM == 81
-		IF ABL:7 >= 3
+		IF ABL:奉仕精神 >= 3
 			PRINTFORML %CALLNAME:TARGET%は喉を鳴らして精液を飲み干した……
 		ELSE
 			PRINTFORML 精液を%CALLNAME:TARGET%の口の中へと流し込んだ……
@@ -2816,7 +2816,7 @@ IF TFLAG:0 == 1
 		PRINTFORML %CALLNAME:TARGET%は秘部への刺激に体を震わせながら精液を飲み込んでいく……
 	;イラマチオ
 	ELSEIF SELECTCOM == 140
-		IF ABL:7 >= 3
+		IF ABL:奉仕精神 >= 3
 			PRINTFORML %CALLNAME:TARGET%は喉を鳴らして精液を飲み干した……
 		ELSE
 			PRINTFORML %CALLNAME:TARGET%の頭を掴んで、喉の奥で精を解き放った……
@@ -2826,7 +2826,7 @@ IF TFLAG:0 == 1
 ELSEIF TFLAG:0 == 2
 	;フェラチオ
 	IF SELECTCOM == 81
-		IF ABL:7 >= 3
+		IF ABL:奉仕精神 >= 3
 			PRINTFORML 飲みきれなかった精液が%CALLNAME:TARGET%の口から溢れてきた……
 		ELSE
 			PRINTFORML 溢れるほどの精液が%CALLNAME:TARGET%の喉に叩きつけられた……
@@ -2845,7 +2845,7 @@ ELSEIF TFLAG:0 == 2
 		PRINTFORML %CALLNAME:TARGET%は秘部への刺激に体を震わせながら精液を飲み込んでいく……
 	;イラマチオ
 	ELSEIF SELECTCOM == 140
-		IF ABL:7 >= 3
+		IF ABL:奉仕精神 >= 3
 			PRINTFORML 飲みきれなかった精液が%CALLNAME:TARGET%の口から溢れてきた……
 		ELSE
 			PRINTFORML %CALLNAME:TARGET%の喉の奥に放たれた精液が、口から溢れだしてきた……
@@ -2857,43 +2857,43 @@ ENDIF
 IF TFLAG:1 == 1
 	SIF EXP:精液経験 == 0
 		PRINT 驚きの表情をうかべる
-	SIF ABL:16 > 2
+	SIF ABL:精液中毒 > 2
 		PRINT 恍惚の表情をうかべる
 	PRINTFORML %CALLNAME:TARGET%に精液が降りかかっていった……
 ;手で大量射精
 ELSEIF TFLAG:1 == 2
 	SIF EXP:精液経験 == 0
 		PRINT 驚きの表情をうかべる
-	SIF ABL:16 > 2
+	SIF ABL:精液中毒 > 2
 		PRINT 恍惚の表情をうかべる
 	PRINTFORML %CALLNAME:TARGET%の顔と手が大量の精液にまみれていった……
 ENDIF
 
 ;胸で射精
 IF TFLAG:34 == 1
-	IF (TALENT:恋慕 || TALENT:親愛) || PALAM:6 >= PALAMLV:5
+	IF (TALENT:恋慕 || TALENT:親愛) || PALAM:欲情 >= PALAMLV:5
 		PRINTFORM %CALLNAME:TARGET%は自分の胸が白濁にまみれていくのを
-		SIF (TALENT:恋慕 || TALENT:親愛) || ABL:16 >= 3
+		SIF (TALENT:恋慕 || TALENT:親愛) || ABL:精液中毒 >= 3
 			PRINT 恍惚とした表情をしながら
-		SIF PALAM:6 >= PALAMLV:5
+		SIF PALAM:欲情 >= PALAMLV:5
 			PRINT 欲情に濁った瞳で
 		PRINTFORML 見つめている……
 	ELSE
 		PRINTFORML 精液が%CALLNAME:TARGET%の胸を白く染め上げた……
 	ENDIF
-	IF (TALENT:恋慕 || TALENT:親愛) || ABL:16 >= 3
+	IF (TALENT:恋慕 || TALENT:親愛) || ABL:精液中毒 >= 3
 		PRINTFORM その後、もったいないと言わんばかりに自分の胸についた精液を
-		SIF ABL:6 >= 4
+		SIF ABL:Ｂ感覚 >= 4
 			PRINT 快感に身を震わせながら
 		PRINTL 舐めとっている……
 	ENDIF
 ;胸で大量射精
 ELSEIF TFLAG:34 == 2
-	IF (TALENT:恋慕 || TALENT:親愛) || PALAM:6 >= PALAMLV:5
+	IF (TALENT:恋慕 || TALENT:親愛) || PALAM:欲情 >= PALAMLV:5
 		PRINTFORM %CALLNAME:TARGET%は
-		SIF (TALENT:恋慕 || TALENT:親愛) || ABL:16 >= 3
+		SIF (TALENT:恋慕 || TALENT:親愛) || ABL:精液中毒 >= 3
 			PRINT 恍惚とした表情をしながら
-		SIF PALAM:6 >= PALAMLV:5
+		SIF PALAM:欲情 >= PALAMLV:5
 			PRINT 快感に体を震わせて
 		PRINTFORML 大量の精液が自分の胸だけでなく上半身全体を汚していくのを見つめている……
 	ELSE
@@ -2903,7 +2903,7 @@ ENDIF
 
 ;セックスで射精
 IF TFLAG:2 > 0
-	IF PALAM:6 < PALAMLV:4 || TFLAG:31
+	IF PALAM:欲情 < PALAMLV:4 || TFLAG:31
 		;正常位
 		IF SELECTCOM == 60
 			PRINT ペニスを抜き去られた秘裂からは
@@ -2962,7 +2962,7 @@ ENDIF
 ;逆レイプで射精
 IF (SELECTCOM == 64 || SELECTCOM == 200) && TFLAG:10 > 0
 	PRINTFORM %CALLNAME:PLAYER%の肉襞は、
-	SIF ABL:1 >= 3
+	SIF ABL:欲望 >= 3
 		PRINT 恍惚の表情を浮かべる
 	PRINTFORML %CALLNAME:TARGET%から精液を搾りとっていった……
 ENDIF
@@ -3065,15 +3065,15 @@ SIF TFLAG:2 == 0 && TFLAG:15 == 0 && TFLAG:3
 
 ;何もしない
 IF SELECTCOM == 21
-	SIF PALAM:5 >= PALAMLV:3
+	SIF PALAM:恭順 >= PALAMLV:3
 		PRINTFORM %CALLNAME:TARGET%は息を荒げ
-	SIF PALAM:5 >= PALAMLV:5
+	SIF PALAM:恭順 >= PALAMLV:5
 		PRINT 熱っぽい瞳でこちらを見つめ
-	SIF PALAM:5 >= PALAMLV:3 && TEQUIP:26
+	SIF PALAM:恭順 >= PALAMLV:3 && TEQUIP:26
 		PRINT 、ガクガクと震える身体を抱きしめ
-	SIF PALAM:5 >= PALAMLV:4
+	SIF PALAM:恭順 >= PALAMLV:4
 		PRINT ながら、しきりに太腿を擦りあわせ
-	SIF PALAM:5 >= PALAMLV:3
+	SIF PALAM:恭順 >= PALAMLV:3
 		PRINTL ている……
 ENDIF
 
@@ -3086,7 +3086,7 @@ IF TFLAG:8 > 0
 		SIF TFLAG:8 >= 2
 			PRINTFORM %CALLNAME:ASSI%と
 		PRINTFORM %CALLNAME:TARGET%は
-		SIF ABL:0 >= 3
+		SIF ABL:従順 >= 3
 			 PRINT 残った精液を吸い取りながら、
 		PRINTL ペニスの汚れを綺麗に舐めとっていった……
 	ENDIF
@@ -3217,7 +3217,7 @@ ENDIF
 ;調教後セックス
 @EVENT_MESSAGE_5
 PRINTFORML %CALLNAME:MASTER%と%CALLNAME:TARGET%はまだ冷めやらぬ昂奮を抑えきれず、ベッドの上でまぐわっていた……
-IF ABL:0+ABL:4+ABL:7 >= 13
+IF ABL:従順+ABL:Ｖ感覚+ABL:奉仕精神 >= 13
 	PRINTFORML %CALLNAME:TARGET%は名残惜しげに袖を引っ張る
 	PRINTFORMW しかしその手を振り解き、%CALLNAME:MASTER%は部屋を後にした……
 ELSE
@@ -3232,7 +3232,7 @@ PRINTW 強精神剤の効果が切れ、強い快楽に溺れているようだ
 ;調教後搾乳
 @EVENT_MESSAGE_7
 PRINTL 調教終了後も胸の張りが納まらず、母乳を搾り出していたようだ
-IF ABL:0+ABL:8+ABL:9 >= 10
+IF ABL:従順+ABL:露出癖+ABL:マゾっ気 >= 10
 	PRINTFORML その母乳を%NAME:TARGET%は器に溜めて持ってきた
 	PRINTFORMW %NAME:MASTER%は%NAME:TARGET%が持ってきた母乳を頂くことにした……
 ELSE
@@ -3242,9 +3242,9 @@ ENDIF
 ;調教後自慰
 @EVENT_MESSAGE_8
 PRINTFORML どうやら%CALLNAME:TARGET%は自慰をしていたようだ……
-SIF ABL:0+ABL:8+ABL:9 >= 10 && TIME == 0
+SIF ABL:従順+ABL:露出癖+ABL:マゾっ気 >= 10 && TIME == 0
 	PRINTFORML そのことを%NAME:TARGET%は報告してきた
-IF ABL:0 >= 5 || ABL:1 >= 5
+IF ABL:従順 >= 5 || ABL:欲望 >= 5
 	PRINTFORMW しかし何度自分を慰めてみても、%CALLNAME:MASTER%への欲望は満たされなかった……
 ELSE
 	WAIT
@@ -3350,7 +3350,7 @@ ENDIF
 
 ;定食屋台時のイベント口上
 @EVENT_MESSAGE_15
-IF ABL:12 == 0
+IF ABL:料理技能 == 0
 	PRINTFORM %CALLNAME:TARGET%との定食屋台で出した
 	CALL LUNCH_NAME
 	IF F == 1
@@ -3358,7 +3358,7 @@ IF ABL:12 == 0
 	ELSE
 		PRINTW は、あまり好評ではなかったようだ
 	ENDIF
-ELSEIF ABL:12 < 4
+ELSEIF ABL:料理技能 < 4
 	PRINTFORM %CALLNAME:TARGET%との定食屋台で出した
 	CALL LUNCH_NAME
 	IF F == 1
@@ -3393,10 +3393,10 @@ SIF CFLAG:30 == G
 ;SM系
 IF CFLAG:30 == H
 	;マゾっ気が高い
-	SIF ABL:9 >= ABL:10
+	SIF ABL:マゾっ気 >= ABL:サドっ気
 		PRINTFORM 苦痛に喘ぎ、嗜虐心をそそるプレイは
 	;サドっ気が高い
-	SIF ABL:10 > ABL:9
+	SIF ABL:サドっ気 > ABL:マゾっ気
 		PRINTFORM 被虐心をそそり、苦痛を快楽に変えるとのプレイは
 ENDIF
 ;レズ、ゲイ系
@@ -3445,18 +3445,18 @@ IF F == 0
 ELSE
 	PRINTFORML %CALLNAME:TARGET%のコンサートを開いた
 	PRINTFORM %CALLNAME:TARGET%
-	;IF ABL:14 >= 4
+	;IF ABL:歌唱技能 >= 4
 	;	PRINT が披露したとっておきの持ち歌
 	;	CALL SONG_NAME_TOHO
 	;	PRINT は
 	;ELSE
 		PRINT のライブは
 	;ENDIF
-	IF ABL:14 >= 5
+	IF ABL:歌唱技能 >= 5
 		PRINTL 大成功だ
 		PRINTFORML %CALLNAME:TARGET%の魅力的な歌声に、会場に集まった観客は熱狂的な歓声を上げている
 		PRINTFORMW 歌い終わると%CALLNAME:TARGET%は達成感溢れる笑みを観客、そして%CALLNAME:MASTER%へと送った……
-	ELSEIF ABL:14 >= 3
+	ELSEIF ABL:歌唱技能 >= 3
 		PRINTL どうやら成功したようだ
 		PRINTFORMW %CALLNAME:TARGET%は歌い終えた後も気分が高揚しているのか、さっきからずっと鼻歌を歌っていた……
 	ELSE

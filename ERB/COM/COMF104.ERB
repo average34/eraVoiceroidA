@@ -11,8 +11,8 @@ CALL KOJO_MESSAGE_COM
 ;ソース追加処理
 ;-------------------------------------------------
 ;消費体力、気力
-LOSEBASE:0 += 120
-LOSEBASE:1 += 100
+LOSEBASE:体力 += 120
+LOSEBASE:気力 += 100
 
 SOURCE:7 = 5000
 SOURCE:8 = 4000
@@ -24,15 +24,15 @@ SOURCE:18 = 1200
 ;特殊ソース処理
 ;-------------------------------------------------
 ;苦痛のパラメータによる苦痛のソース増加は先に処理しておく
-IF PALAM:10 < PALAMLV:1
+IF PALAM:苦痛 < PALAMLV:1
 	TIMES SOURCE:7 , 1.00
-ELSEIF PALAM:10 < PALAMLV:2
+ELSEIF PALAM:苦痛 < PALAMLV:2
 	TIMES SOURCE:7 , 1.50
-ELSEIF PALAM:10 < PALAMLV:3
+ELSEIF PALAM:苦痛 < PALAMLV:3
 	TIMES SOURCE:7 , 2.00
-ELSEIF PALAM:10 < PALAMLV:4
+ELSEIF PALAM:苦痛 < PALAMLV:4
 	TIMES SOURCE:7 , 2.50
-ELSEIF PALAM:10 >= PALAMLV:4
+ELSEIF PALAM:苦痛 >= PALAMLV:4
 	TIMES SOURCE:7 , 3.00
 ENDIF
 

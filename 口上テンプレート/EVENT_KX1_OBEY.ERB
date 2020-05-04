@@ -49,7 +49,7 @@ SIF CFLAG:216 != 3
 ;	IF RESULT == 0
 ;		PRINTFORMW ―処女モードに素質、能力を変更します―
 ;		TALENT:TARGET:処女 = 1
-;		ABL:TARGET:4 = 0
+;		ABL:TARGET:Ｖ感覚 = 0
 ;		EXP:TARGET:Ｖ経験 = 0
 ;	ELSEIF RESULT == 1
 ;		PRINTFORMW ―通常モードで調教を開始します―
@@ -90,17 +90,17 @@ IF CFLAG:201 == 0
 	CFLAG:201 = 1
 	RETURN 0
 ;屈服刻印Lv1
-ELSEIF CFLAG:201 < 2 && MARK:2 == 1
+ELSEIF CFLAG:201 < 2 && MARK:屈服刻印 == 1
 	PRINTFORMW 
 	CFLAG:201 = 2
 	RETURN 0
 ;屈服刻印Lv2
-ELSEIF CFLAG:201 < 3 && MARK:2 == 2
+ELSEIF CFLAG:201 < 3 && MARK:屈服刻印 == 2
 	PRINTFORMW 
 	CFLAG:201 = 3
 	RETURN 0
 ;屈服刻印Lv3
-ELSEIF CFLAG:201 < 4 && MARK:2 == 3
+ELSEIF CFLAG:201 < 4 && MARK:屈服刻印 == 3
 	PRINTFORMW 
 	CFLAG:201 = 4
 	RETURN 0
@@ -139,23 +139,23 @@ ENDIF
 ;-------------------------------------------------
 @EVENTTRAIN_SECOND_KX1
 ;反発刻印Lv3
-IF MARK:3 == 3 && (CFLAG:202 < 4 || FLAG:7 == 2)
+IF MARK:反発刻印 == 3 && (CFLAG:202 < 4 || FLAG:7 == 2)
 	PRINTFORMW 
 	CFLAG:202 = 4
 ;屈服刻印Lv0
-ELSEIF MARK:2 == 0 && (CFLAG:202 < 1 || FLAG:7 == 2)
+ELSEIF MARK:屈服刻印 == 0 && (CFLAG:202 < 1 || FLAG:7 == 2)
 	PRINTFORMW 
 	CFLAG:202 = 1
 ;屈服刻印Lv1
-ELSEIF MARK:2 == 1 && (CFLAG:202 < 2 || FLAG:7 == 2)
+ELSEIF MARK:屈服刻印 == 1 && (CFLAG:202 < 2 || FLAG:7 == 2)
 	PRINTFORMW 
 	CFLAG:202 = 2
 ;屈服刻印Lv2
-ELSEIF MARK:2 == 2 && (CFLAG:202 < 3 || FLAG:7 == 2)
+ELSEIF MARK:屈服刻印 == 2 && (CFLAG:202 < 3 || FLAG:7 == 2)
 	PRINTFORMW 
 	CFLAG:202 = 3
 ;屈服刻印Lv3＋陥落素質無し
-ELSEIF MARK:2 == 3 && (TALENT:服従 == 0 && TALENT:淫乱 == 0 && TALENT:服従 == 0 && TALENT:隷属 == 0 && TALENT:娼婦 == 0 && TALENT:隷属 == 0) && (CFLAG:202 < 4 || FLAG:7 == 2)
+ELSEIF MARK:屈服刻印 == 3 && (TALENT:服従 == 0 && TALENT:淫乱 == 0 && TALENT:服従 == 0 && TALENT:隷属 == 0 && TALENT:娼婦 == 0 && TALENT:隷属 == 0) && (CFLAG:202 < 4 || FLAG:7 == 2)
 	PRINTFORMW 
 	CFLAG:202 = 4
 ;服従、隷属
@@ -201,19 +201,19 @@ SIF CFLAG:216 != 3
 ;--------------------------------------------------
 DRAWLINE
 ;反発刻印Lv3
-IF MARK:3 == 3 && (CFLAG:217 < 1 || FLAG:7 == 2)
+IF MARK:反発刻印 == 3 && (CFLAG:217 < 1 || FLAG:7 == 2)
 	PRINTFORMW 
 	CFLAG:217 = 1
 ;屈服刻印Lv1以下
-ELSEIF MARK:2 <= 1 && (CFLAG:219 < 1 || FLAG:7 == 2)
+ELSEIF MARK:屈服刻印 <= 1 && (CFLAG:219 < 1 || FLAG:7 == 2)
 	PRINTFORMW 
 	CFLAG:219 = 1
 ;屈服刻印Lv2
-ELSEIF MARK:2 == 2 && (CFLAG:219 < 2 || FLAG:7 == 2)
+ELSEIF MARK:屈服刻印 == 2 && (CFLAG:219 < 2 || FLAG:7 == 2)
 	PRINTFORMW 
 	CFLAG:219 = 2
 ;屈服刻印Lv3＋陥落素質無し
-ELSEIF MARK:2 == 3 && (TALENT:服従 == 0 && TALENT:隷属 == 0) && (CFLAG:219 < 3 || FLAG:7 == 2)
+ELSEIF MARK:屈服刻印 == 3 && (TALENT:服従 == 0 && TALENT:隷属 == 0) && (CFLAG:219 < 3 || FLAG:7 == 2)
 	PRINTFORMW 
 	CFLAG:219 = 3
 ;服従、隷属
@@ -271,7 +271,7 @@ IF SELECTCOM == 0
 			PRINTFORMW 
 			CFLAG:300 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:300 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:300 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:300 = 3
 		;それ以外
@@ -299,7 +299,7 @@ IF SELECTCOM == 1
 			PRINTFORMW 
 			CFLAG:301 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:301 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:301 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:301 = 3
 		;それ以外
@@ -326,7 +326,7 @@ IF SELECTCOM == 2
 			PRINTFORMW 
 			CFLAG:302 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:302 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:302 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:302 = 3
 		;それ以外
@@ -353,7 +353,7 @@ IF SELECTCOM == 3
 			PRINTFORMW 
 			CFLAG:303 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:303 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:303 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:303 = 3
 		;それ以外
@@ -380,7 +380,7 @@ IF SELECTCOM == 4
 			PRINTFORMW 
 			CFLAG:304 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:304 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:304 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:304 = 3
 		;それ以外
@@ -407,7 +407,7 @@ IF SELECTCOM == 5
 			PRINTFORMW 
 			CFLAG:305 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:305 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:305 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:305 = 3
 		;それ以外
@@ -434,7 +434,7 @@ IF SELECTCOM == 6
 			PRINTFORMW 
 			CFLAG:306 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:306 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:306 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:306 = 3
 		;それ以外
@@ -461,7 +461,7 @@ IF SELECTCOM == 7
 			PRINTFORMW 
 			CFLAG:307 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:307 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:307 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:307 = 3
 		;それ以外
@@ -488,7 +488,7 @@ IF SELECTCOM == 8
 			PRINTFORMW 
 			CFLAG:308 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:308 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:308 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:308 = 3
 		;それ以外
@@ -515,7 +515,7 @@ IF SELECTCOM == 9
 			PRINTFORMW 
 			CFLAG:309 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:309 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:309 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:309 = 3
 		;それ以外
@@ -542,7 +542,7 @@ IF SELECTCOM == 10
 			PRINTFORMW 
 			CFLAG:310 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:310 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:310 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:310 = 3
 		;それ以外
@@ -569,7 +569,7 @@ IF SELECTCOM == 11
 			PRINTFORMW 
 			CFLAG:311 = 4
 		;従順Lv3以上
-		ELSEIF ABL:0 >= 3 && (CFLAG:311 < 3 || FLAG:7 == 2)
+		ELSEIF ABL:従順 >= 3 && (CFLAG:311 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:311 = 3
 		;それ以外
@@ -599,7 +599,7 @@ IF SELECTCOM == 20
 			PRINTFORMW 
 			CFLAG:312 = 4
 		;従順Lv3以上
-		ELSEIF ABL:0 >= 3 && (CFLAG:312 < 3 || FLAG:7 == 2)
+		ELSEIF ABL:従順 >= 3 && (CFLAG:312 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:312 = 3
 		;それ以外
@@ -626,7 +626,7 @@ IF SELECTCOM == 21
 			PRINTFORMW 
 			CFLAG:313 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:313 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:313 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:313 = 3
 		;それ以外
@@ -653,7 +653,7 @@ IF SELECTCOM == 28
 			PRINTFORMW 
 			CFLAG:320 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:320 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:320 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:320 = 3
 		;それ以外
@@ -698,7 +698,7 @@ IF SELECTCOM == 40
 			PRINTFORMW 
 			CFLAG:322 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:322 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:322 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:322 = 3
 		;それ以外
@@ -725,7 +725,7 @@ IF SELECTCOM == 41
 			PRINTFORMW 
 			CFLAG:323 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:323 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:323 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:323 = 3
 		;それ以外
@@ -752,7 +752,7 @@ IF SELECTCOM == 42 && TEQUIP:11 == 0
 			PRINTFORMW 
 			CFLAG:324 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:324 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:324 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:324 = 3
 		;それ以外
@@ -784,7 +784,7 @@ IF SELECTCOM == 43 && TEQUIP:12 == 0
 			PRINTFORMW 
 			CFLAG:325 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:325 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:325 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:325 = 3
 		;それ以外
@@ -822,7 +822,7 @@ IF SELECTCOM == 44 && TEQUIP:13 == 0
 			PRINTFORMW 
 			CFLAG:326 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:326 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:326 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:326 = 3
 		;それ以外
@@ -854,7 +854,7 @@ IF SELECTCOM == 45 && TEQUIP:14 == 0
 			PRINTFORMW 
 			CFLAG:327 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:327 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:327 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:327 = 3
 		;それ以外
@@ -886,7 +886,7 @@ IF SELECTCOM == 46 && TEQUIP:15 == 0
 			PRINTFORMW 
 			CFLAG:328 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:328 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:328 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:328 = 3
 		;それ以外
@@ -918,7 +918,7 @@ IF SELECTCOM == 47 && TEQUIP:16 == 0
 			PRINTFORMW 
 			CFLAG:329 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:329 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:329 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:329 = 3
 		;それ以外
@@ -950,7 +950,7 @@ IF SELECTCOM == 48
 			PRINTFORMW 
 			CFLAG:330 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:330 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:330 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:330 = 3
 		;それ以外
@@ -977,7 +977,7 @@ IF SELECTCOM == 49 && TEQUIP:17 == 0
 			PRINTFORMW 
 			CFLAG:331 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:331 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:331 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:331 = 3
 		;それ以外
@@ -1018,7 +1018,7 @@ IF SELECTCOM == 60
 			PRINTFORMW 
 			CFLAG:332 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:332 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:332 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:332 = 3
 		;それ以外
@@ -1051,7 +1051,7 @@ IF SELECTCOM == 61
 			PRINTFORMW 
 			CFLAG:333 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:333 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:333 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:333 = 3
 		;それ以外
@@ -1078,7 +1078,7 @@ IF SELECTCOM == 62
 			PRINTFORMW 
 			CFLAG:334 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:334 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:334 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:334 = 3
 		;それ以外
@@ -1105,7 +1105,7 @@ IF SELECTCOM == 63
 			PRINTFORMW 
 			CFLAG:335 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:335 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:335 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:335 = 3
 		;それ以外
@@ -1132,7 +1132,7 @@ IF SELECTCOM == 64
 			PRINTFORMW 
 			CFLAG:336 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:336 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:336 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:336 = 3
 		;それ以外
@@ -1159,7 +1159,7 @@ IF SELECTCOM == 65
 			PRINTFORMW 
 			CFLAG:337 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:337 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:337 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:337 = 3
 		;それ以外
@@ -1192,7 +1192,7 @@ IF SELECTCOM == 66
 			PRINTFORMW 
 			CFLAG:338 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:338 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:338 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:338 = 3
 		;それ以外
@@ -1219,7 +1219,7 @@ IF SELECTCOM == 67
 			PRINTFORMW 
 			CFLAG:339 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:339 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:339 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:339 = 3
 		;それ以外
@@ -1252,7 +1252,7 @@ IF SELECTCOM == 68
 			PRINTFORMW 
 			CFLAG:340 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:340 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:340 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:340 = 3
 		;それ以外
@@ -1285,7 +1285,7 @@ IF SELECTCOM == 69
 			PRINTFORMW 
 			CFLAG:341 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:341 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:341 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:341 = 3
 		;それ以外
@@ -1312,7 +1312,7 @@ IF SELECTCOM == 70
 			PRINTFORMW 
 			CFLAG:342 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:342 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:342 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:342 = 3
 		;それ以外
@@ -1339,7 +1339,7 @@ IF SELECTCOM == 71
 			PRINTFORMW 
 			CFLAG:343 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:343 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:343 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:343 = 3
 		;それ以外
@@ -1372,7 +1372,7 @@ IF SELECTCOM == 72
 			PRINTFORMW 
 			CFLAG:420 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:420 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:420 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:420 = 3
 		;それ以外
@@ -1399,7 +1399,7 @@ IF SELECTCOM == 73
 			PRINTFORMW 
 			CFLAG:421 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:421 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:421 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:421 = 3
 		;それ以外
@@ -1429,7 +1429,7 @@ IF SELECTCOM == 80
 			PRINTFORMW 
 			CFLAG:344 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:344 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:344 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:344 = 3
 		;それ以外
@@ -1456,7 +1456,7 @@ IF SELECTCOM == 81
 			PRINTFORMW 
 			CFLAG:345 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:345 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:345 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:345 = 3
 		;それ以外
@@ -1483,7 +1483,7 @@ IF SELECTCOM == 82
 			PRINTFORMW 
 			CFLAG:346 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:346 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:346 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:346 = 3
 		;それ以外
@@ -1510,7 +1510,7 @@ IF SELECTCOM == 83
 			PRINTFORMW 
 			CFLAG:347 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:347 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:347 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:347 = 3
 		;それ以外
@@ -1537,7 +1537,7 @@ IF SELECTCOM == 84
 			PRINTFORMW 
 			CFLAG:348 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:348 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:348 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:348 = 3
 		;それ以外
@@ -1564,7 +1564,7 @@ IF SELECTCOM == 85
 			PRINTFORMW 
 			CFLAG:349 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:349 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:349 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:349 = 3
 		;それ以外
@@ -1591,7 +1591,7 @@ IF SELECTCOM == 86
 			PRINTFORMW 
 			CFLAG:350 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:350 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:350 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:350 = 3
 		;それ以外
@@ -1618,7 +1618,7 @@ IF SELECTCOM == 87
 			PRINTFORMW 
 			CFLAG:351 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:351 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:351 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:351 = 3
 		;それ以外
@@ -1645,7 +1645,7 @@ IF SELECTCOM == 88
 			PRINTFORMW 
 			CFLAG:352 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:352 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:352 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:352 = 3
 		;それ以外
@@ -1675,7 +1675,7 @@ IF SELECTCOM == 100
 			PRINTFORMW 
 			CFLAG:354 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:354 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:354 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:354 = 3
 		;それ以外
@@ -1702,7 +1702,7 @@ IF SELECTCOM == 101
 			PRINTFORMW 
 			CFLAG:355 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:355 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:355 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:355 = 3
 		;それ以外
@@ -1729,7 +1729,7 @@ IF SELECTCOM == 102
 			PRINTFORMW 
 			CFLAG:356 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:356 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:356 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:356 = 3
 		;それ以外
@@ -1756,7 +1756,7 @@ IF SELECTCOM == 103
 			PRINTFORMW 
 			CFLAG:357 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:357 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:357 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:357 = 3
 		;それ以外
@@ -1783,7 +1783,7 @@ IF SELECTCOM == 104
 			PRINTFORMW 
 			CFLAG:358 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:358 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:358 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:358 = 3
 		;それ以外
@@ -1810,7 +1810,7 @@ IF SELECTCOM == 105 && TEQUIP:18 == 0
 			PRINTFORMW 
 			CFLAG:359 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:359 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:359 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:359 = 3
 		;それ以外
@@ -1842,7 +1842,7 @@ IF SELECTCOM == 106 && TEQUIP:19 == 0
 			PRINTFORMW 
 			CFLAG:360 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:360 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:360 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:360 = 3
 		;それ以外
@@ -1874,7 +1874,7 @@ IF SELECTCOM == 107 && TEQUIP:20 == 0
 			PRINTFORMW 
 			CFLAG:361 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:361 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:361 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:361 = 3
 		;それ以外
@@ -1909,7 +1909,7 @@ IF SELECTCOM == 120
 			PRINTFORMW 
 			CFLAG:362 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:362 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:362 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:362 = 3
 		;それ以外
@@ -1936,7 +1936,7 @@ IF SELECTCOM == 121
 			PRINTFORMW 
 			CFLAG:363 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:363 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:363 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:363 = 3
 		;それ以外
@@ -1963,7 +1963,7 @@ IF SELECTCOM == 122
 			PRINTFORMW 
 			CFLAG:364 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:364 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:364 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:364 = 3
 		;それ以外
@@ -1990,7 +1990,7 @@ IF SELECTCOM == 123
 			PRINTFORMW 
 			CFLAG:365 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:365 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:365 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:365 = 3
 		;それ以外
@@ -2017,7 +2017,7 @@ IF SELECTCOM == 124
 			PRINTFORMW 
 			CFLAG:366 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:366 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:366 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:366 = 3
 		;それ以外
@@ -2044,7 +2044,7 @@ IF SELECTCOM == 125
 			PRINTFORMW 
 			CFLAG:367 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:367 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:367 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:367 = 3
 		;それ以外
@@ -2071,7 +2071,7 @@ IF SELECTCOM == 126
 			PRINTFORMW 
 			CFLAG:368 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:368 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:368 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:368 = 3
 		;それ以外
@@ -2101,7 +2101,7 @@ IF SELECTCOM == 140
 			PRINTFORMW 
 			CFLAG:369 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:369 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:369 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:369 = 3
 		;それ以外
@@ -2176,7 +2176,7 @@ IF SELECTCOM == 144
 			PRINTFORMW 
 			CFLAG:373 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:373 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:373 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:373 = 3
 		;それ以外
@@ -2203,7 +2203,7 @@ IF SELECTCOM == 145
 			PRINTFORMW 
 			CFLAG:374 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:374 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:374 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:374 = 3
 		;それ以外
@@ -2230,7 +2230,7 @@ IF SELECTCOM == 146 && TEQUIP:21 == 0
 			PRINTFORMW 
 			CFLAG:375 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:375 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:375 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:375 = 3
 		;それ以外
@@ -2262,7 +2262,7 @@ IF SELECTCOM == 147
 			PRINTFORMW 
 			CFLAG:376 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:376 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:376 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:376 = 3
 		;それ以外
@@ -2289,7 +2289,7 @@ IF SELECTCOM == 148 && TEQUIP:22 == 0
 			PRINTFORMW 
 			CFLAG:377 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:377 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:377 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:377 = 3
 		;それ以外
@@ -2405,7 +2405,7 @@ IF SELECTCOM == 160 && TEQUIP:25 == 0
 			PRINTFORMW 
 			CFLAG:382 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:382 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:382 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:382 = 3
 		;それ以外
@@ -2443,7 +2443,7 @@ IF SELECTCOM == 161
 			PRINTFORMW 
 			CFLAG:383 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:383 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:383 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:383 = 3
 		;それ以外
@@ -2470,7 +2470,7 @@ IF SELECTCOM == 162
 			PRINTFORMW 
 			CFLAG:384 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:384 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:384 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:384 = 3
 		;それ以外
@@ -2497,7 +2497,7 @@ IF SELECTCOM == 163
 			PRINTFORMW 
 			CFLAG:385 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:385 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:385 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:385 = 3
 		;それ以外
@@ -2524,7 +2524,7 @@ IF SELECTCOM == 164
 			PRINTFORMW 
 			CFLAG:386 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:386 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:386 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:386 = 3
 		;それ以外
@@ -2551,7 +2551,7 @@ IF SELECTCOM == 165
 			PRINTFORMW 
 			CFLAG:387 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:387 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:387 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:387 = 3
 		;それ以外
@@ -2578,7 +2578,7 @@ IF SELECTCOM == 166
 			PRINTFORMW 
 			CFLAG:388 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:388 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:388 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:388 = 3
 		;それ以外
@@ -2605,7 +2605,7 @@ IF SELECTCOM == 167
 			PRINTFORMW 
 			CFLAG:389 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:389 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:389 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:389 = 3
 		;それ以外
@@ -2632,7 +2632,7 @@ IF SELECTCOM == 168 && TEQUIP:36 == 0
 			PRINTFORMW 
 			CFLAG:390 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:390 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:390 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:390 = 3
 		;それ以外
@@ -2664,7 +2664,7 @@ IF SELECTCOM == 169
 			PRINTFORMW 
 			CFLAG:391 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:391 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:391 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:391 = 3
 		;それ以外
@@ -2694,7 +2694,7 @@ IF SELECTCOM == 180
 			PRINTFORMW 
 			CFLAG:392 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:392 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:392 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:392 = 3
 		;それ以外
@@ -2721,7 +2721,7 @@ IF SELECTCOM == 181
 			PRINTFORMW 
 			CFLAG:393 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:393 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:393 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:393 = 3
 		;それ以外
@@ -2748,7 +2748,7 @@ IF SELECTCOM == 182
 			PRINTFORMW 
 			CFLAG:394 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:394 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:394 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:394 = 3
 		;それ以外
@@ -2775,7 +2775,7 @@ IF SELECTCOM == 183 && TEQUIP:28 == 0
 			PRINTFORMW 
 			CFLAG:395 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:395 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:395 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:395 = 3
 		;それ以外
@@ -2807,7 +2807,7 @@ IF SELECTCOM == 184 && TEQUIP:29 == 0
 			PRINTFORMW 
 			CFLAG:396 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:396 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:396 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:396 = 3
 		;それ以外
@@ -2839,7 +2839,7 @@ IF SELECTCOM == 185
 			PRINTFORMW 
 			CFLAG:397 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:397 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:397 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:397 = 3
 		;それ以外
@@ -2866,7 +2866,7 @@ IF SELECTCOM == 186 && TEQUIP:30 == 0
 			PRINTFORMW 
 			CFLAG:398 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:398 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:398 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:398 = 3
 		;それ以外
@@ -2898,7 +2898,7 @@ IF SELECTCOM == 187 && TEQUIP:31 == 0
 			PRINTFORMW 
 			CFLAG:399 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:399 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:399 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:399 = 3
 		;それ以外
@@ -2930,7 +2930,7 @@ IF SELECTCOM == 188 && TEQUIP:32 == 0
 			PRINTFORMW 
 			CFLAG:400 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:400 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:400 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:400 = 3
 		;それ以外
@@ -2962,7 +2962,7 @@ IF SELECTCOM == 190
 			PRINTFORMW 
 			CFLAG:402 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:402 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:402 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:402 = 3
 		;それ以外
@@ -2989,7 +2989,7 @@ IF SELECTCOM == 191
 			PRINTFORMW 
 			CFLAG:403 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:403 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:403 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:403 = 3
 		;それ以外
@@ -3016,7 +3016,7 @@ IF SELECTCOM == 192
 			PRINTFORMW 
 			CFLAG:404 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:404 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:404 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:404 = 3
 		;それ以外
@@ -3043,7 +3043,7 @@ IF SELECTCOM == 193
 			PRINTFORMW 
 			CFLAG:405 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:405 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:405 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:405 = 3
 		;それ以外
@@ -3070,7 +3070,7 @@ IF SELECTCOM == 194
 			PRINTFORMW 
 			CFLAG:406 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:406 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:406 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:406 = 3
 		;それ以外
@@ -3106,7 +3106,7 @@ IF SELECTCOM == 500
 			PRINTFORMW 
 			CFLAG:407 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:407 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:407 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:407 = 3
 		;それ以外
@@ -3132,7 +3132,7 @@ IF SELECTCOM == 501
 			PRINTFORMW 
 			CFLAG:408 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:408 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:408 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:408 = 3
 		;それ以外
@@ -3158,7 +3158,7 @@ IF SELECTCOM == 502
 			PRINTFORMW 
 			CFLAG:409 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:409 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:409 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:409 = 3
 		;それ以外
@@ -3184,7 +3184,7 @@ IF SELECTCOM == 503
 			PRINTFORMW 
 			CFLAG:410 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:410 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:410 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:410 = 3
 		;それ以外
@@ -3216,7 +3216,7 @@ IF SELECTCOM == 504
 			PRINTFORMW 
 			CFLAG:411 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:411 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:411 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:411 = 3
 		;それ以外
@@ -3249,7 +3249,7 @@ IF SELECTCOM == 505 && TFLAG:40 == 1
 			PRINTFORMW 
 			CFLAG:412 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:412 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:412 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:412 = 3
 		;それ以外
@@ -3272,7 +3272,7 @@ ELSEIF SELECTCOM == 505 && TFLAG:40 == 2
 			PRINTFORMW 
 			CFLAG:419 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:419 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:419 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:419 = 3
 		;それ以外
@@ -3298,7 +3298,7 @@ IF SELECTCOM == 506
 			PRINTFORMW 
 			CFLAG:413 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:413 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:413 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:413 = 3
 		;それ以外
@@ -3324,7 +3324,7 @@ IF SELECTCOM == 507
 			PRINTFORMW 
 			CFLAG:414 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:414 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:414 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:414 = 3
 		;それ以外
@@ -3350,7 +3350,7 @@ IF SELECTCOM == 508
 			PRINTFORMW 
 			CFLAG:415 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:415 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:415 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:415 = 3
 		;それ以外
@@ -3376,7 +3376,7 @@ IF SELECTCOM == 509
 			PRINTFORMW 
 			CFLAG:416 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:416 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:416 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:416 = 3
 		;それ以外
@@ -3402,7 +3402,7 @@ IF SELECTCOM == 510
 			PRINTFORMW 
 			CFLAG:417 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:417 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:417 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:417 = 3
 		;それ以外
@@ -3428,7 +3428,7 @@ IF SELECTCOM == 511
 			PRINTFORMW 
 			CFLAG:418 = 4
 		;屈服刻印Lv3
-		ELSEIF MARK:2 == 3 && (CFLAG:418 < 3 || FLAG:7 == 2)
+		ELSEIF MARK:屈服刻印 == 3 && (CFLAG:418 < 3 || FLAG:7 == 2)
 			PRINTFORMW 
 			CFLAG:418 = 3
 		;それ以外
@@ -3967,7 +3967,7 @@ ENDIF
 ;-------------------------------------------------
 ;初めて潤滑がLV3超えた
 ;-------------------------------------------------
-P = PALAM:4 + UP:4
+P = PALAM:潤滑 + UP:4
 IF P > PALAMLV:4 && CFLAG:245 == 0
 	CALL PALAM_MESSAGE_D
 	;ローションを使った場合
@@ -3983,7 +3983,7 @@ ENDIF
 ;-------------------------------------------------
 ;初めて欲情がLV2超えた
 ;-------------------------------------------------
-P = PALAM:6 + UP:6
+P = PALAM:欲情 + UP:6
 IF P > PALAMLV:3 && CFLAG:246 == 0
 	CALL PALAM_MESSAGE_D
 	;媚薬を使った場合
@@ -3999,7 +3999,7 @@ ENDIF
 ;-------------------------------------------------
 ;初めて屈服がLV3超えた
 ;-------------------------------------------------
-P = PALAM:7 + UP:7
+P = PALAM:屈服 + UP:7
 IF P > PALAMLV:3 && CFLAG:247 == 0
 	CALL PALAM_MESSAGE_D
 	PRINTFORMW 
@@ -4009,7 +4009,7 @@ ENDIF
 ;-------------------------------------------------
 ;初めて恭順がLV3超えた
 ;-------------------------------------------------
-P = PALAM:5 + UP:5
+P = PALAM:恭順 + UP:5
 IF P > PALAMLV:3 && CFLAG:248 == 0
 	CALL PALAM_MESSAGE_D
 	PRINTFORMW 
@@ -4019,7 +4019,7 @@ ENDIF
 ;-------------------------------------------------
 ;初めて恐怖がLV3超えた
 ;-------------------------------------------------
-P = PALAM:11 + UP:11
+P = PALAM:恐怖 + UP:11
 IF P > PALAMLV:3 && CFLAG:249 == 0
 	CALL PALAM_MESSAGE_D
 	PRINTFORMW 
@@ -4361,7 +4361,7 @@ ENDIF
 IF TFLAG:13 == 18
 	CALL EVENT_MESSAGE
 	;反発刻印Lv3
-	IF MARK:3 == 3
+	IF MARK:反発刻印 == 3
 		PRINTFORMW 
 	;それ以外
 	ELSE

@@ -1,9 +1,9 @@
 ﻿;Ｃ感覚の可否
 @ISABLUP3
 ;恋慕、親愛、淫乱、娼婦はMAXLV10
-IF ABL:3 >= 10
+IF ABL:Ｃ感覚 >= 10
 	RETURN 0
-ELSEIF ABL:3 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:淫乱 == 0 && TALENT:娼婦 == 0
+ELSEIF ABL:Ｃ感覚 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:淫乱 == 0 && TALENT:娼婦 == 0
 	RETURN 0
 ENDIF
 
@@ -19,10 +19,10 @@ ENDIF
 @ABLUP3
 DRAWLINE
 ;恋慕、親愛、淫乱、娼婦はMAXLV10
-IF ABL:3 >= 10
+IF ABL:Ｃ感覚 >= 10
 	PRINTW 既にMAXです
 	RETURN 0
-ELSEIF ABL:3 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:淫乱 == 0 && TALENT:娼婦 == 0
+ELSEIF ABL:Ｃ感覚 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:淫乱 == 0 && TALENT:娼婦 == 0
 	PRINTW 既にMAXです
 	RETURN 0
 ENDIF
@@ -57,7 +57,7 @@ ELSEIF RESULT == 100
 	RETURN 0
 ENDIF
 
-ABL:3 += 1
+ABL:Ｃ感覚 += 1
 
 IF RESULT == 0
 	JUEL:0 -= A
@@ -65,7 +65,7 @@ ENDIF
 
 PRINTS ABLNAME:3
 PRINT のレベルが
-PRINTV ABL:3
+PRINTV ABL:Ｃ感覚
 PRINTW になりました
 
 
@@ -76,25 +76,25 @@ I = 0
 ;能力アップ可能なら1にする
 Z = 0
 
-IF ABL:3 == 0
+IF ABL:Ｃ感覚 == 0
 	A = 1
-ELSEIF ABL:3 == 1
+ELSEIF ABL:Ｃ感覚 == 1
 	A = 20
-ELSEIF ABL:3 == 2
+ELSEIF ABL:Ｃ感覚 == 2
 	A = 400
-ELSEIF ABL:3 == 3
+ELSEIF ABL:Ｃ感覚 == 3
 	A = 5000
-ELSEIF ABL:3 == 4
+ELSEIF ABL:Ｃ感覚 == 4
 	A = 15000
-ELSEIF ABL:3 == 5
+ELSEIF ABL:Ｃ感覚 == 5
 	A = 30000
-ELSEIF ABL:3 == 6
+ELSEIF ABL:Ｃ感覚 == 6
 	A = 40000
-ELSEIF ABL:3 == 7
+ELSEIF ABL:Ｃ感覚 == 7
 	A = 50000
-ELSEIF ABL:3 == 8
+ELSEIF ABL:Ｃ感覚 == 8
 	A = 60000
-ELSEIF ABL:3 == 9
+ELSEIF ABL:Ｃ感覚 == 9
 	A = 70000
 ENDIF
 

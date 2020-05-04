@@ -14,7 +14,7 @@ SIF ASSI >= 0
 IF TALENT:恋慕 == 0 && TALENT:淫乱 == 0 && TALENT:服従 == 0 && TALENT:親愛 == 0 && TALENT:娼婦 == 0 && TALENT:隷属 == 0 && TALENT:崩壊 == 0
 
 	;恋慕：従順、奉仕精神3以上+屈服刻印Lv3+反発刻印Lv0+奉仕快楽経験200以上+依存度1000以上+レズ経験もしくはゲイ経験1000未満+異常経験2未満
-	IF ABL:0 >= 3 && ABL:7 >= 3 && MARK:2 == 3 && MARK:3 == 0 && EXP:奉仕快楽経験 >= 200 && CFLAG:2 >= 1000 && EXP:レズ経験 < 1000 && EXP:ゲイ経験 < 1000 && EXP:異常経験 < 2
+	IF ABL:従順 >= 3 && ABL:奉仕精神 >= 3 && MARK:屈服刻印 == 3 && MARK:反発刻印 == 0 && EXP:奉仕快楽経験 >= 200 && CFLAG:2 >= 1000 && EXP:レズ経験 < 1000 && EXP:ゲイ経験 < 1000 && EXP:異常経験 < 2
 		PRINTFORMW %CALLNAME:TARGET%のこちらを見る目がおかしい
 		PRINTFORML %CALLNAME:TARGET%は%CALLNAME:MASTER%との行為に悦びを感じているようだ
 		PRINTFORMW %NAME:TARGET%は【恋慕】を得た
@@ -25,7 +25,7 @@ IF TALENT:恋慕 == 0 && TALENT:淫乱 == 0 && TALENT:服従 == 0 && TALENT:親�
 
 	;淫乱：欲望3以上+CVAB感覚合計10以上+快楽刻印Lv3+屈服刻印Lv3+反発刻印Lv0+絶頂経験50以上+異常経験2以上or異常経験1以上+レズ経験もしくはゲイ経験2000以上
 	;eratohoAよりも異常経験緩和
-	IF ABL:1 >= 3 && ABL:3+ABL:4+ABL:5+ABL:6 >= 10 && MARK:1 == 3 && MARK:2 == 3 && MARK:3 == 0 && EXP:絶頂経験 >= 50
+	IF ABL:欲望 >= 3 && ABL:Ｃ感覚+ABL:Ｖ感覚+ABL:Ａ感覚+ABL:Ｂ感覚 >= 10 && MARK:快楽刻印 == 3 && MARK:屈服刻印 == 3 && MARK:反発刻印 == 0 && EXP:絶頂経験 >= 50
 		IF EXP:異常経験 >= 2 || (EXP:異常経験 >= 1 && (EXP:レズ経験 >= 2000 || EXP:ゲイ経験 >= 2000))
 			PRINTFORMW %CALLNAME:TARGET%のこちらを見る目がおかしい
 			PRINTFORML %CALLNAME:TARGET%は%CALLNAME:MASTER%に与えられる快楽に溺れているようだ
@@ -64,7 +64,7 @@ IF TALENT:恋慕 == 0 && TALENT:淫乱 == 0 && TALENT:服従 == 0 && TALENT:親�
 	;服従：従順、マゾっ気3以上+CAVB感覚10未満+屈服刻印Lv3+反発刻印Lv0+苦痛快楽経験+緊縛経験200以上+依存度-1000以下+レズ経験もしくはゲイ経験1000未満+異常経験2以上
 	;eratohoAよりも異常経験緩和
 	A = CFLAG:2 * -1
-	IF ABL:0 >= 3 && ABL:9 >= 3 && ABL:3+ABL:4+ABL:5+ABL:6 < 10 && MARK:2 == 3 && MARK:3 == 0 && EXP:苦痛快楽経験+EXP:緊縛経験 >= 200 && A >= 1000 && EXP:レズ経験 < 1000 && EXP:ゲイ経験 < 1000 && EXP:異常経験 >= 2
+	IF ABL:従順 >= 3 && ABL:マゾっ気 >= 3 && ABL:Ｃ感覚+ABL:Ｖ感覚+ABL:Ａ感覚+ABL:Ｂ感覚 < 10 && MARK:屈服刻印 == 3 && MARK:反発刻印 == 0 && EXP:苦痛快楽経験+EXP:緊縛経験 >= 200 && A >= 1000 && EXP:レズ経験 < 1000 && EXP:ゲイ経験 < 1000 && EXP:異常経験 >= 2
 		PRINTFORMW %CALLNAME:TARGET%のこちらを見る目がおかしい
 		PRINTFORML %CALLNAME:TARGET%は%CALLNAME:MASTER%に心が平伏しきっているようだ
 		PRINTFORMW %NAME:TARGET%は【服従】を得た
@@ -79,7 +79,7 @@ ENDIF
 IF TALENT:親愛 == 0 && TALENT:娼婦 == 0 && TALENT:隷属 == 0 && TALENT:崩壊 == 0
 
 	;親愛:恋慕、従順、奉仕精神5以上+反発刻印Lv0+愛情経験200以上+奉仕快楽経験400以上+依存度3000以上+レズ経験もしくはゲイ経験1500未満+異常経験5未満
-	IF TALENT:恋慕 && ABL:0 >= 5 && ABL:7 >= 5 && MARK:3 == 0 && EXP:愛情経験 >= 200 && EXP:奉仕快楽経験 >= 400 && CFLAG:2 >= 3000 && EXP:レズ経験 < 1500 && EXP:ゲイ経験 < 1500 && EXP:異常経験 < 5
+	IF TALENT:恋慕 && ABL:従順 >= 5 && ABL:奉仕精神 >= 5 && MARK:反発刻印 == 0 && EXP:愛情経験 >= 200 && EXP:奉仕快楽経験 >= 400 && CFLAG:2 >= 3000 && EXP:レズ経験 < 1500 && EXP:ゲイ経験 < 1500 && EXP:異常経験 < 5
 		PRINTFORMW %CALLNAME:TARGET%のこちらを見る目がおかしい
 		PRINTFORML %CALLNAME:TARGET%は身も心も%CALLNAME:MASTER%に依存しきっているようだ
 		PRINTFORMW %NAME:TARGET%の【恋慕】は【親愛】になった
@@ -90,7 +90,7 @@ IF TALENT:親愛 == 0 && TALENT:娼婦 == 0 && TALENT:隷属 == 0 && TALENT:崩�
 
 	;娼婦：淫乱、欲望5以上+CVAB感覚合計20以上+反発刻印Lv0+絶頂経験200以上+異常経験4以上or異常経験2以上+レズ経験もしくはゲイ経験3000以上
 	;eratohoAよりも異常経験緩和
-	IF TALENT:淫乱 && ABL:1 >= 5 && ABL:3+ABL:4+ABL:5+ABL:6 >= 20 && MARK:3 == 0 && EXP:絶頂経験 >= 200
+	IF TALENT:淫乱 && ABL:欲望 >= 5 && ABL:Ｃ感覚+ABL:Ｖ感覚+ABL:Ａ感覚+ABL:Ｂ感覚 >= 20 && MARK:反発刻印 == 0 && EXP:絶頂経験 >= 200
 		IF EXP:異常経験 >= 4 || (EXP:異常経験 >= 2 && (EXP:レズ経験 >= 3000 || EXP:ゲイ経験 >= 3000)) 
 			PRINTFORMW %CALLNAME:TARGET%のこちらを見る目がおかしい
 			PRINTFORML %CALLNAME:TARGET%は身も心も%CALLNAME:MASTER%に与えられる快楽に依存しきっているようだ
@@ -104,7 +104,7 @@ IF TALENT:親愛 == 0 && TALENT:娼婦 == 0 && TALENT:隷属 == 0 && TALENT:崩�
 	;隷属：服従、従順、マゾっ気5以上+CAVB感覚15未満+反発刻印Lv0+苦痛快楽経験+緊縛経験500以上+依存度-3000以下+レズ経験もしくはゲイ経験1500未満+異常経験5以上
 	;eratohoAよりも異常経験緩和
 	A = CFLAG:2 * -1
-	IF TALENT:服従 && ABL:0 >= 5 && ABL:9 >= 5 && ABL:3+ABL:4+ABL:5+ABL:6 < 15 && MARK:3 == 0 && EXP:苦痛快楽経験+EXP:緊縛経験 >= 500 && A >= 3000 && EXP:レズ経験 < 1500 && EXP:ゲイ経験 < 1500 && EXP:異常経験 >= 5
+	IF TALENT:服従 && ABL:従順 >= 5 && ABL:マゾっ気 >= 5 && ABL:Ｃ感覚+ABL:Ｖ感覚+ABL:Ａ感覚+ABL:Ｂ感覚 < 15 && MARK:反発刻印 == 0 && EXP:苦痛快楽経験+EXP:緊縛経験 >= 500 && A >= 3000 && EXP:レズ経験 < 1500 && EXP:ゲイ経験 < 1500 && EXP:異常経験 >= 5
 		PRINTFORMW %CALLNAME:TARGET%のこちらを見る目がおかしい
 		PRINTFORML %CALLNAME:TARGET%は身も心も%CALLNAME:MASTER%の奴隷となりきっているようだ
 		PRINTFORMW %NAME:TARGET%の【服従】は【隷属】になった
@@ -121,7 +121,7 @@ ENDIF
 ;---------------------------------------------------------
 ;特殊性感素質、一つしか取得はできない（重複した場合は上から優先）
 ;自慰狂い：Ｃ感覚４以上、調教自慰経験１００以上、絶頂経験１５０以上
-IF ABL:3 >= 4 && EXP:調教自慰経験 >= 100 && EXP:絶頂経験 >= 150 && TALENT:自慰狂い == 0 && TALENT:セックス狂 == 0 && TALENT:尻穴狂い == 0 && TALENT:淫乳 == 0
+IF ABL:Ｃ感覚 >= 4 && EXP:調教自慰経験 >= 100 && EXP:絶頂経験 >= 150 && TALENT:自慰狂い == 0 && TALENT:セックス狂 == 0 && TALENT:尻穴狂い == 0 && TALENT:淫乳 == 0
 	PRINTFORMW %CALLNAME:TARGET%のこちらを見る目がおかしい
 	PRINTFORML 調教が終わった後にもかかわらず、%CALLNAME:TARGET%はクリトリスを弄りながら物欲しげな視線を%CALLNAME:MASTER%に送っている
 	PRINTFORMW %NAME:TARGET%は【自慰狂い】を得た
@@ -130,7 +130,7 @@ IF ABL:3 >= 4 && EXP:調教自慰経験 >= 100 && EXP:絶頂経験 >= 150 && TAL
 ENDIF
 
 ;セックス狂：Ｖ感覚４以上、性交経験３００以上、絶頂経験１５０以上
-IF ABL:4 >= 4 && EXP:性交経験 >= 300 && EXP:絶頂経験 >= 150 && TALENT:自慰狂い == 0 && TALENT:セックス狂 == 0 && TALENT:尻穴狂い == 0 && TALENT:淫乳 == 0
+IF ABL:Ｖ感覚 >= 4 && EXP:性交経験 >= 300 && EXP:絶頂経験 >= 150 && TALENT:自慰狂い == 0 && TALENT:セックス狂 == 0 && TALENT:尻穴狂い == 0 && TALENT:淫乳 == 0
 	PRINTFORMW %CALLNAME:TARGET%のこちらを見る目がおかしい
 	PRINTFORML 調教が終わった後にもかかわらず、%CALLNAME:TARGET%は%CALLNAME:MASTER%に擦り寄り抱いて欲しいと懇願してきた
 	PRINTFORMW %NAME:TARGET%は【セックス狂い】を得た
@@ -139,7 +139,7 @@ IF ABL:4 >= 4 && EXP:性交経験 >= 300 && EXP:絶頂経験 >= 150 && TALENT:�
 ENDIF
 
 ;尻穴狂い：Ａ感覚４以上、Ａ経験３００以上、絶頂経験１５０以上
-IF ABL:5 >= 4 && EXP:Ａ経験 >= 300 && EXP:絶頂経験 >= 150 && TALENT:自慰狂い == 0 && TALENT:セックス狂 == 0 && TALENT:尻穴狂い == 0 && TALENT:淫乳 == 0
+IF ABL:Ａ感覚 >= 4 && EXP:Ａ経験 >= 300 && EXP:絶頂経験 >= 150 && TALENT:自慰狂い == 0 && TALENT:セックス狂 == 0 && TALENT:尻穴狂い == 0 && TALENT:淫乳 == 0
 	PRINTFORMW %CALLNAME:TARGET%のこちらを見る目がおかしい
 	PRINTFORML 調教が終わった後にもかかわらず、%CALLNAME:TARGET%はアナルを弄りながら物欲しげな視線を%CALLNAME:MASTER%に送っている
 	PRINTFORMW %NAME:TARGET%は【尻穴狂い】を得た
@@ -148,7 +148,7 @@ IF ABL:5 >= 4 && EXP:Ａ経験 >= 300 && EXP:絶頂経験 >= 150 && TALENT:自�
 ENDIF
 
 ;淫乳：Ｂ感覚４以上、噴乳経験１００以上、絶頂経験１５０以上
-IF ABL:6 >= 4 && EXP:噴乳経験 >= 100 && EXP:絶頂経験 >= 150 && TALENT:自慰狂い == 0 && TALENT:セックス狂 == 0 && TALENT:尻穴狂い == 0 && TALENT:淫乳 == 0
+IF ABL:Ｂ感覚 >= 4 && EXP:噴乳経験 >= 100 && EXP:絶頂経験 >= 150 && TALENT:自慰狂い == 0 && TALENT:セックス狂 == 0 && TALENT:尻穴狂い == 0 && TALENT:淫乳 == 0
 	PRINTFORMW %CALLNAME:TARGET%のこちらを見る目がおかしい
 	PRINTFORML 調教が終わった後にもかかわらず、%CALLNAME:TARGET%は乳首を弄りながら物欲しげな視線を%CALLNAME:MASTER%に送っている
 	PRINTFORMW %NAME:TARGET%は【淫乳】を得た
@@ -159,7 +159,7 @@ ENDIF
 
 ;特殊性癖素質
 ;サド：サドっ気Lv４以上、嗜虐快楽経験３００以上、技巧Lv４以上
-IF ABL:10 >= 4 && EXP:嗜虐快楽経験 >= 300 && ABL:2 >= 4 && TALENT:サド == 0 && TALENT:マゾ == 0
+IF ABL:サドっ気 >= 4 && EXP:嗜虐快楽経験 >= 300 && ABL:技巧 >= 4 && TALENT:サド == 0 && TALENT:マゾ == 0
 	PRINTFORMW %CALLNAME:TARGET%のこちらを見る目がおかしい
 	PRINTFORML %CALLNAME:TARGET%は人を痛めつける喜びに目覚めたようだ
 	PRINTFORMW %NAME:TARGET%は【サド】を得た
@@ -168,7 +168,7 @@ IF ABL:10 >= 4 && EXP:嗜虐快楽経験 >= 300 && ABL:2 >= 4 && TALENT:サド =
 ENDIF
 
 ;マゾ：マゾっ気Lv４以上、苦痛快楽経験３００以上
-IF ABL:9 >= 4 && EXP:苦痛快楽経験 >= 300 && TALENT:サド == 0 && TALENT:マゾ == 0
+IF ABL:マゾっ気 >= 4 && EXP:苦痛快楽経験 >= 300 && TALENT:サド == 0 && TALENT:マゾ == 0
 	PRINTFORMW %CALLNAME:TARGET%のこちらを見る目がおかしい
 	PRINTFORML %CALLNAME:TARGET%は体を痛めつけられる喜びに目覚めたようだ
 	PRINTFORMW %NAME:TARGET%は【マゾ】を得た
@@ -182,71 +182,71 @@ ENDIF
 ;---------------------------------------------------------
 @EVENTCHECK_M
 ;主人の技巧：調教経験が20、100、250、400、600のたびに上昇、Lv５まで
-IF EXP:MASTER:調教経験 >= 600 && ABL:MASTER:2 <= 4
-	ABL:MASTER:2 = 5
-	PRINTFORMW %NAME:MASTER%の%ABLNAME:2%が{ABL:MASTER:2}に上がった
+IF EXP:MASTER:調教経験 >= 600 && ABL:MASTER:技巧 <= 4
+	ABL:MASTER:技巧 = 5
+	PRINTFORMW %NAME:MASTER%の%ABLNAME:2%が{ABL:MASTER:技巧}に上がった
 	PRINTL 　
-ELSEIF EXP:MASTER:調教経験 >= 400 && ABL:MASTER:2 <= 3
-	ABL:MASTER:2 = 4
-	PRINTFORMW %NAME:MASTER%の%ABLNAME:2%が{ABL:MASTER:2}に上がった
+ELSEIF EXP:MASTER:調教経験 >= 400 && ABL:MASTER:技巧 <= 3
+	ABL:MASTER:技巧 = 4
+	PRINTFORMW %NAME:MASTER%の%ABLNAME:2%が{ABL:MASTER:技巧}に上がった
 	PRINTL 　
-ELSEIF EXP:MASTER:調教経験 >= 250 && ABL:MASTER:2 <= 2
-	ABL:MASTER:2 = 3
-	PRINTFORMW %NAME:MASTER%の%ABLNAME:2%が{ABL:MASTER:2}に上がった
+ELSEIF EXP:MASTER:調教経験 >= 250 && ABL:MASTER:技巧 <= 2
+	ABL:MASTER:技巧 = 3
+	PRINTFORMW %NAME:MASTER%の%ABLNAME:2%が{ABL:MASTER:技巧}に上がった
 	PRINTL 　
-ELSEIF EXP:MASTER:調教経験 >= 100 && ABL:MASTER:2 <= 1
-	ABL:MASTER:2 = 2
-	PRINTFORMW %NAME:MASTER%の%ABLNAME:2%が{ABL:MASTER:2}に上がった
+ELSEIF EXP:MASTER:調教経験 >= 100 && ABL:MASTER:技巧 <= 1
+	ABL:MASTER:技巧 = 2
+	PRINTFORMW %NAME:MASTER%の%ABLNAME:2%が{ABL:MASTER:技巧}に上がった
 	PRINTL 　
-ELSEIF EXP:MASTER:調教経験 >= 20 && ABL:MASTER:2 <= 0
-	ABL:MASTER:2 = 1
-	PRINTFORMW %NAME:MASTER%の%ABLNAME:2%が{ABL:MASTER:2}に上がった
+ELSEIF EXP:MASTER:調教経験 >= 20 && ABL:MASTER:技巧 <= 0
+	ABL:MASTER:技巧 = 1
+	PRINTFORMW %NAME:MASTER%の%ABLNAME:2%が{ABL:MASTER:技巧}に上がった
 	PRINTL 　
 ENDIF
 
 ;主人のサドっ気：嗜虐快楽経験が10、20、50、100、200のたびに上昇、Lv５まで
-IF EXP:MASTER:嗜虐快楽経験 >= 200 && ABL:MASTER:10 <= 4
-	ABL:MASTER:10 = 5
-	PRINTFORMW %NAME:MASTER%の%ABLNAME:10%が{ABL:MASTER:10}に上がった
+IF EXP:MASTER:嗜虐快楽経験 >= 200 && ABL:MASTER:サドっ気 <= 4
+	ABL:MASTER:サドっ気 = 5
+	PRINTFORMW %NAME:MASTER%の%ABLNAME:10%が{ABL:MASTER:サドっ気}に上がった
 	PRINTL 　
-ELSEIF EXP:MASTER:嗜虐快楽経験 >= 100 && ABL:MASTER:10 <= 3
-	ABL:MASTER:10 = 4
-	PRINTFORMW %NAME:MASTER%の%ABLNAME:10%が{ABL:MASTER:10}に上がった
+ELSEIF EXP:MASTER:嗜虐快楽経験 >= 100 && ABL:MASTER:サドっ気 <= 3
+	ABL:MASTER:サドっ気 = 4
+	PRINTFORMW %NAME:MASTER%の%ABLNAME:10%が{ABL:MASTER:サドっ気}に上がった
 	PRINTL 　
-ELSEIF EXP:MASTER:嗜虐快楽経験 >= 50 && ABL:MASTER:10 <= 2
-	ABL:MASTER:10 = 3
-	PRINTFORMW %NAME:MASTER%の%ABLNAME:10%が{ABL:MASTER:10}に上がった
+ELSEIF EXP:MASTER:嗜虐快楽経験 >= 50 && ABL:MASTER:サドっ気 <= 2
+	ABL:MASTER:サドっ気 = 3
+	PRINTFORMW %NAME:MASTER%の%ABLNAME:10%が{ABL:MASTER:サドっ気}に上がった
 	PRINTL 　
-ELSEIF EXP:MASTER:嗜虐快楽経験 >= 20 && ABL:MASTER:10 <= 1
-	ABL:MASTER:10 = 2
-	PRINTFORMW %NAME:MASTER%の%ABLNAME:10%が{ABL:MASTER:10}に上がった
+ELSEIF EXP:MASTER:嗜虐快楽経験 >= 20 && ABL:MASTER:サドっ気 <= 1
+	ABL:MASTER:サドっ気 = 2
+	PRINTFORMW %NAME:MASTER%の%ABLNAME:10%が{ABL:MASTER:サドっ気}に上がった
 	PRINTL 　
-ELSEIF EXP:MASTER:嗜虐快楽経験 >= 10 && ABL:MASTER:10 <= 0
-	ABL:MASTER:10 = 1
-	PRINTFORMW %NAME:MASTER%の%ABLNAME:10%が{ABL:MASTER:10}に上がった
+ELSEIF EXP:MASTER:嗜虐快楽経験 >= 10 && ABL:MASTER:サドっ気 <= 0
+	ABL:MASTER:サドっ気 = 1
+	PRINTFORMW %NAME:MASTER%の%ABLNAME:10%が{ABL:MASTER:サドっ気}に上がった
 	PRINTL 　
 ENDIF
 
 ;主人の撮影技能：撮影経験が10、30、60、100、150のたびに上昇、Lv５まで
-IF EXP:MASTER:撮影経験 >= 150 && ABL:MASTER:13 <= 4
-	ABL:MASTER:13 = 5
-	PRINTFORMW %NAME:MASTER%の%ABLNAME:13%が{ABL:MASTER:13}に上がった
+IF EXP:MASTER:撮影経験 >= 150 && ABL:MASTER:撮影技能 <= 4
+	ABL:MASTER:撮影技能 = 5
+	PRINTFORMW %NAME:MASTER%の%ABLNAME:13%が{ABL:MASTER:撮影技能}に上がった
 	PRINTL 　
-ELSEIF EXP:MASTER:撮影経験 >= 100 && ABL:MASTER:13 <= 3
-	ABL:MASTER:13 = 4
-	PRINTFORMW %NAME:MASTER%の%ABLNAME:13%が{ABL:MASTER:13}に上がった
+ELSEIF EXP:MASTER:撮影経験 >= 100 && ABL:MASTER:撮影技能 <= 3
+	ABL:MASTER:撮影技能 = 4
+	PRINTFORMW %NAME:MASTER%の%ABLNAME:13%が{ABL:MASTER:撮影技能}に上がった
 	PRINTL 　
-ELSEIF EXP:MASTER:撮影経験 >= 60 && ABL:MASTER:13 <= 2
-	ABL:MASTER:13 = 3
-	PRINTFORMW %NAME:MASTER%の%ABLNAME:13%が{ABL:MASTER:13}に上がった
+ELSEIF EXP:MASTER:撮影経験 >= 60 && ABL:MASTER:撮影技能 <= 2
+	ABL:MASTER:撮影技能 = 3
+	PRINTFORMW %NAME:MASTER%の%ABLNAME:13%が{ABL:MASTER:撮影技能}に上がった
 	PRINTL 　
-ELSEIF EXP:MASTER:撮影経験 >= 30 && ABL:MASTER:13 <= 1
-	ABL:MASTER:13 = 2
-	PRINTFORMW %NAME:MASTER%の%ABLNAME:13%が{ABL:MASTER:13}に上がった
+ELSEIF EXP:MASTER:撮影経験 >= 30 && ABL:MASTER:撮影技能 <= 1
+	ABL:MASTER:撮影技能 = 2
+	PRINTFORMW %NAME:MASTER%の%ABLNAME:13%が{ABL:MASTER:撮影技能}に上がった
 	PRINTL 　
-ELSEIF EXP:MASTER:撮影経験 >= 10 && ABL:MASTER:13 <= 0
-	ABL:MASTER:13 = 1
-	PRINTFORMW %NAME:MASTER%の%ABLNAME:13%が{ABL:MASTER:13}に上がった
+ELSEIF EXP:MASTER:撮影経験 >= 10 && ABL:MASTER:撮影技能 <= 0
+	ABL:MASTER:撮影技能 = 1
+	PRINTFORMW %NAME:MASTER%の%ABLNAME:13%が{ABL:MASTER:撮影技能}に上がった
 	PRINTL 　
 ENDIF
 
@@ -263,13 +263,13 @@ IF (FLAG:30+FLAG:32) >= 5 && TALENT:MASTER:謎の魅力 == 0
 ENDIF
 
 ;主人のサド：サドっ気がLv４以上、嗜虐快楽経験300以上でサド
-IF ABL:MASTER:10 >= 4 && EXP:MASTER:嗜虐快楽経験 >= 300 && TALENT:MASTER:サド == 0 && TALENT:MASTER:マゾ == 0
+IF ABL:MASTER:サドっ気 >= 4 && EXP:MASTER:嗜虐快楽経験 >= 300 && TALENT:MASTER:サド == 0 && TALENT:MASTER:マゾ == 0
 	PRINTFORMW %NAME:MASTER%は【サド】を身につけた
 	TALENT:MASTER:サド = 1
 ENDIF
 
 ;主人のマゾ：マゾっ気がLv４以上、苦痛快楽経験300以上でサド
-IF ABL:MASTER:9 >= 4 && EXP:MASTER:苦痛快楽経験 >= 300 && TALENT:MASTER:サド == 0 && TALENT:MASTER:マゾ == 0
+IF ABL:MASTER:マゾっ気 >= 4 && EXP:MASTER:苦痛快楽経験 >= 300 && TALENT:MASTER:サド == 0 && TALENT:MASTER:マゾ == 0
 	PRINTFORMW %NAME:MASTER%は【マゾ】を身につけた
 	TALENT:MASTER:マゾ = 1
 ENDIF
@@ -280,76 +280,76 @@ ENDIF
 ;---------------------------------------------------------
 @EVENTCHECK_A
 ;助手の技巧：調教経験が20、100、250、400、600のたびに上昇、Lv５まで
-IF EXP:ASSI:調教経験 >= 600 && ABL:ASSI:2 <= 4
-	ABL:ASSI:2 = 5
-	PRINTFORMW %NAME:ASSI%の%ABLNAME:2%が{ABL:ASSI:2}に上がった
+IF EXP:ASSI:調教経験 >= 600 && ABL:ASSI:技巧 <= 4
+	ABL:ASSI:技巧 = 5
+	PRINTFORMW %NAME:ASSI%の%ABLNAME:2%が{ABL:ASSI:技巧}に上がった
 	PRINTL 　
-ELSEIF EXP:ASSI:調教経験 >= 400 && ABL:ASSI:2 <= 3
-	ABL:ASSI:2 = 4
-	PRINTFORMW %NAME:ASSI%の%ABLNAME:2%が{ABL:ASSI:2}に上がった
+ELSEIF EXP:ASSI:調教経験 >= 400 && ABL:ASSI:技巧 <= 3
+	ABL:ASSI:技巧 = 4
+	PRINTFORMW %NAME:ASSI%の%ABLNAME:2%が{ABL:ASSI:技巧}に上がった
 	PRINTL 　
-ELSEIF EXP:ASSI:調教経験 >= 250 && ABL:ASSI:2 <= 2
-	ABL:ASSI:2 = 3
-	PRINTFORMW %NAME:ASSI%の%ABLNAME:2%が{ABL:ASSI:2}に上がった
+ELSEIF EXP:ASSI:調教経験 >= 250 && ABL:ASSI:技巧 <= 2
+	ABL:ASSI:技巧 = 3
+	PRINTFORMW %NAME:ASSI%の%ABLNAME:2%が{ABL:ASSI:技巧}に上がった
 	PRINTL 　
-ELSEIF EXP:ASSI:調教経験 >= 100 && ABL:ASSI:2 <= 1
-	ABL:ASSI:2 = 2
-	PRINTFORMW %NAME:ASSI%の%ABLNAME:2%が{ABL:ASSI:2}に上がった
+ELSEIF EXP:ASSI:調教経験 >= 100 && ABL:ASSI:技巧 <= 1
+	ABL:ASSI:技巧 = 2
+	PRINTFORMW %NAME:ASSI%の%ABLNAME:2%が{ABL:ASSI:技巧}に上がった
 	PRINTL 　
-ELSEIF EXP:ASSI:調教経験 >= 20 && ABL:ASSI:2 <= 0
-	ABL:ASSI:2 = 1
-	PRINTFORMW %NAME:ASSI%の%ABLNAME:2%が{ABL:ASSI:2}に上がった
+ELSEIF EXP:ASSI:調教経験 >= 20 && ABL:ASSI:技巧 <= 0
+	ABL:ASSI:技巧 = 1
+	PRINTFORMW %NAME:ASSI%の%ABLNAME:2%が{ABL:ASSI:技巧}に上がった
 	PRINTL 　
 ENDIF
 
 ;助手のサドっ気：嗜虐快楽経験が10、20、50、100、200のたびに上昇、Lv５まで
-IF EXP:ASSI:嗜虐快楽経験 >= 200 && ABL:ASSI:10 <= 4
-	ABL:ASSI:10 = 5
-	PRINTFORMW %NAME:ASSI%の%ABLNAME:10%が{ABL:ASSI:10}に上がった
+IF EXP:ASSI:嗜虐快楽経験 >= 200 && ABL:ASSI:サドっ気 <= 4
+	ABL:ASSI:サドっ気 = 5
+	PRINTFORMW %NAME:ASSI%の%ABLNAME:10%が{ABL:ASSI:サドっ気}に上がった
 	PRINTL 　
-ELSEIF EXP:ASSI:嗜虐快楽経験 >= 100 && ABL:ASSI:10 <= 3
-	ABL:ASSI:10 = 4
-	PRINTFORMW %NAME:ASSI%の%ABLNAME:10%が{ABL:ASSI:10}に上がった
+ELSEIF EXP:ASSI:嗜虐快楽経験 >= 100 && ABL:ASSI:サドっ気 <= 3
+	ABL:ASSI:サドっ気 = 4
+	PRINTFORMW %NAME:ASSI%の%ABLNAME:10%が{ABL:ASSI:サドっ気}に上がった
 	PRINTL 　
-ELSEIF EXP:ASSI:嗜虐快楽経験 >= 50 && ABL:ASSI:10 <= 2
-	ABL:ASSI:10 = 3
-	PRINTFORMW %NAME:ASSI%の%ABLNAME:10%が{ABL:ASSI:10}に上がった
+ELSEIF EXP:ASSI:嗜虐快楽経験 >= 50 && ABL:ASSI:サドっ気 <= 2
+	ABL:ASSI:サドっ気 = 3
+	PRINTFORMW %NAME:ASSI%の%ABLNAME:10%が{ABL:ASSI:サドっ気}に上がった
 	PRINTL 　
-ELSEIF EXP:ASSI:嗜虐快楽経験 >= 20 && ABL:ASSI:10 <= 1
-	ABL:ASSI:10 = 2
-	PRINTFORMW %NAME:ASSI%の%ABLNAME:10%が{ABL:ASSI:10}に上がった
+ELSEIF EXP:ASSI:嗜虐快楽経験 >= 20 && ABL:ASSI:サドっ気 <= 1
+	ABL:ASSI:サドっ気 = 2
+	PRINTFORMW %NAME:ASSI%の%ABLNAME:10%が{ABL:ASSI:サドっ気}に上がった
 	PRINTL 　
-ELSEIF EXP:ASSI:嗜虐快楽経験 >= 10 && ABL:ASSI:10 <= 0
-	ABL:ASSI:10 = 1
-	PRINTFORMW %NAME:ASSI%の%ABLNAME:10%が{ABL:ASSI:10}に上がった
+ELSEIF EXP:ASSI:嗜虐快楽経験 >= 10 && ABL:ASSI:サドっ気 <= 0
+	ABL:ASSI:サドっ気 = 1
+	PRINTFORMW %NAME:ASSI%の%ABLNAME:10%が{ABL:ASSI:サドっ気}に上がった
 	PRINTL 　
 ENDIF
 
 ;助手の撮影技能：撮影経験が10、30、60、100、150のたびに上昇、Lv５まで
-IF EXP:ASSI:撮影経験 >= 150 && ABL:ASSI:13 <= 4
-	ABL:ASSI:13 = 5
-	PRINTFORMW %NAME:ASSI%の%ABLNAME:13%が{ABL:ASSI:13}に上がった
+IF EXP:ASSI:撮影経験 >= 150 && ABL:ASSI:撮影技能 <= 4
+	ABL:ASSI:撮影技能 = 5
+	PRINTFORMW %NAME:ASSI%の%ABLNAME:13%が{ABL:ASSI:撮影技能}に上がった
 	PRINTL 　
-ELSEIF EXP:ASSI:撮影経験 >= 100 && ABL:ASSI:13 <= 3
-	ABL:ASSI:13 = 4
-	PRINTFORMW %NAME:ASSI%の%ABLNAME:13%が{ABL:ASSI:13}に上がった
+ELSEIF EXP:ASSI:撮影経験 >= 100 && ABL:ASSI:撮影技能 <= 3
+	ABL:ASSI:撮影技能 = 4
+	PRINTFORMW %NAME:ASSI%の%ABLNAME:13%が{ABL:ASSI:撮影技能}に上がった
 	PRINTL 　
-ELSEIF EXP:ASSI:撮影経験 >= 60 && ABL:ASSI:13 <= 2
-	ABL:ASSI:13 = 3
-	PRINTFORMW %NAME:ASSI%の%ABLNAME:13%が{ABL:ASSI:13}に上がった
+ELSEIF EXP:ASSI:撮影経験 >= 60 && ABL:ASSI:撮影技能 <= 2
+	ABL:ASSI:撮影技能 = 3
+	PRINTFORMW %NAME:ASSI%の%ABLNAME:13%が{ABL:ASSI:撮影技能}に上がった
 	PRINTL 　
-ELSEIF EXP:ASSI:撮影経験 >= 30 && ABL:ASSI:13 <= 1
-	ABL:ASSI:13 = 2
-	PRINTFORMW %NAME:ASSI%の%ABLNAME:13%が{ABL:ASSI:13}に上がった
+ELSEIF EXP:ASSI:撮影経験 >= 30 && ABL:ASSI:撮影技能 <= 1
+	ABL:ASSI:撮影技能 = 2
+	PRINTFORMW %NAME:ASSI%の%ABLNAME:13%が{ABL:ASSI:撮影技能}に上がった
 	PRINTL 　
-ELSEIF EXP:ASSI:撮影経験 >= 10 && ABL:ASSI:13 <= 0
-	ABL:ASSI:13 = 1
-	PRINTFORMW %NAME:ASSI%の%ABLNAME:13%が{ABL:ASSI:13}に上がった
+ELSEIF EXP:ASSI:撮影経験 >= 10 && ABL:ASSI:撮影技能 <= 0
+	ABL:ASSI:撮影技能 = 1
+	PRINTFORMW %NAME:ASSI%の%ABLNAME:13%が{ABL:ASSI:撮影技能}に上がった
 	PRINTL 　
 ENDIF
 
 ;助手のサド：サドっ気がLv４以上、嗜虐快楽経験300以上でサド
-IF ABL:ASSI:10 >= 4 && EXP:ASSI:嗜虐快楽経験 >= 300 && TALENT:ASSI:サド == 0 && TALENT:ASSI:マゾ == 0
+IF ABL:ASSI:サドっ気 >= 4 && EXP:ASSI:嗜虐快楽経験 >= 300 && TALENT:ASSI:サド == 0 && TALENT:ASSI:マゾ == 0
 	PRINTFORMW %CALLNAME:ASSI%の様子がおかしい
 	PRINTFORML %CALLNAME:ASSI%は人を痛めつける喜びに目覚めたようだ
 	PRINTFORMW %NAME:ASSI%は【サド】を身につけた
@@ -357,7 +357,7 @@ IF ABL:ASSI:10 >= 4 && EXP:ASSI:嗜虐快楽経験 >= 300 && TALENT:ASSI:サド 
 ENDIF
 
 ;助手のマゾ：マゾっ気がLv４以上、苦痛快楽経験300以上でマゾ
-IF ABL:ASSI:9 >= 4 && EXP:ASSI:苦痛快楽経験 >= 300 && TALENT:ASSI:サド == 0 && TALENT:ASSI:マゾ == 0
+IF ABL:ASSI:マゾっ気 >= 4 && EXP:ASSI:苦痛快楽経験 >= 300 && TALENT:ASSI:サド == 0 && TALENT:ASSI:マゾ == 0
 	PRINTFORMW %CALLNAME:ASSI%の様子がおかしい
 	PRINTFORML %CALLNAME:ASSI%は体を痛めつけられる喜びに目覚めたようだ
 	PRINTFORMW %NAME:ASSI%は【マゾ】を身につけた

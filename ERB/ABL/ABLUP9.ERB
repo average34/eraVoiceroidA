@@ -1,9 +1,9 @@
 ﻿;マゾっ気の可否
 @ISABLUP9
 ;恋慕、親愛、服従、隷属はMAXLV10
-IF ABL:9 >= 10
+IF ABL:マゾっ気 >= 10
 	RETURN 0
-ELSEIF ABL:9 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:服従 == 0 && TALENT:隷属 == 0
+ELSEIF ABL:マゾっ気 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:服従 == 0 && TALENT:隷属 == 0
 	RETURN 0
 ENDIF
 
@@ -20,10 +20,10 @@ ENDIF
 @ABLUP9
 DRAWLINE
 ;恋慕、親愛、服従、隷属はMAXLV10
-IF ABL:9 >= 10
+IF ABL:マゾっ気 >= 10
 	PRINTW 既にMAXです
 	RETURN 0
-ELSEIF ABL:9 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:服従 == 0 && TALENT:隷属 == 0
+ELSEIF ABL:マゾっ気 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:服従 == 0 && TALENT:隷属 == 0
 	PRINTW 既にMAXです
 	RETURN 0
 ENDIF
@@ -31,15 +31,15 @@ ENDIF
 CALL DECIDE_ABLUP9
 
 ;ＬＶ３から４に上げるときは異常経験必要（素質：[解放]なら無視できる）
-IF ABL:9 == 3 && TALENT:解放 == 0
+IF ABL:マゾっ気 == 3 && TALENT:解放 == 0
 	PRINTS EXPNAME:50
 	PRINTL あり、かつ
 ;ＬＶ４から５に上げるときは異常経験3以上必要（素質：[解放]なら無視できる）
-ELSEIF ABL:9 == 4 && TALENT:解放 == 0
+ELSEIF ABL:マゾっ気 == 4 && TALENT:解放 == 0
 	PRINTS EXPNAME:50
 	PRINTL 3以上、かつ
 ;ＬＶ８から９に上げるときは異常経験5以上必要（素質：[解放]なら無視できる）
-ELSEIF ABL:9 == 4 && TALENT:解放 == 0
+ELSEIF ABL:マゾっ気 == 4 && TALENT:解放 == 0
 	PRINTS EXPNAME:50
 	PRINTL 5以上、かつ
 ENDIF
@@ -130,7 +130,7 @@ ELSEIF RESULT == 100
 	RETURN 0
 ENDIF
 
-ABL:9 += 1
+ABL:マゾっ気 += 1
 
 IF RESULT == 0
 	JUEL:10 -= A
@@ -142,7 +142,7 @@ ENDIF
 
 PRINTS ABLNAME:9
 PRINT のレベルが
-PRINTV ABL:9
+PRINTV ABL:マゾっ気
 PRINTW になりました
 
 ;マゾっ気LVUP判定
@@ -153,61 +153,61 @@ J = 0
 ;能力アップ可能なら1にする
 Z = 0
 
-IF ABL:9 == 0
+IF ABL:マゾっ気 == 0
 	A = 100
 	B = 100
 	C = 0
 	D = 100
 	E = 100
-ELSEIF ABL:9 == 1
+ELSEIF ABL:マゾっ気 == 1
 	A = 500
 	B = 500
 	C = 0
 	D = 500
 	E = 300
-ELSEIF ABL:9 == 2
+ELSEIF ABL:マゾっ気 == 2
 	A = 1200
 	B = 1000
 	C = 0
 	D = 1500
 	E = 1000
-ELSEIF ABL:9 == 3
+ELSEIF ABL:マゾっ気 == 3
 	A = 0
 	B = 0
 	C = 10
 	D = 3000
 	E = 6000
-ELSEIF ABL:9 == 4
+ELSEIF ABL:マゾっ気 == 4
 	A = 0
 	B = 0
 	C = 50
 	D = 5000
 	E = 12000
-ELSEIF ABL:9 == 5
+ELSEIF ABL:マゾっ気 == 5
 	A = 0
 	B = 0
 	C = 100
 	D = 8000
 	E = 15000
-ELSEIF ABL:9 == 6
+ELSEIF ABL:マゾっ気 == 6
 	A = 0
 	B = 0
 	C = 150
 	D = 12000
 	E = 20000
-ELSEIF ABL:9 == 7
+ELSEIF ABL:マゾっ気 == 7
 	A = 0
 	B = 0
 	C = 200
 	D = 15000
 	E = 25000
-ELSEIF ABL:9 == 8
+ELSEIF ABL:マゾっ気 == 8
 	A = 0
 	B = 0
 	C = 250
 	D = 25000
 	E = 35000
-ELSEIF ABL:9 == 9
+ELSEIF ABL:マゾっ気 == 9
 	A = 0
 	B = 0
 	C = 350
@@ -234,21 +234,21 @@ ENDIF
 
 
 ;ＬＶ３から４に上げるときは異常経験必要（素質：[解放]なら無視できる）
-IF ABL:9 == 3 && TALENT:解放 == 0
+IF ABL:マゾっ気 == 3 && TALENT:解放 == 0
 	IF EXP:異常経験 == 0
 		;異常経験が不足
 		I |= 2
 		J |= 2
 	ENDIF
 ;ＬＶ４から５に上げるときは異常経験3以上必要（素質：[解放]なら無視できる）
-ELSEIF ABL:9 == 4 && TALENT:解放 == 0
+ELSEIF ABL:マゾっ気 == 4 && TALENT:解放 == 0
 	IF EXP:異常経験 < 3
 		;異常経験が不足
 		I |= 2
 		J |= 2
 	ENDIF
 ;ＬＶ８から９に上げるときは異常経験5以上必要（素質：[解放]なら無視できる）
-ELSEIF ABL:9 == 8 && TALENT:解放 == 0
+ELSEIF ABL:マゾっ気 == 8 && TALENT:解放 == 0
 	IF EXP:異常経験 < 5
 		;異常経験が不足
 		I |= 2

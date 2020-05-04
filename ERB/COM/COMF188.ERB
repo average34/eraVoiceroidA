@@ -33,8 +33,8 @@ PRINTL ＜シャワー使用中＞
 ;ソース追加処理
 ;-------------------------------------------------
 ;消費体力、気力
-LOSEBASE:0 += 0
-LOSEBASE:1 += 10
+LOSEBASE:体力 += 0
+LOSEBASE:気力 += 10
 
 SOURCE:12 += 100
 SOURCE:16 += 100
@@ -74,10 +74,10 @@ STAIN:5 = 0
 STAIN:6 = 0
 
 ;潤滑を1000減らす
-IF PALAM:4 > 1000
-	PALAM:4 -= 1000
+IF PALAM:潤滑 > 1000
+	PALAM:潤滑 -= 1000
 ELSE
-	PALAM:4 = 0
+	PALAM:潤滑 = 0
 ENDIF
 
 RETURN 1

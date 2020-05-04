@@ -259,7 +259,7 @@ IF RESULT == 8
 ENDIF
 ;もともとなんだったか忘れた。
 ;IF RESULT == 7
-;	IF ABL:0 < 3
+;	IF ABL:従順 < 3
 ;		PRINTFORMW %NAME:TARGET%はコスプレを拒否しました（従順Lv3以上必要）
 ;	ELSE
 ;		CALL CLOTHES_SETTING_COSTUME
@@ -293,7 +293,7 @@ PRINTL [4]  上着＋スカート
 PRINTL [5]  上着＋キュロット
 PRINTL [6]  上着＋もんぺ
 PRINTL [7]  上着＋ズボン
-IF ITEM:26 || NOITEM
+IF ITEM:コスプレセット || NOITEM
 	PRINTL [8]  セーラー服+スカート
 	PRINTL [9]  体操服+ブルマ
 	PRINTL [10] ビキニ+ビキニトップ
@@ -316,7 +316,7 @@ SIF RESULT == 99
 	RETURN 0
 SIF RESULT < 1 || RESULT > 18
 	GOTO INPUT_LOOP
-sIF RESULT >= 8 && ITEM:26 == 0 && NOITEM == 0
+sIF RESULT >= 8 && ITEM:コスプレセット == 0 && NOITEM == 0
 	GOTO INPUT_LOOP
 
 ;ここはなんかeratohoAの時点でおかしかった。既存バグ。
@@ -415,7 +415,7 @@ PRINTL [0]  無し
 PRINTL [1]  手袋
 PRINTL [2]  袖
 PRINTL [3]  羽衣
-IF ITEM:26 || NOITEM
+IF ITEM:コスプレセット || NOITEM
 	PRINTL [4]  ナースキャップ
 	PRINTL [5]  警官帽
 	PRINTL [6]  ウサ耳バンド
@@ -429,7 +429,7 @@ SIF RESULT == 99
 	RETURN 0
 SIF RESULT < 0 || RESULT > 7
 	GOTO INPUT_LOOP
-SIF RESULT >= 4 && RESULT <= 6 && ITEM:26 == 0 && NOITEM == 0
+SIF RESULT >= 4 && RESULT <= 6 && ITEM:コスプレセット == 0 && NOITEM == 0
 	GOTO INPUT_LOOP
 CFLAG:40 = RESULT
 

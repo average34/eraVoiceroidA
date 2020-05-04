@@ -70,14 +70,14 @@ ENDIF
 
 IF TARGET >= 0 
 	;反発刻印３があり、かつ幼稚である時に
-	IF TALENT:TARGET:幼稚 && MARK:3 == 3
+	IF TALENT:TARGET:幼稚 && MARK:反発刻印 == 3
 		;欲望が5かつ従順が5かつマゾっ気が5かつ異常経験が７以上になる
-		SIF ABL:TARGET:1 >= 5 && ABL:TARGET:0 >= 5 && ABL:TARGET:9 >= 5 && EXP:TARGET:異常経験 >= 7
+		SIF ABL:TARGET:欲望 >= 5 && ABL:TARGET:従順 >= 5 && ABL:TARGET:マゾっ気 >= 5 && EXP:TARGET:異常経験 >= 7
 			CALL EVENT_YOUJI
 	;反発刻印３があり、かつ幼稚がない時
-	ELSEIF TALENT:TARGET:幼稚 == 0 && MARK:3 == 3
+	ELSEIF TALENT:TARGET:幼稚 == 0 && MARK:反発刻印 == 3
 		;欲望が5かつ従順が5かつマゾっ気が5かつ異常経験が９以上に加え露出５とおもらし癖がある
-		SIF ABL:TARGET:1 >= 5 && ABL:TARGET:0 >= 5 && ABL:TARGET:9 >= 5 && ABL:TARGET:8 >= 5 && EXP:TARGET:異常経験 >= 9 && TALENT:おもらし癖 == 1
+		SIF ABL:TARGET:欲望 >= 5 && ABL:TARGET:従順 >= 5 && ABL:TARGET:マゾっ気 >= 5 && ABL:TARGET:露出癖 >= 5 && EXP:TARGET:異常経験 >= 9 && TALENT:おもらし癖 == 1
 			CALL EVENT_YOUJI
 	ENDIF
 ENDIF
@@ -109,7 +109,7 @@ PRINTFORMW %CALLNAME:TARGET%は過酷な調教に耐え切れず、【幼児退�
 SIF TALENT:幼稚
 	TALENT:幼稚 = 0
 TALENT:幼児／幼児退行 = 1
-MARK:3 = 0
+MARK:反発刻印 = 0
 
 
 ;-------------------------------------------------
@@ -273,13 +273,13 @@ ELSE
 		
 	
 	;最低技巧Lv2　オトコでなければ、レズっ気Lv3にまで引き上げておく
-	IF ABL:MASTER:2 < 2
-		ABL:MASTER:2 = 2
-		PRINTFORML ※EXモード特別仕様※　%NAME:MASTER%の%ABLNAME:2%のレベルが{ABL:MASTER:2}になりました
+	IF ABL:MASTER:技巧 < 2
+		ABL:MASTER:技巧 = 2
+		PRINTFORML ※EXモード特別仕様※　%NAME:MASTER%の%ABLNAME:2%のレベルが{ABL:MASTER:技巧}になりました
 	ENDIF
-	IF ABL:MASTER:11 < 3 && TALENT:MASTER:オトコ == 0
-		ABL:MASTER:11 = 3
-		PRINTFORML ※EXモード特別仕様※　%NAME:MASTER%の%ABLNAME:11%のレベルが{ABL:MASTER:11}になりました
+	IF ABL:MASTER:レズっ気 < 3 && TALENT:MASTER:オトコ == 0
+		ABL:MASTER:レズっ気 = 3
+		PRINTFORML ※EXモード特別仕様※　%NAME:MASTER%の%ABLNAME:11%のレベルが{ABL:MASTER:レズっ気}になりました
 	ENDIF
 	
 	$INPUT_LOOP2

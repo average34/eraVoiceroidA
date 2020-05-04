@@ -1,9 +1,9 @@
 ﻿;欲望の可否
 @ISABLUP1
 ;恋慕、親愛、淫乱、娼婦はMAXLV10
-IF ABL:1 >= 10
+IF ABL:欲望 >= 10
 	RETURN 0
-ELSEIF ABL:1 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:淫乱 == 0 && TALENT:娼婦 == 0
+ELSEIF ABL:欲望 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:淫乱 == 0 && TALENT:娼婦 == 0
 	RETURN 0
 ENDIF
 
@@ -19,10 +19,10 @@ ENDIF
 @ABLUP1
 DRAWLINE
 ;恋慕、親愛、服従、隷属はMAXLV10
-IF ABL:1 >= 10
+IF ABL:欲望 >= 10
 	PRINTW 既にMAXです
 	RETURN 0
-ELSEIF ABL:1 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:淫乱 == 0 && TALENT:娼婦 == 0
+ELSEIF ABL:欲望 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:淫乱 == 0 && TALENT:娼婦 == 0
 	PRINTW 既にMAXです
 	RETURN 0
 ENDIF
@@ -30,11 +30,11 @@ ENDIF
 CALL DECIDE_ABLUP1
 
 ;ＬＶ４から５に上げるときは異常経験必要（素質：[快感に素直][淫乱][娼婦]なら無視できる）
-IF ABL:1 == 4 && TALENT:快感に素直 == 0 && TALENT:淫乱 == 0 && TALENT:娼婦 == 0
+IF ABL:欲望 == 4 && TALENT:快感に素直 == 0 && TALENT:淫乱 == 0 && TALENT:娼婦 == 0
 	PRINTS EXPNAME:50
 	PRINTL あり、かつ
 ;ＬＶ７から８に上げるときは異常経験3以上必要（素質：[快感に素直][淫乱][娼婦]なら無視できる）
-ELSEIF ABL:1 == 7 && TALENT:快感に素直 == 0 && TALENT:淫乱 == 0 && TALENT:娼婦 == 0
+ELSEIF ABL:欲望 == 7 && TALENT:快感に素直 == 0 && TALENT:淫乱 == 0 && TALENT:娼婦 == 0
 	PRINTS EXPNAME:50
 	PRINTL 3以上、かつ
 ENDIF
@@ -67,7 +67,7 @@ ELSEIF RESULT == 100
 	RETURN 0
 ENDIF
 
-ABL:1 += 1
+ABL:欲望 += 1
 
 IF RESULT == 0
 	JUEL:6 -= A
@@ -75,7 +75,7 @@ ENDIF
 
 PRINTS ABLNAME:1
 PRINT のレベルが
-PRINTV ABL:1
+PRINTV ABL:欲望
 PRINTW になりました
 
 CALL YOKUBO_UP_CHECK
@@ -87,25 +87,25 @@ I = 0
 ;能力アップ可能なら1にする
 Z = 0
 
-IF ABL:1 == 0
+IF ABL:欲望 == 0
 	A = 1
-ELSEIF ABL:1 == 1
+ELSEIF ABL:欲望 == 1
 	A = 20
-ELSEIF ABL:1 == 2
+ELSEIF ABL:欲望 == 2
 	A = 1000
-ELSEIF ABL:1 == 3
+ELSEIF ABL:欲望 == 3
 	A = 8000
-ELSEIF ABL:1 == 4
+ELSEIF ABL:欲望 == 4
 	A = 24000
-ELSEIF ABL:1 == 5
+ELSEIF ABL:欲望 == 5
 	A = 30000
-ELSEIF ABL:1 == 6
+ELSEIF ABL:欲望 == 6
 	A = 36000
-ELSEIF ABL:1 == 7
+ELSEIF ABL:欲望 == 7
 	A = 45000
-ELSEIF ABL:1 == 8
+ELSEIF ABL:欲望 == 8
 	A = 55000
-ELSEIF ABL:1 == 9
+ELSEIF ABL:欲望 == 9
 	A = 70000
 ENDIF
 
@@ -115,13 +115,13 @@ IF TALENT:一線越えない && (TALENT:恋慕 == 0 && TALENT:淫乱 == 0 && TAL
 ENDIF
 
 ;ＬＶ４から５に上げるときは異常経験必要（素質：[快感に素直][淫乱][娼婦]なら無視できる）
-IF ABL:1 == 4 && TALENT:快感に素直 == 0 && TALENT:淫乱 == 0 && TALENT:娼婦 == 0
+IF ABL:欲望 == 4 && TALENT:快感に素直 == 0 && TALENT:淫乱 == 0 && TALENT:娼婦 == 0
 	IF EXP:異常経験 == 0
 		;異常経験がない
 		I |= 2
 	ENDIF
 ;ＬＶ７から８に上げるときは異常経験3以上必要（素質：[快感に素直][淫乱][娼婦]なら無視できる）
-ELSEIF ABL:1 == 7 && TALENT:快感に素直 == 0 && TALENT:淫乱 == 0 && TALENT:娼婦 == 0
+ELSEIF ABL:欲望 == 7 && TALENT:快感に素直 == 0 && TALENT:淫乱 == 0 && TALENT:娼婦 == 0
 	IF EXP:異常経験 < 3
 		;異常経験が3未満
 		I |= 2

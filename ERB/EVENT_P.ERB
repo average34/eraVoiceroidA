@@ -141,9 +141,9 @@ CALL CHANGE_N_STATUS
 ;共通処理
 ;体力上限を減らす
 ;体力が上限超えることもあるので、体力501以上なら500にする
-MAXBASE:T:0 -= 500
-SIF BASE:T:0 >= 501
-	BASE:T:0 = 500
+MAXBASE:T:体力 -= 500
+SIF BASE:T:体力 >= 501
+	BASE:T:体力 = 500
 
 ;乳がワンランクパワーアップする
 ;絶→貧　貧→普　普→巨　巨・爆→そのまま
@@ -400,7 +400,7 @@ IF TALENT:C:崩壊
 		PRINTFORMW %CALLNAME:MASTER%はやむなく、赤ん坊を里子に出しました
 	ENDIF
 	;妊娠時に減った体力の最大値が回復
-	MAXBASE:C:0 += 500
+	MAXBASE:C:体力 += 500
 	CALL CLEAR_FLAG
 	;妊娠時に大きくなった胸のサイズを一段小さくする
 	CALL REVERSE_B_SIZE
@@ -490,7 +490,7 @@ PRINTFORML %CALLNAME:C%の育てていた子供が親離れしました
 PRINTW 
 PRINTFORMW %CALLNAME:C%は再び調教可能になりました
 ;妊娠時に減った体力の最大値が回復
-MAXBASE:C:0 += 500
+MAXBASE:C:体力 += 500
 TALENT:C:育児中 = 0
 IF TALENT:C:貧乳 == 0 && TALENT:C:絶壁 == 0
 	PRINTFORMW %CALLNAME:C%の胸は母乳を与える役割を終えたことで小さくなりました

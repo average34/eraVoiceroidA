@@ -36,8 +36,8 @@ CALL KOJO_MESSAGE_COM
 ;ソース追加処理
 ;-------------------------------------------------
 ;消費体力、気力
-LOSEBASE:0 += 5
-LOSEBASE:1 += 50
+LOSEBASE:体力 += 5
+LOSEBASE:気力 += 50
 
 SOURCE:3 = 50
 SOURCE:5 = 40
@@ -62,25 +62,25 @@ SIF TALENT:抑圧 || TALENT:抵抗
 
 ;中毒による中毒充足のソースは先に処理しておく
 ;自慰中毒を見る
-SIF ABL:15 == 1
+SIF ABL:自慰中毒 == 1
 	TIMES SOURCE:9 , 0.00
-SIF ABL:15 == 2
+SIF ABL:自慰中毒 == 2
 	TIMES SOURCE:9 , 0.30
-SIF ABL:15 == 3
+SIF ABL:自慰中毒 == 3
 	TIMES SOURCE:9 , 0.60
-SIF ABL:15 == 4
+SIF ABL:自慰中毒 == 4
 	TIMES SOURCE:9 , 0.90
-SIF ABL:15 == 5
+SIF ABL:自慰中毒 == 5
 	TIMES SOURCE:9 , 1.20
-SIF ABL:15 == 6
+SIF ABL:自慰中毒 == 6
 	TIMES SOURCE:9 , 1.50
-SIF ABL:15 == 7
+SIF ABL:自慰中毒 == 7
 	TIMES SOURCE:9 , 1.80
-SIF ABL:15 == 8
+SIF ABL:自慰中毒 == 8
 	TIMES SOURCE:9 , 2.30
-SIF ABL:15 == 9
+SIF ABL:自慰中毒 == 9
 	TIMES SOURCE:9 , 3.00
-SIF ABL:15 >= 10
+SIF ABL:自慰中毒 >= 10
 	TIMES SOURCE:9 , 5.00
 
 
@@ -148,53 +148,53 @@ S = 0
 CALL COM_ORDER
 
 ;ABL:欲望
-IF ABL:1
+IF ABL:欲望
 	SIF S
 		PRINT  + 
-	A += ABL:1 * 3
+	A += ABL:欲望 * 3
 	PRINTS ABLNAME:1
-	PRINTV 'LV,ABL:1,'(,ABL:1 * 3,')
+	PRINTV 'LV,ABL:欲望,'(,ABL:欲望 * 3,')
 	S = 1
 ENDIF
 ;ABL:露出癖
-IF ABL:8
+IF ABL:露出癖
 	SIF S
 		PRINT  + 
-	A += ABL:8 * 4
+	A += ABL:露出癖 * 4
 	PRINTS ABLNAME:8
-	PRINTV 'LV,ABL:8,'(,ABL:8 * 4,')
+	PRINTV 'LV,ABL:露出癖,'(,ABL:露出癖 * 4,')
 	S = 1
 ENDIF
 ;ABL:自慰中毒
-IF ABL:15
+IF ABL:自慰中毒
 	SIF S
 		PRINT  + 
-	A += ABL:15 * 3
+	A += ABL:自慰中毒 * 3
 	PRINTS ABLNAME:15
-	PRINTV 'LV,ABL:15,'(,ABL:15 * 3,')
+	PRINTV 'LV,ABL:自慰中毒,'(,ABL:自慰中毒 * 3,')
 	S = 1
 ENDIF
 
-IF MARK:1
+IF MARK:快楽刻印
 	SIF S
 		PRINT  + 
-	A += MARK:1 * 3
+	A += MARK:快楽刻印 * 3
 	PRINTS MARKNAME:1
-	PRINTV 'LV,MARK:1,'(,MARK:1 * 3,')
+	PRINTV 'LV,MARK:快楽刻印,'(,MARK:快楽刻印 * 3,')
 	S = 1
 ENDIF
 
 
 ;PALAM:欲情
-IF PALAM:6 < PALAMLV:1
+IF PALAM:欲情 < PALAMLV:1
 	L = 0
-ELSEIF PALAM:6 < PALAMLV:2
+ELSEIF PALAM:欲情 < PALAMLV:2
 	L = 1
-ELSEIF PALAM:6 < PALAMLV:3
+ELSEIF PALAM:欲情 < PALAMLV:3
 	L = 2
-ELSEIF PALAM:6 < PALAMLV:4
+ELSEIF PALAM:欲情 < PALAMLV:4
 	L = 3
-ELSEIF PALAM:6 < PALAMLV:5
+ELSEIF PALAM:欲情 < PALAMLV:5
 	L = 4
 ELSE
 	L = 5

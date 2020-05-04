@@ -8,7 +8,7 @@ STR:0 = 利尿剤
 CALL KOJO_MESSAGE_COM
 
 SIF TEQUIP:25 == 0
-	ITEM:42 -= 1
+	ITEM:利尿剤 -= 1
 
 TEQUIP:27 = 1
 
@@ -18,11 +18,11 @@ TEQUIP:27 = 1
 ;消費体力、気力
 ;調教者が調合知識を持っていれば消費を抑えられる
 IF TALENT:PLAYER:調合知識
-	LOSEBASE:0 += 100
-	LOSEBASE:1 += 100
+	LOSEBASE:体力 += 100
+	LOSEBASE:気力 += 100
 ELSE
-	LOSEBASE:0 += 200
-	LOSEBASE:1 += 200
+	LOSEBASE:体力 += 200
+	LOSEBASE:気力 += 200
 ENDIF
 
 SOURCE:17 = 800

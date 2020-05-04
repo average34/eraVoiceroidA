@@ -16,10 +16,10 @@ SIF TALENT:MASTER:半人半妖 == 0 && TALENT:MASTER:ふたなり == 0 && TALENT
 	RETURN 0
 
 ;朝騎乗位判定
-IF TALENT:処女 == 0 && TALENT:再生処女 == 0 && ABL:4 >= 3 && ABL:7 >= 7 && TALENT:オトコ == 0
+IF TALENT:処女 == 0 && TALENT:再生処女 == 0 && ABL:Ｖ感覚 >= 3 && ABL:奉仕精神 >= 7 && TALENT:オトコ == 0
 	CALL SELF_MORNING_3
 ;朝パイズリ判定
-ELSEIF ABL:7 >= 5 && TALENT:絶壁 == 0 && TALENT:オトコ == 0
+ELSEIF ABL:奉仕精神 >= 5 && TALENT:絶壁 == 0 && TALENT:オトコ == 0
 	CALL SELF_MORNING_2
 ;朝フェラ判定
 ELSE
@@ -33,17 +33,17 @@ TFLAG:13 = 1
 CALL KOJO_MESSAGE_EVENT
 
 ;精液中毒
-IF ABL:16 == 0
+IF ABL:精液中毒 == 0
 	A = 1
-ELSEIF ABL:16 == 1
+ELSEIF ABL:精液中毒 == 1
 	A = 2
-ELSEIF ABL:16 == 2
+ELSEIF ABL:精液中毒 == 2
 	A = 3
-ELSEIF ABL:16 == 3
+ELSEIF ABL:精液中毒 == 3
 	A = 4
-ELSEIF ABL:16 == 4
+ELSEIF ABL:精液中毒 == 4
 	A = 5
-ELSEIF ABL:16 >= 5
+ELSEIF ABL:精液中毒 >= 5
 	A = 6
 ENDIF
 
@@ -82,17 +82,17 @@ TFLAG:13 = 2
 CALL KOJO_MESSAGE_EVENT
 
 ;精液中毒
-IF ABL:16 == 0
+IF ABL:精液中毒 == 0
 	A = 1
-ELSEIF ABL:16 == 1
+ELSEIF ABL:精液中毒 == 1
 	A = 2
-ELSEIF ABL:16 == 2
+ELSEIF ABL:精液中毒 == 2
 	A = 3
-ELSEIF ABL:16 == 3
+ELSEIF ABL:精液中毒 == 3
 	A = 4
-ELSEIF ABL:16 == 4
+ELSEIF ABL:精液中毒 == 4
 	A = 5
-ELSEIF ABL:16 >= 5
+ELSEIF ABL:精液中毒 >= 5
 	A = 6
 ENDIF
 
@@ -133,32 +133,32 @@ TFLAG:13 = 3
 CALL KOJO_MESSAGE_EVENT
 
 ;精液中毒
-IF ABL:16 == 0
+IF ABL:精液中毒 == 0
 	A = 1
-ELSEIF ABL:16 == 1
+ELSEIF ABL:精液中毒 == 1
 	A = 1
-ELSEIF ABL:16 == 2
+ELSEIF ABL:精液中毒 == 2
 	A = 2
-ELSEIF ABL:16 == 3
+ELSEIF ABL:精液中毒 == 3
 	A = 2
-ELSEIF ABL:16 == 4
+ELSEIF ABL:精液中毒 == 4
 	A = 3
-ELSEIF ABL:16 >= 5
+ELSEIF ABL:精液中毒 >= 5
 	A = 3
 ENDIF
 
 ;セックス中毒
-IF ABL:18 == 0
+IF ABL:セックス中毒 == 0
 	A += 1
-ELSEIF ABL:18 == 1
+ELSEIF ABL:セックス中毒 == 1
 	A += 2
-ELSEIF ABL:18 == 2
+ELSEIF ABL:セックス中毒 == 2
 	A += 3
-ELSEIF ABL:18 == 3
+ELSEIF ABL:セックス中毒 == 3
 	A += 4
-ELSEIF ABL:18 == 4
+ELSEIF ABL:セックス中毒 == 4
 	A += 5
-ELSEIF ABL:18 >= 5
+ELSEIF ABL:セックス中毒 >= 5
 	A += 6
 ENDIF
 
@@ -204,26 +204,26 @@ RETURN 0
 ;調教後レズおよびホモプレイ、調教後セックスどちらか一つ（強精神剤の反動が起こる時は無効）
 IF ASSI >= 0
 	A = NO:ASSI
-	IF (TALENT:淫乱 || TALENT:娼婦) && RELATION:A > 100 && BASE:0 >= 500 && TEQUIP:34 <= 2 && (TALENT:ASSI:オトコ == 0 && TALENT:オトコ == 0) || (TALENT:ASSI:オトコ && TALENT:オトコ)
+	IF (TALENT:淫乱 || TALENT:娼婦) && RELATION:A > 100 && BASE:体力 >= 500 && TEQUIP:34 <= 2 && (TALENT:ASSI:オトコ == 0 && TALENT:オトコ == 0) || (TALENT:ASSI:オトコ && TALENT:オトコ)
 		CALL SELF_CHECK1
-	ELSEIF ((TALENT:恋慕 || TALENT:親愛) || ((TALENT:淫乱 || TALENT:服従 || TALENT:娼婦 || TALENT:隷属) && ABL:4 >= 3)) && TALENT:処女 == 0 && TALENT:再生処女 == 0 && BASE:0 >= 500 && TEQUIP:34 <= 2 && CFLAG:MASTER:11 && (TALENT:MASTER:半人半妖 || TALENT:MASTER:ふたなり || TALENT:MASTER:オトコ) && TALENT:オトコ == 0
+	ELSEIF ((TALENT:恋慕 || TALENT:親愛) || ((TALENT:淫乱 || TALENT:服従 || TALENT:娼婦 || TALENT:隷属) && ABL:Ｖ感覚 >= 3)) && TALENT:処女 == 0 && TALENT:再生処女 == 0 && BASE:体力 >= 500 && TEQUIP:34 <= 2 && CFLAG:MASTER:11 && (TALENT:MASTER:半人半妖 || TALENT:MASTER:ふたなり || TALENT:MASTER:オトコ) && TALENT:オトコ == 0
 		CALL SELF_CHECK2
 	ENDIF
-ELSEIF ((TALENT:恋慕 || TALENT:親愛) || ((TALENT:淫乱 || TALENT:服従 || TALENT:娼婦 || TALENT:隷属) && ABL:4 >= 3)) && TALENT:処女 == 0 && TALENT:再生処女 == 0 && BASE:0 >= 500 && TEQUIP:34 <= 2 && CFLAG:MASTER:11 && (TALENT:MASTER:半人半妖 || TALENT:MASTER:ふたなり || TALENT:MASTER:オトコ) && TALENT:オトコ == 0
+ELSEIF ((TALENT:恋慕 || TALENT:親愛) || ((TALENT:淫乱 || TALENT:服従 || TALENT:娼婦 || TALENT:隷属) && ABL:Ｖ感覚 >= 3)) && TALENT:処女 == 0 && TALENT:再生処女 == 0 && BASE:体力 >= 500 && TEQUIP:34 <= 2 && CFLAG:MASTER:11 && (TALENT:MASTER:半人半妖 || TALENT:MASTER:ふたなり || TALENT:MASTER:オトコ) && TALENT:オトコ == 0
 	CALL SELF_CHECK2
 ENDIF
 
 ;強精神薬の反動、調教後搾乳、調教後自慰。どれか一つ
 IF TEQUIP:34 > 2
 	CALL SELF_CHECK3
-ELSEIF ABL:3 >= 4 && (ABL:19 > ABL:15) && TALENT:母乳体質 && TALENT:オトコ == 0
+ELSEIF ABL:Ｃ感覚 >= 4 && (ABL:噴乳中毒 > ABL:自慰中毒) && TALENT:母乳体質 && TALENT:オトコ == 0
 	CALL SELF_CHECK4
-ELSEIF ABL:15
+ELSEIF ABL:自慰中毒
 	CALL SELF_CHECK5
 ENDIF
 
 ;調教後夜這い
-SIF ((TALENT:恋慕 || TALENT:親愛) || ((TALENT:服従 || TALENT:隷属) && ABL:4 >= 5)) && TALENT:処女 == 0 && TALENT:再生処女 == 0 && BASE:0 >= 500 && CFLAG:MASTER:11 && TIME == 1 && (TALENT:MASTER:半人半妖 || TALENT:MASTER:ふたなり || TALENT:MASTER:オトコ) && TALENT:オトコ == 0
+SIF ((TALENT:恋慕 || TALENT:親愛) || ((TALENT:服従 || TALENT:隷属) && ABL:Ｖ感覚 >= 5)) && TALENT:処女 == 0 && TALENT:再生処女 == 0 && BASE:体力 >= 500 && CFLAG:MASTER:11 && TIME == 1 && (TALENT:MASTER:半人半妖 || TALENT:MASTER:ふたなり || TALENT:MASTER:オトコ) && TALENT:オトコ == 0
 	CALL SELF_CHECK6
 
 
@@ -236,26 +236,26 @@ CALL KOJO_MESSAGE_EVENT
 
 ;レズ中毒もしくはゲイ中毒
 N = 1
-IF ABL:17 == 1 || ABL:21 == 1
+IF ABL:レズ中毒 == 1 || ABL:ゲイ中毒 == 1
 	N += 1
-ELSEIF ABL:17 == 2 || ABL:21 == 2
+ELSEIF ABL:レズ中毒 == 2 || ABL:ゲイ中毒 == 2
 	N += 2
-ELSEIF ABL:17 == 3 || ABL:21 == 3
+ELSEIF ABL:レズ中毒 == 3 || ABL:ゲイ中毒 == 3
 	N += 3
-ELSEIF ABL:17 == 4 || ABL:21 == 4
+ELSEIF ABL:レズ中毒 == 4 || ABL:ゲイ中毒 == 4
 	N += 5
-ELSEIF ABL:17 >= 5 || ABL:21 >= 5
+ELSEIF ABL:レズ中毒 >= 5 || ABL:ゲイ中毒 >= 5
 	N += 7
 ENDIF
-IF ABL:ASSI:17 == 1 || ABL:ASSI:21 == 1
+IF ABL:ASSI:レズ中毒 == 1 || ABL:ASSI:ゲイ中毒 == 1
 	N += 1
-ELSEIF ABL:ASSI:17 == 2 || ABL:ASSI:21 == 2
+ELSEIF ABL:ASSI:レズ中毒 == 2 || ABL:ASSI:ゲイ中毒 == 2
 	N += 2
-ELSEIF ABL:ASSI:17 == 3 || ABL:ASSI:21 == 3
+ELSEIF ABL:ASSI:レズ中毒 == 3 || ABL:ASSI:ゲイ中毒 == 3
 	N += 5
-ELSEIF ABL:ASSI:17 == 4 || ABL:ASSI:21 == 4
+ELSEIF ABL:ASSI:レズ中毒 == 4 || ABL:ASSI:ゲイ中毒 == 4
 	N += 8
-ELSEIF ABL:ASSI:17 >= 5 || ABL:ASSI:21 >= 5
+ELSEIF ABL:ASSI:レズ中毒 >= 5 || ABL:ASSI:ゲイ中毒 >= 5
 	N += 13
 ENDIF
 
@@ -273,9 +273,9 @@ IF TALENT:オトコ == 0 && TALENT:ASSI:オトコ == 0
 ELSEIF TALENT:オトコ && TALENT:ASSI:オトコ
 	PRINTFORML %EXPNAME:41%＋{N*20}
 ENDIF
-SIF N*100*ABL:0/500 > 0
-	PRINTFORML %EXPNAME:2%＋{N*100*ABL:0/500}
-PRINTFORML %PALAMNAME:0%の珠＋{N*100*ABL:0}
+SIF N*100*ABL:従順/500 > 0
+	PRINTFORML %EXPNAME:2%＋{N*100*ABL:従順/500}
+PRINTFORML %PALAMNAME:0%の珠＋{N*100*ABL:従順}
 PRINTFORML %PALAMNAME:6%の珠＋{N*200}
 
 IF TALENT:オトコ == 0 && TALENT:ASSI:オトコ == 0
@@ -283,8 +283,8 @@ IF TALENT:オトコ == 0 && TALENT:ASSI:オトコ == 0
 ELSEIF TALENT:オトコ && TALENT:ASSI:オトコ
 	EXP:ゲイ経験 += N*20
 ENDIF
-EXP:絶頂経験 += N*100*ABL:0/500
-JUEL:0 += N*100*ABL:0
+EXP:絶頂経験 += N*100*ABL:従順/500
+JUEL:0 += N*100*ABL:従順
 JUEL:6 += N*200
 
 IF (TALENT:ふたなり && TALENT:ASSI:ふたなり) || (TALENT:オトコ && TALENT:ASSI:オトコ)
@@ -304,29 +304,29 @@ IF (TALENT:ふたなり && TALENT:ASSI:ふたなり) || (TALENT:オトコ && TAL
 	JUEL:9 += N*100
 ELSEIF TALENT:ASSI:ふたなり
 	PRINTFORML %EXPNAME:20%＋{N}
-	PRINTFORML %PALAMNAME:7%の珠＋{N*100*(ABL:2+ABL:7)}
-	PRINTFORML %PALAMNAME:8%の珠＋{N*100*(ABL:2+ABL:7)}
+	PRINTFORML %PALAMNAME:7%の珠＋{N*100*(ABL:技巧+ABL:奉仕精神)}
+	PRINTFORML %PALAMNAME:8%の珠＋{N*100*(ABL:技巧+ABL:奉仕精神)}
 	EXP:精液経験 += N
-	JUEL:7 += N*100*(ABL:2+ABL:7)
-	JUEL:8 += N*100*(ABL:2+ABL:7)
+	JUEL:7 += N*100*(ABL:技巧+ABL:奉仕精神)
+	JUEL:8 += N*100*(ABL:技巧+ABL:奉仕精神)
 ELSEIF TALENT:ふたなり
 	PRINTFORML %EXPNAME:3%＋{N}
 	PRINTFORML %PALAMNAME:9%の珠＋{N*100}
 	EXP:射精経験 += N
 	JUEL:9 += N*100
 ELSE
-	PRINTFORML %PALAMNAME:7%の珠＋{N*50*(ABL:2+ABL:7)}
-	PRINTFORML %PALAMNAME:8%の珠＋{N*50*(ABL:2+ABL:7)}
-	JUEL:7 += N*50*(ABL:2+ABL:7)
-	JUEL:8 += N*50*(ABL:2+ABL:7)
+	PRINTFORML %PALAMNAME:7%の珠＋{N*50*(ABL:技巧+ABL:奉仕精神)}
+	PRINTFORML %PALAMNAME:8%の珠＋{N*50*(ABL:技巧+ABL:奉仕精神)}
+	JUEL:7 += N*50*(ABL:技巧+ABL:奉仕精神)
+	JUEL:8 += N*50*(ABL:技巧+ABL:奉仕精神)
 ENDIF
 
 IF TALENT:ASSI:サド
 	PRINTFORML %EXPNAME:30%＋{N}
 	PRINTFORML %CALLNAME:ASSI%の%EXPNAME:32%＋{N}
-	IF N*100*ABL:8 > 0
-		PRINTFORML %PALAMNAME:10%の珠＋{N*100*ABL:9}
-		JUEL:10 += N*100*ABL:9
+	IF N*100*ABL:露出癖 > 0
+		PRINTFORML %PALAMNAME:10%の珠＋{N*100*ABL:マゾっ気}
+		JUEL:10 += N*100*ABL:マゾっ気
 	ENDIF
 		EXP:苦痛快楽経験 += N
 		EXP:ASSI:嗜虐快楽経験 += N
@@ -344,24 +344,24 @@ CALL KOJO_MESSAGE_EVENT
 
 S = 1
 ;V感覚
-IF ABL:4 == 1
+IF ABL:Ｖ感覚 == 1
 	S += 1
-ELSEIF ABL:4 == 2
+ELSEIF ABL:Ｖ感覚 == 2
 	S += 2
-ELSEIF ABL:4 == 3
+ELSEIF ABL:Ｖ感覚 == 3
 	S += 3
-ELSEIF ABL:4 == 4
+ELSEIF ABL:Ｖ感覚 == 4
 	S += 4
-ELSEIF ABL:4 >= 5
+ELSEIF ABL:Ｖ感覚 >= 5
 	S += 5
 ENDIF
 
 ;欲望と奉仕精神によるボーナス
-IF ABL:1 >= 5 && ABL:7 >= 5 && PALAM:5 >= PALAMLV:5
+IF ABL:欲望 >= 5 && ABL:奉仕精神 >= 5 && PALAM:恭順 >= PALAMLV:5
 	S += 3
-ELSEIF ABL:1 >= 4 && ABL:7 >= 4 && PALAM:5 >= PALAMLV:4
+ELSEIF ABL:欲望 >= 4 && ABL:奉仕精神 >= 4 && PALAM:恭順 >= PALAMLV:4
 	S += 2
-ELSEIF ABL:1 >= 3 && ABL:7 >= 3 && PALAM:5 >= PALAMLV:3
+ELSEIF ABL:欲望 >= 3 && ABL:奉仕精神 >= 3 && PALAM:恭順 >= PALAMLV:3
 	S += 1
 ENDIF
 
@@ -445,8 +445,8 @@ IF TFLAG:44 + TFLAG:45 + TFLAG:46 + TFLAG:47 > 0
 	TEQUIP:34 = 0
 
 	;副作用で体力が500に
-	SIF BASE:0 > 500
-		BASE:0 = 500
+	SIF BASE:体力 > 500
+		BASE:体力 = 500
 	WAIT
 ENDIF
 
@@ -462,23 +462,23 @@ CALL KOJO_MESSAGE_EVENT
 ;オトコはだめ。母乳体質、噴乳中毒、一定能力、体力が必要
 M = 1
 
-IF ABL:19 == 1
+IF ABL:噴乳中毒 == 1
 	M += 1
-ELSEIF ABL:19 == 2
+ELSEIF ABL:噴乳中毒 == 2
 	M += 2
-ELSEIF ABL:19 == 3
+ELSEIF ABL:噴乳中毒 == 3
 	M += 3
-ELSEIF ABL:19 == 4
+ELSEIF ABL:噴乳中毒 == 4
 	M += 5
-ELSEIF ABL:19 >= 5
+ELSEIF ABL:噴乳中毒 >= 5
 	M += 7
 ENDIF
 ;欲望と奉仕精神によるボーナス
-IF ABL:1 >= 5 && ABL:7 >= 5 && PALAM:5 >= PALAMLV:5
+IF ABL:欲望 >= 5 && ABL:奉仕精神 >= 5 && PALAM:恭順 >= PALAMLV:5
 	M += 3
-ELSEIF ABL:1 >= 4 && ABL:7 >= 4 && PALAM:5 >= PALAMLV:4
+ELSEIF ABL:欲望 >= 4 && ABL:奉仕精神 >= 4 && PALAM:恭順 >= PALAMLV:4
 	M += 2
-ELSEIF ABL:1 >= 3 && ABL:7 >= 3 && PALAM:5 >= PALAMLV:3
+ELSEIF ABL:欲望 >= 3 && ABL:奉仕精神 >= 3 && PALAM:恭順 >= PALAMLV:3
 	M += 1
 ENDIF
 ;自慰しやすい
@@ -497,7 +497,7 @@ EXP:噴乳経験 += M
 JUEL:3 += M*300
 JUEL:6 += M*50
 JUEL:8 += M*20
-IF ABL:0+ABL:8+ABL:9 >= 10
+IF ABL:従順+ABL:露出癖+ABL:マゾっ気 >= 10
 	PRINTFORML %PALAMNAME:9%の珠＋{M*150}
 	JUEL:9 += M*150
 ENDIF
@@ -514,24 +514,24 @@ CALL KOJO_MESSAGE_EVENT
 ;自慰中毒による自慰チェック
 A = 1
 ;自慰中毒を見る
-IF ABL:15 == 1
+IF ABL:自慰中毒 == 1
 	A += 1
-ELSEIF ABL:15 == 2
+ELSEIF ABL:自慰中毒 == 2
 	A += 2
-ELSEIF ABL:15 == 3
+ELSEIF ABL:自慰中毒 == 3
 	A += 3
-ELSEIF ABL:15 == 4
+ELSEIF ABL:自慰中毒 == 4
 	A += 5
-ELSEIF ABL:15 >= 5
+ELSEIF ABL:自慰中毒 >= 5
 	A += 7
 ENDIF
 
 ;欲望とＣ感覚によるボーナス
-IF ABL:1 >= 5 && ABL:3 >= 5 && PALAM:5 >= PALAMLV:5
+IF ABL:欲望 >= 5 && ABL:Ｃ感覚 >= 5 && PALAM:恭順 >= PALAMLV:5
 	A += 3
-ELSEIF ABL:1 >= 4 && ABL:3 >= 4 && PALAM:5 >= PALAMLV:4
+ELSEIF ABL:欲望 >= 4 && ABL:Ｃ感覚 >= 4 && PALAM:恭順 >= PALAMLV:4
 	A += 2
-ELSEIF ABL:1 >= 3 && ABL:3 >= 3 && PALAM:5 >= PALAMLV:3
+ELSEIF ABL:欲望 >= 3 && ABL:Ｃ感覚 >= 3 && PALAM:恭順 >= PALAMLV:3
 	A += 1
 ENDIF
 
@@ -556,7 +556,7 @@ EXP:自慰経験 += A
 JUEL:0 += A*500
 JUEL:5 += A*100
 JUEL:6 += A*250
-IF ABL:0+ABL:8+ABL:9 >= 10 && TIME == 0
+IF ABL:従順+ABL:露出癖+ABL:マゾっ気 >= 10 && TIME == 0
 	PRINTFORML %PALAMNAME:9%の珠＋{A*200}
 	JUEL:9 += A*200
 ENDIF
@@ -571,15 +571,15 @@ CALL KOJO_MESSAGE_EVENT
 
 S = 1
 ;V感覚
-IF ABL:4 == 1
+IF ABL:Ｖ感覚 == 1
 	S += 1
-ELSEIF ABL:4 == 2
+ELSEIF ABL:Ｖ感覚 == 2
 	S += 1
-ELSEIF ABL:4 == 3
+ELSEIF ABL:Ｖ感覚 == 3
 	S += 2
-ELSEIF ABL:4 == 4
+ELSEIF ABL:Ｖ感覚 == 4
 	S += 2
-ELSEIF ABL:4 >= 5
+ELSEIF ABL:Ｖ感覚 >= 5
 	S += 3
 ENDIF
 

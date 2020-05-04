@@ -19,7 +19,7 @@ REPEAT CHARANUM
 		CONTINUE
 	SIF CFLAG:COUNT:12 > 0
 		CONTINUE
-	SIF (TALENT:COUNT:淫乱 || TALENT:COUNT:娼婦) && BASE:COUNT:0 > 800
+	SIF (TALENT:COUNT:淫乱 || TALENT:COUNT:娼婦) && BASE:COUNT:体力 > 800
 		PRINTFORML [{COUNT}] - %CALLNAME:COUNT%
 REND
 PRINTL [100] - 戻る
@@ -35,7 +35,7 @@ ELSEIF CFLAG:RESULT:1 < 2
 	GOTO INPUT_LOOP_2
 ELSEIF CFLAG:RESULT:12 > 0
 	GOTO INPUT_LOOP_2
-ELSEIF (TALENT:RESULT:淫乱 == 0 && TALENT:RESULT:娼婦 == 0) || BASE:RESULT:0 <= 800
+ELSEIF (TALENT:RESULT:淫乱 == 0 && TALENT:RESULT:娼婦 == 0) || BASE:RESULT:体力 <= 800
 	GOTO INPUT_LOOP_2
 ELSE
 	A = RESULT
@@ -66,7 +66,7 @@ ENDIF
 ;ライブ撮影オプション
 $INPUT_LOOP_4
 I = -1
-IF (ITEM:18 > 0 && ITEM:43 > 0) || NOITEM != 0
+IF (ITEM:ビデオカメラ > 0 && ITEM:ビデオテープ > 0) || NOITEM != 0
 	PRINTL 乱交ライブを撮影する者を選択してください
 	PRINTFORML [0] - %CALLNAME:MASTER%
 	REPEAT CHARANUM
@@ -88,13 +88,13 @@ IF (ITEM:18 > 0 && ITEM:43 > 0) || NOITEM != 0
 	ELSEIF CFLAG:RESULT:12 > 0
 		GOTO INPUT_LOOP_4
 	ELSEIF RESULT == MASTER
-		V += 150+ABL:MASTER:13*10
+		V += 150+ABL:MASTER:撮影技能*10
 		I = MASTER
 		PRINTFORML 撮影者は%CALLNAME:MASTER%です
 		PRINTFORML ライブ撮影 +{V}％
 		PRINTL 
 	ELSE
-		V += 150+ABL:RESULT:13*10
+		V += 150+ABL:RESULT:撮影技能*10
 		I = RESULT
 		PRINTFORML 撮影者は%CALLNAME:RESULT%です
 		PRINTFORML ライブ撮影 +{V}％
@@ -104,318 +104,318 @@ ENDIF
 
 ;行為内容の算出。避妊処理はしないものの、バランスを取るために娼館から流用
 ;ABL:従順をみる
-IF ABL:A:0 == 0
+IF ABL:A:従順 == 0
 	P = 0
-ELSEIF ABL:A:0 == 1
+ELSEIF ABL:A:従順 == 1
 	P = 1
-ELSEIF ABL:A:0 == 2
+ELSEIF ABL:A:従順 == 2
 	P = 2
-ELSEIF ABL:A:0 == 3
+ELSEIF ABL:A:従順 == 3
 	P = 3
-ELSEIF ABL:A:0 == 4
+ELSEIF ABL:A:従順 == 4
 	P = 4
-ELSEIF ABL:A:0 == 5
+ELSEIF ABL:A:従順 == 5
 	P = 5
-ELSEIF ABL:A:0 == 6
+ELSEIF ABL:A:従順 == 6
 	P = 6
-ELSEIF ABL:A:0 == 7
+ELSEIF ABL:A:従順 == 7
 	P = 7
-ELSEIF ABL:A:0 == 8
+ELSEIF ABL:A:従順 == 8
 	P = 8
-ELSEIF ABL:A:0 == 9
+ELSEIF ABL:A:従順 == 9
 	P = 9
 ELSE
 	P = 12
 ENDIF
 SIF P > 0
-	PRINTFORML %ABLNAME:0%{ABL:A:0}LV 行為数+{P}
+	PRINTFORML %ABLNAME:0%{ABL:A:従順}LV 行為数+{P}
 C += P
 
 ;ABL:欲望をみる
-IF ABL:A:1 == 0
+IF ABL:A:欲望 == 0
 	P = 1
-ELSEIF ABL:A:0 == 1
+ELSEIF ABL:A:従順 == 1
 	P = 2
-ELSEIF ABL:A:0 == 2
+ELSEIF ABL:A:従順 == 2
 	P = 3
-ELSEIF ABL:A:0 == 3
+ELSEIF ABL:A:従順 == 3
 	P = 5
-ELSEIF ABL:A:0 == 4
+ELSEIF ABL:A:従順 == 4
 	P = 7
-ELSEIF ABL:A:0 == 5
+ELSEIF ABL:A:従順 == 5
 	P = 9
-ELSEIF ABL:A:0 == 6
+ELSEIF ABL:A:従順 == 6
 	P = 11
-ELSEIF ABL:A:0 == 7
+ELSEIF ABL:A:従順 == 7
 	P = 13
-ELSEIF ABL:A:0 == 8
+ELSEIF ABL:A:従順 == 8
 	P = 15
-ELSEIF ABL:A:0 == 9
+ELSEIF ABL:A:従順 == 9
 	P = 18
 ELSE
 	P = 20
 ENDIF
 SIF P > 0
-	PRINTFORML %ABLNAME:1%{ABL:A:1}LV 行為数+{P}
+	PRINTFORML %ABLNAME:1%{ABL:A:欲望}LV 行為数+{P}
 C += P
 
 
 ;ABL:Ｖ感覚をみる
-IF ABL:A:4 == 0
+IF ABL:A:Ｖ感覚 == 0
 	P = 0
-ELSEIF ABL:A:4 == 1
+ELSEIF ABL:A:Ｖ感覚 == 1
 	P = 1
-ELSEIF ABL:A:4 == 2
+ELSEIF ABL:A:Ｖ感覚 == 2
 	P = 2
-ELSEIF ABL:A:4 == 3
+ELSEIF ABL:A:Ｖ感覚 == 3
 	P = 2
-ELSEIF ABL:A:4 == 4
+ELSEIF ABL:A:Ｖ感覚 == 4
 	P = 3
-ELSEIF ABL:A:4 == 5
+ELSEIF ABL:A:Ｖ感覚 == 5
 	P = 3
-ELSEIF ABL:A:4 == 6
+ELSEIF ABL:A:Ｖ感覚 == 6
 	P = 4
-ELSEIF ABL:A:4 == 7
+ELSEIF ABL:A:Ｖ感覚 == 7
 	P = 4
-ELSEIF ABL:A:4 == 8
+ELSEIF ABL:A:Ｖ感覚 == 8
 	P = 5
-ELSEIF ABL:A:4 == 9
+ELSEIF ABL:A:Ｖ感覚 == 9
 	P = 5
 ELSE
 	P = 6
 ENDIF
 SIF P > 0
-	PRINTFORML %ABLNAME:4%{ABL:A:4}LV 行為数+{P}
+	PRINTFORML %ABLNAME:4%{ABL:A:Ｖ感覚}LV 行為数+{P}
 C += P
 
 
 ;ABL:Ａ感覚をみる
-IF ABL:A:5 == 0
+IF ABL:A:Ａ感覚 == 0
 	P = 0
-ELSEIF ABL:A:5 == 1
+ELSEIF ABL:A:Ａ感覚 == 1
 	P = 1
-ELSEIF ABL:A:5 == 2
+ELSEIF ABL:A:Ａ感覚 == 2
 	P = 2
-ELSEIF ABL:A:5 == 3
+ELSEIF ABL:A:Ａ感覚 == 3
 	P = 2
-ELSEIF ABL:A:5 == 4
+ELSEIF ABL:A:Ａ感覚 == 4
 	P = 3
-ELSEIF ABL:A:5 == 5
+ELSEIF ABL:A:Ａ感覚 == 5
 	P = 3
-ELSEIF ABL:A:5 == 6
+ELSEIF ABL:A:Ａ感覚 == 6
 	P = 4
-ELSEIF ABL:A:5 == 7
+ELSEIF ABL:A:Ａ感覚 == 7
 	P = 4
-ELSEIF ABL:A:5 == 8
+ELSEIF ABL:A:Ａ感覚 == 8
 	P = 5
-ELSEIF ABL:A:5 == 9
+ELSEIF ABL:A:Ａ感覚 == 9
 	P = 5
 ELSE
 	P = 6
 ENDIF
 SIF P > 0
-	PRINTFORML %ABLNAME:5%{ABL:A:5}LV 行為数+{P}
+	PRINTFORML %ABLNAME:5%{ABL:A:Ａ感覚}LV 行為数+{P}
 C += P
 
 
 ;ABL:奉仕精神をみる
-IF ABL:A:7 == 0
+IF ABL:A:奉仕精神 == 0
 	P = 0
-ELSEIF ABL:A:7 == 1
+ELSEIF ABL:A:奉仕精神 == 1
 	P = 1
-ELSEIF ABL:A:7 == 2
+ELSEIF ABL:A:奉仕精神 == 2
 	P = 2
-ELSEIF ABL:A:7 == 3
+ELSEIF ABL:A:奉仕精神 == 3
 	P = 3
-ELSEIF ABL:A:7 == 4
+ELSEIF ABL:A:奉仕精神 == 4
 	P = 4
-ELSEIF ABL:A:7 == 5
+ELSEIF ABL:A:奉仕精神 == 5
 	P = 5
-ELSEIF ABL:A:7 == 6
+ELSEIF ABL:A:奉仕精神 == 6
 	P = 6
-ELSEIF ABL:A:7 == 7
+ELSEIF ABL:A:奉仕精神 == 7
 	P = 7
-ELSEIF ABL:A:7 == 8
+ELSEIF ABL:A:奉仕精神 == 8
 	P = 8
-ELSEIF ABL:A:7 == 9
+ELSEIF ABL:A:奉仕精神 == 9
 	P = 9
 ELSE
 	P = 12
 ENDIF
 SIF P > 0
-	PRINTFORML %ABLNAME:7%{ABL:A:7}LV 行為数+{P}
+	PRINTFORML %ABLNAME:7%{ABL:A:奉仕精神}LV 行為数+{P}
 C += P
 
 
 ;ABL:レズっ気をみる
-IF ABL:A:11 == 0
+IF ABL:A:レズっ気 == 0
 	P = 0
-ELSEIF ABL:A:11 == 1
+ELSEIF ABL:A:レズっ気 == 1
 	P = 1
-ELSEIF ABL:A:11 == 2
+ELSEIF ABL:A:レズっ気 == 2
 	P = 2
-ELSEIF ABL:A:11 == 3
+ELSEIF ABL:A:レズっ気 == 3
 	P = 2
-ELSEIF ABL:A:11 == 4
+ELSEIF ABL:A:レズっ気 == 4
 	P = 3
-ELSEIF ABL:A:11 == 5
+ELSEIF ABL:A:レズっ気 == 5
 	P = 3
-ELSEIF ABL:A:11 == 6
+ELSEIF ABL:A:レズっ気 == 6
 	P = 4
-ELSEIF ABL:A:11 == 7
+ELSEIF ABL:A:レズっ気 == 7
 	P = 4
-ELSEIF ABL:A:11 == 8
+ELSEIF ABL:A:レズっ気 == 8
 	P = 5
-ELSEIF ABL:A:11 == 9
+ELSEIF ABL:A:レズっ気 == 9
 	P = 5
 ELSE
 	P = 6
 ENDIF
 SIF P > 0
-	PRINTFORML %ABLNAME:11%{ABL:A:11}LV 行為数+{P}
+	PRINTFORML %ABLNAME:11%{ABL:A:レズっ気}LV 行為数+{P}
 C += P
 
 
 ;ABL:精液中毒をみる
-IF ABL:A:16 == 0
+IF ABL:A:精液中毒 == 0
 	P = 0
-ELSEIF ABL:A:16 == 1
+ELSEIF ABL:A:精液中毒 == 1
 	P = 1
-ELSEIF ABL:A:16 == 2
+ELSEIF ABL:A:精液中毒 == 2
 	P = 2
-ELSEIF ABL:A:16 == 3
+ELSEIF ABL:A:精液中毒 == 3
 	P = 3
-ELSEIF ABL:A:16 == 4
+ELSEIF ABL:A:精液中毒 == 4
 	P = 4
-ELSEIF ABL:A:16 == 5
+ELSEIF ABL:A:精液中毒 == 5
 	P = 5
-ELSEIF ABL:A:16 == 6
+ELSEIF ABL:A:精液中毒 == 6
 	P = 6
-ELSEIF ABL:A:16 == 7
+ELSEIF ABL:A:精液中毒 == 7
 	P = 7
-ELSEIF ABL:A:16 == 8
+ELSEIF ABL:A:精液中毒 == 8
 	P = 8
-ELSEIF ABL:A:16 == 9
+ELSEIF ABL:A:精液中毒 == 9
 	P = 9
 ELSE
 	P = 12
 ENDIF
 SIF P > 0
-	PRINTFORML %ABLNAME:16%{ABL:A:16}LV 行為数+{P}
+	PRINTFORML %ABLNAME:16%{ABL:A:精液中毒}LV 行為数+{P}
 C += P
 
 ;ABL:レズ中毒をみる
-IF ABL:A:17 == 0
+IF ABL:A:レズ中毒 == 0
 	P = 0
-ELSEIF ABL:A:17 == 1
+ELSEIF ABL:A:レズ中毒 == 1
 	P = 1
-ELSEIF ABL:A:17 == 2
+ELSEIF ABL:A:レズ中毒 == 2
 	P = 2
-ELSEIF ABL:A:17 == 3
+ELSEIF ABL:A:レズ中毒 == 3
 	P = 3
-ELSEIF ABL:A:17 == 4
+ELSEIF ABL:A:レズ中毒 == 4
 	P = 4
-ELSEIF ABL:A:17 == 5
+ELSEIF ABL:A:レズ中毒 == 5
 	P = 5
-ELSEIF ABL:A:17 == 6
+ELSEIF ABL:A:レズ中毒 == 6
 	P = 6
-ELSEIF ABL:A:17 == 7
+ELSEIF ABL:A:レズ中毒 == 7
 	P = 7
-ELSEIF ABL:A:17 == 8
+ELSEIF ABL:A:レズ中毒 == 8
 	P = 8
-ELSEIF ABL:A:17 == 9
+ELSEIF ABL:A:レズ中毒 == 9
 	P = 9
 ELSE
 	P = 12
 ENDIF
 SIF P > 0
-	PRINTFORML %ABLNAME:17%{ABL:A:17}LV 行為数+{P}
+	PRINTFORML %ABLNAME:17%{ABL:A:レズ中毒}LV 行為数+{P}
 C += P
 
 
 ;ABL:セックス中毒をみる
-IF ABL:A:18 == 0
+IF ABL:A:セックス中毒 == 0
 	P = 0
-ELSEIF ABL:A:18 == 1
+ELSEIF ABL:A:セックス中毒 == 1
 	P = 1
-ELSEIF ABL:A:18 == 2
+ELSEIF ABL:A:セックス中毒 == 2
 	P = 2
-ELSEIF ABL:A:18 == 3
+ELSEIF ABL:A:セックス中毒 == 3
 	P = 3
-ELSEIF ABL:A:18 == 4
+ELSEIF ABL:A:セックス中毒 == 4
 	P = 4
-ELSEIF ABL:A:18 == 5
+ELSEIF ABL:A:セックス中毒 == 5
 	P = 5
-ELSEIF ABL:A:18 == 6
+ELSEIF ABL:A:セックス中毒 == 6
 	P = 6
-ELSEIF ABL:A:18 == 7
+ELSEIF ABL:A:セックス中毒 == 7
 	P = 7
-ELSEIF ABL:A:18 == 8
+ELSEIF ABL:A:セックス中毒 == 8
 	P = 8
-ELSEIF ABL:A:18 == 9
+ELSEIF ABL:A:セックス中毒 == 9
 	P = 9
 ELSE
 	P = 12
 ENDIF
 SIF P > 0
-	PRINTFORML %ABLNAME:18%{ABL:A:18}LV 行為数+{P}
+	PRINTFORML %ABLNAME:18%{ABL:A:セックス中毒}LV 行為数+{P}
 C += P
 
 
 ;ABL:ホモっ気をみる
-IF ABL:A:20 == 0
+IF ABL:A:ホモっ気 == 0
 	P = 0
-ELSEIF ABL:A:20 == 1
+ELSEIF ABL:A:ホモっ気 == 1
 	P = 1
-ELSEIF ABL:A:20 == 2
+ELSEIF ABL:A:ホモっ気 == 2
 	P = 2
-ELSEIF ABL:A:20 == 3
+ELSEIF ABL:A:ホモっ気 == 3
 	P = 2
-ELSEIF ABL:A:20 == 4
+ELSEIF ABL:A:ホモっ気 == 4
 	P = 3
-ELSEIF ABL:A:20 == 5
+ELSEIF ABL:A:ホモっ気 == 5
 	P = 3
-ELSEIF ABL:A:20 == 6
+ELSEIF ABL:A:ホモっ気 == 6
 	P = 4
-ELSEIF ABL:A:20 == 7
+ELSEIF ABL:A:ホモっ気 == 7
 	P = 4
-ELSEIF ABL:A:20 == 8
+ELSEIF ABL:A:ホモっ気 == 8
 	P = 5
-ELSEIF ABL:A:20 == 9
+ELSEIF ABL:A:ホモっ気 == 9
 	P = 5
 ELSE
 	P = 6
 ENDIF
 SIF P > 0
-	PRINTFORML %ABLNAME:20%{ABL:A:20}LV 行為数+{P}
+	PRINTFORML %ABLNAME:20%{ABL:A:ホモっ気}LV 行為数+{P}
 C += P
 
 ;ABL:ゲイ中毒をみる
-IF ABL:A:21 == 0
+IF ABL:A:ゲイ中毒 == 0
 	P = 0
-ELSEIF ABL:A:21 == 1
+ELSEIF ABL:A:ゲイ中毒 == 1
 	P = 1
-ELSEIF ABL:A:21 == 2
+ELSEIF ABL:A:ゲイ中毒 == 2
 	P = 2
-ELSEIF ABL:A:21 == 3
+ELSEIF ABL:A:ゲイ中毒 == 3
 	P = 3
-ELSEIF ABL:A:21 == 4
+ELSEIF ABL:A:ゲイ中毒 == 4
 	P = 4
-ELSEIF ABL:A:21 == 5
+ELSEIF ABL:A:ゲイ中毒 == 5
 	P = 5
-ELSEIF ABL:A:21 == 6
+ELSEIF ABL:A:ゲイ中毒 == 6
 	P = 6
-ELSEIF ABL:A:21 == 7
+ELSEIF ABL:A:ゲイ中毒 == 7
 	P = 7
-ELSEIF ABL:A:21 == 8
+ELSEIF ABL:A:ゲイ中毒 == 8
 	P = 8
-ELSEIF ABL:A:21 == 9
+ELSEIF ABL:A:ゲイ中毒 == 9
 	P = 9
 ELSE
 	P = 12
 ENDIF
 SIF P > 0
-	PRINTFORML %ABLNAME:21%{ABL:A:21}LV 行為数+{P}
+	PRINTFORML %ABLNAME:21%{ABL:A:ゲイ中毒}LV 行為数+{P}
 C += P
 
 
@@ -786,49 +786,49 @@ IF TALENT:A:謎の魅力
 	PRINTFORML %TALENTNAME:94% ＋{F}％
 ENDIF
 ;Ｃ鈍感（感覚が4以上なら無効）
-IF TALENT:A:Ｃ鈍感 && ABL:A:3 < 4
+IF TALENT:A:Ｃ鈍感 && ABL:A:Ｃ感覚 < 4
 	F = 30
 	V -= 30
 	PRINTFORML %TALENTNAME:101% －{F}％
 ENDIF
 ;Ｃ敏感（感覚が3未満なら無効）
-IF TALENT:A:Ｃ敏感 && ABL:A:3 >= 3
+IF TALENT:A:Ｃ敏感 && ABL:A:Ｃ感覚 >= 3
 	F = 30
 	V += 30
 	PRINTFORML %TALENTNAME:102% ＋{F}％
 ENDIF
 ;Ｖ鈍感（感覚が4以上なら無効）
-IF TALENT:A:Ｖ鈍感 && ABL:A:4 < 4
+IF TALENT:A:Ｖ鈍感 && ABL:A:Ｖ感覚 < 4
 	F = 30
 	V -= 30
 	PRINTFORML %TALENTNAME:103% －{F}％
 ENDIF
 ;Ｖ敏感（感覚が3未満なら無効）
-IF TALENT:A:Ｖ敏感 && ABL:A:4 >= 3
+IF TALENT:A:Ｖ敏感 && ABL:A:Ｖ感覚 >= 3
 	F = 30
 	V += 30
 	PRINTFORML %TALENTNAME:104% ＋{F}％
 ENDIF
 ;Ａ鈍感（感覚が4以上なら無効）
-IF TALENT:A:Ａ鈍感 && ABL:A:5 < 4
+IF TALENT:A:Ａ鈍感 && ABL:A:Ａ感覚 < 4
 	F = 30
 	V -= 30
 	PRINTFORML %TALENTNAME:105% －{F}％
 ENDIF
 ;Ａ敏感（感覚が3未満なら無効）
-IF TALENT:A:Ａ敏感 && ABL:A:5 >= 3
+IF TALENT:A:Ａ敏感 && ABL:A:Ａ感覚 >= 3
 	F = 30
 	V += 30
 	PRINTFORML %TALENTNAME:106% ＋{F}％
 ENDIF
 ;Ｂ鈍感（感覚が4以上なら無効）
-IF TALENT:A:Ｂ鈍感 && ABL:A:6 < 4
+IF TALENT:A:Ｂ鈍感 && ABL:A:Ｂ感覚 < 4
 	F = 30
 	V -= 30
 	PRINTFORML %TALENTNAME:107% －{F}％
 ENDIF
 ;Ｂ敏感（感覚が3未満なら無効）
-IF TALENT:A:Ｂ敏感 && ABL:A:6 >= 3
+IF TALENT:A:Ｂ敏感 && ABL:A:Ｂ感覚 >= 3
 	F = 30
 	V += 30
 	PRINTFORML %TALENTNAME:108% ＋{F}％
@@ -904,21 +904,21 @@ ENDIF
 IF TALENT:A:崩壊 || TALENT:A:狂気 || TALENT:A:妊娠
 PRINTL 
 	IF TALENT:A:崩壊
-		S *= ABL:A:0
+		S *= ABL:A:従順
 		TIMES S , 0.08
-		Z = ABL:A:0
+		Z = ABL:A:従順
 		Z *= 8
 		PRINTFORML %TALENTNAME:9% ×{Z}％
 	ELSEIF TALENT:A:狂気
-		S *= ABL:A:0
+		S *= ABL:A:従順
 		TIMES S , 0.08
-		Z = ABL:A:0
+		Z = ABL:A:従順
 		Z *= 8
 		PRINTFORML %TALENTNAME:141% ×{Z}％
 	ELSEIF TALENT:A:妊娠
-		S *= ABL:A:0
+		S *= ABL:A:従順
 		TIMES S , 0.08
-		Z = ABL:A:0
+		Z = ABL:A:従順
 		Z *= 8
 		PRINTFORML %TALENTNAME:153% ×{Z}％
 	ENDIF
@@ -980,7 +980,7 @@ ENDIF
 
 ;ビデオテープの処理
 SIF I >= 0
-	ITEM:43 -= 1
+	ITEM:ビデオテープ -= 1
 
 IF J > 0 && CFLAG:A:108 == 0
 	PRINTL 避妊具の費用として、$2000を使いました
@@ -1008,44 +1008,44 @@ SIF U
 	ASSI = A
 
 ;奴隷の経験、能力処理
-IF ABL:A:14 == 0
+IF ABL:A:歌唱技能 == 0
 	R = 8
 	Q = 5
-ELSEIF ABL:A:14 == 1
+ELSEIF ABL:A:歌唱技能 == 1
 	R = 50
 	Q = 5
-ELSEIF ABL:A:14 == 2
+ELSEIF ABL:A:歌唱技能 == 2
 	R = 300
 	Q = 5
-ELSEIF ABL:A:14 == 3
+ELSEIF ABL:A:歌唱技能 == 3
 	R = 900
 	Q = 5
-ELSEIF ABL:A:14 == 4
+ELSEIF ABL:A:歌唱技能 == 4
 	R = 2400
 	Q = 10
-ELSEIF ABL:A:14 == 5
+ELSEIF ABL:A:歌唱技能 == 5
 	R = 3000
 	Q = 20
-ELSEIF ABL:A:14 == 6
+ELSEIF ABL:A:歌唱技能 == 6
 	R = 3500
 	Q = 30
-ELSEIF ABL:A:14 == 7
+ELSEIF ABL:A:歌唱技能 == 7
 	R = 4000
 	Q = 40
-ELSEIF ABL:A:14 == 8
+ELSEIF ABL:A:歌唱技能 == 8
 	R = 4500
 	Q = 50
-ELSEIF ABL:A:14 == 9
+ELSEIF ABL:A:歌唱技能 == 9
 	R = 5000
 	Q = 60
-ELSEIF ABL:A:14 >= 10
+ELSEIF ABL:A:歌唱技能 >= 10
 	R = 6000
 	Q = 80
 ENDIF
 EXP:A:歌唱経験 += Q
 JUEL:A:8 += R
 
-BASE:A:0 -= 30*C
+BASE:A:体力 -= 30*C
 
 ;ストレス値の付加
 CFLAG:A:10 += 3
@@ -1054,15 +1054,15 @@ CFLAG:A:10 += 3
 ;VとAのプレイ差
 ;オトコはAのみ
 IF TALENT:A:オトコ
-	D = ABL:A:5
+	D = ABL:A:Ａ感覚
 	E = 0
 	F = B
-ELSEIF ABL:A:4 > ABL:A:5
-	D = ABL:A:4-ABL:A:5
+ELSEIF ABL:A:Ｖ感覚 > ABL:A:Ａ感覚
+	D = ABL:A:Ｖ感覚-ABL:A:Ａ感覚
 	E = B+D/2
 	F = B-D/2
 ELSEIF B > 1
-	D = ABL:A:5-ABL:A:4
+	D = ABL:A:Ａ感覚-ABL:A:Ｖ感覚
 	E = B-D/2
 	F = B+D/2
 ENDIF
@@ -1092,7 +1092,7 @@ JUEL:A:1 += E*50
 JUEL:A:2 += F*50
 JUEL:A:6 += (E+F)*30
 JUEL:A:8 += (E+F)*20
-JUEL:A:100 += (E+F+G)*100/ABL:A:0
+JUEL:A:100 += (E+F+G)*100/ABL:A:従順
 
 IF I >= 0
 	PRINTFORML %CALLNAME:I%の撮影経験＋１
@@ -1133,9 +1133,9 @@ SIF F > 0
 PRINTFORML %PALAMNAME:5%の珠＋{B*5}
 PRINTFORML %PALAMNAME:6%の珠＋{B*30}
 PRINTFORML %PALAMNAME:8%の珠＋{B*20+R}
-SIF ABL:A:9 >= ABL:A:10
+SIF ABL:A:マゾっ気 >= ABL:A:サドっ気
 	PRINTFORML %PALAMNAME:10%の珠＋{B*5}
-PRINTFORML %PALAMNAME:100%の珠＋{(E+F+G)*100/ABL:A:0}
+PRINTFORML %PALAMNAME:100%の珠＋{(E+F+G)*100/ABL:A:従順}
 
 ;最後に金額の加算
 PRINTFORMW %CALLNAME:A%の乱交ライブで${S}を得ました

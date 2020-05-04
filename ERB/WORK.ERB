@@ -24,7 +24,7 @@ REPEAT CHARANUM
 		B += 1
 	SIF (TALENT:COUNT:服従 || TALENT:COUNT:隷属) && TIME == 0
 		D += 1
-	SIF (TALENT:COUNT:恋慕 || TALENT:COUNT:親愛) && ABL:COUNT:14 >= 2
+	SIF (TALENT:COUNT:恋慕 || TALENT:COUNT:親愛) && ABL:COUNT:歌唱技能 >= 2
 		E += 1
 	SIF TALENT:COUNT:淫乱 || TALENT:COUNT:娼婦
 		F += 1
@@ -125,640 +125,640 @@ S = 0
 ;ABLによる基礎値計算
 V = 0
 ;ABL:従順をみる
-IF ABL:0 == 0
+IF ABL:従順 == 0
 	V = 0
-ELSEIF ABL:0 == 1
+ELSEIF ABL:従順 == 1
 	V = 1200
-ELSEIF ABL:0 == 2
+ELSEIF ABL:従順 == 2
 	V = 1800
-ELSEIF ABL:0 == 3
+ELSEIF ABL:従順 == 3
 	V = 2500
-ELSEIF ABL:0 == 4
+ELSEIF ABL:従順 == 4
 	V = 3300
-ELSEIF ABL:0 == 5
+ELSEIF ABL:従順 == 5
 	V = 4200
-ELSEIF ABL:0 == 6
+ELSEIF ABL:従順 == 6
 	V = 6200
-ELSEIF ABL:0 == 7
+ELSEIF ABL:従順 == 7
 	V = 9000
-ELSEIF ABL:0 == 8
+ELSEIF ABL:従順 == 8
 	V = 13000
-ELSEIF ABL:0 == 9
+ELSEIF ABL:従順 == 9
 	V = 18000
 ELSE
 	V = 25000
 ENDIF
 SIF V > 0
-	PRINTFORML %ABLNAME:0%{ABL:0}LV +{V}
+	PRINTFORML %ABLNAME:0%{ABL:従順}LV +{V}
 S += V
 
 
 ;ABL:欲望をみる
-IF ABL:1 == 0
+IF ABL:欲望 == 0
 	V = 0
-ELSEIF ABL:1 == 1
+ELSEIF ABL:欲望 == 1
 	V = 1000
-ELSEIF ABL:1 == 2
+ELSEIF ABL:欲望 == 2
 	V = 1500
-ELSEIF ABL:1 == 3
+ELSEIF ABL:欲望 == 3
 	V = 2100
-ELSEIF ABL:1 == 4
+ELSEIF ABL:欲望 == 4
 	V = 2800
-ELSEIF ABL:1 == 5
+ELSEIF ABL:欲望 == 5
 	V = 3600
-ELSEIF ABL:1 == 6
+ELSEIF ABL:欲望 == 6
 	V = 5500
-ELSEIF ABL:1 == 7
+ELSEIF ABL:欲望 == 7
 	V = 8000
-ELSEIF ABL:1 == 8
+ELSEIF ABL:欲望 == 8
 	V = 12000
-ELSEIF ABL:1 == 9
+ELSEIF ABL:欲望 == 9
 	V = 16000
 ELSE
 	V = 22000
 ENDIF
 SIF V > 0
-	PRINTFORML %ABLNAME:1%{ABL:1}LV +{V}
+	PRINTFORML %ABLNAME:1%{ABL:欲望}LV +{V}
 S += V
 
 
 ;ABL:技巧をみる
-IF ABL:2 == 0
+IF ABL:技巧 == 0
 	V = 0
-ELSEIF ABL:2 == 1
+ELSEIF ABL:技巧 == 1
 	V = 800
-ELSEIF ABL:2 == 2
+ELSEIF ABL:技巧 == 2
 	V = 1200
-ELSEIF ABL:2 == 3
+ELSEIF ABL:技巧 == 3
 	V = 1700
-ELSEIF ABL:2 == 4
+ELSEIF ABL:技巧 == 4
 	V = 2300
-ELSEIF ABL:2 == 5
+ELSEIF ABL:技巧 == 5
 	V = 3000
-ELSEIF ABL:2 == 6
+ELSEIF ABL:技巧 == 6
 	V = 4800
-ELSEIF ABL:2 == 7
+ELSEIF ABL:技巧 == 7
 	V = 7000
-ELSEIF ABL:2 == 8
+ELSEIF ABL:技巧 == 8
 	V = 11000
-ELSEIF ABL:2 == 9
+ELSEIF ABL:技巧 == 9
 	V = 15000
 ELSE
 	V = 21000
 ENDIF
 SIF V > 0
-	PRINTFORML %ABLNAME:2%{ABL:2}LV +{V}
+	PRINTFORML %ABLNAME:2%{ABL:技巧}LV +{V}
 S += V
 
 
 ;ABL:Ｃ感覚をみる
-IF ABL:3 == 0
+IF ABL:Ｃ感覚 == 0
 	V = 0
-ELSEIF ABL:3 == 1
+ELSEIF ABL:Ｃ感覚 == 1
 	V = 800
-ELSEIF ABL:3 == 2
+ELSEIF ABL:Ｃ感覚 == 2
 	V = 1200
-ELSEIF ABL:3 == 3
+ELSEIF ABL:Ｃ感覚 == 3
 	V = 1700
-ELSEIF ABL:3 == 4
+ELSEIF ABL:Ｃ感覚 == 4
 	V = 2300
-ELSEIF ABL:3 == 5
+ELSEIF ABL:Ｃ感覚 == 5
 	V = 3000
-ELSEIF ABL:3 == 6
+ELSEIF ABL:Ｃ感覚 == 6
 	V = 4800
-ELSEIF ABL:3 == 7
+ELSEIF ABL:Ｃ感覚 == 7
 	V = 7000
-ELSEIF ABL:3 == 8
+ELSEIF ABL:Ｃ感覚 == 8
 	V = 11000
-ELSEIF ABL:3 == 9
+ELSEIF ABL:Ｃ感覚 == 9
 	V = 15000
 ELSE
 	V = 21000
 ENDIF
 SIF V > 0
-	PRINTFORML %ABLNAME:3%{ABL:3}LV +{V}
+	PRINTFORML %ABLNAME:3%{ABL:Ｃ感覚}LV +{V}
 S += V
 
 
 ;ABL:Ｖ感覚をみる
-IF ABL:4 == 0
+IF ABL:Ｖ感覚 == 0
 	V = 0
-ELSEIF ABL:4 == 1
+ELSEIF ABL:Ｖ感覚 == 1
 	V = 800
-ELSEIF ABL:4 == 2
+ELSEIF ABL:Ｖ感覚 == 2
 	V = 1200
-ELSEIF ABL:4 == 3
+ELSEIF ABL:Ｖ感覚 == 3
 	V = 1700
-ELSEIF ABL:4 == 4
+ELSEIF ABL:Ｖ感覚 == 4
 	V = 2300
-ELSEIF ABL:4 == 5
+ELSEIF ABL:Ｖ感覚 == 5
 	V = 3000
-ELSEIF ABL:4 == 6
+ELSEIF ABL:Ｖ感覚 == 6
 	V = 4800
-ELSEIF ABL:4 == 7
+ELSEIF ABL:Ｖ感覚 == 7
 	V = 7000
-ELSEIF ABL:4 == 8
+ELSEIF ABL:Ｖ感覚 == 8
 	V = 11000
-ELSEIF ABL:4 == 9
+ELSEIF ABL:Ｖ感覚 == 9
 	V = 15000
 ELSE
 	V = 21000
 ENDIF
 SIF V > 0
-	PRINTFORML %ABLNAME:4%{ABL:4}LV +{V}
+	PRINTFORML %ABLNAME:4%{ABL:Ｖ感覚}LV +{V}
 S += V
 
 
 ;ABL:Ａ感覚をみる
-IF ABL:5 == 0
+IF ABL:Ａ感覚 == 0
 	V = 0
-ELSEIF ABL:5 == 1
+ELSEIF ABL:Ａ感覚 == 1
 	V = 800
-ELSEIF ABL:5 == 2
+ELSEIF ABL:Ａ感覚 == 2
 	V = 1200
-ELSEIF ABL:5 == 3
+ELSEIF ABL:Ａ感覚 == 3
 	V = 1700
-ELSEIF ABL:5 == 4
+ELSEIF ABL:Ａ感覚 == 4
 	V = 2300
-ELSEIF ABL:5 == 5
+ELSEIF ABL:Ａ感覚 == 5
 	V = 3000
-ELSEIF ABL:5 == 6
+ELSEIF ABL:Ａ感覚 == 6
 	V = 4800
-ELSEIF ABL:5 == 7
+ELSEIF ABL:Ａ感覚 == 7
 	V = 7000
-ELSEIF ABL:5 == 8
+ELSEIF ABL:Ａ感覚 == 8
 	V = 11000
-ELSEIF ABL:5 == 9
+ELSEIF ABL:Ａ感覚 == 9
 	V = 15000
 ELSE
 	V = 21000
 ENDIF
 SIF V > 0
-	PRINTFORML %ABLNAME:5%{ABL:5}LV +{V}
+	PRINTFORML %ABLNAME:5%{ABL:Ａ感覚}LV +{V}
 S += V
 
 
 ;ABL:Ｂ感覚をみる
-IF ABL:6 == 0
+IF ABL:Ｂ感覚 == 0
 	V = 0
-ELSEIF ABL:6 == 1
+ELSEIF ABL:Ｂ感覚 == 1
 	V = 800
-ELSEIF ABL:6 == 2
+ELSEIF ABL:Ｂ感覚 == 2
 	V = 1200
-ELSEIF ABL:6 == 3
+ELSEIF ABL:Ｂ感覚 == 3
 	V = 1700
-ELSEIF ABL:6 == 4
+ELSEIF ABL:Ｂ感覚 == 4
 	V = 2300
-ELSEIF ABL:6 == 5
+ELSEIF ABL:Ｂ感覚 == 5
 	V = 3000
-ELSEIF ABL:6 == 6
+ELSEIF ABL:Ｂ感覚 == 6
 	V = 4800
-ELSEIF ABL:6 == 7
+ELSEIF ABL:Ｂ感覚 == 7
 	V = 7000
-ELSEIF ABL:6 == 8
+ELSEIF ABL:Ｂ感覚 == 8
 	V = 11000
-ELSEIF ABL:6 == 9
+ELSEIF ABL:Ｂ感覚 == 9
 	V = 15000
 ELSE
 	V = 21000
 ENDIF
 SIF V > 0
-	PRINTFORML %ABLNAME:6%{ABL:6}LV +{V}
+	PRINTFORML %ABLNAME:6%{ABL:Ｂ感覚}LV +{V}
 S += V
 
 
 ;ABL:奉仕精神をみる
-IF ABL:7 == 0
+IF ABL:奉仕精神 == 0
 	V = 0
-ELSEIF ABL:7 == 1
+ELSEIF ABL:奉仕精神 == 1
 	V = 1200
-ELSEIF ABL:7 == 2
+ELSEIF ABL:奉仕精神 == 2
 	V = 1800
-ELSEIF ABL:7 == 3
+ELSEIF ABL:奉仕精神 == 3
 	V = 2500
-ELSEIF ABL:7 == 4
+ELSEIF ABL:奉仕精神 == 4
 	V = 3300
-ELSEIF ABL:7 == 5
+ELSEIF ABL:奉仕精神 == 5
 	V = 4200
-ELSEIF ABL:7 == 6
+ELSEIF ABL:奉仕精神 == 6
 	V = 6200
-ELSEIF ABL:7 == 7
+ELSEIF ABL:奉仕精神 == 7
 	V = 9000
-ELSEIF ABL:7 == 8
+ELSEIF ABL:奉仕精神 == 8
 	V = 13000
-ELSEIF ABL:7 == 9
+ELSEIF ABL:奉仕精神 == 9
 	V = 18000
 ELSE
 	V = 25000
 ENDIF
 SIF V > 0
-	PRINTFORML %ABLNAME:7%{ABL:7}LV +{V}
+	PRINTFORML %ABLNAME:7%{ABL:奉仕精神}LV +{V}
 S += V
 
 
 ;ABL:露出癖をみる
-IF ABL:8 == 0
+IF ABL:露出癖 == 0
 	V = 0
-ELSEIF ABL:8 == 1
+ELSEIF ABL:露出癖 == 1
 	V = 800
-ELSEIF ABL:8 == 2
+ELSEIF ABL:露出癖 == 2
 	V = 1200
-ELSEIF ABL:8 == 3
+ELSEIF ABL:露出癖 == 3
 	V = 1700
-ELSEIF ABL:8 == 4
+ELSEIF ABL:露出癖 == 4
 	V = 2300
-ELSEIF ABL:8 == 5
+ELSEIF ABL:露出癖 == 5
 	V = 3000
-ELSEIF ABL:8 == 6
+ELSEIF ABL:露出癖 == 6
 	V = 4800
-ELSEIF ABL:8 == 7
+ELSEIF ABL:露出癖 == 7
 	V = 7000
-ELSEIF ABL:8 == 8
+ELSEIF ABL:露出癖 == 8
 	V = 11000
-ELSEIF ABL:8 == 9
+ELSEIF ABL:露出癖 == 9
 	V = 15000
 ELSE
 	V = 21000
 ENDIF
 SIF V > 0
-	PRINTFORML %ABLNAME:8%{ABL:8}LV +{V}
+	PRINTFORML %ABLNAME:8%{ABL:露出癖}LV +{V}
 S += V
 
 
 ;ABL:マゾっ気をみる
-IF ABL:9 == 0
+IF ABL:マゾっ気 == 0
 	V = 0
-ELSEIF ABL:9 == 1
+ELSEIF ABL:マゾっ気 == 1
 	V = 1000
-ELSEIF ABL:9 == 2
+ELSEIF ABL:マゾっ気 == 2
 	V = 1500
-ELSEIF ABL:9 == 3
+ELSEIF ABL:マゾっ気 == 3
 	V = 2100
-ELSEIF ABL:9 == 4
+ELSEIF ABL:マゾっ気 == 4
 	V = 2800
-ELSEIF ABL:9 == 5
+ELSEIF ABL:マゾっ気 == 5
 	V = 3600
-ELSEIF ABL:9 == 6
+ELSEIF ABL:マゾっ気 == 6
 	V = 5500
-ELSEIF ABL:9 == 7
+ELSEIF ABL:マゾっ気 == 7
 	V = 8000
-ELSEIF ABL:9 == 8
+ELSEIF ABL:マゾっ気 == 8
 	V = 12000
-ELSEIF ABL:9 == 9
+ELSEIF ABL:マゾっ気 == 9
 	V = 16000
 ELSE
 	V = 22000
 ENDIF
 SIF V > 0
-	PRINTFORML %ABLNAME:9%{ABL:9}LV +{V}
+	PRINTFORML %ABLNAME:9%{ABL:マゾっ気}LV +{V}
 S += V
 
 
 ;ABL:サドっ気をみる
-IF ABL:10 == 0
+IF ABL:サドっ気 == 0
 	V = 0
-ELSEIF ABL:10 == 1
+ELSEIF ABL:サドっ気 == 1
 	V = 800
-ELSEIF ABL:10 == 2
+ELSEIF ABL:サドっ気 == 2
 	V = 1200
-ELSEIF ABL:10 == 3
+ELSEIF ABL:サドっ気 == 3
 	V = 1700
-ELSEIF ABL:10 == 4
+ELSEIF ABL:サドっ気 == 4
 	V = 2300
-ELSEIF ABL:10 == 5
+ELSEIF ABL:サドっ気 == 5
 	V = 3000
-ELSEIF ABL:10 == 6
+ELSEIF ABL:サドっ気 == 6
 	V = 4800
-ELSEIF ABL:10 == 7
+ELSEIF ABL:サドっ気 == 7
 	V = 7000
-ELSEIF ABL:10 == 8
+ELSEIF ABL:サドっ気 == 8
 	V = 11000
-ELSEIF ABL:10 == 9
+ELSEIF ABL:サドっ気 == 9
 	V = 15000
 ELSE
 	V = 21000
 ENDIF
 SIF V > 0
-	PRINTFORML %ABLNAME:10%{ABL:10}LV +{V}
+	PRINTFORML %ABLNAME:10%{ABL:サドっ気}LV +{V}
 S += V
 
 
 ;ABL:レズっ気をみる
-IF ABL:11 == 0
+IF ABL:レズっ気 == 0
 	V = 0
-ELSEIF ABL:11 == 1
+ELSEIF ABL:レズっ気 == 1
 	V = 1000
-ELSEIF ABL:11 == 2
+ELSEIF ABL:レズっ気 == 2
 	V = 1500
-ELSEIF ABL:11 == 3
+ELSEIF ABL:レズっ気 == 3
 	V = 2100
-ELSEIF ABL:11 == 4
+ELSEIF ABL:レズっ気 == 4
 	V = 2800
-ELSEIF ABL:11 == 5
+ELSEIF ABL:レズっ気 == 5
 	V = 3600
-ELSEIF ABL:11 == 6
+ELSEIF ABL:レズっ気 == 6
 	V = 5500
-ELSEIF ABL:11 == 7
+ELSEIF ABL:レズっ気 == 7
 	V = 8000
-ELSEIF ABL:11 == 8
+ELSEIF ABL:レズっ気 == 8
 	V = 12000
-ELSEIF ABL:11 == 9
+ELSEIF ABL:レズっ気 == 9
 	V = 16000
 ELSE
 	V = 22000
 ENDIF
 SIF V > 0
-	PRINTFORML %ABLNAME:11%{ABL:11}LV +{V}
+	PRINTFORML %ABLNAME:11%{ABL:レズっ気}LV +{V}
 S += V
 
 
 ;ABL:料理技能をみる
-IF ABL:12 == 0
+IF ABL:料理技能 == 0
 	V = 0
-ELSEIF ABL:12 == 1
+ELSEIF ABL:料理技能 == 1
 	V = 600
-ELSEIF ABL:12 == 2
+ELSEIF ABL:料理技能 == 2
 	V = 1000
-ELSEIF ABL:12 == 3
+ELSEIF ABL:料理技能 == 3
 	V = 1500
-ELSEIF ABL:12 == 4
+ELSEIF ABL:料理技能 == 4
 	V = 2100
-ELSEIF ABL:12 == 5
+ELSEIF ABL:料理技能 == 5
 	V = 2800
-ELSEIF ABL:12 == 6
+ELSEIF ABL:料理技能 == 6
 	V = 4800
-ELSEIF ABL:12 == 7
+ELSEIF ABL:料理技能 == 7
 	V = 7000
-ELSEIF ABL:12 == 8
+ELSEIF ABL:料理技能 == 8
 	V = 11000
-ELSEIF ABL:12 == 9
+ELSEIF ABL:料理技能 == 9
 	V = 15000
 ELSE
 	V = 21000
 ENDIF
 SIF V > 0
-	PRINTFORML %ABLNAME:12%{ABL:12}LV +{V}
+	PRINTFORML %ABLNAME:12%{ABL:料理技能}LV +{V}
 S += V
 
 
 ;ABL:撮影技能をみる
-IF ABL:13 == 0
+IF ABL:撮影技能 == 0
 	V = 0
-ELSEIF ABL:13 == 1
+ELSEIF ABL:撮影技能 == 1
 	V = 600
-ELSEIF ABL:13 == 2
+ELSEIF ABL:撮影技能 == 2
 	V = 1000
-ELSEIF ABL:13 == 3
+ELSEIF ABL:撮影技能 == 3
 	V = 1500
-ELSEIF ABL:13 == 4
+ELSEIF ABL:撮影技能 == 4
 	V = 2100
-ELSEIF ABL:13 == 5
+ELSEIF ABL:撮影技能 == 5
 	V = 2800
-ELSEIF ABL:13 == 6
+ELSEIF ABL:撮影技能 == 6
 	V = 4800
-ELSEIF ABL:13 == 7
+ELSEIF ABL:撮影技能 == 7
 	V = 7000
-ELSEIF ABL:13 == 8
+ELSEIF ABL:撮影技能 == 8
 	V = 11000
-ELSEIF ABL:13 == 9
+ELSEIF ABL:撮影技能 == 9
 	V = 15000
 ELSE
 	V = 21000
 ENDIF
 SIF V > 0
-	PRINTFORML %ABLNAME:13%{ABL:13}LV +{V}
+	PRINTFORML %ABLNAME:13%{ABL:撮影技能}LV +{V}
 S += V
 
 
 ;ABL:歌唱技能をみる
-IF ABL:14 == 0
+IF ABL:歌唱技能 == 0
 	V = 0
-ELSEIF ABL:14 == 1
+ELSEIF ABL:歌唱技能 == 1
 	V = 600
-ELSEIF ABL:14 == 2
+ELSEIF ABL:歌唱技能 == 2
 	V = 1000
-ELSEIF ABL:14 == 3
+ELSEIF ABL:歌唱技能 == 3
 	V = 1500
-ELSEIF ABL:14 == 4
+ELSEIF ABL:歌唱技能 == 4
 	V = 2100
-ELSEIF ABL:14 == 5
+ELSEIF ABL:歌唱技能 == 5
 	V = 2800
-ELSEIF ABL:14 == 6
+ELSEIF ABL:歌唱技能 == 6
 	V = 4800
-ELSEIF ABL:14 == 7
+ELSEIF ABL:歌唱技能 == 7
 	V = 7000
-ELSEIF ABL:14 == 8
+ELSEIF ABL:歌唱技能 == 8
 	V = 11000
-ELSEIF ABL:14 == 9
+ELSEIF ABL:歌唱技能 == 9
 	V = 15000
 ELSE
 	V = 21000
 ENDIF
 SIF V > 0
-	PRINTFORML %ABLNAME:14%{ABL:14}LV +{V}
+	PRINTFORML %ABLNAME:14%{ABL:歌唱技能}LV +{V}
 S += V
 
 
 ;ABL:自慰中毒をみる
-IF ABL:15 == 0
+IF ABL:自慰中毒 == 0
 	V = 0
-ELSEIF ABL:15 == 1
+ELSEIF ABL:自慰中毒 == 1
 	V = 1500
-ELSEIF ABL:15 == 2
+ELSEIF ABL:自慰中毒 == 2
 	V = 2200
-ELSEIF ABL:15 == 3
+ELSEIF ABL:自慰中毒 == 3
 	V = 3000
-ELSEIF ABL:15 == 4
+ELSEIF ABL:自慰中毒 == 4
 	V = 3900
-ELSEIF ABL:15 == 5
+ELSEIF ABL:自慰中毒 == 5
 	V = 4900
-ELSEIF ABL:15 == 6
+ELSEIF ABL:自慰中毒 == 6
 	V = 8000
-ELSEIF ABL:15 == 7
+ELSEIF ABL:自慰中毒 == 7
 	V = 11000
-ELSEIF ABL:15 == 8
+ELSEIF ABL:自慰中毒 == 8
 	V = 15000
-ELSEIF ABL:15 == 9
+ELSEIF ABL:自慰中毒 == 9
 	V = 20000
 ELSE
 	V = 30000
 ENDIF
 SIF V > 0
-	PRINTFORML %ABLNAME:15%{ABL:15}LV +{V}
+	PRINTFORML %ABLNAME:15%{ABL:自慰中毒}LV +{V}
 S += V
 
 
 ;ABL:精液中毒をみる
-IF ABL:16 == 0
+IF ABL:精液中毒 == 0
 	V = 0
-ELSEIF ABL:16 == 1
+ELSEIF ABL:精液中毒 == 1
 	V = 1500
-ELSEIF ABL:16 == 2
+ELSEIF ABL:精液中毒 == 2
 	V = 2200
-ELSEIF ABL:16 == 3
+ELSEIF ABL:精液中毒 == 3
 	V = 3000
-ELSEIF ABL:16 == 4
+ELSEIF ABL:精液中毒 == 4
 	V = 3900
-ELSEIF ABL:16 == 5
+ELSEIF ABL:精液中毒 == 5
 	V = 4900
-ELSEIF ABL:16 == 6
+ELSEIF ABL:精液中毒 == 6
 	V = 8000
-ELSEIF ABL:15 == 7
+ELSEIF ABL:自慰中毒 == 7
 	V = 11000
-ELSEIF ABL:15 == 8
+ELSEIF ABL:自慰中毒 == 8
 	V = 15000
-ELSEIF ABL:15 == 9
+ELSEIF ABL:自慰中毒 == 9
 	V = 20000
 ELSE
 	V = 30000
 ENDIF
 SIF V > 0
-	PRINTFORML %ABLNAME:16%{ABL:16}LV +{V}
+	PRINTFORML %ABLNAME:16%{ABL:精液中毒}LV +{V}
 S += V
 
 
 ;ABL:レズ中毒をみる
-IF ABL:17 == 0
+IF ABL:レズ中毒 == 0
 	V = 0
-ELSEIF ABL:17 == 1
+ELSEIF ABL:レズ中毒 == 1
 	V = 1500
-ELSEIF ABL:17 == 2
+ELSEIF ABL:レズ中毒 == 2
 	V = 2200
-ELSEIF ABL:17 == 3
+ELSEIF ABL:レズ中毒 == 3
 	V = 3000
-ELSEIF ABL:17 == 4
+ELSEIF ABL:レズ中毒 == 4
 	V = 3900
-ELSEIF ABL:17 == 5
+ELSEIF ABL:レズ中毒 == 5
 	V = 4900
-ELSEIF ABL:17 == 6
+ELSEIF ABL:レズ中毒 == 6
 	V = 8000
-ELSEIF ABL:15 == 7
+ELSEIF ABL:自慰中毒 == 7
 	V = 11000
-ELSEIF ABL:15 == 8
+ELSEIF ABL:自慰中毒 == 8
 	V = 15000
-ELSEIF ABL:15 == 9
+ELSEIF ABL:自慰中毒 == 9
 	V = 20000
 ELSE
 	V = 30000
 ENDIF
 SIF V > 0
-	PRINTFORML %ABLNAME:17%{ABL:17}LV +{V}
+	PRINTFORML %ABLNAME:17%{ABL:レズ中毒}LV +{V}
 S += V
 
 
 ;ABL:セックス中毒をみる
-IF ABL:18 == 0
+IF ABL:セックス中毒 == 0
 	V = 0
-ELSEIF ABL:18 == 1
+ELSEIF ABL:セックス中毒 == 1
 	V = 1500
-ELSEIF ABL:18 == 2
+ELSEIF ABL:セックス中毒 == 2
 	V = 2200
-ELSEIF ABL:18 == 3
+ELSEIF ABL:セックス中毒 == 3
 	V = 3000
-ELSEIF ABL:18 == 4
+ELSEIF ABL:セックス中毒 == 4
 	V = 3900
-ELSEIF ABL:18 == 5
+ELSEIF ABL:セックス中毒 == 5
 	V = 4900
-ELSEIF ABL:18 == 6
+ELSEIF ABL:セックス中毒 == 6
 	V = 8000
-ELSEIF ABL:18 == 7
+ELSEIF ABL:セックス中毒 == 7
 	V = 11000
-ELSEIF ABL:18 == 8
+ELSEIF ABL:セックス中毒 == 8
 	V = 15000
-ELSEIF ABL:18 == 9
+ELSEIF ABL:セックス中毒 == 9
 	V = 20000
 ELSE
 	V = 30000
 ENDIF
 SIF V > 0
-	PRINTFORML %ABLNAME:18%{ABL:18}LV +{V}
+	PRINTFORML %ABLNAME:18%{ABL:セックス中毒}LV +{V}
 S += V
 
 
 ;ABL:噴乳中毒をみる
-IF ABL:19 == 0
+IF ABL:噴乳中毒 == 0
 	V = 0
-ELSEIF ABL:19 == 1
+ELSEIF ABL:噴乳中毒 == 1
 	V = 1500
-ELSEIF ABL:19 == 2
+ELSEIF ABL:噴乳中毒 == 2
 	V = 2200
-ELSEIF ABL:19 == 3
+ELSEIF ABL:噴乳中毒 == 3
 	V = 3000
-ELSEIF ABL:19 == 4
+ELSEIF ABL:噴乳中毒 == 4
 	V = 3900
-ELSEIF ABL:19 == 5
+ELSEIF ABL:噴乳中毒 == 5
 	V = 4900
-ELSEIF ABL:19 == 6
+ELSEIF ABL:噴乳中毒 == 6
 	V = 8000
-ELSEIF ABL:19 == 7
+ELSEIF ABL:噴乳中毒 == 7
 	V = 11000
-ELSEIF ABL:19 == 8
+ELSEIF ABL:噴乳中毒 == 8
 	V = 15000
-ELSEIF ABL:19 == 9
+ELSEIF ABL:噴乳中毒 == 9
 	V = 20000
 ELSE
 	V = 30000
 ENDIF
 SIF V > 0
-	PRINTFORML %ABLNAME:19%{ABL:19}LV +{V}
+	PRINTFORML %ABLNAME:19%{ABL:噴乳中毒}LV +{V}
 S += V
 
 
 ;ABL:ホモっ気をみる
-IF ABL:20 == 0
+IF ABL:ホモっ気 == 0
 	V = 0
-ELSEIF ABL:20 == 1
+ELSEIF ABL:ホモっ気 == 1
 	V = 1000
-ELSEIF ABL:20 == 2
+ELSEIF ABL:ホモっ気 == 2
 	V = 1500
-ELSEIF ABL:20 == 3
+ELSEIF ABL:ホモっ気 == 3
 	V = 2100
-ELSEIF ABL:20 == 4
+ELSEIF ABL:ホモっ気 == 4
 	V = 2800
-ELSEIF ABL:20 == 5
+ELSEIF ABL:ホモっ気 == 5
 	V = 3600
-ELSEIF ABL:20 == 6
+ELSEIF ABL:ホモっ気 == 6
 	V = 5500
-ELSEIF ABL:1 == 7
+ELSEIF ABL:欲望 == 7
 	V = 8000
-ELSEIF ABL:1 == 8
+ELSEIF ABL:欲望 == 8
 	V = 12000
-ELSEIF ABL:1 == 9
+ELSEIF ABL:欲望 == 9
 	V = 16000
 ELSE
 	V = 22000
 ENDIF
 SIF V > 0
-	PRINTFORML %ABLNAME:20%{ABL:20}LV +{V}
+	PRINTFORML %ABLNAME:20%{ABL:ホモっ気}LV +{V}
 S += V
 
 
 ;ABL:ゲイ中毒をみる
-IF ABL:21 == 0
+IF ABL:ゲイ中毒 == 0
 	V = 0
-ELSEIF ABL:21 == 1
+ELSEIF ABL:ゲイ中毒 == 1
 	V = 1500
-ELSEIF ABL:21 == 2
+ELSEIF ABL:ゲイ中毒 == 2
 	V = 2200
-ELSEIF ABL:21 == 3
+ELSEIF ABL:ゲイ中毒 == 3
 	V = 3000
-ELSEIF ABL:21 == 4
+ELSEIF ABL:ゲイ中毒 == 4
 	V = 3900
-ELSEIF ABL:21 == 5
+ELSEIF ABL:ゲイ中毒 == 5
 	V = 4900
-ELSEIF ABL:21 == 6
+ELSEIF ABL:ゲイ中毒 == 6
 	V = 8000
-ELSEIF ABL:21 == 7
+ELSEIF ABL:ゲイ中毒 == 7
 	V = 11000
-ELSEIF ABL:21 == 8
+ELSEIF ABL:ゲイ中毒 == 8
 	V = 15000
-ELSEIF ABL:21 == 9
+ELSEIF ABL:ゲイ中毒 == 9
 	V = 20000
 ELSE
 	V = 30000
 ENDIF
 SIF V > 0
-	PRINTFORML %ABLNAME:21%{ABL:21}LV +{V}
+	PRINTFORML %ABLNAME:21%{ABL:ゲイ中毒}LV +{V}
 S += V
 
 
@@ -1126,49 +1126,49 @@ IF TALENT:謎の魅力
 	PRINTFORML %TALENTNAME:94% ＋{C}％
 ENDIF
 ;Ｃ鈍感（感覚が4以上なら無効）
-IF TALENT:Ｃ鈍感 && ABL:3 < 4
+IF TALENT:Ｃ鈍感 && ABL:Ｃ感覚 < 4
 	C = 30
 	V -= 30
 	PRINTFORML %TALENTNAME:101% －{C}％
 ENDIF
 ;Ｃ敏感（感覚が3未満なら無効）
-IF TALENT:Ｃ敏感 && ABL:3 >= 3
+IF TALENT:Ｃ敏感 && ABL:Ｃ感覚 >= 3
 	C = 30
 	V += 30
 	PRINTFORML %TALENTNAME:102% ＋{C}％
 ENDIF
 ;Ｖ鈍感（感覚が4以上なら無効）
-IF TALENT:Ｖ鈍感 && ABL:4 < 4
+IF TALENT:Ｖ鈍感 && ABL:Ｖ感覚 < 4
 	C = 30
 	V -= 30
 	PRINTFORML %TALENTNAME:103% －{C}％
 ENDIF
 ;Ｖ敏感（感覚が3未満なら無効）
-IF TALENT:Ｖ敏感 && ABL:4 >= 3
+IF TALENT:Ｖ敏感 && ABL:Ｖ感覚 >= 3
 	C = 30
 	V += 30
 	PRINTFORML %TALENTNAME:104% ＋{C}％
 ENDIF
 ;Ａ鈍感（感覚が4以上なら無効）
-IF TALENT:Ａ鈍感 && ABL:5 < 4
+IF TALENT:Ａ鈍感 && ABL:Ａ感覚 < 4
 	C = 30
 	V -= 30
 	PRINTFORML %TALENTNAME:105% －{C}％
 ENDIF
 ;Ａ敏感（感覚が3未満なら無効）
-IF TALENT:Ａ敏感 && ABL:5 >= 3
+IF TALENT:Ａ敏感 && ABL:Ａ感覚 >= 3
 	C = 30
 	V += 30
 	PRINTFORML %TALENTNAME:106% ＋{C}％
 ENDIF
 ;Ｂ鈍感（感覚が4以上なら無効）
-IF TALENT:Ｂ鈍感 && ABL:6 < 4
+IF TALENT:Ｂ鈍感 && ABL:Ｂ感覚 < 4
 	C = 30
 	V -= 30
 	PRINTFORML %TALENTNAME:107% －{C}％
 ENDIF
 ;Ｂ敏感（感覚が3未満なら無効）
-IF TALENT:Ｂ敏感 && ABL:6 >= 3
+IF TALENT:Ｂ敏感 && ABL:Ｂ感覚 >= 3
 	C = 30
 	V += 30
 	PRINTFORML %TALENTNAME:108% ＋{C}％
@@ -1264,21 +1264,21 @@ S /= 100
 IF TALENT:崩壊 || TALENT:狂気 || TALENT:妊娠
 PRINTL 
 	IF TALENT:崩壊
-		S *= ABL:0
+		S *= ABL:従順
 		TIMES S , 0.08
-		Z = ABL:0
+		Z = ABL:従順
 		Z *= 8
 		PRINTFORML %TALENTNAME:9% ×{Z}％
 	ELSEIF TALENT:狂気
-		S *= ABL:0
+		S *= ABL:従順
 		TIMES S , 0.08
-		Z = ABL:0
+		Z = ABL:従順
 		Z *= 8
 		PRINTFORML %TALENTNAME:141% ×{Z}％
 	ELSEIF TALENT:妊娠
-		S *= ABL:0
+		S *= ABL:従順
 		TIMES S , 0.08
-		Z = ABL:0
+		Z = ABL:従順
 		Z *= 8
 		PRINTFORML %TALENTNAME:153% ×{Z}％
 	ENDIF
@@ -1811,25 +1811,25 @@ SIF EXP:TARGET:被写経験 >= EXPLV:3
 ;主人
 IF FLAG:22 == 1
 	;撮影技能を見る
-	IF ABL:MASTER:13 >= 5
+	IF ABL:MASTER:撮影技能 >= 5
 		O += 100
-	ELSEIF ABL:MASTER:13 == 4
+	ELSEIF ABL:MASTER:撮影技能 == 4
 		O += 50
-	ELSEIF ABL:MASTER:13 == 3
+	ELSEIF ABL:MASTER:撮影技能 == 3
 		O += 20
-	ELSEIF ABL:MASTER:13 <= 1
+	ELSEIF ABL:MASTER:撮影技能 <= 1
 		O -= 20
 	ENDIF
 ;助手
 ELSEIF FLAG:22 == 2
 	;撮影技能を見る
-	IF ABL:ASSI:13 >= 5
+	IF ABL:ASSI:撮影技能 >= 5
 		O += 100
-	ELSEIF ABL:ASSI:13 == 4
+	ELSEIF ABL:ASSI:撮影技能 == 4
 		O += 50
-	ELSEIF ABL:ASSI:13 == 3
+	ELSEIF ABL:ASSI:撮影技能 == 3
 		O += 20
-	ELSEIF ABL:ASSI:13 <= 1
+	ELSEIF ABL:ASSI:撮影技能 <= 1
 		O -= 20
 	ENDIF
 ENDIF
@@ -1875,7 +1875,7 @@ TFLAG:70 = 0
 ;撮影中のまま売却まで来た場合はテープの数を減らす
 ;テープの減数は撮影後処理のため、さらにビデオの値段および経験もここで処理をする
 IF TEQUIP:28
-	ITEM:43 -= 1
+	ITEM:ビデオテープ -= 1
 	CALL PRICE_VIDEO
 ENDIF
 
@@ -1918,15 +1918,15 @@ B = 0
 C = 0
 
 ;調教者のABL:撮影技能をみる
-IF ABL:PLAYER:13 == 0
+IF ABL:PLAYER:撮影技能 == 0
 	B = 10
-ELSEIF ABL:PLAYER:13 == 1
+ELSEIF ABL:PLAYER:撮影技能 == 1
 	B = 100
-ELSEIF ABL:PLAYER:13 == 2
+ELSEIF ABL:PLAYER:撮影技能 == 2
 	B = 150
-ELSEIF ABL:PLAYER:13 == 3
+ELSEIF ABL:PLAYER:撮影技能 == 3
 	B = 250
-ELSEIF ABL:PLAYER:13 == 4
+ELSEIF ABL:PLAYER:撮影技能 == 4
 	B = 300
 ELSE
 	B = 500

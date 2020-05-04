@@ -52,13 +52,13 @@ ENDIF
 ;---------------------------------------------------------
 @SAMEN_CHECK
 ;汎用的な関数なので、将来的にはすべての調教コマンドの射精チェックをここでやることも可能
-S = BASE:PLAYER:2
-EJAC = MAXBASE:PLAYER:2
+S = BASE:PLAYER:射精
+EJAC = MAXBASE:PLAYER:射精
 
 ;射精限界が来ている場合は、射精ゲージは強制的に0にする
 IF CFLAG:PLAYER:11 == 0
 	S = 0
-	BASE:PLAYER:2 = 0
+	BASE:PLAYER:射精 = 0
 ENDIF
 
 IF  S > EJAC * 2
@@ -71,13 +71,13 @@ ENDIF
 
 @SAMEN_CHECK_M
 ;調教者と対象が異なる場合（主人）
-S = BASE:MASTER:2
-EJAC = MAXBASE:MASTER:2
+S = BASE:MASTER:射精
+EJAC = MAXBASE:MASTER:射精
 
 ;射精限界が来ている場合は、射精ゲージは強制的に0にする
 IF CFLAG:MASTER:11 == 0
 	S = 0
-	BASE:MASTER:2 = 0
+	BASE:MASTER:射精 = 0
 ENDIF
 
 ;射精フラグはここで初期化
@@ -93,13 +93,13 @@ ENDIF
 
 @SAMEN_CHECK_A
 ;調教者と対象が異なる場合（助手）
-S = BASE:ASSI:2
-EJAC = MAXBASE:ASSI:2
+S = BASE:ASSI:射精
+EJAC = MAXBASE:ASSI:射精
 
 ;射精限界が来ている場合は、射精ゲージは強制的に0にする
 IF CFLAG:ASSI:11 == 0
 	S = 0
-	BASE:ASSI:2 = 0
+	BASE:ASSI:射精 = 0
 ENDIF
 
 IF  S > EJAC * 2
@@ -254,20 +254,20 @@ TEQUIP:P:35 = 0
 
 ;コンドーム自動装着処理
 IF (FLAG:98 & 4) && P == MASTER
-	IF ITEM:45 > 0
-		ITEM:45 -= 1
+	IF ITEM:コンドーム > 0
+		ITEM:コンドーム -= 1
 		TEQUIP:P:35 = 1
 	ENDIF
-	IF ITEM:45 == 0
+	IF ITEM:コンドーム == 0
 		PRINT <コンドームが無くなったので、自動装着を解除します>
 		FLAG:98 = 0
 	ENDIF
 ELSEIF (FLAG:98 & 2) && P == ASSI
-	IF ITEM:45 > 0
-		ITEM:45 -= 1
+	IF ITEM:コンドーム > 0
+		ITEM:コンドーム -= 1
 		TEQUIP:P:35 = 1
 	ENDIF
-	IF ITEM:45 == 0
+	IF ITEM:コンドーム == 0
 		PRINT <コンドームが無くなったので、自動装着を解除します>
 		FLAG:98 = 0
 	ENDIF
@@ -411,11 +411,11 @@ IF TEQUIP:TARGET:35 == 1
 	TEQUIP:TARGET:35 = 0
 	;コンドーム自動装着処理
 	IF (FLAG:98 & 1)
-		IF ITEM:45 > 0
-			ITEM:45 -= 1
+		IF ITEM:コンドーム > 0
+			ITEM:コンドーム -= 1
 			TEQUIP:TARGET:35 = 1
 		ENDIF
-		IF ITEM:45 == 0
+		IF ITEM:コンドーム == 0
 			PRINT <コンドームが無くなったので、自動装着を解除します>
 			FLAG:98 = 0
 		ENDIF
@@ -729,17 +729,17 @@ IF E == 2
 	EXP:P:射精経験 += 2
 	PRINTL 大量射精
 
-	BASE:P:2 -= EJAC*2
-	SIF BASE:P:2 >= EJAC
-		BASE:P:2 = EJAC-1
+	BASE:P:射精 -= EJAC*2
+	SIF BASE:P:射精 >= EJAC
+		BASE:P:射精 = EJAC-1
 ;通常の射精
 ELSEIF E == 1
 	EXP:P:射精経験 += 1
 	PRINTL 射精
 
-	BASE:P:2 -= EJAC
-	SIF BASE:P:2 >= EJAC
-		BASE:P:2 = EJAC-1
+	BASE:P:射精 -= EJAC
+	SIF BASE:P:射精 >= EJAC
+		BASE:P:射精 = EJAC-1
 ENDIF
 
 ;射精時に中毒充足のソースを追加
@@ -752,25 +752,25 @@ SIF E == 2
 
 IF E > 0
 	;精液中毒を見る
-	IF ABL:16 == 1
+	IF ABL:精液中毒 == 1
 		TIMES A , 0.00
-	ELSEIF ABL:16 == 2
+	ELSEIF ABL:精液中毒 == 2
 		TIMES A , 0.30
-	ELSEIF ABL:16 == 3
+	ELSEIF ABL:精液中毒 == 3
 		TIMES A , 0.60
-	ELSEIF ABL:16 == 4
+	ELSEIF ABL:精液中毒 == 4
 		TIMES A , 0.90
-	ELSEIF ABL:16 == 5
+	ELSEIF ABL:精液中毒 == 5
 		TIMES A , 1.20
-	ELSEIF ABL:16 == 6
+	ELSEIF ABL:精液中毒 == 6
 		TIMES A , 1.50
-	ELSEIF ABL:16 == 7
+	ELSEIF ABL:精液中毒 == 7
 		TIMES A , 1.80
-	ELSEIF ABL:16 == 8
+	ELSEIF ABL:精液中毒 == 8
 		TIMES A , 2.30
-	ELSEIF ABL:16 == 9
+	ELSEIF ABL:精液中毒 == 9
 		TIMES A , 3.00
-	ELSEIF ABL:16 == 10
+	ELSEIF ABL:精液中毒 == 10
 		TIMES A , 5.00
 	ENDIF
 ENDIF

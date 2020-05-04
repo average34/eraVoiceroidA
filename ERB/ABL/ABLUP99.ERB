@@ -1,21 +1,21 @@
 ﻿;反発刻印を消してみるテスト
 ;使う場合は↓をABL.ERBの「PRINTL [100] 能力値アップの終了」の前に挿入すること
-;PRINTFORML [99]%MARKNAME:3%-{MARK:3}LV
+;PRINTFORML [99]%MARKNAME:3%-{MARK:反発刻印}LV
 ;
 ;TRACHECK.ERBも弄ると再度屈服刻印が付いたりしないので吉
 ;●改変前
-;IF A >= 500 && A < 1200 && MARK:3 <= 0
-;	MARK:3 = 1
+;IF A >= 500 && A < 1200 && MARK:反発刻印 <= 0
+;	MARK:反発刻印 = 1
 ;●改変後
 ;IF A >= 500 && A < 1200 && MARK:4 <= 0
-;	MARK:3 = 1
+;	MARK:反発刻印 = 1
 ;	MARK:4 = 1
 ;●以上の内容を3LVの3箇所にすること
 ;上記の解らないor解ってもやらない場合に再度屈服刻印付いた場合の弊害は保証しかねます
 
 
 @ISABLUP99
-IF MARK:3 <= 0
+IF MARK:反発刻印 <= 0
 	RETURN 0
 ENDIF
 
@@ -30,7 +30,7 @@ ENDIF
 
 @ABLUP99
 DRAWLINE
-IF MARK:3 <= 0
+IF MARK:反発刻印 <= 0
 	PRINTW 反発刻印はありません
 	RETURN 0
 ENDIF
@@ -40,12 +40,12 @@ CALL DECIDE_ABLUP99
 
 ;反発刻印Lvと同じLvの屈服刻印が必要
 PRINTS MARKNAME:2
-PRINTV MARK:3
+PRINTV MARK:反発刻印
 PRINTL LV以上、かつ
 
 ;反発刻印Lvと同じLvの従順が必要
 PRINTS ABLNAME:0
-PRINTV MARK:3
+PRINTV MARK:反発刻印
 PRINTL LV以上、かつ
 
 PRINTFORM [0] - %PALAMNAME:7%の珠×{A}……
@@ -73,13 +73,13 @@ ELSEIF RESULT == 100
 	RETURN 0
 ENDIF
 
-MARK:3 -= 1
+MARK:反発刻印 -= 1
 
 JUEL:7 -= A
 
 PRINTS MARKNAME:3
 PRINT のレベルが
-PRINTV MARK:3
+PRINTV MARK:反発刻印
 PRINTW になりました
 
 
@@ -90,20 +90,20 @@ I = 0
 ;能力アップ可能なら1にする
 Z = 0
 
-IF MARK:3 == 1
+IF MARK:反発刻印 == 1
 	A = 3000
-ELSEIF MARK:3 == 2
+ELSEIF MARK:反発刻印 == 2
 	A = 5000
-ELSEIF MARK:3 == 3
+ELSEIF MARK:反発刻印 == 3
 	A = 10000
 ENDIF
 
 ;反発刻印Lvと同じLvの屈服刻印が必要
-SIF MARK:3 > MARK:2
+SIF MARK:反発刻印 > MARK:屈服刻印
 	I |= 2
 
 ;反発刻印Lvと同じLvの従順が必要
-SIF MARK:3 > ABL:0
+SIF MARK:反発刻印 > ABL:従順
 	I |= 4
 
 ;屈服の珠で減らす

@@ -29,8 +29,8 @@ ENDIF
 ;ソース追加処理
 ;-------------------------------------------------
 ;消費体力、気力
-LOSEBASE:0 += 30
-LOSEBASE:1 += 120
+LOSEBASE:体力 += 30
+LOSEBASE:気力 += 120
 
 SOURCE:7 = 300
 SOURCE:8 = 900
@@ -44,14 +44,14 @@ SOURCE:18 = 700
 ;-------------------------------------------------
 ;緊縛経験が高いと消費減少
 IF EXP:緊縛経験 < EXPLV:3
-	TIMES LOSEBASE:0 , 1.00
-	TIMES LOSEBASE:1 , 1.00
+	TIMES LOSEBASE:体力 , 1.00
+	TIMES LOSEBASE:気力 , 1.00
 ELSEIF EXP:緊縛経験 < EXPLV:4
-	TIMES LOSEBASE:0 , 0.90
-	TIMES LOSEBASE:1 , 0.90
+	TIMES LOSEBASE:体力 , 0.90
+	TIMES LOSEBASE:気力 , 0.90
 ELSE
-	TIMES LOSEBASE:0 , 0.70
-	TIMES LOSEBASE:1 , 0.70
+	TIMES LOSEBASE:体力 , 0.70
+	TIMES LOSEBASE:気力 , 0.70
 ENDIF
 
 ;-------------------------------------------------
@@ -104,7 +104,7 @@ ENDIF
 ;ソース追加処理
 ;-------------------------------------------------
 ;消費体力、気力
-LOSEBASE:0 += 15
+LOSEBASE:体力 += 15
 
 SOURCE:7 += 150
 SOURCE:8 += 450
@@ -125,7 +125,7 @@ ELSEIF EXP:緊縛経験 < EXPLV:4
 ELSE
 	TIMES A , 0.70
 ENDIF
-LOSEBASE:1 += A
+LOSEBASE:気力 += A
 
 
 ;-------------------------------------------------

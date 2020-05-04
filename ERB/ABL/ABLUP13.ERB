@@ -1,9 +1,9 @@
 ﻿;撮影技能の可否
 @ISABLUP13
 ;恋慕、親愛、服従、隷属はMAXLV10
-IF ABL:13 >= 10
+IF ABL:撮影技能 >= 10
 	RETURN 0
-ELSEIF ABL:13 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:服従 == 0 && TALENT:隷属 == 0
+ELSEIF ABL:撮影技能 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:服従 == 0 && TALENT:隷属 == 0
 	RETURN 0
 ENDIF
 
@@ -19,10 +19,10 @@ ENDIF
 @ABLUP13
 DRAWLINE
 ;恋慕、親愛、服従、隷属はMAXLV10
-IF ABL:13 >= 10
+IF ABL:撮影技能 >= 10
 	PRINTW 既にMAXです
 	RETURN 0
-ELSEIF ABL:13 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:服従 == 0 && TALENT:隷属 == 0
+ELSEIF ABL:撮影技能 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:服従 == 0 && TALENT:隷属 == 0
 	PRINTW 既にMAXです
 	RETURN 0
 ENDIF
@@ -61,7 +61,7 @@ ELSEIF RESULT == 100
 	RETURN 0
 ENDIF
 
-ABL:13 += 1
+ABL:撮影技能 += 1
 
 IF RESULT == 0
 	JUEL:8 -= A
@@ -69,7 +69,7 @@ ENDIF
 
 PRINTS ABLNAME:13
 PRINT のレベルが
-PRINTV ABL:13
+PRINTV ABL:撮影技能
 PRINTW になりました
 
 
@@ -80,34 +80,34 @@ I = 0
 ;能力アップ可能なら1にする
 Z = 0
 
-IF ABL:13 == 0
+IF ABL:撮影技能 == 0
 	A = 75
 	B = 5
-ELSEIF ABL:13 == 1
+ELSEIF ABL:撮影技能 == 1
 	A = 500
 	B = 10
-ELSEIF ABL:13 == 2
+ELSEIF ABL:撮影技能 == 2
 	A = 3000
 	B = 30
-ELSEIF ABL:13 == 3
+ELSEIF ABL:撮影技能 == 3
 	A = 9000
 	B = 50
-ELSEIF ABL:13 == 4
+ELSEIF ABL:撮影技能 == 4
 	A = 24000
 	B = 100
-ELSEIF ABL:13 == 5
+ELSEIF ABL:撮影技能 == 5
 	A = 30000
 	B = 200
-ELSEIF ABL:13 == 6
+ELSEIF ABL:撮影技能 == 6
 	A = 35000
 	B = 300
-ELSEIF ABL:13 == 7
+ELSEIF ABL:撮影技能 == 7
 	A = 40000
 	B = 400
-ELSEIF ABL:13 == 8
+ELSEIF ABL:撮影技能 == 8
 	A = 45000
 	B = 500
-ELSEIF ABL:13 == 9
+ELSEIF ABL:撮影技能 == 9
 	A = 50000
 	B = 600
 ENDIF

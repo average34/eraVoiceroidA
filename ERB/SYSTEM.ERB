@@ -105,14 +105,14 @@ TFLAG:100 = 0
 @EVENTCOMEND
 #PRI
 
-IF BASE:0 <= 0
+IF BASE:体力 <= 0
 	PRINTFORMW ………………
 	PRINTFORMW …………
 	PRINTFORMW ……
 	PRINTFORMW （激しい調教によって、%CALLNAME:TARGET%は気絶しました　調教を終了します）
 	;従順ダウン
-	IF ABL:0 > 0
-		ABL:0 -= 1
+	IF ABL:従順 > 0
+		ABL:従順 -= 1
 		PRINTFORML %CALLNAME:TARGET%の従順が１下がった
 	ENDIF
 	;体力回復停止フラグ
@@ -120,9 +120,9 @@ IF BASE:0 <= 0
 	SIF TALENT:蓬莱人
 		CFLAG:6 -= 1
 	CFLAG:10 += 10
-	BASE:0 = 1
+	BASE:体力 = 1
 	BEGIN AFTERTRAIN
-ELSEIF BASE:0 < 500
+ELSEIF BASE:体力 < 500
 	PRINTW （体力が限界に来ています　調教を終了します）
 	BEGIN AFTERTRAIN
 ENDIF
@@ -132,7 +132,7 @@ ENDIF
 #PRI
 REPEAT CHARANUM
 	;気力の回復
-	BASE:COUNT:1 = MAXBASE:COUNT:1
+	BASE:COUNT:気力 = MAXBASE:COUNT:気力
 
 	;労役中のキャラは体力回復処理無し
 	SIF CFLAG:COUNT:12 > 0
@@ -146,9 +146,9 @@ REPEAT CHARANUM
 
 	;体力の回復（午後の調教後は夜の休みが入るので回復大きい）
 	IF TIME == 0
-		A = MAXBASE:COUNT:0 / 15
+		A = MAXBASE:COUNT:体力 / 15
 	ELSE
-		A = MAXBASE:COUNT:0 / 5
+		A = MAXBASE:COUNT:体力 / 5
 	ENDIF
 
 	;回復早い、回復遅い、蓬莱人
@@ -189,9 +189,9 @@ REPEAT CHARANUM
 		CFLAG:COUNT:10 -= 1
 	ENDIF
 
-	BASE:COUNT:0 += A
-	SIF BASE:COUNT:0 > MAXBASE:COUNT:0
-		BASE:COUNT:0 = MAXBASE:COUNT:0
+	BASE:COUNT:体力 += A
+	SIF BASE:COUNT:体力 > MAXBASE:COUNT:体力
+		BASE:COUNT:体力 = MAXBASE:COUNT:体力
 
 	;ストレス値が0未満の場合は0にする
 	SIF CFLAG:COUNT:10 < 0

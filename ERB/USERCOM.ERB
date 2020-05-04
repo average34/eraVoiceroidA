@@ -100,7 +100,7 @@ IF D == 0
 	CALL CHECK_NEWLINE
 ENDIF
 IF (TALENT:PLAYER:半人半妖 || TALENT:PLAYER:ふたなり || TALENT:PLAYER:オトコ) || (TALENT:半人半妖 || TALENT:ふたなり || TALENT:オトコ)
-	IF ITEM:45 > 0
+	IF ITEM:コンドーム > 0
 		PRINTC コンドーム設定[804]
 		CALL CHECK_NEWLINE
 	ENDIF
@@ -395,7 +395,7 @@ $INPUT_LOOP_2
 INPUT
 IF RESULT == 0
 	IF TEQUIP:T:35 == 0
-		ITEM:45 -= 1
+		ITEM:コンドーム -= 1
 		TEQUIP:T:35 = 1
 	ENDIF
 	SIF T == MASTER
@@ -408,7 +408,7 @@ IF RESULT == 0
 ELSEIF RESULT == 1
 	IF TEQUIP:T:35 == 0
 		PRINTFORMW %CALLNAME:T%は、コンドームをつけた
-		ITEM:45 -= 1
+		ITEM:コンドーム -= 1
 		TEQUIP:T:35 = 1
 	ELSEIF (T == MASTER && (FLAG:98 & 4)) || (T == ASSI && (FLAG:98 & 2)) || (T == TARGET && (FLAG:98 & 1))
 		PRINTFORMW %CALLNAME:T%は、コンドームを常につけないようにした

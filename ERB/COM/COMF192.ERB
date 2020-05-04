@@ -23,8 +23,8 @@ CALL KOJO_MESSAGE_COM
 ;ソース追加処理
 ;-------------------------------------------------
 ;消費体力、気力
-LOSEBASE:0 += 0
-LOSEBASE:1 += 100
+LOSEBASE:体力 += 0
+LOSEBASE:気力 += 100
 
 SOURCE:5 = 420
 SOURCE:6 = 150
@@ -68,53 +68,53 @@ S = 0
 CALL COM_ORDER
 
 ;ABL:欲望
-IF ABL:1
+IF ABL:欲望
 	SIF S
 		PRINT  + 
-	A += ABL:1 * 1
+	A += ABL:欲望 * 1
 	PRINTS ABLNAME:1
-	PRINTV 'LV,ABL:1,'(,ABL:1 * 1,')
+	PRINTV 'LV,ABL:欲望,'(,ABL:欲望 * 1,')
 	S = 1
 ENDIF
 ;ABL:奉仕精神
-IF ABL:7
+IF ABL:奉仕精神
 	SIF S
 		PRINT  + 
-	A += ABL:7 * 4
+	A += ABL:奉仕精神 * 4
 	PRINTS ABLNAME:7
-	PRINTV 'LV,ABL:7,'(,ABL:7 * 4,')
+	PRINTV 'LV,ABL:奉仕精神,'(,ABL:奉仕精神 * 4,')
 	S = 1
 ENDIF
 ;ABL:精液中毒
-IF ABL:16
+IF ABL:精液中毒
 	SIF S
 		PRINT  + 
-	A += ABL:16 * 3
+	A += ABL:精液中毒 * 3
 	PRINTS ABLNAME:16
-	PRINTV 'LV,ABL:16,'(,ABL:16 * 3,')
+	PRINTV 'LV,ABL:精液中毒,'(,ABL:精液中毒 * 3,')
 	S = 1
 ENDIF
 
-IF MARK:1
+IF MARK:快楽刻印
 	SIF S
 		PRINT  + 
-	A += MARK:1 * 1
+	A += MARK:快楽刻印 * 1
 	PRINTS MARKNAME:1
-	PRINTV 'LV,MARK:1,'(,MARK:1 * 1,')
+	PRINTV 'LV,MARK:快楽刻印,'(,MARK:快楽刻印 * 1,')
 	S = 1
 ENDIF
 
 
 ;PALAM:欲情
-IF PALAM:6 < PALAMLV:1
+IF PALAM:欲情 < PALAMLV:1
 	L = 0
-ELSEIF PALAM:6 < PALAMLV:2
+ELSEIF PALAM:欲情 < PALAMLV:2
 	L = 1
-ELSEIF PALAM:6 < PALAMLV:3
+ELSEIF PALAM:欲情 < PALAMLV:3
 	L = 2
-ELSEIF PALAM:6 < PALAMLV:4
+ELSEIF PALAM:欲情 < PALAMLV:4
 	L = 3
-ELSEIF PALAM:6 < PALAMLV:5
+ELSEIF PALAM:欲情 < PALAMLV:5
 	L = 4
 ELSE
 	L = 5

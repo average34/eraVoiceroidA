@@ -1,9 +1,9 @@
 ﻿;従順の可否
 @ISABLUP0
 ;恋慕、親愛、服従、隷属はMAXLV10
-IF ABL:0 >= 10
+IF ABL:従順 >= 10
 	RETURN 0
-ELSEIF ABL:0 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:服従 == 0 && TALENT:隷属 == 0
+ELSEIF ABL:従順 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:服従 == 0 && TALENT:隷属 == 0
 	RETURN 0
 ENDIF
 
@@ -21,10 +21,10 @@ ENDIF
 @ABLUP0
 DRAWLINE
 ;恋慕、親愛、服従、隷属はMAXLV10
-IF ABL:0 >= 10
+IF ABL:従順 >= 10
 	PRINTW 既にMAXです
 	RETURN 0
-ELSEIF ABL:0 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:服従 == 0 && TALENT:隷属 == 0
+ELSEIF ABL:従順 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:服従 == 0 && TALENT:隷属 == 0
 	PRINTW 既にMAXです
 	RETURN 0
 ENDIF
@@ -33,11 +33,11 @@ CALL DECIDE_ABLUP0
 
 
 ;ＬＶ４から５に上げるときは異常経験必要（素質：[臆病][素直][恋慕][親愛]なら無視できる）
-IF ABL:0 == 4 && TALENT:臆病 == 0 && TALENT:素直 == 0 && TALENT:恋慕 == 0 && TALENT:親愛 == 0
+IF ABL:従順 == 4 && TALENT:臆病 == 0 && TALENT:素直 == 0 && TALENT:恋慕 == 0 && TALENT:親愛 == 0
 	PRINTS EXPNAME:50
 	PRINTL あり、かつ
 ;ＬＶ７から８に上げるときは異常経験3以上必要（素質：[臆病][素直][恋慕][親愛]なら無視できる）
-ELSEIF ABL:0 == 7 && TALENT:臆病 == 0 && TALENT:素直 == 0 && TALENT:恋慕 == 0 && TALENT:親愛 == 0
+ELSEIF ABL:従順 == 7 && TALENT:臆病 == 0 && TALENT:素直 == 0 && TALENT:恋慕 == 0 && TALENT:親愛 == 0
 	PRINTS EXPNAME:50
 	PRINTL 3以上、かつ
 ENDIF
@@ -130,7 +130,7 @@ ELSEIF RESULT == 100
 	RETURN 0
 ENDIF
 
-ABL:0 += 1
+ABL:従順 += 1
 
 IF RESULT == 0
 	JUEL:11 -= A
@@ -144,7 +144,7 @@ ENDIF
 
 PRINTS ABLNAME:0
 PRINT のレベルが
-PRINTV ABL:0
+PRINTV ABL:従順
 PRINTW になりました
 
 
@@ -158,52 +158,52 @@ L = 0
 ;能力アップ可能なら1にする
 Z = 0
 
-IF ABL:0 == 0
+IF ABL:従順 == 0
 	A = 10
 	B = 10
 	C = 150
 	D = 100
-ELSEIF ABL:0 == 1
+ELSEIF ABL:従順 == 1
 	A = 150
 	B = 100
 	C = 450
 	D = 600
-ELSEIF ABL:0 == 2
+ELSEIF ABL:従順 == 2
 	A = 500
 	B = 300
 	C = 1000
 	D = 1200
-ELSEIF ABL:0 == 3
+ELSEIF ABL:従順 == 3
 	A = 3000
 	B = 3000
 	C = 0
 	D = 0
-ELSEIF ABL:0 == 4
+ELSEIF ABL:従順 == 4
 	A = 6000
 	B = 6000
 	C = 0
 	D = 0
-ELSEIF ABL:0 == 5
+ELSEIF ABL:従順 == 5
 	A = 8000
 	B = 10000
 	C = 0
 	D = 0
-ELSEIF ABL:0 == 6
+ELSEIF ABL:従順 == 6
 	A = 10000
 	B = 15000
 	C = 0
 	D = 0
-ELSEIF ABL:0 == 7
+ELSEIF ABL:従順 == 7
 	A = 14000
 	B = 20000
 	C = 0
 	D = 0
-ELSEIF ABL:0 == 8
+ELSEIF ABL:従順 == 8
 	A = 18000
 	B = 25000
 	C = 0
 	D = 0
-ELSEIF ABL:0 == 9
+ELSEIF ABL:従順 == 9
 	A = 25000
 	B = 35000
 	C = 0
@@ -233,7 +233,7 @@ IF TALENT:一線越えない && (TALENT:恋慕 == 0 && TALENT:淫乱 == 0 && TAL
 ENDIF
 
 ;ＬＶ４から５に上げるときは異常経験必要（素質：[臆病][素直][恋慕][親愛]なら無視できる）
-IF ABL:0 == 4 && TALENT:臆病 == 0 && TALENT:素直 == 0 && TALENT:恋慕 == 0 && TALENT:親愛 == 0
+IF ABL:従順 == 4 && TALENT:臆病 == 0 && TALENT:素直 == 0 && TALENT:恋慕 == 0 && TALENT:親愛 == 0
 	IF EXP:異常経験 == 0
 		;異常経験がない
 		I |= 2
@@ -242,7 +242,7 @@ IF ABL:0 == 4 && TALENT:臆病 == 0 && TALENT:素直 == 0 && TALENT:恋慕 == 0 
 		L |= 2
 	ENDIF
 ;ＬＶ７から８に上げるときは異常経験3以上必要（素質：[臆病][素直][恋慕][親愛]なら無視できる）
-ELSEIF ABL:0 == 7 && TALENT:臆病 == 0 && TALENT:素直 == 0 && TALENT:恋慕 == 0 && TALENT:親愛 == 0
+ELSEIF ABL:従順 == 7 && TALENT:臆病 == 0 && TALENT:素直 == 0 && TALENT:恋慕 == 0 && TALENT:親愛 == 0
 	IF EXP:異常経験 < 3
 		;異常経験が3未満
 		I |= 2

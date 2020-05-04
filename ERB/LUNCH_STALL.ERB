@@ -41,7 +41,7 @@ REPEAT CHARANUM
 		CONTINUE
 	SIF CFLAG:COUNT:12 > 0
 		CONTINUE
-	SIF (TALENT:COUNT:恋慕 || TALENT:COUNT:親愛) && BASE:COUNT:0 > 800
+	SIF (TALENT:COUNT:恋慕 || TALENT:COUNT:親愛) && BASE:COUNT:体力 > 800
 		PRINTFORML [{COUNT}] - %CALLNAME:COUNT%
 REND
 PRINTL [100] - 戻る
@@ -57,7 +57,7 @@ ELSEIF CFLAG:RESULT:1 < 2
 	GOTO INPUT_LOOP_2
 ELSEIF CFLAG:RESULT:12 > 0
 	GOTO INPUT_LOOP_2
-ELSEIF (TALENT:RESULT:恋慕 == 0 && TALENT:RESULT:親愛 == 0) || BASE:RESULT:0 <= 800
+ELSEIF (TALENT:RESULT:恋慕 == 0 && TALENT:RESULT:親愛 == 0) || BASE:RESULT:体力 <= 800
 	GOTO INPUT_LOOP_2
 ELSE
 	A = RESULT
@@ -65,31 +65,31 @@ ENDIF
 
 ;奴隷の料理技能と家事経験のレベルによって、料理の内容と値段の基礎値が上昇
 ;ABL:料理技能をみる
-IF ABL:A:12 == 0
+IF ABL:A:料理技能 == 0
 	S += 0
-ELSEIF ABL:A:12 == 1
+ELSEIF ABL:A:料理技能 == 1
 	S += 600
-ELSEIF ABL:A:12 == 2
+ELSEIF ABL:A:料理技能 == 2
 	S += 1000
-ELSEIF ABL:A:12 == 3
+ELSEIF ABL:A:料理技能 == 3
 	S += 1500
-ELSEIF ABL:A:12 == 4
+ELSEIF ABL:A:料理技能 == 4
 	S += 2100
-ELSEIF ABL:A:12 == 5
+ELSEIF ABL:A:料理技能 == 5
 	S += 2800
-ELSEIF ABL:A:12 == 6
+ELSEIF ABL:A:料理技能 == 6
 	S += 3600
-ELSEIF ABL:A:12 == 7
+ELSEIF ABL:A:料理技能 == 7
 	S += 4500
-ELSEIF ABL:A:12 == 8
+ELSEIF ABL:A:料理技能 == 8
 	S += 5500
-ELSEIF ABL:A:12 == 9
+ELSEIF ABL:A:料理技能 == 9
 	S += 6600
 ELSE
 	S += 7800
 ENDIF
 SIF S
-	PRINTFORML %ABLNAME:12%{ABL:A:12}LV +{S}
+	PRINTFORML %ABLNAME:12%{ABL:A:料理技能}LV +{S}
 
 ;家事経験による補正
 IF EXP:A:家事経験 < EXPLV:1
@@ -111,292 +111,292 @@ S += D
 ;奴隷の能力、素質による倍率計算（料理技能は前項で見ているので省略）
 V = 100
 ;ABL:従順をみる
-IF ABL:A:0 == 0
+IF ABL:A:従順 == 0
 	C = 0
-ELSEIF ABL:A:0 == 1
+ELSEIF ABL:A:従順 == 1
 	C = 10
-ELSEIF ABL:A:0 == 2
+ELSEIF ABL:A:従順 == 2
 	C = 20
-ELSEIF ABL:A:0 == 3
+ELSEIF ABL:A:従順 == 3
 	C = 30
-ELSEIF ABL:A:0 == 4
+ELSEIF ABL:A:従順 == 4
 	C = 40
-ELSEIF ABL:A:0 == 5
+ELSEIF ABL:A:従順 == 5
 	C = 50
-ELSEIF ABL:A:0 == 6
+ELSEIF ABL:A:従順 == 6
 	C = 60
-ELSEIF ABL:A:0 == 7
+ELSEIF ABL:A:従順 == 7
 	C = 70
-ELSEIF ABL:A:0 == 8
+ELSEIF ABL:A:従順 == 8
 	C = 80
-ELSEIF ABL:A:0 == 9
+ELSEIF ABL:A:従順 == 9
 	C = 90
 ELSE
 	C = 100
 ENDIF
 SIF C > 0
-	PRINTFORML %ABLNAME:0%{ABL:A:0}LV +{C}％
+	PRINTFORML %ABLNAME:0%{ABL:A:従順}LV +{C}％
 V += C
 
 
 ;ABL:欲望をみる
-IF ABL:A:1 == 0
+IF ABL:A:欲望 == 0
 	C = 0
-ELSEIF ABL:A:1 == 1
+ELSEIF ABL:A:欲望 == 1
 	C = 10
-ELSEIF ABL:A:1 == 2
+ELSEIF ABL:A:欲望 == 2
 	C = 20
-ELSEIF ABL:A:1 == 3
+ELSEIF ABL:A:欲望 == 3
 	C = 30
-ELSEIF ABL:A:1 == 4
+ELSEIF ABL:A:欲望 == 4
 	C = 40
-ELSEIF ABL:A:1 == 5
+ELSEIF ABL:A:欲望 == 5
 	C = 50
-ELSEIF ABL:A:1 == 6
+ELSEIF ABL:A:欲望 == 6
 	C = 60
-ELSEIF ABL:A:1 == 7
+ELSEIF ABL:A:欲望 == 7
 	C = 70
-ELSEIF ABL:A:1 == 8
+ELSEIF ABL:A:欲望 == 8
 	C = 80
-ELSEIF ABL:A:1 == 9
+ELSEIF ABL:A:欲望 == 9
 	C = 90
 ELSE
 	C = 100
 ENDIF
 SIF C > 0
-	PRINTFORML %ABLNAME:1%{ABL:A:1}LV +{C}％
+	PRINTFORML %ABLNAME:1%{ABL:A:欲望}LV +{C}％
 V += C
 
 
 ;ABL:技巧をみる
-IF ABL:A:2 == 0
+IF ABL:A:技巧 == 0
 	C = 0
-ELSEIF ABL:A:2 == 1
+ELSEIF ABL:A:技巧 == 1
 	C = 5
-ELSEIF ABL:A:2 == 2
+ELSEIF ABL:A:技巧 == 2
 	C = 10
-ELSEIF ABL:A:2 == 3
+ELSEIF ABL:A:技巧 == 3
 	C = 15
-ELSEIF ABL:A:2 == 4
+ELSEIF ABL:A:技巧 == 4
 	C = 20
-ELSEIF ABL:A:2 == 5
+ELSEIF ABL:A:技巧 == 5
 	C = 25
-ELSEIF ABL:A:2 == 6
+ELSEIF ABL:A:技巧 == 6
 	C = 30
-ELSEIF ABL:A:2 == 7
+ELSEIF ABL:A:技巧 == 7
 	C = 35
-ELSEIF ABL:A:2 == 8
+ELSEIF ABL:A:技巧 == 8
 	C = 40
-ELSEIF ABL:A:2 == 9
+ELSEIF ABL:A:技巧 == 9
 	C = 45
 ELSE
 	C = 50
 ENDIF
 SIF C > 0
-	PRINTFORML %ABLNAME:2%{ABL:A:2}LV +{C}％
+	PRINTFORML %ABLNAME:2%{ABL:A:技巧}LV +{C}％
 V += C
 
 
 ;ABL:Ｖ感覚をみる
-IF ABL:A:4 == 0
+IF ABL:A:Ｖ感覚 == 0
 	C = 0
-ELSEIF ABL:A:4 == 1
+ELSEIF ABL:A:Ｖ感覚 == 1
 	C = 5
-ELSEIF ABL:A:4 == 2
+ELSEIF ABL:A:Ｖ感覚 == 2
 	C = 10
-ELSEIF ABL:A:4 == 3
+ELSEIF ABL:A:Ｖ感覚 == 3
 	C = 15
-ELSEIF ABL:A:4 == 4
+ELSEIF ABL:A:Ｖ感覚 == 4
 	C = 20
-ELSEIF ABL:A:4 == 5
+ELSEIF ABL:A:Ｖ感覚 == 5
 	C = 25
-ELSEIF ABL:A:4 == 6
+ELSEIF ABL:A:Ｖ感覚 == 6
 	C = 30
-ELSEIF ABL:A:4 == 7
+ELSEIF ABL:A:Ｖ感覚 == 7
 	C = 35
-ELSEIF ABL:A:4 == 8
+ELSEIF ABL:A:Ｖ感覚 == 8
 	C = 40
-ELSEIF ABL:A:4 == 9
+ELSEIF ABL:A:Ｖ感覚 == 9
 	C = 45
 ELSE
 	C = 50
 ENDIF
 SIF C > 0
-	PRINTFORML %ABLNAME:4%{ABL:A:4}LV +{C}％
+	PRINTFORML %ABLNAME:4%{ABL:A:Ｖ感覚}LV +{C}％
 V += C
 
 
 ;ABL:奉仕精神をみる
-IF ABL:A:7 == 0
+IF ABL:A:奉仕精神 == 0
 	C = 0
-ELSEIF ABL:A:7 == 1
+ELSEIF ABL:A:奉仕精神 == 1
 	C = 5
-ELSEIF ABL:A:7 == 2
+ELSEIF ABL:A:奉仕精神 == 2
 	C = 10
-ELSEIF ABL:A:7 == 3
+ELSEIF ABL:A:奉仕精神 == 3
 	C = 15
-ELSEIF ABL:A:7 == 4
+ELSEIF ABL:A:奉仕精神 == 4
 	C = 20
-ELSEIF ABL:A:7 == 5
+ELSEIF ABL:A:奉仕精神 == 5
 	C = 25
-ELSEIF ABL:A:7 == 6
+ELSEIF ABL:A:奉仕精神 == 6
 	C = 30
-ELSEIF ABL:A:7 == 7
+ELSEIF ABL:A:奉仕精神 == 7
 	C = 35
-ELSEIF ABL:A:7 == 8
+ELSEIF ABL:A:奉仕精神 == 8
 	C = 40
-ELSEIF ABL:A:7 == 9
+ELSEIF ABL:A:奉仕精神 == 9
 	C = 45
 ELSE
 	C = 50
 ENDIF
 SIF C > 0
-	PRINTFORML %ABLNAME:7%{ABL:A:7}LV +{C}％
+	PRINTFORML %ABLNAME:7%{ABL:A:奉仕精神}LV +{C}％
 V += C
 
 
 ;ABL:露出癖をみる
-IF ABL:A:8 == 0
+IF ABL:A:露出癖 == 0
 	C = 0
-ELSEIF ABL:A:8 == 1
+ELSEIF ABL:A:露出癖 == 1
 	C = 5
-ELSEIF ABL:A:8 == 2
+ELSEIF ABL:A:露出癖 == 2
 	C = 10
-ELSEIF ABL:A:8 == 3
+ELSEIF ABL:A:露出癖 == 3
 	C = 15
-ELSEIF ABL:A:8 == 4
+ELSEIF ABL:A:露出癖 == 4
 	C = 20
-ELSEIF ABL:A:8 == 5
+ELSEIF ABL:A:露出癖 == 5
 	C = 25
-ELSEIF ABL:A:8 == 6
+ELSEIF ABL:A:露出癖 == 6
 	C = 30
-ELSEIF ABL:A:8 == 7
+ELSEIF ABL:A:露出癖 == 7
 	C = 35
-ELSEIF ABL:A:8 == 8
+ELSEIF ABL:A:露出癖 == 8
 	C = 40
-ELSEIF ABL:A:8 == 9
+ELSEIF ABL:A:露出癖 == 9
 	C = 45
 ELSE
 	C = 50
 ENDIF
 SIF C > 0
-	PRINTFORML %ABLNAME:8%{ABL:A:8}LV +{C}％
+	PRINTFORML %ABLNAME:8%{ABL:A:露出癖}LV +{C}％
 V += C
 
 
 ;ABL:マゾっ気をみる
-IF ABL:A:9 == 0
+IF ABL:A:マゾっ気 == 0
 	C = 0
-ELSEIF ABL:A:9 == 1
+ELSEIF ABL:A:マゾっ気 == 1
 	C = 5
-ELSEIF ABL:A:9 == 2
+ELSEIF ABL:A:マゾっ気 == 2
 	C = 10
-ELSEIF ABL:A:9 == 3
+ELSEIF ABL:A:マゾっ気 == 3
 	C = 15
-ELSEIF ABL:A:9 == 4
+ELSEIF ABL:A:マゾっ気 == 4
 	C = 20
-ELSEIF ABL:A:9 == 5
+ELSEIF ABL:A:マゾっ気 == 5
 	C = 25
-ELSEIF ABL:A:9 == 6
+ELSEIF ABL:A:マゾっ気 == 6
 	C = 30
-ELSEIF ABL:A:9 == 7
+ELSEIF ABL:A:マゾっ気 == 7
 	C = 35
-ELSEIF ABL:A:9 == 8
+ELSEIF ABL:A:マゾっ気 == 8
 	C = 40
-ELSEIF ABL:A:9 == 9
+ELSEIF ABL:A:マゾっ気 == 9
 	C = 45
 ELSE
 	C = 50
 ENDIF
 SIF C > 0
-	PRINTFORML %ABLNAME:9%{ABL:A:9}LV +{C}％
+	PRINTFORML %ABLNAME:9%{ABL:A:マゾっ気}LV +{C}％
 V += C
 
 
 ;ABL:サドっ気をみる
-IF ABL:A:10 == 0
+IF ABL:A:サドっ気 == 0
 	C = 0
-ELSEIF ABL:A:10 == 1
+ELSEIF ABL:A:サドっ気 == 1
 	C = 5
-ELSEIF ABL:A:10 == 2
+ELSEIF ABL:A:サドっ気 == 2
 	C = 10
-ELSEIF ABL:A:10 == 3
+ELSEIF ABL:A:サドっ気 == 3
 	C = 15
-ELSEIF ABL:A:10 == 4
+ELSEIF ABL:A:サドっ気 == 4
 	C = 20
-ELSEIF ABL:A:10 == 5
+ELSEIF ABL:A:サドっ気 == 5
 	C = 25
-ELSEIF ABL:A:10 == 6
+ELSEIF ABL:A:サドっ気 == 6
 	C = 30
-ELSEIF ABL:A:10 == 7
+ELSEIF ABL:A:サドっ気 == 7
 	C = 35
-ELSEIF ABL:A:10 == 8
+ELSEIF ABL:A:サドっ気 == 8
 	C = 40
-ELSEIF ABL:A:10 == 9
+ELSEIF ABL:A:サドっ気 == 9
 	C = 45
 ELSE
 	C = 50
 ENDIF
 SIF C > 0
-	PRINTFORML %ABLNAME:10%{ABL:A:10}LV +{C}％
+	PRINTFORML %ABLNAME:10%{ABL:A:サドっ気}LV +{C}％
 V += C
 
 
 ;ABL:歌唱技能をみる
-IF ABL:A:14 == 0
+IF ABL:A:歌唱技能 == 0
 	C = 0
-ELSEIF ABL:A:14 == 1
+ELSEIF ABL:A:歌唱技能 == 1
 	C = 5
-ELSEIF ABL:A:14 == 2
+ELSEIF ABL:A:歌唱技能 == 2
 	C = 10
-ELSEIF ABL:A:14 == 3
+ELSEIF ABL:A:歌唱技能 == 3
 	C = 15
-ELSEIF ABL:A:14 == 4
+ELSEIF ABL:A:歌唱技能 == 4
 	C = 20
-ELSEIF ABL:A:14 == 5
+ELSEIF ABL:A:歌唱技能 == 5
 	C = 25
-ELSEIF ABL:A:14 == 6
+ELSEIF ABL:A:歌唱技能 == 6
 	C = 30
-ELSEIF ABL:A:14 == 7
+ELSEIF ABL:A:歌唱技能 == 7
 	C = 35
-ELSEIF ABL:A:14 == 8
+ELSEIF ABL:A:歌唱技能 == 8
 	C = 40
-ELSEIF ABL:A:14 == 9
+ELSEIF ABL:A:歌唱技能 == 9
 	C = 45
 ELSE
 	C = 50
 ENDIF
 SIF C > 0
-	PRINTFORML %ABLNAME:14%{ABL:A:14}LV +{C}％
+	PRINTFORML %ABLNAME:14%{ABL:A:歌唱技能}LV +{C}％
 V += C
 
 
 ;ABL:セックス中毒をみる
-IF ABL:A:18 == 0
+IF ABL:A:セックス中毒 == 0
 	C = 0
-ELSEIF ABL:A:18 == 1
+ELSEIF ABL:A:セックス中毒 == 1
 	C = 10
-ELSEIF ABL:A:18 == 2
+ELSEIF ABL:A:セックス中毒 == 2
 	C = 20
-ELSEIF ABL:A:18 == 3
+ELSEIF ABL:A:セックス中毒 == 3
 	C = 30
-ELSEIF ABL:A:18 == 4
+ELSEIF ABL:A:セックス中毒 == 4
 	C = 40
-ELSEIF ABL:A:18 == 5
+ELSEIF ABL:A:セックス中毒 == 5
 	C = 50
-ELSEIF ABL:A:18 == 6
+ELSEIF ABL:A:セックス中毒 == 6
 	C = 60
-ELSEIF ABL:A:18 == 7
+ELSEIF ABL:A:セックス中毒 == 7
 	C = 70
-ELSEIF ABL:A:18 == 8
+ELSEIF ABL:A:セックス中毒 == 8
 	C = 80
-ELSEIF ABL:A:18 == 9
+ELSEIF ABL:A:セックス中毒 == 9
 	C = 90
 ELSE
 	C = 100
 ENDIF
 SIF C > 0
-	PRINTFORML %ABLNAME:18%{ABL:A:18}LV +{C}％
+	PRINTFORML %ABLNAME:18%{ABL:A:セックス中毒}LV +{C}％
 V += C
 
 
@@ -667,9 +667,9 @@ S /= 100
 IF TALENT:A:崩壊
 PRINTL 
 	IF TALENT:A:崩壊
-		S *= ABL:A:0
+		S *= ABL:A:従順
 		TIMES S , 0.08
-		Z = ABL:A:0
+		Z = ABL:A:従順
 		Z *= 8
 		PRINTFORML 崩壊 ×{Z}％
 	ENDIF
@@ -717,7 +717,7 @@ INPUT
 IF RESULT == 0
 	PRINTFORML %CALLNAME:A%と定食屋台を出しました
 	;評判判定
-	IF ABL:A:12 == 0
+	IF ABL:A:料理技能 == 0
 		IF RAND:5 == 0
 			F = 1
 			Z = S
@@ -729,7 +729,7 @@ IF RESULT == 0
 			TIMES Z , 0.05
 			S -= Z
 		ENDIF
-	ELSEIF ABL:A:12 < 4
+	ELSEIF ABL:A:料理技能 < 4
 		IF RAND:3 == 0
 			F = 1
 			Z = S
@@ -768,41 +768,41 @@ IF RESULT == 0
 	SIF U
 		ASSI = A
 	;奴隷の経験、能力処理
-	IF ABL:A:12 == 0
+	IF ABL:A:料理技能 == 0
 		R = 8
 		Q = 5
-	ELSEIF ABL:A:12 == 1
+	ELSEIF ABL:A:料理技能 == 1
 		R = 50
 		Q = 5
-	ELSEIF ABL:A:12 == 2
+	ELSEIF ABL:A:料理技能 == 2
 		R = 300
 		Q = 5
-	ELSEIF ABL:A:12 == 3
+	ELSEIF ABL:A:料理技能 == 3
 		R = 900
 		Q = 5
-	ELSEIF ABL:A:12 == 4
+	ELSEIF ABL:A:料理技能 == 4
 		R = 2400
 		Q = 10
-	ELSEIF ABL:A:12 == 5
+	ELSEIF ABL:A:料理技能 == 5
 		R = 3000
 		Q = 20
-	ELSEIF ABL:A:12 == 6
+	ELSEIF ABL:A:料理技能 == 6
 		R = 3500
 		Q = 30
-	ELSEIF ABL:A:12 == 7
+	ELSEIF ABL:A:料理技能 == 7
 		R = 4000
 		Q = 40
-	ELSEIF ABL:A:12 == 8
+	ELSEIF ABL:A:料理技能 == 8
 		R = 4500
 		Q = 50
-	ELSEIF ABL:A:12 == 9
+	ELSEIF ABL:A:料理技能 == 9
 		R = 5000
 		Q = 60
-	ELSEIF ABL:A:12 >= 10
+	ELSEIF ABL:A:料理技能 >= 10
 		R = 6000
 		Q = 80
 	ENDIF
-	BASE:A:0 -= 200
+	BASE:A:体力 -= 200
 	EXP:A:愛情経験 += 5
 	EXP:A:家事経験 += Q
 	JUEL:A:8 += R
@@ -844,19 +844,19 @@ ENDIF
 ;料理技巧に応じた料理名関数
 @LUNCH_NAME
 ;ずんちゃんだけ問答無用でずんだ餅
-IF NO:TARGET == 5 && ABL:12 <= 4
+IF NO:TARGET == 5 && ABL:料理技能 <= 4
 	PRINT ずんだ餅
-ELSEIF ABL:12 == 0
+ELSEIF ABL:料理技能 == 0
 	PRINT ざる蕎麦定食
-ELSEIF ABL:12 == 1
+ELSEIF ABL:料理技能 == 1
 	PRINT 焼き魚定食
-ELSEIF ABL:12 == 2
+ELSEIF ABL:料理技能 == 2
 	PRINT 肉じゃが定食
-ELSEIF ABL:12 == 3
+ELSEIF ABL:料理技能 == 3
 	PRINT トンカツ定食
-ELSEIF ABL:12 == 4
+ELSEIF ABL:料理技能 == 4
 	PRINT ハンバーグ定食
-ELSEIF ABL:12 >= 5
+ELSEIF ABL:料理技能 >= 5
 ;	PRINT 角煮定食
 	CALL LUNCH_NAME_VOICEROID
 ENDIF

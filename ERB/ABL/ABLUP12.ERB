@@ -1,9 +1,9 @@
 ﻿;料理技能の可否
 @ISABLUP12
 ;恋慕、親愛、服従、隷属はMAXLV10
-IF ABL:12 >= 10
+IF ABL:料理技能 >= 10
 	RETURN 0
-ELSEIF ABL:12 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:服従 == 0 && TALENT:隷属 == 0
+ELSEIF ABL:料理技能 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:服従 == 0 && TALENT:隷属 == 0
 	RETURN 0
 ENDIF
 
@@ -20,10 +20,10 @@ ENDIF
 @ABLUP12
 DRAWLINE
 ;恋慕、親愛、服従、隷属はMAXLV10
-IF ABL:12 >= 10
+IF ABL:料理技能 >= 10
 	PRINTW 既にMAXです
 	RETURN 0
-ELSEIF ABL:12 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:服従 == 0 && TALENT:隷属 == 0
+ELSEIF ABL:料理技能 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:服従 == 0 && TALENT:隷属 == 0
 	PRINTW 既にMAXです
 	RETURN 0
 ENDIF
@@ -62,7 +62,7 @@ ELSEIF RESULT == 100
 	RETURN 0
 ENDIF
 
-ABL:12 += 1
+ABL:料理技能 += 1
 
 IF RESULT == 0
 	JUEL:8 -= A
@@ -70,7 +70,7 @@ ENDIF
 
 PRINTS ABLNAME:12
 PRINT のレベルが
-PRINTV ABL:12
+PRINTV ABL:料理技能
 PRINTW になりました
 
 ;料理技能LVUP判定
@@ -81,34 +81,34 @@ I = 0
 ;能力アップ可能なら1にする
 Z = 0
 
-IF ABL:12 == 0
+IF ABL:料理技能 == 0
 	A = 75
 	B = 5
-ELSEIF ABL:12 == 1
+ELSEIF ABL:料理技能 == 1
 	A = 500
 	B = 10
-ELSEIF ABL:12 == 2
+ELSEIF ABL:料理技能 == 2
 	A = 3000
 	B = 30
-ELSEIF ABL:12 == 3
+ELSEIF ABL:料理技能 == 3
 	A = 9000
 	B = 50
-ELSEIF ABL:12 == 4
+ELSEIF ABL:料理技能 == 4
 	A = 24000
 	B = 100
-ELSEIF ABL:12 == 5
+ELSEIF ABL:料理技能 == 5
 	A = 30000
 	B = 200
-ELSEIF ABL:12 == 6
+ELSEIF ABL:料理技能 == 6
 	A = 35000
 	B = 300
-ELSEIF ABL:12 == 7
+ELSEIF ABL:料理技能 == 7
 	A = 40000
 	B = 400
-ELSEIF ABL:12 == 8
+ELSEIF ABL:料理技能 == 8
 	A = 45000
 	B = 500
-ELSEIF ABL:12 == 9
+ELSEIF ABL:料理技能 == 9
 	A = 50000
 	B = 600
 ENDIF

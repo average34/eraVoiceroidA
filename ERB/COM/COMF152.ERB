@@ -17,8 +17,8 @@ F = 1
 ;-------------------------------------------------
 IF F > 0
 	;消費体力、気力
-	LOSEBASE:0 += 600
-	LOSEBASE:1 += 900
+	LOSEBASE:体力 += 600
+	LOSEBASE:気力 += 900
 
 	SOURCE:7 = 500
 	SOURCE:8 = 5000
@@ -28,8 +28,8 @@ IF F > 0
 	SOURCE:18 = 2500
 ELSE
 	;消費体力、気力
-	LOSEBASE:0 += 50
-	LOSEBASE:1 += 100
+	LOSEBASE:体力 += 50
+	LOSEBASE:気力 += 100
 
 	SOURCE:7 = 100
 	SOURCE:14 = 100

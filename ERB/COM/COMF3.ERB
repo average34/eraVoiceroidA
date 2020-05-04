@@ -7,7 +7,7 @@
 ;特殊派生処理
 ;-------------------------------------------------
 ;非処女で前回の調教が指挿入れかつプレイヤの技巧３以上だとＧスポット刺激に
-IF PREVCOM == 3 && ABL:PLAYER:2 >= 3 && TALENT:処女 == 0 && TALENT:再生処女 == 0
+IF PREVCOM == 3 && ABL:PLAYER:技巧 >= 3 && TALENT:処女 == 0 && TALENT:再生処女 == 0
 	CALL COM_ABLE503
 	SIF RESULT == 1
 		JUMP COM503
@@ -33,8 +33,8 @@ SIF TALENT:処女 == 0 && TALENT:再生処女 == 0
 ;ソース追加処理
 ;-------------------------------------------------
 ;消費体力、気力
-LOSEBASE:0 += 30
-LOSEBASE:1 += 80
+LOSEBASE:体力 += 30
+LOSEBASE:気力 += 80
 
 
 IF TALENT:処女 == 0 && TALENT:再生処女 == 0
@@ -46,7 +46,7 @@ IF TALENT:処女 == 0 && TALENT:再生処女 == 0
 ;V経験が0の時はV経験を伴わない物に派生
 ;Vの珠は入らないが、快Vが高いと慣らしてあるため処女喪失時に影響
 ELSE
-	SIF PALAM:1 < 100
+	SIF PALAM:快Ｖ < 100
 		SOURCE:1 = 60
 	SOURCE:7 = 10
 	SOURCE:13 = 30
@@ -84,17 +84,17 @@ ELSEIF EXP:Ｖ経験 >= EXPLV:5
 ENDIF
 
 ;PALAM:潤滑をみる
-IF PALAM:4 < PALAMLV:1
+IF PALAM:潤滑 < PALAMLV:1
 	TIMES SOURCE:7 , 1.20
 	TIMES SOURCE:18 , 1.50
-ELSEIF PALAM:4 < PALAMLV:2
+ELSEIF PALAM:潤滑 < PALAMLV:2
 	TIMES SOURCE:7 , 0.70
 	TIMES SOURCE:18 , 1.20
-ELSEIF PALAM:4 < PALAMLV:3
+ELSEIF PALAM:潤滑 < PALAMLV:3
 	TIMES SOURCE:7 , 0.40
-ELSEIF PALAM:4 < PALAMLV:4
+ELSEIF PALAM:潤滑 < PALAMLV:4
 	TIMES SOURCE:7 , 0.10
-ELSEIF PALAM:4 >= PALAMLV:4
+ELSEIF PALAM:潤滑 >= PALAMLV:4
 	TIMES SOURCE:7 , 0.10
 ENDIF
 

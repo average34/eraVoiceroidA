@@ -1,9 +1,9 @@
 ﻿;レズっ気の可否
 @ISABLUP11
 ;恋慕、親愛、淫乱、娼婦はMAXLV10
-IF ABL:11 >= 10
+IF ABL:レズっ気 >= 10
 	RETURN 0
-ELSEIF ABL:11 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:淫乱 == 0 && TALENT:娼婦 == 0
+ELSEIF ABL:レズっ気 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:淫乱 == 0 && TALENT:娼婦 == 0
 	RETURN 0
 ENDIF
 
@@ -20,10 +20,10 @@ ENDIF
 @ABLUP11
 DRAWLINE
 ;恋慕、親愛、淫乱、娼婦はMAXLV10
-IF ABL:11 >= 10
+IF ABL:レズっ気 >= 10
 	PRINTW 既にMAXです
 	RETURN 0
-ELSEIF ABL:11 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:淫乱 == 0 && TALENT:娼婦 == 0
+ELSEIF ABL:レズっ気 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:淫乱 == 0 && TALENT:娼婦 == 0
 	PRINTW 既にMAXです
 	RETURN 0
 ENDIF
@@ -31,15 +31,15 @@ ENDIF
 CALL DECIDE_ABLUP11
 
 ;ＬＶ３から４に上げるときは異常経験必要（素質：[両刀]なら無視できる）
-IF ABL:11 == 3 && TALENT:両刀 == 0
+IF ABL:レズっ気 == 3 && TALENT:両刀 == 0
 	PRINTS EXPNAME:50
 	PRINTL あり、かつ
 ;ＬＶ４から５に上げるときは異常経験3以上必要（素質：[両刀]なら無視できる）
-ELSEIF ABL:11 == 4 && TALENT:両刀 == 0
+ELSEIF ABL:レズっ気 == 4 && TALENT:両刀 == 0
 	PRINTS EXPNAME:50
 	PRINTL 3以上、かつ
 ;ＬＶ８から９に上げるときは異常経験5以上必要（素質：[両刀]なら無視できる）
-ELSEIF ABL:11 == 8 && TALENT:両刀 == 0
+ELSEIF ABL:レズっ気 == 8 && TALENT:両刀 == 0
 	PRINTS EXPNAME:50
 	PRINTL 5以上、かつ
 ENDIF
@@ -116,7 +116,7 @@ ELSEIF RESULT == 100
 	RETURN 0
 ENDIF
 
-ABL:11 += 1
+ABL:レズっ気 += 1
 
 IF RESULT == 0
 	JUEL:6 -= A
@@ -127,7 +127,7 @@ ENDIF
 
 PRINTS ABLNAME:11
 PRINT のレベルが
-PRINTV ABL:11
+PRINTV ABL:レズっ気
 PRINTW になりました
 
 
@@ -139,52 +139,52 @@ J = 0
 ;能力アップ可能なら1にする
 Z = 0
 
-IF ABL:11 == 0
+IF ABL:レズっ気 == 0
 	A = 200
 	B = 50
 	C = 0
 	D = 1000
-ELSEIF ABL:11 == 1
+ELSEIF ABL:レズっ気 == 1
 	A = 1000
 	B = 200
 	C = 0
 	D = 5000
-ELSEIF ABL:11 == 2
+ELSEIF ABL:レズっ気 == 2
 	A = 3000
 	B = 500
 	C = 1000
 	D = 0
-ELSEIF ABL:11 == 3
+ELSEIF ABL:レズっ気 == 3
 	A = 8000
 	B = 1000
 	C = 2000
 	D = 0
-ELSEIF ABL:11 == 4
+ELSEIF ABL:レズっ気 == 4
 	A = 20000
 	B = 2000
 	C = 5000
 	D = 0
-ELSEIF ABL:11 == 5
+ELSEIF ABL:レズっ気 == 5
 	A = 25000
 	B = 2300
 	C = 6000
 	D = 0
-ELSEIF ABL:11 == 6
+ELSEIF ABL:レズっ気 == 6
 	A = 30000
 	B = 2600
 	C = 8000
 	D = 0
-ELSEIF ABL:11 == 7
+ELSEIF ABL:レズっ気 == 7
 	A = 35000
 	B = 3000
 	C = 10000
 	D = 0
-ELSEIF ABL:11 == 8
+ELSEIF ABL:レズっ気 == 8
 	A = 40000
 	B = 3500
 	C = 15000
 	D = 0
-ELSEIF ABL:11 == 9
+ELSEIF ABL:レズっ気 == 9
 	A = 50000
 	B = 4000
 	C = 20000
@@ -206,21 +206,21 @@ IF TALENT:一線越えない && (TALENT:恋慕 == 0 && TALENT:淫乱 == 0 && TAL
 ENDIF
 
 ;ＬＶ３から４に上げるときは異常経験必要（素質：[両刀]なら無視できる）
-IF ABL:11 == 3 && TALENT:両刀 == 0
+IF ABL:レズっ気 == 3 && TALENT:両刀 == 0
 	IF EXP:異常経験 == 0
 		;異常経験が不足
 		I |= 2
 		J |= 2
 	ENDIF
 ;ＬＶ４から５に上げるときは異常経験3以上必要（素質：[両刀]なら無視できる）
-ELSEIF ABL:11 == 4 && TALENT:両刀 == 0
+ELSEIF ABL:レズっ気 == 4 && TALENT:両刀 == 0
 	IF EXP:異常経験 < 3
 		;異常経験が不足
 		I |= 2
 		J |= 2
 	ENDIF
 ;ＬＶ８から９に上げるときは異常経験5以上必要（素質：[両刀]なら無視できる）
-ELSEIF ABL:11 == 8 && TALENT:両刀 == 0
+ELSEIF ABL:レズっ気 == 8 && TALENT:両刀 == 0
 	IF EXP:異常経験 < 5
 		;異常経験が不足
 		I |= 2

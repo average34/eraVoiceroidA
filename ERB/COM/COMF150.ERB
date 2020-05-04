@@ -18,8 +18,8 @@ ENDIF
 ;ソース追加処理
 ;-------------------------------------------------
 ;消費体力、気力
-LOSEBASE:0 += 300
-LOSEBASE:1 += 450
+LOSEBASE:体力 += 300
+LOSEBASE:気力 += 450
 
 SOURCE:3 = 500
 SOURCE:7 = 1500
@@ -81,8 +81,8 @@ RETURN 1
 
 PRINTL ＜乳房電極装着中＞
 
-LOSEBASE:0 += 150
-LOSEBASE:1 += 250
+LOSEBASE:体力 += 150
+LOSEBASE:気力 += 250
 
 SOURCE:3 += 250
 SOURCE:7 += 750
