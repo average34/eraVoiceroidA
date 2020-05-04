@@ -1168,30 +1168,30 @@ IF D > 0
 		EXP:A:膣射経験 += J
 		CFLAG:A:105 += J
 	ENDIF
-	JUEL:A:1 += J*50
-	JUEL:A:2 += K*50
-	JUEL:A:6 += D*30
-	JUEL:A:8 += D*50
-	JUEL:A:100 += (L+D)*100/ABL:A:従順
+	JUEL:A:快Ｖ += J*50
+	JUEL:A:快Ａ += K*50
+	JUEL:A:欲情 += D*30
+	JUEL:A:習得 += D*50
+	JUEL:A:否定 += (L+D)*100/ABL:A:従順
 ENDIF
 ;奉仕系
 IF G > 0
 	EXP:A:精液経験 += G
 	EXP:A:フェラ経験 += G
-	JUEL:A:5 += G*10
-	JUEL:A:8 += G*60
-	JUEL:A:100 += G*100/ABL:A:従順
+	JUEL:A:恭順 += G*10
+	JUEL:A:習得 += G*60
+	JUEL:A:否定 += G*100/ABL:A:従順
 ENDIF
 ;ＳＭ系
 IF H > 0
 	IF ABL:A:マゾっ気 > ABL:A:サドっ気
 		EXP:A:苦痛快楽経験 += H
-		JUEL:A:10 += H*50
+		JUEL:A:苦痛 += H*50
 	ENDIF
 	SIF ABL:A:サドっ気 > ABL:A:マゾっ気
 		EXP:A:嗜虐快楽経験 += H
-	JUEL:A:8 += H*40
-	JUEL:A:100 += H*100/ABL:A:従順
+	JUEL:A:習得 += H*40
+	JUEL:A:否定 += H*100/ABL:A:従順
 ENDIF
 ;レズ系
 IF I > 0
@@ -1200,10 +1200,10 @@ IF I > 0
 	SIF TALENT:A:ふたなり || TALENT:A:オトコ
 		EXP:A:射精経験 += I/3
 	EXP:A:レズ経験 += I
-	JUEL:A:0 += I*50
-	JUEL:A:6 += I*30
-	JUEL:A:8 += I*40
-	JUEL:A:100 += I*100/ABL:A:従順
+	JUEL:A:快Ｃ += I*50
+	JUEL:A:欲情 += I*30
+	JUEL:A:習得 += I*40
+	JUEL:A:否定 += I*100/ABL:A:従順
 ENDIF
 
 PRINTFORML 【%CALLNAME:A%の経験と珠】

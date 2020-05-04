@@ -94,7 +94,7 @@ ENDIF
 ABL:露出癖 += 1
 
 IF RESULT == 0
-	JUEL:9 -= A
+	JUEL:恥情 -= A
 ENDIF
 
 PRINTS ABLNAME:8
@@ -165,7 +165,7 @@ ELSEIF ABL:露出癖 == 8 && TALENT:目立ちたがり == 0
 ENDIF
 
 ;恥情の珠で上げる
-SIF JUEL:9 < A
+SIF JUEL:恥情 < A
 	I |= 1
 IF ABL:露出癖 < 2
 	;絶頂経験が必要

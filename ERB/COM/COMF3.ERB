@@ -38,19 +38,19 @@ LOSEBASE:気力 += 80
 
 
 IF TALENT:処女 == 0 && TALENT:再生処女 == 0
-	SOURCE:1 = 120
-	SOURCE:7 = 15
-	SOURCE:13 = 10
-	SOURCE:17 = 20
+	SOURCE:快Ｖ = 120
+	SOURCE:中毒充足 = 15
+	SOURCE:屈従 = 10
+	SOURCE:快Ｂ = 20
 	SOURCE:18 = 20
 ;V経験が0の時はV経験を伴わない物に派生
 ;Vの珠は入らないが、快Vが高いと慣らしてあるため処女喪失時に影響
 ELSE
 	SIF PALAM:快Ｖ < 100
-		SOURCE:1 = 60
-	SOURCE:7 = 10
-	SOURCE:13 = 30
-	SOURCE:17 = 30
+		SOURCE:快Ｖ = 60
+	SOURCE:中毒充足 = 10
+	SOURCE:屈従 = 30
+	SOURCE:快Ｂ = 30
 	SOURCE:18 = 30
 ENDIF
 
@@ -60,50 +60,50 @@ ENDIF
 ;-------------------------------------------------
 ;抑圧、抵抗持ちには、抑鬱ソース追加
 IF TALENT:抑圧 || TALENT:抵抗
-	SOURCE:16 += 20
+	SOURCE:恭順追加 += 20
 	;処女
 	SIF TALENT:処女
-		SOURCE:16 += 10
+		SOURCE:恭順追加 += 10
 ENDIF
 
 ;Vへの苦痛は先に処理しておく
 ;EXP:Ｖ経験をみる（処女の反感は別途処理済みなので省略）
 IF EXP:Ｖ経験 < EXPLV:1
-	TIMES SOURCE:7 , 2.50
+	TIMES SOURCE:中毒充足 , 2.50
 ELSEIF EXP:Ｖ経験 < EXPLV:2
-	TIMES SOURCE:7 , 0.80
+	TIMES SOURCE:中毒充足 , 0.80
 	TIMES SOURCE:18 , 1.20
 ELSEIF EXP:Ｖ経験 < EXPLV:3
-	TIMES SOURCE:7 , 0.40
+	TIMES SOURCE:中毒充足 , 0.40
 ELSEIF EXP:Ｖ経験 < EXPLV:4
-	TIMES SOURCE:7 , 0.10
+	TIMES SOURCE:中毒充足 , 0.10
 ELSEIF EXP:Ｖ経験 < EXPLV:5
-	TIMES SOURCE:7 , 0.00
+	TIMES SOURCE:中毒充足 , 0.00
 ELSEIF EXP:Ｖ経験 >= EXPLV:5
-	TIMES SOURCE:7 , 0.00
+	TIMES SOURCE:中毒充足 , 0.00
 ENDIF
 
 ;PALAM:潤滑をみる
 IF PALAM:潤滑 < PALAMLV:1
-	TIMES SOURCE:7 , 1.20
+	TIMES SOURCE:中毒充足 , 1.20
 	TIMES SOURCE:18 , 1.50
 ELSEIF PALAM:潤滑 < PALAMLV:2
-	TIMES SOURCE:7 , 0.70
+	TIMES SOURCE:中毒充足 , 0.70
 	TIMES SOURCE:18 , 1.20
 ELSEIF PALAM:潤滑 < PALAMLV:3
-	TIMES SOURCE:7 , 0.40
+	TIMES SOURCE:中毒充足 , 0.40
 ELSEIF PALAM:潤滑 < PALAMLV:4
-	TIMES SOURCE:7 , 0.10
+	TIMES SOURCE:中毒充足 , 0.10
 ELSEIF PALAM:潤滑 >= PALAMLV:4
-	TIMES SOURCE:7 , 0.10
+	TIMES SOURCE:中毒充足 , 0.10
 ENDIF
 
 ;-------------------------------------------------
 ;汚れの処理
 ;-------------------------------------------------
 ;奴隷の膣内⇔調教者の指の汚れが移動
-	STAIN:6 |= STAIN:PLAYER:1
-	STAIN:PLAYER:1 |= STAIN:6
+	STAIN:6 |= STAIN:PLAYER:手
+	STAIN:PLAYER:手 |= STAIN:6
 
 ;-------------------------------------------------
 ;経験の処理

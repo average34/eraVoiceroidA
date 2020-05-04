@@ -39,17 +39,17 @@ CALL KOJO_MESSAGE_COM
 LOSEBASE:体力 += 5
 LOSEBASE:気力 += 50
 
-SOURCE:3 = 50
-SOURCE:5 = 40
-SOURCE:8 = 100
+SOURCE:情愛 = 50
+SOURCE:達成感 = 40
+SOURCE:不潔 = 100
 SOURCE:9 = 100
-SOURCE:13 = 200
-SOURCE:14 = 400
-SOURCE:17 = 150
+SOURCE:屈従 = 200
+SOURCE:逸脱 = 400
+SOURCE:快Ｂ = 150
 SOURCE:18 = 150
 IF TEQUIP:28
-	SOURCE:10 = 50
-	SOURCE:17 += 100
+	SOURCE:液体追加 = 50
+	SOURCE:快Ｂ += 100
 ENDIF
 
 
@@ -58,7 +58,7 @@ ENDIF
 ;-------------------------------------------------
 ;抑圧、抵抗持ちには、抑鬱ソース追加
 SIF TALENT:抑圧 || TALENT:抵抗
-	SOURCE:16 += 150
+	SOURCE:恭順追加 += 150
 
 ;中毒による中毒充足のソースは先に処理しておく
 ;自慰中毒を見る
@@ -88,8 +88,8 @@ SIF ABL:自慰中毒 >= 10
 ;汚れの処理
 ;-------------------------------------------------
 ;奴隷の指⇔奴隷のＢの汚れが移動
-STAIN:1 |= STAIN:5
-STAIN:5 |= STAIN:1
+STAIN:手 |= STAIN:胸
+STAIN:胸 |= STAIN:手
 
 ;-------------------------------------------------
 ;経験の処理

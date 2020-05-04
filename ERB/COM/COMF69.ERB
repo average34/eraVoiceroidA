@@ -132,24 +132,24 @@ SIF TALENT:PLAYER:半人半妖 || TALENT:PLAYER:ふたなり || TALENT:PLAYER:�
 LOSEBASE:体力 += 50
 LOSEBASE:気力 += 100
 
-SOURCE:0 = 350
-SOURCE:1 = 350
-SOURCE:4 = 350
-SOURCE:7 = 400
+SOURCE:快Ｃ = 350
+SOURCE:快Ｖ = 350
+SOURCE:性行動 = 350
+SOURCE:中毒充足 = 400
 SOURCE:9 = 500
-SOURCE:13 = 200
-SOURCE:17 = 500
+SOURCE:屈従 = 200
+SOURCE:快Ｂ = 500
 SOURCE:18 = 1000
 
 ;上のほうで計算した汚れデータ
-SOURCE:15 = Y*10 + 60
+SOURCE:反感追加 = Y*10 + 60
 
 ;-------------------------------------------------
 ;特殊ソース処理
 ;-------------------------------------------------
 ;抑圧、抵抗持ちには、抑鬱ソース追加
 SIF TALENT:抑圧 || TALENT:抵抗
-	SOURCE:16 += 800
+	SOURCE:恭順追加 += 800
 
 ;貞操観念持ちで恋慕、親愛持ち以外には常に反発のソースを追加する（セックス系のみ）
 SIF TALENT:貞操観念 && (TALENT:恋慕 == 0 && TALENT:親愛 == 0)
@@ -157,46 +157,46 @@ SIF TALENT:貞操観念 && (TALENT:恋慕 == 0 && TALENT:親愛 == 0)
 
 ;処女だった場合は、苦痛のソースと反発のソースを追加する
 IF TALENT:処女 == 1
-	SOURCE:7 += 2000
+	SOURCE:中毒充足 += 2000
 	SOURCE:18 += 3000
 ENDIF
 
 ;再生処女だった場合は、苦痛のソースと反発のソースを追加する
 IF TALENT:再生処女 == 1
-	SOURCE:7 += 500
+	SOURCE:中毒充足 += 500
 	SOURCE:18 += 1000
 ENDIF
 
 ;Vへの苦痛は先に処理しておく
 ;EXP:Ｖ経験をみる（処女の反感は別途処理済みなので省略）
 IF EXP:Ｖ経験 < EXPLV:1
-	TIMES SOURCE:7 , 2.50
+	TIMES SOURCE:中毒充足 , 2.50
 ELSEIF EXP:Ｖ経験 < EXPLV:2
-	TIMES SOURCE:7 , 0.80
+	TIMES SOURCE:中毒充足 , 0.80
 	TIMES SOURCE:18 , 1.20
 ELSEIF EXP:Ｖ経験 < EXPLV:3
-	TIMES SOURCE:7 , 0.40
+	TIMES SOURCE:中毒充足 , 0.40
 ELSEIF EXP:Ｖ経験 < EXPLV:4
-	TIMES SOURCE:7 , 0.10
+	TIMES SOURCE:中毒充足 , 0.10
 ELSEIF EXP:Ｖ経験 < EXPLV:5
-	TIMES SOURCE:7 , 0.00
+	TIMES SOURCE:中毒充足 , 0.00
 ELSEIF EXP:Ｖ経験 >= EXPLV:5
-	TIMES SOURCE:7 , 0.00
+	TIMES SOURCE:中毒充足 , 0.00
 ENDIF
 
 ;PALAM:潤滑をみる
 IF PALAM:潤滑 < PALAMLV:1
-	TIMES SOURCE:7 , 1.20
+	TIMES SOURCE:中毒充足 , 1.20
 	TIMES SOURCE:18 , 1.50
 ELSEIF PALAM:潤滑 < PALAMLV:2
-	TIMES SOURCE:7 , 0.70
+	TIMES SOURCE:中毒充足 , 0.70
 	TIMES SOURCE:18 , 1.20
 ELSEIF PALAM:潤滑 < PALAMLV:3
-	TIMES SOURCE:7 , 0.40
+	TIMES SOURCE:中毒充足 , 0.40
 ELSEIF PALAM:潤滑 < PALAMLV:4
-	TIMES SOURCE:7 , 0.10
+	TIMES SOURCE:中毒充足 , 0.10
 ELSEIF PALAM:潤滑 >= PALAMLV:4
-	TIMES SOURCE:7 , 0.10
+	TIMES SOURCE:中毒充足 , 0.10
 ENDIF
 
 ;中毒による中毒充足のソースは先に処理しておく
@@ -247,8 +247,8 @@ ENDIF
 SIF TALENT:処女 == 1 || TALENT:再生処女 == 1
 	STAIN:6 |= 64
 ;奴隷の膣内⇔調教者のＰの汚れが移動
-STAIN:6 |= STAIN:PLAYER:2
-STAIN:PLAYER:2 |= STAIN:6
+STAIN:6 |= STAIN:PLAYER:ペニス
+STAIN:PLAYER:ペニス |= STAIN:6
 
 ;-------------------------------------------------
 ;経験の処理
@@ -461,15 +461,15 @@ IF TEQUIP:44 == 0
 
 	Y = 0
 	;愛液の汚れ
-	SIF STAIN:PLAYER:2 & 1
+	SIF STAIN:PLAYER:ペニス & 1
 		Y += 1
 	;精液の汚れ
-	SIF STAIN:PLAYER:2 & 4
+	SIF STAIN:PLAYER:ペニス & 4
 		Y += 3
 	;アナルの汚れ
-	SIF STAIN:PLAYER:2 & 8
+	SIF STAIN:PLAYER:ペニス & 8
 		Y += 7
-	SIF STAIN:PLAYER:2 & 16
+	SIF STAIN:PLAYER:ペニス & 16
 		Y += 15
 
 	SIF TALENT:汚臭鈍感

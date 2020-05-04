@@ -18,8 +18,8 @@ IF TEQUIP:19 == 0
 	TEQUIP:19 = 1
 	;触手緊縛は触手の汚れを追加
 	IF TEQUIP:25
-		STAIN:1 |= 32
-		STAIN:5 |= 32
+		STAIN:手 |= 32
+		STAIN:胸 |= 32
 	ENDIF
 ELSE
 	TEQUIP:19 = 0
@@ -32,11 +32,11 @@ ENDIF
 LOSEBASE:体力 += 30
 LOSEBASE:気力 += 120
 
-SOURCE:7 = 300
-SOURCE:8 = 900
-SOURCE:13 = 200
-SOURCE:14 = 250
-SOURCE:17 = 300
+SOURCE:中毒充足 = 300
+SOURCE:不潔 = 900
+SOURCE:屈従 = 200
+SOURCE:逸脱 = 250
+SOURCE:快Ｂ = 300
 SOURCE:18 = 700
 
 ;-------------------------------------------------
@@ -106,11 +106,11 @@ ENDIF
 ;消費体力、気力
 LOSEBASE:体力 += 15
 
-SOURCE:7 += 150
-SOURCE:8 += 450
-SOURCE:13 += 100
-SOURCE:14 += 125
-SOURCE:17 += 150
+SOURCE:中毒充足 += 150
+SOURCE:不潔 += 450
+SOURCE:屈従 += 100
+SOURCE:逸脱 += 125
+SOURCE:快Ｂ += 150
 SOURCE:18 += 350
 
 ;-------------------------------------------------

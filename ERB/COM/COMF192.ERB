@@ -26,14 +26,14 @@ CALL KOJO_MESSAGE_COM
 LOSEBASE:体力 += 0
 LOSEBASE:気力 += 100
 
-SOURCE:5 = 420
-SOURCE:6 = 150
-SOURCE:14 = 500
-SOURCE:17 = 300
+SOURCE:達成感 = 420
+SOURCE:痛み = 150
+SOURCE:逸脱 = 500
+SOURCE:快Ｂ = 300
 SOURCE:18 = 300
 
 ;上のほうで計算した汚れデータ
-SOURCE:15 = Y*40 + 100
+SOURCE:反感追加 = Y*40 + 100
 
 
 ;-------------------------------------------------
@@ -41,13 +41,13 @@ SOURCE:15 = Y*40 + 100
 ;-------------------------------------------------
 ;抑圧、抵抗持ちには、抑鬱ソース追加
 SIF TALENT:抑圧 || TALENT:抵抗
-	SOURCE:16 += 100
+	SOURCE:恭順追加 += 100
 
 ;-------------------------------------------------
 ;汚れの処理
 ;-------------------------------------------------
 ;奴隷の口に汚れ移動
-STAIN:0 |= 4
+STAIN:口 |= 4
 
 ;-------------------------------------------------
 ;経験の処理
@@ -200,15 +200,15 @@ ENDIF
 
 Y = 0
 ;愛液の汚れ
-SIF STAIN:PLAYER:2 & 1
+SIF STAIN:PLAYER:ペニス & 1
 	Y += 1
 ;精液の汚れ
-SIF STAIN:PLAYER:2 & 4
+SIF STAIN:PLAYER:ペニス & 4
 	Y += 3
 ;アナルの汚れ
-SIF STAIN:PLAYER:2 & 8
+SIF STAIN:PLAYER:ペニス & 8
 	Y += 7
-SIF STAIN:PLAYER:2 & 16
+SIF STAIN:PLAYER:ペニス & 16
 	Y += 15
 
 SIF TALENT:汚臭鈍感

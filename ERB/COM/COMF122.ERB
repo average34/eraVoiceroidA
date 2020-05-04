@@ -237,11 +237,11 @@ SIF TALENT:PLAYER:半人半妖 || TALENT:PLAYER:ふたなり || TALENT:PLAYER:�
 LOSEBASE:体力 += 50
 LOSEBASE:気力 += 150
 
-SOURCE:0 = 400
-SOURCE:5 = 500
-SOURCE:6 = 400
-SOURCE:14 = 700
-SOURCE:17 = 500
+SOURCE:快Ｃ = 400
+SOURCE:達成感 = 500
+SOURCE:痛み = 400
+SOURCE:逸脱 = 700
+SOURCE:快Ｂ = 500
 SOURCE:18 = 500
 
 
@@ -250,12 +250,12 @@ SOURCE:18 = 500
 ;-------------------------------------------------
 ;抑圧、抵抗持ちには、抑鬱ソース追加
 SIF TALENT:抑圧 || TALENT:抵抗
-	SOURCE:16 += 500
+	SOURCE:恭順追加 += 500
 
 ;助手が処女の場合、屈服逸脱が倍化し、従順が2になる。ただし一度きり
 IF TALENT:PLAYER:処女 == 1 && CFLAG:99 == 0
-	TIMES SOURCE:14 , 5.00
-	TIMES SOURCE:17 , 3.00
+	TIMES SOURCE:逸脱 , 5.00
+	TIMES SOURCE:快Ｂ , 3.00
 	TALENT:PLAYER:処女 = 0
 	PRINTL ＜助手が処女＞
 	;異常経験追加（一回きり）
@@ -292,8 +292,8 @@ ENDIF
 ;射精に関係なく行われる処理はここから
 IF TALENT:半人半妖 || TALENT:ふたなり || TALENT:オトコ
 	;奴隷のＰ⇔調教者のＶの汚れが移動
-	STAIN:2 |= STAIN:PLAYER:3
-	STAIN:PLAYER:3 |= STAIN:2
+	STAIN:ペニス |= STAIN:PLAYER:ヴァギナ
+	STAIN:PLAYER:ヴァギナ |= STAIN:ペニス
 ENDIF
 
 ;-------------------------------------------------

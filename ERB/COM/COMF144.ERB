@@ -14,10 +14,10 @@ CALL KOJO_MESSAGE_COM
 LOSEBASE:体力 += 10
 LOSEBASE:気力 += 200
 
-SOURCE:8 = 200
-SOURCE:13 = 800
-SOURCE:14 = 500
-SOURCE:17 = 700
+SOURCE:不潔 = 200
+SOURCE:屈従 = 800
+SOURCE:逸脱 = 500
+SOURCE:快Ｂ = 700
 SOURCE:18 = 700
 
 
@@ -26,18 +26,18 @@ SOURCE:18 = 700
 ;-------------------------------------------------
 ;抑圧、抵抗持ちには、抑鬱ソース追加
 SIF TALENT:抑圧 || TALENT:抵抗
-	SOURCE:16 += 700
+	SOURCE:恭順追加 += 700
 
 ;場所によって逸脱のソースが上下
 ;野外
 IF TEQUIP:29
-	TIMES SOURCE:17 , 2.50
+	TIMES SOURCE:快Ｂ , 2.50
 ;鏡の前（羞恥プレイ）
 ELSEIF TEQUIP:30
-	TIMES SOURCE:17 , 1.50
+	TIMES SOURCE:快Ｂ , 1.50
 ;風呂場
 ELSEIF TEQUIP:31
-	TIMES SOURCE:17 , 0.50
+	TIMES SOURCE:快Ｂ , 0.50
 ENDIF
 
 

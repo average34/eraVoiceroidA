@@ -127,11 +127,11 @@ ENDIF
 ABL:精液中毒 += 1
 
 IF RESULT == 0
-	JUEL:6 -= A
-	JUEL:7 -= B
+	JUEL:欲情 -= A
+	JUEL:屈服 -= B
 ELSEIF RESULT == 1
-	JUEL:6 -= A*3
-	JUEL:7 -= B*3
+	JUEL:欲情 -= A*3
+	JUEL:屈服 -= B*3
 ENDIF
 
 PRINTS ABLNAME:16
@@ -240,10 +240,10 @@ IF ABL:奉仕精神 < ABL:精液中毒 + 1
 ENDIF
 
 ;欲情の珠で上げる
-SIF JUEL:6 < A
+SIF JUEL:欲情 < A
 	I |= 1
 ;屈服の珠で上げる
-SIF JUEL:7 < B
+SIF JUEL:屈服 < B
 	I |= 1
 ;精液経験が必要
 SIF EXP:精液経験 < C
@@ -255,10 +255,10 @@ ENDIF
 
 
 ;欲情の珠で上げる
-SIF JUEL:6 < A*3
+SIF JUEL:欲情 < A*3
 	J |= 1
 ;屈服の珠で上げる
-SIF JUEL:7 < B*3
+SIF JUEL:屈服 < B*3
 	J |= 1
 ;精液経験が必要
 SIF EXP:精液経験 < C/2

@@ -14,11 +14,11 @@ CALL KOJO_MESSAGE_COM
 LOSEBASE:体力 += 7
 LOSEBASE:気力 += 70
 
-SOURCE:3 = 200
-SOURCE:5 = 150
-SOURCE:13 = 50
-SOURCE:15 = 30
-SOURCE:17 = 100
+SOURCE:情愛 = 200
+SOURCE:達成感 = 150
+SOURCE:屈従 = 50
+SOURCE:反感追加 = 30
+SOURCE:快Ｂ = 100
 SOURCE:18 = 200
 
 
@@ -27,26 +27,26 @@ SOURCE:18 = 200
 ;-------------------------------------------------
 ;抑圧、抵抗持ちには、抑鬱ソース追加
 SIF TALENT:抑圧 || TALENT:抵抗
-	SOURCE:16 += 100
+	SOURCE:恭順追加 += 100
 
 ;調教者が［幼児退行］
 IF TALENT:PLAYER:幼児／幼児退行
-	TIMES SOURCE:3 , 1.20
-	TIMES SOURCE:5 , 1.20
+	TIMES SOURCE:情愛 , 1.20
+	TIMES SOURCE:達成感 , 1.20
 ENDIF
 
 ;調教者が［幼稚］
 IF TALENT:PLAYER:幼稚
-	TIMES SOURCE:3 , 1.20
-	TIMES SOURCE:5 , 1.20
+	TIMES SOURCE:情愛 , 1.20
+	TIMES SOURCE:達成感 , 1.20
 ENDIF
 
 ;-------------------------------------------------
 ;汚れの処理
 ;-------------------------------------------------
 ;奴隷のＢ⇔調教者の指の汚れが移動
-	STAIN:5 |= STAIN:PLAYER:1
-	STAIN:PLAYER:1 |= STAIN:5
+	STAIN:胸 |= STAIN:PLAYER:手
+	STAIN:PLAYER:手 |= STAIN:胸
 
 ;-------------------------------------------------
 ;経験の処理

@@ -653,7 +653,7 @@ REPEAT 7
 	SIF COUNT == 3 && TALENT:オトコ
 		CONTINUE
 	IF TEQUIP:COUNT == 0
-		SOURCE:13 += 10
+		SOURCE:屈従 += 10
 		;陥落時は反感を加算しない
 		SIF TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属
 			CONTINUE

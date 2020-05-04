@@ -113,58 +113,58 @@ SIF TALENT:PLAYER:半人半妖 || TALENT:PLAYER:ふたなり || TALENT:PLAYER:�
 LOSEBASE:体力 += 70
 LOSEBASE:気力 += 150
 
-SOURCE:2 = 350
-SOURCE:3 = 350
-SOURCE:4 = 350
-SOURCE:7 = 800
+SOURCE:快Ａ = 350
+SOURCE:情愛 = 350
+SOURCE:性行動 = 350
+SOURCE:中毒充足 = 800
 SOURCE:9 = 500
-SOURCE:12 = 300
-SOURCE:17 = 800
+SOURCE:露出 = 300
+SOURCE:快Ｂ = 800
 SOURCE:18 = 1200
 
 ;上のほうで計算した汚れデータ
-SOURCE:15 = Y*10 + 60
+SOURCE:反感追加 = Y*10 + 60
 
 ;-------------------------------------------------
 ;特殊ソース処理
 ;-------------------------------------------------
 ;抑圧、抵抗持ちには、抑鬱ソース追加
 SIF TALENT:抑圧 || TALENT:抵抗
-	SOURCE:16 += 900
+	SOURCE:恭順追加 += 900
 
 ;Aへの苦痛は先に処理しておく
 ;EXP:Ａ経験をみる
 IF EXP:Ａ経験 < EXPLV:1
-	TIMES SOURCE:7 , 3.00
+	TIMES SOURCE:中毒充足 , 3.00
 	TIMES SOURCE:18 , 3.00
 ELSEIF EXP:Ａ経験 < EXPLV:2
-	TIMES SOURCE:7 , 1.20
+	TIMES SOURCE:中毒充足 , 1.20
 	TIMES SOURCE:18 , 2.00
 ELSEIF EXP:Ａ経験 < EXPLV:3
-	TIMES SOURCE:7 , 0.80
+	TIMES SOURCE:中毒充足 , 0.80
 	TIMES SOURCE:18 , 1.50
 ELSEIF EXP:Ａ経験 < EXPLV:4
-	TIMES SOURCE:7 , 0.60
+	TIMES SOURCE:中毒充足 , 0.60
 	TIMES SOURCE:18 , 1.20
 ELSEIF EXP:Ａ経験 < EXPLV:5
-	TIMES SOURCE:7 , 0.40
+	TIMES SOURCE:中毒充足 , 0.40
 ELSEIF EXP:Ａ経験 >= EXPLV:5
-	TIMES SOURCE:7 , 0.20
+	TIMES SOURCE:中毒充足 , 0.20
 ENDIF
 
 ;PALAM:潤滑をみる
 IF PALAM:潤滑 < PALAMLV:1
-	TIMES SOURCE:7 , 1.20
+	TIMES SOURCE:中毒充足 , 1.20
 	TIMES SOURCE:18 , 2.00
 ELSEIF PALAM:潤滑 < PALAMLV:2
-	TIMES SOURCE:7 , 1.00
+	TIMES SOURCE:中毒充足 , 1.00
 	TIMES SOURCE:18 , 1.50
 ELSEIF PALAM:潤滑 < PALAMLV:3
-	TIMES SOURCE:7 , 0.60
+	TIMES SOURCE:中毒充足 , 0.60
 ELSEIF PALAM:潤滑 < PALAMLV:4
-	TIMES SOURCE:7 , 0.30
+	TIMES SOURCE:中毒充足 , 0.30
 ELSEIF PALAM:潤滑 >= PALAMLV:4
-	TIMES SOURCE:7 , 0.20
+	TIMES SOURCE:中毒充足 , 0.20
 ENDIF
 
 ;中毒による中毒充足のソースは先に処理しておく
@@ -212,11 +212,11 @@ ENDIF
 ;-------------------------------------------------
 ;射精に関係なく行われる処理はここから
 ;奴隷の口⇔調教者の口の汚れが移動
-STAIN:0 |= STAIN:PLAYER:0
-STAIN:PLAYER:0 |= STAIN:0
+STAIN:口 |= STAIN:PLAYER:口
+STAIN:PLAYER:口 |= STAIN:口
 ;奴隷のＡ⇔調教者のＰの汚れが移動
-STAIN:4 |= STAIN:PLAYER:2
-STAIN:PLAYER:2 |= STAIN:4
+STAIN:アナル |= STAIN:PLAYER:ペニス
+STAIN:PLAYER:ペニス |= STAIN:アナル
 
 ;-------------------------------------------------
 ;経験の処理
@@ -419,15 +419,15 @@ IF TEQUIP:19 == 0
 
 	Y = 0
 	;愛液の汚れ
-	SIF STAIN:PLAYER:2 & 1
+	SIF STAIN:PLAYER:ペニス & 1
 		Y += 1
 	;精液の汚れ
-	SIF STAIN:PLAYER:2 & 4
+	SIF STAIN:PLAYER:ペニス & 4
 		Y += 3
 	;アナルの汚れ
-	SIF STAIN:PLAYER:2 & 8
+	SIF STAIN:PLAYER:ペニス & 8
 		Y += 7
-	SIF STAIN:PLAYER:2 & 16
+	SIF STAIN:PLAYER:ペニス & 16
 		Y += 15
 
 	SIF TALENT:汚臭鈍感

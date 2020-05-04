@@ -133,11 +133,11 @@ ENDIF
 ABL:マゾっ気 += 1
 
 IF RESULT == 0
-	JUEL:10 -= A
-	JUEL:6 -= B
+	JUEL:苦痛 -= A
+	JUEL:欲情 -= B
 ELSEIF RESULT == 1
-	JUEL:10 -= D
-	JUEL:7 -= E
+	JUEL:苦痛 -= D
+	JUEL:屈服 -= E
 ENDIF
 
 PRINTS ABLNAME:9
@@ -258,10 +258,10 @@ ENDIF
 
 IF B > 0
 	;苦痛の珠で上げる
-	SIF JUEL:10 < A
+	SIF JUEL:苦痛 < A
 		I |= 1
 	;欲情の珠で上げる
-	SIF JUEL:6 < B
+	SIF JUEL:欲情 < B
 		I |= 1
 	;苦痛快楽経験が必要な場合
 	SIF EXP:苦痛快楽経験 < C
@@ -276,10 +276,10 @@ ENDIF
 
 IF D > 0
 	;苦痛の珠で上げる
-	SIF JUEL:10 < D
+	SIF JUEL:苦痛 < D
 		J |= 1
 	;屈服の珠で上げる
-	SIF JUEL:7 < E
+	SIF JUEL:屈服 < E
 		J |= 1
 	;この場合苦痛快楽経験が必要なことあり
 	SIF EXP:苦痛快楽経験 < C

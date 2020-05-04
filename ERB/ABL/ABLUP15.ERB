@@ -136,9 +136,9 @@ ENDIF
 ABL:自慰中毒 += 1
 
 IF RESULT == 0 || RESULT == 1
-	JUEL:6 -= A
-	JUEL:0 -= B
-	JUEL:9 -= C
+	JUEL:欲情 -= A
+	JUEL:快Ｃ -= B
+	JUEL:恥情 -= C
 ENDIF
 
 PRINTS ABLNAME:15
@@ -277,17 +277,17 @@ IF ABL:Ｃ感覚 < ABL:自慰中毒 + 1
 ENDIF
 
 ;欲情の珠で上げる
-IF JUEL:6 < A
+IF JUEL:欲情 < A
 	I |= 1
 	J |= 1
 ENDIF
 ;快Ｃの珠で上げる
-IF JUEL:0 < B
+IF JUEL:快Ｃ < B
 	I |= 1
 	J |= 1
 ENDIF
 ;恥情の珠で上げる
-IF JUEL:9 < C
+IF JUEL:恥情 < C
 	I |= 1
 	J |= 1
 ENDIF

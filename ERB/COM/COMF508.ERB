@@ -111,19 +111,19 @@ SIF TALENT:PLAYER:半人半妖 || TALENT:PLAYER:ふたなり || TALENT:PLAYER:�
 LOSEBASE:体力 += 10
 LOSEBASE:気力 += 100
 
-SOURCE:0 = 150
-SOURCE:3 = 150
-SOURCE:4 = 200
-SOURCE:5 = 500
-SOURCE:6 = 300
-SOURCE:10 = 80
-SOURCE:13 = 100
-SOURCE:14 = 1200
-SOURCE:17 = 700
+SOURCE:快Ｃ = 150
+SOURCE:情愛 = 150
+SOURCE:性行動 = 200
+SOURCE:達成感 = 500
+SOURCE:痛み = 300
+SOURCE:液体追加 = 80
+SOURCE:屈従 = 100
+SOURCE:逸脱 = 1200
+SOURCE:快Ｂ = 700
 SOURCE:18 = 700
 
 ;上のほうで計算した汚れデータ
-SOURCE:15 = Y*10 + 60
+SOURCE:反感追加 = Y*10 + 60
 
 
 ;-------------------------------------------------
@@ -131,11 +131,11 @@ SOURCE:15 = Y*10 + 60
 ;-------------------------------------------------
 ;抑圧、抵抗持ちには、抑鬱ソース追加
 SIF TALENT:抑圧 || TALENT:抵抗
-	SOURCE:16 += 1000
+	SOURCE:恭順追加 += 1000
 
 ;舌を使う調教では、調教者の舌使いによって、快感のソース増加
 SIF TALENT:PLAYER:舌使い
-	TIMES SOURCE:0 , 1.50
+	TIMES SOURCE:快Ｃ , 1.50
 
 ;-------------------------------------------------
 ;射精チェック
@@ -157,11 +157,11 @@ ENDIF
 ;汚れの処理
 ;-------------------------------------------------
 ;奴隷のＢ⇔調教者のＰの汚れが移動
-STAIN:5 |= STAIN:PLAYER:2
-STAIN:PLAYER:2 |= STAIN:5
+STAIN:胸 |= STAIN:PLAYER:ペニス
+STAIN:PLAYER:ペニス |= STAIN:胸
 ;奴隷のＶ⇔調教者の口の汚れが移動
-STAIN:3 |= STAIN:PLAYER:0
-STAIN:PLAYER:0 |= STAIN:3
+STAIN:ヴァギナ |= STAIN:PLAYER:口
+STAIN:PLAYER:口 |= STAIN:ヴァギナ
 
 
 ;-------------------------------------------------
@@ -359,15 +359,15 @@ ENDIF
 
 Y = 0
 ;愛液の汚れ
-SIF STAIN:PLAYER:2 & 1
+SIF STAIN:PLAYER:ペニス & 1
 	Y += 1
 ;精液の汚れ
-SIF STAIN:PLAYER:2 & 4
+SIF STAIN:PLAYER:ペニス & 4
 	Y += 3
 ;アナルの汚れ
-SIF STAIN:PLAYER:2 & 8
+SIF STAIN:PLAYER:ペニス & 8
 	Y += 7
-SIF STAIN:PLAYER:2 & 16
+SIF STAIN:PLAYER:ペニス & 16
 	Y += 15
 
 SIF TALENT:汚臭鈍感

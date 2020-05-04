@@ -131,27 +131,27 @@ SIF TALENT:PLAYER:半人半妖 || TALENT:PLAYER:ふたなり || TALENT:PLAYER:�
 LOSEBASE:気力 += 60
 LOSEBASE:気力 += 200
 
-SOURCE:0 = 400
-SOURCE:5 = 500
-SOURCE:6 = 400
-SOURCE:14 = 700
-SOURCE:17 = 500
+SOURCE:快Ｃ = 400
+SOURCE:達成感 = 500
+SOURCE:痛み = 400
+SOURCE:逸脱 = 700
+SOURCE:快Ｂ = 500
 SOURCE:18 = 500
 
 ;上のほうで計算した汚れデータ
-SOURCE:15 = Y*10 + 60
+SOURCE:反感追加 = Y*10 + 60
 
 ;-------------------------------------------------
 ;特殊ソース処理
 ;-------------------------------------------------
 ;抑圧、抵抗持ちには、抑鬱ソース追加
 SIF TALENT:抑圧 || TALENT:抵抗
-	SOURCE:16 += 700
+	SOURCE:恭順追加 += 700
 
 ;調教者が処女か再生処女（一回のみ）
 IF (TALENT:PLAYER:処女 == 1 || TALENT:PLAYER:再生処女 == 1) && CFLAG:8 == 0
-	TIMES SOURCE:13 , 20.00
-	TIMES SOURCE:14 , 3.00
+	TIMES SOURCE:屈従 , 20.00
+	TIMES SOURCE:逸脱 , 3.00
 	TALENT:PLAYER:処女 = 0
 	PRINTFORML ＜%CALLNAME:PLAYER%は処女を失いました＞
 	;異常経験追加
@@ -182,8 +182,8 @@ ENDIF
 ;-------------------------------------------------
 IF TALENT:半人半妖 || TALENT:ふたなり || TALENT:オトコ
 	;奴隷のＰ⇔調教者の膣内の汚れが移動
-	STAIN:2 |= STAIN:PLAYER:6
-	STAIN:PLAYER:6 |= STAIN:2
+	STAIN:ペニス |= STAIN:PLAYER:6
+	STAIN:PLAYER:6 |= STAIN:ペニス
 ENDIF
 
 ;-------------------------------------------------

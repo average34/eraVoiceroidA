@@ -19,7 +19,7 @@ IF TEQUIP:17 == 0
 	TEQUIP:17 = 1
 	;触手搾乳は触手の汚れを追加
 	IF TEQUIP:25
-		STAIN:5 |= 32
+		STAIN:胸 |= 32
 	ENDIF
 ELSE
 	TEQUIP:17 = 0
@@ -32,12 +32,12 @@ ENDIF
 LOSEBASE:体力 += 50
 LOSEBASE:気力 += 100
 
-SOURCE:3 = 200
-SOURCE:7 = 100
+SOURCE:情愛 = 200
+SOURCE:中毒充足 = 100
 SOURCE:9 = 100
-SOURCE:13 = 30
-SOURCE:14 = 100
-SOURCE:17 = 100
+SOURCE:屈従 = 30
+SOURCE:逸脱 = 100
+SOURCE:快Ｂ = 100
 SOURCE:18 = 100
 
 
@@ -46,7 +46,7 @@ SOURCE:18 = 100
 ;-------------------------------------------------
 ;抑圧、抵抗持ちには、抑鬱ソース追加
 SIF TALENT:抑圧 || TALENT:抵抗
-	SOURCE:16 += 100
+	SOURCE:恭順追加 += 100
 
 ;中毒による中毒充足のソースは先に処理しておく
 ;噴乳中毒を見る
@@ -77,7 +77,7 @@ ENDIF
 ;-------------------------------------------------
 ;触手搾乳なら、触手体液が胸に付く
 SIF TEQUIP:25
-	STAIN:5 |= 32
+	STAIN:胸 |= 32
 
 ;-------------------------------------------------
 ;経験の処理
@@ -122,12 +122,12 @@ ENDIF
 LOSEBASE:体力 += 25
 LOSEBASE:気力 += 50
 
-SOURCE:3 += 100
-SOURCE:7 += 50
+SOURCE:情愛 += 100
+SOURCE:中毒充足 += 50
 SOURCE:9 += 50
-SOURCE:13 += 15
-SOURCE:14 += 50
-SOURCE:17 += 50
+SOURCE:屈従 += 15
+SOURCE:逸脱 += 50
+SOURCE:快Ｂ += 50
 SOURCE:18 += 50
 
 

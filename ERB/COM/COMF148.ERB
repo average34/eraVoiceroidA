@@ -21,11 +21,11 @@ ENDIF
 LOSEBASE:体力 += 150
 LOSEBASE:気力 += 200
 
-SOURCE:2 = 200
-SOURCE:7 = 800
-SOURCE:13 = 300
-SOURCE:14 = 400
-SOURCE:17 = 700
+SOURCE:快Ａ = 200
+SOURCE:中毒充足 = 800
+SOURCE:屈従 = 300
+SOURCE:逸脱 = 400
+SOURCE:快Ｂ = 700
 SOURCE:18 = 700
 
 
@@ -34,41 +34,41 @@ SOURCE:18 = 700
 ;-------------------------------------------------
 ;抑圧、抵抗持ちには、抑鬱ソース追加
 SIF TALENT:抑圧 || TALENT:抵抗
-	SOURCE:16 += 700
+	SOURCE:恭順追加 += 700
 
 ;Aへの苦痛は先に処理しておく
 ;EXP:Ａ経験をみる
 IF EXP:Ａ経験 < EXPLV:1
-	TIMES SOURCE:7 , 3.00
+	TIMES SOURCE:中毒充足 , 3.00
 	TIMES SOURCE:18 , 3.00
 ELSEIF EXP:Ａ経験 < EXPLV:2
-	TIMES SOURCE:7 , 1.20
+	TIMES SOURCE:中毒充足 , 1.20
 	TIMES SOURCE:18 , 2.00
 ELSEIF EXP:Ａ経験 < EXPLV:3
-	TIMES SOURCE:7 , 0.80
+	TIMES SOURCE:中毒充足 , 0.80
 	TIMES SOURCE:18 , 1.50
 ELSEIF EXP:Ａ経験 < EXPLV:4
-	TIMES SOURCE:7 , 0.60
+	TIMES SOURCE:中毒充足 , 0.60
 	TIMES SOURCE:18 , 1.20
 ELSEIF EXP:Ａ経験 < EXPLV:5
-	TIMES SOURCE:7 , 0.40
+	TIMES SOURCE:中毒充足 , 0.40
 ELSEIF EXP:Ａ経験 >= EXPLV:5
-	TIMES SOURCE:7 , 0.20
+	TIMES SOURCE:中毒充足 , 0.20
 ENDIF
 
 ;PALAM:潤滑をみる
 IF PALAM:潤滑 < PALAMLV:1
-	TIMES SOURCE:7 , 1.20
+	TIMES SOURCE:中毒充足 , 1.20
 	TIMES SOURCE:18 , 2.00
 ELSEIF PALAM:潤滑 < PALAMLV:2
-	TIMES SOURCE:7 , 1.00
+	TIMES SOURCE:中毒充足 , 1.00
 	TIMES SOURCE:18 , 1.50
 ELSEIF PALAM:潤滑 < PALAMLV:3
-	TIMES SOURCE:7 , 0.60
+	TIMES SOURCE:中毒充足 , 0.60
 ELSEIF PALAM:潤滑 < PALAMLV:4
-	TIMES SOURCE:7 , 0.30
+	TIMES SOURCE:中毒充足 , 0.30
 ELSEIF PALAM:潤滑 >= PALAMLV:4
-	TIMES SOURCE:7 , 0.20
+	TIMES SOURCE:中毒充足 , 0.20
 ENDIF
 
 
@@ -123,17 +123,17 @@ PRINTL ＜拡張バルーン挿入中＞
 LOSEBASE:体力 += 75
 LOSEBASE:気力 += 100
 
-SOURCE:2 += 100
-SOURCE:13 += 150
-SOURCE:14 += 200
-SOURCE:17 += 350
+SOURCE:快Ａ += 100
+SOURCE:屈従 += 150
+SOURCE:逸脱 += 200
+SOURCE:快Ｂ += 350
 
 ;-------------------------------------------------
 ;特殊ソース処理
 ;-------------------------------------------------
 ;抑圧、抵抗持ちには、抑鬱ソース追加
 SIF TALENT:抑圧 || TALENT:抵抗
-	SOURCE:16 += 350
+	SOURCE:恭順追加 += 350
 
 ;Aへの苦痛は先に処理しておく
 ;EXP:Ａ経験をみる
@@ -171,7 +171,7 @@ ELSEIF PALAM:潤滑 < PALAMLV:4
 ELSEIF PALAM:潤滑 >= PALAMLV:4
 	TIMES A , 0.20
 ENDIF
-SOURCE:7 += A
+SOURCE:中毒充足 += A
 SOURCE:18 += B
 
 ;-------------------------------------------------

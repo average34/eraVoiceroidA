@@ -17,11 +17,11 @@ CALL KOJO_MESSAGE_COM
 LOSEBASE:体力 += 50
 LOSEBASE:気力 += 180
 
-SOURCE:4 = 1000
-SOURCE:6 = 1000
-SOURCE:12 = 2000
-SOURCE:14 = 1800
-SOURCE:17 = 100
+SOURCE:性行動 = 1000
+SOURCE:痛み = 1000
+SOURCE:露出 = 2000
+SOURCE:逸脱 = 1800
+SOURCE:快Ｂ = 100
 SOURCE:18 = 100
 
 
@@ -29,8 +29,8 @@ SOURCE:18 = 100
 ;汚れの処理
 ;-------------------------------------------------
 ;奴隷のＢ⇔調教者の口の汚れが移動
-	STAIN:5 |= STAIN:PLAYER:0
-	STAIN:PLAYER:0 |= STAIN:5
+	STAIN:胸 |= STAIN:PLAYER:口
+	STAIN:PLAYER:口 |= STAIN:胸
 
 ;-------------------------------------------------
 ;経験の処理

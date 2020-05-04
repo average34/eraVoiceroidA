@@ -34,10 +34,10 @@ CALL COM_ABLE_COMMON, SELECTCOM
 SIF RESULT == 0
 	RETURN 0
 ;性器が汚れているとMASTERの場合クンニはできない（調教者が汚れ無視か愛液、母乳のよごれならＯＫ）
-SIF STAIN:3 >= 2 && (STAIN:3 != 16 && STAIN:3 != 17) && ASSIPLAY == 0 && TALENT:MASTER:汚れ無視 == 0
+SIF STAIN:ヴァギナ >= 2 && (STAIN:ヴァギナ != 16 && STAIN:ヴァギナ != 17) && ASSIPLAY == 0 && TALENT:MASTER:汚れ無視 == 0
 	RETURN 0
 ;性器が汚れており、汚臭敏感で従順3以下のASSIの場合クンニはできない（調教者が汚れ無視か愛液、母乳のよごれならＯＫ）
-IF STAIN:3 >= 2 && (STAIN:3 != 16 && STAIN:3 != 17) && ASSIPLAY
+IF STAIN:ヴァギナ >= 2 && (STAIN:ヴァギナ != 16 && STAIN:ヴァギナ != 17) && ASSIPLAY
 	SIF ABL:ASSI:従順 <= 3 && TALENT:ASSI:汚臭敏感 && TALENT:ASSI:汚れ無視 == 0
 		RETURN 0
 ENDIF
@@ -63,10 +63,10 @@ CALL COM_ABLE_COMMON, SELECTCOM
 SIF RESULT == 0
 	RETURN 0
 ;性器が汚れているとMASTERの場合フェラするはできない（調教者が汚れ無視か愛液、Ｐ、母乳のよごれならＯＫ）
-SIF STAIN:2 >= 4 && (STAIN:2 != 18 && STAIN:2 != 19) && ASSIPLAY == 0 && TALENT:MASTER:汚れ無視 == 0
+SIF STAIN:ペニス >= 4 && (STAIN:ペニス != 18 && STAIN:ペニス != 19) && ASSIPLAY == 0 && TALENT:MASTER:汚れ無視 == 0
 	RETURN 0
 ;性器が汚れており、汚臭敏感で従順3以下のASSIの場合フェラはできない（調教者が汚れ無視か愛液、Ｐ、母乳のよごれならＯＫ）
-IF STAIN:2 >= 4 && (STAIN:2 != 18 && STAIN:2 != 19) && ASSIPLAY
+IF STAIN:ペニス >= 4 && (STAIN:ペニス != 18 && STAIN:ペニス != 19) && ASSIPLAY
 	SIF ABL:ASSI:従順 <= 3 && TALENT:ASSI:汚臭敏感 && TALENT:ASSI:汚れ無視 == 0
 		RETURN 0
 ENDIF
@@ -118,7 +118,7 @@ CALL COM_ABLE_COMMON, SELECTCOM
 SIF RESULT == 0
 	RETURN 0
 ;アナルが汚れており、汚臭敏感で従順3以下のASSIの場合アナル舐めはできない（調教者が汚れ無視か愛液、母乳のよごれならＯＫ）
-IF STAIN:4 >= 8 && (STAIN:4 != 16 && STAIN:4 != 17) && ASSIPLAY
+IF STAIN:アナル >= 8 && (STAIN:アナル != 16 && STAIN:アナル != 17) && ASSIPLAY
 	SIF ABL:ASSI:従順 <= 3 && TALENT:ASSI:汚臭敏感 && TALENT:ASSI:汚れ無視 == 0
 		RETURN 0
 ENDIF
@@ -308,7 +308,7 @@ CALL COM_ABLE_COMMON, SELECTCOM
 SIF RESULT == 0
 	RETURN 0
 ;口が汚れているとダメ（調教者が汚れ無視か愛液、母乳のよごれならＯＫ）
-SIF STAIN:0 >= 2 && (STAIN:0 != 16 && STAIN:0 != 17) && TALENT:PLAYER:汚れ無視 == 0
+SIF STAIN:口 >= 2 && (STAIN:口 != 16 && STAIN:口 != 17) && TALENT:PLAYER:汚れ無視 == 0
 	RETURN 0
 ;ボールギャグ使用中は不可
 SIF TEQUIP:20
@@ -3305,10 +3305,10 @@ SIF TEQUIP:30 == 0
 SIF TALENT:PLAYER:猫舌 && ABL:PLAYER:技巧 < 2
 	RETURN 0
 ;性器が汚れているとMASTERの場合クンニはできない（調教者が汚れ無視か愛液、母乳のよごれならＯＫ）
-SIF STAIN:3 >= 2 && (STAIN:3 != 16 && STAIN:3 != 17) && ASSIPLAY == 0 && TALENT:MASTER:汚れ無視 == 0
+SIF STAIN:ヴァギナ >= 2 && (STAIN:ヴァギナ != 16 && STAIN:ヴァギナ != 17) && ASSIPLAY == 0 && TALENT:MASTER:汚れ無視 == 0
 	RETURN 0
 ;性器が汚れており、汚臭敏感で従順3以下のASSIの場合クンニはできない（調教者が汚れ無視か愛液、母乳のよごれならＯＫ）
-IF STAIN:3 >= 2 && (STAIN:3 != 16 && STAIN:3 != 17) && ASSIPLAY
+IF STAIN:ヴァギナ >= 2 && (STAIN:ヴァギナ != 16 && STAIN:ヴァギナ != 17) && ASSIPLAY
 	SIF ABL:ASSI:従順 <= 3 && TALENT:ASSI:汚臭敏感 && TALENT:ASSI:汚れ無視 == 0
 		RETURN 0
 ENDIF

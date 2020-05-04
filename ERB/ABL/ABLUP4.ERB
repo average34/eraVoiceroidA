@@ -60,7 +60,7 @@ ENDIF
 ABL:Ｖ感覚 += 1
 
 IF RESULT == 0
-	JUEL:1 -= A
+	JUEL:快Ｖ -= A
 ENDIF
 
 PRINTS ABLNAME:4
@@ -109,7 +109,7 @@ SIF A == 0
 	A = 1
 
 ;快Ｖの珠で上げる
-SIF JUEL:1 < A
+SIF JUEL:快Ｖ < A
 	I |= 1
 
 IF I == 0

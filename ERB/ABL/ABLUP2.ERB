@@ -61,7 +61,7 @@ ENDIF
 ABL:技巧 += 1
 
 IF RESULT == 0
-	JUEL:8 -= A
+	JUEL:習得 -= A
 ENDIF
 
 PRINTS ABLNAME:2
@@ -112,7 +112,7 @@ SIF A == 0
 	A = 1
 
 ;習得の珠で上げる
-SIF JUEL:8 < A
+SIF JUEL:習得 < A
 	I |= 1
 
 IF I == 0

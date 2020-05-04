@@ -65,7 +65,7 @@ ENDIF
 ABL:歌唱技能 += 1
 
 IF RESULT == 0
-	JUEL:8 -= A
+	JUEL:習得 -= A
 ENDIF
 
 PRINTS ABLNAME:14
@@ -132,7 +132,7 @@ ENDIF
 
 
 ;習得の珠で上げる
-SIF JUEL:8 < A
+SIF JUEL:習得 < A
 	I |= 1
 SIF EXP:歌唱経験 < B
 	I |= 2

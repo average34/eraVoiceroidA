@@ -16,11 +16,11 @@ CALL KOJO_MESSAGE_COM
 LOSEBASE:体力 += 20
 LOSEBASE:気力 += 150
 
-SOURCE:0 = 150
-SOURCE:8 = 100
-SOURCE:10 = 100
-SOURCE:13 = 150
-SOURCE:17 = 300
+SOURCE:快Ｃ = 150
+SOURCE:不潔 = 100
+SOURCE:液体追加 = 100
+SOURCE:屈従 = 150
+SOURCE:快Ｂ = 300
 SOURCE:18 = 300
 
 
@@ -29,18 +29,18 @@ SOURCE:18 = 300
 ;-------------------------------------------------
 ;抑圧、抵抗持ちには、抑鬱ソース追加
 SIF TALENT:抑圧 || TALENT:抵抗
-	SOURCE:16 += 300
+	SOURCE:恭順追加 += 300
 
 ;舌を使う調教では、調教者の舌使いによって、快感のソース増加
 SIF TALENT:PLAYER:舌使い
-	TIMES SOURCE:0 , 1.50
+	TIMES SOURCE:快Ｃ , 1.50
 
 ;-------------------------------------------------
 ;汚れの処理
 ;-------------------------------------------------
 ;奴隷のＶ⇔調教者の口の汚れが移動
-STAIN:3 |= STAIN:PLAYER:0
-STAIN:PLAYER:0 |= STAIN:3
+STAIN:ヴァギナ |= STAIN:PLAYER:口
+STAIN:PLAYER:口 |= STAIN:ヴァギナ
 
 ;-------------------------------------------------
 ;経験の処理

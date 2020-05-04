@@ -67,7 +67,7 @@ PRINTL
 
 IF C > 0
 	;欲情の珠で上げる
-	SIF JUEL:6 < C
+	SIF JUEL:欲情 < C
 		K |= 1
 
 	PRINTFORM [2] - %PALAMNAME:6%の珠×{C}……
@@ -87,7 +87,7 @@ ENDIF
 
 IF D > 0
 	;屈服の珠で上げる
-	SIF JUEL:7 < D
+	SIF JUEL:屈服 < D
 		L |= 1
 
 	PRINTFORM [3] - %PALAMNAME:7%の珠×{D}……
@@ -133,13 +133,13 @@ ENDIF
 ABL:従順 += 1
 
 IF RESULT == 0
-	JUEL:11 -= A
+	JUEL:恐怖 -= A
 ELSEIF RESULT == 1
-	JUEL:5 -= B
+	JUEL:恭順 -= B
 ELSEIF RESULT == 2
-	JUEL:6 -= C
+	JUEL:欲情 -= C
 ELSEIF RESULT == 3
-	JUEL:7 -= D
+	JUEL:屈服 -= D
 ENDIF
 
 PRINTS ABLNAME:0
@@ -253,7 +253,7 @@ ELSEIF ABL:従順 == 7 && TALENT:臆病 == 0 && TALENT:素直 == 0 && TALENT:恋
 ENDIF
 
 ;恐怖の珠で上げる
-SIF JUEL:11 < A
+SIF JUEL:恐怖 < A
 	I |= 1
 
 IF I == 0
@@ -261,7 +261,7 @@ IF I == 0
 ENDIF
 
 ;恭順の珠で上げる
-SIF JUEL:5 < B
+SIF JUEL:恭順 < B
 	J |= 1
 
 IF J == 0
@@ -270,7 +270,7 @@ ENDIF
 
 IF C
 	;欲情の珠で上げる
-	SIF JUEL:6 < C
+	SIF JUEL:欲情 < C
 		K |= 1
 
 	IF K == 0
@@ -282,7 +282,7 @@ ENDIF
 
 IF D
 	;屈服の珠で上げる
-	SIF JUEL:7 < D
+	SIF JUEL:屈服 < D
 		L |= 1
 
 	IF L == 0

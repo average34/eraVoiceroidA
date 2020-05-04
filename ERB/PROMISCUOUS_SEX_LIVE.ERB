@@ -1043,7 +1043,7 @@ ELSEIF ABL:A:歌唱技能 >= 10
 	Q = 80
 ENDIF
 EXP:A:歌唱経験 += Q
-JUEL:A:8 += R
+JUEL:A:習得 += R
 
 BASE:A:体力 -= 30*C
 
@@ -1088,11 +1088,11 @@ IF CFLAG:A:108 == 0
 	CFLAG:A:105 += E
 ENDIF
 EXP:A:精液経験 += B*5
-JUEL:A:1 += E*50
-JUEL:A:2 += F*50
-JUEL:A:6 += (E+F)*30
-JUEL:A:8 += (E+F)*20
-JUEL:A:100 += (E+F+G)*100/ABL:A:従順
+JUEL:A:快Ｖ += E*50
+JUEL:A:快Ａ += F*50
+JUEL:A:欲情 += (E+F)*30
+JUEL:A:習得 += (E+F)*20
+JUEL:A:否定 += (E+F+G)*100/ABL:A:従順
 
 IF I >= 0
 	PRINTFORML %CALLNAME:I%の撮影経験＋１

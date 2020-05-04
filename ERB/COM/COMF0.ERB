@@ -15,13 +15,13 @@ CALL KOJO_MESSAGE_COM
 LOSEBASE:体力 += 5
 LOSEBASE:気力 += 50
 
-SOURCE:0 = 80
-SOURCE:3 = 80
-SOURCE:4 = 50
-SOURCE:5 = 60
-SOURCE:13 = 20
-SOURCE:15 = 30
-SOURCE:17 = 20
+SOURCE:快Ｃ = 80
+SOURCE:情愛 = 80
+SOURCE:性行動 = 50
+SOURCE:達成感 = 60
+SOURCE:屈従 = 20
+SOURCE:反感追加 = 30
+SOURCE:快Ｂ = 20
 SOURCE:18 = 20
 
 ;-------------------------------------------------
@@ -29,49 +29,49 @@ SOURCE:18 = 20
 ;-------------------------------------------------
 ;抑圧、抵抗持ちには、抑鬱ソース追加
 SIF TALENT:抑圧 || TALENT:抵抗
-	SOURCE:16 += 20
+	SOURCE:恭順追加 += 20
 
 ;舌を使う調教では、調教者の舌使いによって、快感のソース増加
 IF TALENT:PLAYER:舌使い
-	TIMES SOURCE:0 , 1.50
-	TIMES SOURCE:3 , 1.50
-	TIMES SOURCE:4 , 1.50
+	TIMES SOURCE:快Ｃ , 1.50
+	TIMES SOURCE:情愛 , 1.50
+	TIMES SOURCE:性行動 , 1.50
 ENDIF
 ;猫舌は減少
 IF TALENT:PLAYER:猫舌
-	TIMES SOURCE:0 , 0.75
-	TIMES SOURCE:3 , 0.75
-	TIMES SOURCE:4 , 0.75
+	TIMES SOURCE:快Ｃ , 0.75
+	TIMES SOURCE:情愛 , 0.75
+	TIMES SOURCE:性行動 , 0.75
 ENDIF
 
 ;-------------------------------------------------
 ;汚れの処理
 ;-------------------------------------------------
-IF (STAIN:0 >= 2 && (STAIN:0 != 16 && STAIN:0 != 17) && ASSIPLAY == 0 && TALENT:MASTER:汚れ無視 == 0) || TEQUIP:20
+IF (STAIN:口 >= 2 && (STAIN:口 != 16 && STAIN:口 != 17) && ASSIPLAY == 0 && TALENT:MASTER:汚れ無視 == 0) || TEQUIP:20
 ;奴隷の口の汚れがあるときキスはない（愛液と母乳よごれはＯＫ、汚れ無視か助手調教時は問題なし）
 ;ボールギャグ使用中もなし
-	SOURCE:15 = 0
-	SOURCE:0 /= 2
-	SOURCE:4 /= 4
-	SOURCE:10 /= 2
+	SOURCE:反感追加 = 0
+	SOURCE:快Ｃ /= 2
+	SOURCE:性行動 /= 4
+	SOURCE:液体追加 /= 2
 ELSE
 	;汚臭鈍感
 	SIF TALENT:汚臭鈍感
-		SOURCE:15 /= 4
+		SOURCE:反感追加 /= 4
 	;汚臭敏感
 	SIF TALENT:汚臭敏感
-		SOURCE:15 *= 3
+		SOURCE:反感追加 *= 3
 	;自尊心
 	SIF TALENT:プライド高い
-		SOURCE:15 *= 2
-	IF STAIN:PLAYER:0
+		SOURCE:反感追加 *= 2
+	IF STAIN:PLAYER:口
 	;主人の口の汚れがあると不潔150%
-		SOURCE:15 *= 3
-		SOURCE:15 /= 2
+		SOURCE:反感追加 *= 3
+		SOURCE:反感追加 /= 2
 	ENDIF
 	;奴隷の口⇔調教者の口の汚れが移動
-	STAIN:0 |= STAIN:PLAYER:0
-	STAIN:PLAYER:0 |= STAIN:0
+	STAIN:口 |= STAIN:PLAYER:口
+	STAIN:PLAYER:口 |= STAIN:口
 ENDIF
 
 

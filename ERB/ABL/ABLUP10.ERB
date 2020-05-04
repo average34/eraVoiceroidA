@@ -92,7 +92,7 @@ ENDIF
 ABL:サドっ気 += 1
 
 IF RESULT == 0
-	JUEL:6 -= A
+	JUEL:欲情 -= A
 ENDIF
 
 PRINTS ABLNAME:10
@@ -178,7 +178,7 @@ ELSEIF ABL:サドっ気 == 8 && TALENT:サド == 0
 ENDIF
 
 ;欲情の珠で上げる
-SIF JUEL:6 < A
+SIF JUEL:欲情 < A
 	I |= 1
 ;嗜虐快楽経験が必要な場合
 SIF EXP:嗜虐快楽経験 < B

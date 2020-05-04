@@ -75,7 +75,7 @@ PRINTL
 
 IF B > 0
 	;恭順の珠で上げる
-	SIF JUEL:5 < B
+	SIF JUEL:恭順 < B
 		J |= 1
 	;この場合奉仕快楽経験が必要なことあり
 	SIF EXP:奉仕快楽経験 < D
@@ -110,7 +110,7 @@ ENDIF
 
 IF C > 0
 	;習得の珠で上げる
-	SIF JUEL:8 < C
+	SIF JUEL:習得 < C
 		K |= 1
 	;この場合絶頂経験が１以上必要
 	SIF EXP:絶頂経験 < 1
@@ -167,11 +167,11 @@ ENDIF
 ABL:奉仕精神 += 1
 
 IF RESULT == 0
-	JUEL:7 -= A
+	JUEL:屈服 -= A
 ELSEIF RESULT == 1
-	JUEL:5 -= B
+	JUEL:恭順 -= B
 ELSEIF RESULT == 2
-	JUEL:8 -= C
+	JUEL:習得 -= C
 ENDIF
 
 PRINTS ABLNAME:7
@@ -298,7 +298,7 @@ ELSEIF ABL:奉仕精神 == 8 && TALENT:恋慕 == 0 && TALENT:親愛 == 0
 ENDIF
 
 ;屈服の珠で上げる
-SIF JUEL:7 < A
+SIF JUEL:屈服 < A
 	I |= 1
 ;絶頂経験が必要な場合
 SIF EXP:絶頂経験 < E
@@ -313,7 +313,7 @@ ENDIF
 
 IF B > 0
 	;恭順の珠で上げる
-	SIF JUEL:5 < B
+	SIF JUEL:恭順 < B
 		J |= 1
 	;この場合奉仕快楽経験が必要なことあり
 	SIF EXP:奉仕快楽経験 < D
@@ -328,7 +328,7 @@ ENDIF
 
 IF C > 0
 	;習得の珠で上げる
-	SIF JUEL:8 < C
+	SIF JUEL:習得 < C
 		K |= 1
 	;この場合絶頂経験が１以上必要
 	SIF EXP:絶頂経験 < 1

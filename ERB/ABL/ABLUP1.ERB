@@ -70,7 +70,7 @@ ENDIF
 ABL:欲望 += 1
 
 IF RESULT == 0
-	JUEL:6 -= A
+	JUEL:欲情 -= A
 ENDIF
 
 PRINTS ABLNAME:1
@@ -133,7 +133,7 @@ SIF A == 0
 	A = 1
 
 ;欲情の珠で上げる
-SIF JUEL:6 < A
+SIF JUEL:欲情 < A
 	I |= 1
 
 IF I == 0

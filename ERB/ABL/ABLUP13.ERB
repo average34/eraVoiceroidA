@@ -64,7 +64,7 @@ ENDIF
 ABL:撮影技能 += 1
 
 IF RESULT == 0
-	JUEL:8 -= A
+	JUEL:習得 -= A
 ENDIF
 
 PRINTS ABLNAME:13
@@ -129,7 +129,7 @@ IF TALENT:一線越えない && (TALENT:恋慕 == 0 && TALENT:淫乱 == 0 && TAL
 ENDIF
 
 ;習得の珠で上げる
-SIF JUEL:8 < A
+SIF JUEL:習得 < A
 	I |= 1
 
 SIF EXP:撮影経験 < B

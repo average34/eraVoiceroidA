@@ -15,10 +15,10 @@ CALL KOJO_MESSAGE_COM
 LOSEBASE:体力 += 0
 LOSEBASE:気力 += 30
 
-SOURCE:4 = 100
-SOURCE:10 = 100
-SOURCE:14 = 800
-SOURCE:17 = 200
+SOURCE:性行動 = 100
+SOURCE:液体追加 = 100
+SOURCE:逸脱 = 800
+SOURCE:快Ｂ = 200
 SOURCE:18 = 200
 
 
@@ -27,29 +27,29 @@ SOURCE:18 = 200
 ;-------------------------------------------------
 ;抑圧、抵抗持ちには、抑鬱ソース追加
 SIF TALENT:抑圧 || TALENT:抵抗
-	SOURCE:16 += 50
+	SOURCE:恭順追加 += 50
 
 ;助手と奴隷の相性によって、全体のソースが変化
 T = NO:TARGET
 A = NO:ASSI
-SOURCE:4 *= RELATION:A
-SOURCE:10 *= RELATION:A
-SOURCE:14 *= RELATION:A
-SOURCE:16 *= RELATION:A
-SOURCE:17 *= RELATION:A
+SOURCE:性行動 *= RELATION:A
+SOURCE:液体追加 *= RELATION:A
+SOURCE:逸脱 *= RELATION:A
+SOURCE:恭順追加 *= RELATION:A
+SOURCE:快Ｂ *= RELATION:A
 SOURCE:18 *= RELATION:A
-SOURCE:4 /= 100
-SOURCE:10 /= 100
-SOURCE:14 /= 100
-SOURCE:16 /= 100
-SOURCE:17 /= 100
+SOURCE:性行動 /= 100
+SOURCE:液体追加 /= 100
+SOURCE:逸脱 /= 100
+SOURCE:恭順追加 /= 100
+SOURCE:快Ｂ /= 100
 SOURCE:18 /= 100
 
 ;-------------------------------------------------
 ;汚れの処理
 ;-------------------------------------------------
 ;助手の口に精液汚れ
-STAIN:ASSI:0 |= 4
+STAIN:ASSI:口 |= 4
 
 ;-------------------------------------------------
 ;経験の処理

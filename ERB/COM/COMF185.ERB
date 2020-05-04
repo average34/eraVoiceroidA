@@ -115,10 +115,10 @@ SIF TALENT:PLAYER:半人半妖 || TALENT:PLAYER:ふたなり || TALENT:PLAYER:�
 LOSEBASE:体力 += 0
 LOSEBASE:気力 += 250
 
-SOURCE:4 = 200
-SOURCE:10 = 100
-SOURCE:14 = 1500
-SOURCE:17 = 700
+SOURCE:性行動 = 200
+SOURCE:液体追加 = 100
+SOURCE:逸脱 = 1500
+SOURCE:快Ｂ = 700
 SOURCE:18 = 700
 
 ;-------------------------------------------------
@@ -126,28 +126,28 @@ SOURCE:18 = 700
 ;-------------------------------------------------
 ;抑圧、抵抗持ちには、抑鬱ソース追加
 SIF TALENT:抑圧 || TALENT:抵抗
-	SOURCE:16 += 700
+	SOURCE:恭順追加 += 700
 
 ;助手が処女喪失をした場合、屈服と逸脱を増加
 IF TALENT:ASSI:処女 == 1
-	TIMES SOURCE:13 , 20.00
-	TIMES SOURCE:14 , 3.00
+	TIMES SOURCE:屈従 , 20.00
+	TIMES SOURCE:逸脱 , 3.00
 ENDIF
 
 ;助手と奴隷の相性によって、全体のソースが変化
 T = NO:TARGET
 A = NO:ASSI
-SOURCE:4 *= RELATION:A
-SOURCE:10 *= RELATION:A
-SOURCE:14 *= RELATION:A
-SOURCE:16 *= RELATION:A
-SOURCE:17 *= RELATION:A
+SOURCE:性行動 *= RELATION:A
+SOURCE:液体追加 *= RELATION:A
+SOURCE:逸脱 *= RELATION:A
+SOURCE:恭順追加 *= RELATION:A
+SOURCE:快Ｂ *= RELATION:A
 SOURCE:18 *= RELATION:A
-SOURCE:4 /= 100
-SOURCE:10 /= 100
-SOURCE:14 /= 100
-SOURCE:16 /= 100
-SOURCE:17 /= 100
+SOURCE:性行動 /= 100
+SOURCE:液体追加 /= 100
+SOURCE:逸脱 /= 100
+SOURCE:恭順追加 /= 100
+SOURCE:快Ｂ /= 100
 SOURCE:18 /= 100
 
 ;-------------------------------------------------
@@ -172,8 +172,8 @@ ENDIF
 ;射精に関係なく行われる処理はここから
 IF TALENT:PLAYER:半人半妖 || TALENT:PLAYER:ふたなり || TALENT:PLAYER:オトコ
 	;主人のＰ⇔助手のＶの汚れが移動
-	STAIN:MASTER:2 |= STAIN:ASSI:3
-	STAIN:ASSI:3 |= STAIN:MASTER:2
+	STAIN:MASTER:ペニス |= STAIN:ASSI:ヴァギナ
+	STAIN:ASSI:ヴァギナ |= STAIN:MASTER:ペニス
 ENDIF
 
 ;-------------------------------------------------

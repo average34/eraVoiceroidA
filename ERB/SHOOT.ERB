@@ -642,7 +642,7 @@ IF E == 2
 ;通常の射精
 ELSEIF E == 1
 	;精液汚れ
-	STAIN:MASTER:2 |= 4
+	STAIN:MASTER:ペニス |= 4
 	;助手を犯すで射精したフラグ
 	TFLAG:7 = 1
 ENDIF
@@ -722,7 +722,7 @@ ENDIF
 @SAMEN_SHOOT_CALC
 ;射精時の共通処理
 ;精液汚れの設定
-STAIN:P:2 |= 4
+STAIN:P:ペニス |= 4
 
 ;大量射精
 IF E == 2
@@ -803,9 +803,9 @@ ENDIF
 ;-------------------------------------------------
 ;恋慕、親愛持ちで射精者が主人の場合は達成感のソースが増加する
 IF (TALENT:恋慕 || TALENT:親愛) && P == MASTER
-	SOURCE:6 += 1500
+	SOURCE:痛み += 1500
 ELSE
-	SOURCE:8 += 1500
+	SOURCE:不潔 += 1500
 	SOURCE:18 += 500
 ENDIF
 

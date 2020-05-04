@@ -21,11 +21,11 @@ ENDIF
 LOSEBASE:体力 += 300
 LOSEBASE:気力 += 450
 
-SOURCE:2 = 500
-SOURCE:7 = 1500
-SOURCE:13 = 300
-SOURCE:14 = 800
-SOURCE:17 = 1200
+SOURCE:快Ａ = 500
+SOURCE:中毒充足 = 1500
+SOURCE:屈従 = 300
+SOURCE:逸脱 = 800
+SOURCE:快Ｂ = 1200
 SOURCE:18 = 1200
 
 ;-------------------------------------------------
@@ -33,44 +33,44 @@ SOURCE:18 = 1200
 ;-------------------------------------------------
 ;抑圧、抵抗持ちには、抑鬱ソース追加
 SIF TALENT:抑圧 || TALENT:抵抗
-	SOURCE:16 += 1200
+	SOURCE:恭順追加 += 1200
 
 ;フィストなどのAへの大きな苦痛は先に処理しておく
 ;EXP:Ａ経験をみる
 IF EXP:Ａ経験 < EXPLV:1
-	TIMES SOURCE:7 , 3.00
+	TIMES SOURCE:中毒充足 , 3.00
 	TIMES SOURCE:18 , 4.00
 ELSEIF EXP:Ａ経験 < EXPLV:2
-	TIMES SOURCE:7 , 2.50
+	TIMES SOURCE:中毒充足 , 2.50
 	TIMES SOURCE:18 , 3.50
 ELSEIF EXP:Ａ経験 < EXPLV:3
-	TIMES SOURCE:7 , 2.40
+	TIMES SOURCE:中毒充足 , 2.40
 	TIMES SOURCE:18 , 3.00
 ELSEIF EXP:Ａ経験 < EXPLV:4
-	TIMES SOURCE:7 , 2.00
+	TIMES SOURCE:中毒充足 , 2.00
 	TIMES SOURCE:18 , 2.50
 ELSEIF EXP:Ａ経験 < EXPLV:5
-	TIMES SOURCE:7 , 1.80
+	TIMES SOURCE:中毒充足 , 1.80
 	TIMES SOURCE:18 , 2.00
 ELSEIF EXP:Ａ経験 >= EXPLV:5
-	TIMES SOURCE:7 , 1.60
+	TIMES SOURCE:中毒充足 , 1.60
 	TIMES SOURCE:18 , 1.50
 ENDIF
 
 ;PALAM:潤滑をみる
 IF PALAM:潤滑 < PALAMLV:1
-	TIMES SOURCE:7 , 3.00
+	TIMES SOURCE:中毒充足 , 3.00
 	TIMES SOURCE:18 , 2.00
 ELSEIF PALAM:潤滑 < PALAMLV:2
-	TIMES SOURCE:7 , 2.50
+	TIMES SOURCE:中毒充足 , 2.50
 	TIMES SOURCE:18 , 1.50
 ELSEIF PALAM:潤滑 < PALAMLV:3
-	TIMES SOURCE:7 , 2.00
+	TIMES SOURCE:中毒充足 , 2.00
 	TIMES SOURCE:18 , 1.20
 ELSEIF PALAM:潤滑 < PALAMLV:4
-	TIMES SOURCE:7 , 1.50
+	TIMES SOURCE:中毒充足 , 1.50
 ELSEIF PALAM:潤滑 >= PALAMLV:4
-	TIMES SOURCE:7 , 1.00
+	TIMES SOURCE:中毒充足 , 1.00
 ENDIF
 
 ;-------------------------------------------------
@@ -124,9 +124,9 @@ PRINTL ＜アナル電極挿入中＞
 LOSEBASE:体力 += 200
 LOSEBASE:気力 += 250
 
-SOURCE:2 += 250
-SOURCE:14 += 400
-SOURCE:17 += 600
+SOURCE:快Ａ += 250
+SOURCE:逸脱 += 400
+SOURCE:快Ｂ += 600
 
 
 ;-------------------------------------------------
@@ -134,7 +134,7 @@ SOURCE:17 += 600
 ;-------------------------------------------------
 ;抑圧、抵抗持ちには、抑鬱ソース追加
 SIF TALENT:抑圧 || TALENT:抵抗
-	SOURCE:16 += 600
+	SOURCE:恭順追加 += 600
 
 ;フィストなどのAへの大きな苦痛は先に処理しておく
 ;EXP:Ａ経験をみる
@@ -175,7 +175,7 @@ ELSEIF PALAM:潤滑 < PALAMLV:4
 ELSEIF PALAM:潤滑 >= PALAMLV:4
 	TIMES A , 1.00
 ENDIF
-SOURCE:7 += A
+SOURCE:中毒充足 += A
 SOURCE:18 += B
 
 ;-------------------------------------------------

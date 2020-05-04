@@ -4,7 +4,7 @@
 ;-------------------------------------------------
 @MESSAGE_COM0
 ;キスをする場合
-SIF (STAIN:0 < 2 || STAIN:0 == 16 || STAIN:0 == 17 || TALENT:MASTER:汚れ無視 || ASSIPLAY) && TEQUIP:20 == 0 && TEQUIP:25 == 0
+SIF (STAIN:口 < 2 || STAIN:口 == 16 || STAIN:口 == 17 || TALENT:MASTER:汚れ無視 || ASSIPLAY) && TEQUIP:20 == 0 && TEQUIP:25 == 0
 	PRINTFORM キスをしながら
 PRINTFORM %CALLNAME:TARGET%の
 ;小柄体型

@@ -24,7 +24,7 @@ IF TEQUIP:13 == 0
 	TEQUIP:13 = 1
 	;触手挿入は触手の汚れを追加
 	IF TEQUIP:25
-		STAIN:3 |= 32
+		STAIN:ヴァギナ |= 32
 	ENDIF
 ELSE
 	TEQUIP:13 = 0
@@ -37,10 +37,10 @@ ENDIF
 LOSEBASE:体力 += 30
 LOSEBASE:気力 += 100
 
-SOURCE:1 = 250
-SOURCE:7 = 50
-SOURCE:13 = 20
-SOURCE:17 = 40
+SOURCE:快Ｖ = 250
+SOURCE:中毒充足 = 50
+SOURCE:屈従 = 20
+SOURCE:快Ｂ = 40
 SOURCE:18 = 40
 
 
@@ -49,50 +49,50 @@ SOURCE:18 = 40
 ;-------------------------------------------------
 ;抑圧、抵抗持ちには、抑鬱ソース追加
 SIF TALENT:抑圧 || TALENT:抵抗
-	SOURCE:16 += 40
+	SOURCE:恭順追加 += 40
 
 ;処女だった場合は、苦痛のソースと反発のソースを追加する
 IF TALENT:処女 == 1
-	SOURCE:7 += 2000
+	SOURCE:中毒充足 += 2000
 	SOURCE:18 += 3000
 ENDIF
 
 ;再生処女だった場合は、苦痛のソースと反発のソースを追加する
 IF TALENT:再生処女 == 1
-	SOURCE:7 += 500
+	SOURCE:中毒充足 += 500
 	SOURCE:18 += 1000
 ENDIF
 
 ;Vへの苦痛は先に処理しておく
 ;EXP:Ｖ経験をみる（処女の反感は別途処理済みなので省略）
 IF EXP:Ｖ経験 < EXPLV:1
-	TIMES SOURCE:7 , 2.50
+	TIMES SOURCE:中毒充足 , 2.50
 ELSEIF EXP:Ｖ経験 < EXPLV:2
-	TIMES SOURCE:7 , 0.80
+	TIMES SOURCE:中毒充足 , 0.80
 	TIMES SOURCE:18 , 1.20
 ELSEIF EXP:Ｖ経験 < EXPLV:3
-	TIMES SOURCE:7 , 0.40
+	TIMES SOURCE:中毒充足 , 0.40
 ELSEIF EXP:Ｖ経験 < EXPLV:4
-	TIMES SOURCE:7 , 0.10
+	TIMES SOURCE:中毒充足 , 0.10
 ELSEIF EXP:Ｖ経験 < EXPLV:5
-	TIMES SOURCE:7 , 0.00
+	TIMES SOURCE:中毒充足 , 0.00
 ELSEIF EXP:Ｖ経験 >= EXPLV:5
-	TIMES SOURCE:7 , 0.00
+	TIMES SOURCE:中毒充足 , 0.00
 ENDIF
 
 ;PALAM:潤滑をみる
 IF PALAM:潤滑 < PALAMLV:1
-	TIMES SOURCE:7 , 1.20
+	TIMES SOURCE:中毒充足 , 1.20
 	TIMES SOURCE:18 , 1.50
 ELSEIF PALAM:潤滑 < PALAMLV:2
-	TIMES SOURCE:7 , 0.70
+	TIMES SOURCE:中毒充足 , 0.70
 	TIMES SOURCE:18 , 1.20
 ELSEIF PALAM:潤滑 < PALAMLV:3
-	TIMES SOURCE:7 , 0.40
+	TIMES SOURCE:中毒充足 , 0.40
 ELSEIF PALAM:潤滑 < PALAMLV:4
-	TIMES SOURCE:7 , 0.10
+	TIMES SOURCE:中毒充足 , 0.10
 ELSEIF PALAM:潤滑 >= PALAMLV:4
-	TIMES SOURCE:7 , 0.10
+	TIMES SOURCE:中毒充足 , 0.10
 ENDIF
 
 
@@ -161,16 +161,16 @@ ENDIF
 LOSEBASE:体力 += 10
 LOSEBASE:気力 += 50
 
-SOURCE:1 += 125
-SOURCE:13 += 10
-SOURCE:17 += 20
+SOURCE:快Ｖ += 125
+SOURCE:屈従 += 10
+SOURCE:快Ｂ += 20
 
 ;-------------------------------------------------
 ;特殊ソース処理
 ;-------------------------------------------------
 ;抑圧、抵抗持ちには、抑鬱ソース追加
 SIF TALENT:抑圧 || TALENT:抵抗
-	SOURCE:16 += 20
+	SOURCE:恭順追加 += 20
 
 ;Vへの苦痛は先に処理しておく
 ;EXP:Ｖ経験をみる（処女はありえない）
@@ -203,7 +203,7 @@ ELSEIF PALAM:潤滑 < PALAMLV:4
 ELSEIF PALAM:潤滑 >= PALAMLV:4
 	TIMES A , 0.10
 ENDIF
-SOURCE:7 += A
+SOURCE:中毒充足 += A
 SOURCE:18 += B
 
 ;-------------------------------------------------

@@ -106,9 +106,9 @@ ENDIF
 ABL:セックス中毒 += 1
 
 IF RESULT == 0 || RESULT == 1
-	JUEL:6 -= A
-	JUEL:1 -= B
-	JUEL:7 -= C
+	JUEL:欲情 -= A
+	JUEL:快Ｖ -= B
+	JUEL:屈服 -= C
 ENDIF
 
 PRINTS ABLNAME:18
@@ -228,13 +228,13 @@ IF ABL:Ｖ感覚 < ABL:セックス中毒 + 1
 ENDIF
 
 ;欲情の珠で上げる
-SIF JUEL:6 < A
+SIF JUEL:欲情 < A
 	I |= 1
 ;快Vの珠で上げる
-SIF JUEL:1 < B
+SIF JUEL:快Ｖ < B
 	I |= 1
 ;屈服の珠で上げる
-SIF JUEL:7 < C
+SIF JUEL:屈服 < C
 	I |= 1
 ;性交経験が必要
 SIF EXP:性交経験 < D

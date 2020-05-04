@@ -104,14 +104,14 @@ SIF TALENT:PLAYER:半人半妖 || TALENT:PLAYER:ふたなり || TALENT:PLAYER:�
 LOSEBASE:体力 += 0
 LOSEBASE:気力 += 20
 
-SOURCE:4 = 50
-SOURCE:5 = 10
-SOURCE:14 = 10
-SOURCE:17 = 10
+SOURCE:性行動 = 50
+SOURCE:達成感 = 10
+SOURCE:逸脱 = 10
+SOURCE:快Ｂ = 10
 SOURCE:18 = 10
 
 ;上のほうで計算した汚れデータ
-SOURCE:15 = Y*20 + 10
+SOURCE:反感追加 = Y*20 + 10
 
 
 ;-------------------------------------------------
@@ -119,16 +119,16 @@ SOURCE:15 = Y*20 + 10
 ;-------------------------------------------------
 ;抑圧、抵抗持ちには、抑鬱ソース追加
 SIF TALENT:抑圧 || TALENT:抵抗
-	SOURCE:16 += 10
+	SOURCE:恭順追加 += 10
 
 ;舌を使う調教では、調教者の舌使いによって、快感のソース増加
 IF TALENT:PLAYER:舌使い
-	TIMES SOURCE:4 , 1.50
+	TIMES SOURCE:性行動 , 1.50
 ENDIF
 
 ;猫舌では減少
 IF TALENT:PLAYER:猫舌
-	TIMES SOURCE:4 , 0.75
+	TIMES SOURCE:性行動 , 0.75
 ENDIF
 
 
@@ -152,8 +152,8 @@ ENDIF
 ;汚れの処理
 ;-------------------------------------------------
 ;奴隷の口⇔調教者の口の汚れが移動
-STAIN:0 |= STAIN:PLAYER:0
-STAIN:PLAYER:0 |= STAIN:0
+STAIN:口 |= STAIN:PLAYER:口
+STAIN:PLAYER:口 |= STAIN:口
 
 ;-------------------------------------------------
 ;経験の処理
@@ -326,15 +326,15 @@ ENDIF
 
 Y = 0
 ;愛液の汚れ
-SIF STAIN:PLAYER:0 & 1
+SIF STAIN:PLAYER:口 & 1
 	Y += 1
 ;精液の汚れ
-SIF STAIN:PLAYER:0 & 4
+SIF STAIN:PLAYER:口 & 4
 	Y += 3
 ;アナルの汚れ
-SIF STAIN:PLAYER:0 & 8
+SIF STAIN:PLAYER:口 & 8
 	Y += 7
-SIF STAIN:PLAYER:0 & 16
+SIF STAIN:PLAYER:口 & 16
 	Y += 15
 
 SIF TALENT:汚臭鈍感

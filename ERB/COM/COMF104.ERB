@@ -14,9 +14,9 @@ CALL KOJO_MESSAGE_COM
 LOSEBASE:体力 += 120
 LOSEBASE:気力 += 100
 
-SOURCE:7 = 5000
-SOURCE:8 = 4000
-SOURCE:17 = 500
+SOURCE:中毒充足 = 5000
+SOURCE:不潔 = 4000
+SOURCE:快Ｂ = 500
 SOURCE:18 = 1200
 
 
@@ -25,15 +25,15 @@ SOURCE:18 = 1200
 ;-------------------------------------------------
 ;苦痛のパラメータによる苦痛のソース増加は先に処理しておく
 IF PALAM:苦痛 < PALAMLV:1
-	TIMES SOURCE:7 , 1.00
+	TIMES SOURCE:中毒充足 , 1.00
 ELSEIF PALAM:苦痛 < PALAMLV:2
-	TIMES SOURCE:7 , 1.50
+	TIMES SOURCE:中毒充足 , 1.50
 ELSEIF PALAM:苦痛 < PALAMLV:3
-	TIMES SOURCE:7 , 2.00
+	TIMES SOURCE:中毒充足 , 2.00
 ELSEIF PALAM:苦痛 < PALAMLV:4
-	TIMES SOURCE:7 , 2.50
+	TIMES SOURCE:中毒充足 , 2.50
 ELSEIF PALAM:苦痛 >= PALAMLV:4
-	TIMES SOURCE:7 , 3.00
+	TIMES SOURCE:中毒充足 , 3.00
 ENDIF
 
 ;-------------------------------------------------

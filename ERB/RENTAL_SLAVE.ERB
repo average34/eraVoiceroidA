@@ -1138,28 +1138,28 @@ IF H == 0
 	EXP:A:膣射経験 += E
 	CFLAG:A:105 += E/B
 ENDIF
-JUEL:A:1 += E*50
-JUEL:A:2 += F*50
-JUEL:A:6 += (E+F)*30
-JUEL:A:8 += (E+F)*50
-JUEL:A:100 += (E+F+G)*100/ABL:A:従順
+JUEL:A:快Ｖ += E*50
+JUEL:A:快Ａ += F*50
+JUEL:A:欲情 += (E+F)*30
+JUEL:A:習得 += (E+F)*50
+JUEL:A:否定 += (E+F+G)*100/ABL:A:従順
 
 ;奉仕系
 EXP:A:精液経験 += B*5
 EXP:A:フェラ経験 += B*5
-JUEL:A:5 += B*10
-JUEL:A:8 += B*30
-JUEL:A:100 += B*50/ABL:A:従順
+JUEL:A:恭順 += B*10
+JUEL:A:習得 += B*30
+JUEL:A:否定 += B*50/ABL:A:従順
 
 ;ＳＭ系
 IF ABL:A:マゾっ気 >= ABL:A:サドっ気
 	EXP:A:苦痛快楽経験 += B
-	JUEL:A:10 += B*5
+	JUEL:A:苦痛 += B*5
 ENDIF
 SIF ABL:A:サドっ気 > ABL:A:マゾっ気
 	EXP:A:嗜虐快楽経験 += B
-JUEL:A:8 += B*4
-JUEL:A:100 += B*10/ABL:A:従順
+JUEL:A:習得 += B*4
+JUEL:A:否定 += B*10/ABL:A:従順
 
 
 ;イベント口上の表示

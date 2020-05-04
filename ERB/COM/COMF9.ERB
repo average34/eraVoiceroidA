@@ -26,13 +26,13 @@ TFLAG:28 = 1
 LOSEBASE:体力 += 50
 LOSEBASE:気力 += 90
 
-SOURCE:0 = 43
-SOURCE:6 = 20
-SOURCE:8 = 120
-SOURCE:10 = 10
-SOURCE:13 = 300
-SOURCE:14 = 450
-SOURCE:17 = 150
+SOURCE:快Ｃ = 43
+SOURCE:痛み = 20
+SOURCE:不潔 = 120
+SOURCE:液体追加 = 10
+SOURCE:屈従 = 300
+SOURCE:逸脱 = 450
+SOURCE:快Ｂ = 150
 SOURCE:18 = 150
 
 
@@ -41,17 +41,17 @@ SOURCE:18 = 150
 ;-------------------------------------------------
 ;抑圧、抵抗持ちには、抑鬱ソース追加
 SIF TALENT:抑圧 || TALENT:抵抗
-	SOURCE:16 += 150
+	SOURCE:恭順追加 += 150
 
 ;処女、貞操観念
 IF TALENT:処女
-	TIMES SOURCE:8 , 1.20
-	TIMES SOURCE:14 , 1.20
+	TIMES SOURCE:不潔 , 1.20
+	TIMES SOURCE:逸脱 , 1.20
 	TIMES SOURCE:18 , 1.20
-	SOURCE:13 += 300
+	SOURCE:屈従 += 300
 	IF TALENT:貞操観念
-		TIMES SOURCE:13 , 2.00
-		TIMES SOURCE:17 , 2.00
+		TIMES SOURCE:屈従 , 2.00
+		TIMES SOURCE:快Ｂ , 2.00
 	ENDIF
 ENDIF
 
@@ -59,8 +59,8 @@ ENDIF
 ;汚れの処理
 ;-------------------------------------------------
 ;奴隷のＶ⇔指の汚れが移動
-STAIN:3 |= STAIN:1
-STAIN:1 |= STAIN:3
+STAIN:ヴァギナ |= STAIN:手
+STAIN:手 |= STAIN:ヴァギナ
 
 ;-------------------------------------------------
 ;経験の処理

@@ -36,8 +36,8 @@ PRINTL ＜シャワー使用中＞
 LOSEBASE:体力 += 0
 LOSEBASE:気力 += 10
 
-SOURCE:12 += 100
-SOURCE:16 += 100
+SOURCE:露出 += 100
+SOURCE:恭順追加 += 100
 SOURCE:18 += 50
 
 ;-------------------------------------------------
@@ -45,18 +45,18 @@ SOURCE:18 += 50
 ;-------------------------------------------------
 ;吸血鬼（流水の中では動けないため、いろいろ追加）
 IF TALENT:吸血鬼
-	SOURCE:8 += 200
-	SOURCE:14 += 200
-	SOURCE:15 += 500
-	SOURCE:17 += 500
+	SOURCE:不潔 += 200
+	SOURCE:逸脱 += 200
+	SOURCE:反感追加 += 500
+	SOURCE:快Ｂ += 500
 	SOURCE:18 += 500
 ENDIF
 
 ;動物耳の場合（まぁ基本洗われるのは嫌と解釈）
 IF TALENT:動物耳
-	SOURCE:8 += 100
-	SOURCE:14 += 100
-	SOURCE:17 += 500
+	SOURCE:不潔 += 100
+	SOURCE:逸脱 += 100
+	SOURCE:快Ｂ += 500
 	SOURCE:18 += 500
 ENDIF
 
@@ -65,12 +65,12 @@ ENDIF
 ;汚れの処理
 ;-------------------------------------------------
 ;シャワーで汚れは常にリセット
-STAIN:0 = 0
-STAIN:1 = 0
-STAIN:2 = 2
-STAIN:3 = 1
-STAIN:4 = 8
-STAIN:5 = 0
+STAIN:口 = 0
+STAIN:手 = 0
+STAIN:ペニス = 2
+STAIN:ヴァギナ = 1
+STAIN:アナル = 8
+STAIN:胸 = 0
 STAIN:6 = 0
 
 ;潤滑を1000減らす

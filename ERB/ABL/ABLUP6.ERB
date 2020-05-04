@@ -61,7 +61,7 @@ ENDIF
 ABL:Ｂ感覚 += 1
 
 IF RESULT == 0
-	JUEL:3 -= A
+	JUEL:快Ｂ -= A
 ENDIF
 
 PRINTS ABLNAME:6
@@ -131,7 +131,7 @@ SIF A == 0
 	A = 1
 
 ;快Ｂの珠で上げる
-SIF JUEL:3 < A
+SIF JUEL:快Ｂ < A
 	I |= 1
 
 IF I == 0

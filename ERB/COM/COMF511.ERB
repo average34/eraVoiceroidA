@@ -177,11 +177,11 @@ SIF TALENT:ASSI:半人半妖 || TALENT:ASSI:ふたなり  || TALENT:ASSI:オト�
 LOSEBASE:体力 += 80
 LOSEBASE:気力 += 250
 
-SOURCE:4 = 150
-SOURCE:5 = 400
-SOURCE:6 = 300
-SOURCE:14 = 1000
-SOURCE:17 = 500
+SOURCE:性行動 = 150
+SOURCE:達成感 = 400
+SOURCE:痛み = 300
+SOURCE:逸脱 = 1000
+SOURCE:快Ｂ = 500
 SOURCE:18 = 500
 
 
@@ -190,7 +190,7 @@ SOURCE:18 = 500
 ;-------------------------------------------------
 ;抑圧、抵抗持ちには、抑鬱ソース追加
 SIF TALENT:抑圧 || TALENT:抵抗
-	SOURCE:16 += 700
+	SOURCE:恭順追加 += 700
 
 ;-------------------------------------------------
 ;射精チェック（主人）
@@ -263,7 +263,7 @@ IF E == 2
 	PRINTL 大量射精
 	PRINTL 精液経験＋９
 	;精液汚れ
-	STAIN:MASTER:2 |= 4
+	STAIN:MASTER:ペニス |= 4
 
 	BASE:MASTER:射精 -= EJAC*2
 	SIF BASE:MASTER:射精 >= EJAC
@@ -278,7 +278,7 @@ ELSEIF E == 1
 	PRINTL 射精
 	PRINTL 精液経験＋３
 	;精液汚れ
-	STAIN:MASTER:2 |= 4
+	STAIN:MASTER:ペニス |= 4
 
 	BASE:MASTER:射精 -= EJAC
 	SIF BASE:MASTER:射精 >= EJAC
@@ -359,7 +359,7 @@ IF E == 2
 	PRINTL 大量射精（助手）
 	PRINTL 精液経験＋３
 	;Ｐに精液汚れ
-	STAIN:ASSI:2 |= 4
+	STAIN:ASSI:ペニス |= 4
 
 	BASE:ASSI:射精 -= EJAC*2
 	SIF BASE:ASSI:射精 >= EJAC
@@ -374,7 +374,7 @@ ELSEIF E == 1
 	PRINTL 精液経験＋１
 	;Ｐに精液汚れ
 
-	STAIN:ASSI:2 |= 4
+	STAIN:ASSI:ペニス |= 4
 
 	BASE:ASSI:射精 -= EJAC
 	SIF BASE:ASSI:射精 >= EJAC
@@ -389,19 +389,19 @@ ENDIF
 ;-------------------------------------------------
 ;奴隷の口⇔主人のＰの汚れが移動
 IF TALENT:MASTER:ふたなり || TALENT:MASTER:オトコ
-	STAIN:0 |= STAIN:MASTER:2
-	STAIN:MASTER:2 |= STAIN:0
+	STAIN:口 |= STAIN:MASTER:ペニス
+	STAIN:MASTER:ペニス |= STAIN:口
 ENDIF
 ;奴隷の口⇔助手のＰの汚れが移動
 IF TALENT:ASSI:ふたなり || TALENT:ASSI:オトコ
-	STAIN:0 |= STAIN:ASSI:2
-	STAIN:ASSI:2 |= STAIN:0
+	STAIN:口 |= STAIN:ASSI:ペニス
+	STAIN:ASSI:ペニス |= STAIN:口
 ENDIF
 
 ;奉仕精神ＬＶ２以上、技巧ＬＶ２以上なら汚れをなめ取る（ボールギャグ使用時は除く）
 IF ABL:奉仕精神 >= 2 && ABL:技巧 >= 2 && TEQUIP:20 == 0
-	STAIN:MASTER:2 = 2
-	STAIN:ASSI:2 = 2
+	STAIN:MASTER:ペニス = 2
+	STAIN:ASSI:ペニス = 2
 	SIF E >= 1
 		TFLAG:8 = 1
 ENDIF
@@ -609,15 +609,15 @@ ENDIF
 
 Y = 0
 ;愛液の汚れ
-SIF STAIN:PLAYER:2 & 1
+SIF STAIN:PLAYER:ペニス & 1
 	Y += 1
 ;精液の汚れ
-SIF STAIN:PLAYER:2 & 4
+SIF STAIN:PLAYER:ペニス & 4
 	Y += 3
 ;アナルの汚れ
-SIF STAIN:PLAYER:2 & 8
+SIF STAIN:PLAYER:ペニス & 8
 	Y += 7
-SIF STAIN:PLAYER:2 & 16
+SIF STAIN:PLAYER:ペニス & 16
 	Y += 15
 
 SIF TALENT:汚臭鈍感

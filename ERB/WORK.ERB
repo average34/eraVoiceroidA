@@ -2009,15 +2009,15 @@ SIF C == 0
 ;精液の補正を設定するためCをリセット
 C = 0
 ;精液の汚れ(口、手、ペニス、ヴァギナ、アナルの順)
-SIF STAIN:PLAYER:0 & 4
+SIF STAIN:PLAYER:口 & 4
 	C += 1
-SIF STAIN:PLAYER:1 & 4
+SIF STAIN:PLAYER:手 & 4
 	C += 1
-SIF STAIN:PLAYER:2 & 4
+SIF STAIN:PLAYER:ペニス & 4
 	C += 1
-SIF STAIN:PLAYER:3 & 4
+SIF STAIN:PLAYER:ヴァギナ & 4
 	C += 1
-SIF STAIN:PLAYER:4 & 4
+SIF STAIN:PLAYER:アナル & 4
 	C += 1
 ;精液の汚れがない場合のボーナス
 SIF C == 0

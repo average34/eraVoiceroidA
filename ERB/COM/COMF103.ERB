@@ -16,9 +16,9 @@ ITEM:低温蝋燭 -= 1
 LOSEBASE:体力 += 40
 LOSEBASE:気力 += 30
 
-SOURCE:7 = 2000
-SOURCE:8 = 3000
-SOURCE:17 = 150
+SOURCE:中毒充足 = 2000
+SOURCE:不潔 = 3000
+SOURCE:快Ｂ = 150
 SOURCE:18 = 700
 
 ;-------------------------------------------------
@@ -26,15 +26,15 @@ SOURCE:18 = 700
 ;-------------------------------------------------
 ;苦痛のパラメータによる苦痛のソース増加は先に処理しておく
 IF PALAM:苦痛 < PALAMLV:1
-	TIMES SOURCE:7 , 1.00
+	TIMES SOURCE:中毒充足 , 1.00
 ELSEIF PALAM:苦痛 < PALAMLV:2
-	TIMES SOURCE:7 , 1.50
+	TIMES SOURCE:中毒充足 , 1.50
 ELSEIF PALAM:苦痛 < PALAMLV:3
-	TIMES SOURCE:7 , 2.00
+	TIMES SOURCE:中毒充足 , 2.00
 ELSEIF PALAM:苦痛 < PALAMLV:4
-	TIMES SOURCE:7 , 2.50
+	TIMES SOURCE:中毒充足 , 2.50
 ELSEIF PALAM:苦痛 >= PALAMLV:4
-	TIMES SOURCE:7 , 3.00
+	TIMES SOURCE:中毒充足 , 3.00
 ENDIF
 
 ;-------------------------------------------------

@@ -31,35 +31,35 @@ CALL TECHNIQUE_CHECK
 ;-------------------------------------------------
 ;Ｃ敏感とＣ鈍感はここで処理
 SIF TALENT:Ｃ鈍感
-	TIMES SOURCE:0 , 0.50
+	TIMES SOURCE:快Ｃ , 0.50
 SIF TALENT:Ｃ敏感
-	TIMES SOURCE:0 , 2.00
+	TIMES SOURCE:快Ｃ , 2.00
 
 ;C感覚
 SIF ABL:Ｃ感覚 == 0
-	TIMES SOURCE:0 , 0.50
+	TIMES SOURCE:快Ｃ , 0.50
 SIF ABL:Ｃ感覚 == 1
-	TIMES SOURCE:0 , 1.80
+	TIMES SOURCE:快Ｃ , 1.80
 SIF ABL:Ｃ感覚 == 2
-	TIMES SOURCE:0 , 3.00
+	TIMES SOURCE:快Ｃ , 3.00
 SIF ABL:Ｃ感覚 == 3
-	TIMES SOURCE:0 , 5.00
+	TIMES SOURCE:快Ｃ , 5.00
 SIF ABL:Ｃ感覚 == 4
-	TIMES SOURCE:0 , 7.00
+	TIMES SOURCE:快Ｃ , 7.00
 SIF ABL:Ｃ感覚 == 5
-	TIMES SOURCE:0 , 9.00
+	TIMES SOURCE:快Ｃ , 9.00
 SIF ABL:Ｃ感覚 == 6
-	TIMES SOURCE:0 , 11.00
+	TIMES SOURCE:快Ｃ , 11.00
 SIF ABL:Ｃ感覚 == 7
-	TIMES SOURCE:0 , 13.00
+	TIMES SOURCE:快Ｃ , 13.00
 SIF ABL:Ｃ感覚 == 8
-	TIMES SOURCE:0 , 15.00
+	TIMES SOURCE:快Ｃ , 15.00
 SIF ABL:Ｃ感覚 == 9
-	TIMES SOURCE:0 , 17.00
+	TIMES SOURCE:快Ｃ , 17.00
 SIF ABL:Ｃ感覚 >= 10
-	TIMES SOURCE:0 , 20.00
+	TIMES SOURCE:快Ｃ , 20.00
 
-A = SOURCE:0
+A = SOURCE:快Ｃ
 
 ;PALAM:欲情をみる
 SIF PALAM:欲情 < PALAMLV:1
@@ -73,7 +73,7 @@ SIF PALAM:欲情 < PALAMLV:4
 SIF PALAM:欲情 >= PALAMLV:4
 	TIMES A , 1.80
 
-B = SOURCE:0
+B = SOURCE:快Ｃ
 
 ;ABL:欲望をみる
 SIF ABL:欲望 == 0
@@ -99,43 +99,43 @@ SIF ABL:欲望 == 9
 SIF ABL:欲望 >= 10
 	TIMES B , 1.40
 
-UP:0 += A
-UP:6 += B
+UP:快Ｃ += A
+UP:欲情 += B
 
 ;-------------------------------------------------
 ;快Ｖのソース
 ;-------------------------------------------------
 ;Ｖ敏感とＶ鈍感はここで処理
 SIF TALENT:Ｖ鈍感
-	TIMES SOURCE:1 , 0.50
+	TIMES SOURCE:快Ｖ , 0.50
 SIF TALENT:Ｖ敏感
-	TIMES SOURCE:1 , 2.00
+	TIMES SOURCE:快Ｖ , 2.00
 
 ;V感覚
 SIF ABL:Ｖ感覚 == 0
-	TIMES SOURCE:1 , 0.50
+	TIMES SOURCE:快Ｖ , 0.50
 SIF ABL:Ｖ感覚 == 1
-	TIMES SOURCE:1 , 1.80
+	TIMES SOURCE:快Ｖ , 1.80
 SIF ABL:Ｖ感覚 == 2
-	TIMES SOURCE:1 , 3.00
+	TIMES SOURCE:快Ｖ , 3.00
 SIF ABL:Ｖ感覚 == 3
-	TIMES SOURCE:1 , 5.00
+	TIMES SOURCE:快Ｖ , 5.00
 SIF ABL:Ｖ感覚 == 4
-	TIMES SOURCE:1 , 7.00
+	TIMES SOURCE:快Ｖ , 7.00
 SIF ABL:Ｖ感覚 == 5
-	TIMES SOURCE:1 , 9.00
+	TIMES SOURCE:快Ｖ , 9.00
 SIF ABL:Ｖ感覚 == 6
-	TIMES SOURCE:1 , 11.00
+	TIMES SOURCE:快Ｖ , 11.00
 SIF ABL:Ｖ感覚 == 7
-	TIMES SOURCE:1 , 13.00
+	TIMES SOURCE:快Ｖ , 13.00
 SIF ABL:Ｖ感覚 == 8
-	TIMES SOURCE:1 , 15.00
+	TIMES SOURCE:快Ｖ , 15.00
 SIF ABL:Ｖ感覚 == 9
-	TIMES SOURCE:1 , 17.00
+	TIMES SOURCE:快Ｖ , 17.00
 SIF ABL:Ｖ感覚 >= 10
-	TIMES SOURCE:1 , 20.00
+	TIMES SOURCE:快Ｖ , 20.00
 
-A = SOURCE:1
+A = SOURCE:快Ｖ
 
 ;PALAM:欲情をみる
 SIF PALAM:欲情 < PALAMLV:1
@@ -149,7 +149,7 @@ SIF PALAM:欲情 < PALAMLV:4
 SIF PALAM:欲情 >= PALAMLV:4
 	TIMES A , 2.00
 
-B = SOURCE:1
+B = SOURCE:快Ｖ
 
 ;ABL:欲望をみる
 SIF ABL:欲望 == 0
@@ -177,74 +177,74 @@ SIF ABL:欲望 >= 10
 
 ;EXP:Ｖ経験をみる
 SIF EXP:Ｖ経験 < EXPLV:1
-	TIMES SOURCE:1 , 0.20
+	TIMES SOURCE:快Ｖ , 0.20
 SIF EXP:Ｖ経験 < EXPLV:2
-	TIMES SOURCE:1 , 0.60
+	TIMES SOURCE:快Ｖ , 0.60
 SIF EXP:Ｖ経験 < EXPLV:3
-	TIMES SOURCE:1 , 1.00
+	TIMES SOURCE:快Ｖ , 1.00
 SIF EXP:Ｖ経験 < EXPLV:4
-	TIMES SOURCE:1 , 1.20
+	TIMES SOURCE:快Ｖ , 1.20
 SIF EXP:Ｖ経験 < EXPLV:5
-	TIMES SOURCE:1 , 1.40
+	TIMES SOURCE:快Ｖ , 1.40
 SIF EXP:Ｖ経験 >= EXPLV:5
-	TIMES SOURCE:1 , 1.60
+	TIMES SOURCE:快Ｖ , 1.60
 
 ;PALAM:潤滑をみる
 SIF PALAM:潤滑 < PALAMLV:1
-	TIMES SOURCE:1 , 0.10
+	TIMES SOURCE:快Ｖ , 0.10
 SIF PALAM:潤滑 < PALAMLV:2
-	TIMES SOURCE:1 , 0.40
+	TIMES SOURCE:快Ｖ , 0.40
 SIF PALAM:潤滑 < PALAMLV:3
-	TIMES SOURCE:1 , 1.00
+	TIMES SOURCE:快Ｖ , 1.00
 SIF PALAM:潤滑 < PALAMLV:4
-	TIMES SOURCE:1 , 1.40
+	TIMES SOURCE:快Ｖ , 1.40
 SIF PALAM:潤滑 >= PALAMLV:4
-	TIMES SOURCE:1 , 1.80
+	TIMES SOURCE:快Ｖ , 1.80
 
 ;小人体型
 IF TALENT:母乳体質
 	TIMES A , 0.80
 	TIMES B , 1.20
-	UP:8 += B/2
+	UP:習得 += B/2
 ENDIF
 
-UP:1 += A
-UP:6 += B
+UP:快Ｖ += A
+UP:欲情 += B
 
 ;-------------------------------------------------
 ;快Ａのソース
 ;-------------------------------------------------
 ;Ａ敏感とＡ鈍感はここで処理
 SIF TALENT:Ａ鈍感
-	TIMES SOURCE:2 , 0.50
+	TIMES SOURCE:快Ａ , 0.50
 SIF TALENT:Ａ敏感
-	TIMES SOURCE:2 , 2.00
+	TIMES SOURCE:快Ａ , 2.00
 
 ;A感覚
 SIF ABL:Ａ感覚 == 0
-	TIMES SOURCE:2 , 0.50
+	TIMES SOURCE:快Ａ , 0.50
 SIF ABL:Ａ感覚 == 1
-	TIMES SOURCE:2 , 1.80
+	TIMES SOURCE:快Ａ , 1.80
 SIF ABL:Ａ感覚 == 2
-	TIMES SOURCE:2 , 3.00
+	TIMES SOURCE:快Ａ , 3.00
 SIF ABL:Ａ感覚 == 3
-	TIMES SOURCE:2 , 5.00
+	TIMES SOURCE:快Ａ , 5.00
 SIF ABL:Ａ感覚 == 4
-	TIMES SOURCE:2 , 7.00
+	TIMES SOURCE:快Ａ , 7.00
 SIF ABL:Ａ感覚 == 5
-	TIMES SOURCE:2 , 9.00
+	TIMES SOURCE:快Ａ , 9.00
 SIF ABL:Ａ感覚 == 6
-	TIMES SOURCE:2 , 11.00
+	TIMES SOURCE:快Ａ , 11.00
 SIF ABL:Ａ感覚 == 7
-	TIMES SOURCE:2 , 13.00
+	TIMES SOURCE:快Ａ , 13.00
 SIF ABL:Ａ感覚 == 8
-	TIMES SOURCE:2 , 15.00
+	TIMES SOURCE:快Ａ , 15.00
 SIF ABL:Ａ感覚 == 9
-	TIMES SOURCE:2 , 17.00
+	TIMES SOURCE:快Ａ , 17.00
 SIF ABL:Ａ感覚 >= 10
-	TIMES SOURCE:2 , 20.00
+	TIMES SOURCE:快Ａ , 20.00
 
-A = SOURCE:2
+A = SOURCE:快Ａ
 
 ;PALAM:欲情をみる
 ;快ＡはあまりPALAM:欲情では差が出ない
@@ -259,7 +259,7 @@ SIF PALAM:欲情 < PALAMLV:4
 SIF PALAM:欲情 >= PALAMLV:4
 	TIMES A , 1.60
 
-B = SOURCE:2
+B = SOURCE:快Ａ
 
 ;ABL:欲望をみる
 SIF ABL:欲望 == 0
@@ -287,29 +287,29 @@ SIF ABL:欲望 >= 10
 
 ;EXP:Ａ経験をみる
 SIF EXP:Ａ経験 < EXPLV:1
-	TIMES SOURCE:2 , 0.10
+	TIMES SOURCE:快Ａ , 0.10
 SIF EXP:Ａ経験 < EXPLV:2
-	TIMES SOURCE:2 , 0.30
+	TIMES SOURCE:快Ａ , 0.30
 SIF EXP:Ａ経験 < EXPLV:3
-	TIMES SOURCE:2 , 0.50
+	TIMES SOURCE:快Ａ , 0.50
 SIF EXP:Ａ経験 < EXPLV:4
-	TIMES SOURCE:2 , 1.00
+	TIMES SOURCE:快Ａ , 1.00
 SIF EXP:Ａ経験 < EXPLV:5
-	TIMES SOURCE:2 , 1.40
+	TIMES SOURCE:快Ａ , 1.40
 SIF EXP:Ａ経験 >= EXPLV:5
-	TIMES SOURCE:2 , 1.60
+	TIMES SOURCE:快Ａ , 1.60
 
 ;PALAM:潤滑をみる
 SIF PALAM:潤滑 < PALAMLV:1
-	TIMES SOURCE:2 , 0.40
+	TIMES SOURCE:快Ａ , 0.40
 SIF PALAM:潤滑 < PALAMLV:2
-	TIMES SOURCE:2 , 0.80
+	TIMES SOURCE:快Ａ , 0.80
 SIF PALAM:潤滑 < PALAMLV:3
-	TIMES SOURCE:2 , 1.00
+	TIMES SOURCE:快Ａ , 1.00
 SIF PALAM:潤滑 < PALAMLV:4
-	TIMES SOURCE:2 , 1.40
+	TIMES SOURCE:快Ａ , 1.40
 SIF PALAM:潤滑 >= PALAMLV:4
-	TIMES SOURCE:2 , 1.80
+	TIMES SOURCE:快Ａ , 1.80
 
 ;小人体型
 IF TALENT:母乳体質
@@ -318,47 +318,47 @@ IF TALENT:母乳体質
 ENDIF
 
 ;快Aのソースが0以上で処女で貞操観念のとき、屈服のソースを三分の一にする
-IF EXP:Ｖ経験 == 0 && TALENT:貞操観念 && SOURCE:2 > 0
-	SOURCE:14 /= 3
+IF EXP:Ｖ経験 == 0 && TALENT:貞操観念 && SOURCE:快Ａ > 0
+	SOURCE:逸脱 /= 3
 ENDIF
 
-UP:2 += A
-UP:6 += B
+UP:快Ａ += A
+UP:欲情 += B
 
 ;-------------------------------------------------
 ;快Ｂのソース
 ;-------------------------------------------------
 ;Ｂ敏感とＢ鈍感はここで処理
 SIF TALENT:Ｂ鈍感
-	TIMES SOURCE:3 , 0.50
+	TIMES SOURCE:情愛 , 0.50
 SIF TALENT:Ｂ敏感
-	TIMES SOURCE:3 , 2.00
+	TIMES SOURCE:情愛 , 2.00
 
 ;B感覚
 SIF ABL:Ｂ感覚 == 0
-	TIMES SOURCE:3 , 0.50
+	TIMES SOURCE:情愛 , 0.50
 SIF ABL:Ｂ感覚 == 1
-	TIMES SOURCE:3 , 1.80
+	TIMES SOURCE:情愛 , 1.80
 SIF ABL:Ｂ感覚 == 2
-	TIMES SOURCE:3 , 3.00
+	TIMES SOURCE:情愛 , 3.00
 SIF ABL:Ｂ感覚 == 3
-	TIMES SOURCE:3 , 5.00
+	TIMES SOURCE:情愛 , 5.00
 SIF ABL:Ｂ感覚 == 4
-	TIMES SOURCE:3 , 7.00
+	TIMES SOURCE:情愛 , 7.00
 SIF ABL:Ｂ感覚 == 5
-	TIMES SOURCE:3 , 9.00
+	TIMES SOURCE:情愛 , 9.00
 SIF ABL:Ｂ感覚 == 6
-	TIMES SOURCE:3 , 11.00
+	TIMES SOURCE:情愛 , 11.00
 SIF ABL:Ｂ感覚 == 7
-	TIMES SOURCE:3 , 13.00
+	TIMES SOURCE:情愛 , 13.00
 SIF ABL:Ｂ感覚 == 8
-	TIMES SOURCE:3 , 15.00
+	TIMES SOURCE:情愛 , 15.00
 SIF ABL:Ｂ感覚 == 9
-	TIMES SOURCE:3 , 17.00
+	TIMES SOURCE:情愛 , 17.00
 SIF ABL:Ｂ感覚 >= 10
-	TIMES SOURCE:3 , 20.00
+	TIMES SOURCE:情愛 , 20.00
 
-A = SOURCE:3
+A = SOURCE:情愛
 
 ;PALAM:欲情をみる
 SIF PALAM:欲情 < PALAMLV:1
@@ -372,7 +372,7 @@ SIF PALAM:欲情 < PALAMLV:4
 SIF PALAM:欲情 >= PALAMLV:4
 	TIMES A , 1.80
 
-B = SOURCE:3
+B = SOURCE:情愛
 
 ;ABL:欲望をみる
 SIF ABL:欲望 == 0
@@ -402,32 +402,32 @@ SIF ABL:欲望 >= 10
 IF TALENT:母乳体質
 	TIMES A , 1.50
 	TIMES B , 1.20
-	UP:4 += B/2
+	UP:潤滑 += B/2
 ENDIF
 
-UP:3 += A
-UP:6 += B
+UP:快Ｂ += A
+UP:欲情 += B
 
 ;-------------------------------------------------
 ;同じコマンドの連続実行による上下の処理（快楽系）
 ;-------------------------------------------------
 IF SELECTCOM == PREVCOM
-	;UP:0,1,2,3は絶頂に絡むので先に処理してある
-	UP:0 /= 2
-	UP:1 /= 2
-	UP:2 /= 2
-	UP:3 /= 2
+	;UP:快Ｃ,1,2,3は絶頂に絡むので先に処理してある
+	UP:快Ｃ /= 2
+	UP:快Ｖ /= 2
+	UP:快Ａ /= 2
+	UP:快Ｂ /= 2
 ENDIF
 
 ;-------------------------------------------------
 ;気力０による上下の処理（快楽系）
 ;-------------------------------------------------
 IF BASE:気力 <= 0
-	;UP:0,1,2,3は絶頂に絡むので先に処理してある
-	UP:0 /= 2
-	UP:1 /= 2
-	UP:2 /= 2
-	UP:3 /= 2
+	;UP:快Ｃ,1,2,3は絶頂に絡むので先に処理してある
+	UP:快Ｃ /= 2
+	UP:快Ｖ /= 2
+	UP:快Ａ /= 2
+	UP:快Ｂ /= 2
 ENDIF
 
 ;-------------------------------------------------
@@ -435,39 +435,39 @@ ENDIF
 ;-------------------------------------------------
 R = NO:PLAYER
 IF RELATION:R != 0
-	UP:0 *= RELATION:R
-	UP:0 /= 100
-	UP:1 *= RELATION:R
-	UP:1 /= 100
-	UP:2 *= RELATION:R
-	UP:2 /= 100
-	UP:3 *= RELATION:R
-	UP:3 /= 100
+	UP:快Ｃ *= RELATION:R
+	UP:快Ｃ /= 100
+	UP:快Ｖ *= RELATION:R
+	UP:快Ｖ /= 100
+	UP:快Ａ *= RELATION:R
+	UP:快Ａ /= 100
+	UP:快Ｂ *= RELATION:R
+	UP:快Ｂ /= 100
 ENDIF
 
 ;-------------------------------------------------
 ;快感の否定は、快ソースの数値に応じて、抑鬱増加（淫乱、娼婦で無効）
 ;-------------------------------------------------
 SIF TALENT:快感の否定 && (TALENT:淫乱 == 0 && TALENT:娼婦 == 0)
-	SOURCE:16 += (UP:0+UP:1+UP:2+UP:3)/10
+	SOURCE:恭順追加 += (UP:快Ｃ+UP:快Ｖ+UP:快Ａ+UP:快Ｂ)/10
 
 ;-------------------------------------------------
 ;素質などによる上下の処理（快楽系）
 ;-------------------------------------------------
 ;媚薬
 IF TEQUIP:26
-	TIMES UP:0 , 2.00
-	TIMES UP:1 , 2.00
-	TIMES UP:2 , 2.00
-	TIMES UP:3 , 2.00
+	TIMES UP:快Ｃ , 2.00
+	TIMES UP:快Ｖ , 2.00
+	TIMES UP:快Ａ , 2.00
+	TIMES UP:快Ｂ , 2.00
 ENDIF
 
 ;利尿剤
 IF TEQUIP:27
-	TIMES UP:0 , 0.70
-	TIMES UP:1 , 0.70
-	TIMES UP:2 , 0.70
-	TIMES UP:3 , 0.70
+	TIMES UP:快Ｃ , 0.70
+	TIMES UP:快Ｖ , 0.70
+	TIMES UP:快Ａ , 0.70
+	TIMES UP:快Ｂ , 0.70
 ENDIF
 
 ;-------------------------------------------------
@@ -475,18 +475,18 @@ ENDIF
 ;-------------------------------------------------
 ;淫乱
 IF TALENT:淫乱
-	TIMES UP:0 , 1.20
-	TIMES UP:1 , 1.20
-	TIMES UP:2 , 1.20
-	TIMES UP:3 , 1.20
+	TIMES UP:快Ｃ , 1.20
+	TIMES UP:快Ｖ , 1.20
+	TIMES UP:快Ａ , 1.20
+	TIMES UP:快Ｂ , 1.20
 ENDIF
 
 ;娼婦
 IF TALENT:娼婦
-	TIMES UP:0 , 1.50
-	TIMES UP:1 , 1.50
-	TIMES UP:2 , 1.50
-	TIMES UP:3 , 1.50
+	TIMES UP:快Ｃ , 1.50
+	TIMES UP:快Ｖ , 1.50
+	TIMES UP:快Ａ , 1.50
+	TIMES UP:快Ｂ , 1.50
 ENDIF
 
 ;-------------------------------------------------
@@ -494,35 +494,35 @@ ENDIF
 ;-------------------------------------------------
 ;自制心
 IF TALENT:自制心
-	TIMES UP:0 , 0.70
-	TIMES UP:1 , 0.90
-	TIMES UP:2 , 1.00
-	TIMES UP:3 , 0.70
+	TIMES UP:快Ｃ , 0.70
+	TIMES UP:快Ｖ , 0.90
+	TIMES UP:快Ａ , 1.00
+	TIMES UP:快Ｂ , 0.70
 ENDIF
 
 ;即落ち
 IF TALENT:即落ち
-	TIMES UP:0 , 2.00
-	TIMES UP:1 , 2.00
-	TIMES UP:2 , 2.00
-	TIMES UP:3 , 2.00
+	TIMES UP:快Ｃ , 2.00
+	TIMES UP:快Ｖ , 2.00
+	TIMES UP:快Ａ , 2.00
+	TIMES UP:快Ｂ , 2.00
 ENDIF
 ;自慰狂い
 SIF TALENT:自慰狂い
-	TIMES UP:0 , 1.20
+	TIMES UP:快Ｃ , 1.20
 ;セックス狂い
 SIF TALENT:セックス狂
-	TIMES UP:1 , 1.20
+	TIMES UP:快Ｖ , 1.20
 ;尻穴狂い
 SIF TALENT:尻穴狂い
-	TIMES UP:2 , 1.20
+	TIMES UP:快Ａ , 1.20
 ;淫乳
 SIF TALENT:淫乳
-	TIMES UP:3 , 1.20
+	TIMES UP:快Ｂ , 1.20
 
 ;オトコ
 IF TALENT:オトコ
-	TIMES UP:2 , 1.30
+	TIMES UP:快Ａ , 1.30
 ENDIF
 
 ;-------------------------------------------------
@@ -530,36 +530,36 @@ ENDIF
 ;-------------------------------------------------
 ;EASY
 IF FLAG:4 == 1
-	TIMES UP:0 , 1.60
-	TIMES UP:1 , 1.60
-	TIMES UP:2 , 1.60
-	TIMES UP:3 , 1.60
+	TIMES UP:快Ｃ , 1.60
+	TIMES UP:快Ｖ , 1.60
+	TIMES UP:快Ａ , 1.60
+	TIMES UP:快Ｂ , 1.60
 ;NORMAL
 ELSEIF FLAG:4 == 2
-	TIMES UP:0 , 1.20
-	TIMES UP:1 , 1.20
-	TIMES UP:2 , 1.20
-	TIMES UP:3 , 1.20
+	TIMES UP:快Ｃ , 1.20
+	TIMES UP:快Ｖ , 1.20
+	TIMES UP:快Ａ , 1.20
+	TIMES UP:快Ｂ , 1.20
 ;HARD
 ELSEIF FLAG:4 == 3
-	TIMES UP:0 , 0.80
-	TIMES UP:1 , 0.80
-	TIMES UP:2 , 0.80
-	TIMES UP:3 , 0.80
+	TIMES UP:快Ｃ , 0.80
+	TIMES UP:快Ｖ , 0.80
+	TIMES UP:快Ａ , 0.80
+	TIMES UP:快Ｂ , 0.80
 ENDIF
 
 
 ;指挿入れの慣らしギミック用処理、V経験が0の時は快Vは99で最大にする
-A = UP:1 + PALAM:快Ｖ
+A = UP:快Ｖ + PALAM:快Ｖ
 IF A >= 100 && EXP:Ｖ経験 == 0
-	UP:1 = 0
+	UP:快Ｖ = 0
 	PALAM:快Ｖ = 99
 ENDIF
 
 ;-------------------------------------------------
 ;愛液処理
 ;-------------------------------------------------
-A = UP:0 + UP:1 + UP:2 + UP:3
+A = UP:快Ｃ + UP:快Ｖ + UP:快Ａ + UP:快Ｂ
 ;快Ｃ＋快Ｖ＋快Ａ＋快Ｂが合わせて100以上上昇ならその20%の液体のソースが加わる（オトコはダメ）
 IF A > 100
 	;濡れやすいと濡れにくいはここで処理
@@ -567,7 +567,7 @@ IF A > 100
 		TIMES A , 3.00
 	SIF TALENT:濡れにくい
 		TIMES A , 0.40
-	SOURCE:10 += A / 5
+	SOURCE:液体追加 += A / 5
 ENDIF
 
 ;-------------------------------------------------
@@ -593,7 +593,7 @@ CALL TARGET_MILK_CHECK
 ;-------------------------------------------------
 ;情愛のソース
 ;-------------------------------------------------
-A = SOURCE:4
+A = SOURCE:性行動
 
 ;ABL:従順をみる
 SIF ABL:従順 == 0
@@ -619,7 +619,7 @@ SIF ABL:従順 == 9
 SIF ABL:従順 >= 10
 	TIMES A , 6.00
 
-B = SOURCE:4
+B = SOURCE:性行動
 
 ;欲望を見る
 SIF ABL:欲望 == 0
@@ -645,13 +645,13 @@ SIF ABL:欲望 == 9
 SIF ABL:欲望 >= 10
 	TIMES B , 5.00
 
-UP:5 += A
-UP:6 += B
+UP:恭順 += A
+UP:欲情 += B
 
 ;-------------------------------------------------
 ;性行動のソース
 ;-------------------------------------------------
-A = SOURCE:5
+A = SOURCE:達成感
 
 ;ABL:技巧をみる
 SIF ABL:技巧 == 0
@@ -701,12 +701,12 @@ SIF ABL:奉仕精神 == 9
 SIF ABL:奉仕精神 >= 10
 	TIMES A , 5.00
 
-UP:8 += A
+UP:習得 += A
 
 ;-------------------------------------------------
 ;達成のソース
 ;-------------------------------------------------
-A = SOURCE:6
+A = SOURCE:痛み
 
 ;ABL:従順をみる
 SIF ABL:従順 == 0
@@ -756,14 +756,14 @@ SIF ABL:奉仕精神 == 9
 SIF ABL:奉仕精神 >= 10
 	TIMES A , 6.00
 
-UP:5 += A
+UP:恭順 += A
 
 ;-------------------------------------------------
 ;痛みのソース
 ;-------------------------------------------------
-A = SOURCE:7
-B = SOURCE:7
-C = SOURCE:7/20
+A = SOURCE:中毒充足
+B = SOURCE:中毒充足
+C = SOURCE:中毒充足/20
 
 ;マゾっ気
 SIF ABL:マゾっ気 == 0
@@ -806,14 +806,14 @@ SIF TALENT:臆病
 ;マゾっ気があるとPALAM:欲情も上がる
 ;そのとき調教者が【サド】だと効果的
 ;苦痛に応じて恐怖のソースが増加する
-UP:10 += A
-UP:6 += B
-UP:11 += C
+UP:苦痛 += A
+UP:欲情 += B
+UP:恐怖 += C
 
 ;-------------------------------------------------
 ;恐れのソース
 ;-------------------------------------------------
-A = SOURCE:8
+A = SOURCE:不潔
 
 ;ABL:従順をみる（恐怖よりは畏怖に近いと解釈）
 SIF ABL:従順 == 0
@@ -839,7 +839,7 @@ SIF ABL:従順 == 9
 SIF ABL:従順 >= 10
 	TIMES A , 7.00
 
-UP:11 += A
+UP:恐怖 += A
 
 ;-------------------------------------------------
 ;中毒充足のソース
@@ -883,13 +883,13 @@ ELSEIF ABL:欲望 >= 10
 	TIMES B , 2.70
 ENDIF
 
-UP:5 += A
-UP:6 += B
+UP:恭順 += A
+UP:欲情 += B
 
 ;-------------------------------------------------
 ;液体のソース
 ;-------------------------------------------------
-A = SOURCE:10
+A = SOURCE:液体追加
 
 ;小人体型
 IF TALENT:母乳体質 && TALENT:PLAYER:母乳体質 == 0
@@ -897,12 +897,12 @@ IF TALENT:母乳体質 && TALENT:PLAYER:母乳体質 == 0
 		TIMES A , 0.40
 ENDIF
 
-UP:4 += A
+UP:潤滑 += A
 
 ;-------------------------------------------------
 ;欲情のソース
 ;-------------------------------------------------
-A = SOURCE:11
+A = SOURCE:欲情追加
 
 ;欲望を見る
 SIF ABL:欲望 == 0
@@ -928,12 +928,12 @@ SIF ABL:欲望 == 9
 SIF ABL:欲望 >= 10
 	TIMES A , 5.00
 
-UP:6 += A
+UP:欲情 += A
 
 ;-------------------------------------------------
 ;恭順のソース
 ;-------------------------------------------------
-A = SOURCE:12
+A = SOURCE:露出
 
 ;ABL:従順をみる
 SIF ABL:従順 == 0
@@ -959,22 +959,22 @@ SIF ABL:従順 == 9
 SIF ABL:従順 >= 10
 	TIMES A , 5.00
 
-UP:5 += A
+UP:恭順 += A
 
 ;-------------------------------------------------
 ;露出のソース
 ;-------------------------------------------------
 ;恥じらいと恥薄いはここで処理
 SIF TALENT:恥じらい
-	TIMES SOURCE:13 , 2.00
+	TIMES SOURCE:屈従 , 2.00
 SIF TALENT:恥薄い
-	TIMES SOURCE:13 , 0.50
+	TIMES SOURCE:屈従 , 0.50
 
 ;潤滑アップの50％を露出のソースに加える
 ;ただし液体追加のソースのぶんは引く
-SOURCE:13 += (UP:4-SOURCE:10) / 2
+SOURCE:屈従 += (UP:潤滑-SOURCE:液体追加) / 2
 
-A = SOURCE:13
+A = SOURCE:屈従
 
 ;ABL:露出癖をみる
 SIF ABL:露出癖 == 0
@@ -1000,7 +1000,7 @@ SIF ABL:露出癖 == 9
 SIF ABL:露出癖 >= 10
 	TIMES A , 2.00
 
-B = SOURCE:13
+B = SOURCE:屈従
 
 ;PALAM:恥情をみる
 ;恥ずかしさを感じれば感じるほどあまり恥ずかしくなくなる
@@ -1017,14 +1017,14 @@ ELSEIF PALAM:習得 >= PALAMLV:4
 ENDIF
 
 
-UP:6 += A
-UP:9 += B
+UP:欲情 += A
+UP:恥情 += B
 
 
 ;-------------------------------------------------
 ;屈従のソース
 ;-------------------------------------------------
-A = SOURCE:14
+A = SOURCE:逸脱
 
 ;ABL:従順をみる
 SIF ABL:従順 == 0
@@ -1074,12 +1074,12 @@ SIF ABL:奉仕精神 == 9
 SIF ABL:奉仕精神 >= 10
 	TIMES A , 7.00
 
-UP:7 += A
+UP:屈服 += A
 
 ;-------------------------------------------------
 ;不潔のソース
 ;-------------------------------------------------
-A = SOURCE:15
+A = SOURCE:反感追加
 
 ;ABL:従順をみる
 SIF ABL:従順 == 0
@@ -1105,12 +1105,12 @@ SIF ABL:従順 == 9
 SIF ABL:従順 >= 10
 	TIMES A , 0.00
 
-UP:13 += A
+UP:不快 += A
 
 ;-------------------------------------------------
 ;鬱屈のソース
 ;-------------------------------------------------
-A = SOURCE:16
+A = SOURCE:恭順追加
 
 ;ABL:従順をみる
 SIF ABL:従順 == 0
@@ -1160,18 +1160,18 @@ SIF ABL:欲望 == 9
 SIF ABL:欲望 >= 10
 	TIMES A , 0.00
 
-UP:14 += A
+UP:抑鬱 += A
 
 ;-------------------------------------------------
 ;逸脱のソース
 ;-------------------------------------------------
 ;好奇心と保守的はここで処理
 SIF TALENT:好奇心
-	TIMES SOURCE:17 , 0.80
+	TIMES SOURCE:快Ｂ , 0.80
 SIF TALENT:保守的
-	TIMES SOURCE:17 , 2.00
+	TIMES SOURCE:快Ｂ , 2.00
 
-A = SOURCE:17
+A = SOURCE:快Ｂ
 
 ;ABL:従順をみる
 SIF ABL:従順 == 0
@@ -1221,7 +1221,7 @@ SIF ABL:マゾっ気 == 9
 SIF ABL:マゾっ気 >= 10
 	TIMES A , 0.00
 
-UP:12 += A
+UP:反感 += A
 
 ;-------------------------------------------------
 ;反感のソース
@@ -1300,7 +1300,7 @@ SIF ABL:マゾっ気 == 9
 SIF ABL:マゾっ気 >= 10
 	TIMES A , 0.00
 
-UP:12 += A
+UP:反感 += A
 
 ;-------------------------------------------------
 ;素質などによる上下の処理
@@ -1310,19 +1310,19 @@ UP:12 += A
 ;-------------------------------------------------
 ;媚薬
 IF TEQUIP:26
-	TIMES UP:5 , 1.20
-	TIMES UP:6 , 2.00
-	TIMES UP:7 , 1.20
-	TIMES UP:13 , 0.75
+	TIMES UP:恭順 , 1.20
+	TIMES UP:欲情 , 2.00
+	TIMES UP:屈服 , 1.20
+	TIMES UP:不快 , 0.75
 ENDIF
 
 ;利尿剤
 IF TEQUIP:27
-	TIMES UP:5 , 0.80
-	TIMES UP:6 , 0.80
-	TIMES UP:9 , 1.20
-	TIMES UP:12 , 1.50
-	TIMES UP:13 , 1.20
+	TIMES UP:恭順 , 0.80
+	TIMES UP:欲情 , 0.80
+	TIMES UP:恥情 , 1.20
+	TIMES UP:反感 , 1.50
+	TIMES UP:不快 , 1.20
 ENDIF
 
 ;-------------------------------------------------
@@ -1330,63 +1330,63 @@ ENDIF
 ;-------------------------------------------------
 ;恋慕
 IF TALENT:恋慕 && ASSIPLAY == 0
-	TIMES UP:5 , 1.50
-	TIMES UP:7 , 2.00
-	TIMES UP:12 , 0.50
-	TIMES UP:13 , 0.50
+	TIMES UP:恭順 , 1.50
+	TIMES UP:屈服 , 2.00
+	TIMES UP:反感 , 0.50
+	TIMES UP:不快 , 0.50
 ELSEIF TALENT:恋慕 && ASSIPLAY > 0
-	TIMES UP:5 , 0.80
-	TIMES UP:12 , 1.20
-	TIMES UP:13 , 1.20
+	TIMES UP:恭順 , 0.80
+	TIMES UP:反感 , 1.20
+	TIMES UP:不快 , 1.20
 ENDIF
 
 ;淫乱
 IF TALENT:淫乱
-	TIMES UP:5 , 1.20
-	TIMES UP:7 , 1.20
-	TIMES UP:12 , 0.80
-	TIMES UP:13 , 0.80
-	TIMES UP:14 , 0.40
+	TIMES UP:恭順 , 1.20
+	TIMES UP:屈服 , 1.20
+	TIMES UP:反感 , 0.80
+	TIMES UP:不快 , 0.80
+	TIMES UP:抑鬱 , 0.40
 ENDIF
 
 ;服従
 IF TALENT:服従
-	TIMES UP:5 , 0.50
-	TIMES UP:7 , 2.00
-	TIMES UP:11 , 1.50
-	TIMES UP:12 , 0.50
+	TIMES UP:恭順 , 0.50
+	TIMES UP:屈服 , 2.00
+	TIMES UP:恐怖 , 1.50
+	TIMES UP:反感 , 0.50
 ENDIF
 
 ;親愛
 IF TALENT:親愛 && ASSIPLAY == 0
-	TIMES UP:5 , 2.00
-	TIMES UP:7 , 3.00
-	TIMES UP:12 , 0.20
-	TIMES UP:13 , 0.20
-	TIMES UP:14 , 0.50
+	TIMES UP:恭順 , 2.00
+	TIMES UP:屈服 , 3.00
+	TIMES UP:反感 , 0.20
+	TIMES UP:不快 , 0.20
+	TIMES UP:抑鬱 , 0.50
 ELSEIF TALENT:親愛 && ASSIPLAY > 0
-	TIMES UP:5 , 0.80
-	TIMES UP:12 , 1.20
-	TIMES UP:13 , 1.20
+	TIMES UP:恭順 , 0.80
+	TIMES UP:反感 , 1.20
+	TIMES UP:不快 , 1.20
 ENDIF
 
 ;娼婦
 IF TALENT:娼婦
-	TIMES UP:5 , 1.50
-	TIMES UP:7 , 1.50
-	TIMES UP:12 , 0.60
-	TIMES UP:13 , 0.60
-	TIMES UP:14 , 0.30
+	TIMES UP:恭順 , 1.50
+	TIMES UP:屈服 , 1.50
+	TIMES UP:反感 , 0.60
+	TIMES UP:不快 , 0.60
+	TIMES UP:抑鬱 , 0.30
 ENDIF
 
 ;隷属
 IF TALENT:隷属
-	TIMES UP:5 , 0.20
-	TIMES UP:7 , 2.50
-	TIMES UP:11 , 3.00
-	TIMES UP:12 , 0.25
-	TIMES UP:13 , 0.25
-	TIMES UP:14 , 0.25
+	TIMES UP:恭順 , 0.20
+	TIMES UP:屈服 , 2.50
+	TIMES UP:恐怖 , 3.00
+	TIMES UP:反感 , 0.25
+	TIMES UP:不快 , 0.25
+	TIMES UP:抑鬱 , 0.25
 ENDIF
 
 ;-------------------------------------------------
@@ -1394,212 +1394,212 @@ ENDIF
 ;-------------------------------------------------
 ;臆病
 IF TALENT:臆病
-	TIMES UP:11 , 1.20
-	TIMES UP:12 , 1.20
+	TIMES UP:恐怖 , 1.20
+	TIMES UP:反感 , 1.20
 ENDIF
 ;反抗的（服従、隷属で無効）
 IF TALENT:反抗的 && (TALENT:服従 == 0 && TALENT:隷属 == 0)
-	TIMES UP:5 , 0.80
-	TIMES UP:7 , 0.80
-	TIMES UP:12 , 1.20
+	TIMES UP:恭順 , 0.80
+	TIMES UP:屈服 , 0.80
+	TIMES UP:反感 , 1.20
 ENDIF
 ;気丈
 IF TALENT:気丈
-	TIMES UP:5 , 0.80
-	TIMES UP:6 , 0.80
-	TIMES UP:7 , 0.80
-	TIMES UP:11 , 0.80
-	TIMES UP:12 , 1.20
-	TIMES UP:14 , 1.20
+	TIMES UP:恭順 , 0.80
+	TIMES UP:欲情 , 0.80
+	TIMES UP:屈服 , 0.80
+	TIMES UP:恐怖 , 0.80
+	TIMES UP:反感 , 1.20
+	TIMES UP:抑鬱 , 1.20
 ENDIF
 ;素直
 IF TALENT:素直
-	TIMES UP:5 , 1.20
-	TIMES UP:12 , 0.80
+	TIMES UP:恭順 , 1.20
+	TIMES UP:反感 , 0.80
 ENDIF
 ;大人しい
 IF TALENT:大人しい
-	TIMES UP:5 , 0.80
-	TIMES UP:12 , 0.80
+	TIMES UP:恭順 , 0.80
+	TIMES UP:反感 , 0.80
 ENDIF
 ;プライド高い
 IF TALENT:プライド高い
-	TIMES UP:7 , 0.80
-	TIMES UP:11 , 0.80
-	TIMES UP:12 , 1.20
+	TIMES UP:屈服 , 0.80
+	TIMES UP:恐怖 , 0.80
+	TIMES UP:反感 , 1.20
 ENDIF
 ;生意気
 IF TALENT:生意気
-	TIMES UP:5 , 0.80
-	TIMES UP:7 , 0.80
-	TIMES UP:12 , 1.20
+	TIMES UP:恭順 , 0.80
+	TIMES UP:屈服 , 0.80
+	TIMES UP:反感 , 1.20
 ENDIF
 ;プライド低い
 IF TALENT:プライド低い
-	TIMES UP:7 , 1.20
-	TIMES UP:11 , 1.20
-	TIMES UP:12 , 0.80
+	TIMES UP:屈服 , 1.20
+	TIMES UP:恐怖 , 1.20
+	TIMES UP:反感 , 0.80
 ENDIF
 ;ツンデレ
 IF TALENT:ツンデレ
 	;陥落素質がある場合と無い場合で変化する
 	IF TALENT:恋慕 || TALENT:淫乱 || TALENT:服従 || TALENT:親愛 || TALENT:娼婦 || TALENT:隷属
-		TIMES UP:5 , 1.20
-		TIMES UP:7 , 1.20
-		TIMES UP:12 , 0.80
+		TIMES UP:恭順 , 1.20
+		TIMES UP:屈服 , 1.20
+		TIMES UP:反感 , 0.80
 	ELSE
-		TIMES UP:5 , 0.80
-		TIMES UP:7 , 0.80
-		TIMES UP:12 , 1.20
+		TIMES UP:恭順 , 0.80
+		TIMES UP:屈服 , 0.80
+		TIMES UP:反感 , 1.20
 	ENDIF
 ENDIF
 
 ;自制心
 IF TALENT:自制心
-	TIMES UP:7 , 0.80
-	TIMES UP:11 , 0.80
-	TIMES UP:12 , 1.20
+	TIMES UP:屈服 , 0.80
+	TIMES UP:恐怖 , 0.80
+	TIMES UP:反感 , 1.20
 ENDIF
 ;無関心
 IF TALENT:無関心
-	TIMES UP:5 , 0.80
-	TIMES UP:6 , 0.80
-	TIMES UP:7 , 0.80
-	TIMES UP:11 , 0.80
-	TIMES UP:12 , 0.80
+	TIMES UP:恭順 , 0.80
+	TIMES UP:欲情 , 0.80
+	TIMES UP:屈服 , 0.80
+	TIMES UP:恐怖 , 0.80
+	TIMES UP:反感 , 0.80
 ENDIF
 ;感情乏しい
 IF TALENT:感情乏しい
-	TIMES UP:5 , 0.80
-	TIMES UP:6 , 0.80
-	TIMES UP:7 , 0.80
-	TIMES UP:9 , 0.80
-	TIMES UP:11 , 0.80
-	TIMES UP:12 , 0.80
-	TIMES UP:13 , 0.80
-	TIMES UP:14 , 0.80
+	TIMES UP:恭順 , 0.80
+	TIMES UP:欲情 , 0.80
+	TIMES UP:屈服 , 0.80
+	TIMES UP:恥情 , 0.80
+	TIMES UP:恐怖 , 0.80
+	TIMES UP:反感 , 0.80
+	TIMES UP:不快 , 0.80
+	TIMES UP:抑鬱 , 0.80
 ENDIF
 ;好奇心
 SIF TALENT:好奇心
-	TIMES UP:8 , 1.20
+	TIMES UP:習得 , 1.20
 ;保守的
 SIF TALENT:保守的
-	TIMES UP:8 , 0.80
+	TIMES UP:習得 , 0.80
 ;楽観的
 SIF TALENT:楽観的
-	TIMES UP:14 , 0.80
+	TIMES UP:抑鬱 , 0.80
 ;悲観的
 SIF TALENT:悲観的
-	TIMES UP:14 , 1.20
+	TIMES UP:抑鬱 , 1.20
 ;目立ちたがり
 SIF TALENT:目立ちたがり
-	TIMES UP:5 , 1.20
+	TIMES UP:恭順 , 1.20
 
 ;抑圧
 IF TALENT:抑圧
-	TIMES UP:6 , 0.80
-	TIMES UP:12 , 1.20
-	TIMES UP:14 , 1.20
+	TIMES UP:欲情 , 0.80
+	TIMES UP:反感 , 1.20
+	TIMES UP:抑鬱 , 1.20
 ENDIF
 ;解放
 IF TALENT:解放
-	TIMES UP:6 , 1.20
-	TIMES UP:7 , 1.20
+	TIMES UP:欲情 , 1.20
+	TIMES UP:屈服 , 1.20
 ENDIF
 ;抵抗
 IF TALENT:抵抗
-	TIMES UP:5 , 0.80
-	TIMES UP:12 , 1.20
-	TIMES UP:14 , 1.20
+	TIMES UP:恭順 , 0.80
+	TIMES UP:反感 , 1.20
+	TIMES UP:抑鬱 , 1.20
 ENDIF
 
 ;痛みに弱い
 SIF TALENT:痛みに弱い
-	TIMES UP:10 , 1.20
+	TIMES UP:苦痛 , 1.20
 ;痛みに強い
 SIF TALENT:痛みに強い
-	TIMES UP:10 , 0.80
+	TIMES UP:苦痛 , 0.80
 
 ;習得早い
 SIF TALENT:習得早い
-	TIMES UP:8 , 1.20
+	TIMES UP:習得 , 1.20
 ;習得遅い
 SIF TALENT:習得遅い
-	TIMES UP:8 , 0.80
+	TIMES UP:習得 , 0.80
 
 ;献身的
 SIF TALENT:献身的
-	TIMES UP:7 , 1.20
+	TIMES UP:屈服 , 1.20
 
 ;快感に素直
 SIF TALENT:快感に素直
-	TIMES UP:6 , 1.20
+	TIMES UP:欲情 , 1.20
 ;快感の否定（淫乱、娼婦で無効）
 SIF TALENT:快感の否定 && (TALENT:淫乱 == 0 && TALENT:娼婦 == 0)
-	TIMES UP:6 , 0.80
+	TIMES UP:欲情 , 0.80
 ;即落ち
 IF TALENT:即落ち
-	TIMES UP:5 , 2.00
-	TIMES UP:6 , 2.00
-	TIMES UP:7 , 2.00
-	TIMES UP:8 , 2.00
-	TIMES UP:9 , 2.00
-	TIMES UP:11 , 2.00
-	TIMES UP:12 , 0.50
-	TIMES UP:13 , 0.50
-	TIMES UP:14 , 0.50
+	TIMES UP:恭順 , 2.00
+	TIMES UP:欲情 , 2.00
+	TIMES UP:屈服 , 2.00
+	TIMES UP:習得 , 2.00
+	TIMES UP:恥情 , 2.00
+	TIMES UP:恐怖 , 2.00
+	TIMES UP:反感 , 0.50
+	TIMES UP:不快 , 0.50
+	TIMES UP:抑鬱 , 0.50
 ENDIF
 ;自慰狂い
 SIF TALENT:自慰狂い
-	TIMES UP:6 , 1.20
+	TIMES UP:欲情 , 1.20
 ;セックス狂い
 SIF TALENT:セックス狂
-	TIMES UP:5 , 1.20
+	TIMES UP:恭順 , 1.20
 ;尻穴狂い
 SIF TALENT:尻穴狂い
-	TIMES UP:7 , 1.20
+	TIMES UP:屈服 , 1.20
 ;淫乳
 SIF TALENT:淫乳
-	TIMES UP:9 , 1.20
+	TIMES UP:恥情 , 1.20
 
 ;倒錯的
 IF TALENT:倒錯的
-	TIMES UP:7 , 1.20
-	TIMES UP:9 , 1.20
+	TIMES UP:屈服 , 1.20
+	TIMES UP:恥情 , 1.20
 ENDIF
 ;男嫌い（女性のみ恋慕、親愛で無効）
 IF TALENT:男嫌い && TALENT:PLAYER:オトコ && ((TALENT:恋慕 == 0 && TALENT:親愛 == 0) || PLAYER != MASTER || TALENT:オトコ)
-	TIMES UP:5 , 0.80
-	TIMES UP:6 , 0.80
-	TIMES UP:7 , 0.80
-	TIMES UP:8 , 0.80
-	TIMES UP:12 , 1.20
-	TIMES UP:13 , 1.20
+	TIMES UP:恭順 , 0.80
+	TIMES UP:欲情 , 0.80
+	TIMES UP:屈服 , 0.80
+	TIMES UP:習得 , 0.80
+	TIMES UP:反感 , 1.20
+	TIMES UP:不快 , 1.20
 ENDIF
 ;サド
 IF TALENT:サド
-	TIMES UP:7 , 0.80
-	TIMES UP:11 , 0.80
+	TIMES UP:屈服 , 0.80
+	TIMES UP:恐怖 , 0.80
 ENDIF
 ;マゾ
 IF TALENT:マゾ
-	TIMES UP:7 , 1.20
-	TIMES UP:11 , 1.20
-	TIMES UP:14 , 0.80
+	TIMES UP:屈服 , 1.20
+	TIMES UP:恐怖 , 1.20
+	TIMES UP:抑鬱 , 0.80
 ENDIF
 ;妄信
 IF TALENT:妄信
-	TIMES UP:7 , 1.20
-	TIMES UP:12 , 0.80
+	TIMES UP:屈服 , 1.20
+	TIMES UP:反感 , 0.80
 ENDIF
 ;女嫌い（男性のみ恋慕、親愛で無効）
 IF TALENT:女嫌い && TALENT:PLAYER:オトコ == 0 && ((TALENT:恋慕 == 0 && TALENT:親愛 == 0) || PLAYER != MASTER || TALENT:オトコ == 0)
-	TIMES UP:5 , 0.80
-	TIMES UP:6 , 0.80
-	TIMES UP:7 , 0.80
-	TIMES UP:8 , 0.80
-	TIMES UP:12 , 1.20
-	TIMES UP:13 , 1.20
+	TIMES UP:恭順 , 0.80
+	TIMES UP:欲情 , 0.80
+	TIMES UP:屈服 , 0.80
+	TIMES UP:習得 , 0.80
+	TIMES UP:反感 , 1.20
+	TIMES UP:不快 , 1.20
 ENDIF
 
 
@@ -1608,93 +1608,93 @@ ENDIF
 ;-------------------------------------------------
 ;苦痛刻印
 IF MARK:苦痛刻印 == 3
-	TIMES UP:10 , 1.30
-	TIMES UP:11 , 1.30
+	TIMES UP:苦痛 , 1.30
+	TIMES UP:恐怖 , 1.30
 ELSEIF MARK:苦痛刻印 == 2
-	TIMES UP:10 , 1.20
-	TIMES UP:11 , 1.20
+	TIMES UP:苦痛 , 1.20
+	TIMES UP:恐怖 , 1.20
 ELSEIF MARK:苦痛刻印 == 1
-	TIMES UP:10 , 1.10
-	TIMES UP:11 , 1.10
+	TIMES UP:苦痛 , 1.10
+	TIMES UP:恐怖 , 1.10
 ENDIF
 
 ;快楽刻印
 IF MARK:快楽刻印 == 3
-	TIMES UP:6 , 1.30
-	TIMES UP:8 , 1.30
+	TIMES UP:欲情 , 1.30
+	TIMES UP:習得 , 1.30
 ELSEIF MARK:快楽刻印 == 2
-	TIMES UP:6 , 1.20
-	TIMES UP:8 , 1.20
+	TIMES UP:欲情 , 1.20
+	TIMES UP:習得 , 1.20
 ELSEIF MARK:快楽刻印 == 1
-	TIMES UP:6 , 1.10
-	TIMES UP:8 , 1.10
+	TIMES UP:欲情 , 1.10
+	TIMES UP:習得 , 1.10
 ENDIF
 
 ;屈服刻印
 IF MARK:屈服刻印 == 3
-	TIMES UP:5 , 1.30
-	TIMES UP:7 , 1.30
+	TIMES UP:恭順 , 1.30
+	TIMES UP:屈服 , 1.30
 ELSEIF MARK:屈服刻印 == 2
-	TIMES UP:5 , 1.20
-	TIMES UP:7 , 1.20
+	TIMES UP:恭順 , 1.20
+	TIMES UP:屈服 , 1.20
 ELSEIF MARK:屈服刻印 == 1
-	TIMES UP:5 , 1.10
-	TIMES UP:7 , 1.10
+	TIMES UP:恭順 , 1.10
+	TIMES UP:屈服 , 1.10
 ENDIF
 
 ;反発刻印
 IF MARK:反発刻印 == 3
-	TIMES UP:5 , 0.10
-	TIMES UP:12 , 1.30
+	TIMES UP:恭順 , 0.10
+	TIMES UP:反感 , 1.30
 ELSEIF MARK:反発刻印 == 2
-	TIMES UP:5 , 0.40
-	TIMES UP:12 , 1.20
+	TIMES UP:恭順 , 0.40
+	TIMES UP:反感 , 1.20
 ELSEIF MARK:反発刻印 == 1
-	TIMES UP:5 , 0.60
-	TIMES UP:12 , 1.10
+	TIMES UP:恭順 , 0.60
+	TIMES UP:反感 , 1.10
 ENDIF
 ;-------------------------------------------------
 ;難易度などによる上下の処理
 ;-------------------------------------------------
 ;EASY
 IF FLAG:4 == 1
-	TIMES UP:4 , 1.60
-	TIMES UP:5 , 1.60
-	TIMES UP:6 , 1.60
-	TIMES UP:7 , 1.60
-	TIMES UP:8 , 1.60
-	TIMES UP:9 , 1.60
-	TIMES UP:10 , 1.60
-	TIMES UP:11 , 1.60
-	TIMES UP:12 , 0.80
-	TIMES UP:13 , 0.80
-	TIMES UP:14 , 0.80
+	TIMES UP:潤滑 , 1.60
+	TIMES UP:恭順 , 1.60
+	TIMES UP:欲情 , 1.60
+	TIMES UP:屈服 , 1.60
+	TIMES UP:習得 , 1.60
+	TIMES UP:恥情 , 1.60
+	TIMES UP:苦痛 , 1.60
+	TIMES UP:恐怖 , 1.60
+	TIMES UP:反感 , 0.80
+	TIMES UP:不快 , 0.80
+	TIMES UP:抑鬱 , 0.80
 ;NORMAL
 ELSEIF FLAG:4 == 2
-	TIMES UP:4 , 1.20
-	TIMES UP:5 , 1.20
-	TIMES UP:6 , 1.20
-	TIMES UP:7 , 1.20
-	TIMES UP:8 , 1.20
-	TIMES UP:9 , 1.20
-	TIMES UP:10 , 1.20
-	TIMES UP:11 , 1.20
-	TIMES UP:12 , 1.20
-	TIMES UP:13 , 1.20
-	TIMES UP:14 , 1.20
+	TIMES UP:潤滑 , 1.20
+	TIMES UP:恭順 , 1.20
+	TIMES UP:欲情 , 1.20
+	TIMES UP:屈服 , 1.20
+	TIMES UP:習得 , 1.20
+	TIMES UP:恥情 , 1.20
+	TIMES UP:苦痛 , 1.20
+	TIMES UP:恐怖 , 1.20
+	TIMES UP:反感 , 1.20
+	TIMES UP:不快 , 1.20
+	TIMES UP:抑鬱 , 1.20
 ;HARD
 ELSEIF FLAG:4 == 3
-	TIMES UP:4 , 0.80
-	TIMES UP:5 , 0.80
-	TIMES UP:6 , 0.80
-	TIMES UP:7 , 0.80
-	TIMES UP:8 , 0.80
-	TIMES UP:9 , 0.80
-	TIMES UP:10 , 0.80
-	TIMES UP:11 , 0.80
-	TIMES UP:12 , 1.60
-	TIMES UP:13 , 1.60
-	TIMES UP:14 , 1.60
+	TIMES UP:潤滑 , 0.80
+	TIMES UP:恭順 , 0.80
+	TIMES UP:欲情 , 0.80
+	TIMES UP:屈服 , 0.80
+	TIMES UP:習得 , 0.80
+	TIMES UP:恥情 , 0.80
+	TIMES UP:苦痛 , 0.80
+	TIMES UP:恐怖 , 0.80
+	TIMES UP:反感 , 1.60
+	TIMES UP:不快 , 1.60
+	TIMES UP:抑鬱 , 1.60
 ENDIF
 
 ;-------------------------------------------------
@@ -1702,32 +1702,32 @@ ENDIF
 ;-------------------------------------------------
 R = NO:PLAYER
 IF RELATION:R != 0
-	UP:6 *= RELATION:R
-	UP:6 /= 100
-	UP:7 *= RELATION:R
-	UP:7 /= 100
-	UP:9 *= RELATION:R
-	UP:9 /= 100
-	UP:12 *= 100
-	UP:12 /= RELATION:R
-	UP:13 *= 100
-	UP:13 /= RELATION:R
-	UP:14 *= 100
-	UP:14 /= RELATION:R
+	UP:欲情 *= RELATION:R
+	UP:欲情 /= 100
+	UP:屈服 *= RELATION:R
+	UP:屈服 /= 100
+	UP:恥情 *= RELATION:R
+	UP:恥情 /= 100
+	UP:反感 *= 100
+	UP:反感 /= RELATION:R
+	UP:不快 *= 100
+	UP:不快 /= RELATION:R
+	UP:抑鬱 *= 100
+	UP:抑鬱 /= RELATION:R
 ENDIF
 
 ;-------------------------------------------------
 ;同じコマンドの連続実行による上下の処理
 ;-------------------------------------------------
 IF SELECTCOM == PREVCOM
-	;UP:0,1,2は絶頂に絡むので先に処理してある
-	UP:5 /= 2
-	UP:6 /= 2
-	UP:7 /= 2
-	UP:8 /= 2
-	UP:9 /= 2
-	UP:10 /= 2
-	UP:11 /= 2
+	;UP:快Ｃ,1,2は絶頂に絡むので先に処理してある
+	UP:恭順 /= 2
+	UP:欲情 /= 2
+	UP:屈服 /= 2
+	UP:習得 /= 2
+	UP:恥情 /= 2
+	UP:苦痛 /= 2
+	UP:恐怖 /= 2
 ENDIF
 
 ;-------------------------------------------------
@@ -1735,13 +1735,13 @@ ENDIF
 ;-------------------------------------------------
 IF BASE:気力 <= 0
 	;PRINTL ★気力０★
-	;UP:0,1,2は絶頂に絡むので先に処理してある
-	UP:5 /= 2
-	UP:6 /= 2
-	UP:7 /= 2
-	UP:9 /= 2
-	UP:11 /= 2
-	UP:14 /= 2
+	;UP:快Ｃ,1,2は絶頂に絡むので先に処理してある
+	UP:恭順 /= 2
+	UP:欲情 /= 2
+	UP:屈服 /= 2
+	UP:恥情 /= 2
+	UP:恐怖 /= 2
+	UP:抑鬱 /= 2
 
 	LOSEBASE:体力 *= 2
 	LOSEBASE:体力 += 80
@@ -1750,7 +1750,7 @@ ENDIF
 ;-------------------------------------------------
 ;苦痛からくる体力・気力の減少
 ;-------------------------------------------------
-D = UP:10/20
+D = UP:苦痛/20
 ;ABL:マゾっ気をみる
 IF ABL:マゾっ気 == 0
 	TIMES D , 1.00
@@ -1903,42 +1903,42 @@ UPCHECK
 ;-------------------------------------------------
 @SHOW_SOURCE
 ;PRINTL 　
-SIF SOURCE:0 > 0
-	PRINTFORM 快Ｃ({SOURCE:0})
-SIF SOURCE:1 > 0
-	PRINTFORM 快Ｖ({SOURCE:1})
-SIF SOURCE:2 > 0
-	PRINTFORM 快Ａ({SOURCE:2})
-SIF SOURCE:3 > 0
-	PRINTFORM 快Ｂ({SOURCE:3})
-SIF SOURCE:4 > 0
-	PRINTFORM 情愛({SOURCE:4})
-SIF SOURCE:5 > 0
-	PRINTFORM 性行動({SOURCE:5})
-SIF SOURCE:6 > 0
-	PRINTFORM 達成感({SOURCE:6})
-SIF SOURCE:7 > 0
-	PRINTFORM 痛み({SOURCE:7})
-SIF SOURCE:8 > 0
-	PRINTFORM 恐れ({SOURCE:8})
+SIF SOURCE:快Ｃ > 0
+	PRINTFORM 快Ｃ({SOURCE:快Ｃ})
+SIF SOURCE:快Ｖ > 0
+	PRINTFORM 快Ｖ({SOURCE:快Ｖ})
+SIF SOURCE:快Ａ > 0
+	PRINTFORM 快Ａ({SOURCE:快Ａ})
+SIF SOURCE:情愛 > 0
+	PRINTFORM 快Ｂ({SOURCE:情愛})
+SIF SOURCE:性行動 > 0
+	PRINTFORM 情愛({SOURCE:性行動})
+SIF SOURCE:達成感 > 0
+	PRINTFORM 性行動({SOURCE:達成感})
+SIF SOURCE:痛み > 0
+	PRINTFORM 達成感({SOURCE:痛み})
+SIF SOURCE:中毒充足 > 0
+	PRINTFORM 痛み({SOURCE:中毒充足})
+SIF SOURCE:不潔 > 0
+	PRINTFORM 恐れ({SOURCE:不潔})
 SIF SOURCE:9 > 0
 	PRINTFORM 中毒充足({SOURCE:9})
-SIF SOURCE:10 > 0
-	PRINTFORM 液体({SOURCE:10})
-SIF SOURCE:11 > 0
-	PRINTFORM 欲情({SOURCE:11})
-SIF SOURCE:12 > 0
-	PRINTFORM 恭順({SOURCE:12})
-SIF SOURCE:13 > 0
-	PRINTFORM 露出({SOURCE:13})
-SIF SOURCE:14 > 0
-	PRINTFORM 屈従({SOURCE:14})
-SIF SOURCE:15 > 0
-	PRINTFORM 不潔({SOURCE:15})
-SIF SOURCE:16 > 0
-	PRINTFORM 鬱屈({SOURCE:16})
-SIF SOURCE:17 > 0
-	PRINTFORM 逸脱({SOURCE:17})
+SIF SOURCE:液体追加 > 0
+	PRINTFORM 液体({SOURCE:液体追加})
+SIF SOURCE:欲情追加 > 0
+	PRINTFORM 欲情({SOURCE:欲情追加})
+SIF SOURCE:露出 > 0
+	PRINTFORM 恭順({SOURCE:露出})
+SIF SOURCE:屈従 > 0
+	PRINTFORM 露出({SOURCE:屈従})
+SIF SOURCE:逸脱 > 0
+	PRINTFORM 屈従({SOURCE:逸脱})
+SIF SOURCE:反感追加 > 0
+	PRINTFORM 不潔({SOURCE:反感追加})
+SIF SOURCE:恭順追加 > 0
+	PRINTFORM 鬱屈({SOURCE:恭順追加})
+SIF SOURCE:快Ｂ > 0
+	PRINTFORM 逸脱({SOURCE:快Ｂ})
 SIF SOURCE:18 > 0
 	PRINTFORM 反発({SOURCE:18})
 PRINTL 　

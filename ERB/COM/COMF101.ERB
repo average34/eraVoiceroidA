@@ -14,9 +14,9 @@ CALL KOJO_MESSAGE_COM
 LOSEBASE:体力 += 50
 LOSEBASE:気力 += 30
 
-SOURCE:7 = 450
-SOURCE:8 = 400
-SOURCE:17 = 50
+SOURCE:中毒充足 = 450
+SOURCE:不潔 = 400
+SOURCE:快Ｂ = 50
 SOURCE:18 = 300
 
 
@@ -24,28 +24,28 @@ SOURCE:18 = 300
 ;特殊ソース処理
 ;-------------------------------------------------
 ;マゾっ気に応じて快Bのソースを追加する
-SOURCE:3 += 100*ABL:マゾっ気
+SOURCE:情愛 += 100*ABL:マゾっ気
 
 
 ;苦痛のパラメータによる苦痛のソース増加は先に処理しておく
 IF PALAM:苦痛 < PALAMLV:1
-	TIMES SOURCE:7 , 1.00
+	TIMES SOURCE:中毒充足 , 1.00
 ELSEIF PALAM:苦痛 < PALAMLV:2
-	TIMES SOURCE:7 , 1.50
+	TIMES SOURCE:中毒充足 , 1.50
 ELSEIF PALAM:苦痛 < PALAMLV:3
-	TIMES SOURCE:7 , 2.00
+	TIMES SOURCE:中毒充足 , 2.00
 ELSEIF PALAM:苦痛 < PALAMLV:4
-	TIMES SOURCE:7 , 2.50
+	TIMES SOURCE:中毒充足 , 2.50
 ELSEIF PALAM:苦痛 >= PALAMLV:4
-	TIMES SOURCE:7 , 3.00
+	TIMES SOURCE:中毒充足 , 3.00
 ENDIF
 
 ;-------------------------------------------------
 ;汚れの処理
 ;-------------------------------------------------
 ;奴隷のＢ⇔調教者の指の汚れが移動
-STAIN:5 |= STAIN:PLAYER:1
-STAIN:PLAYER:1 |= STAIN:5
+STAIN:胸 |= STAIN:PLAYER:手
+STAIN:PLAYER:手 |= STAIN:胸
 
 ;-------------------------------------------------
 ;経験の処理

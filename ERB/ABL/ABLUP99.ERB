@@ -75,7 +75,7 @@ ENDIF
 
 MARK:反発刻印 -= 1
 
-JUEL:7 -= A
+JUEL:屈服 -= A
 
 PRINTS MARKNAME:3
 PRINT のレベルが
@@ -107,7 +107,7 @@ SIF MARK:反発刻印 > ABL:従順
 	I |= 4
 
 ;屈服の珠で減らす
-SIF JUEL:7 < A
+SIF JUEL:屈服 < A
 	I |= 1
 
 IF I == 0

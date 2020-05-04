@@ -14,12 +14,12 @@ CALL KOJO_MESSAGE_COM
 LOSEBASE:体力 += 30
 LOSEBASE:気力 += 90
 
-SOURCE:0 = 200
-SOURCE:5 = 200
-SOURCE:6 = 100
-SOURCE:13 = 50
-SOURCE:14 = 400
-SOURCE:17 = 400
+SOURCE:快Ｃ = 200
+SOURCE:達成感 = 200
+SOURCE:痛み = 100
+SOURCE:屈従 = 50
+SOURCE:逸脱 = 400
+SOURCE:快Ｂ = 400
 SOURCE:18 = 400
 
 
@@ -28,14 +28,14 @@ SOURCE:18 = 400
 ;-------------------------------------------------
 ;抑圧、抵抗持ちには、抑鬱ソース追加
 SIF TALENT:抑圧 || TALENT:抵抗
-	SOURCE:16 += 400
+	SOURCE:恭順追加 += 400
 
 ;-------------------------------------------------
 ;汚れの処理
 ;-------------------------------------------------
 ;奴隷のＶ⇔調教者のＶの汚れが移動
-STAIN:3 |= STAIN:PLAYER:3
-STAIN:PLAYER:3 |= STAIN:3
+STAIN:ヴァギナ |= STAIN:PLAYER:ヴァギナ
+STAIN:PLAYER:ヴァギナ |= STAIN:ヴァギナ
 
 ;-------------------------------------------------
 ;経験の処理
