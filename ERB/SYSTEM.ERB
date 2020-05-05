@@ -78,12 +78,20 @@ ELSE
 	GOTO INPUT_LOOP_4
 ENDIF
 
+
+;初期所持金
 DAY = 1
 MONEY = 20000
 SIF FLAG:4 == 1
 	MONEY = 30000
 SIF FLAG:5 == 9
 	MONEY = 100000
+
+;EXTRAモード時、すでにクリアとみなす
+IF FLAG:5 == 9
+	FLAG:2 = 1
+	FLAG:3 = 1
+ENDIF
 
 ;==============================
 ;OPTION初期設定

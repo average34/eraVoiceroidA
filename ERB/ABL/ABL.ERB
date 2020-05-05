@@ -1,8 +1,10 @@
-﻿@SHOW_JUEL
+﻿;BEGIN ABLUPで最初に呼び出される関数。
+@SHOW_JUEL
+#DIM LineNum = 0
 DRAWLINE
 T = TARGET
 CALL SHOW_INFO_EXP
-A = 0
+
 X = 0
 
 REPEAT 13
@@ -31,15 +33,18 @@ REPEAT 13
 	PRINTV JUEL:X
 
 	;改行or表示位置あけ
-	IF A%4 == 3
+	IF LineNum % 4 == 3
 		PRINTL 
 	ELSE
 		PRINT 　
 	ENDIF
-	A = A + 1
+	LineNum = LineNum + 1
 REND
 PRINTL 　
 DRAWLINE
+
+
+
 
 @SHOW_ABLUP_SELECT
 REPEAT 20

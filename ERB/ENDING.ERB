@@ -388,22 +388,22 @@ TARGET = -1
 ASSI = -1
 
 
-;D:引き継ぐキャラの人数
-D = 0
+;引き継ぐキャラの人数
+LOCAL:3 = 1
 REPEAT CHARANUM
 	SIF TALENT:COUNT:恋慕 || TALENT:COUNT:淫乱 || TALENT:COUNT:服従 || TALENT:COUNT:親愛 || TALENT:COUNT:娼婦 || TALENT:COUNT:隷属
 		D += 1
 REND
 
-SIF D > FLAG:3
-	D = FLAG:3
+SIF LOCAL:3 > FLAG:3 + 1
+	LOCAL:3 = FLAG:3 + 1
 
 ;eratohoAでは、1.引き継ぐキャラを生成→2.次の引き継ぐキャラを選ぶ→3.全部キャラを選んだら引き継がなかったキャラを消す
 ;という処理をしていたせいで、3周目にバグが発生するようになっていた。
 
 ;CFLAG:X:51 引き継ぎ選択したキャラクターかどうか
 $SUCCESSION＿LOOP
-PRINTFORML 陥落済みの奴隷を、あと{D}人引き継ぐことができます
+PRINTFORML 陥落済みの奴隷を、あと{FLAG:3}人引き継ぐことができます
 PRINTFORML 誰を引き継ぎますか？
 REPEAT CHARANUM
 	SIF COUNT == MASTER
@@ -422,16 +422,16 @@ REND
 PRINTL [10000] 引き継がない
 INPUT
 IF RESULT == 10000
-	D = 0
+	LOCAL:3 = 0
 ELSEIF RESULT < 0 || RESULT > CHARANUM 
 	GOTO SUCCESSION＿LOOP
 ENDIF
 
 A = RESULT
-SIF D > 0
+SIF LOCAL:3 > 0
 	CFLAG:A:51 = 1
-D -= 1
-SIF D > 0
+LOCAL:3 -= 1
+SIF LOCAL:3 > 0
 	GOTO SUCCESSION＿LOOP
 
 
@@ -459,14 +459,14 @@ REPEAT CHARANUM
 		C += 1
 REND
 
-D = 0
+LOCAL:3 = 0
 REPEAT S
 	SIF COUNT == MASTER
 		CONTINUE
 	SIF CFLAG:C:50 == 1
 		CONTINUE
-	D = 1
-	DELCHARA D
+	LOCAL:3 = 1
+	DELCHARA LOCAL:3
 REND
 
 REPEAT VARSIZE("FLAG")
