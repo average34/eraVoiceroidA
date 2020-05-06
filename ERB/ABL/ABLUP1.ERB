@@ -8,12 +8,7 @@ ELSEIF ABL:欲望 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:淫
 ENDIF
 
 CALL DECIDE_ABLUP1
-
-IF Z == 0
-	RETURN 0
-ELSE
-	RETURN 1
-ENDIF
+RETURN RESULT
 
 ;欲望
 @ABLUP1
@@ -42,14 +37,14 @@ ENDIF
 PRINT [0] - 
 PRINTS PALAMNAME:6
 PRINT の珠×
-PRINTV A
+PRINTV YokujouJuelRequire
 PRINT ……
-IF I == 0
+IF YokujouCond == 0
 	PRINT ＯＫ
 ELSE
-	SIF I & 1
+	SIF YokujouCond & 1
 		PRINT 珠不足 
-	SIF I & 2
+	SIF YokujouCond & 2
 		PRINT 経験不足 
 ENDIF
 PRINTL 
@@ -60,7 +55,7 @@ PRINTL [100] - やめる
 INPUT
 IF (RESULT < 0 || RESULT > 0) && RESULT != 100
 	RESTART
-ELSEIF I != 0 && RESULT == 0
+ELSEIF YokujouCond != 0 && RESULT == 0
 	PRINTL 条件を満たしていません
 	RESTART
 ELSEIF RESULT == 100
@@ -70,7 +65,7 @@ ENDIF
 ABL:欲望 += 1
 
 IF RESULT == 0
-	JUEL:欲情 -= A
+	JUEL:欲情 -= YokujouJuelRequire
 ENDIF
 
 PRINTS ABLNAME:1
@@ -82,62 +77,84 @@ CALL YOKUBO_UP_CHECK
 
 ;欲望LvUP判定
 @DECIDE_ABLUP1
+#DIM ABLUPAble = 0
 ;条件別にＯＫかダメかを記録する
-I = 0
-;能力アップ可能なら1にする
-Z = 0
+YokujouCond = 0
 
 IF ABL:欲望 == 0
-	A = 1
+	YokujouJuelRequire = 1
 ELSEIF ABL:欲望 == 1
-	A = 20
+	YokujouJuelRequire = 20
 ELSEIF ABL:欲望 == 2
-	A = 1000
+	YokujouJuelRequire = 1000
 ELSEIF ABL:欲望 == 3
-	A = 8000
+	YokujouJuelRequire = 8000
 ELSEIF ABL:欲望 == 4
-	A = 24000
+	YokujouJuelRequire = 24000
 ELSEIF ABL:欲望 == 5
-	A = 30000
+	YokujouJuelRequire = 30000
 ELSEIF ABL:欲望 == 6
-	A = 36000
+	YokujouJuelRequire = 36000
 ELSEIF ABL:欲望 == 7
-	A = 45000
+	YokujouJuelRequire = 45000
 ELSEIF ABL:欲望 == 8
-	A = 55000
+	YokujouJuelRequire = 55000
 ELSEIF ABL:欲望 == 9
-	A = 70000
+	YokujouJuelRequire = 70000
 ENDIF
 
 ;一線越えない
 IF TALENT:一線越えない && (TALENT:恋慕 == 0 && TALENT:淫乱 == 0 && TALENT:服従 == 0 && TALENT:親愛 == 0 && TALENT:娼婦 == 0 && TALENT:隷属 == 0)
-	TIMES A , 2.00
+	TIMES YokujouJuelRequire , 2.00
 ENDIF
 
 ;ＬＶ４から５に上げるときは異常経験必要（素質：[快感に素直][淫乱][娼婦]なら無視できる）
 IF ABL:欲望 == 4 && TALENT:快感に素直 == 0 && TALENT:淫乱 == 0 && TALENT:娼婦 == 0
 	IF EXP:異常経験 == 0
 		;異常経験がない
-		I |= 2
+		YokujouCond |= 2
 	ENDIF
 ;ＬＶ７から８に上げるときは異常経験3以上必要（素質：[快感に素直][淫乱][娼婦]なら無視できる）
 ELSEIF ABL:欲望 == 7 && TALENT:快感に素直 == 0 && TALENT:淫乱 == 0 && TALENT:娼婦 == 0
 	IF EXP:異常経験 < 3
 		;異常経験が3未満
-		I |= 2
+		YokujouCond |= 2
 	ENDIF
 ENDIF
 
 ;0になった場合は1にする
-SIF A == 0
-	A = 1
+SIF YokujouJuelRequire == 0
+	YokujouJuelRequire = 1
 
 ;欲情の珠で上げる
-SIF JUEL:欲情 < A
-	I |= 1
+SIF JUEL:欲情 < YokujouJuelRequire
+	YokujouCond |= 1
 
-IF I == 0
-	Z = 1
+IF YokujouCond == 0
+	ABLUPAble = 1
 ENDIF
-RETURN 1
+RETURN ABLUPAble
 
+
+
+;自動でABLを上げるメソッド（J+に倣って実装）
+@AUT_ABLUP1
+#DIM LvUPNum = 0
+
+;上げられなかったら無視
+CALL ISABLUP1
+SIF RESULT == 0
+	RETURN 0
+
+;欲情の珠
+FOR COUNT, 0, 9999 - ABL:欲望
+	CALL DECIDE_ABLUP1
+	IF YokujouCond != 0
+		BREAK
+	ENDIF
+	LvUPNum += 1
+	ABL:欲望 += 1
+	JUEL:欲情 -= YokujouJuelRequire
+NEXT
+CALL PRINT_AUT_ABLUP(1, 6, -1, -1, LvUPNum)
+LvUPNum = 0

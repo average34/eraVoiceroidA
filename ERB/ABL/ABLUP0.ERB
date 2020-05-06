@@ -314,11 +314,39 @@ RETURNF ABLUPAble
 ;自動でABLを上げるメソッド（J+に倣って実装）
 @AUT_ABLUP0
 #DIM LvUPNum = 0
-
 ;上げられなかったら無視
 CALL ISABLUP0
 SIF RESULT == 0
 	RETURN 0
+
+
+
+;屈服の珠
+FOR COUNT, 0, 9999 - ABL:従順
+	LOCAL:99 = DECIDE_ABLUP0()
+	IF KuppukuCond:1 != 0
+		BREAK
+	ENDIF
+	LvUPNum += 1
+	ABL:従順 += 1
+	JUEL:屈服 -= KuppukuJuelRequire
+NEXT
+CALL PRINT_AUT_ABLUP(0, 7, -1, -1, LvUPNum)
+LvUPNum = 0
+
+
+;欲情の珠
+FOR COUNT, 0, 9999 - ABL:従順
+	LOCAL:99 = DECIDE_ABLUP0()
+	IF YokujouCond:1 != 0
+		BREAK
+	ENDIF
+	LvUPNum += 1
+	ABL:従順 += 1
+	JUEL:欲情 -= YokujouJuelRequire
+NEXT
+CALL PRINT_AUT_ABLUP(0, 6, -1, -1, LvUPNum)
+LvUPNum = 0
 
 ;恐怖の珠
 FOR COUNT, 0, 9999 - ABL:従順
@@ -348,28 +376,4 @@ NEXT
 CALL PRINT_AUT_ABLUP(0, 5, -1, -1, LvUPNum)
 LvUPNum = 0
 
-;欲情の珠
-FOR COUNT, 0, 9999 - ABL:従順
-	LOCAL:99 = DECIDE_ABLUP0()
-	IF YokujouCond:1 != 0
-		BREAK
-	ENDIF
-	LvUPNum += 1
-	ABL:従順 += 1
-	JUEL:欲情 -= YokujouJuelRequire
-NEXT
-CALL PRINT_AUT_ABLUP(0, 6, -1, -1, LvUPNum)
-LvUPNum = 0
 
-;屈服の珠
-FOR COUNT, 0, 9999 - ABL:従順
-	LOCAL:99 = DECIDE_ABLUP0()
-	IF KuppukuCond:1 != 0
-		BREAK
-	ENDIF
-	LvUPNum += 1
-	ABL:従順 += 1
-	JUEL:屈服 -= KuppukuJuelRequire
-NEXT
-CALL PRINT_AUT_ABLUP(0, 7, -1, -1, LvUPNum)
-LvUPNum = 0

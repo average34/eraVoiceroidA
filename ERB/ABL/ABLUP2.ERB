@@ -8,12 +8,7 @@ ELSEIF ABL:技巧 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:服
 ENDIF
 
 CALL DECIDE_ABLUP2
-
-IF Z == 0
-	RETURN 0
-ELSE
-	RETURN 1
-ENDIF
+RETURN RESULT
 
 
 ;技巧
@@ -33,14 +28,14 @@ CALL DECIDE_ABLUP2
 PRINT [0] - 
 PRINTS PALAMNAME:8
 PRINT の珠×
-PRINTV A
+PRINTV ShutokuJuelRequire
 PRINT ……
-IF I == 0
+IF ShutokuCond == 0
 	PRINT ＯＫ
 ELSE
-	SIF I & 1
+	SIF ShutokuCond & 1
 		PRINT 珠不足 
-	SIF I & 2
+	SIF ShutokuCond & 2
 		PRINT 経験不足 
 ENDIF
 PRINTL 
@@ -51,7 +46,7 @@ PRINTL [100] - やめる
 INPUT
 IF (RESULT < 0 || RESULT > 0) && RESULT != 100
 	RESTART
-ELSEIF I != 0 && RESULT == 0
+ELSEIF ShutokuCond != 0 && RESULT == 0
 	PRINTL 条件を満たしていません
 	RESTART
 ELSEIF RESULT == 100
@@ -61,7 +56,7 @@ ENDIF
 ABL:技巧 += 1
 
 IF RESULT == 0
-	JUEL:習得 -= A
+	JUEL:習得 -= ShutokuJuelRequire
 ENDIF
 
 PRINTS ABLNAME:2
@@ -71,53 +66,75 @@ PRINTW になりました
 
 ;技巧LVUP判定
 @DECIDE_ABLUP2
+#DIM ABLUPAble = 0
 ;条件別にＯＫかダメかを記録する
-I = 0
+ShutokuCond = 0
 ;能力アップ可能なら1にする
-Z = 0
+ABLUPAble = 0
 
 IF ABL:技巧 == 0
-	A = 1
+	ShutokuJuelRequire = 1
 ELSEIF ABL:技巧 == 1
-	A = 20
+	ShutokuJuelRequire = 20
 ELSEIF ABL:技巧 == 2
-	A = 200
+	ShutokuJuelRequire = 200
 ELSEIF ABL:技巧 == 3
-	A = 3000
+	ShutokuJuelRequire = 3000
 ELSEIF ABL:技巧 == 4
-	A = 20000
+	ShutokuJuelRequire = 20000
 ELSEIF ABL:技巧 == 5
-	A = 25000
+	ShutokuJuelRequire = 25000
 ELSEIF ABL:技巧 == 6
-	A = 34000
+	ShutokuJuelRequire = 34000
 ELSEIF ABL:技巧 == 7
-	A = 45000
+	ShutokuJuelRequire = 45000
 ELSEIF ABL:技巧 == 8
-	A = 55000
+	ShutokuJuelRequire = 55000
 ELSEIF ABL:技巧 == 9
-	A = 70000
+	ShutokuJuelRequire = 70000
 ENDIF
 
 ;自尊心
 IF TALENT:プライド高い
-	TIMES A , 1.50
+	TIMES ShutokuJuelRequire , 1.50
 ENDIF
 ;一線越えない
 IF TALENT:一線越えない && (TALENT:恋慕 == 0 && TALENT:淫乱 == 0 && TALENT:服従 == 0 && TALENT:親愛 == 0 && TALENT:娼婦 == 0 && TALENT:隷属 == 0)
-	TIMES A , 2.00
+	TIMES ShutokuJuelRequire , 2.00
 ENDIF
 
 ;0になった場合は1にする
-SIF A == 0
-	A = 1
+SIF ShutokuJuelRequire == 0
+	ShutokuJuelRequire = 1
 
 ;習得の珠で上げる
-SIF JUEL:習得 < A
-	I |= 1
+SIF JUEL:習得 < ShutokuJuelRequire
+	ShutokuCond |= 1
 
-IF I == 0
-	Z = 1
+IF ShutokuCond == 0
+	ABLUPAble = 1
 ENDIF
-RETURN 1
+RETURN ABLUPAble
 
+;自動でABLを上げるメソッド（J+に倣って実装）
+@AUT_ABLUP2
+#DIM LvUPNum = 0
+
+;上げられなかったら無視
+CALL ISABLUP2
+SIF RESULT == 0
+	RETURN 0
+
+;習得の珠
+FOR COUNT, 0, 9999 - ABL:技巧
+	CALL DECIDE_ABLUP2
+	IF ShutokuCond != 0
+		BREAK
+	ENDIF
+	LvUPNum += 1
+	ABL:技巧 += 1
+	JUEL:習得 -= ShutokuJuelRequire
+NEXT
+CALL PRINT_AUT_ABLUP(2, 8, -1, -1, LvUPNum)
+LvUPNum = 0
 

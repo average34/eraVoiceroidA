@@ -8,12 +8,7 @@ ELSEIF ABL:Ｃ感覚 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:
 ENDIF
 
 CALL DECIDE_ABLUP3
-
-IF Z == 0
-	RETURN 0
-ELSE
-	RETURN 1
-ENDIF
+RETURN RESULT
 
 ;Ｃ感覚
 @ABLUP3
@@ -32,14 +27,14 @@ CALL DECIDE_ABLUP3
 PRINT [0] - 
 PRINTS PALAMNAME:0
 PRINT の珠×
-PRINTV A
+PRINTV CJuelRequire
 PRINT ……
-IF I == 0
+IF CCond == 0
 	PRINT ＯＫ
 ELSE
-	SIF I & 1
+	SIF CCond & 1
 		PRINT 珠不足 
-	SIF I & 2
+	SIF CCond & 2
 		PRINT 経験不足 
 ENDIF
 PRINTL 
@@ -50,7 +45,7 @@ PRINTL [100] - やめる
 INPUT
 IF (RESULT < 0 || RESULT > 0) && RESULT != 100
 	RESTART
-ELSEIF I != 0 && RESULT == 0
+ELSEIF CCond != 0 && RESULT == 0
 	PRINTL 条件を満たしていません
 	RESTART
 ELSEIF RESULT == 100
@@ -60,7 +55,7 @@ ENDIF
 ABL:Ｃ感覚 += 1
 
 IF RESULT == 0
-	JUEL:快Ｃ -= A
+	JUEL:快Ｃ -= CJuelRequire
 ENDIF
 
 PRINTS ABLNAME:3
@@ -71,50 +66,70 @@ PRINTW になりました
 
 ;C感覚LvUP判定
 @DECIDE_ABLUP3
+#DIM ABLUPAble = 0
 ;条件別にＯＫかダメかを記録する
-I = 0
-;能力アップ可能なら1にする
-Z = 0
+VARSET CCond, 0
 
 IF ABL:Ｃ感覚 == 0
-	A = 1
+	CJuelRequire = 1
 ELSEIF ABL:Ｃ感覚 == 1
-	A = 20
+	CJuelRequire = 20
 ELSEIF ABL:Ｃ感覚 == 2
-	A = 400
+	CJuelRequire = 400
 ELSEIF ABL:Ｃ感覚 == 3
-	A = 5000
+	CJuelRequire = 5000
 ELSEIF ABL:Ｃ感覚 == 4
-	A = 15000
+	CJuelRequire = 15000
 ELSEIF ABL:Ｃ感覚 == 5
-	A = 30000
+	CJuelRequire = 30000
 ELSEIF ABL:Ｃ感覚 == 6
-	A = 40000
+	CJuelRequire = 40000
 ELSEIF ABL:Ｃ感覚 == 7
-	A = 50000
+	CJuelRequire = 50000
 ELSEIF ABL:Ｃ感覚 == 8
-	A = 60000
+	CJuelRequire = 60000
 ELSEIF ABL:Ｃ感覚 == 9
-	A = 70000
+	CJuelRequire = 70000
 ENDIF
 
 ;淫乱
 SIF TALENT:淫乱
-	TIMES A , 0.80
+	TIMES CJuelRequire , 0.80
 ;娼婦
 SIF TALENT:娼婦
-	TIMES A , 0.50
+	TIMES CJuelRequire , 0.50
 
 ;0になった場合は1にする
-SIF A == 0
-	A = 1
+SIF CJuelRequire == 0
+	CJuelRequire = 1
 
 ;快Ｃの珠で上げる
-SIF JUEL:快Ｃ < A
-	I |= 1
+SIF JUEL:快Ｃ < CJuelRequire
+	CCond |= 1
 
-IF I == 0
-	Z = 1
+IF CCond == 0
+	ABLUPAble = 1
 ENDIF
 RETURN 1
 
+;自動でABLを上げるメソッド（J+に倣って実装）
+@AUT_ABLUP3
+#DIM LvUPNum = 0
+
+;上げられなかったら無視
+CALL ISABLUP3
+SIF RESULT == 0
+	RETURN 0
+
+;習得の珠
+FOR COUNT, 0, 9999 - ABL:Ｃ感覚
+	CALL DECIDE_ABLUP3
+	IF CCond != 0
+		BREAK
+	ENDIF
+	LvUPNum += 1
+	ABL:Ｃ感覚 += 1
+	JUEL:快Ｃ -= CJuelRequire
+NEXT
+CALL PRINT_AUT_ABLUP(3, 0, -1, -1, LvUPNum)
+LvUPNum = 0

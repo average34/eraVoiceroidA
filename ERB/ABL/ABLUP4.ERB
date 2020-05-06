@@ -9,11 +9,7 @@ ENDIF
 
 CALL DECIDE_ABLUP4
 
-IF Z == 0
-	RETURN 0
-ELSE
-	RETURN 1
-ENDIF
+RETURN RESULT
 
 ;Ｖ感覚
 @ABLUP4
@@ -32,14 +28,14 @@ CALL DECIDE_ABLUP4
 PRINT [0] - 
 PRINTS PALAMNAME:1
 PRINT の珠×
-PRINTV A
+PRINTV VJuelRequire
 PRINT ……
-IF I == 0
+IF VCond == 0
 	PRINT ＯＫ
 ELSE
-	SIF I & 1
+	SIF VCond & 1
 		PRINT 珠不足 
-	SIF I & 2
+	SIF VCond & 2
 		PRINT 経験不足 
 ENDIF
 PRINTL 
@@ -50,7 +46,7 @@ PRINTL [100] - やめる
 INPUT
 IF (RESULT < 0 || RESULT > 0) && RESULT != 100
 	RESTART
-ELSEIF I != 0 && RESULT == 0
+ELSEIF VCond != 0 && RESULT == 0
 	PRINTL 条件を満たしていません
 	RESTART
 ELSEIF RESULT == 100
@@ -60,7 +56,7 @@ ENDIF
 ABL:Ｖ感覚 += 1
 
 IF RESULT == 0
-	JUEL:快Ｖ -= A
+	JUEL:快Ｖ -= VJuelRequire
 ENDIF
 
 PRINTS ABLNAME:4
@@ -70,51 +66,73 @@ PRINTW になりました
 
 ;Ｖ感覚LvUPの判定
 @DECIDE_ABLUP4
+#DIM ABLUPAble = 0
 ;条件別にＯＫかダメかを記録する
-I = 0
+VCond = 0
 ;能力アップ可能なら1にする
-Z = 0
+ABLUPAble = 0
 
 IF ABL:Ｖ感覚 == 0
-	A = 1
+	VJuelRequire = 1
 ELSEIF ABL:Ｖ感覚 == 1
-	A = 20
+	VJuelRequire = 20
 ELSEIF ABL:Ｖ感覚 == 2
-	A = 400
+	VJuelRequire = 400
 ELSEIF ABL:Ｖ感覚 == 3
-	A = 5000
+	VJuelRequire = 5000
 ELSEIF ABL:Ｖ感覚 == 4
-	A = 15000
+	VJuelRequire = 15000
 ELSEIF ABL:Ｖ感覚 == 5
-	A = 30000
+	VJuelRequire = 30000
 ELSEIF ABL:Ｖ感覚 == 6
-	A = 40000
+	VJuelRequire = 40000
 ELSEIF ABL:Ｖ感覚 == 7
-	A = 50000
+	VJuelRequire = 50000
 ELSEIF ABL:Ｖ感覚 == 8
-	A = 60000
+	VJuelRequire = 60000
 ELSEIF ABL:Ｖ感覚 == 9
-	A = 70000
+	VJuelRequire = 70000
 ENDIF
 
 ;淫乱
 SIF TALENT:淫乱
-	TIMES A , 0.80
+	TIMES VJuelRequire , 0.80
 ;娼婦
 SIF TALENT:娼婦
-	TIMES A , 0.50
+	TIMES VJuelRequire , 0.50
 
 ;0になった場合は1にする
-SIF A == 0
-	A = 1
+SIF VJuelRequire == 0
+	VJuelRequire = 1
 
 ;快Ｖの珠で上げる
-SIF JUEL:快Ｖ < A
-	I |= 1
+SIF JUEL:快Ｖ < VJuelRequire
+	VCond |= 1
 
-IF I == 0
-	Z = 1
+IF VCond == 0
+	ABLUPAble = 1
 ENDIF
 
-RETURN 1
+RETURN ABLUPAble
 
+;自動でABLを上げるメソッド（J+に倣って実装）
+@AUT_ABLUP4
+#DIM LvUPNum = 0
+
+;上げられなかったら無視
+CALL ISABLUP4
+SIF RESULT == 0
+	RETURN 0
+
+;□の珠
+FOR COUNT, 0, 9999 - ABL:Ｖ感覚
+	CALL DECIDE_ABLUP4
+	IF VCond != 0
+		BREAK
+	ENDIF
+	LvUPNum += 1
+	ABL:Ｖ感覚 += 1
+	JUEL:快Ｖ -= VJuelRequire
+NEXT
+CALL PRINT_AUT_ABLUP(4, 1, -1, -1, LvUPNum)
+LvUPNum = 0

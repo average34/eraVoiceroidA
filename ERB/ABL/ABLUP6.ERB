@@ -9,12 +9,7 @@ ENDIF
 
 CALL DECIDE_ABLUP6
 
-IF Z == 0
-	RETURN 0
-ELSE
-	RETURN 1
-ENDIF
-
+RETURN RESULT
 
 ;Ｂ感覚
 @ABLUP6
@@ -33,14 +28,14 @@ CALL DECIDE_ABLUP6
 PRINT [0] - 
 PRINTS PALAMNAME:3
 PRINT の珠×
-PRINTV A
+PRINTV BJuelRequire
 PRINT ……
-IF I == 0
+IF BCond == 0
 	PRINT ＯＫ
 ELSE
-	SIF I & 1
+	SIF BCond & 1
 		PRINT 珠不足 
-	SIF I & 2
+	SIF BCond & 2
 		PRINT 経験不足 
 ENDIF
 PRINTL 
@@ -51,7 +46,7 @@ PRINTL [100] - やめる
 INPUT
 IF (RESULT < 0 || RESULT > 0) && RESULT != 100
 	RESTART
-ELSEIF I != 0 && RESULT == 0
+ELSEIF BCond != 0 && RESULT == 0
 	PRINTL 条件を満たしていません
 	RESTART
 ELSEIF RESULT == 100
@@ -61,7 +56,7 @@ ENDIF
 ABL:Ｂ感覚 += 1
 
 IF RESULT == 0
-	JUEL:快Ｂ -= A
+	JUEL:快Ｂ -= BJuelRequire
 ENDIF
 
 PRINTS ABLNAME:6
@@ -72,69 +67,89 @@ PRINTW になりました
 
 ;Ｂ感覚LVUP判定
 @DECIDE_ABLUP6
+#DIM ABLUPAble = 0
 ;条件別にＯＫかダメかを記録する
-I = 0
-;能力アップ可能なら1にする
-Z = 0
+BCond = 0
 
 IF ABL:Ｂ感覚 == 0
-	A = 1
+	BJuelRequire = 1
 ELSEIF ABL:Ｂ感覚 == 1
-	A = 20
+	BJuelRequire = 20
 ELSEIF ABL:Ｂ感覚 == 2
-	A = 400
+	BJuelRequire = 400
 ELSEIF ABL:Ｂ感覚 == 3
-	A = 5000
+	BJuelRequire = 5000
 ELSEIF ABL:Ｂ感覚 == 4
-	A = 15000
+	BJuelRequire = 15000
 ELSEIF ABL:Ｂ感覚 == 5
-	A = 30000
+	BJuelRequire = 30000
 ELSEIF ABL:Ｂ感覚 == 6
-	A = 40000
+	BJuelRequire = 40000
 ELSEIF ABL:Ｂ感覚 == 7
-	A = 50000
+	BJuelRequire = 50000
 ELSEIF ABL:Ｂ感覚 == 8
-	A = 60000
+	BJuelRequire = 60000
 ELSEIF ABL:Ｂ感覚 == 9
-	A = 70000
+	BJuelRequire = 70000
 ENDIF
 
 ;淫乱
 SIF TALENT:淫乱
-	TIMES A , 0.80
+	TIMES BJuelRequire , 0.80
 ;娼婦
 SIF TALENT:娼婦
-	TIMES A , 0.50
+	TIMES BJuelRequire , 0.50
 
 ;貧乳
 IF TALENT:貧乳
-	TIMES A , 0.80
+	TIMES BJuelRequire , 0.80
 ENDIF
 
 ;絶壁
 IF TALENT:絶壁
-	TIMES A , 0.65
+	TIMES BJuelRequire , 0.65
 ENDIF
 
 ;巨乳
 IF TALENT:巨乳
-	TIMES A , 1.10
+	TIMES BJuelRequire , 1.10
 ENDIF
 
 ;爆乳
 IF TALENT:爆乳
-	TIMES A , 1.15
+	TIMES BJuelRequire , 1.15
 ENDIF
 
 ;0になった場合は1にする
-SIF A == 0
-	A = 1
+SIF BJuelRequire == 0
+	BJuelRequire = 1
 
 ;快Ｂの珠で上げる
-SIF JUEL:快Ｂ < A
-	I |= 1
+SIF JUEL:快Ｂ < BJuelRequire
+	BCond |= 1
 
-IF I == 0
-	Z = 1
+IF BCond == 0
+	ABLUPAble = 1
 ENDIF
 
+;自動でABLを上げるメソッド（J+に倣って実装）
+@AUT_ABLUP6
+#DIM LvUPNum = 0
+
+;上げられなかったら無視
+CALL ISABLUP6
+SIF RESULT == 0
+	RETURN 0
+
+;快Ｂの珠
+FOR COUNT, 0, 9999 - ABL:Ｂ感覚
+	CALL DECIDE_ABLUP6
+	IF BCond != 0
+		BREAK
+	ENDIF
+	LvUPNum += 1
+	ABL:Ｂ感覚 += 1
+	JUEL:快Ｂ -=  BJuelRequire
+NEXT
+CALL PRINT_AUT_ABLUP(6, 3, -1, -1, LvUPNum)
+LvUPNum = 0
