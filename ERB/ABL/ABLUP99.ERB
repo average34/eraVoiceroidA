@@ -4,10 +4,10 @@
 ;
 ;TRACHECK.ERBも弄ると再度屈服刻印が付いたりしないので吉
 ;●改変前
-;IF A >= 500 && A < 1200 && MARK:反発刻印 <= 0
+;IF KuppukuJuelRequire >= 500 && KuppukuJuelRequire < 1200 && MARK:反発刻印 <= 0
 ;	MARK:反発刻印 = 1
 ;●改変後
-;IF A >= 500 && A < 1200 && MARK:4 <= 0
+;IF KuppukuJuelRequire >= 500 && KuppukuJuelRequire < 1200 && MARK:4 <= 0
 ;	MARK:反発刻印 = 1
 ;	MARK:4 = 1
 ;●以上の内容を3LVの3箇所にすること
@@ -44,15 +44,15 @@ PRINTS ABLNAME:0
 PRINTV MARK:反発刻印
 PRINTL LV以上、かつ
 
-PRINTFORM [0] - %PALAMNAME:7%の珠×{A}……
-IF I == 0
+PRINTFORM [0] - %PALAMNAME:7%の珠×{KuppukuJuelRequire}……
+IF KuppukuCond == 0
 	PRINT ＯＫ
 ELSE
-	SIF I & 1
+	SIF KuppukuCond & 1
 		PRINT 珠不足 
-	SIF I & 2
+	SIF KuppukuCond & 2
 		PRINT 刻印不足 
-	SIF I & 4
+	SIF KuppukuCond & 4
 		PRINT 能力不足 
 ENDIF
 PRINTL 
@@ -62,7 +62,7 @@ PRINTL [100] - やめる
 INPUT
 IF RESULT != 0 && RESULT != 100
 	RESTART
-ELSEIF I != 0 && RESULT == 0
+ELSEIF KuppukuCond != 0 && RESULT == 0
 	PRINTL 条件を満たしていません
 	RESTART
 ELSEIF RESULT == 100
@@ -71,7 +71,7 @@ ENDIF
 
 MARK:反発刻印 -= 1
 
-JUEL:屈服 -= A
+JUEL:屈服 -= KuppukuJuelRequire
 
 PRINTS MARKNAME:3
 PRINT のレベルが
@@ -81,32 +81,55 @@ PRINTW になりました
 
 ;
 @DECIDE_ABLUP99
+#DIM ABLUPAble = 0
 ;条件別にＯＫかダメかを記録する
-I = 0
-;能力アップ可能なら1にする
-Z = 0
+KuppukuCond = 0
+
 
 IF MARK:反発刻印 == 1
-	A = 3000
+	KuppukuJuelRequire = 3000
 ELSEIF MARK:反発刻印 == 2
-	A = 5000
+	KuppukuJuelRequire = 5000
 ELSEIF MARK:反発刻印 == 3
-	A = 10000
+	KuppukuJuelRequire = 10000
 ENDIF
 
 ;反発刻印Lvと同じLvの屈服刻印が必要
 SIF MARK:反発刻印 > MARK:屈服刻印
-	I |= 2
+	KuppukuCond |= 2
 
 ;反発刻印Lvと同じLvの従順が必要
 SIF MARK:反発刻印 > ABL:従順
-	I |= 4
+	KuppukuCond |= 4
 
 ;屈服の珠で減らす
-SIF JUEL:屈服 < A
-	I |= 1
+SIF JUEL:屈服 < KuppukuJuelRequire
+	KuppukuCond |= 1
 
-IF I == 0
-	Z = 1
+IF KuppukuCond == 0
+	ABLUPAble = 1
 ENDIF
+RETURN ABLUPAble
 
+;自動でABLを上げるメソッド（J+に倣って実装）
+@AUT_ABLUP99
+#DIM LvUPNum = 0
+
+;上げられなかったら無視
+CALL ISABLUP99
+SIF RESULT == 0
+	RETURN 0
+
+;□の珠
+FOR COUNT, 0, 9999 - MARK:反発刻印
+	CALL DECIDE_ABLUP99
+	IF KuppukuCond != 0
+		BREAK
+	ENDIF
+	LvUPNum += 1
+	MARK:反発刻印 -= 1
+	JUEL:屈服 -= KuppukuJuelRequire
+	PRINTFORML 反発刻印を屈服の珠を消費して、1LV下げました
+NEXT
+;CALL PRINT_AUT_ABLUP(99, ■, -1, -1, LvUPNum)
+LvUPNum = 0

@@ -43,55 +43,55 @@ ENDIF
 PRINT [0] - 
 PRINTS PALAMNAME:6
 PRINT の珠×
-PRINTV A
-IF C > 0
+PRINTV YokujouJuelRequire
+IF KuppukuJuelRequire > 0
 	PRINT 、
 	PRINTS PALAMNAME:7
 	PRINT の珠×
-	PRINTV C
+	PRINTV KuppukuJuelRequire
 ENDIF
 PRINT 、
 PRINTS EXPNAME:40
-PRINTV B
+PRINTV ExpRequire
 PRINT 以上
 PRINT ……
 
-IF I == 0
+IF FirstCond == 0
 	PRINT ＯＫ
 ELSE
-	SIF I & 1
+	SIF FirstCond & 1
 		PRINT 珠不足 
-	SIF I & 2
+	SIF FirstCond & 2
 		PRINT 経験不足 
-	SIF I & 4
+	SIF FirstCond & 4
 		PRINT 能力不足 
 ENDIF
 PRINTL 
 
-IF D > 0
+IF CJuelRequire > 0
 	PRINT [1] - 
 	PRINTS PALAMNAME:0
 	PRINT の珠×
-	PRINTV D
+	PRINTV CJuelRequire
 	PRINT 、
 	PRINTS EXPNAME:40
-	PRINTV B
+	PRINTV ExpRequire
 	PRINT 以上
 	PRINT ……
 	
-	IF J == 0
+	IF CCond == 0
 		PRINT ＯＫ
 	ELSE
-		SIF J & 1
+		SIF CCond & 1
 			PRINT 珠不足 
-		SIF J & 2
+		SIF CCond & 2
 			PRINT 経験不足 
-		SIF J & 4
+		SIF CCond & 4
 			PRINT 能力不足 
 	ENDIF
 	PRINTL 
 ELSE
-	J = 256
+	CCond = 256
 ENDIF
 
 PRINTL [100] - やめる
@@ -100,12 +100,12 @@ PRINTL [100] - やめる
 INPUT
 IF (RESULT < 0 || RESULT > 1) && RESULT != 100
 	RESTART
-ELSEIF I != 0 && RESULT == 0
+ELSEIF FirstCond != 0 && RESULT == 0
 	PRINTL 条件を満たしていません
 	RESTART
-ELSEIF J == 256 && RESULT == 1
+ELSEIF CCond == 256 && RESULT == 1
 	RESTART
-ELSEIF J != 0 && RESULT == 1
+ELSEIF CCond != 0 && RESULT == 1
 	PRINTL 条件を満たしていません
 	RESTART
 ELSEIF RESULT == 100
@@ -115,10 +115,10 @@ ENDIF
 ABL:レズっ気 += 1
 
 IF RESULT == 0
-	JUEL:欲情 -= A
-	JUEL:屈服 -= C
+	JUEL:欲情 -= YokujouJuelRequire
+	JUEL:屈服 -= KuppukuJuelRequire
 ELSEIF RESULT == 1
-	JUEL:快Ｃ -= D
+	JUEL:快Ｃ -= CJuelRequire
 ENDIF
 
 PRINTS ABLNAME:11
@@ -129,128 +129,160 @@ PRINTW になりました
 
 ;レズっ気のLVUP判定
 @DECIDE_ABLUP11
+#DIM ABLUPAble = 0
 ;条件別にＯＫかダメかを記録する
-I = 0
-J = 0
-;能力アップ可能なら1にする
-Z = 0
+FirstCond = 0
+CCond = 0
 
 IF ABL:レズっ気 == 0
-	A = 200
-	B = 50
-	C = 0
-	D = 1000
+	YokujouJuelRequire = 200
+	ExpRequire = 50
+	KuppukuJuelRequire = 0
+	CJuelRequire = 1000
 ELSEIF ABL:レズっ気 == 1
-	A = 1000
-	B = 200
-	C = 0
-	D = 5000
+	YokujouJuelRequire = 1000
+	ExpRequire = 200
+	KuppukuJuelRequire = 0
+	CJuelRequire = 5000
 ELSEIF ABL:レズっ気 == 2
-	A = 3000
-	B = 500
-	C = 1000
-	D = 0
+	YokujouJuelRequire = 3000
+	ExpRequire = 500
+	KuppukuJuelRequire = 1000
+	CJuelRequire = 0
 ELSEIF ABL:レズっ気 == 3
-	A = 8000
-	B = 1000
-	C = 2000
-	D = 0
+	YokujouJuelRequire = 8000
+	ExpRequire = 1000
+	KuppukuJuelRequire = 2000
+	CJuelRequire = 0
 ELSEIF ABL:レズっ気 == 4
-	A = 20000
-	B = 2000
-	C = 5000
-	D = 0
+	YokujouJuelRequire = 20000
+	ExpRequire = 2000
+	KuppukuJuelRequire = 5000
+	CJuelRequire = 0
 ELSEIF ABL:レズっ気 == 5
-	A = 25000
-	B = 2300
-	C = 6000
-	D = 0
+	YokujouJuelRequire = 25000
+	ExpRequire = 2300
+	KuppukuJuelRequire = 6000
+	CJuelRequire = 0
 ELSEIF ABL:レズっ気 == 6
-	A = 30000
-	B = 2600
-	C = 8000
-	D = 0
+	YokujouJuelRequire = 30000
+	ExpRequire = 2600
+	KuppukuJuelRequire = 8000
+	CJuelRequire = 0
 ELSEIF ABL:レズっ気 == 7
-	A = 35000
-	B = 3000
-	C = 10000
-	D = 0
+	YokujouJuelRequire = 35000
+	ExpRequire = 3000
+	KuppukuJuelRequire = 10000
+	CJuelRequire = 0
 ELSEIF ABL:レズっ気 == 8
-	A = 40000
-	B = 3500
-	C = 15000
-	D = 0
+	YokujouJuelRequire = 40000
+	ExpRequire = 3500
+	KuppukuJuelRequire = 15000
+	CJuelRequire = 0
 ELSEIF ABL:レズっ気 == 9
-	A = 50000
-	B = 4000
-	C = 20000
-	D = 0
+	YokujouJuelRequire = 50000
+	ExpRequire = 4000
+	KuppukuJuelRequire = 20000
+	CJuelRequire = 0
 ENDIF
 
 ;淫乱
 SIF TALENT:淫乱
-	TIMES A , 0.80
+	TIMES YokujouJuelRequire , 0.80
 ;娼婦
 SIF TALENT:娼婦
-	TIMES A , 0.50
+	TIMES YokujouJuelRequire , 0.50
 ;一線越えない
 IF TALENT:一線越えない && (TALENT:恋慕 == 0 && TALENT:淫乱 == 0 && TALENT:服従 == 0 && TALENT:親愛 == 0 && TALENT:娼婦 == 0 && TALENT:隷属 == 0)
-	TIMES A , 2.00
-	TIMES B , 2.00
-	TIMES C , 2.00
-	TIMES D , 2.00
+	TIMES YokujouJuelRequire , 2.00
+	TIMES ExpRequire , 2.00
+	TIMES KuppukuJuelRequire , 2.00
+	TIMES CJuelRequire , 2.00
 ENDIF
 
 ;ＬＶ３から４に上げるときは異常経験必要（素質：[両刀]なら無視できる）
 IF ABL:レズっ気 == 3 && TALENT:両刀 == 0
 	IF EXP:異常経験 == 0
 		;異常経験が不足
-		I |= 2
-		J |= 2
+		FirstCond |= 2
+		CCond |= 2
 	ENDIF
 ;ＬＶ４から５に上げるときは異常経験3以上必要（素質：[両刀]なら無視できる）
 ELSEIF ABL:レズっ気 == 4 && TALENT:両刀 == 0
 	IF EXP:異常経験 < 3
 		;異常経験が不足
-		I |= 2
-		J |= 2
+		FirstCond |= 2
+		CCond |= 2
 	ENDIF
 ;ＬＶ８から９に上げるときは異常経験5以上必要（素質：[両刀]なら無視できる）
 ELSEIF ABL:レズっ気 == 8 && TALENT:両刀 == 0
 	IF EXP:異常経験 < 5
 		;異常経験が不足
-		I |= 2
-		J |= 2
+		FirstCond |= 2
+		CCond |= 2
 	ENDIF
 ENDIF
 
-;欲情の珠で上げる
-SIF JUEL:欲情 < A
-	I |= 1
-;屈服の珠で上げる
-SIF JUEL:屈服 < C
-	I |= 1
+;欲情の珠と屈服の珠で上げる
+SIF JUEL:欲情 < YokujouJuelRequire && JUEL:屈服 < KuppukuJuelRequire
+	FirstCond |= 1
 ;レズ経験が必要
-SIF EXP:レズ経験 < B
-	I |= 2
+SIF EXP:レズ経験 < ExpRequire
+	FirstCond |= 2
 
-IF I == 0
-	Z = 1
+IF FirstCond == 0
+	ABLUPAble = 1
 ENDIF
 
-IF D > 0
+IF CJuelRequire > 0
 	;快Ｃの珠で上げる
-	SIF JUEL:快Ｃ < D
-		J |= 1
+	SIF JUEL:快Ｃ < CJuelRequire
+		CCond |= 1
 	;レズ経験が必要
-	SIF EXP:レズ経験 < B
-		J |= 2
+	SIF EXP:レズ経験 < ExpRequire
+		CCond |= 2
 	
-	IF J == 0
-		Z = 1
+	IF CCond == 0
+		ABLUPAble = 1
 	ENDIF
 ELSE
-	J = 256
+	CCond = 256
 ENDIF
-RETURN 1
+RETURN ABLUPAble
 
+;自動でABLを上げるメソッド（J+に倣って実装）
+@AUT_ABLUP11
+#DIM LvUPNum = 0
+
+;上げられなかったら無視
+CALL ISABLUP11
+SIF RESULT == 0
+	RETURN 0
+
+
+;快Ｃの珠で上げる
+FOR COUNT, 0, 9999 - ABL:レズっ気
+	CALL DECIDE_ABLUP11
+	IF CCond != 0
+		BREAK
+	ENDIF
+	LvUPNum += 1
+	ABL:レズっ気 += 1
+	JUEL:快Ｃ -= CJuelRequire
+NEXT
+CALL PRINT_AUT_ABLUP(11, 0, -1, -1, LvUPNum)
+LvUPNum = 0
+
+;第一条件
+FOR COUNT, 0, 9999 - ABL:レズっ気
+	CALL DECIDE_ABLUP11
+	IF FirstCond != 0
+		BREAK
+	ENDIF
+	LvUPNum += 1
+	ABL:レズっ気 += 1
+	JUEL:欲情 -= YokujouJuelRequire
+	JUEL:屈服 -= KuppukuJuelRequire
+NEXT
+CALL PRINT_AUT_ABLUP(11, 6, 7, -1, LvUPNum)
+LvUPNum = 0

@@ -37,7 +37,8 @@
 #DIM ChijouJuelRequire, 10
 #DIM KutsuJuelRequire, 10
 #DIM KyoufuJuelRequire, 10
-#DIM HiteiJuelRequire, 10
+
+#DIM MultiJuelRequire, 10
 
 #DIM ExpCond, 10
 #DIM ExpRequire, 100

@@ -53,29 +53,29 @@ PRINTL LV以上、かつ
 PRINT [0] - 
 PRINTS PALAMNAME:0
 PRINT の珠×
-PRINTV B
+PRINTV CJuelRequire
 PRINT 、
 PRINTS PALAMNAME:6
 PRINT の珠×
-PRINTV A
+PRINTV MultiJuelRequire
 PRINT 、
 PRINTS PALAMNAME:7
 PRINT の珠×
-PRINTV A
+PRINTV MultiJuelRequire
 PRINT 、
 PRINTS EXPNAME:40
-PRINTV C
+PRINTV ExpRequire
 PRINT 以上
 PRINT ……
 
-IF I == 0
+IF FirstCond == 0
 	PRINT ＯＫ
 ELSE
-	SIF I & 1
+	SIF FirstCond & 1
 		PRINT 珠不足 
-	SIF I & 2
+	SIF FirstCond & 2
 		PRINT 経験不足 
-	SIF I & 4
+	SIF FirstCond & 4
 		PRINT 能力不足 
 ENDIF
 PRINTL 
@@ -87,7 +87,7 @@ PRINTL [100] - やめる
 INPUT
 IF (RESULT < 0 || RESULT > 0) && RESULT != 100
 	RESTART
-ELSEIF I != 0 && RESULT == 0
+ELSEIF FirstCond != 0 && RESULT == 0
 	PRINTL 条件を満たしていません
 	RESTART
 ELSEIF RESULT == 100
@@ -97,9 +97,9 @@ ENDIF
 ABL:レズ中毒 += 1
 
 IF RESULT == 0
-	JUEL:快Ｃ -= B
-	JUEL:欲情 -= A
-	JUEL:屈服 -= A
+	JUEL:快Ｃ -= CJuelRequire
+	JUEL:欲情 -= MultiJuelRequire
+	JUEL:屈服 -= MultiJuelRequire
 ENDIF
 
 PRINTS ABLNAME:17
@@ -110,117 +110,137 @@ PRINTW になりました
 
 ;レズ中毒LVUP判定
 @DECIDE_ABLUP17
+#DIM ABLUPAble = 0
 ;条件別にＯＫかダメかを記録する
-I = 0
-;能力アップ可能なら1にする
-Z = 0
+FirstCond = 0
 
 IF ABL:レズ中毒 == 0
-	A = 3000
-	B = 10000
-	C = 1000
+	MultiJuelRequire = 3000
+	CJuelRequire = 10000
+	ExpRequire = 1000
 ELSEIF ABL:レズ中毒 == 1
-	A = 8000
-	B = 25000
-	C = 1500
+	MultiJuelRequire = 8000
+	CJuelRequire = 25000
+	ExpRequire = 1500
 ELSEIF ABL:レズ中毒 == 2
-	A = 15000
-	B = 50000
-	C = 2000
+	MultiJuelRequire = 15000
+	CJuelRequire = 50000
+	ExpRequire = 2000
 ELSEIF ABL:レズ中毒 == 3
-	A = 30000
-	B = 100000
-	C = 4500
+	MultiJuelRequire = 30000
+	CJuelRequire = 100000
+	ExpRequire = 4500
 ELSEIF ABL:レズ中毒 == 4
-	A = 55000
-	B = 300000
-	C = 6000
+	MultiJuelRequire = 55000
+	CJuelRequire = 300000
+	ExpRequire = 6000
 ELSEIF ABL:レズ中毒 == 5
-	A = 60000
-	B = 350000
-	C = 6500
+	MultiJuelRequire = 60000
+	CJuelRequire = 350000
+	ExpRequire = 6500
 ELSEIF ABL:レズ中毒 == 6
-	A = 65000
-	B = 400000
-	C = 7000
+	MultiJuelRequire = 65000
+	CJuelRequire = 400000
+	ExpRequire = 7000
 ELSEIF ABL:レズ中毒 == 7
-	A = 70000
-	B = 450000
-	C = 7500
+	MultiJuelRequire = 70000
+	CJuelRequire = 450000
+	ExpRequire = 7500
 ELSEIF ABL:レズ中毒 == 8
-	A = 75000
-	B = 500000
-	C = 8000
+	MultiJuelRequire = 75000
+	CJuelRequire = 500000
+	ExpRequire = 8000
 ELSEIF ABL:レズ中毒 == 9
-	A = 80000
-	B = 550000
-	C = 9000
+	MultiJuelRequire = 80000
+	CJuelRequire = 550000
+	ExpRequire = 9000
 ENDIF
 
 ;一線越えない
 IF TALENT:一線越えない && (TALENT:恋慕 == 0 && TALENT:淫乱 == 0 && TALENT:服従 == 0 && TALENT:親愛 == 0 && TALENT:娼婦 == 0 && TALENT:隷属 == 0)
-	TIMES A , 2.00
-	TIMES B , 2.00
-	TIMES C , 2.00
+	TIMES MultiJuelRequire , 2.00
+	TIMES CJuelRequire , 2.00
+	TIMES ExpRequire , 2.00
 ENDIF
 ;中毒しやすい
 IF TALENT:中毒しやすい
-	TIMES A , 0.50
-	TIMES B , 0.50
-	TIMES C , 0.50
+	TIMES MultiJuelRequire , 0.50
+	TIMES CJuelRequire , 0.50
+	TIMES ExpRequire , 0.50
 ENDIF
 
 ;ＬＶ２から３に上げるときは異常経験必要（素質：[両刀][中毒しやすい]なら無視できる）
 IF ABL:レズ中毒 == 2 && TALENT:両刀 == 0 && TALENT:中毒しやすい == 0
 	IF EXP:異常経験 == 0
 		;異常経験が不足
-		I |= 2
+		FirstCond |= 2
 		J |= 2
 	ENDIF
 ;ＬＶ３から４に上げるときは異常経験2以上必要（素質：[両刀][中毒しやすい]なら無視できる）
 ELSEIF ABL:レズ中毒 == 3 && TALENT:両刀 == 0 && TALENT:中毒しやすい == 0
 	IF EXP:異常経験 < 2
 		;異常経験が不足
-		I |= 2
+		FirstCond |= 2
 		J |= 2
 	ENDIF
 ;ＬＶ４から５に上げるときは異常経験3以上必要（素質：[両刀][中毒しやすい]なら無視できる）
 ELSEIF ABL:レズ中毒 == 4 && TALENT:両刀 == 0 && TALENT:中毒しやすい == 0
 	IF EXP:異常経験 < 3
 		;異常経験が不足
-		I |= 2
+		FirstCond |= 2
 		J |= 2
 	ENDIF
 ;ＬＶ８から９に上げるときは異常経験7以上必要（素質：[両刀][中毒しやすい]なら無視できる）
 ELSEIF ABL:レズ中毒 == 8 && TALENT:両刀 == 0 && TALENT:中毒しやすい == 0
 	IF EXP:異常経験 < 7
 		;異常経験が不足
-		I |= 2
+		FirstCond |= 2
 		J |= 2
 	ENDIF
 ENDIF
 
 ;奉仕精神が必要
 IF ABL:奉仕精神 < ABL:レズ中毒 + 1
-	I |= 4
+	FirstCond |= 4
 	J |= 4
 ENDIF
 
-;快Cの珠で上げる
-SIF JUEL:快Ｃ < B
-	I |= 1
+;快Ｃの珠で上げる
+SIF JUEL:快Ｃ < CJuelRequire
+	FirstCond |= 1
 ;欲情の珠で上げる
-SIF JUEL:欲情 < A
-	I |= 1
+SIF JUEL:欲情 < MultiJuelRequire
+	FirstCond |= 1
 ;屈服の珠で上げる
-SIF JUEL:屈服 < A
-	I |= 1
+SIF JUEL:屈服 < MultiJuelRequire
+	FirstCond |= 1
 ;レズ経験が必要
-SIF EXP:レズ経験 < C
-	I |= 2
+SIF EXP:レズ経験 < ExpRequire
+	FirstCond |= 2
 
-IF I == 0
-	Z = 1
+IF FirstCond == 0
+	ABLUPAble = 1
 ENDIF
 
+;自動でABLを上げるメソッド（J+に倣って実装）
+@AUT_ABLUP17
+#DIM LvUPNum = 0
 
+;上げられなかったら無視
+CALL ISABLUP17
+SIF RESULT == 0
+	RETURN 0
+
+FOR COUNT, 0, 9999 - ABL:レズ中毒
+	CALL DECIDE_ABLUP17
+	IF FirstCond != 0
+		BREAK
+	ENDIF
+	LvUPNum += 1
+	ABL:レズ中毒 += 1
+	JUEL:快Ｃ -= CJuelRequire
+	JUEL:欲情 -= MultiJuelRequire
+	JUEL:屈服 -= MultiJuelRequire
+NEXT
+CALL PRINT_AUT_ABLUP(17, 0, 6, 7, LvUPNum)
+LvUPNum = 0

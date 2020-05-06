@@ -28,7 +28,7 @@ CALL DECIDE_ABLUP10
 
 ;欲望がサドっ気＋１レベルでないといけない
 PRINTS ABLNAME:1
-PRINTV ABL:サドっ気+1
+PRINTV ABL:サドっ気 + 1
 PRINTL LV以上、かつ
 
 ;ＬＶ３から４、４から５に上げるときは異常経験必要（素質：[サド]なら無視できる）
@@ -49,10 +49,10 @@ ENDIF
 PRINT [0] - 
 PRINTS PALAMNAME:6
 PRINT の珠×
-PRINTV A
+PRINTV YokujouJuelRequire
 PRINT 、
 PRINTS EXPNAME:32
-PRINTV B
+PRINTV ExpRequire
 PRINT 以上
 PRINT 、
 PRINTS EXPNAME:2
@@ -60,14 +60,14 @@ PRINTV 1
 PRINT 以上
 PRINT ……
 
-IF I == 0
+IF YokujouCond == 0
 	PRINT ＯＫ
 ELSE
-	SIF I & 1
+	SIF YokujouCond & 1
 		PRINT 珠不足 
-	SIF I & 2
+	SIF YokujouCond & 2
 		PRINT 経験不足 
-	SIF I & 4
+	SIF YokujouCond & 4
 		PRINT 能力不足 
 ENDIF
 PRINTL 
@@ -78,7 +78,7 @@ PRINTL [100] - やめる
 INPUT
 IF RESULT != 0 && RESULT != 100
 	RESTART
-ELSEIF I != 0 && RESULT == 0
+ELSEIF YokujouCond != 0 && RESULT == 0
 	PRINTL 条件を満たしていません
 	RESTART
 ELSEIF RESULT == 100
@@ -88,7 +88,7 @@ ENDIF
 ABL:サドっ気 += 1
 
 IF RESULT == 0
-	JUEL:欲情 -= A
+	JUEL:欲情 -= YokujouJuelRequire
 ENDIF
 
 PRINTS ABLNAME:10
@@ -98,90 +98,110 @@ PRINTW になりました
 
 ;サドっ気LVUP判定
 @DECIDE_ABLUP10
+#DIM ABLUPAble = 0
 ;条件別にＯＫかダメかを記録する
-I = 0
+YokujouCond = 0
 J = 0
-;能力アップ可能なら1にする
-Z = 0
 
 IF ABL:サドっ気 == 0
-	A = 100
-	B = 5
+	YokujouJuelRequire = 100
+	ExpRequire = 5
 ELSEIF ABL:サドっ気 == 1
-	A = 500
-	B = 10
+	YokujouJuelRequire = 500
+	ExpRequire = 10
 ELSEIF ABL:サドっ気 == 2
-	A = 1500
-	B = 20
+	YokujouJuelRequire = 1500
+	ExpRequire = 20
 ELSEIF ABL:サドっ気 == 3
-	A = 3000
-	B = 50
+	YokujouJuelRequire = 3000
+	ExpRequire = 50
 ELSEIF ABL:サドっ気 == 4
-	A = 5000
-	B = 80
+	YokujouJuelRequire = 5000
+	ExpRequire = 80
 ELSEIF ABL:サドっ気 == 5
-	A = 8000
-	B = 100
+	YokujouJuelRequire = 8000
+	ExpRequire = 100
 ELSEIF ABL:サドっ気 == 6
-	A = 12000
-	B = 150
+	YokujouJuelRequire = 12000
+	ExpRequire = 150
 ELSEIF ABL:サドっ気 == 7
-	A = 15000
-	B = 200
+	YokujouJuelRequire = 15000
+	ExpRequire = 200
 ELSEIF ABL:サドっ気 == 8
-	A = 25000
-	B = 250
+	YokujouJuelRequire = 25000
+	ExpRequire = 250
 ELSEIF ABL:サドっ気 == 9
-	A = 30000
-	B = 350
+	YokujouJuelRequire = 30000
+	ExpRequire = 350
 ENDIF
 
 ;一線越えない
 IF TALENT:一線越えない && (TALENT:恋慕 == 0 && TALENT:淫乱 == 0 && TALENT:服従 == 0 && TALENT:親愛 == 0 && TALENT:娼婦 == 0 && TALENT:隷属 == 0)
-	TIMES A , 2.00
-	TIMES B , 2.00
+	TIMES YokujouJuelRequire , 2.00
+	TIMES ExpRequire , 2.00
 ENDIF
 ;サド
 IF TALENT:サド
-	TIMES A , 0.50
-	TIMES B , 0.50
+	TIMES YokujouJuelRequire , 0.50
+	TIMES ExpRequire , 0.50
 ENDIF
 
 ;欲望がサドっ気＋１レベルでないといけない
 IF ABL:欲望 < ABL:サドっ気+1
 	;欲望が不足
-	I |= 4
+	YokujouCond |= 4
 ENDIF
 
 ;ＬＶ３から４、４から５に上げるときは異常経験必要（素質：[サド]なら無視できる）
 IF ABL:サドっ気 == 3 && TALENT:サド == 0
 	IF EXP:異常経験 == 0
 		;異常経験が不足
-		I |= 2
+		YokujouCond |= 2
 	ENDIF
 ;ＬＶ４から５に上げるときは異常経験3以上必要（素質：[サド]なら無視できる）
 ELSEIF ABL:サドっ気 == 4 && TALENT:サド == 0
 	IF EXP:異常経験 < 3
 		;異常経験が不足
-		I |= 2
+		YokujouCond |= 2
 	ENDIF
 ;ＬＶ８から９に上げるときは異常経験5以上必要（素質：[サド]なら無視できる）
 ELSEIF ABL:サドっ気 == 8 && TALENT:サド == 0
 	IF EXP:異常経験 < 5
 		;異常経験が不足
-		I |= 2
+		YokujouCond |= 2
 	ENDIF
 ENDIF
 
 ;欲情の珠で上げる
-SIF JUEL:欲情 < A
-	I |= 1
+SIF JUEL:欲情 < YokujouJuelRequire
+	YokujouCond |= 1
 ;嗜虐快楽経験が必要な場合
-SIF EXP:嗜虐快楽経験 < B
-	I |= 2
+SIF EXP:嗜虐快楽経験 < ExpRequire
+	YokujouCond |= 2
 
-SIF I == 0
-	Z = 1
+SIF YokujouCond == 0
+	ABLUPAble = 1
 
-RETURN 1
+RETURN ABLUPAble
 
+;自動でABLを上げるメソッド（J+に倣って実装）
+@AUT_ABLUP10
+#DIM LvUPNum = 0
+
+;上げられなかったら無視
+CALL ISABLUP10
+SIF RESULT == 0
+	RETURN 0
+
+;欲情の珠
+FOR COUNT, 0, 9999 - ABL:サドっ気
+	CALL DECIDE_ABLUP10
+	IF YokujouCond != 0
+		BREAK
+	ENDIF
+	LvUPNum += 1
+	ABL:サドっ気 += 1
+	JUEL:欲情 -=  YokujouJuelRequire
+NEXT
+CALL PRINT_AUT_ABLUP(10, 6, -1, -1, LvUPNum)
+LvUPNum = 0

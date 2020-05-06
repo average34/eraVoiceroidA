@@ -46,7 +46,7 @@ ELSEIF ABL:噴乳中毒 == 8 && TALENT:中毒しやすい == 0 && TALENT:淫乳 
 ENDIF
 
 
-;B感覚が必要
+;BJuelRequire感覚が必要
 PRINTS ABLNAME:6
 PRINTV ABL:噴乳中毒 + 1
 PRINTL LV以上、かつ
@@ -54,29 +54,29 @@ PRINTL LV以上、かつ
 PRINT [0] - 
 PRINTS PALAMNAME:6
 PRINT の珠×
-PRINTV A
+PRINTV YokujouJuelRequire
 PRINT 、
 PRINTS PALAMNAME:3
 PRINT の珠×
-PRINTV B
+PRINTV BJuelRequire
 PRINT 、
 PRINTS PALAMNAME:7
 PRINT の珠×
-PRINTV C
+PRINTV KuppukuJuelRequire
 PRINT 、
 PRINTS EXPNAME:54
-PRINTV D
+PRINTV ExpRequire
 PRINT 以上
 PRINT ……
 
-IF I == 0
+IF FirstCond == 0
 	PRINT ＯＫ
 ELSE
-	SIF I & 1
+	SIF FirstCond & 1
 		PRINT 珠不足 
-	SIF I & 2
+	SIF FirstCond & 2
 		PRINT 経験不足 
-	SIF I & 4
+	SIF FirstCond & 4
 		PRINT 能力不足 
 ENDIF
 PRINTL 
@@ -89,22 +89,22 @@ PRINTL [100] - やめる
 INPUT
 IF (RESULT < 0 || RESULT > 1) && RESULT != 100
 	RESTART
-ELSEIF I != 0 && RESULT == 0
+ELSEIF FirstCond != 0 && RESULT == 0
 	PRINTL 条件を満たしていません
 	RESTART
-ELSEIF J != 0 && RESULT == 1
-	PRINTL 条件を満たしていません
-	RESTART
+;ELSEIF SecondCond != 0 && RESULT == 1
+;	PRINTL 条件を満たしていません
+;	RESTART
 ELSEIF RESULT == 100
 	RETURN 0
 ENDIF
 
 ABL:噴乳中毒 += 1
 
-IF RESULT == 0 || RESULT == 1
-	JUEL:欲情 -= A
-	JUEL:快Ｂ -= B
-	JUEL:屈服 -= C
+IF RESULT == 0 ;|| RESULT == 1
+	JUEL:欲情 -= YokujouJuelRequire
+	JUEL:快Ｂ -= BJuelRequire
+	JUEL:屈服 -= KuppukuJuelRequire
 ENDIF
 
 PRINTS ABLNAME:19
@@ -115,144 +115,167 @@ PRINTW になりました
 
 ;噴乳中毒LVUP判定
 @DECIDE_ABLUP19
+#DIM ABLUPAble = 0
 ;条件別にＯＫかダメかを記録する
-I = 0
-;能力アップ可能なら1にする
-Z = 0
+FirstCond = 0
+
 
 IF ABL:噴乳中毒 == 0
-	A = 2500
-	B = 6000
-	C = 1000
-	D = 10
+	YokujouJuelRequire = 2500
+	BJuelRequire = 6000
+	KuppukuJuelRequire = 1000
+	ExpRequire = 10
 ELSEIF ABL:噴乳中毒 == 1
-	A = 5000
-	B = 14000
-	C = 2500
-	D = 25
+	YokujouJuelRequire = 5000
+	BJuelRequire = 14000
+	KuppukuJuelRequire = 2500
+	ExpRequire = 25
 ELSEIF ABL:噴乳中毒 == 2
-	A = 9000
-	B = 27000
-	C = 4800
-	D = 80
+	YokujouJuelRequire = 9000
+	BJuelRequire = 27000
+	KuppukuJuelRequire = 4800
+	ExpRequire = 80
 ELSEIF ABL:噴乳中毒 == 3
-	A = 17000
-	B = 65000
-	C = 10000
-	D = 150
+	YokujouJuelRequire = 17000
+	BJuelRequire = 65000
+	KuppukuJuelRequire = 10000
+	ExpRequire = 150
 ELSEIF ABL:噴乳中毒 == 4
-	A = 30000
-	B = 80000
-	C = 25000
-	D = 250
+	YokujouJuelRequire = 30000
+	BJuelRequire = 80000
+	KuppukuJuelRequire = 25000
+	ExpRequire = 250
 ELSEIF ABL:噴乳中毒 == 5
-	A = 35000
-	B = 100000
-	C = 30000
-	D = 350
+	YokujouJuelRequire = 35000
+	BJuelRequire = 100000
+	KuppukuJuelRequire = 30000
+	ExpRequire = 350
 ELSEIF ABL:噴乳中毒 == 6
-	A = 40000
-	B = 120000
-	C = 35000
-	D = 500
+	YokujouJuelRequire = 40000
+	BJuelRequire = 120000
+	KuppukuJuelRequire = 35000
+	ExpRequire = 500
 ELSEIF ABL:噴乳中毒 == 7
-	A = 45000
-	B = 140000
-	C = 40000
-	D = 600
+	YokujouJuelRequire = 45000
+	BJuelRequire = 140000
+	KuppukuJuelRequire = 40000
+	ExpRequire = 600
 ELSEIF ABL:噴乳中毒 == 8
-	A = 50000
-	B = 160000
-	C = 45000
-	D = 700
+	YokujouJuelRequire = 50000
+	BJuelRequire = 160000
+	KuppukuJuelRequire = 45000
+	ExpRequire = 700
 ELSEIF ABL:噴乳中毒 == 9
-	A = 60000
-	B = 200000
-	C = 50000
-	D = 800
+	YokujouJuelRequire = 60000
+	BJuelRequire = 200000
+	KuppukuJuelRequire = 50000
+	ExpRequire = 800
 ENDIF
 
 ;一線越えない
 IF TALENT:一線越えない && (TALENT:恋慕 == 0 && TALENT:淫乱 == 0 && TALENT:服従 == 0 && TALENT:親愛 == 0 && TALENT:娼婦 == 0 && TALENT:隷属 == 0)
-	TIMES A , 2.00
-	TIMES B , 2.00
-	TIMES C , 2.00
-	TIMES D , 2.00
+	TIMES YokujouJuelRequire , 2.00
+	TIMES BJuelRequire , 2.00
+	TIMES KuppukuJuelRequire , 2.00
+	TIMES ExpRequire , 2.00
 ENDIF
 ;中毒しやすい
 IF TALENT:中毒しやすい
-	TIMES A , 0.50
-	TIMES B , 0.50
-	TIMES C , 0.50
-	TIMES D , 0.50
+	TIMES YokujouJuelRequire , 0.50
+	TIMES BJuelRequire , 0.50
+	TIMES KuppukuJuelRequire , 0.50
+	TIMES ExpRequire , 0.50
 ENDIF
 ;貧乳
 IF TALENT:貧乳
-	TIMES B , 0.90
+	TIMES BJuelRequire , 0.90
 ENDIF
 ;絶壁
 IF TALENT:絶壁
-	TIMES B , 0.70
+	TIMES BJuelRequire , 0.70
 ENDIF
 ;巨乳
 IF TALENT:巨乳
-	TIMES B , 1.10
+	TIMES BJuelRequire , 1.10
 ENDIF
 ;爆乳
 IF TALENT:爆乳
-	TIMES B , 1.30
+	TIMES BJuelRequire , 1.30
 ENDIF
 
 ;ＬＶ２から３に上げるときは異常経験必要（素質：[中毒しやすい][淫乳]なら無視できる）
 IF ABL:噴乳中毒 == 2 && TALENT:中毒しやすい == 0 && TALENT:淫乳 == 0
 	IF EXP:異常経験 == 0
 		;異常経験が不足
-		I |= 2
-		J |= 2
+		FirstCond |= 2
+		SecondCond |= 2
 	ENDIF
 ;ＬＶ３から４に上げるときは異常経験2以上必要（素質：[中毒しやすい][淫乳]なら無視できる）
 ELSEIF ABL:噴乳中毒 == 3 && TALENT:中毒しやすい == 0 && TALENT:淫乳 == 0
 	IF EXP:異常経験 < 2
 		;異常経験が不足
-		I |= 2
-		J |= 2
+		FirstCond |= 2
+		SecondCond |= 2
 	ENDIF
 ;ＬＶ４から５に上げるときは異常経験3以上必要（素質：[中毒しやすい][淫乳]なら無視できる）
 ELSEIF ABL:噴乳中毒 == 4 && TALENT:中毒しやすい == 0 && TALENT:淫乳 == 0
 	IF EXP:異常経験 < 3
 		;異常経験が不足
-		I |= 2
-		J |= 2
+		FirstCond |= 2
+		SecondCond |= 2
 	ENDIF
 ;ＬＶ８から９に上げるときは異常経験7以上必要（素質：[中毒しやすい][淫乳]なら無視できる）
 ELSEIF ABL:噴乳中毒 == 8 && TALENT:中毒しやすい == 0 && TALENT:淫乳 == 0
 	IF EXP:異常経験 < 7
 		;異常経験が不足
-		I |= 2
-		J |= 2
+		FirstCond |= 2
+		SecondCond |= 2
 	ENDIF
 ENDIF
 
 ;B感覚が必要
 IF ABL:Ｂ感覚 < ABL:噴乳中毒 + 1
-	I |= 4
-	J |= 4
+	FirstCond |= 4
+	SecondCond |= 4
 ENDIF
 
 ;欲情の珠で上げる
-SIF JUEL:欲情 < A
-	I |= 1
-;快Bの珠で上げる
-SIF JUEL:快Ｂ < B
-	I |= 1
+SIF JUEL:欲情 < YokujouJuelRequire
+	FirstCond |= 1
+;快BJuelRequireの珠で上げる
+SIF JUEL:快Ｂ < BJuelRequire
+	FirstCond |= 1
 ;屈服の珠で上げる
-SIF JUEL:屈服 < C
-	I |= 1
+SIF JUEL:屈服 < KuppukuJuelRequire
+	FirstCond |= 1
 ;噴乳経験が必要
-SIF EXP:噴乳経験 < D
-	I |= 2
-IF I == 0
-	Z = 1
+SIF EXP:噴乳経験 < ExpRequire
+	FirstCond |= 2
+IF FirstCond == 0
+	ABLUPAble = 1
 ENDIF
-RETURN 1
+RETURN ABLUPAble
 
+;自動でABLを上げるメソッド（J+に倣って実装）
+@AUT_ABLUP19
+#DIM LvUPNum = 0
+
+;上げられなかったら無視
+CALL ISABLUP19
+SIF RESULT == 0
+	RETURN 0
+
+;□の珠
+FOR COUNT, 0, 9999 - ABL:噴乳中毒
+	CALL DECIDE_ABLUP19
+	IF FirstCond != 0
+		BREAK
+	ENDIF
+	LvUPNum += 1
+	ABL:噴乳中毒 += 1
+	JUEL:欲情 -= YokujouJuelRequire
+	JUEL:快Ｂ -= BJuelRequire
+	JUEL:屈服 -= KuppukuJuelRequire
+NEXT
+CALL PRINT_AUT_ABLUP(19, 3, 6, 7, LvUPNum)
+LvUPNum = 0
