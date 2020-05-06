@@ -8,12 +8,7 @@ ELSEIF ABL:奉仕精神 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALE
 ENDIF
 
 CALL DECIDE_ABLUP7
-
-IF Z == 0
-	RETURN 0
-ELSE
-	RETURN 1
-ENDIF
+RETURN RESULT
 
 
 ;奉仕精神
@@ -48,97 +43,97 @@ PRINTL LV以上、かつ
 PRINT [0] - 
 PRINTS PALAMNAME:7
 PRINT の珠×
-PRINTV A
-IF E > 0
+PRINTV KuppukuJuelRequire
+IF ExpRequire:0 > 0
 	PRINT 、
 	PRINTS EXPNAME:2
-	PRINTV E
+	PRINTV ExpRequire:0
 	PRINT 以上
 	PRINT 、
 	PRINTS EXPNAME:20
-	PRINTV E
+	PRINTV ExpRequire:0
 	PRINT 以上
 ENDIF
 PRINT ……
 
-IF I == 0
+IF KuppukuCond == 0
 	PRINT ＯＫ
 ELSE
-	SIF I & 1
+	SIF KuppukuCond & 1
 		PRINT 珠不足 
-	SIF I & 2
+	SIF KuppukuCond & 2
 		PRINT 経験不足 
-	SIF I & 4
+	SIF KuppukuCond & 4
 		PRINT 能力不足 
 ENDIF
 PRINTL 
 
-IF B > 0
+IF KyoujunJuelRequire > 0
 	;恭順の珠で上げる
-	SIF JUEL:恭順 < B
-		J |= 1
+	SIF JUEL:恭順 < KyoujunJuelRequire
+		KyoujunCond |= 1
 	;この場合奉仕快楽経験が必要なことあり
-	SIF EXP:奉仕快楽経験 < D
-		J |= 2
+	SIF EXP:奉仕快楽経験 < ExpRequire:1
+		KyoujunCond |= 2
 
 	PRINT [1] - 
 	PRINTS PALAMNAME:5
 	PRINT の珠×
-	PRINTV B
-	IF D > 0
+	PRINTV KyoujunJuelRequire
+	IF ExpRequire:1 > 0
 		PRINT 、
 		PRINTS EXPNAME:21
-		PRINTV D
+		PRINTV ExpRequire:1
 		PRINT 以上
 	ENDIF
 	PRINT ……
 	
-	IF J == 0
+	IF KyoujunCond == 0
 		PRINT ＯＫ
 	ELSE
-		SIF J & 1
+		SIF KyoujunCond & 1
 			PRINT 珠不足 
-		SIF J & 2
+		SIF KyoujunCond & 2
 			PRINT 経験不足 
-		SIF J & 4
+		SIF KyoujunCond & 4
 			PRINT 能力不足 
 	ENDIF
 	PRINTL 
 ELSE
-	J = 256
+	KyoujunCond = 256
 ENDIF
 
-IF C > 0
+IF ShutokuJuelRequire > 0
 	;習得の珠で上げる
-	SIF JUEL:習得 < C
-		K |= 1
+	SIF JUEL:習得 < ShutokuJuelRequire
+		ShutokuCond |= 1
 	;この場合絶頂経験が１以上必要
 	SIF EXP:絶頂経験 < 1
-		K |= 2
+		ShutokuCond |= 2
 
 	PRINT [2] - 
 	PRINTS PALAMNAME:8
 	PRINT の珠×
-	PRINTV C
+	PRINTV ShutokuJuelRequire
 	PRINT 、
 	PRINTS EXPNAME:2
 	PRINTV 1
 	PRINT 以上
 	PRINT ……
 
-	IF K == 0
+	IF ShutokuCond == 0
 		PRINT ＯＫ
 	ELSE
-		SIF K & 1
+		SIF ShutokuCond & 1
 			PRINT 珠不足 
-		SIF K & 2
+		SIF ShutokuCond & 2
 			PRINT 経験不足 
-		SIF K & 4
+		SIF ShutokuCond & 4
 			PRINT 能力不足 
 	ENDIF
 	PRINTL 
 ELSE
-	K = 256
+	ShutokuCond = 256
 ENDIF
 
 PRINTL [100] - やめる
@@ -147,17 +142,17 @@ $INPUT_LOOP
 INPUT
 IF (RESULT < 0 || RESULT > 2) && RESULT != 100
 	GOTO INPUT_LOOP
-ELSEIF I != 0 && RESULT == 0
+ELSEIF KuppukuCond != 0 && RESULT == 0
 	PRINTL 条件を満たしていません再入力してください
 	GOTO INPUT_LOOP
-ELSEIF J == 256 && RESULT == 1
+ELSEIF KyoujunCond == 256 && RESULT == 1
 	GOTO INPUT_LOOP
-ELSEIF J != 0 && RESULT == 1
+ELSEIF KyoujunCond != 0 && RESULT == 1
 	PRINTL 条件を満たしていません再入力してください
 	GOTO INPUT_LOOP
-ELSEIF K == 256 && RESULT == 2
+ELSEIF ShutokuCond == 256 && RESULT == 2
 	GOTO INPUT_LOOP
-ELSEIF K != 0 && RESULT == 2
+ELSEIF ShutokuCond != 0 && RESULT == 2
 	PRINTL 条件を満たしていません再入力してください
 	GOTO INPUT_LOOP
 ELSEIF RESULT == 100
@@ -167,11 +162,11 @@ ENDIF
 ABL:奉仕精神 += 1
 
 IF RESULT == 0
-	JUEL:屈服 -= A
+	JUEL:屈服 -= KuppukuJuelRequire
 ELSEIF RESULT == 1
-	JUEL:恭順 -= B
+	JUEL:恭順 -= KyoujunJuelRequire
 ELSEIF RESULT == 2
-	JUEL:習得 -= C
+	JUEL:習得 -= ShutokuJuelRequire
 ENDIF
 
 PRINTS ABLNAME:7
@@ -181,164 +176,215 @@ PRINTW になりました
 
 ;奉仕精神LvUP判定
 @DECIDE_ABLUP7
+#DIM ABLUPAble = 0
 ;条件別にＯＫかダメかを記録する
-I = 0
-J = 0
-K = 0
+VARSET KuppukuCond, 0
+VARSET KyoujunCond, 0
+VARSET ShutokuCond, 0
+VARSET ExpCond, 0
+VARSET ExpRequire, 0
 ;能力アップ可能なら1にする
-Z = 0
+ABLUPAble = 0
 
 IF ABL:奉仕精神 == 0
-	A = 100
-	B = 20
-	C = 100
-	D = 5
-	E = 5
+	KuppukuJuelRequire = 100
+	KyoujunJuelRequire = 20
+	ShutokuJuelRequire = 100
+	ExpRequire:1 = 5
+	ExpRequire:0 = 5
 ELSEIF ABL:奉仕精神 == 1
-	A = 1200
-	B = 100
-	C = 0
-	D = 5
-	E = 10
+	KuppukuJuelRequire = 1200
+	KyoujunJuelRequire = 100
+	ShutokuJuelRequire = 0
+	ExpRequire:1 = 5
+	ExpRequire:0 = 10
 ELSEIF ABL:奉仕精神 == 2
-	A = 5000
-	B = 600
-	C = 0
-	D = 20
-	E = 20
+	KuppukuJuelRequire = 5000
+	KyoujunJuelRequire = 600
+	ShutokuJuelRequire = 0
+	ExpRequire:1 = 20
+	ExpRequire:0 = 20
 ELSEIF ABL:奉仕精神 == 3
-	A = 10000
-	B = 2000
-	C = 0
-	D = 50
-	E = 20
+	KuppukuJuelRequire = 10000
+	KyoujunJuelRequire = 2000
+	ShutokuJuelRequire = 0
+	ExpRequire:1 = 50
+	ExpRequire:0 = 20
 ELSEIF ABL:奉仕精神 == 4
-	A = 30000
-	B = 8000
-	C = 0
-	D = 100
-	E = 30
+	KuppukuJuelRequire = 30000
+	KyoujunJuelRequire = 8000
+	ShutokuJuelRequire = 0
+	ExpRequire:1 = 100
+	ExpRequire:0 = 30
 ELSEIF ABL:奉仕精神 == 5
-	A = 35000
-	B = 8500
-	C = 0
-	D = 150
-	E = 40
+	KuppukuJuelRequire = 35000
+	KyoujunJuelRequire = 8500
+	ShutokuJuelRequire = 0
+	ExpRequire:1 = 150
+	ExpRequire:0 = 40
 ELSEIF ABL:奉仕精神 == 6
-	A = 40000
-	B = 10000
-	C = 0
-	D = 200
-	E = 100
+	KuppukuJuelRequire = 40000
+	KyoujunJuelRequire = 10000
+	ShutokuJuelRequire = 0
+	ExpRequire:1 = 200
+	ExpRequire:0 = 100
 ELSEIF ABL:奉仕精神 == 7
-	A = 45000
-	B = 15000
-	C = 0
-	D = 250
-	E = 150
+	KuppukuJuelRequire = 45000
+	KyoujunJuelRequire = 15000
+	ShutokuJuelRequire = 0
+	ExpRequire:1 = 250
+	ExpRequire:0 = 150
 ELSEIF ABL:奉仕精神 == 8
-	A = 50000
-	B = 20000
-	C = 0
-	D = 300
-	E = 200
+	KuppukuJuelRequire = 50000
+	KyoujunJuelRequire = 20000
+	ShutokuJuelRequire = 0
+	ExpRequire:1 = 300
+	ExpRequire:0 = 200
 ELSEIF ABL:奉仕精神 == 9
-	A = 60000
-	B = 30000
-	C = 0
-	D = 400
-	E = 300
+	KuppukuJuelRequire = 60000
+	KyoujunJuelRequire = 30000
+	ShutokuJuelRequire = 0
+	ExpRequire:1 = 400
+	ExpRequire:0 = 300
 ENDIF
 
 ;恋慕
 SIF TALENT:恋慕
-	TIMES B , 0.80
+	TIMES KyoujunJuelRequire , 0.80
 ;親愛
 SIF TALENT:親愛
-	TIMES B , 0.60
+	TIMES KyoujunJuelRequire , 0.60
 ;服従
 SIF TALENT:服従
-	TIMES A , 0.70
+	TIMES KuppukuJuelRequire , 0.70
 ;隷属
 SIF TALENT:隷属
-	TIMES A , 0.40
+	TIMES KuppukuJuelRequire , 0.40
 ;一線越えない
 IF TALENT:一線越えない && (TALENT:恋慕 == 0 && TALENT:淫乱 == 0 && TALENT:服従 == 0 && TALENT:親愛 == 0 && TALENT:娼婦 == 0 && TALENT:隷属 == 0)
-	TIMES A , 2.00
-	TIMES B , 2.00
-	TIMES C , 2.00
-	TIMES D , 2.00
-	TIMES E , 2.00
+	TIMES KuppukuJuelRequire , 2.00
+	TIMES KyoujunJuelRequire , 2.00
+	TIMES ShutokuJuelRequire , 2.00
+	TIMES ExpRequire:1 , 2.00
+	TIMES ExpRequire:0 , 2.00
 ENDIF
 
 ;従順が奉仕精神＋１レベルでないといけない
 IF ABL:従順 < ABL:奉仕精神+1
 	;従順が不足
-	I |= 4
-	J |= 4
-	K |= 4
+	KuppukuCond |= 4
+	KyoujunCond |= 4
+	ShutokuCond |= 4
 ENDIF
 
 ;ＬＶ４から５に上げるときは異常経験以上必要（素質：[恋慕][親愛]なら無視できる）
 IF ABL:奉仕精神 == 4 && TALENT:恋慕 == 0 && TALENT:親愛 == 0
 	IF EXP:異常経験 == 0
 		;異常経験が不足
-		I |= 2
-		J |= 2
-		K |= 2
+		KuppukuCond |= 2
+		KyoujunCond |= 2
+		ShutokuCond |= 2
 	ENDIF
 ;ＬＶ８から９に上げるときは異常経験5以上必要（素質：[恋慕][親愛]なら無視できる）
 ELSEIF ABL:奉仕精神 == 8 && TALENT:恋慕 == 0 && TALENT:親愛 == 0
 	IF EXP:異常経験 < 5
 		;異常経験が不足
-		I |= 2
-		J |= 2
-		K |= 2
+		KuppukuCond |= 2
+		KyoujunCond |= 2
+		ShutokuCond |= 2
 	ENDIF
 ENDIF
 
 ;屈服の珠で上げる
-SIF JUEL:屈服 < A
-	I |= 1
+SIF JUEL:屈服 < KuppukuJuelRequire
+	KuppukuCond |= 1
 ;絶頂経験が必要な場合
-SIF EXP:絶頂経験 < E
-	I |= 2
+SIF EXP:絶頂経験 < ExpRequire:0
+	KuppukuCond |= 2
 ;精液経験が必要な場合
-SIF EXP:精液経験 < E
-	I |= 2
+SIF EXP:精液経験 < ExpRequire:0
+	KuppukuCond |= 2
 
-IF I == 0
-	Z = 1
+IF KuppukuCond == 0
+	ABLUPAble = 1
 ENDIF
 
-IF B > 0
+IF KyoujunJuelRequire > 0
 	;恭順の珠で上げる
-	SIF JUEL:恭順 < B
-		J |= 1
+	SIF JUEL:恭順 < KyoujunJuelRequire
+		KyoujunCond |= 1
 	;この場合奉仕快楽経験が必要なことあり
-	SIF EXP:奉仕快楽経験 < D
-		J |= 2
+	SIF EXP:奉仕快楽経験 < ExpRequire:1
+		KyoujunCond |= 2
 	
-	IF J == 0
-		Z = 1
+	IF KyoujunCond == 0
+		ABLUPAble = 1
 	ENDIF
 ELSE
-	J = 256
+	KyoujunCond = 256
 ENDIF
 
-IF C > 0
+IF ShutokuJuelRequire > 0
 	;習得の珠で上げる
-	SIF JUEL:習得 < C
-		K |= 1
+	SIF JUEL:習得 < ShutokuJuelRequire
+		ShutokuCond |= 1
 	;この場合絶頂経験が１以上必要
 	SIF EXP:絶頂経験 < 1
-		K |= 2
+		ShutokuCond |= 2
 
-	IF K == 0
-		Z = 1
+	IF ShutokuCond == 0
+		ABLUPAble = 1
 	ENDIF
 ELSE
-	K = 256
+	ShutokuCond = 256
 ENDIF
-RETURN 1
+RETURN ABLUPAble
 
+
+;自動でABLを上げるメソッド（J+に倣って実装）
+@AUT_ABLUP7
+#DIM LvUPNum = 0
+
+;上げられなかったら無視
+CALL ISABLUP7
+SIF RESULT == 0
+	RETURN 0
+
+;屈服の珠
+FOR COUNT, 0, 9999 - ABL:奉仕精神
+	CALL DECIDE_ABLUP7
+	IF KuppukuCond != 0
+		BREAK
+	ENDIF
+	LvUPNum += 1
+	ABL:奉仕精神 += 1
+	JUEL:屈服 -=  KuppukuJuelRequire
+NEXT
+CALL PRINT_AUT_ABLUP(7, 7, -1, -1, LvUPNum)
+LvUPNum = 0
+
+;恭順の珠
+FOR COUNT, 0, 9999 - ABL:奉仕精神
+	CALL DECIDE_ABLUP7
+	IF KyoujunCond != 0
+		BREAK
+	ENDIF
+	LvUPNum += 1
+	ABL:奉仕精神 += 1
+	JUEL:恭順 -=  KyoujunJuelRequire
+NEXT
+CALL PRINT_AUT_ABLUP(7, 5, -1, -1, LvUPNum)
+LvUPNum = 0
+
+;習得の珠
+FOR COUNT, 0, 9999 - ABL:奉仕精神
+	CALL DECIDE_ABLUP7
+	IF ShutokuCond != 0
+		BREAK
+	ENDIF
+	LvUPNum += 1
+	ABL:奉仕精神 += 1
+	JUEL:習得 -=  ShutokuJuelRequire
+NEXT
+CALL PRINT_AUT_ABLUP(7, 8, -1, -1, LvUPNum)
+LvUPNum = 0

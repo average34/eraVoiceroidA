@@ -9,11 +9,7 @@ ENDIF
 
 CALL DECIDE_ABLUP9
 
-IF Z == 0
-	RETURN 0
-ELSE
-	RETURN 1
-ENDIF
+RETURN RESULT
 
 
 ;マゾっ気
@@ -44,51 +40,51 @@ ELSEIF ABL:マゾっ気 == 4 && TALENT:解放 == 0
 	PRINTL 5以上、かつ
 ENDIF
 
-IF B > 0
+IF KuppukuJuelRequire:0 > 0
 	PRINT [0] - 
 	PRINTS PALAMNAME:10
-	PRINT の珠×
-	PRINTV A
+	PRINT の珠マゾっ気
+	PRINTV KutsuJuelRequire:0
 	PRINT 、
 	PRINTS PALAMNAME:6
-	PRINT の珠×
-	PRINTV B
-	IF C > 0
+	PRINT の珠マゾっ気
+	PRINTV KuppukuJuelRequire:0
+	IF ExpRequire > 0
 		PRINT 、
 		PRINTS EXPNAME:30
-		PRINTV C
+		PRINTV ExpRequire
 		PRINT 以上
 	ENDIF
 	PRINT ……
 
-	IF I == 0
+	IF FirstCond == 0
 		PRINT ＯＫ
 	ELSE
-		SIF I & 1
+		SIF FirstCond & 1
 			PRINT 珠不足 
-		SIF I & 2
+		SIF FirstCond & 2
 			PRINT 経験不足 
-		SIF I & 4
+		SIF FirstCond & 4
 			PRINT 能力不足 
 	ENDIF
 	PRINTL 
 ELSE
-	I = 256
+	FirstCond = 256
 ENDIF
 
-IF D > 0
+IF KutsuJuelRequire:1 > 0
 	PRINT [1] - 
 	PRINTS PALAMNAME:10
-	PRINT の珠×
-	PRINTV D
+	PRINT の珠マゾっ気
+	PRINTV KutsuJuelRequire:1
 	PRINT 、
 	PRINTS PALAMNAME:7
-	PRINT の珠×
-	PRINTV E
-	IF C > 0
+	PRINT の珠マゾっ気
+	PRINTV KuppukuJuelRequire:1
+	IF ExpRequire > 0
 		PRINT 、
 		PRINTS EXPNAME:30
-		PRINTV C
+		PRINTV ExpRequire
 		PRINT 以上
 	ENDIF
 	PRINT 、
@@ -97,19 +93,19 @@ IF D > 0
 	PRINT 以上
 	PRINT ……
 	
-	IF J == 0
+	IF SecondCond == 0
 		PRINT ＯＫ
 	ELSE
-		SIF J & 1
+		SIF SecondCond & 1
 			PRINT 珠不足 
-		SIF J & 2
+		SIF SecondCond & 2
 			PRINT 経験不足 
-		SIF J & 4
+		SIF SecondCond & 4
 			PRINT 能力不足 
 	ENDIF
 	PRINTL 
 ELSE
-	J = 256
+	SecondCond = 256
 ENDIF
 
 PRINTL [100] - やめる
@@ -118,12 +114,12 @@ PRINTL [100] - やめる
 INPUT
 IF (RESULT < 0 || RESULT > 1) && RESULT != 100
 	RESTART
-ELSEIF I != 0 && RESULT == 0
+ELSEIF FirstCond != 0 && RESULT == 0
 	PRINTL 条件を満たしていません
 	RESTART
-ELSEIF J == 256 && RESULT == 1
+ELSEIF SecondCond == 256 && RESULT == 1
 	RESTART
-ELSEIF J != 0 && RESULT == 1
+ELSEIF SecondCond != 0 && RESULT == 1
 	PRINTL 条件を満たしていません
 	RESTART
 ELSEIF RESULT == 100
@@ -133,11 +129,11 @@ ENDIF
 ABL:マゾっ気 += 1
 
 IF RESULT == 0
-	JUEL:苦痛 -= A
-	JUEL:欲情 -= B
+	JUEL:苦痛 -= KutsuJuelRequire:0
+	JUEL:欲情 -= KuppukuJuelRequire:0
 ELSEIF RESULT == 1
-	JUEL:苦痛 -= D
-	JUEL:屈服 -= E
+	JUEL:苦痛 -= KutsuJuelRequire:1
+	JUEL:屈服 -= KuppukuJuelRequire:1
 ENDIF
 
 PRINTS ABLNAME:9
@@ -147,89 +143,88 @@ PRINTW になりました
 
 ;マゾっ気LVUP判定
 @DECIDE_ABLUP9
+#DIM ABLUPAble = 0
 ;条件別にＯＫかダメかを記録する
-I = 0
-J = 0
-;能力アップ可能なら1にする
-Z = 0
+FirstCond = 0
+SecondCond = 0
 
 IF ABL:マゾっ気 == 0
-	A = 100
-	B = 100
-	C = 0
-	D = 100
-	E = 100
+	KutsuJuelRequire:0 = 100
+	KuppukuJuelRequire:0 = 100
+	ExpRequire = 0
+	KutsuJuelRequire:1 = 100
+	KuppukuJuelRequire:1 = 100
 ELSEIF ABL:マゾっ気 == 1
-	A = 500
-	B = 500
-	C = 0
-	D = 500
-	E = 300
+	KutsuJuelRequire:0 = 500
+	KuppukuJuelRequire:0 = 500
+	ExpRequire = 0
+	KutsuJuelRequire:1 = 500
+	KuppukuJuelRequire:1 = 300
 ELSEIF ABL:マゾっ気 == 2
-	A = 1200
-	B = 1000
-	C = 0
-	D = 1500
-	E = 1000
+	KutsuJuelRequire:0 = 1200
+	KuppukuJuelRequire:0 = 1000
+	ExpRequire = 0
+	KutsuJuelRequire:1 = 1500
+	KuppukuJuelRequire:1 = 1000
 ELSEIF ABL:マゾっ気 == 3
-	A = 0
-	B = 0
-	C = 10
-	D = 3000
-	E = 6000
+	KutsuJuelRequire:0 = 0
+	KuppukuJuelRequire:0 = 0
+	ExpRequire = 10
+	KutsuJuelRequire:1 = 3000
+	KuppukuJuelRequire:1 = 6000
 ELSEIF ABL:マゾっ気 == 4
-	A = 0
-	B = 0
-	C = 50
-	D = 5000
-	E = 12000
+	KutsuJuelRequire:0 = 0
+	KuppukuJuelRequire:0 = 0
+	ExpRequire = 50
+	KutsuJuelRequire:1 = 5000
+	KuppukuJuelRequire:1 = 12000
 ELSEIF ABL:マゾっ気 == 5
-	A = 0
-	B = 0
-	C = 100
-	D = 8000
-	E = 15000
+	KutsuJuelRequire:0 = 0
+	KuppukuJuelRequire:0 = 0
+	ExpRequire = 100
+	KutsuJuelRequire:1 = 8000
+	KuppukuJuelRequire:1 = 15000
 ELSEIF ABL:マゾっ気 == 6
-	A = 0
-	B = 0
-	C = 150
-	D = 12000
-	E = 20000
+	KutsuJuelRequire:0 = 0
+	KuppukuJuelRequire:0 = 0
+	ExpRequire = 150
+	KutsuJuelRequire:1 = 12000
+	KuppukuJuelRequire:1 = 20000
 ELSEIF ABL:マゾっ気 == 7
-	A = 0
-	B = 0
-	C = 200
-	D = 15000
-	E = 25000
+	KutsuJuelRequire:0 = 0
+	KuppukuJuelRequire:0 = 0
+	ExpRequire = 200
+	KutsuJuelRequire:1 = 15000
+	KuppukuJuelRequire:1 = 25000
 ELSEIF ABL:マゾっ気 == 8
-	A = 0
-	B = 0
-	C = 250
-	D = 25000
-	E = 35000
+	KutsuJuelRequire:0 = 0
+	KuppukuJuelRequire:0 = 0
+	ExpRequire = 250
+	KutsuJuelRequire:1 = 25000
+	KuppukuJuelRequire:1 = 35000
 ELSEIF ABL:マゾっ気 == 9
-	A = 0
-	B = 0
-	C = 350
-	D = 30000
-	E = 40000
+	KutsuJuelRequire:0 = 0
+	KuppukuJuelRequire:0 = 0
+	ExpRequire = 350
+	KutsuJuelRequire:1 = 30000
+	KuppukuJuelRequire:1 = 40000
 ENDIF
 
 ;一線越えない
 IF TALENT:一線越えない && (TALENT:恋慕 == 0 && TALENT:淫乱 == 0 && TALENT:服従 == 0 && TALENT:親愛 == 0 && TALENT:娼婦 == 0 && TALENT:隷属 == 0)
-	TIMES A , 2.00
-	TIMES B , 2.00
-	TIMES C , 2.00
-	TIMES D , 2.00
-	TIMES E , 2.00
+	TIMES KutsuJuelRequire:0 , 2.00
+	TIMES KuppukuJuelRequire:0 , 2.00
+	TIMES ExpRequire , 2.00
+	TIMES KutsuJuelRequire:1 , 2.00
+	TIMES KuppukuJuelRequire:1 , 2.00
 ENDIF
 ;マゾ
 IF TALENT:マゾ
-	TIMES A , 0.50
-	TIMES B , 0.50
-	TIMES C , 0.50
-	TIMES D , 0.50
-	TIMES E , 0.50
+	TIMES KutsuJuelRequire:0 , 0.50
+	TIMES KuppukuJuelRequire:0 , 0.50
+	TIMES ExpRequire , 0.50
+	TIMES KutsuJuelRequire:1 , 0.50
+	TIMES KuppukuJuelRequire:1 , 0.50
 ENDIF
 
 
@@ -237,62 +232,98 @@ ENDIF
 IF ABL:マゾっ気 == 3 && TALENT:解放 == 0
 	IF EXP:異常経験 == 0
 		;異常経験が不足
-		I |= 2
-		J |= 2
+		FirstCond |= 2
+		SecondCond |= 2
 	ENDIF
 ;ＬＶ４から５に上げるときは異常経験3以上必要（素質：[解放]なら無視できる）
 ELSEIF ABL:マゾっ気 == 4 && TALENT:解放 == 0
 	IF EXP:異常経験 < 3
 		;異常経験が不足
-		I |= 2
-		J |= 2
+		FirstCond |= 2
+		SecondCond |= 2
 	ENDIF
 ;ＬＶ８から９に上げるときは異常経験5以上必要（素質：[解放]なら無視できる）
 ELSEIF ABL:マゾっ気 == 8 && TALENT:解放 == 0
 	IF EXP:異常経験 < 5
 		;異常経験が不足
-		I |= 2
-		J |= 2
+		FirstCond |= 2
+		SecondCond |= 2
 	ENDIF
 ENDIF
 
-IF B > 0
+IF KuppukuJuelRequire:0 > 0
 	;苦痛の珠で上げる
-	SIF JUEL:苦痛 < A
-		I |= 1
+	SIF JUEL:苦痛 < KutsuJuelRequire:0
+		FirstCond |= 1
 	;欲情の珠で上げる
-	SIF JUEL:欲情 < B
-		I |= 1
+	SIF JUEL:欲情 < KuppukuJuelRequire:0
+		FirstCond |= 1
 	;苦痛快楽経験が必要な場合
-	SIF EXP:苦痛快楽経験 < C
-		I |= 2
+	SIF EXP:苦痛快楽経験 < ExpRequire
+		FirstCond |= 2
 
-	IF I == 0
-		Z = 1
+	IF FirstCond == 0
+		ABLUPAble = 1
 	ENDIF
 ELSE
-	I = 256
+	FirstCond = 256
 ENDIF
 
-IF D > 0
+IF KutsuJuelRequire:1 > 0
 	;苦痛の珠で上げる
-	SIF JUEL:苦痛 < D
-		J |= 1
+	SIF JUEL:苦痛 < KutsuJuelRequire:1
+		SecondCond |= 1
 	;屈服の珠で上げる
-	SIF JUEL:屈服 < E
-		J |= 1
+	SIF JUEL:屈服 < KuppukuJuelRequire:1
+		SecondCond |= 1
 	;この場合苦痛快楽経験が必要なことあり
-	SIF EXP:苦痛快楽経験 < C
-		J |= 2
+	SIF EXP:苦痛快楽経験 < ExpRequire
+		SecondCond |= 2
 	;この場合絶頂経験が１以上必要
 	SIF EXP:絶頂経験 < 1
-		J |= 2
+		SecondCond |= 2
 	
-	IF J == 0
-		Z = 1
+	IF SecondCond == 0
+		ABLUPAble = 1
 	ENDIF
 ELSE
-	J = 256
+	SecondCond = 256
 ENDIF
-RETURN 1
+RETURN ABLUPAble
 
+;自動でABLを上げるメソッド（J+に倣って実装）
+@AUT_ABLUP9
+#DIM LvUPNum = 0
+
+;上げられなかったら無視
+CALL ISABLUP9
+SIF RESULT == 0
+	RETURN 0
+
+;第一条件
+FOR COUNT, 0, 9999 - ABL:マゾっ気
+	CALL DECIDE_ABLUP9
+	IF FirstCond != 0
+		BREAK
+	ENDIF
+	LvUPNum += 1
+	ABL:マゾっ気 += 1
+	JUEL:苦痛 -= KutsuJuelRequire:0
+	JUEL:欲情 -= KuppukuJuelRequire:0
+NEXT
+CALL PRINT_AUT_ABLUP(9, 7, 10, -1, LvUPNum)
+LvUPNum = 0
+
+;第二条件
+FOR COUNT, 0, 9999 - ABL:マゾっ気
+	CALL DECIDE_ABLUP9
+	IF SecondCond != 0
+		BREAK
+	ENDIF
+	LvUPNum += 1
+	ABL:マゾっ気 += 1
+	JUEL:苦痛 -= KutsuJuelRequire:1
+	JUEL:屈服 -= KuppukuJuelRequire:1
+NEXT
+CALL PRINT_AUT_ABLUP(9, 7, 10, -1, LvUPNum)
+LvUPNum = 0

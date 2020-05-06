@@ -9,8 +9,9 @@
 #DIM VCond, 10
 #DIM ACond, 10
 #DIM BCond, 10
-#DIM YokujouCond, 10
+
 #DIM KyoujunCond, 10
+#DIM YokujouCond, 10
 #DIM KuppukuCond, 10
 #DIM ShutokuCond, 10
 #DIM ChijouCond, 10
@@ -19,19 +20,24 @@
 
 #DIM HiteiCond, 10
 
+#DIM FirstCond, 10
+#DIM SecondCond, 10
+#DIM ThirdCond, 10
+
 ;ABLを上げる場合に必要な珠の数
-#DIM CJuelRequire
-#DIM VJuelRequire
-#DIM AJuelRequire
-#DIM BJuelRequire
-#DIM YokujouJuelRequire
-#DIM KyoujunJuelRequire
-#DIM KuppukuJuelRequire
-#DIM ShutokuJuelRequire
-#DIM ChijouJuelRequire
-#DIM KutsuJuelRequire
-#DIM KyoufuJuelRequire
+#DIM CJuelRequire, 10
+#DIM VJuelRequire, 10
+#DIM AJuelRequire, 10
+#DIM BJuelRequire, 10
 
-#DIM HiteiJuelRequire
+#DIM KyoujunJuelRequire, 10
+#DIM YokujouJuelRequire, 10
+#DIM KuppukuJuelRequire, 10
+#DIM ShutokuJuelRequire, 10
+#DIM ChijouJuelRequire, 10
+#DIM KutsuJuelRequire, 10
+#DIM KyoufuJuelRequire, 10
+#DIM HiteiJuelRequire, 10
 
-#DIM ExpCond
+#DIM ExpCond, 10
+#DIM ExpRequire, 100
