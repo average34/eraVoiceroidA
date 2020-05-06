@@ -4,5 +4,15 @@
 ;	改造・再配布ご自由にどうぞ
 ;
 ;==================================================
-;#DIMS GLOBAL SAVEDATA E2T_GLOBAL
-#DEFINE SKILL CFLAG
+;ABLを上げる場合の各珠・経験の条件
+#DIM KyoufuCond, 10
+#DIM KyoujunCond, 10
+#DIM YokujouCond, 10
+#DIM KuppukuCond, 10
+
+#DIM KyoufuJuelRequire
+#DIM KyoujunJuelRequire
+#DIM YokujouJuelRequire
+#DIM KuppukuJuelRequire
+
+#DIM ExpCond
