@@ -81,7 +81,8 @@ PRINTW になりました
 
 ;
 @DECIDE_ABLUP99
-#DIM ABLUPAble = 0
+#DIM DYNAMIC ABLUPAble = 0
+ABLUPAble = 0
 ;条件別にＯＫかダメかを記録する
 KuppukuCond = 0
 
@@ -113,7 +114,7 @@ RETURN ABLUPAble
 
 ;自動でABLを上げるメソッド（J+に倣って実装）
 @AUT_ABLUP99
-#DIM LvUPNum = 0
+#DIM DYNAMIC LvUPNum = 0
 
 ;上げられなかったら無視
 CALL ISABLUP99

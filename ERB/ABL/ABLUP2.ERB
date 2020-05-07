@@ -66,7 +66,8 @@ PRINTW になりました
 
 ;技巧LVUP判定
 @DECIDE_ABLUP2
-#DIM ABLUPAble = 0
+#DIM DYNAMIC ABLUPAble = 0
+ABLUPAble = 0
 ;条件別にＯＫかダメかを記録する
 ShutokuCond = 0
 ;能力アップ可能なら1にする
@@ -118,7 +119,7 @@ RETURN ABLUPAble
 
 ;自動でABLを上げるメソッド（J+に倣って実装）
 @AUT_ABLUP2
-#DIM LvUPNum = 0
+#DIM DYNAMIC LvUPNum = 0
 
 ;上げられなかったら無視
 CALL ISABLUP2

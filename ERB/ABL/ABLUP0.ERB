@@ -1,5 +1,5 @@
 ﻿;従順の可否
-;返り値　1：可能　2：不可
+;返り値　1：可能　0：不可
 @ISABLUP0
 ;恋慕、親愛、服従、隷属はMAXLV10
 IF ABL:従順 >= 10
@@ -148,12 +148,8 @@ PRINTW になりました
 ;返り値　1：能力アップ可能　0：不可能
 @DECIDE_ABLUP0
 #FUNCTION
-#DIM ABLUPAble = 0
-
-
-
+#DIM DYNAMIC ABLUPAble = 0
 ;条件別にＯＫかダメかを記録する
-ExpCond = 1
 VARSET KyoufuCond, 0
 VARSET KyoujunCond, 0
 VARSET YokujouCond, 0
@@ -162,9 +158,12 @@ KyoufuCond:1 = 0
 KyoujunCond:1 = 0
 YokujouCond:1 = 0
 KuppukuCond:1 = 0
-;能力アップ可能なら1にする
-;Z = 0
 
+
+VARSET KyoufuJuelRequire, 0
+VARSET KyoujunJuelRequire, 0
+VARSET YokujouJuelRequire, 0
+VARSET KuppukuJuelRequire, 0
 
 ;恋慕、親愛、服従、隷属はMAXLV10
 IF ABL:従順 >= 10
@@ -255,7 +254,6 @@ IF ABL:従順 == 4 && TALENT:臆病 == 0 && TALENT:素直 == 0 && TALENT:恋慕 
 		KyoujunCond:1 |= 2
 		YokujouCond:1 |= 2
 		KuppukuCond:1 |= 2
-		ExpCond = 0
 	ENDIF
 ;ＬＶ７から８に上げるときは異常経験3以上必要（素質：[臆病][素直][恋慕][親愛]なら無視できる）
 ELSEIF ABL:従順 == 7 && TALENT:臆病 == 0 && TALENT:素直 == 0 && TALENT:恋慕 == 0 && TALENT:親愛 == 0
@@ -265,7 +263,6 @@ ELSEIF ABL:従順 == 7 && TALENT:臆病 == 0 && TALENT:素直 == 0 && TALENT:恋
 		KyoujunCond:1 |= 2
 		YokujouCond:1 |= 2
 		KuppukuCond:1 |= 2
-		ExpCond = 0
 	ENDIF
 ENDIF
 
@@ -313,7 +310,7 @@ RETURNF ABLUPAble
 
 ;自動でABLを上げるメソッド（J+に倣って実装）
 @AUT_ABLUP0
-#DIM LvUPNum = 0
+#DIM DYNAMIC LvUPNum = 0
 ;上げられなかったら無視
 CALL ISABLUP0
 SIF RESULT == 0
