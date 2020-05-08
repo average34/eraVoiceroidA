@@ -4,6 +4,7 @@ PRINTL 設定項目を選択してください
 PRINTL [0] - テキスト設定
 PRINTL [1] - 射精箇所設定
 PRINTL [2] - 着衣関連設定
+;PRINTL [3] - ショップ設定
 PRINTL [100]-戻る
 $INPUT_LOOP
 INPUT
@@ -13,6 +14,8 @@ ELSEIF RESULT == 1
 	CALL SAMENPLACE_SETTING
 ELSEIF RESULT == 2
 	CALL CLOTHES_SETTING
+;ELSEIF RESULT == 3
+;	CALL SHOPVIEW_SETTING
 ELSEIF RESULT == 100
 	RETURN 0
 ELSE
@@ -693,6 +696,39 @@ ELSEIF Z == 13
 	ENDIF
 ENDIF
 
-
-
+;----------------------------
+;ショップ設定
+;----------------------------
+;@SHOPVIEW_SETTING
+;
+;
+;PRINTL ショップの設定をしてください
+;PRINT 現在の設定：
+;IF FLAG:引き継ぎキャラをショップで表示 == 1 
+;	PRINTL 【引き継ぎキャラをショップで表示】
+;ELSEIF FLAG:引き継ぎキャラをショップで表示 == 0
+;	PRINTL 【引き継ぎキャラをショップで非表示】
+;ELSE
+;	PRINTL 【エラー】
+;ENDIF
+;PRINTL 　
+;PRINTL [0] - 引き継ぎキャラをショップで表示
+;PRINTL [1] - 引き継ぎキャラをショップで非表示
+;PRINTL [100]-戻る
+;
+;WHILE 1
+;	INPUT
+;	IF RESULT == 100
+;		BREAK
+;	ELSEIF RESULT == 0
+;		PRINTL 【引き継ぎキャラをショップで表示】に設定しました
+;		FLAG:引き継ぎキャラをショップで表示 = 1 
+;		BREAK
+;	ELSEIF RESULT == 1
+;		PRINTL 【引き継ぎキャラをショップで非表示】に設定しました
+;		FLAG:引き継ぎキャラをショップで表示 = 0
+;		BREAK
+;	ELSE
+;	ENDIF
+;WEND
 
