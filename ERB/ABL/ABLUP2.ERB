@@ -1,11 +1,5 @@
 ﻿;技巧の可否
 @ISABLUP2
-;恋慕、親愛、服従、隷属はMAXLV10
-IF ABL:技巧 >= 10
-	RETURN 0
-ELSEIF ABL:技巧 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:服従 == 0 && TALENT:隷属 == 0
-	RETURN 0
-ENDIF
 
 CALL DECIDE_ABLUP2
 RETURN RESULT
@@ -72,6 +66,16 @@ ABLUPAble = 0
 ShutokuCond = 0
 ;能力アップ可能なら1にする
 ABLUPAble = 0
+
+
+;恋慕、親愛、服従、隷属はMAXLV10
+IF ABL:技巧 >= 10
+	ShutokuCond = 256
+	RETURN 0
+ELSEIF ABL:技巧 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:服従 == 0 && TALENT:隷属 == 0
+	ShutokuCond = 256
+	RETURN 0
+ENDIF
 
 IF ABL:技巧 == 0
 	ShutokuJuelRequire = 1

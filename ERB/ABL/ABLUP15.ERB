@@ -1,11 +1,5 @@
 ﻿;自慰中毒の可否
 @ISABLUP15
-;恋慕、親愛、淫乱、娼婦はMAXLV10
-IF ABL:自慰中毒 >= 10
-	RETURN 0
-ELSEIF ABL:自慰中毒 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:淫乱 == 0 && TALENT:娼婦 == 0
-	RETURN 0
-ENDIF
 
 CALL DECIDE_ABLUP15
 
@@ -150,6 +144,16 @@ ABLUPAble = 0
 ;条件別にＯＫかダメかを記録する
 FirstCond = 0
 SecondCond = 0
+;恋慕、親愛、淫乱、娼婦はMAXLV10
+IF ABL:自慰中毒 >= 10
+	FirstCond = 256
+	SecondCond = 256
+	RETURN 0
+ELSEIF ABL:自慰中毒 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:淫乱 == 0 && TALENT:娼婦 == 0
+	FirstCond = 256
+	SecondCond = 256
+	RETURN 0
+ENDIF
 
 IF ABL:自慰中毒 == 0
 	YokujouJuelRequire = 3000

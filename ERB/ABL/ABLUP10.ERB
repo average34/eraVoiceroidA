@@ -1,12 +1,5 @@
 ﻿;サドっ気の可否
 @ISABLUP10
-;恋慕、親愛、服従、隷属はMAXLV10
-IF ABL:サドっ気 >= 10
-	RETURN 0
-ELSEIF ABL:サドっ気 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:服従 == 0 && TALENT:隷属 == 0
-	RETURN 0
-ENDIF
-
 CALL DECIDE_ABLUP10
 
 RETURN RESULT
@@ -103,6 +96,17 @@ ABLUPAble = 0
 ;条件別にＯＫかダメかを記録する
 YokujouCond = 0
 J = 0
+
+
+;恋慕、親愛、服従、隷属はMAXLV10
+IF ABL:サドっ気 >= 10
+	YokujouCond = 256
+	RETURN 0
+ELSEIF ABL:サドっ気 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:服従 == 0 && TALENT:隷属 == 0
+	YokujouCond = 256
+	RETURN 0
+ENDIF
+
 
 IF ABL:サドっ気 == 0
 	YokujouJuelRequire = 100

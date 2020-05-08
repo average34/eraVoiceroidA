@@ -1,12 +1,5 @@
 ﻿;Ｖ感覚の可否
 @ISABLUP4
-;恋慕、親愛、淫乱、娼婦はMAXLV10
-IF ABL:Ｖ感覚 >= 10
-	RETURN 0
-ELSEIF ABL:Ｖ感覚 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:淫乱 == 0 && TALENT:娼婦 == 0
-	RETURN 0
-ENDIF
-
 CALL DECIDE_ABLUP4
 
 RETURN RESULT
@@ -72,6 +65,16 @@ ABLUPAble = 0
 VCond = 0
 ;能力アップ可能なら1にする
 ABLUPAble = 0
+
+;恋慕、親愛、淫乱、娼婦はMAXLV10
+IF ABL:Ｖ感覚 >= 10
+	VCond = 256
+	RETURN 0
+ELSEIF ABL:Ｖ感覚 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:淫乱 == 0 && TALENT:娼婦 == 0
+	VCond = 256
+	RETURN 0
+ENDIF
+
 
 IF ABL:Ｖ感覚 == 0
 	VJuelRequire = 1

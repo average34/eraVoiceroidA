@@ -1,12 +1,5 @@
 ﻿;Ａ感覚の可否
 @ISABLUP5
-;恋慕、親愛、淫乱、娼婦はMAXLV10
-IF ABL:Ａ感覚 >= 10
-	RETURN 0
-ELSEIF ABL:Ａ感覚 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:淫乱 == 0 && TALENT:娼婦 == 0
-	RETURN 0
-ENDIF
-
 CALL DECIDE_ABLUP5
 RETURN RESULT
 
@@ -30,7 +23,7 @@ PRINT の珠×
 PRINTV AJuelRequire
 PRINT 、
 PRINTS EXPNAME:1
-PRINTV ExpCond
+PRINTV ExpRequire
 PRINT 以上
 PRINT ……
 IF ACond == 0
@@ -74,61 +67,69 @@ PRINTW になりました
 ABLUPAble = 0
 ;条件別にＯＫかダメかを記録する
 ACond = 0
-ExpCond = 0
 ;能力アップ可能なら1にする
 ABLUPAble = 0
 
+;恋慕、親愛、淫乱、娼婦はMAXLV10
+IF ABL:Ａ感覚 >= 10
+	ACond = 256
+	RETURN 0
+ELSEIF ABL:Ａ感覚 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:淫乱 == 0 && TALENT:娼婦 == 0
+	ACond = 256
+	RETURN 0
+ENDIF
+
 IF ABL:Ａ感覚 == 0
 	AJuelRequire = 1
-	ExpCond = 2
+	ExpRequire = 2
 ELSEIF ABL:Ａ感覚 == 1
 	AJuelRequire = 50
-	ExpCond = 10
+	ExpRequire = 10
 	SIF EXP:Ａ経験 >= EXPLV:3
 		AJuelRequire = 20
 ELSEIF ABL:Ａ感覚 == 2
 	AJuelRequire = 400
-	ExpCond = 30
+	ExpRequire = 30
 	SIF EXP:Ａ経験 >= EXPLV:4
 		AJuelRequire = 100
 ELSEIF ABL:Ａ感覚 == 3
 	AJuelRequire = 5000
-	ExpCond = 75
+	ExpRequire = 75
 	SIF EXP:Ａ経験 >= EXPLV:5
 		AJuelRequire = 4000
 ELSEIF ABL:Ａ感覚 == 4
 	AJuelRequire = 15000
-	ExpCond = 150
+	ExpRequire = 150
 	SIF EXP:Ａ経験 >= EXPLV:5
 		AJuelRequire = 8000
 ELSEIF ABL:Ａ感覚 == 5
 	AJuelRequire = 30000
-	ExpCond = 230
+	ExpRequire = 230
 	SIF EXP:Ａ経験 >= EXPLV:5
 		AJuelRequire = 24000
 ELSEIF ABL:Ａ感覚 == 6
 	AJuelRequire = 40000
-	ExpCond = 270
+	ExpRequire = 270
 ELSEIF ABL:Ａ感覚 == 7
 	AJuelRequire = 50000
-	ExpCond = 360
+	ExpRequire = 360
 ELSEIF ABL:Ａ感覚 == 8
 	AJuelRequire = 60000
-	ExpCond = 420
+	ExpRequire = 420
 ELSEIF ABL:Ａ感覚 == 9
 	AJuelRequire = 70000
-	ExpCond = 500
+	ExpRequire = 500
 ENDIF
 
 ;淫乱
 IF TALENT:淫乱
 	TIMES AJuelRequire , 0.80
-	TIMES ExpCond , 0.80
+	TIMES ExpRequire , 0.80
 ENDIF
 ;娼婦
 IF TALENT:娼婦
 	TIMES AJuelRequire , 0.50
-	TIMES ExpCond , 0.50
+	TIMES ExpRequire , 0.50
 ENDIF
 
 ;0になった場合は1にする
@@ -139,7 +140,7 @@ SIF AJuelRequire == 0
 SIF JUEL:快Ａ < AJuelRequire
 	ACond |= 1
 
-SIF EXP:Ａ経験 < ExpCond
+SIF EXP:Ａ経験 < ExpRequire
 	ACond |= 2
 
 IF ACond == 0

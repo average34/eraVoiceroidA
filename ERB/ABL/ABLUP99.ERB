@@ -15,10 +15,6 @@
 
 
 @ISABLUP99
-IF MARK:反発刻印 <= 0
-	RETURN 0
-ENDIF
-
 CALL DECIDE_ABLUP99
 
 RETURN RESULT
@@ -86,6 +82,10 @@ ABLUPAble = 0
 ;条件別にＯＫかダメかを記録する
 KuppukuCond = 0
 
+IF MARK:反発刻印 <= 0
+	KuppukuCond = 256
+	RETURN 0
+ENDIF
 
 IF MARK:反発刻印 == 1
 	KuppukuJuelRequire = 3000

@@ -1,11 +1,5 @@
 ﻿;セックス中毒可否
 @ISABLUP18
-;恋慕、親愛、淫乱、娼婦はMAXLV10
-IF ABL:セックス中毒 >= 10
-	RETURN 0
-ELSEIF ABL:セックス中毒 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:淫乱 == 0 && TALENT:娼婦 == 0
-	RETURN 0
-ENDIF
 
 CALL DECIDE_ABLUP18
 
@@ -122,6 +116,16 @@ ABLUPAble = 0
 FirstCond = 0
 ;SecondCond = 0
 ;第二条件は、コード中にあったが、おそらく今は使われていない条件。
+
+;恋慕、親愛、淫乱、娼婦はMAXLV10
+IF ABL:セックス中毒 >= 10
+	FirstCond = 256
+	RETURN 0
+ELSEIF ABL:セックス中毒 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:淫乱 == 0 && TALENT:娼婦 == 0
+	FirstCond = 256
+	RETURN 0
+ENDIF
+
 
 IF ABL:セックス中毒 == 0
 	YokujouJuelRequire = 2500

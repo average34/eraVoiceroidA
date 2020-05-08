@@ -1,12 +1,5 @@
 ﻿;欲望の可否
 @ISABLUP1
-;恋慕、親愛、淫乱、娼婦はMAXLV10
-IF ABL:欲望 >= 10
-	RETURN 0
-ELSEIF ABL:欲望 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:淫乱 == 0 && TALENT:娼婦 == 0
-	RETURN 0
-ENDIF
-
 CALL DECIDE_ABLUP1
 RETURN RESULT
 
@@ -81,6 +74,16 @@ CALL YOKUBO_UP_CHECK
 ABLUPAble = 0
 ;条件別にＯＫかダメかを記録する
 YokujouCond = 0
+
+;恋慕、親愛、淫乱、娼婦はMAXLV10
+IF ABL:欲望 >= 10
+	YokujouCond = 256
+	RETURN 0
+ELSEIF ABL:欲望 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:淫乱 == 0 && TALENT:娼婦 == 0
+	YokujouCond = 256
+	RETURN 0
+ENDIF
+
 
 IF ABL:欲望 == 0
 	YokujouJuelRequire = 1

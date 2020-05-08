@@ -1,12 +1,5 @@
 ﻿;奉仕精神の可否
 @ISABLUP7
-;恋慕、親愛、服従、隷属はMAXLV10
-IF ABL:奉仕精神 >= 10
-	RETURN 0
-ELSEIF ABL:奉仕精神 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:淫乱 == 0 && TALENT:娼婦 == 0 && TALENT:服従 == 0 && TALENT:隷属 == 0
-	RETURN 0
-ENDIF
-
 CALL DECIDE_ABLUP7
 RETURN RESULT
 
@@ -188,6 +181,22 @@ VARSET ExpCond, 0
 VARSET ExpRequire, 0
 ;能力アップ可能なら1にする
 ABLUPAble = 0
+
+
+;恋慕、親愛、淫乱、娼婦、服従、隷属はMAXLV10
+IF ABL:奉仕精神 >= 10
+	KuppukuCond = 256
+	KyoujunCond = 256
+	ShutokuCond = 256
+	RETURN 0
+ELSEIF ABL:奉仕精神 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:淫乱 == 0 && TALENT:娼婦 == 0 && TALENT:服従 == 0 && TALENT:隷属 == 0
+	KuppukuCond = 256
+	KyoujunCond = 256
+	ShutokuCond = 256
+	RETURN 0
+ENDIF
+
+
 
 IF ABL:奉仕精神 == 0
 	KuppukuJuelRequire = 100

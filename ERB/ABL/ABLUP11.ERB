@@ -1,12 +1,5 @@
 ﻿;レズっ気の可否
 @ISABLUP11
-;恋慕、親愛、淫乱、娼婦はMAXLV10
-IF ABL:レズっ気 >= 10
-	RETURN 0
-ELSEIF ABL:レズっ気 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:淫乱 == 0 && TALENT:娼婦 == 0
-	RETURN 0
-ENDIF
-
 CALL DECIDE_ABLUP11
 
 RETURN RESULT
@@ -134,6 +127,18 @@ ABLUPAble = 0
 ;条件別にＯＫかダメかを記録する
 FirstCond = 0
 CCond = 0
+
+;恋慕、親愛、淫乱、娼婦はMAXLV10
+IF ABL:レズっ気 >= 10
+	FirstCond = 256
+	CCond = 256
+	RETURN 0
+ELSEIF ABL:レズっ気 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:淫乱 == 0 && TALENT:娼婦 == 0
+	FirstCond = 256
+	CCond = 256
+	RETURN 0
+ENDIF
+
 
 IF ABL:レズっ気 == 0
 	YokujouJuelRequire = 200

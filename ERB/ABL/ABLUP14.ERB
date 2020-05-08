@@ -1,12 +1,5 @@
 ﻿;歌唱技能アップ可能なら1を、不可能なら0を返す
 @ISABLUP14
-;恋慕、親愛、服従、隷属はMAXLV10
-IF ABL:歌唱技能 >= 10
-	RETURN 0
-ELSEIF ABL:歌唱技能 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:服従 == 0 && TALENT:隷属 == 0
-	RETURN 0
-ENDIF
-
 CALL DECIDE_ABLUP14
 
 RETURN RESULT
@@ -77,7 +70,14 @@ ABLUPAble = 0
 ;条件別にＯＫかダメかを記録する
 ShutokuCond = 0
 
-
+;恋慕、親愛、服従、隷属はMAXLV10
+IF ABL:歌唱技能 >= 10
+	ShutokuCond = 256
+	RETURN 0
+ELSEIF ABL:歌唱技能 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:服従 == 0 && TALENT:隷属 == 0
+	ShutokuCond = 256
+	RETURN 0
+ENDIF
 
 IF ABL:歌唱技能 == 0
 	ShutokuJuelRequire = 75

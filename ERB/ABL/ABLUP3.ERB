@@ -1,12 +1,5 @@
 ﻿;Ｃ感覚の可否
 @ISABLUP3
-;恋慕、親愛、淫乱、娼婦はMAXLV10
-IF ABL:Ｃ感覚 >= 10
-	RETURN 0
-ELSEIF ABL:Ｃ感覚 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:淫乱 == 0 && TALENT:娼婦 == 0
-	RETURN 0
-ENDIF
-
 CALL DECIDE_ABLUP3
 RETURN RESULT
 
@@ -70,6 +63,17 @@ PRINTW になりました
 ABLUPAble = 0
 ;条件別にＯＫかダメかを記録する
 VARSET CCond, 0
+
+
+;恋慕、親愛、淫乱、娼婦はMAXLV10
+IF ABL:Ｃ感覚 >= 10
+	CCond = 256
+	RETURN 0
+ELSEIF ABL:Ｃ感覚 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:淫乱 == 0 && TALENT:娼婦 == 0
+	CCond = 256
+	RETURN 0
+ENDIF
+
 
 IF ABL:Ｃ感覚 == 0
 	CJuelRequire = 1

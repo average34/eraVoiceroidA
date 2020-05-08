@@ -1,11 +1,5 @@
 ﻿;露出癖の可否
 @ISABLUP8
-;恋慕、親愛、淫乱、娼婦はMAXLV10
-IF ABL:露出癖 >= 10
-	RETURN 0
-ELSEIF ABL:露出癖 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:淫乱 == 0 && TALENT:娼婦 == 0
-	RETURN 0
-ENDIF
 
 CALL DECIDE_ABLUP8
 
@@ -104,9 +98,17 @@ PRINTW になりました
 ABLUPAble = 0
 ;条件別にＯＫかダメかを記録する
 ChijouCond = 0
-J = 0
-K = 0
-;能力アップ可能なら1にする
+
+
+;恋慕、親愛、淫乱、娼婦はMAXLV10
+IF ABL:露出癖 >= 10
+	ChijouCond = 256
+	RETURN 0
+ELSEIF ABL:露出癖 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:淫乱 == 0 && TALENT:娼婦 == 0
+	ChijouCond = 256
+	RETURN 0
+ENDIF
+
 
 IF ABL:露出癖 == 0
 	ChijouJuelRequire = 100

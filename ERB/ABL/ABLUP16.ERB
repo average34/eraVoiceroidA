@@ -1,11 +1,5 @@
 ﻿;精液中毒の可否
 @ISABLUP16
-;恋慕、親愛、淫乱、娼婦はMAXLV10
-IF ABL:精液中毒 >= 10
-	RETURN 0
-ELSEIF ABL:精液中毒 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:淫乱 == 0 && TALENT:娼婦 == 0
-	RETURN 0
-ENDIF
 
 CALL DECIDE_ABLUP16
 
@@ -143,6 +137,16 @@ ABLUPAble = 0
 FirstCond = 0
 SecondCond = 0
 
+;恋慕、親愛、淫乱、娼婦はMAXLV10
+IF ABL:精液中毒 >= 10
+	FirstCond = 256
+	SecondCond = 256
+	RETURN 0
+ELSEIF ABL:精液中毒 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:淫乱 == 0 && TALENT:娼婦 == 0
+	FirstCond = 256
+	SecondCond = 256
+	RETURN 0
+ENDIF
 
 IF ABL:精液中毒 == 0
 	YokujouJuelRequire = 3000
