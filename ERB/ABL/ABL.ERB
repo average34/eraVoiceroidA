@@ -97,3 +97,44 @@ ELSEIF RESULT == 999
 ENDIF
 
 RETURN 0
+
+;=================================
+;ABL_GLOBAL.ERHで定義されているGLOBAL変数を初期化する関数
+@ABL_GLOBAL_DISPOSE
+VARSET CCond, 0
+VARSET VCond, 0
+VARSET ACond, 0
+VARSET BCond, 0
+
+VARSET KyoujunCond, 0
+VARSET YokujouCond, 0
+VARSET KuppukuCond, 0
+VARSET ShutokuCond, 0
+VARSET ChijouCond, 0
+VARSET KutsuCond, 0
+VARSET KyoufuCond, 0
+
+VARSET HiteiCond, 0
+
+VARSET FirstCond, 0
+VARSET SecondCond, 0
+VARSET ThirdCond, 0
+
+;ABLを上げる場合に必要な珠の数
+VARSET CJuelRequire, 0
+VARSET VJuelRequire, 0
+VARSET AJuelRequire, 0
+VARSET BJuelRequire, 0
+
+VARSET KyoujunJuelRequire, 0
+VARSET YokujouJuelRequire, 0
+VARSET KuppukuJuelRequire, 0
+VARSET ShutokuJuelRequire, 0
+VARSET ChijouJuelRequire, 0
+VARSET KutsuJuelRequire, 0
+VARSET KyoufuJuelRequire, 0
+
+VARSET MultiJuelRequire, 0
+
+VARSET ExpCond, 0
+VARSET ExpRequire, 0

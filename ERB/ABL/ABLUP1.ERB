@@ -72,6 +72,8 @@ CALL YOKUBO_UP_CHECK
 @DECIDE_ABLUP1
 #DIM DYNAMIC ABLUPAble = 0
 ABLUPAble = 0
+;ABL系グローバル変数の初期化
+CALL ABL_GLOBAL_DISPOSE
 ;条件別にＯＫかダメかを記録する
 YokujouCond = 0
 
