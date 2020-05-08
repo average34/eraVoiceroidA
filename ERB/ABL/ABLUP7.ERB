@@ -3,7 +3,7 @@
 ;恋慕、親愛、服従、隷属はMAXLV10
 IF ABL:奉仕精神 >= 10
 	RETURN 0
-ELSEIF ABL:奉仕精神 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:服従 == 0 && TALENT:隷属 == 0
+ELSEIF ABL:奉仕精神 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:淫乱 == 0 && TALENT:娼婦 == 0 && TALENT:服従 == 0 && TALENT:隷属 == 0
 	RETURN 0
 ENDIF
 
@@ -18,7 +18,7 @@ DRAWLINE
 IF ABL:奉仕精神 >= 10
 	PRINTW 既にMAXです
 	RETURN 0
-ELSEIF ABL:奉仕精神 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:服従 == 0 && TALENT:隷属 == 0
+ELSEIF ABL:奉仕精神 >= 5 && TALENT:恋慕 == 0 && TALENT:親愛 == 0 && TALENT:淫乱 == 0 && TALENT:娼婦 == 0 && TALENT:服従 == 0 && TALENT:隷属 == 0
 	PRINTW 既にMAXです
 	RETURN 0
 ENDIF
@@ -35,10 +35,12 @@ ELSEIF ABL:奉仕精神 == 8 && TALENT:恋慕 == 0 && TALENT:親愛 == 0
 	PRINTL 5以上、かつ
 ENDIF
 
-;従順が必要
-PRINTS ABLNAME:0
-PRINTV ABL:奉仕精神 + 1
-PRINTL LV以上、かつ
+;従順が奉仕精神＋１レベルでないといけない（素質：[淫乱][娼婦]なら無視できる）
+IF ABL:従順 < ABL:奉仕精神 + 1 && TALENT:淫乱 == 0 && TALENT:娼婦 == 0
+	PRINTS ABLNAME:0
+	PRINTV ABL:奉仕精神 + 1
+	PRINTL LV以上、かつ
+ENDIF
 
 PRINT [0] - 
 PRINTS PALAMNAME:7
@@ -270,8 +272,8 @@ IF TALENT:一線越えない && (TALENT:恋慕 == 0 && TALENT:淫乱 == 0 && TAL
 	TIMES ExpRequire:0 , 2.00
 ENDIF
 
-;従順が奉仕精神＋１レベルでないといけない
-IF ABL:従順 < ABL:奉仕精神+1
+;従順が奉仕精神＋１レベルでないといけない（素質：[淫乱][娼婦]なら無視できる）
+IF ABL:従順 < ABL:奉仕精神 + 1 && TALENT:淫乱 == 0 && TALENT:娼婦 == 0
 	;従順が不足
 	KuppukuCond |= 4
 	KyoujunCond |= 4
