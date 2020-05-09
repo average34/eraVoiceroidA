@@ -253,10 +253,11 @@ SIF TALENT:抑圧 || TALENT:抵抗
 	SOURCE:恭順追加 += 500
 
 ;助手が処女の場合、屈服逸脱が倍化し、従順が2になる。ただし一度きり
-IF TALENT:PLAYER:処女 == 1 && CFLAG:99 == 0
+IF (TALENT:PLAYER:処女 == 1 || TALENT:PLAYER:再生処女 == 1) && CFLAG:99 == 0
 	TIMES SOURCE:逸脱 , 5.00
 	TIMES SOURCE:快Ｂ , 3.00
 	TALENT:PLAYER:処女 = 0
+	TALENT:PLAYER:再生処女 = 0
 	PRINTL ＜助手が処女＞
 	;異常経験追加（一回きり）
 	EXP:異常経験 += 1
@@ -266,6 +267,10 @@ IF TALENT:PLAYER:処女 == 1 && CFLAG:99 == 0
 		ABL:従順 = 2
 	ENDIF
 	CFLAG:99 = 1
+ELSEIF TALENT:PLAYER:処女 == 1 || TALENT:PLAYER:再生処女 == 1
+	TALENT:PLAYER:処女 = 0
+	TALENT:PLAYER:再生処女 = 0
+	PRINTFORML ＜%CALLNAME:PLAYER%は処女を失いました＞
 ENDIF
 EXP:PLAYER:Ｖ経験 += 1
 

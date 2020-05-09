@@ -500,7 +500,7 @@ ELSE
 	PRINTL [0]   - 避妊しない
 	SIF MONEY > D * 100
 		PRINTFORML [1]   - コンドーム($-{D*300}）
-	SIF MONEY > 2000
+	SIF MONEY > 2000 && TALENT:A:オトコ == 0
 		PRINTFORML [2]   - 子宮内避妊具($-6000）
 	PRINTL [100] -   戻る
 	INPUT

@@ -76,7 +76,7 @@ PRINTL 避妊の有無と方法を選択してください
 PRINTL [0]   - 避妊しない
 SIF MONEY > B * 5 * 100
 	PRINTFORML [1]   - コンドーム($-{B*1500}、レンタル額ペナルティ）
-SIF MONEY > B * 2000
+SIF MONEY > B * 2000 && TALENT:A:オトコ == 0
 	PRINTFORML [2]   - 子宮内避妊具($-{B*6000}）
 PRINTL [100] -   戻る
 $INPUT_LOOP_3

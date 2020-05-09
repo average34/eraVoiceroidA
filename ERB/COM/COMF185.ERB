@@ -129,7 +129,7 @@ SIF TALENT:抑圧 || TALENT:抵抗
 	SOURCE:恭順追加 += 700
 
 ;助手が処女喪失をした場合、屈服と逸脱を増加
-IF TALENT:ASSI:処女 == 1
+IF TALENT:ASSI:処女 == 1 || TALENT:ASSI:再生処女 == 1
 	TIMES SOURCE:屈従 , 20.00
 	TIMES SOURCE:逸脱 , 3.00
 ENDIF
@@ -193,6 +193,17 @@ IF TALENT:ASSI:処女 == 1
 		PRINTFORML %EXPNAME:50%＋１
 	ENDIF
 	EXP:ASSI:異常経験 += 1
+	;助手が再生処女の場合、奴隷にのみ異常経験付加
+ELSEIF TALENT:ASSI:再生処女 == 1
+	TALENT:ASSI:再生処女 = 0
+	PRINTL ＜助手が処女＞
+	IF RELATION:A > 100
+		EXP:異常経験 += 2
+		PRINTFORML %EXPNAME:50%＋２
+	ELSE
+		EXP:異常経験 += 1
+		PRINTFORML %EXPNAME:50%＋１
+	ENDIF
 ENDIF
 
 ;助手のＶ経験

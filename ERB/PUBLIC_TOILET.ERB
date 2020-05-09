@@ -80,7 +80,7 @@ IF CFLAG:A:108
 ELSE
 	PRINTL 避妊の有無と方法を選択してください
 	PRINTL [0]   - 避妊しない
-	SIF MONEY > 6000
+	SIF MONEY > 6000 && TALENT:A:オトコ == 0
 		PRINTFORML [1]   - 子宮内避妊具($-6000）
 	PRINTL [100] - 戻る
 	INPUT
