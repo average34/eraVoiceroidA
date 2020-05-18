@@ -1,10 +1,10 @@
+﻿
+このパッチはeraVoiceroidA v1.15で画像を表示させることができるようになるパッチです
 
-���̃p�b�`��eraVoiceroidA v1.15�ŉ摜��\�������邱�Ƃ��ł���悤�ɂȂ�p�b�`�ł�
+本体のemueraはこちらをおつかいください
+ERBは上書きしてください
 
-�{�̂�emuera�͂��������������������
-ERB�͏㏑�����Ă�������
-
-resource.csv�ɍ����ւ��Ⴊ�R�����g�A�E�g����Ă��܂�
+resource.csvに差し替え例がコメントアウトされています
 
 
 
