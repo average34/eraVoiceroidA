@@ -1,0 +1,180 @@
+﻿;============================================================================
+;ネタバレっぽい要素をステータス画面に表示する
+;============================================================================
+
+;============================================================================
+;表示用の汎用関数
+;条件に合致している場合とそうでない場合で色を変える
+;そもそも表示するかどうかのチェックも含めて統合
+;ARGS:0 表示文字列, ARG:0 達成条件, ARG:1 0=通常 1=経験等一度超えると取り返しが付かない物
+;
+;返り値 達成条件を満たしていれば1, それ以外の場合は0
+;表示の時に
+;============================================================================
+@SPOILER_PRINT_FLAG( ARGS:0, ARG:0, ARG:1=0)
+#FUNCTION
+;#LOCALSIZE 10
+
+LOCAL:0 = GETCOLOR()
+LOCAL:1 = 0xFFFFFF
+LOCAL:2 = 0x444444
+LOCAL:3 = 0xFFFF00
+LOCAL:4 = 0x440000
+
+;達成条件によって色を変える
+IF ARG:0
+	;達成
+	SETCOLOR LOCAL:(ARG:1 * 2 + 1)
+	LOCAL:9 = 1
+ELSE
+	;未達成
+	SETCOLOR LOCAL:(ARG:1 * 2 + 2)
+	LOCAL:9 = 0
+ENDIF
+PRINTFORM %ARGS:0% 
+SETCOLOR LOCAL:0
+RETURNF LOCAL:9
+
+;============================================================================
+;陥落条件の達成状況表示
+;TARGETに対象キャラクターが設定されている前提
+;異常経験を少なく保つなど、一度超えると元に戻せない高難度条件は色を変えて表示。赤字があると達成不可
+;============================================================================
+@SPOILER_PRINT
+#LOCALSIZE 1
+;条件はEVENT_A.ERB の EVENTCHECK_T を参照
+
+;下位陥落系素質
+IF TALENT:恋慕 == 0 && TALENT:淫乱 == 0 && TALENT:服従 == 0 && TALENT:親愛 == 0 && TALENT:娼婦 == 0 && TALENT:隷属 == 0 && TALENT:崩壊 == 0
+	;恋慕条件
+	IF TALENT:恋慕 == 0
+		LOCAL = 0
+		PRINT 恋慕条件： 
+		LOCAL += SPOILER_PRINT_FLAG("反発刻印0 ", MARK:反発刻印 == 0)
+		LOCAL += SPOILER_PRINT_FLAG("屈服刻印3 ", MARK:屈服刻印 >= 3)
+		LOCAL += SPOILER_PRINT_FLAG("従順3以上 ", ABL:従順 >= 3)
+		LOCAL += SPOILER_PRINT_FLAG("奉仕精神3以上 ", ABL:奉仕精神 >= 3)
+		LOCAL += SPOILER_PRINT_FLAG("奉仕快楽経験200以上 ", EXP:奉仕快楽経験 >= 200)
+		PRINTL
+		PRINT 　　　　　 
+		LOCAL += SPOILER_PRINT_FLAG("依存度1000以上 ", CFLAG:2 >= 1000)
+		LOCAL += SPOILER_PRINT_FLAG("異常経験2未満 ",EXP:異常経験 < 2, 1)
+		IF LOCAL >= 7
+			CALLF SPOILER_PRINT_FLAG("(OK)",1)
+		ELSE
+			CALLF SPOILER_PRINT_FLAG(@"({LOCAL}/7)",0)
+		ENDIF
+		PRINTL
+	ENDIF
+
+	;淫乱条件
+	IF TALENT:淫乱 == 0
+		LOCAL = 0
+		PRINT 淫乱条件： 
+		LOCAL += SPOILER_PRINT_FLAG("反発刻印0 ", MARK:反発刻印 == 0)
+		LOCAL += SPOILER_PRINT_FLAG("快楽刻印3 ", MARK:快楽刻印 >= 3)
+		LOCAL += SPOILER_PRINT_FLAG("屈服刻印3 ", MARK:屈服刻印 >= 3)
+		LOCAL += SPOILER_PRINT_FLAG("欲望3以上 ", ABL:欲望 >= 3)
+		LOCAL += SPOILER_PRINT_FLAG("CVAB感覚合計10以上 ", ABL:Ｃ感覚+ABL:Ｖ感覚+ABL:Ａ感覚+ABL:Ｂ感覚 >= 10)
+		PRINTL
+		PRINT 　　　　　 
+		LOCAL += SPOILER_PRINT_FLAG("異常経験2以上 or 異常経験1かつレズ経験・ゲイ経験2000以上 ", EXP:異常経験 >= 2 || (EXP:異常経験 >= 1 && (EXP:レズ経験 >= 2000 || EXP:ゲイ経験 >= 2000)))
+		IF LOCAL >= 6
+			CALLF SPOILER_PRINT_FLAG("(OK)",1)
+		ELSE
+			CALLF SPOILER_PRINT_FLAG(@"({LOCAL}/6)",0)
+		ENDIF
+		PRINTL
+	ENDIF
+
+	;服従条件
+	IF TALENT:服従 == 0
+		LOCAL = 0
+		PRINT 服従条件： 
+		LOCAL += SPOILER_PRINT_FLAG("反発刻印0 ", MARK:反発刻印 == 0)
+		LOCAL += SPOILER_PRINT_FLAG("屈服刻印3 ", MARK:屈服刻印 >= 3)
+		LOCAL += SPOILER_PRINT_FLAG("従順3以上 ", ABL:従順 >= 3)
+		LOCAL += SPOILER_PRINT_FLAG("マゾっ気3以上 ", ABL:マゾっ気 >= 3)
+		LOCAL += SPOILER_PRINT_FLAG("CVAB感覚合計10未満 ", ABL:Ｃ感覚+ABL:Ｖ感覚+ABL:Ａ感覚+ABL:Ｂ感覚 < 10,1)
+		PRINTL
+		PRINT 　　　　　 
+		LOCAL += SPOILER_PRINT_FLAG("依存度-1000以下 ", CFLAG:2 <= -1000)
+		LOCAL += SPOILER_PRINT_FLAG("苦痛快楽経験+緊縛経験200以上 ",EXP:苦痛快楽経験+EXP:緊縛経験 >= 200)
+		LOCAL += SPOILER_PRINT_FLAG("異常経験2以上", EXP:異常経験 >= 2)
+		IF LOCAL >= 8
+			CALLF SPOILER_PRINT_FLAG("(OK)",1)
+		ELSE
+			CALLF SPOILER_PRINT_FLAG(@"({LOCAL}/8)",0)
+		ENDIF
+		PRINTL
+	ENDIF
+
+ENDIF
+
+;上位陥落素質
+IF TALENT:親愛 == 0 && TALENT:娼婦 == 0 && TALENT:隷属 == 0 && TALENT:崩壊 == 0
+
+	;親愛条件
+	IF TALENT:恋慕 == 1 && TALENT:親愛 == 0
+		LOCAL = 0
+		PRINT 親愛条件： 
+		LOCAL += SPOILER_PRINT_FLAG("反発刻印0 ", MARK:反発刻印 == 0)
+		LOCAL += SPOILER_PRINT_FLAG("従順5以上 ", ABL:従順 >= 5)
+		LOCAL += SPOILER_PRINT_FLAG("奉仕精神5以上 ", ABL:奉仕精神 >= 5)
+		LOCAL += SPOILER_PRINT_FLAG("愛情経験200以上 ", EXP:愛情経験 >= 200)
+		LOCAL += SPOILER_PRINT_FLAG("奉仕快楽経験400以上 ", EXP:奉仕快楽経験 >= 400)
+		PRINTL
+		PRINT 　　　　　 
+		LOCAL += SPOILER_PRINT_FLAG("依存度3000以上 ", CFLAG:2 >= 3000)
+		LOCAL += SPOILER_PRINT_FLAG("異常経験5未満 ",EXP:異常経験 < 5, 1)
+		IF LOCAL >= 7
+			CALLF SPOILER_PRINT_FLAG("(OK)",1)
+		ELSE
+			CALLF SPOILER_PRINT_FLAG(@"({LOCAL}/7)",0)
+		ENDIF
+		PRINTL
+	ENDIF
+
+	
+	;娼婦条件
+	IF TALENT:淫乱 == 1 && TALENT:娼婦 == 0
+		LOCAL = 0
+		PRINT 娼婦条件： 
+		LOCAL += SPOILER_PRINT_FLAG("反発刻印0 ", MARK:反発刻印 == 0)
+		LOCAL += SPOILER_PRINT_FLAG("欲望5以上 ", ABL:欲望 >= 5)
+		LOCAL += SPOILER_PRINT_FLAG("CVAB感覚合計20以上 ", ABL:Ｃ感覚+ABL:Ｖ感覚+ABL:Ａ感覚+ABL:Ｂ感覚 >= 20)
+		LOCAL += SPOILER_PRINT_FLAG("絶頂経験200以上 ", EXP:絶頂経験 >= 200)
+		PRINTL
+		PRINT 　　　　　 
+		LOCAL += SPOILER_PRINT_FLAG("異常経験4以上 or 異常経験2かつレズ経験・ゲイ経験3000以上 ", EXP:異常経験 >= 4 || (EXP:異常経験 >= 2 && (EXP:レズ経験 >= 3000 || EXP:ゲイ経験 >= 3000)))
+		IF LOCAL >= 5
+			CALLF SPOILER_PRINT_FLAG("(OK)",1)
+		ELSE
+			CALLF SPOILER_PRINT_FLAG(@"({LOCAL}/5)",0)
+		ENDIF
+		PRINTL
+	ENDIF
+	;隷属条件
+	IF TALENT:服従 == 1 && TALENT:隷属 == 0
+		LOCAL = 0
+		PRINT 隷属条件： 
+		LOCAL += SPOILER_PRINT_FLAG("反発刻印0 ", MARK:反発刻印 == 0)
+		LOCAL += SPOILER_PRINT_FLAG("従順5以上 ", ABL:従順 >= 5)
+		LOCAL += SPOILER_PRINT_FLAG("マゾっ気5以上 ", ABL:マゾっ気 >= 5)
+		LOCAL += SPOILER_PRINT_FLAG("CVAB感覚合計15未満 ", ABL:Ｃ感覚+ABL:Ｖ感覚+ABL:Ａ感覚+ABL:Ｂ感覚 < 15,1)
+		PRINTL
+		PRINT 　　　　　 
+		LOCAL += SPOILER_PRINT_FLAG("依存度-3000以下 ", CFLAG:2 <= -3000)
+		LOCAL += SPOILER_PRINT_FLAG("苦痛快楽経験+緊縛経験500以上 ",EXP:苦痛快楽経験+EXP:緊縛経験 >= 500)
+		LOCAL += SPOILER_PRINT_FLAG("異常経験5以上", EXP:異常経験 >= 5)
+		IF LOCAL >= 7
+			CALLF SPOILER_PRINT_FLAG("(OK)",1)
+		ELSE
+			CALLF SPOILER_PRINT_FLAG(@"({LOCAL}/7)",0)
+		ENDIF
+		PRINTL
+	ENDIF
+ENDIF
+
+DRAWLINE
+RETURN

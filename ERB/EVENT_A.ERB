@@ -13,8 +13,9 @@ SIF ASSI >= 0
 @EVENTCHECK_T
 IF TALENT:恋慕 == 0 && TALENT:淫乱 == 0 && TALENT:服従 == 0 && TALENT:親愛 == 0 && TALENT:娼婦 == 0 && TALENT:隷属 == 0 && TALENT:崩壊 == 0
 
-	;恋慕：従順、奉仕精神3以上+屈服刻印Lv3+反発刻印Lv0+奉仕快楽経験200以上+依存度1000以上+レズ経験もしくはゲイ経験1000未満+異常経験2未満
-	IF ABL:従順 >= 3 && ABL:奉仕精神 >= 3 && MARK:屈服刻印 == 3 && MARK:反発刻印 == 0 && EXP:奉仕快楽経験 >= 200 && CFLAG:2 >= 1000 && EXP:レズ経験 < 1000 && EXP:ゲイ経験 < 1000 && EXP:異常経験 < 2
+	;恋慕：従順、奉仕精神3以上+屈服刻印Lv3+反発刻印Lv0+奉仕快楽経験200以上+依存度1000以上+異常経験2未満
+	;eratohoAよりもレズホモ経験緩和
+	IF ABL:従順 >= 3 && ABL:奉仕精神 >= 3 && MARK:屈服刻印 == 3 && MARK:反発刻印 == 0 && EXP:奉仕快楽経験 >= 200 && CFLAG:2 >= 1000 && EXP:異常経験 < 2
 		PRINTFORMW %CALLNAME:TARGET%のこちらを見る目がおかしい
 		PRINTFORML %CALLNAME:TARGET%は%CALLNAME:MASTER%との行為に悦びを感じているようだ
 		PRINTFORMW %NAME:TARGET%は【恋慕】を得た
@@ -61,10 +62,9 @@ IF TALENT:恋慕 == 0 && TALENT:淫乱 == 0 && TALENT:服従 == 0 && TALENT:親�
 		ENDIF
 	ENDIF
 
-	;服従：従順、マゾっ気3以上+CAVB感覚10未満+屈服刻印Lv3+反発刻印Lv0+苦痛快楽経験+緊縛経験200以上+依存度-1000以下+レズ経験もしくはゲイ経験1000未満+異常経験2以上
-	;eratohoAよりも異常経験緩和
-	A = CFLAG:2 * -1
-	IF ABL:従順 >= 3 && ABL:マゾっ気 >= 3 && ABL:Ｃ感覚+ABL:Ｖ感覚+ABL:Ａ感覚+ABL:Ｂ感覚 < 10 && MARK:屈服刻印 == 3 && MARK:反発刻印 == 0 && EXP:苦痛快楽経験+EXP:緊縛経験 >= 200 && A >= 1000 && EXP:レズ経験 < 1000 && EXP:ゲイ経験 < 1000 && EXP:異常経験 >= 2
+	;服従：従順、マゾっ気3以上+CAVB感覚10未満+屈服刻印Lv3+反発刻印Lv0+苦痛快楽経験+緊縛経験200以上+依存度-1000以下+異常経験2以上
+	;eratohoAよりも異常経験・レズホモ経験緩和
+	IF ABL:従順 >= 3 && ABL:マゾっ気 >= 3 && ABL:Ｃ感覚+ABL:Ｖ感覚+ABL:Ａ感覚+ABL:Ｂ感覚 < 10 && MARK:屈服刻印 == 3 && MARK:反発刻印 == 0 && EXP:苦痛快楽経験+EXP:緊縛経験 >= 200 && CFLAG:2 <= -1000 && EXP:異常経験 >= 2
 		PRINTFORMW %CALLNAME:TARGET%のこちらを見る目がおかしい
 		PRINTFORML %CALLNAME:TARGET%は%CALLNAME:MASTER%に心が平伏しきっているようだ
 		PRINTFORMW %NAME:TARGET%は【服従】を得た
@@ -78,8 +78,9 @@ ENDIF
 
 IF TALENT:親愛 == 0 && TALENT:娼婦 == 0 && TALENT:隷属 == 0 && TALENT:崩壊 == 0
 
-	;親愛:恋慕、従順、奉仕精神5以上+反発刻印Lv0+愛情経験200以上+奉仕快楽経験400以上+依存度3000以上+レズ経験もしくはゲイ経験1500未満+異常経験5未満
-	IF TALENT:恋慕 && ABL:従順 >= 5 && ABL:奉仕精神 >= 5 && MARK:反発刻印 == 0 && EXP:愛情経験 >= 200 && EXP:奉仕快楽経験 >= 400 && CFLAG:2 >= 3000 && EXP:レズ経験 < 1500 && EXP:ゲイ経験 < 1500 && EXP:異常経験 < 5
+	;親愛:恋慕、従順、奉仕精神5以上+反発刻印Lv0+愛情経験200以上+奉仕快楽経験400以上+依存度3000以上+異常経験5未満
+	;eratohoAよりもレズホモ経験緩和
+	IF TALENT:恋慕 && ABL:従順 >= 5 && ABL:奉仕精神 >= 5 && MARK:反発刻印 == 0 && EXP:愛情経験 >= 200 && EXP:奉仕快楽経験 >= 400 && CFLAG:2 >= 3000 && EXP:異常経験 < 5
 		PRINTFORMW %CALLNAME:TARGET%のこちらを見る目がおかしい
 		PRINTFORML %CALLNAME:TARGET%は身も心も%CALLNAME:MASTER%に依存しきっているようだ
 		PRINTFORMW %NAME:TARGET%の【恋慕】は【親愛】になった
@@ -101,10 +102,10 @@ IF TALENT:親愛 == 0 && TALENT:娼婦 == 0 && TALENT:隷属 == 0 && TALENT:崩�
 		ENDIF
 	ENDIF
 
-	;隷属：服従、従順、マゾっ気5以上+CAVB感覚15未満+反発刻印Lv0+苦痛快楽経験+緊縛経験500以上+依存度-3000以下+レズ経験もしくはゲイ経験1500未満+異常経験5以上
-	;eratohoAよりも異常経験緩和
+	;隷属：服従、従順、マゾっ気5以上+CAVB感覚15未満+反発刻印Lv0+苦痛快楽経験+緊縛経験500以上+依存度-3000以下+異常経験5以上
+	;eratohoAよりも異常経験・レズホモ経験緩和
 	A = CFLAG:2 * -1
-	IF TALENT:服従 && ABL:従順 >= 5 && ABL:マゾっ気 >= 5 && ABL:Ｃ感覚+ABL:Ｖ感覚+ABL:Ａ感覚+ABL:Ｂ感覚 < 15 && MARK:反発刻印 == 0 && EXP:苦痛快楽経験+EXP:緊縛経験 >= 500 && A >= 3000 && EXP:レズ経験 < 1500 && EXP:ゲイ経験 < 1500 && EXP:異常経験 >= 5
+	IF TALENT:服従 && ABL:従順 >= 5 && ABL:マゾっ気 >= 5 && ABL:Ｃ感覚+ABL:Ｖ感覚+ABL:Ａ感覚+ABL:Ｂ感覚 < 15 && MARK:反発刻印 == 0 && EXP:苦痛快楽経験+EXP:緊縛経験 >= 500 && A >= 3000 && EXP:異常経験 >= 5
 		PRINTFORMW %CALLNAME:TARGET%のこちらを見る目がおかしい
 		PRINTFORML %CALLNAME:TARGET%は身も心も%CALLNAME:MASTER%の奴隷となりきっているようだ
 		PRINTFORMW %NAME:TARGET%の【服従】は【隷属】になった
