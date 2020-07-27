@@ -51,11 +51,13 @@ LOCALS = ""
 [ENDIF]
 
 ;あなたは読み込むまでもない
-SIF ARG:0 == 0
+SIF ARG:0 == 0 || ARG:0 == 99
 	RETURNF "あなた"
 ;EXキャラ固有
 SIF ARG:0 == 90 || ARG:0 == 91
 	RETURNF "VOCALOID"
+SIF ARG:0 == 92 || ARG:0 == 93
+	RETURNF "VOICEROID"
 
 EXISTCSV ARG:0
 IF RESULT == 0

@@ -425,10 +425,12 @@ REPEAT 100
 		FLAG:B = ITEMPRICE:A
 	SIF FLAG:C == 1
 		FLAG:B = 0
-;デバッグモードでない場合、EXキャラを削除
+;デバッグモードでもEXTRAモードでもない場合、EXキャラを削除
 [IF_NDEBUG]
-	SIF A >= 189 && A <= 199
-		FLAG:B = 0
+	IF FLAG:EXTRAモード == 0
+		SIF A >= 189 && A <= 199
+			FLAG:B = 0
+	ENDIF
 [ENDIF]
 
 	;IF FLAG:引き継ぎキャラをショップで表示 == 0
@@ -613,15 +615,23 @@ ELSEIF FLAG:9 == 84
 ELSEIF FLAG:9 == 90
 	PRINTL 【結月ゆかり 穏】
 	PRINTL 種族：VOICEROID　性別：女性
+	PRINTL ※EXTRAモード時のみ選択可能
 ELSEIF FLAG:9 == 91
 	PRINTL 【結月ゆかり 凛】
 	PRINTL 種族：VOICEROID　性別：女性
+	PRINTL ※EXTRAモード時のみ選択可能
 ELSEIF FLAG:9 == 92
 	PRINTL 【琴葉葵（男性）】
 	PRINTL 種族：VOICEROID　性別：男性
+	PRINTL ※EXTRAモード時のみ選択可能
 ELSEIF FLAG:9 == 93
 	PRINTL 【紲星あかり（淫魔）】
 	PRINTL 種族：VOICEROID　性別：女性
+	PRINTL ※EXTRAモード時のみ選択可能
+ELSEIF FLAG:9 == 99
+	PRINTL 【あなた】
+	PRINTL 種族：人間　性別：男性
+	PRINTL ※EXTRAモード時のみ選択可能
 ENDIF
 PRINTL 
 PRINTL 購入しますか？
